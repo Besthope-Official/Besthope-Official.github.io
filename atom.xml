@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>Besthope&#39;s Blog</title>
+  <icon>http://example.com/icon.png</icon>
+  <subtitle>hope u enjoy ur stay</subtitle>
+  <link href="http://example.com/atom.xml" rel="self"/>
+  
+  <link href="http://example.com/"/>
+  <updated>2022-12-17T13:13:19.149Z</updated>
+  <id>http://example.com/</id>
+  
+  <author>
+    <name>Besthope</name>
+    
+  </author>
+  
+  <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>x86-64 汇编介绍</title>
+    <link href="http://example.com/2022/12/17/x86-64%E6%B1%87%E7%BC%96%E4%BB%8B%E7%BB%8D/"/>
+    <id>http://example.com/2022/12/17/x86-64%E6%B1%87%E7%BC%96%E4%BB%8B%E7%BB%8D/</id>
+    <published>2022-12-17T10:49:22.000Z</published>
+    <updated>2022-12-17T13:13:19.149Z</updated>
+    
+    
+    <summary type="html">&lt;blockquote&gt;
+&lt;p&gt;程序就是状态机。——jyy, on 2022 NJU OS Lecture 01&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;这句话道出了程序的本质. 实际上, 如今的计算机本质上就是通用&lt;a href=&quot;https://plato.stanford.edu/entries/turing-machine/&quot;&gt;图灵机&lt;/a&gt;, 而我们研究汇编语言就是研究程序在机器层面上的运行.&lt;/p&gt;
+&lt;p&gt;程序的进行依赖于&lt;code&gt;rip&lt;/code&gt;寄存器, 它储存的值是当前运行的指令地址. 程序的进行实际上就是一条指令一条指令的移动(你可以在&lt;code&gt;gdb&lt;/code&gt;里随时监控&lt;code&gt;rip&lt;/code&gt;). 这和图灵机读写控制的方式本质上是一致的!&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="CSAPP" scheme="http://example.com/categories/CSAPP/"/>
+    
+    
+    <category term="汇编" scheme="http://example.com/tags/%E6%B1%87%E7%BC%96/"/>
+    
+    <category term="CSAPP" scheme="http://example.com/tags/CSAPP/"/>
+    
+    <category term="计算机系统" scheme="http://example.com/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B3%BB%E7%BB%9F/"/>
+    
+  </entry>
+  
+</feed>
