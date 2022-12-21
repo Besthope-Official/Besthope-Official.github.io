@@ -6,7 +6,7 @@
   <link href="http://example.com/atom.xml" rel="self"/>
   
   <link href="http://example.com/"/>
-  <updated>2022-12-17T13:13:19.149Z</updated>
+  <updated>2022-12-21T17:42:17.536Z</updated>
   <id>http://example.com/</id>
   
   <author>
@@ -15,6 +15,28 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>前缀函数和KMP算法</title>
+    <link href="http://example.com/2022/12/21/KMP%E7%AE%97%E6%B3%95/"/>
+    <id>http://example.com/2022/12/21/KMP%E7%AE%97%E6%B3%95/</id>
+    <published>2022-12-21T12:37:01.000Z</published>
+    <updated>2022-12-21T17:42:17.536Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;做期末大作业里面有个字符串匹配的问题, 用暴力算法做完觉得不够爽, 于是自找的麻烦.&lt;/p&gt;
+&lt;p&gt;想用最简明的方式去解释这个较为抽象的算法!&lt;br&gt;事实上明白了一个道理: 缺乏数学的算法都是玄学, 只有数学证明了才能让人心服口服……&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="算法" scheme="http://example.com/categories/%E7%AE%97%E6%B3%95/"/>
+    
+    
+    <category term="字符串" scheme="http://example.com/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2/"/>
+    
+    <category term="算法" scheme="http://example.com/tags/%E7%AE%97%E6%B3%95/"/>
+    
+  </entry>
   
   <entry>
     <title>x86-64 汇编介绍</title>

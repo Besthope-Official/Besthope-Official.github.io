@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 6.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-pepe.ico">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-pepe.ico">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha256-Z1K5uhUaJXA7Ll0XrZ/0JhX4lAtZFpT6jkKrEDT0drU=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Pisces","darkmode":false,"version":"8.14.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":true,"style":null},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="做期末大作业里面有个字符串匹配的问题, 用暴力算法做完觉得不够爽, 于是自找的麻烦. 想用最简明的方式去解释这个较为抽象的算法!事实上明白了一个道理: 缺乏数学的算法都是玄学, 只有数学证明了才能让人心服口服……">
+<meta property="og:type" content="article">
+<meta property="og:title" content="前缀函数和KMP算法">
+<meta property="og:url" content="http://example.com/2022/12/21/KMP%E7%AE%97%E6%B3%95/index.html">
+<meta property="og:site_name" content="Besthope&#39;s Blog">
+<meta property="og:description" content="做期末大作业里面有个字符串匹配的问题, 用暴力算法做完觉得不够爽, 于是自找的麻烦. 想用最简明的方式去解释这个较为抽象的算法!事实上明白了一个道理: 缺乏数学的算法都是玄学, 只有数学证明了才能让人心服口服……">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/images/pic.png">
+<meta property="og:image" content="http://example.com/images/pic2.png">
+<meta property="og:image" content="http://example.com/images/pic3.png">
+<meta property="article:published_time" content="2022-12-21T12:37:01.000Z">
+<meta property="article:modified_time" content="2022-12-21T17:42:17.536Z">
+<meta property="article:author" content="Besthope">
+<meta property="article:tag" content="字符串">
+<meta property="article:tag" content="算法">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/images/pic.png">
+
+
+<link rel="canonical" href="http://example.com/2022/12/21/KMP%E7%AE%97%E6%B3%95/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://example.com/2022/12/21/KMP%E7%AE%97%E6%B3%95/","path":"2022/12/21/KMP算法/","title":"前缀函数和KMP算法"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>前缀函数和KMP算法 | Besthope's Blog</title>
+  
+
+
+
+
+
+
+  <script async defer data-website-id="" src=""></script>
+
+  <script defer data-domain="" src=""></script>
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+<link rel="alternate" href="/atom.xml" title="Besthope's Blog" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">Besthope's Blog</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">hope u enjoy ur stay</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li><li class="menu-item menu-item-rss"><a href="/atom.xml" rel="section"><i class="fa fa-rss fa-fw"></i>RSS</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%89%8D%E8%A8%80-%E6%9A%B4%E5%8A%9B%E8%A7%A3%E5%86%B3%E9%97%AE%E9%A2%98"><span class="nav-number">1.</span> <span class="nav-text">前言: 暴力解决问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%A2%84%E5%A4%87%E7%9F%A5%E8%AF%86"><span class="nav-number">2.</span> <span class="nav-text">预备知识</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%9F%BA%E7%A1%80"><span class="nav-number">2.1.</span> <span class="nav-text">字符串基础</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%89%8D%E7%BC%80%E5%87%BD%E6%95%B0"><span class="nav-number">2.2.</span> <span class="nav-text">前缀函数</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#KMP-%E7%AE%97%E6%B3%95%E5%B0%B1%E6%98%AF%E7%8A%B6%E6%80%81%E6%9C%BA"><span class="nav-number">3.</span> <span class="nav-text">KMP 算法就是状态机</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BC%98%E9%9B%85%E8%AE%A1%E7%AE%97%E5%89%8D%E7%BC%80%E5%87%BD%E6%95%B0"><span class="nav-number">4.</span> <span class="nav-text">优雅计算前缀函数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%A8%A1%E6%9D%BF"><span class="nav-number">5.</span> <span class="nav-text">模板</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Besthope"
+      src="/images/bocchi.png">
+  <p class="site-author-name" itemprop="name">Besthope</p>
+  <div class="site-description" itemprop="description">Tech Otaku save the world!</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">2</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-name">分类</span>
+      </div>
+      <div class="site-state-item site-state-tags">
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">标签</span>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/Besthope-Official" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;Besthope-Official" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:874256269@qq.com" title="E-Mail → mailto:874256269@qq.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i></a>
+      </span>
+  </div>
+
+        </div>
+      </div>
+        <div class="back-to-top animated" role="button" aria-label="返回顶部">
+          <i class="fa fa-arrow-up"></i>
+          <span>0%</span>
+        </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/12/21/KMP%E7%AE%97%E6%B3%95/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/bocchi.png">
+      <meta itemprop="name" content="Besthope">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Besthope's Blog">
+      <meta itemprop="description" content="Tech Otaku save the world!">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="前缀函数和KMP算法 | Besthope's Blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          前缀函数和KMP算法
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2022-12-21 20:37:01" itemprop="dateCreated datePublished" datetime="2022-12-21T20:37:01+08:00">2022-12-21</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2022-12-22 01:42:17" itemprop="dateModified" datetime="2022-12-22T01:42:17+08:00">2022-12-22</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E7%AE%97%E6%B3%95/" itemprop="url" rel="index"><span itemprop="name">算法</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>2.6k</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>9 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <p>做期末大作业里面有个字符串匹配的问题, 用暴力算法做完觉得不够爽, 于是自找的麻烦.</p>
+<p>想用最简明的方式去解释这个较为抽象的算法!<br>事实上明白了一个道理: 缺乏数学的算法都是玄学, 只有数学证明了才能让人心服口服……</p>
+<span id="more"></span>
+<p>问题: 在一个<strong>文本串</strong>(<code>s</code>, 也称主串)中找到一个<strong>匹配串</strong>(<code>p</code>), 返回它在文本串中的下标. 如果无法匹配返回<code>-1</code>.</p>
+<h2 id="前言-暴力解决问题"><a href="#前言-暴力解决问题" class="headerlink" title="前言: 暴力解决问题"></a>前言: 暴力解决问题</h2><p>思路很明了: 用指针<code>i</code>遍历<code>s</code>, <code>j</code>遍历<code>p</code>. 具体的遍历过程</p>
+<ul>
+<li><strong>指针移动</strong> <code>s[i]</code>是否匹配<code>p[j]</code><ol>
+<li>如果匹配, 则后移<code>j</code>指针, 比较<code>p</code>后继字符是否和<code>s</code>中的一致.</li>
+<li>如果不匹配, 那么后移<code>i</code>指针, 并将<code>j</code>指针重新设置为<code>0</code>.</li>
+</ol>
+</li>
+<li><strong>终止条件</strong> 当<code>j</code>指针指向<code>p</code>最后一个字符, 说明匹配完成. 这时候就可以输出<code>i - j</code>的值, 作为匹配串在文本串中的索引.</li>
+</ul>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> <span class="title function_">bf</span><span class="params">(<span class="type">char</span> *s, <span class="type">char</span> *p)</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="type">int</span> i = <span class="number">0</span>, j = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">while</span> (s[i] != <span class="string">&#x27;\0&#x27;</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span> (s[i] == p[j])</span><br><span class="line">            i++, j++;</span><br><span class="line">        <span class="keyword">else</span> &#123;</span><br><span class="line">            i -= j; i++; j = <span class="number">0</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (p[j] == <span class="string">&#x27;\0&#x27;</span>)</span><br><span class="line">            <span class="keyword">return</span> i - j;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>时间复杂度分析: 考虑最坏情况, $O(|P| \cdot (|S|+|P|-1)) \approx O(|P|\cdot|S|) $, 也就是 $O(nm)$.</p>
+<h2 id="预备知识"><a href="#预备知识" class="headerlink" title="预备知识"></a>预备知识</h2><h3 id="字符串基础"><a href="#字符串基础" class="headerlink" title="字符串基础"></a>字符串基础</h3><p><strong>子串</strong>: 串中任意个连续的字符组成的子序列.</p>
+<p><strong>字符串前缀</strong>: 一个字符串的<strong>全部头部组合</strong>, 但<strong>不包括自身</strong>.</p>
+<blockquote>
+<p>严格来说, KMP讨论的是字符串的真前缀.</p>
+</blockquote>
+<p>例子: <code>abcab</code> 的前缀(集合)为 <code>&#123;a, ab, abc, abca&#125;</code></p>
+<p>同样的有<strong>字符串后缀</strong>, 按上面的例子, 后缀(集合)就应该为 <code>&#123;b, ab, cab, bcab&#125;</code>.</p>
+<h3 id="前缀函数"><a href="#前缀函数" class="headerlink" title="前缀函数"></a>前缀函数</h3><p>给定长度<code>n</code>的字符串<code>s</code>, 其<strong>前缀函数</strong>定义为长度为<code>n</code>的数组$\pi$, 其中$\pi[i]$是子串<code>s[0...i]</code><strong>最长的相等前缀和后缀长度</strong>. 具体来说:</p>
+<ul>
+<li>$\pi[0]$ = 0. 因为此时无前缀及后缀.(对于部分实现可能会规定其为<code>-1</code>)</li>
+<li>如果子串有一对相同的前后缀, 那么 $\pi[i]$ 就等于这个前缀(或后缀)的长度. 如果存在多对, 那么就是它们中的最大值.</li>
+</ul>
+<p>例如, 对于<code>abcab</code>, <code>pi[0] = 0</code>, <code>pi[1] = 0</code>, <code>pi[2] = 0</code>, <code>pi[3] = 1</code>, <code>pi[4] = 2</code>. 那么它的前缀函数就为 <code>&#123;0, 0, 0, 1, 2&#125;</code>.</p>
+<p>优雅求得一个字符串的前缀函数是件并不容易的事情. 我们会在下面接着讨论.</p>
+<h2 id="KMP-算法就是状态机"><a href="#KMP-算法就是状态机" class="headerlink" title="KMP 算法就是状态机"></a>KMP 算法就是状态机</h2><p>所谓算法, 就是把暴力穷举优化成聪明的枚举. 这句话对KMP算法同样适用: 利用<strong>匹配失败后的信息</strong>, <strong>减少</strong>模式串和文本串的<strong>匹配次数</strong>.</p>
+<p>在暴力算法中, 每当<code>s[i] != p[j]</code>, <code>j</code> 被重新设置为<code>0</code>, 而<code>i</code>回溯到匹配前的位置, 同时只自增<code>1</code>. 我们的目的是: 减少算法复杂度<code>O(nm)</code>中的<code>n</code>, 也即减少不必要的匹配次数, 换句话说, 要么动态增加<code>i</code>的步长; 要么不回溯<code>i</code>, 让<code>i</code>一直自增下去.</p>
+<p>为了实现这一点, 我们需要利用一切匹配失败前获取的信息. 而在匹配失败之前, 有字符是匹配的: <strong>文本串的一部分等于模式串的一段前缀</strong>.</p>
+<p>如果我们能跳过不可能成功匹配的字段, 就可以有效减少匹配的次数.</p>
+<p><img src="/images/pic.png" alt="skip"></p>
+<p>如图所示, 如果能够跳过中间标蓝的不必要的匹配(第一个字符都失败了, 明显不可能匹配成功), 就可以大幅减少我们的匹配次数.</p>
+<p>我们要做的实际上就一件事: <strong>让文本串的一段对上匹配串的一段前缀</strong>, 而且跳过越多不必要的匹配越好. 跳过的这个长度在我们匹配失败前就应确定, 根据已有的信息, 这个<strong>最优长度</strong>是 <strong><code>s</code>子串的后缀和<code>p</code>子串的前缀交集中最长元素的长度</strong>.<br>在上例中, 就是 $\text{\{a,ab,abc,abca\}}\cap \text{\{b, ab, cab, bcab\}} = \text{\{ab\}}$ 的长度, 也就是<code>2</code>, 表示的含义也即: 让<code>p</code>的<code>ab</code>对上<code>s</code>的<code>ab</code>.</p>
+<p>而且, 由于在匹配失败之前, 匹配都是成功的, 我们可以得到另外一个信息是 <strong><code>s</code>串的部分子串等同于<code>p</code>串的部分子串</strong>, 那么, 此时<code>s</code>子串的后缀和<code>p</code>子串的前缀交集中最长元素的长度, 就等同于 <strong><code>p</code>子串的最大前后缀长度</strong>, 也就是<code>p</code>串的<strong>前缀函数</strong>.</p>
+<p>这是巨大的一步! 因为我们可以在<code>s</code>和<code>p</code>进行匹配之前就计算出<code>p</code>每一次向右移动的长度.</p>
+<p>在KMP算法中, 我们记这个数组为<code>next</code>数组.</p>
+<p>在下面的算法中, 我们依然用<code>i</code>表示指向<code>s</code>的字符下标, <code>j</code>表示指向<code>p</code>的字符下标.</p>
+<p>相较于暴力算法, 我们优化的点主要在于<code>j != 0</code>的情况:<br>让<code>i</code>不回溯, 只让<code>j</code>回溯. <code>i</code>不动, 让<code>p[next[j - 1]]</code>和<code>s</code>中方才匹配失败的字符<code>s[i]</code>进行比较.<br>假使这一步又失败了, 我们还是回溯<code>j</code>, 找<code>s[i] == p[j]</code>, 直到<code>j</code>为<code>0</code>, 也就意味着<code>s</code>和<code>p</code>没有交集了. 这时, 移动<code>i</code>, 进行新一轮的匹配.<br>注意, 这是KMP最差的情况: <code>i++</code>, <code>j=0</code>, 这和暴力算法实际上没有多少区别. 但通过<code>j = next[j - 1]</code>的状态转移, 我们减少了大量的匹配次数!</p>
+<p>一切操作, 只是简单地改变<code>i</code>和<code>j</code>状态——KMP算法本质上就是一个<strong>优化了的状态机</strong>!</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> next[N];</span><br><span class="line"><span class="type">int</span> <span class="title function_">kmp</span><span class="params">(<span class="type">char</span> *s, <span class="type">char</span> *p)</span> &#123;</span><br><span class="line">    <span class="type">int</span> i = <span class="number">0</span>, j = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">while</span>(s[i] != <span class="string">&#x27;\0&#x27;</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span>(s[i] == p[j])</span><br><span class="line">            i++, j++;</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span> (j)</span><br><span class="line">            j = next[j - <span class="number">1</span>];</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">            i++;</span><br><span class="line">        <span class="keyword">if</span>(p[j] == <span class="string">&#x27;\0&#x27;</span>)</span><br><span class="line">            <span class="keyword">return</span> i - j;</span><br><span class="line">    &#125; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>至于<code>next</code>数组, 我们其实也可以暴力解决:</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">void</span> <span class="title function_">getNext</span><span class="params">(<span class="type">char</span> *p)</span> &#123;</span><br><span class="line">    <span class="type">int</span> n = <span class="built_in">strlen</span>(p);</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">1</span>; i &lt; n; i++) &#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> j = i; j &gt;= <span class="number">0</span>; j--) &#123;</span><br><span class="line">            <span class="type">int</span> match = <span class="number">1</span>;</span><br><span class="line">            <span class="keyword">for</span> (<span class="type">int</span> k = <span class="number">0</span>; k &lt; j; k++) &#123;</span><br><span class="line">                <span class="keyword">if</span> (p[k] != p[i - j + <span class="number">1</span> + k]) &#123;</span><br><span class="line">                    match = <span class="number">0</span>;</span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span> (match) &#123;</span><br><span class="line">                next[i] = j;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>暴力算法的时间复杂度是<code>O(n^3)</code>, 数据量大必爆, 而且非常丑陋, 这对KMP这样优雅的算法简直就是致命的. 下面, 我们就来看看怎么才能优雅地计算<code>next</code>数组.</p>
+<h2 id="优雅计算前缀函数"><a href="#优雅计算前缀函数" class="headerlink" title="优雅计算前缀函数"></a>优雅计算前缀函数</h2><p>就像动态规划<code>dp</code>找到状态转移方程, 找到前缀函数的递推公式将是我们解题的关键.</p>
+<p><img src="/images/pic2.png" alt="pic2"></p>
+<p>仔细观察前缀函数, 第一个重要性质就是: <strong>相邻的前缀函数值最大增加 <code>1</code></strong>.</p>
+<p>不要忘记我们对前缀函数的定义是: <strong>最长的相等前缀和后缀长度</strong>.</p>
+<p>那么, 这个性质可以这么思考: 要取一个尽可能大的$\pi[i]$, 必然要求新增的 <code>s[i]</code> 能和对应的字符匹配, 也即 $s[i] = s[\pi[i-1]]$, 此时 $\pi[i] = \pi[i-1] + 1$.<br>例如: 上图中, <code>i = 5</code>的位置(<code>c</code>), 比较的是 <code>i = pi[4] = 2</code> 的位置(<code>c</code>), 即相等前缀的下一字符, 因为相等, 所以<code>pi[5] = pi[4] + 1</code>; <code>i = 11</code>(c) 比较的是 <code>i = pi[10] = 5</code>(c), 相等所以加一.</p>
+<p><img src="/images/pic3.png" alt="pic3"></p>
+<p>下一步是考虑 $s[i] \neq s[\pi[i-1]]$ 的情况.<br>如图所示, 我们期望, 当<code>s[i]</code>失配时, 对于子串<code>s[0...i-1]</code>, 依然能找到仅次于 $\pi[i-1]$ 的第二长度 <code>j</code>, 使得在位置 <code>i-1</code> 的前缀性质依然保持, 也即 <code>s[0...j-1] = s[i-j...i-1]</code>.</p>
+<p>数学看上去有些抽象, 举个例子: 如图, <code>i = 11</code> 时失配了, 对于子串 <code>abcabdabcab</code>, 依然能找到比 $\pi[10] = 5$ 小的<strong>第二长度</strong> <code>j</code> (在这里是 <code>2</code>), 使得 <code>i = 10</code> 的前缀性质依然保持, 这里找到的公共前后缀为<code>ab</code>.</p>
+<p>如果我们找到了这样的<code>j</code>, 那么就只需要比较<code>s[i]</code>和<code>s[j]</code>.</p>
+<ul>
+<li>如果它们相等, 就有 $\pi[i] = j + 1$.<br>在上面的例子中, 因为 <code>s[11] = s[2]</code>, 因此 $\pi[11] = 3$. 此时最大前后缀为<code>abc</code>.</li>
+<li>如果它们不相等, 假设本例中的 <code>s[11] = &#39;a&#39;</code>, 根据上面的讨论, 我们需要再找到一个仅次于 $j$ 的 $j^{(2)}$, 使得前缀性质得以保持. 此时 $j^{(2)}$ 只能为<code>0</code>了, 因为<code>s[i] = s[0]</code>, 所以<code>pi[11] = 1</code>.</li>
+</ul>
+<p>以此类推, 按照数学归纳, 直到 $j^{(n)} = 0$ 时我们结束寻找第二长度, 并且我们可以知道, 如果 $s[i]\neq s[0]$, 那么 $\pi[i] = 0$, 正如本例中的<code>i = 5</code>(<code>d</code>不匹配任何一个字符).</p>
+<p>前缀函数另一个重要的性质, 也就是<code>j</code>实际上<strong>等价于子串</strong>$s[0…\pi[i - 1] - 1]$的<strong>前缀函数值</strong>, 也即</p>
+<script type="math/tex; mode=display">j = \pi[\pi[i - 1] - 1]</script><p>上例中, 也即<code>i = 5</code>处<code>pi</code>的值, 也就是我们已经求得的 <code>2</code>! 同理, $j^{(2)} = \pi[j-1]$, 那么归纳可得 $j^{(n)} = \pi[j^{(n-1)}-1]$.</p>
+<p>于是我们就有了最终的代码:</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> next[N] = &#123;<span class="number">0</span>&#125;;</span><br><span class="line"><span class="type">void</span> <span class="title function_">getNext</span><span class="params">(<span class="type">char</span> *p)</span> &#123;</span><br><span class="line">    <span class="type">int</span> i = <span class="number">1</span>, j = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">while</span> (p[i] != <span class="string">&#x27;\0&#x27;</span>) &#123;</span><br><span class="line">        <span class="keyword">if</span>(p[i] == p[j]) &#123;</span><br><span class="line">            next[i] = next[i - <span class="number">1</span>] + <span class="number">1</span>;</span><br><span class="line">            i++, j++;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span>(j)</span><br><span class="line">            j = next[j - <span class="number">1</span>];</span><br><span class="line">        <span class="keyword">else</span> &#123;</span><br><span class="line">            next[i] = <span class="number">0</span>;</span><br><span class="line">            i++;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>各位可以揣读一下这段代码的精妙, 甚至框架和KMP搜索惊人的一致! (都是改变状态实现)</p>
+<h2 id="模板"><a href="#模板" class="headerlink" title="模板"></a>模板</h2><p>正文部分给出的是C语言实现版本. 下面给出主流算法竞赛中使用的C++实现方式.</p>
+<p>来源: <a target="_blank" rel="noopener" href="https://oi-wiki.org/string/kmp/">OI-wiki 前缀函数和KMP算法</a></p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">vector&lt;<span class="type">int</span>&gt; <span class="title">prefix_function</span><span class="params">(string s)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="type">int</span> n = (<span class="type">int</span>)s.<span class="built_in">length</span>();</span><br><span class="line">    <span class="function">vector&lt;<span class="type">int</span>&gt; <span class="title">pi</span><span class="params">(n)</span></span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">1</span>; i &lt; n; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="type">int</span> j = pi[i - <span class="number">1</span>];</span><br><span class="line">        <span class="keyword">while</span> (j &gt; <span class="number">0</span> &amp;&amp; s[i] != s[j])</span><br><span class="line">            j = pi[j - <span class="number">1</span>];</span><br><span class="line">        <span class="keyword">if</span> (s[i] == s[j])</span><br><span class="line">            j++;</span><br><span class="line">        pi[i] = j;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> pi;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>来源: <a target="_blank" rel="noopener" href="https://www.acwing.com/activity/content/problem/content/869/">AcWing 831.KMP字符串</a></p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="type">const</span> <span class="type">int</span> N = <span class="number">1e6</span> + <span class="number">5</span>;</span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="type">char</span> p[N], s[N];</span><br><span class="line"><span class="type">int</span> ne[N];</span><br><span class="line"><span class="type">int</span> n, m;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">signed</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    ios::<span class="built_in">sync_with_stdio</span>(<span class="literal">false</span>);</span><br><span class="line">    cin.<span class="built_in">tie</span>(<span class="number">0</span>);</span><br><span class="line">    cin &gt;&gt; n &gt;&gt; p &gt;&gt; m &gt;&gt; s;</span><br><span class="line">    ne[<span class="number">0</span>] = <span class="number">-1</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">1</span>, j = <span class="number">-1</span>; i &lt; n; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">while</span> (j != <span class="number">-1</span> &amp;&amp; p[i] != p[j + <span class="number">1</span>])</span><br><span class="line">            j = ne[j];</span><br><span class="line">        <span class="keyword">if</span> (p[i] == p[j + <span class="number">1</span>])</span><br><span class="line">            j++;</span><br><span class="line">        ne[i] = j;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>, j = <span class="number">-1</span>; i &lt; m; ++i)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">while</span> (j != <span class="number">-1</span> &amp;&amp; s[i] != p[j + <span class="number">1</span>])</span><br><span class="line">        &#123;</span><br><span class="line">            j = ne[j];</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (s[i] == p[j + <span class="number">1</span>])</span><br><span class="line">        &#123;</span><br><span class="line">            j ++;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (j == n - <span class="number">1</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            cout &lt;&lt; i - j &lt;&lt; <span class="string">&#x27; &#x27;</span>;</span><br><span class="line">            j = ne[j];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2/" rel="tag"># 字符串</a>
+              <a href="/tags/%E7%AE%97%E6%B3%95/" rel="tag"># 算法</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2022/12/17/x86-64%E6%B1%87%E7%BC%96%E4%BB%8B%E7%BB%8D/" rel="prev" title="x86-64 汇编介绍">
+                  <i class="fa fa-chevron-left"></i> x86-64 汇编介绍
+                </a>
+            </div>
+            <div class="post-nav-item">
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Besthope</span>
+</div>
+<div class="wordcount">
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-line"></i>
+    </span>
+      <span>站点总字数：</span>
+    <span title="站点总字数">5k</span>
+  </span>
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+      <span>站点阅读时长 &asymp;</span>
+    <span title="站点阅读时长">18 分钟</span>
+  </span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/pisces/" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.1/search.js" integrity="sha256-1kfA5uHPf65M5cphT2dvymhkuyHPQp5A53EGZOnOLmc=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+
+
+
+  
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">true</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"none","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
+
+
+
+</body>
+<!-- click love -->
+<script type="text/javascript" src="/js/clicklove.js"></script>
+</html>

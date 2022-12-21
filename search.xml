@@ -1,6 +1,87 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>前缀函数和KMP算法</title>
+    <url>/2022/12/21/KMP%E7%AE%97%E6%B3%95/</url>
+    <content><![CDATA[<p>做期末大作业里面有个字符串匹配的问题, 用暴力算法做完觉得不够爽, 于是自找的麻烦.</p>
+<p>想用最简明的方式去解释这个较为抽象的算法!<br>事实上明白了一个道理: 缺乏数学的算法都是玄学, 只有数学证明了才能让人心服口服……</p>
+<span id="more"></span>
+<p>问题: 在一个<strong>文本串</strong>(<code>s</code>, 也称主串)中找到一个<strong>匹配串</strong>(<code>p</code>), 返回它在文本串中的下标. 如果无法匹配返回<code>-1</code>.</p>
+<h2 id="前言-暴力解决问题"><a href="#前言-暴力解决问题" class="headerlink" title="前言: 暴力解决问题"></a>前言: 暴力解决问题</h2><p>思路很明了: 用指针<code>i</code>遍历<code>s</code>, <code>j</code>遍历<code>p</code>. 具体的遍历过程</p>
+<ul>
+<li><strong>指针移动</strong> <code>s[i]</code>是否匹配<code>p[j]</code><ol>
+<li>如果匹配, 则后移<code>j</code>指针, 比较<code>p</code>后继字符是否和<code>s</code>中的一致.</li>
+<li>如果不匹配, 那么后移<code>i</code>指针, 并将<code>j</code>指针重新设置为<code>0</code>.</li>
+</ol>
+</li>
+<li><strong>终止条件</strong> 当<code>j</code>指针指向<code>p</code>最后一个字符, 说明匹配完成. 这时候就可以输出<code>i - j</code>的值, 作为匹配串在文本串中的索引.</li>
+</ul>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="type">int</span> <span class="title function_">bf</span><span class="params">(<span class="type">char</span> *s, <span class="type">char</span> *p)</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="type">int</span> i = <span class="number">0</span>, j = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">while</span> (s[i] != <span class="string">&#x27;\0&#x27;</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span> (s[i] == p[j])</span><br><span class="line">            i++, j++;</span><br><span class="line">        <span class="keyword">else</span> &#123;</span><br><span class="line">            i -= j; i++; j = <span class="number">0</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (p[j] == <span class="string">&#x27;\0&#x27;</span>)</span><br><span class="line">            <span class="keyword">return</span> i - j;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>时间复杂度分析: 考虑最坏情况, $O(|P| \cdot (|S|+|P|-1)) \approx O(|P|\cdot|S|) $, 也就是 $O(nm)$.</p>
+<h2 id="预备知识"><a href="#预备知识" class="headerlink" title="预备知识"></a>预备知识</h2><h3 id="字符串基础"><a href="#字符串基础" class="headerlink" title="字符串基础"></a>字符串基础</h3><p><strong>子串</strong>: 串中任意个连续的字符组成的子序列.</p>
+<p><strong>字符串前缀</strong>: 一个字符串的<strong>全部头部组合</strong>, 但<strong>不包括自身</strong>.</p>
+<blockquote>
+<p>严格来说, KMP讨论的是字符串的真前缀.</p>
+</blockquote>
+<p>例子: <code>abcab</code> 的前缀(集合)为 <code>&#123;a, ab, abc, abca&#125;</code></p>
+<p>同样的有<strong>字符串后缀</strong>, 按上面的例子, 后缀(集合)就应该为 <code>&#123;b, ab, cab, bcab&#125;</code>.</p>
+<h3 id="前缀函数"><a href="#前缀函数" class="headerlink" title="前缀函数"></a>前缀函数</h3><p>给定长度<code>n</code>的字符串<code>s</code>, 其<strong>前缀函数</strong>定义为长度为<code>n</code>的数组$\pi$, 其中$\pi[i]$是子串<code>s[0...i]</code><strong>最长的相等前缀和后缀长度</strong>. 具体来说:</p>
+<ul>
+<li>$\pi[0]$ = 0. 因为此时无前缀及后缀.(对于部分实现可能会规定其为<code>-1</code>)</li>
+<li>如果子串有一对相同的前后缀, 那么 $\pi[i]$ 就等于这个前缀(或后缀)的长度. 如果存在多对, 那么就是它们中的最大值.</li>
+</ul>
+<p>例如, 对于<code>abcab</code>, <code>pi[0] = 0</code>, <code>pi[1] = 0</code>, <code>pi[2] = 0</code>, <code>pi[3] = 1</code>, <code>pi[4] = 2</code>. 那么它的前缀函数就为 <code>&#123;0, 0, 0, 1, 2&#125;</code>.</p>
+<p>优雅求得一个字符串的前缀函数是件并不容易的事情. 我们会在下面接着讨论.</p>
+<h2 id="KMP-算法就是状态机"><a href="#KMP-算法就是状态机" class="headerlink" title="KMP 算法就是状态机"></a>KMP 算法就是状态机</h2><p>所谓算法, 就是把暴力穷举优化成聪明的枚举. 这句话对KMP算法同样适用: 利用<strong>匹配失败后的信息</strong>, <strong>减少</strong>模式串和文本串的<strong>匹配次数</strong>.</p>
+<p>在暴力算法中, 每当<code>s[i] != p[j]</code>, <code>j</code> 被重新设置为<code>0</code>, 而<code>i</code>回溯到匹配前的位置, 同时只自增<code>1</code>. 我们的目的是: 减少算法复杂度<code>O(nm)</code>中的<code>n</code>, 也即减少不必要的匹配次数, 换句话说, 要么动态增加<code>i</code>的步长; 要么不回溯<code>i</code>, 让<code>i</code>一直自增下去.</p>
+<p>为了实现这一点, 我们需要利用一切匹配失败前获取的信息. 而在匹配失败之前, 有字符是匹配的: <strong>文本串的一部分等于模式串的一段前缀</strong>.</p>
+<p>如果我们能跳过不可能成功匹配的字段, 就可以有效减少匹配的次数.</p>
+<p><img src="/images/pic.png" alt="skip"></p>
+<p>如图所示, 如果能够跳过中间标蓝的不必要的匹配(第一个字符都失败了, 明显不可能匹配成功), 就可以大幅减少我们的匹配次数.</p>
+<p>我们要做的实际上就一件事: <strong>让文本串的一段对上匹配串的一段前缀</strong>, 而且跳过越多不必要的匹配越好. 跳过的这个长度在我们匹配失败前就应确定, 根据已有的信息, 这个<strong>最优长度</strong>是 <strong><code>s</code>子串的后缀和<code>p</code>子串的前缀交集中最长元素的长度</strong>.<br>在上例中, 就是 $\text{\{a,ab,abc,abca\}}\cap \text{\{b, ab, cab, bcab\}} = \text{\{ab\}}$ 的长度, 也就是<code>2</code>, 表示的含义也即: 让<code>p</code>的<code>ab</code>对上<code>s</code>的<code>ab</code>.</p>
+<p>而且, 由于在匹配失败之前, 匹配都是成功的, 我们可以得到另外一个信息是 <strong><code>s</code>串的部分子串等同于<code>p</code>串的部分子串</strong>, 那么, 此时<code>s</code>子串的后缀和<code>p</code>子串的前缀交集中最长元素的长度, 就等同于 <strong><code>p</code>子串的最大前后缀长度</strong>, 也就是<code>p</code>串的<strong>前缀函数</strong>.</p>
+<p>这是巨大的一步! 因为我们可以在<code>s</code>和<code>p</code>进行匹配之前就计算出<code>p</code>每一次向右移动的长度.</p>
+<p>在KMP算法中, 我们记这个数组为<code>next</code>数组.</p>
+<p>在下面的算法中, 我们依然用<code>i</code>表示指向<code>s</code>的字符下标, <code>j</code>表示指向<code>p</code>的字符下标.</p>
+<p>相较于暴力算法, 我们优化的点主要在于<code>j != 0</code>的情况:<br>让<code>i</code>不回溯, 只让<code>j</code>回溯. <code>i</code>不动, 让<code>p[next[j - 1]]</code>和<code>s</code>中方才匹配失败的字符<code>s[i]</code>进行比较.<br>假使这一步又失败了, 我们还是回溯<code>j</code>, 找<code>s[i] == p[j]</code>, 直到<code>j</code>为<code>0</code>, 也就意味着<code>s</code>和<code>p</code>没有交集了. 这时, 移动<code>i</code>, 进行新一轮的匹配.<br>注意, 这是KMP最差的情况: <code>i++</code>, <code>j=0</code>, 这和暴力算法实际上没有多少区别. 但通过<code>j = next[j - 1]</code>的状态转移, 我们减少了大量的匹配次数!</p>
+<p>一切操作, 只是简单地改变<code>i</code>和<code>j</code>状态——KMP算法本质上就是一个<strong>优化了的状态机</strong>!</p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="type">int</span> next[N];</span><br><span class="line"><span class="type">int</span> <span class="title function_">kmp</span><span class="params">(<span class="type">char</span> *s, <span class="type">char</span> *p)</span> &#123;</span><br><span class="line">    <span class="type">int</span> i = <span class="number">0</span>, j = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">while</span>(s[i] != <span class="string">&#x27;\0&#x27;</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span>(s[i] == p[j])</span><br><span class="line">            i++, j++;</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span> (j)</span><br><span class="line">            j = next[j - <span class="number">1</span>];</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">            i++;</span><br><span class="line">        <span class="keyword">if</span>(p[j] == <span class="string">&#x27;\0&#x27;</span>)</span><br><span class="line">            <span class="keyword">return</span> i - j;</span><br><span class="line">    &#125; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>至于<code>next</code>数组, 我们其实也可以暴力解决:</p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="type">void</span> <span class="title function_">getNext</span><span class="params">(<span class="type">char</span> *p)</span> &#123;</span><br><span class="line">    <span class="type">int</span> n = <span class="built_in">strlen</span>(p);</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">1</span>; i &lt; n; i++) &#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> j = i; j &gt;= <span class="number">0</span>; j--) &#123;</span><br><span class="line">            <span class="type">int</span> match = <span class="number">1</span>;</span><br><span class="line">            <span class="keyword">for</span> (<span class="type">int</span> k = <span class="number">0</span>; k &lt; j; k++) &#123;</span><br><span class="line">                <span class="keyword">if</span> (p[k] != p[i - j + <span class="number">1</span> + k]) &#123;</span><br><span class="line">                    match = <span class="number">0</span>;</span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span> (match) &#123;</span><br><span class="line">                next[i] = j;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>暴力算法的时间复杂度是<code>O(n^3)</code>, 数据量大必爆, 而且非常丑陋, 这对KMP这样优雅的算法简直就是致命的. 下面, 我们就来看看怎么才能优雅地计算<code>next</code>数组.</p>
+<h2 id="优雅计算前缀函数"><a href="#优雅计算前缀函数" class="headerlink" title="优雅计算前缀函数"></a>优雅计算前缀函数</h2><p>就像动态规划<code>dp</code>找到状态转移方程, 找到前缀函数的递推公式将是我们解题的关键.</p>
+<p><img src="/images/pic2.png" alt="pic2"></p>
+<p>仔细观察前缀函数, 第一个重要性质就是: <strong>相邻的前缀函数值最大增加 <code>1</code></strong>.</p>
+<p>不要忘记我们对前缀函数的定义是: <strong>最长的相等前缀和后缀长度</strong>.</p>
+<p>那么, 这个性质可以这么思考: 要取一个尽可能大的$\pi[i]$, 必然要求新增的 <code>s[i]</code> 能和对应的字符匹配, 也即 $s[i] = s[\pi[i-1]]$, 此时 $\pi[i] = \pi[i-1] + 1$.<br>例如: 上图中, <code>i = 5</code>的位置(<code>c</code>), 比较的是 <code>i = pi[4] = 2</code> 的位置(<code>c</code>), 即相等前缀的下一字符, 因为相等, 所以<code>pi[5] = pi[4] + 1</code>; <code>i = 11</code>(c) 比较的是 <code>i = pi[10] = 5</code>(c), 相等所以加一.</p>
+<p><img src="/images/pic3.png" alt="pic3"></p>
+<p>下一步是考虑 $s[i] \neq s[\pi[i-1]]$ 的情况.<br>如图所示, 我们期望, 当<code>s[i]</code>失配时, 对于子串<code>s[0...i-1]</code>, 依然能找到仅次于 $\pi[i-1]$ 的第二长度 <code>j</code>, 使得在位置 <code>i-1</code> 的前缀性质依然保持, 也即 <code>s[0...j-1] = s[i-j...i-1]</code>.</p>
+<p>数学看上去有些抽象, 举个例子: 如图, <code>i = 11</code> 时失配了, 对于子串 <code>abcabdabcab</code>, 依然能找到比 $\pi[10] = 5$ 小的<strong>第二长度</strong> <code>j</code> (在这里是 <code>2</code>), 使得 <code>i = 10</code> 的前缀性质依然保持, 这里找到的公共前后缀为<code>ab</code>.</p>
+<p>如果我们找到了这样的<code>j</code>, 那么就只需要比较<code>s[i]</code>和<code>s[j]</code>.</p>
+<ul>
+<li>如果它们相等, 就有 $\pi[i] = j + 1$.<br>在上面的例子中, 因为 <code>s[11] = s[2]</code>, 因此 $\pi[11] = 3$. 此时最大前后缀为<code>abc</code>.</li>
+<li>如果它们不相等, 假设本例中的 <code>s[11] = &#39;a&#39;</code>, 根据上面的讨论, 我们需要再找到一个仅次于 $j$ 的 $j^{(2)}$, 使得前缀性质得以保持. 此时 $j^{(2)}$ 只能为<code>0</code>了, 因为<code>s[i] = s[0]</code>, 所以<code>pi[11] = 1</code>.</li>
+</ul>
+<p>以此类推, 按照数学归纳, 直到 $j^{(n)} = 0$ 时我们结束寻找第二长度, 并且我们可以知道, 如果 $s[i]\neq s[0]$, 那么 $\pi[i] = 0$, 正如本例中的<code>i = 5</code>(<code>d</code>不匹配任何一个字符).</p>
+<p>前缀函数另一个重要的性质, 也就是<code>j</code>实际上<strong>等价于子串</strong>$s[0…\pi[i - 1] - 1]$的<strong>前缀函数值</strong>, 也即</p>
+<script type="math/tex; mode=display">j = \pi[\pi[i - 1] - 1]</script><p>上例中, 也即<code>i = 5</code>处<code>pi</code>的值, 也就是我们已经求得的 <code>2</code>! 同理, $j^{(2)} = \pi[j-1]$, 那么归纳可得 $j^{(n)} = \pi[j^{(n-1)}-1]$.</p>
+<p>于是我们就有了最终的代码:</p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="type">int</span> next[N] = &#123;<span class="number">0</span>&#125;;</span><br><span class="line"><span class="type">void</span> <span class="title function_">getNext</span><span class="params">(<span class="type">char</span> *p)</span> &#123;</span><br><span class="line">    <span class="type">int</span> i = <span class="number">1</span>, j = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">while</span> (p[i] != <span class="string">&#x27;\0&#x27;</span>) &#123;</span><br><span class="line">        <span class="keyword">if</span>(p[i] == p[j]) &#123;</span><br><span class="line">            next[i] = next[i - <span class="number">1</span>] + <span class="number">1</span>;</span><br><span class="line">            i++, j++;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span>(j)</span><br><span class="line">            j = next[j - <span class="number">1</span>];</span><br><span class="line">        <span class="keyword">else</span> &#123;</span><br><span class="line">            next[i] = <span class="number">0</span>;</span><br><span class="line">            i++;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>各位可以揣读一下这段代码的精妙, 甚至框架和KMP搜索惊人的一致! (都是改变状态实现)</p>
+<h2 id="模板"><a href="#模板" class="headerlink" title="模板"></a>模板</h2><p>正文部分给出的是C语言实现版本. 下面给出主流算法竞赛中使用的C++实现方式.</p>
+<p>来源: <a href="https://oi-wiki.org/string/kmp/">OI-wiki 前缀函数和KMP算法</a></p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="function">vector&lt;<span class="type">int</span>&gt; <span class="title">prefix_function</span><span class="params">(string s)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="type">int</span> n = (<span class="type">int</span>)s.<span class="built_in">length</span>();</span><br><span class="line">    <span class="function">vector&lt;<span class="type">int</span>&gt; <span class="title">pi</span><span class="params">(n)</span></span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">1</span>; i &lt; n; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="type">int</span> j = pi[i - <span class="number">1</span>];</span><br><span class="line">        <span class="keyword">while</span> (j &gt; <span class="number">0</span> &amp;&amp; s[i] != s[j])</span><br><span class="line">            j = pi[j - <span class="number">1</span>];</span><br><span class="line">        <span class="keyword">if</span> (s[i] == s[j])</span><br><span class="line">            j++;</span><br><span class="line">        pi[i] = j;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> pi;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>来源: <a href="https://www.acwing.com/activity/content/problem/content/869/">AcWing 831.KMP字符串</a></p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="type">const</span> <span class="type">int</span> N = <span class="number">1e6</span> + <span class="number">5</span>;</span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="type">char</span> p[N], s[N];</span><br><span class="line"><span class="type">int</span> ne[N];</span><br><span class="line"><span class="type">int</span> n, m;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">signed</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    ios::<span class="built_in">sync_with_stdio</span>(<span class="literal">false</span>);</span><br><span class="line">    cin.<span class="built_in">tie</span>(<span class="number">0</span>);</span><br><span class="line">    cin &gt;&gt; n &gt;&gt; p &gt;&gt; m &gt;&gt; s;</span><br><span class="line">    ne[<span class="number">0</span>] = <span class="number">-1</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">1</span>, j = <span class="number">-1</span>; i &lt; n; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">while</span> (j != <span class="number">-1</span> &amp;&amp; p[i] != p[j + <span class="number">1</span>])</span><br><span class="line">            j = ne[j];</span><br><span class="line">        <span class="keyword">if</span> (p[i] == p[j + <span class="number">1</span>])</span><br><span class="line">            j++;</span><br><span class="line">        ne[i] = j;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>, j = <span class="number">-1</span>; i &lt; m; ++i)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">while</span> (j != <span class="number">-1</span> &amp;&amp; s[i] != p[j + <span class="number">1</span>])</span><br><span class="line">        &#123;</span><br><span class="line">            j = ne[j];</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (s[i] == p[j + <span class="number">1</span>])</span><br><span class="line">        &#123;</span><br><span class="line">            j ++;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (j == n - <span class="number">1</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            cout &lt;&lt; i - j &lt;&lt; <span class="string">&#x27; &#x27;</span>;</span><br><span class="line">            j = ne[j];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>算法</category>
+      </categories>
+      <tags>
+        <tag>字符串</tag>
+        <tag>算法</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>x86-64 汇编介绍</title>
     <url>/2022/12/17/x86-64%E6%B1%87%E7%BC%96%E4%BB%8B%E7%BB%8D/</url>
     <content><![CDATA[<blockquote>
@@ -9,38 +90,29 @@
 <p>这句话道出了程序的本质. 实际上, 如今的计算机本质上就是通用<a href="https://plato.stanford.edu/entries/turing-machine/">图灵机</a>, 而我们研究汇编语言就是研究程序在机器层面上的运行.</p>
 <p>程序的进行依赖于<code>rip</code>寄存器, 它储存的值是当前运行的指令地址. 程序的进行实际上就是一条指令一条指令的移动(你可以在<code>gdb</code>里随时监控<code>rip</code>). 这和图灵机读写控制的方式本质上是一致的!</p>
 <span id="more"></span>
-
 <blockquote>
 <p>书中出示的汇编指令是<code>AT&amp;T</code>格式, 为<code>gcc</code>和<code>gdb</code>编译选项默认.<br>大部分情况下两种格式是互通的. 唯一值得注意的是读取顺序, 两者<strong>源操作数</strong>和<strong>目的操作数</strong>的顺序是<strong>反的</strong>. 例如下面的语句表示栈指针减8:</p>
-</blockquote>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">subq     $8,%rsp             # ATT flavor</span><br><span class="line">sub      rsp,8               # Intel flavor</span><br></pre></td></tr></table></figure>
-
+</blockquote>
 <h2 id="访问值和访问地址"><a href="#访问值和访问地址" class="headerlink" title="访问值和访问地址"></a>访问值和访问地址</h2><p><code>%rsp</code> 表示 <code>rsp</code> 寄存器储存的值, 通常来说栈指针保存的是一个地址. 对于更一般的寄存器, 例如<code>rax</code>寄存器, 是可以保存值的, 而且通常是返回值. 我们用 $r_a$ 表示寄存器<code>a</code> 存储的值.<br>内存本质上是一个很长的数组, <strong>内存引用</strong>表示 $M[r_a]$, 例如 <code>(%rsp)</code>表示<code>*rsp</code>, 也就是<code>rsp</code> 寄存器储存地址上的值.</p>
 <p><code>lea</code>和<code>mov</code>指令间的区别: 前者常用于简单的算术运算, 例如:</p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">/* i in %rsi */</span><br><span class="line">leal    (%eax,%eax,2), %eax</span><br></pre></td></tr></table></figure>
-
 <p>实际上进行的操作是: 源操作数计算为<code>S = M[%eax + 2 * %eax] = M[3 * %eax]</code>, 然后求出 <code>&amp;S</code>(<code>S</code>的有效地址), 然后将这个值复制给 <code>D</code>.<br>如果对<code>%rax</code>解引用, 例如<code>gdb</code>指令 <code>p *(int*) $rax</code>, 可以得到<code>3i</code>.</p>
 <p><code>mov</code>指令可以干两件事: 把内存地址复制给另一个寄存器, 或者将一个值复制给寄存器.</p>
 <figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="type">int</span> x = a[i];</span><br></pre></td></tr></table></figure>
-
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">/* x in %eax, a in %rdx, i in %rcx */</span><br><span class="line">movl    (%rdx,%rcx,4),%eax</span><br></pre></td></tr></table></figure>
-
 <p>源操作数<code>S = M[a + 4*i]</code>, <code>a</code>是<code>int</code>数组的起始地址. 将内存地址<code>S</code>上的值赋值给寄存器<code>rax</code>. 此时 <code>p $rax</code> 就是<code>a[i]</code>.</p>
 <blockquote>
 <p>数组和结构本质上就是人为规定的一段内存.<br>上面的例子显示了数组<code>int a[N]</code>可以用<code>*(a+i)</code>访问<code>a[i]</code>的本质. 对于下面的结构体:</p>
 <figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">node</span> &#123;</span></span><br><span class="line">    <span class="type">long</span> val;</span><br><span class="line">    node* next; </span><br><span class="line">&#125; node;</span><br></pre></td></tr></table></figure>
-
 <p>假设<code>node</code>类型<code>node1</code>的指针为<code>ptr</code>, 那么<code>*ptr</code>是什么? <code>*(ptr+8)</code>代表什么? <code>**(ptr+8)</code> 又是什么?<br><code>mov    0x8(%rdx),%rdx</code> 假设<code>rdx</code>是<code>ptr</code>, 这句指令代表什么?</p>
 </blockquote>
 <p>区别下面的指令:</p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">mov    0x20(%rsp),%rbx </span><br><span class="line">lea    0x28(%rsp),%rax </span><br></pre></td></tr></table></figure>
-
 <p>其中<code>rbx</code>的值是内存地址<code>$rsp+32</code>上储存的值, <code>rax</code>现在是一个指针, 它的值是<code>$rsp+40</code>, 也就是一个内存地址.</p>
 <h2 id="控制语句"><a href="#控制语句" class="headerlink" title="控制语句"></a>控制语句</h2><p>跳转命令<code>jmp</code>等价于C中的<code>goto</code>.<br><code>if</code>语句对应条件跳转指令.<br>循环控制语句可以通过<code>if</code>和<code>goto</code>所模拟.</p>
 <figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="type">long</span> <span class="title function_">absdiff_se</span><span class="params">(<span class="type">long</span> x, <span class="type">long</span> y)</span> &#123;</span><br><span class="line">    <span class="type">long</span> res;</span><br><span class="line">    <span class="keyword">if</span> (x &lt; y) &#123;</span><br><span class="line">        res = y - x;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span> &#123;</span><br><span class="line">        res = x - y;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> res;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">/* x in %rdi, y in %rsi */</span><br><span class="line">absdiff_se:</span><br><span class="line">   cmpq %rsi, %rdi              ; x - y              </span><br><span class="line">   jge .L6                      ; if &gt;= goto .L6</span><br><span class="line">   movq %rsi, %rax              ; res = y</span><br><span class="line">   subq %rdi, %rax              ; res -= x</span><br><span class="line">   ret                          ; return</span><br><span class="line">.L6:                         </span><br><span class="line">   movq %rdi, %rax              ; res = x</span><br><span class="line">   subq %rsi, %rax              ; res -= y</span><br><span class="line">   ret                          ; return</span><br></pre></td></tr></table></figure>
-
 <p>判断条件(<code>if</code>括号内的语句)基于一组条件码寄存器, 通过<code>test</code>或<code>cmp</code>指令设置.</p>
 <blockquote>
 <p><strong>Q:</strong> 这里发生了什么?<br><strong>A:</strong> <code>cmq</code>等同为不修改源操作数的<code>sub</code>指令(<code>a-b</code>), <code>test</code>类似<code>and</code>指令(<code>a&amp;b</code>), 程序根据结果设置<code>OF</code>和<code>SF</code>以及其他的条件码寄存器(默认为0).</p>
@@ -51,14 +123,11 @@
 <p><code>-O1</code>级别以上的优化还会出现条件移动指令. 此处从略.</p>
 <p><code>do while</code> 作为最不常用的循环, 模拟方式却是最简单的. 它的流程就和它本身一致.</p>
 <figure class="highlight c"><table><tr><td class="code"><pre><span class="line">loop:</span><br><span class="line">    body</span><br><span class="line">    t = test_expr;</span><br><span class="line">    <span class="keyword">if</span>(t)</span><br><span class="line">        <span class="keyword">goto</span> loop;</span><br></pre></td></tr></table></figure>
-
 <p>和<code>while</code>语句的区别是, <code>while</code>语句在进入之前会进行一次条件判断.</p>
 <figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="keyword">goto</span> test;</span><br><span class="line">loop:</span><br><span class="line">    body</span><br><span class="line">test:</span><br><span class="line">    t = test_expr;</span><br><span class="line">    <span class="keyword">if</span>(t)</span><br><span class="line">        <span class="keyword">goto</span> loop;</span><br></pre></td></tr></table></figure>
-
 <p>至于最常用的<code>for</code>语句, 它有等价的<code>while</code>表述, 此处从略.</p>
 <p>做完了要不要试试手? 要不要拆个<a href="http://csapp.cs.cmu.edu/3e/bomb.tar">二进制炸弹</a>试试手:) 在Linux下输入下面的指令:</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">wget http://csapp.cs.cmu.edu/3e/bomb.tar</span><br><span class="line">tar xvf bomb.tar</span><br><span class="line"><span class="built_in">cd</span> bomb</span><br></pre></td></tr></table></figure>
-
 <h2 id="函数调用的过程"><a href="#函数调用的过程" class="headerlink" title="函数调用的过程"></a>函数调用的过程</h2><p>函数调用的过程满足<strong>栈</strong>的前进后出(First in, Last out)原则.</p>
 <blockquote>
 <p><strong>Q:</strong> 怎么画函数栈帧的示意图? 是栈顶放最上面, 还是内存高位的一端放在最上面?<br><strong>A:</strong> 看个人习惯. <a href="http://www.stackgrowsup.com/">UP?</a> 还是 <a href="http://www.stackgrowsdown.com/">DOWN?</a> 只要你看别人的示意图不会被绕晕就可以.</p>
@@ -73,10 +142,8 @@
 </blockquote>
 <p>传递参数存在保护机制. 方才我们提到参数传入靠的是<code>push</code>和<code>pop</code>, 实际是参数的复制. 在此之外, 我们还有一组特殊的寄存器: <code>rbx</code>, <code>rbp</code>和 <code>r12 ~ r15</code>寄存器被称为<strong>被调用者保存</strong>寄存器. 在P调用Q的过程中, Q必须保护这些寄存器的值, 使得当Q返回P的时候与调用Q时是一样的.</p>
 <figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="type">long</span> <span class="title function_">P</span><span class="params">(<span class="type">long</span> x, <span class="type">long</span> y)</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="type">long</span> u = Q(y);</span><br><span class="line">    <span class="type">long</span> v = Q(x);</span><br><span class="line">    <span class="keyword">return</span> u + v;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
 <p>第四行<code>sub $8,%rsp</code>是为了内存对齐. 第五行把<code>x</code>储存到了<code>rbp</code>寄存器上, 这样就不需要担心<code>rdi</code>寄存器后来被修改导致<code>x</code>丢失. 同样<code>rbx</code>储存了<code>Q(y)</code>的值, 这样就不用担心<code>rax</code>寄存器修改导致<code>Q(y)</code>的丢失.</p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">// long P(long x, long y)</span><br><span class="line">// x in %rdi, y in %rsi</span><br><span class="line">   P:</span><br><span class="line">      pushq %rbp                Save %rbp</span><br><span class="line">      pushq %rbx                Save %rbx</span><br><span class="line">      subq $8, %rsp             Align stack frame</span><br><span class="line">      movq %rdi, %rbp           Save x</span><br><span class="line">      movq %rsi, %rdi           Move y to first argument</span><br><span class="line">      call Q                    Call Q(y)</span><br><span class="line">      movq %rax, %rbx           Save result</span><br><span class="line">      movq %rbp, %rdi           Move x to first argument</span><br><span class="line">      call Q                    Call Q(x)</span><br><span class="line">      addq %rbx, %rax           Add saved Q(y) to Q(x)</span><br><span class="line">      addq $8, %rsp             Deallocate last part of stack</span><br><span class="line">      popq %rbx                 Restore %rbx</span><br><span class="line">      popq %rbp                 Restore %rbp</span><br><span class="line">      ret</span><br></pre></td></tr></table></figure>
-
 <p>理解了函数调用的过程, 实际上你就可以实现将任何递归程序<a href="https://zhuanlan.zhihu.com/p/467871987">改写</a>成非递归! 比方说, 写一个非递归版的汉诺塔程序.</p>
 <p>此外, 关于栈帧有一个有趣的话题: 内存越界和缓冲区溢出. 主要是这样一个库函数<code>gets()</code>, 它可以无视字符串长度向字符数组写入, 引起内存越界, 小则修改栈上的值, 大则修改返回地址, 使得函数调用到奇怪的地方!</p>
 <p>有关这部分, CSAPP提供了<a href="http://csapp.cs.cmu.edu/3e/target1.tar">attack lab</a>, 让你模拟为一名hacker去攻击程序! 很有意思.</p>
