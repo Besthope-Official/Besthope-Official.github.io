@@ -82,6 +82,38 @@
       </tags>
   </entry>
   <entry>
+    <title>新冠生存手册</title>
+    <url>/2022/12/22/%E6%96%B0%E5%86%A0%E7%94%9F%E5%AD%98%E6%89%8B%E5%86%8C/</url>
+    <content><![CDATA[<p>感染新冠快成每日打卡项目了. 每天都能刷到同学感染的信息, “今天又发了39度的烧”——然而这并不是值得炫耀的一件事.<br>二阳化碳, 三阳开泰, 四阳方尊, 五阳电动车, 六阳魁首, 七阳化二锰, 八阳化二硫, 九阳豆浆机<br>如果能在全员感染的范围内存活下来, 那么你就是大赢. 我不相信染病后没有后遗症, 就算苟我也要撑到群体免疫快结束的时候. 提心吊胆地过着放开后的日子, 保持身处末世一般的警惕, 做好保护自己生命的职责.</p>
+<p>更新: 12.28 阳了 估计是舍友交叉感染的<br>Q: 有个一声不吭的舍友是怎样的一种感受? 被害惨了.</p>
+<span id="more"></span>
+<p><a href="https://zhuanlan.zhihu.com/p/579970078">知乎回答</a></p>
+<p>气溶胶传染主要是通过呼吸道, 病毒接触皮肤表面只要不接触口鼻眼, 之后消毒或清洁就行</p>
+<h2 id="防护方式"><a href="#防护方式" class="headerlink" title="防护方式"></a>防护方式</h2><p>谨防交叉感染! 自己防护做全了, 也要<strong>确保</strong>家里人/舍友能够执行.</p>
+<p>回答来源于<a href="https://www.zhihu.com/question/570483700/answer/2796072947">知乎</a>:</p>
+<p>下水道消毒: 加盖加水防止气溶胶产生</p>
+<p>衣服消毒: 衣用消毒剂 紫外线灯 酒精喷雾</p>
+<p>室外消毒: 消毒凝胶 酒精喷雾随身携带</p>
+<p>口罩: 能不摘就不摘 医用4小时一换 N95/FFP2一天一换+备用 不放在口袋 不要吝啬</p>
+<p>吃饭: 明确堂食必G</p>
+<p>头发消毒: 洗头洗澡</p>
+<p>外出装备: N95戴+备用 塑料面罩(防疫人员戴的) 装有消毒液的小喷壶</p>
+<h3 id="戴口罩的误区"><a href="#戴口罩的误区" class="headerlink" title="戴口罩的误区"></a>戴口罩的误区</h3><p><a href="https://www.zhihu.com/question/573023186/answer/2814221461">知乎:为什么全国人民都佩戴N95口罩后，新冠病毒还能爆发式传播？</a></p>
+<h2 id="感染后的感觉"><a href="#感染后的感觉" class="headerlink" title="感染后的感觉"></a>感染后的感觉</h2><p>感染前一天晚上: 好热 不太好睡 喉咙好干 半夜爬下去喝水</p>
+<p>第一天: 早上高数考试 考完感觉人没啥力气 联想到舍友咳嗽的事情 中午吃完饭就去校医院<br>测了体温38.3度 抗原检测一开始看不到T线 过了几分钟看到浅浅的一条线 G了<br>开了退烧药和银黄颗粒<br>回了一趟寝室叫室友去校医院治治咳嗽<br>但他好像已经阳康了😅<br>下午开始就在床上度过了极为痛苦的一天 乏力 体温不均<br>晚上测了体温39度 吃了退烧药 稍微好些<br>这一晚非常痛苦 一开始冷的睡不着 套上了几件衣服 半夜又被热醒了</p>
+<p>第二天: 依然乏力 体温依然是39度<br>疯狂喝水 一天去了不知道多少次厕所<br>吃了退烧药 今天比昨天好很多 但依然很难受<br>晚上买了饭 结果一口也吃不下去 鸡蛋是苦的 萝卜是苦的 啥都是苦的 10块钱浪费了<br>这一天解决了论文框架</p>
+<p>第三天: 今天退烧了 开始有能力在电脑前产出了<br>今天把论文写完了<br>但喉咙巨难受 所谓的口吞刀片<br>腊八 吃了免费的腊八粥 晚饭吃原汤抄手 事实上这几天只适合吃这些</p>
+<p>第四天: 今天也没发烧 但喉咙依然很痛<br>胃口已经要比前几天好了<br>生产力基本恢复正常<br>今天ddl 改完论文提交了<br>该接着复习考试了</p>
+<p>第五天开始: 基本上正常 除了喉咙痛 吃不了辣<br>基本上啥都能干了</p>
+]]></content>
+      <categories>
+        <category>杂谈</category>
+      </categories>
+      <tags>
+        <tag>杂谈</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>x86-64 汇编介绍</title>
     <url>/2022/12/17/x86-64%E6%B1%87%E7%BC%96%E4%BB%8B%E7%BB%8D/</url>
     <content><![CDATA[<blockquote>
@@ -155,6 +187,82 @@
         <tag>汇编</tag>
         <tag>CSAPP</tag>
         <tag>计算机系统</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>2022年终总结</title>
+    <url>/2022/12/31/2022%E5%B9%B4%E7%BB%88%E6%80%BB%E7%BB%93/</url>
+    <content><![CDATA[<p>你会用什么关键字概括2022年呢……<br>各种意义上的Twist. 人生的转折, 政策的转折, 世界的转折.<br>年初的时候还祝福今年诸事皆顺, 不过心意到了抽签抽到凶也没办法.</p>
+<span id="more"></span>
+<h2 id="人生的转折"><a href="#人生的转折" class="headerlink" title="人生的转折"></a>人生的转折</h2><h3 id="上半年"><a href="#上半年" class="headerlink" title="上半年"></a>上半年</h3><p>年初还在高三上的课堂, 年末大一上快结束了. 弹指一瞬所谓如此.</p>
+<p>今年的大事, 要说还是高考. 忍受了高中三年那非人的安排就为了一张文凭, 可有人还要把这个过程拉长到研究生阶段.<br>不过也没必要过分批判中学的应试教育. 虽然阴郁得让人抬不起头, 但回忆高中, 除了黑历史, 剩下快乐的也不少.<br>除此之外, 高中接受的通识教育是我受益最大的. 当我阳了以后, 那些学习的生物知识很庆幸还能用.</p>
+<p>最终去向是某财经211的CS专业. 一开始还在思考怎么自救. 现在想想, 自己的赛道还算广阔. 至少学历坎越过双非, 择业方向可金融可CS, 但最重要的是, 专业是自己喜欢的. 一想到自己下一个志愿的专业是机械电子我就魂打颤.</p>
+<h3 id="下半年"><a href="#下半年" class="headerlink" title="下半年"></a>下半年</h3><p>总结一下自己大一学的知识:</p>
+<ul>
+<li>更深入地学习了C语言</li>
+<li>学习了CMU CS15-213 CSAPP前3章+第五章 完成了data/bomb/attack lab<ul>
+<li>学习了数据的机器级表示</li>
+<li>用 wsl 作为 Linux 的开发环境</li>
+<li>比较全面地学习了x86-64的汇编 同时有逆向工程的一定能力</li>
+</ul>
+</li>
+<li>学习了MIT Missing Semester<ul>
+<li>学习到了很多实用工具 Git GDB Docker</li>
+</ul>
+</li>
+<li>加入了学校里一个组织的后端部</li>
+<li>搭建了自己的博客 Hexo+NexT</li>
+<li>初步学习了算法/数据结构</li>
+<li>数学微积分上册</li>
+</ul>
+<p>挺内疚的, 来大学的一个月, 非常勤勉, 天天跑图书馆, Github每天更新, 然后越到后面越咸鱼. 11月12月好像就没去过图书馆(</p>
+<p>剩下的学习时间大部分浪费在了那些通识基础课上.<br>没错, 说的就是你, 大学物理(<br>其实我的大一上还是比较悠闲的. 虽然每天早八, 但基本上下午没啥课. 下学期就不是这样了.</p>
+<p>感觉学了挺多编程相关的内容. 不过, 自己的编程能力仍然有待提高. 依然处于不STFW就寸步难行的阶段.</p>
+<h3 id="新年期许"><a href="#新年期许" class="headerlink" title="新年期许"></a>新年期许</h3><p>给自己的学习计划. 看看下学期能实现多少:<br>大一寒假: ACWing 算法基础课 + 每日一题<br>顺便打游戏+过了科二<br>主要提高自己的算法基础+编程能力</p>
+<p>大一下的学习计划: 这学期数学基础课比较多 多元微积分 离散数学 高等代数等<br>大概率学习时间会很压缩<br>程序课我选的 Python(另一个选项是JAVA) 对应 CS61A (Python) + SICP 狠狠地学<br>下学期顺便把 Berkeley 的 CS70 (Discrete Math) 刷完</p>
+<h2 id="政策的转折"><a href="#政策的转折" class="headerlink" title="政策的转折"></a>政策的转折</h2><p>今年政策风向的变动大家有目共睹. 如果可以, 不妨回顾这一年新闻的<a href="https://www.bilibili.com/video/BV1QM411C7kd/">合订本</a>.</p>
+<p>我们每个人都是疫情的亲历者.<br>武汉疫情爆发初期的寒假(2020年初)我待在温州, 没料想当时温州市区属于重灾区. 封在老家大概持续了3个月.<br>2021年的暑期, 常熟疫情, 线上网课.<br>2022年4月苏州疫情, 常熟的高中开始封校. 在学校隔绝学习了一个月, 第一次感到自己的压抑. 还记得五一还有各种节日自己窝在寝室里画画. 真的非常无聊的日子. 第一次学会玩象棋.<br>2022年8月, 四川高温限电, 我是月底到的程度, 此时限电基本结束. 9月, 成都疫情. 又封校了一个月.<br>2022年12月, 国家放开. 12月28日, 我感染了新冠, 近年来最难受的几天.</p>
+<p>本来以为能这辈子不感染, 结果下一秒打脸.</p>
+<h2 id="世界的转折"><a href="#世界的转折" class="headerlink" title="世界的转折"></a>世界的转折</h2>]]></content>
+      <categories>
+        <category>杂谈</category>
+      </categories>
+      <tags>
+        <tag>杂谈</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>简单的排序算法</title>
+    <url>/2023/01/05/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/</url>
+    <content><![CDATA[<p>我们介绍两个基于分治且 <code>O(nlogn)</code> 的排序算法: 快速排序和归并排序.<br>理解排序算法的最好方法是模拟, 手动模拟指针的移动, 感受数据是怎么逐渐变得有序的. 配合动图食用更佳.<br>两个算法困难的点在于边界分析. 不过记模板就可以了(</p>
+<span id="more"></span>
+<h2 id="快速排序"><a href="#快速排序" class="headerlink" title="快速排序"></a>快速排序</h2><h3 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h3><p>快速排序的核心要义: 任取一个数<code>x</code>作为<strong>基准值</strong>, <strong>调整<code>x</code>的左右区间</strong>, 使得左区间的值小于<code>x</code>, 右区间的值都大于<code>x</code>, 然后对这两个子区间<strong>递归调用</strong>.</p>
+<p>怎么调整区间:</p>
+<ul>
+<li><del>扫描并比较整个数组, 大于 <code>x</code> 的放在数组 <code>a</code>, 小于的放在 <code>b</code>, 最后再复制回去.</del>(空间开销大)</li>
+<li>双指针. <code>i</code> 从 <code>l</code> 开始移动, 确保 <code>q[l...i-1]</code> 比 <code>x</code> 小. 当遇到比 <code>x</code> 大的值, 就让这个值和 <code>j</code> 交换位置, 然后从后移动 <code>j</code> 指针, 确保 <code>q[j...r]</code> 比 <code>x</code> 大. 遇到比 <code>x</code> 小的值, 就再交换回去, 直到 <code>i</code>, <code>j</code> 相遇.</li>
+</ul>
+<p>这两个区间的值也可以等于<code>x</code>.<br>算法的正确性, 用<a href="https://www.acwing.com/solution/content/16777/">循环不变式</a>证明: <code>q[l..i] &lt;= x</code> 以及 <code>q[j..r] &gt;= x</code></p>
+<h3 id="性质"><a href="#性质" class="headerlink" title="性质"></a>性质</h3><p>朴素的快排是一种不稳定的排序方式.</p>
+<p>最优时间复杂度和平均时间复杂度为 $O(n \log n)$ (基准数是中位数的情况), 最差情况退化成冒泡排序 $O(n^2)$ (每一次基准数的选取都是最值).</p>
+<h3 id="模板"><a href="#模板" class="headerlink" title="模板"></a>模板</h3><p>来源: <a href="https://www.acwing.com/activity/content/code/content/39784/">AcWing 785. 快速排序</a></p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">quick_sort</span><span class="params">(<span class="type">int</span> q[], <span class="type">int</span> l, <span class="type">int</span> r)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(l &gt;= r) <span class="keyword">return</span>;</span><br><span class="line"></span><br><span class="line">    <span class="type">int</span> i = l - <span class="number">1</span>, j = r + <span class="number">1</span>, x = q[l + r &gt;&gt; <span class="number">1</span>];</span><br><span class="line">    <span class="keyword">while</span>(i &lt; j)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">do</span> i++; <span class="keyword">while</span>(q[i] &lt; x);</span><br><span class="line">        <span class="keyword">do</span> j--; <span class="keyword">while</span>(q[j] &gt; x);</span><br><span class="line">        <span class="keyword">if</span>(i &lt; j) <span class="built_in">swap</span>(q[i], q[j]);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="built_in">quick_sort</span>(q, l, j), <span class="built_in">quick_sort</span>(q, j + <span class="number">1</span>, r);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="归并排序"><a href="#归并排序" class="headerlink" title="归并排序"></a>归并排序</h2><p>归并排序是典范的分治思想的例子. 归并排序的核心要义是: 把数组一分为二, 一直分下去直到不能再分, 然后逐层合并两个有序的数组.</p>
+<p>用程序语言描述就是下面的代码:</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">merge_sort</span><span class="params">(array)</span> </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (basecase) <span class="keyword">return</span>;</span><br><span class="line">  <span class="built_in">merge_sort</span>(left);</span><br><span class="line">  <span class="built_in">merge_sort</span>(right);</span><br><span class="line">  <span class="built_in">merge</span>(left, right);</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>核心是实现子程序 <code>merge</code>: 合并两个排好序的数组. 实现起来很简单, 用到了临时数组, 令 <code>tmp[k] = min(left[i], right[j])</code> 最后复制回原数组就可以了. 整个过程要用到三个指针, 分别指向临时数组, 以及两个排好序的数组.</p>
+<h3 id="板子"><a href="#板子" class="headerlink" title="板子"></a>板子</h3><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">merge_sort</span><span class="params">(<span class="type">int</span> q[], <span class="type">int</span> l, <span class="type">int</span> r)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(l &gt;= r)</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    <span class="type">int</span> mid = l + r &gt;&gt; <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">    <span class="built_in">merge_sort</span>(q, l, mid);</span><br><span class="line">    <span class="built_in">merge_sort</span>(q, mid + <span class="number">1</span>, r);</span><br><span class="line"></span><br><span class="line">    <span class="type">int</span> k = <span class="number">0</span>, i = l, j = mid + <span class="number">1</span>;</span><br><span class="line">    <span class="type">int</span> N = l + r - <span class="number">1</span>;</span><br><span class="line">    <span class="type">int</span> tmp[N];</span><br><span class="line"></span><br><span class="line">    <span class="keyword">while</span> (i &lt;= mid &amp;&amp; j &lt;= r)</span><br><span class="line">        tmp[k++] = (q[i] &lt;= q[j]) ? q[i++] : q[j++];</span><br><span class="line">    <span class="keyword">while</span>(i &lt;= mid)</span><br><span class="line">        tmp[k++] = q[i++];</span><br><span class="line">    <span class="keyword">while</span>(j &lt;= r)</span><br><span class="line">        tmp[k++] = q[j++];</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span>(i = <span class="number">1</span>, j = <span class="number">0</span>; i &lt;= r; i++, j++)</span><br><span class="line">        q[i] = tmp[j];   </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="应用"><a href="#应用" class="headerlink" title="应用"></a>应用</h3><p><a href="https://www.acwing.com/problem/content/790/">AcWing 788. 逆序对的数量</a></p>
+<p>用归并排序看待这个问题:<br>逆序对只存在三种情况, 在左半边, 在右半边, 或者横跨左右区间. 假设 <code>merge_sort</code> 能在排序的同时计算出逆序对的数量, 那么前两种情况等于递归调用 <code>merge_sort</code> 的值.<br>横跨左右区间的情况稍微比较复杂. 利用的是<code>merge</code>区间的单调性. 我们求的是<code>left</code>中每一个元素对应<code>right</code>中逆序对的数量. 假设我们找到了 <code>left[i] &gt; right[j]</code>, 那么一定有 <code>left[i...mid] &gt; right[j]</code>. 也就是说存在 <code>mid - i + 1</code> 个逆序对.</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="function">LL <span class="title">merge_sort</span><span class="params">(<span class="type">int</span> q[], <span class="type">int</span> l, <span class="type">int</span> r)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(l &gt;= r) <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    <span class="type">int</span> mid = l + r &gt;&gt; <span class="number">1</span>;</span><br><span class="line">    LL res = <span class="built_in">merge_sort</span>(q, l, mid) + <span class="built_in">merge_sort</span>(q, mid + <span class="number">1</span>, r);</span><br><span class="line">    </span><br><span class="line">    <span class="type">int</span> k = <span class="number">0</span>, i = l, j = mid + <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">while</span>(i &lt;= mid &amp;&amp; j &lt;= r)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span>(q[i] &lt;= q[j])</span><br><span class="line">            tmp[k++] = q[i++];</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">        &#123;</span><br><span class="line">            res += mid - i + <span class="number">1</span>;</span><br><span class="line">            tmp[k++] = q[j++];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">while</span>(i &lt;= mid)</span><br><span class="line">        tmp[k++] = q[i++];</span><br><span class="line">    <span class="keyword">while</span>(j &lt;= r)</span><br><span class="line">        tmp[k++] = q[j++];</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span>(i = l, j = <span class="number">0</span>; i &lt;= r; i++, j++)</span><br><span class="line">        q[i] = tmp[j];</span><br><span class="line">    <span class="keyword">return</span> res;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>算法</category>
+      </categories>
+      <tags>
+        <tag>算法</tag>
+        <tag>排序</tag>
+        <tag>分治</tag>
       </tags>
   </entry>
 </search>

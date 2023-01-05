@@ -6,7 +6,7 @@
   <link href="http://example.com/atom.xml" rel="self"/>
   
   <link href="http://example.com/"/>
-  <updated>2022-12-21T17:42:17.536Z</updated>
+  <updated>2023-01-05T14:17:25.024Z</updated>
   <id>http://example.com/</id>
   
   <author>
@@ -15,6 +15,68 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>简单的排序算法</title>
+    <link href="http://example.com/2023/01/05/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/"/>
+    <id>http://example.com/2023/01/05/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/</id>
+    <published>2023-01-05T12:05:05.000Z</published>
+    <updated>2023-01-05T14:17:25.024Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;我们介绍两个基于分治且 &lt;code&gt;O(nlogn)&lt;/code&gt; 的排序算法: 快速排序和归并排序.&lt;br&gt;理解排序算法的最好方法是模拟, 手动模拟指针的移动, 感受数据是怎么逐渐变得有序的. 配合动图食用更佳.&lt;br&gt;两个算法困难的点在于边界分析. 不过记模板就可以了(&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="算法" scheme="http://example.com/categories/%E7%AE%97%E6%B3%95/"/>
+    
+    
+    <category term="算法" scheme="http://example.com/tags/%E7%AE%97%E6%B3%95/"/>
+    
+    <category term="排序" scheme="http://example.com/tags/%E6%8E%92%E5%BA%8F/"/>
+    
+    <category term="分治" scheme="http://example.com/tags/%E5%88%86%E6%B2%BB/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>2022年终总结</title>
+    <link href="http://example.com/2022/12/31/2022%E5%B9%B4%E7%BB%88%E6%80%BB%E7%BB%93/"/>
+    <id>http://example.com/2022/12/31/2022%E5%B9%B4%E7%BB%88%E6%80%BB%E7%BB%93/</id>
+    <published>2022-12-31T11:37:52.000Z</published>
+    <updated>2023-01-04T11:13:21.356Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;你会用什么关键字概括2022年呢……&lt;br&gt;各种意义上的Twist. 人生的转折, 政策的转折, 世界的转折.&lt;br&gt;年初的时候还祝福今年诸事皆顺, 不过心意到了抽签抽到凶也没办法.&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="杂谈" scheme="http://example.com/categories/%E6%9D%82%E8%B0%88/"/>
+    
+    
+    <category term="杂谈" scheme="http://example.com/tags/%E6%9D%82%E8%B0%88/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>新冠生存手册</title>
+    <link href="http://example.com/2022/12/22/%E6%96%B0%E5%86%A0%E7%94%9F%E5%AD%98%E6%89%8B%E5%86%8C/"/>
+    <id>http://example.com/2022/12/22/%E6%96%B0%E5%86%A0%E7%94%9F%E5%AD%98%E6%89%8B%E5%86%8C/</id>
+    <published>2022-12-22T08:15:32.000Z</published>
+    <updated>2023-01-04T05:56:52.745Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;感染新冠快成每日打卡项目了. 每天都能刷到同学感染的信息, “今天又发了39度的烧”——然而这并不是值得炫耀的一件事.&lt;br&gt;二阳化碳, 三阳开泰, 四阳方尊, 五阳电动车, 六阳魁首, 七阳化二锰, 八阳化二硫, 九阳豆浆机&lt;br&gt;如果能在全员感染的范围内存活下来, 那么你就是大赢. 我不相信染病后没有后遗症, 就算苟我也要撑到群体免疫快结束的时候. 提心吊胆地过着放开后的日子, 保持身处末世一般的警惕, 做好保护自己生命的职责.&lt;/p&gt;
+&lt;p&gt;更新: 12.28 阳了 估计是舍友交叉感染的&lt;br&gt;Q: 有个一声不吭的舍友是怎样的一种感受? 被害惨了.&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="杂谈" scheme="http://example.com/categories/%E6%9D%82%E8%B0%88/"/>
+    
+    
+    <category term="杂谈" scheme="http://example.com/tags/%E6%9D%82%E8%B0%88/"/>
+    
+  </entry>
   
   <entry>
     <title>前缀函数和KMP算法</title>
