@@ -1,6 +1,48 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>2022年终总结</title>
+    <url>/2022/12/31/2022%E5%B9%B4%E7%BB%88%E6%80%BB%E7%BB%93/</url>
+    <content><![CDATA[<p>你会用什么关键字概括2022年呢……<br>各种意义上的Twist. 人生的转折, 政策的转折, 世界的转折.<br>年初的时候还祝福今年诸事皆顺, 不过心意到了抽签抽到凶也没办法.</p>
+<span id="more"></span>
+<h2 id="人生的转折"><a href="#人生的转折" class="headerlink" title="人生的转折"></a>人生的转折</h2><h3 id="上半年"><a href="#上半年" class="headerlink" title="上半年"></a>上半年</h3><p>年初还在高三上的课堂, 年末大一上快结束了. 弹指一瞬所谓如此.</p>
+<p>今年的大事, 要说还是高考. 忍受了高中三年那非人的安排就为了一张文凭, 可有人还要把这个过程拉长到研究生阶段.<br>不过也没必要过分批判中学的应试教育. 虽然阴郁得让人抬不起头, 但回忆高中, 除了黑历史, 剩下快乐的也不少.<br>除此之外, 高中接受的通识教育是我受益最大的. 当我阳了以后, 那些学习的生物知识很庆幸还能用.</p>
+<p>最终去向是某财经211的CS专业. 一开始还在思考怎么自救. 现在想想, 自己的赛道还算广阔. 至少学历坎越过双非, 择业方向可金融可CS, 但最重要的是, 专业是自己喜欢的. 一想到自己下一个志愿的专业是机械电子我就魂打颤.</p>
+<h3 id="下半年"><a href="#下半年" class="headerlink" title="下半年"></a>下半年</h3><p>总结一下自己大一学的知识:</p>
+<ul>
+<li>更深入地学习了C语言</li>
+<li>学习了CMU CS15-213 CSAPP前3章+第五章 完成了data/bomb/attack lab<ul>
+<li>学习了数据的机器级表示</li>
+<li>用 wsl 作为 Linux 的开发环境</li>
+<li>比较全面地学习了x86-64的汇编 同时有逆向工程的一定能力</li>
+</ul>
+</li>
+<li>学习了MIT Missing Semester<ul>
+<li>学习到了很多实用工具 Git GDB Docker</li>
+</ul>
+</li>
+<li>加入了学校里一个组织的后端部</li>
+<li>搭建了自己的博客 Hexo+NexT</li>
+<li>初步学习了算法/数据结构</li>
+<li>数学微积分上册</li>
+</ul>
+<p>挺内疚的, 来大学的一个月, 非常勤勉, 天天跑图书馆, Github每天更新, 然后越到后面越咸鱼. 11月12月好像就没去过图书馆(</p>
+<p>剩下的学习时间大部分浪费在了那些通识基础课上.<br>没错, 说的就是你, 大学物理(<br>其实我的大一上还是比较悠闲的. 虽然每天早八, 但基本上下午没啥课. 下学期就不是这样了.</p>
+<p>感觉学了挺多编程相关的内容. 不过, 自己的编程能力仍然有待提高. 依然处于不STFW就寸步难行的阶段.</p>
+<h3 id="新年期许"><a href="#新年期许" class="headerlink" title="新年期许"></a>新年期许</h3><p>给自己的学习计划. 看看下学期能实现多少:<br>大一寒假: ACWing 算法基础课 + 每日一题<br>顺便打游戏+过了科二<br>主要提高自己的算法基础+编程能力</p>
+<p>大一下的学习计划: 这学期数学基础课比较多 多元微积分 离散数学 高等代数等<br>大概率学习时间会很压缩<br>程序课我选的 Python(另一个选项是JAVA) 对应 CS61A (Python) + SICP 狠狠地学<br>下学期顺便把 Berkeley 的 CS70 (Discrete Math) 刷完</p>
+<h2 id="政策的转折"><a href="#政策的转折" class="headerlink" title="政策的转折"></a>政策的转折</h2><p>今年政策风向的变动大家有目共睹. 如果可以, 不妨回顾这一年新闻的<a href="https://www.bilibili.com/video/BV1QM411C7kd/">合订本</a>.</p>
+<p>我们每个人都是疫情的亲历者.<br>武汉疫情爆发初期的寒假(2020年初)我待在温州, 没料想当时温州市区属于重灾区. 封在老家大概持续了3个月.<br>2021年的暑期, 常熟疫情, 线上网课.<br>2022年4月苏州疫情, 常熟的高中开始封校. 在学校隔绝学习了一个月, 第一次感到自己的压抑. 还记得五一还有各种节日自己窝在寝室里画画. 真的非常无聊的日子. 第一次学会玩象棋.<br>2022年8月, 四川高温限电, 我是月底到的程度, 此时限电基本结束. 9月, 成都疫情. 又封校了一个月.<br>2022年12月, 国家放开. 12月28日, 我感染了新冠, 近年来最难受的几天.</p>
+<p>本来以为能这辈子不感染, 结果下一秒打脸.</p>
+<h2 id="世界的转折"><a href="#世界的转折" class="headerlink" title="世界的转折"></a>世界的转折</h2>]]></content>
+      <categories>
+        <category>杂谈</category>
+      </categories>
+      <tags>
+        <tag>杂谈</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>前缀函数和KMP算法</title>
     <url>/2022/12/21/KMP%E7%AE%97%E6%B3%95/</url>
     <content><![CDATA[<p>做期末大作业里面有个字符串匹配的问题, 用暴力算法做完觉得不够爽, 于是自找的麻烦.</p>
@@ -82,6 +124,40 @@
       </tags>
   </entry>
   <entry>
+    <title>简单的排序算法</title>
+    <url>/2023/01/05/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/</url>
+    <content><![CDATA[<p>我们介绍两个基于分治且 <code>O(nlogn)</code> 的排序算法: 快速排序和归并排序.<br>理解排序算法的最好方法是模拟, 手动模拟指针的移动, 感受数据是怎么逐渐变得有序的. 配合动图食用更佳.<br>两个算法困难的点在于边界分析. 不过记模板就可以了(</p>
+<span id="more"></span>
+<h2 id="快速排序"><a href="#快速排序" class="headerlink" title="快速排序"></a>快速排序</h2><h3 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h3><p>快速排序的核心要义: 任取一个数<code>x</code>作为<strong>基准值</strong>, <strong>调整<code>x</code>的左右区间</strong>, 使得左区间的值小于<code>x</code>, 右区间的值都大于<code>x</code>, 然后对这两个子区间<strong>递归调用</strong>.</p>
+<p>怎么调整区间:</p>
+<ul>
+<li><del>扫描并比较整个数组, 大于 <code>x</code> 的放在数组 <code>a</code>, 小于的放在 <code>b</code>, 最后再复制回去.</del>(空间开销大)</li>
+<li>双指针. <code>i</code> 从 <code>l</code> 开始移动, 确保 <code>q[l...i-1]</code> 比 <code>x</code> 小. 当遇到比 <code>x</code> 大的值, 就让这个值和 <code>j</code> 交换位置, 然后从后移动 <code>j</code> 指针, 确保 <code>q[j...r]</code> 比 <code>x</code> 大. 遇到比 <code>x</code> 小的值, 就再交换回去, 直到 <code>i</code>, <code>j</code> 相遇.</li>
+</ul>
+<p>这两个区间的值也可以等于<code>x</code>.<br>算法的正确性, 用<a href="https://www.acwing.com/solution/content/16777/">循环不变式</a>证明: <code>q[l..i] &lt;= x</code> 以及 <code>q[j..r] &gt;= x</code></p>
+<h3 id="性质"><a href="#性质" class="headerlink" title="性质"></a>性质</h3><p>朴素的快排是一种不稳定的排序方式.</p>
+<p>最优时间复杂度和平均时间复杂度为 $O(n \log n)$ (基准数是中位数的情况), 最差情况退化成冒泡排序 $O(n^2)$ (每一次基准数的选取都是最值).</p>
+<h3 id="模板"><a href="#模板" class="headerlink" title="模板"></a>模板</h3><p>来源: <a href="https://www.acwing.com/activity/content/code/content/39784/">AcWing 785. 快速排序</a></p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">quick_sort</span><span class="params">(<span class="type">int</span> q[], <span class="type">int</span> l, <span class="type">int</span> r)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(l &gt;= r) <span class="keyword">return</span>;</span><br><span class="line"></span><br><span class="line">    <span class="type">int</span> i = l - <span class="number">1</span>, j = r + <span class="number">1</span>, x = q[l + r &gt;&gt; <span class="number">1</span>];</span><br><span class="line">    <span class="keyword">while</span>(i &lt; j)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">do</span> i++; <span class="keyword">while</span>(q[i] &lt; x);</span><br><span class="line">        <span class="keyword">do</span> j--; <span class="keyword">while</span>(q[j] &gt; x);</span><br><span class="line">        <span class="keyword">if</span>(i &lt; j) <span class="built_in">swap</span>(q[i], q[j]);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="built_in">quick_sort</span>(q, l, j), <span class="built_in">quick_sort</span>(q, j + <span class="number">1</span>, r);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="归并排序"><a href="#归并排序" class="headerlink" title="归并排序"></a>归并排序</h2><p>归并排序是典范的分治思想的例子. 归并排序的核心要义是: 把数组一分为二, 一直分下去直到不能再分, 然后逐层合并两个有序的数组.</p>
+<p>用程序语言描述就是下面的代码:</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">merge_sort</span><span class="params">(array)</span> </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (basecase) <span class="keyword">return</span>;</span><br><span class="line">  <span class="built_in">merge_sort</span>(left);</span><br><span class="line">  <span class="built_in">merge_sort</span>(right);</span><br><span class="line">  <span class="built_in">merge</span>(left, right);</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>核心是实现子程序 <code>merge</code>: 合并两个排好序的数组. 实现起来很简单, 用到了临时数组, 令 <code>tmp[k] = min(left[i], right[j])</code> 最后复制回原数组就可以了. 整个过程要用到三个指针, 分别指向临时数组, 以及两个排好序的数组.</p>
+<h3 id="板子"><a href="#板子" class="headerlink" title="板子"></a>板子</h3><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">merge_sort</span><span class="params">(<span class="type">int</span> q[], <span class="type">int</span> l, <span class="type">int</span> r)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(l &gt;= r)</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    <span class="type">int</span> mid = l + r &gt;&gt; <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">    <span class="built_in">merge_sort</span>(q, l, mid);</span><br><span class="line">    <span class="built_in">merge_sort</span>(q, mid + <span class="number">1</span>, r);</span><br><span class="line"></span><br><span class="line">    <span class="type">int</span> k = <span class="number">0</span>, i = l, j = mid + <span class="number">1</span>;</span><br><span class="line">    <span class="type">int</span> N = l + r - <span class="number">1</span>;</span><br><span class="line">    <span class="type">int</span> tmp[N];</span><br><span class="line"></span><br><span class="line">    <span class="keyword">while</span> (i &lt;= mid &amp;&amp; j &lt;= r)</span><br><span class="line">        tmp[k++] = (q[i] &lt;= q[j]) ? q[i++] : q[j++];</span><br><span class="line">    <span class="keyword">while</span>(i &lt;= mid)</span><br><span class="line">        tmp[k++] = q[i++];</span><br><span class="line">    <span class="keyword">while</span>(j &lt;= r)</span><br><span class="line">        tmp[k++] = q[j++];</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span>(i = <span class="number">1</span>, j = <span class="number">0</span>; i &lt;= r; i++, j++)</span><br><span class="line">        q[i] = tmp[j];   </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="应用"><a href="#应用" class="headerlink" title="应用"></a>应用</h3><p><a href="https://www.acwing.com/problem/content/790/">AcWing 788. 逆序对的数量</a></p>
+<p>用归并排序看待这个问题:<br>逆序对只存在三种情况, 在左半边, 在右半边, 或者横跨左右区间. 假设 <code>merge_sort</code> 能在排序的同时计算出逆序对的数量, 那么前两种情况等于递归调用 <code>merge_sort</code> 的值.<br>横跨左右区间的情况稍微比较复杂. 利用的是<code>merge</code>区间的单调性. 我们求的是<code>left</code>中每一个元素对应<code>right</code>中逆序对的数量. 假设我们找到了 <code>left[i] &gt; right[j]</code>, 那么一定有 <code>left[i...mid] &gt; right[j]</code>. 也就是说存在 <code>mid - i + 1</code> 个逆序对.</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="function">LL <span class="title">merge_sort</span><span class="params">(<span class="type">int</span> q[], <span class="type">int</span> l, <span class="type">int</span> r)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(l &gt;= r) <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    <span class="type">int</span> mid = l + r &gt;&gt; <span class="number">1</span>;</span><br><span class="line">    LL res = <span class="built_in">merge_sort</span>(q, l, mid) + <span class="built_in">merge_sort</span>(q, mid + <span class="number">1</span>, r);</span><br><span class="line">    </span><br><span class="line">    <span class="type">int</span> k = <span class="number">0</span>, i = l, j = mid + <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">while</span>(i &lt;= mid &amp;&amp; j &lt;= r)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span>(q[i] &lt;= q[j])</span><br><span class="line">            tmp[k++] = q[i++];</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">        &#123;</span><br><span class="line">            res += mid - i + <span class="number">1</span>;</span><br><span class="line">            tmp[k++] = q[j++];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">while</span>(i &lt;= mid)</span><br><span class="line">        tmp[k++] = q[i++];</span><br><span class="line">    <span class="keyword">while</span>(j &lt;= r)</span><br><span class="line">        tmp[k++] = q[j++];</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span>(i = l, j = <span class="number">0</span>; i &lt;= r; i++, j++)</span><br><span class="line">        q[i] = tmp[j];</span><br><span class="line">    <span class="keyword">return</span> res;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>算法</category>
+      </categories>
+      <tags>
+        <tag>算法</tag>
+        <tag>排序</tag>
+        <tag>分治</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>新冠生存手册</title>
     <url>/2022/12/22/%E6%96%B0%E5%86%A0%E7%94%9F%E5%AD%98%E6%89%8B%E5%86%8C/</url>
     <content><![CDATA[<p>感染新冠快成每日打卡项目了. 每天都能刷到同学感染的信息, “今天又发了39度的烧”——然而这并不是值得炫耀的一件事.<br>二阳化碳, 三阳开泰, 四阳方尊, 五阳电动车, 六阳魁首, 七阳化二锰, 八阳化二硫, 九阳豆浆机<br>如果能在全员感染的范围内存活下来, 那么你就是大赢. 我不相信染病后没有后遗症, 就算苟我也要撑到群体免疫快结束的时候. 提心吊胆地过着放开后的日子, 保持身处末世一般的警惕, 做好保护自己生命的职责.</p>
@@ -123,7 +199,7 @@
 <p>程序的进行依赖于<code>rip</code>寄存器, 它储存的值是当前运行的指令地址. 程序的进行实际上就是一条指令一条指令的移动(你可以在<code>gdb</code>里随时监控<code>rip</code>). 这和图灵机读写控制的方式本质上是一致的!</p>
 <span id="more"></span>
 <blockquote>
-<p>书中出示的汇编指令是<code>AT&amp;T</code>格式, 为<code>gcc</code>和<code>gdb</code>编译选项默认.<br>大部分情况下两种格式是互通的. 唯一值得注意的是读取顺序, 两者<strong>源操作数</strong>和<strong>目的操作数</strong>的顺序是<strong>反的</strong>. 例如下面的语句表示栈指针减8:</p>
+<p>书中出示的汇编指令是<code>AT&amp;T</code>格式, 为<code>gcc</code>和<code>gdb</code>编译选项默认.<br>如果不熟悉某一种风格的话, <code>set disassembly-flavor att</code>或者<code>intel</code>就可以切换成对应的反汇编风格啦.<br>大部分情况下两种格式是互通的. 唯一值得注意的是读取顺序, 两者<strong>源操作数</strong>和<strong>目的操作数</strong>的顺序是<strong>反的</strong>. 例如下面的语句表示栈指针减8:</p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">subq     $8,%rsp             # ATT flavor</span><br><span class="line">sub      rsp,8               # Intel flavor</span><br></pre></td></tr></table></figure>
 </blockquote>
 <h2 id="访问值和访问地址"><a href="#访问值和访问地址" class="headerlink" title="访问值和访问地址"></a>访问值和访问地址</h2><p><code>%rsp</code> 表示 <code>rsp</code> 寄存器储存的值, 通常来说栈指针保存的是一个地址. 对于更一般的寄存器, 例如<code>rax</code>寄存器, 是可以保存值的, 而且通常是返回值. 我们用 $r_a$ 表示寄存器<code>a</code> 存储的值.<br>内存本质上是一个很长的数组, <strong>内存引用</strong>表示 $M[r_a]$, 例如 <code>(%rsp)</code>表示<code>*rsp</code>, 也就是<code>rsp</code> 寄存器储存地址上的值.</p>
@@ -142,7 +218,7 @@
 <p>区别下面的指令:</p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">mov    0x20(%rsp),%rbx </span><br><span class="line">lea    0x28(%rsp),%rax </span><br></pre></td></tr></table></figure>
 <p>其中<code>rbx</code>的值是内存地址<code>$rsp+32</code>上储存的值, <code>rax</code>现在是一个指针, 它的值是<code>$rsp+40</code>, 也就是一个内存地址.</p>
-<h2 id="控制语句"><a href="#控制语句" class="headerlink" title="控制语句"></a>控制语句</h2><p>跳转命令<code>jmp</code>等价于C中的<code>goto</code>.<br><code>if</code>语句对应条件跳转指令.<br>循环控制语句可以通过<code>if</code>和<code>goto</code>所模拟.</p>
+<h2 id="控制语句"><a href="#控制语句" class="headerlink" title="控制语句"></a>控制语句</h2><p>跳转命令<code>jmp</code>等价于C中的<code>goto</code>.<br><code>if</code>语句对应条件跳转指令.<br>循环控制语句都可以通过<code>if</code>和<code>goto</code>所模拟.</p>
 <figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="type">long</span> <span class="title function_">absdiff_se</span><span class="params">(<span class="type">long</span> x, <span class="type">long</span> y)</span> &#123;</span><br><span class="line">    <span class="type">long</span> res;</span><br><span class="line">    <span class="keyword">if</span> (x &lt; y) &#123;</span><br><span class="line">        res = y - x;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span> &#123;</span><br><span class="line">        res = x - y;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> res;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">/* x in %rdi, y in %rsi */</span><br><span class="line">absdiff_se:</span><br><span class="line">   cmpq %rsi, %rdi              ; x - y              </span><br><span class="line">   jge .L6                      ; if &gt;= goto .L6</span><br><span class="line">   movq %rsi, %rax              ; res = y</span><br><span class="line">   subq %rdi, %rax              ; res -= x</span><br><span class="line">   ret                          ; return</span><br><span class="line">.L6:                         </span><br><span class="line">   movq %rdi, %rax              ; res = x</span><br><span class="line">   subq %rsi, %rax              ; res -= y</span><br><span class="line">   ret                          ; return</span><br></pre></td></tr></table></figure>
 <p>判断条件(<code>if</code>括号内的语句)基于一组条件码寄存器, 通过<code>test</code>或<code>cmp</code>指令设置.</p>
@@ -152,17 +228,19 @@
 <p><code>jge</code>会先对条件码进行位运算, 这里:<code>~(SF ^ OF)</code>, 如果结果为<code>1</code>, 那么跳转, 否则程序继续执行下去.</p>
 </blockquote>
 <p>在实际阅读汇编代码的过程中, 可以忽略这部分细节, 明白程序按照条件跳转即可.</p>
-<p><code>-O1</code>级别以上的优化还会出现条件移动指令. 此处从略.</p>
-<p><code>do while</code> 作为最不常用的循环, 模拟方式却是最简单的. 它的流程就和它本身一致.</p>
+<p><code>-O1</code>级别以上的优化还会出现条件移动指令, 针对的是CPU条件预测的优化. 通常来说条件移动(<code>CMOV</code>类)指令可以用下面的C代码抽象:</p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="comment">// v = test_expr ? then_expr : else_expr;</span></span><br><span class="line">v = then-expr;</span><br><span class="line">ve = <span class="keyword">else</span>-expr;</span><br><span class="line">t = test-expr;</span><br><span class="line"><span class="keyword">if</span> (!t) v = ve;</span><br></pre></td></tr></table></figure>
+<p>下面我们来讨论循环语句:<br><code>do while</code> 作为最不常用的循环, 模拟方式却是最简单的. 它的流程就和它本身一致.</p>
 <figure class="highlight c"><table><tr><td class="code"><pre><span class="line">loop:</span><br><span class="line">    body</span><br><span class="line">    t = test_expr;</span><br><span class="line">    <span class="keyword">if</span>(t)</span><br><span class="line">        <span class="keyword">goto</span> loop;</span><br></pre></td></tr></table></figure>
 <p>和<code>while</code>语句的区别是, <code>while</code>语句在进入之前会进行一次条件判断.</p>
 <figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="keyword">goto</span> test;</span><br><span class="line">loop:</span><br><span class="line">    body</span><br><span class="line">test:</span><br><span class="line">    t = test_expr;</span><br><span class="line">    <span class="keyword">if</span>(t)</span><br><span class="line">        <span class="keyword">goto</span> loop;</span><br></pre></td></tr></table></figure>
 <p>至于最常用的<code>for</code>语句, 它有等价的<code>while</code>表述, 此处从略.</p>
 <p>做完了要不要试试手? 要不要拆个<a href="http://csapp.cs.cmu.edu/3e/bomb.tar">二进制炸弹</a>试试手:) 在Linux下输入下面的指令:</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">wget http://csapp.cs.cmu.edu/3e/bomb.tar</span><br><span class="line">tar xvf bomb.tar</span><br><span class="line"><span class="built_in">cd</span> bomb</span><br></pre></td></tr></table></figure>
+<p>你需要做的是<code>gdb bomb</code>然后对汇编代码进行分析, 然后给出拆弹必要的字符串! 在<code>bomb.c</code>给出了程序流, 你至少知道该在哪里打断点. 而函数具体如何实现, 这就得看你汇编的能力了!</p>
 <h2 id="函数调用的过程"><a href="#函数调用的过程" class="headerlink" title="函数调用的过程"></a>函数调用的过程</h2><p>函数调用的过程满足<strong>栈</strong>的前进后出(First in, Last out)原则.</p>
 <blockquote>
-<p><strong>Q:</strong> 怎么画函数栈帧的示意图? 是栈顶放最上面, 还是内存高位的一端放在最上面?<br><strong>A:</strong> 看个人习惯. <a href="http://www.stackgrowsup.com/">UP?</a> 还是 <a href="http://www.stackgrowsdown.com/">DOWN?</a> 只要你看别人的示意图不会被绕晕就可以.</p>
+<p><strong>Q:</strong> 怎么画函数栈帧的示意图? 是栈顶放最上面, 还是内存高位的一端放在最上面?<br><strong>A:</strong> 看个人习惯. <a href="http://www.stackgrowsup.com/">UP?</a> 还是 <a href="http://www.stackgrowsdown.com/">DOWN?</a> 只要你看别人的示意图不会被绕晕就可以. 通常来说, 栈朝着<strong>低地址</strong>增长, 从这个意义上来说, 往下画是更多人的选择.</p>
 </blockquote>
 <p>当过程P执行过程Q时, 会把返回地址, 也就是<code>call</code>指令的下一句(记作A)压入栈中(PC++), Q返回时就会从A开始继续执行. 我们认为A是P栈帧的一部分. 对应的 <code>ret</code> 会将A从栈中弹出, 然后将<code>rip</code>设置为A.</p>
 <p>调用函数的时候怎么传入参数? 一般来说, 如果还有空闲的寄存器, 程序在调用过程Q之前, 在过程P, 会先将参数移动到对应的寄存器, 例如第一个参数会移动到指定寄存器<code>rdi</code>上(<code>rsi</code>和<code>rdx</code>以此类推), 然后在过程Q中调用这几个寄存器, “共享”过程中, 实际上就实现了参数的传递.</p>
@@ -172,13 +250,20 @@
 <p><strong>Q1:</strong> <code>push</code>指令到底是什么意思?<br><strong>A:</strong> <code>push</code>指令实际上可以通过更简单的指令模拟出来: <code>pushq %rbp</code> 等价于 <code>subq $8,%rsp</code>然后 <code>movq %rbp,(%rsp)</code>. 区别在于<code>pushq</code>指令占的字节数更少. 同理可以知道<code>pop</code>的含义.</p>
 <p><strong>Q2:</strong> 还有什么时候需要用到栈帧?<br><strong>A:</strong> 上面提到了, 如果寄存器不足够放置所有的本地数据, 就需要用栈去储存. 此外, 对一个临时变量取地址<code>&amp;</code>, 局部变量是数组或结构, 同样需要分配栈帧. 栈帧的具体分配可以查阅书.</p>
 </blockquote>
-<p>传递参数存在保护机制. 方才我们提到参数传入靠的是<code>push</code>和<code>pop</code>, 实际是参数的复制. 在此之外, 我们还有一组特殊的寄存器: <code>rbx</code>, <code>rbp</code>和 <code>r12 ~ r15</code>寄存器被称为<strong>被调用者保存</strong>寄存器. 在P调用Q的过程中, Q必须保护这些寄存器的值, 使得当Q返回P的时候与调用Q时是一样的.</p>
-<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="type">long</span> <span class="title function_">P</span><span class="params">(<span class="type">long</span> x, <span class="type">long</span> y)</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="type">long</span> u = Q(y);</span><br><span class="line">    <span class="type">long</span> v = Q(x);</span><br><span class="line">    <span class="keyword">return</span> u + v;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>第四行<code>sub $8,%rsp</code>是为了内存对齐. 第五行把<code>x</code>储存到了<code>rbp</code>寄存器上, 这样就不需要担心<code>rdi</code>寄存器后来被修改导致<code>x</code>丢失. 同样<code>rbx</code>储存了<code>Q(y)</code>的值, 这样就不用担心<code>rax</code>寄存器修改导致<code>Q(y)</code>的丢失.</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">// long P(long x, long y)</span><br><span class="line">// x in %rdi, y in %rsi</span><br><span class="line">   P:</span><br><span class="line">      pushq %rbp                Save %rbp</span><br><span class="line">      pushq %rbx                Save %rbx</span><br><span class="line">      subq $8, %rsp             Align stack frame</span><br><span class="line">      movq %rdi, %rbp           Save x</span><br><span class="line">      movq %rsi, %rdi           Move y to first argument</span><br><span class="line">      call Q                    Call Q(y)</span><br><span class="line">      movq %rax, %rbx           Save result</span><br><span class="line">      movq %rbp, %rdi           Move x to first argument</span><br><span class="line">      call Q                    Call Q(x)</span><br><span class="line">      addq %rbx, %rax           Add saved Q(y) to Q(x)</span><br><span class="line">      addq $8, %rsp             Deallocate last part of stack</span><br><span class="line">      popq %rbx                 Restore %rbx</span><br><span class="line">      popq %rbp                 Restore %rbp</span><br><span class="line">      ret</span><br></pre></td></tr></table></figure>
 <p>理解了函数调用的过程, 实际上你就可以实现将任何递归程序<a href="https://zhuanlan.zhihu.com/p/467871987">改写</a>成非递归! 比方说, 写一个非递归版的汉诺塔程序.</p>
 <p>此外, 关于栈帧有一个有趣的话题: 内存越界和缓冲区溢出. 主要是这样一个库函数<code>gets()</code>, 它可以无视字符串长度向字符数组写入, 引起内存越界, 小则修改栈上的值, 大则修改返回地址, 使得函数调用到奇怪的地方!</p>
 <p>有关这部分, CSAPP提供了<a href="http://csapp.cs.cmu.edu/3e/target1.tar">attack lab</a>, 让你模拟为一名hacker去攻击程序! 很有意思.</p>
+<p>在这里, 我们给出缓冲区溢出的一个例子:</p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="type">void</span> <span class="title function_">win</span><span class="params">(<span class="type">int</span> arg)</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">if</span>(arg == <span class="number">0x15213</span>) &#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;You win 1 cookie! Great start!\n&quot;</span>);</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(arg == <span class="number">0x18213</span>) &#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;You win 2 cookies! Woohoo!\n&quot;</span>);</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(arg == <span class="number">0x18613</span>) &#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;You win 3 cookies! That&#x27;s right!\n&quot;</span>);</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="type">void</span> <span class="title function_">solve</span><span class="params">(<span class="type">void</span>)</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">volatile</span> <span class="type">long</span> before = <span class="number">0xb4</span>;</span><br><span class="line">    <span class="type">char</span> buf[<span class="number">16</span>];</span><br><span class="line">    <span class="keyword">volatile</span> <span class="type">long</span> after = <span class="number">0xaf</span>;</span><br><span class="line"></span><br><span class="line">    gets(buf);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span>(before == <span class="number">0x3331323531</span>)</span><br><span class="line">        win(<span class="number">0x15213</span>);</span><br><span class="line">    <span class="keyword">if</span>(after == <span class="number">0x3331323831</span>)</span><br><span class="line">        win(<span class="number">0x18213</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>修改<code>after</code>的值, 这个其实不难做到. 按照临时变量在栈上的顺序, 首先<code>before</code>先压栈, 然后是<code>buf</code>, 最后是<code>after</code>. 又因为栈是朝内存低的方向生长的, 知<code>buf</code>超出的部分会影响到<code>before</code>的值. 具体在内存中是怎么分配的呢? 可以尝试反汇编调试一下:</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">Dump of assembler code for function solve:</span><br><span class="line">   0x00000000004006b5 &lt;+0&gt;:     sub    $0x38,%rsp</span><br><span class="line">   0x00000000004006b9 &lt;+4&gt;:     movq   $0xb4,0x28(%rsp)</span><br><span class="line">   0x00000000004006c2 &lt;+13&gt;:    movq   $0xaf,0x8(%rsp)</span><br><span class="line">   0x00000000004006cb &lt;+22&gt;:    lea    0x10(%rsp),%rdi</span><br><span class="line">   0x00000000004006d0 &lt;+27&gt;:    call   0x40073f &lt;Gets&gt;</span><br><span class="line">   0x00000000004006d5 &lt;+32&gt;:    mov    0x28(%rsp),%rdx</span><br><span class="line">   0x00000000004006da &lt;+37&gt;:    movabs $0x3331323531,%rax</span><br></pre></td></tr></table></figure>
+<p><code>buf</code> 在 <code>rsp+0x10</code> 的位置, <code>buf[16]</code> 在 <code>0x20</code>, 而 <code>0xb4</code> 在 <code>rsp+0x28</code> 的位置, 也就是要覆盖<code>before</code>的值还必须填充8个字节. 于是, 可以构造攻击字符串<code>00001111222233334444555515213</code>, 就可以获得1个cookie啦!</p>
+<p>想一想, 你可以怎么做, 来完成剩余的关卡? 例如, 修改<code>after</code>的值, 或者直接修改传递的<code>arg</code>参数值? 而这一切都可以通过缓冲区的溢出来实现! 如果你感兴趣, 可以下载CMU官网提供的rec:</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">wget https://www.cs.cmu.edu/~213/activities/rec5.tar</span><br><span class="line">tar xvf rec5.tar</span><br><span class="line"><span class="built_in">cd</span> rec5</span><br></pre></td></tr></table></figure>
+<p>补充一些细节:<br>传递参数存在保护机制. 方才我们提到参数传入靠的是<code>push</code>和<code>pop</code>, 实际是参数的复制. 在此之外, 我们还有一组特殊的寄存器: <code>rbx</code>, <code>rbp</code>和 <code>r12 ~ r15</code>寄存器被称为<strong>被调用者保存</strong>寄存器. 在P调用Q的过程中, Q必须保护这些寄存器的值, 使得当Q返回P的时候与调用Q时是一样的.</p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="type">long</span> <span class="title function_">P</span><span class="params">(<span class="type">long</span> x, <span class="type">long</span> y)</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="type">long</span> u = Q(y);</span><br><span class="line">    <span class="type">long</span> v = Q(x);</span><br><span class="line">    <span class="keyword">return</span> u + v;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>第四行<code>sub $8,%rsp</code>是为了内存对齐. 第五行把<code>x</code>储存到了<code>rbp</code>寄存器上, 这样就不需要担心<code>rdi</code>寄存器后来被修改导致<code>x</code>丢失. 同样<code>rbx</code>储存了<code>Q(y)</code>的值, 这样就不用担心<code>rax</code>寄存器修改导致<code>Q(y)</code>的丢失.</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">P:</span><br><span class="line">   pushq %rbp                Save %rbp</span><br><span class="line">   pushq %rbx                Save %rbx</span><br><span class="line">   subq $8, %rsp             Align stack frame</span><br><span class="line">   movq %rdi, %rbp           Save x</span><br><span class="line">   movq %rsi, %rdi           Move y to first argument</span><br><span class="line">   call Q                    Call Q(y)</span><br><span class="line">   movq %rax, %rbx           Save result</span><br><span class="line">   movq %rbp, %rdi           Move x to first argument</span><br><span class="line">   call Q                    Call Q(x)</span><br><span class="line">   addq %rbx, %rax           Add saved Q(y) to Q(x)</span><br><span class="line">   addq $8, %rsp             Deallocate last part of stack</span><br><span class="line">   popq %rbx                 Restore %rbx</span><br><span class="line">   popq %rbp                 Restore %rbp</span><br><span class="line">   ret</span><br></pre></td></tr></table></figure>
 ]]></content>
       <categories>
         <category>CSAPP</category>
@@ -187,82 +272,6 @@
         <tag>汇编</tag>
         <tag>CSAPP</tag>
         <tag>计算机系统</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>2022年终总结</title>
-    <url>/2022/12/31/2022%E5%B9%B4%E7%BB%88%E6%80%BB%E7%BB%93/</url>
-    <content><![CDATA[<p>你会用什么关键字概括2022年呢……<br>各种意义上的Twist. 人生的转折, 政策的转折, 世界的转折.<br>年初的时候还祝福今年诸事皆顺, 不过心意到了抽签抽到凶也没办法.</p>
-<span id="more"></span>
-<h2 id="人生的转折"><a href="#人生的转折" class="headerlink" title="人生的转折"></a>人生的转折</h2><h3 id="上半年"><a href="#上半年" class="headerlink" title="上半年"></a>上半年</h3><p>年初还在高三上的课堂, 年末大一上快结束了. 弹指一瞬所谓如此.</p>
-<p>今年的大事, 要说还是高考. 忍受了高中三年那非人的安排就为了一张文凭, 可有人还要把这个过程拉长到研究生阶段.<br>不过也没必要过分批判中学的应试教育. 虽然阴郁得让人抬不起头, 但回忆高中, 除了黑历史, 剩下快乐的也不少.<br>除此之外, 高中接受的通识教育是我受益最大的. 当我阳了以后, 那些学习的生物知识很庆幸还能用.</p>
-<p>最终去向是某财经211的CS专业. 一开始还在思考怎么自救. 现在想想, 自己的赛道还算广阔. 至少学历坎越过双非, 择业方向可金融可CS, 但最重要的是, 专业是自己喜欢的. 一想到自己下一个志愿的专业是机械电子我就魂打颤.</p>
-<h3 id="下半年"><a href="#下半年" class="headerlink" title="下半年"></a>下半年</h3><p>总结一下自己大一学的知识:</p>
-<ul>
-<li>更深入地学习了C语言</li>
-<li>学习了CMU CS15-213 CSAPP前3章+第五章 完成了data/bomb/attack lab<ul>
-<li>学习了数据的机器级表示</li>
-<li>用 wsl 作为 Linux 的开发环境</li>
-<li>比较全面地学习了x86-64的汇编 同时有逆向工程的一定能力</li>
-</ul>
-</li>
-<li>学习了MIT Missing Semester<ul>
-<li>学习到了很多实用工具 Git GDB Docker</li>
-</ul>
-</li>
-<li>加入了学校里一个组织的后端部</li>
-<li>搭建了自己的博客 Hexo+NexT</li>
-<li>初步学习了算法/数据结构</li>
-<li>数学微积分上册</li>
-</ul>
-<p>挺内疚的, 来大学的一个月, 非常勤勉, 天天跑图书馆, Github每天更新, 然后越到后面越咸鱼. 11月12月好像就没去过图书馆(</p>
-<p>剩下的学习时间大部分浪费在了那些通识基础课上.<br>没错, 说的就是你, 大学物理(<br>其实我的大一上还是比较悠闲的. 虽然每天早八, 但基本上下午没啥课. 下学期就不是这样了.</p>
-<p>感觉学了挺多编程相关的内容. 不过, 自己的编程能力仍然有待提高. 依然处于不STFW就寸步难行的阶段.</p>
-<h3 id="新年期许"><a href="#新年期许" class="headerlink" title="新年期许"></a>新年期许</h3><p>给自己的学习计划. 看看下学期能实现多少:<br>大一寒假: ACWing 算法基础课 + 每日一题<br>顺便打游戏+过了科二<br>主要提高自己的算法基础+编程能力</p>
-<p>大一下的学习计划: 这学期数学基础课比较多 多元微积分 离散数学 高等代数等<br>大概率学习时间会很压缩<br>程序课我选的 Python(另一个选项是JAVA) 对应 CS61A (Python) + SICP 狠狠地学<br>下学期顺便把 Berkeley 的 CS70 (Discrete Math) 刷完</p>
-<h2 id="政策的转折"><a href="#政策的转折" class="headerlink" title="政策的转折"></a>政策的转折</h2><p>今年政策风向的变动大家有目共睹. 如果可以, 不妨回顾这一年新闻的<a href="https://www.bilibili.com/video/BV1QM411C7kd/">合订本</a>.</p>
-<p>我们每个人都是疫情的亲历者.<br>武汉疫情爆发初期的寒假(2020年初)我待在温州, 没料想当时温州市区属于重灾区. 封在老家大概持续了3个月.<br>2021年的暑期, 常熟疫情, 线上网课.<br>2022年4月苏州疫情, 常熟的高中开始封校. 在学校隔绝学习了一个月, 第一次感到自己的压抑. 还记得五一还有各种节日自己窝在寝室里画画. 真的非常无聊的日子. 第一次学会玩象棋.<br>2022年8月, 四川高温限电, 我是月底到的程度, 此时限电基本结束. 9月, 成都疫情. 又封校了一个月.<br>2022年12月, 国家放开. 12月28日, 我感染了新冠, 近年来最难受的几天.</p>
-<p>本来以为能这辈子不感染, 结果下一秒打脸.</p>
-<h2 id="世界的转折"><a href="#世界的转折" class="headerlink" title="世界的转折"></a>世界的转折</h2>]]></content>
-      <categories>
-        <category>杂谈</category>
-      </categories>
-      <tags>
-        <tag>杂谈</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>简单的排序算法</title>
-    <url>/2023/01/05/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/</url>
-    <content><![CDATA[<p>我们介绍两个基于分治且 <code>O(nlogn)</code> 的排序算法: 快速排序和归并排序.<br>理解排序算法的最好方法是模拟, 手动模拟指针的移动, 感受数据是怎么逐渐变得有序的. 配合动图食用更佳.<br>两个算法困难的点在于边界分析. 不过记模板就可以了(</p>
-<span id="more"></span>
-<h2 id="快速排序"><a href="#快速排序" class="headerlink" title="快速排序"></a>快速排序</h2><h3 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h3><p>快速排序的核心要义: 任取一个数<code>x</code>作为<strong>基准值</strong>, <strong>调整<code>x</code>的左右区间</strong>, 使得左区间的值小于<code>x</code>, 右区间的值都大于<code>x</code>, 然后对这两个子区间<strong>递归调用</strong>.</p>
-<p>怎么调整区间:</p>
-<ul>
-<li><del>扫描并比较整个数组, 大于 <code>x</code> 的放在数组 <code>a</code>, 小于的放在 <code>b</code>, 最后再复制回去.</del>(空间开销大)</li>
-<li>双指针. <code>i</code> 从 <code>l</code> 开始移动, 确保 <code>q[l...i-1]</code> 比 <code>x</code> 小. 当遇到比 <code>x</code> 大的值, 就让这个值和 <code>j</code> 交换位置, 然后从后移动 <code>j</code> 指针, 确保 <code>q[j...r]</code> 比 <code>x</code> 大. 遇到比 <code>x</code> 小的值, 就再交换回去, 直到 <code>i</code>, <code>j</code> 相遇.</li>
-</ul>
-<p>这两个区间的值也可以等于<code>x</code>.<br>算法的正确性, 用<a href="https://www.acwing.com/solution/content/16777/">循环不变式</a>证明: <code>q[l..i] &lt;= x</code> 以及 <code>q[j..r] &gt;= x</code></p>
-<h3 id="性质"><a href="#性质" class="headerlink" title="性质"></a>性质</h3><p>朴素的快排是一种不稳定的排序方式.</p>
-<p>最优时间复杂度和平均时间复杂度为 $O(n \log n)$ (基准数是中位数的情况), 最差情况退化成冒泡排序 $O(n^2)$ (每一次基准数的选取都是最值).</p>
-<h3 id="模板"><a href="#模板" class="headerlink" title="模板"></a>模板</h3><p>来源: <a href="https://www.acwing.com/activity/content/code/content/39784/">AcWing 785. 快速排序</a></p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">quick_sort</span><span class="params">(<span class="type">int</span> q[], <span class="type">int</span> l, <span class="type">int</span> r)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(l &gt;= r) <span class="keyword">return</span>;</span><br><span class="line"></span><br><span class="line">    <span class="type">int</span> i = l - <span class="number">1</span>, j = r + <span class="number">1</span>, x = q[l + r &gt;&gt; <span class="number">1</span>];</span><br><span class="line">    <span class="keyword">while</span>(i &lt; j)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">do</span> i++; <span class="keyword">while</span>(q[i] &lt; x);</span><br><span class="line">        <span class="keyword">do</span> j--; <span class="keyword">while</span>(q[j] &gt; x);</span><br><span class="line">        <span class="keyword">if</span>(i &lt; j) <span class="built_in">swap</span>(q[i], q[j]);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="built_in">quick_sort</span>(q, l, j), <span class="built_in">quick_sort</span>(q, j + <span class="number">1</span>, r);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="归并排序"><a href="#归并排序" class="headerlink" title="归并排序"></a>归并排序</h2><p>归并排序是典范的分治思想的例子. 归并排序的核心要义是: 把数组一分为二, 一直分下去直到不能再分, 然后逐层合并两个有序的数组.</p>
-<p>用程序语言描述就是下面的代码:</p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">merge_sort</span><span class="params">(array)</span> </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (basecase) <span class="keyword">return</span>;</span><br><span class="line">  <span class="built_in">merge_sort</span>(left);</span><br><span class="line">  <span class="built_in">merge_sort</span>(right);</span><br><span class="line">  <span class="built_in">merge</span>(left, right);</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<p>核心是实现子程序 <code>merge</code>: 合并两个排好序的数组. 实现起来很简单, 用到了临时数组, 令 <code>tmp[k] = min(left[i], right[j])</code> 最后复制回原数组就可以了. 整个过程要用到三个指针, 分别指向临时数组, 以及两个排好序的数组.</p>
-<h3 id="板子"><a href="#板子" class="headerlink" title="板子"></a>板子</h3><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">merge_sort</span><span class="params">(<span class="type">int</span> q[], <span class="type">int</span> l, <span class="type">int</span> r)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(l &gt;= r)</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    <span class="type">int</span> mid = l + r &gt;&gt; <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">    <span class="built_in">merge_sort</span>(q, l, mid);</span><br><span class="line">    <span class="built_in">merge_sort</span>(q, mid + <span class="number">1</span>, r);</span><br><span class="line"></span><br><span class="line">    <span class="type">int</span> k = <span class="number">0</span>, i = l, j = mid + <span class="number">1</span>;</span><br><span class="line">    <span class="type">int</span> N = l + r - <span class="number">1</span>;</span><br><span class="line">    <span class="type">int</span> tmp[N];</span><br><span class="line"></span><br><span class="line">    <span class="keyword">while</span> (i &lt;= mid &amp;&amp; j &lt;= r)</span><br><span class="line">        tmp[k++] = (q[i] &lt;= q[j]) ? q[i++] : q[j++];</span><br><span class="line">    <span class="keyword">while</span>(i &lt;= mid)</span><br><span class="line">        tmp[k++] = q[i++];</span><br><span class="line">    <span class="keyword">while</span>(j &lt;= r)</span><br><span class="line">        tmp[k++] = q[j++];</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span>(i = <span class="number">1</span>, j = <span class="number">0</span>; i &lt;= r; i++, j++)</span><br><span class="line">        q[i] = tmp[j];   </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="应用"><a href="#应用" class="headerlink" title="应用"></a>应用</h3><p><a href="https://www.acwing.com/problem/content/790/">AcWing 788. 逆序对的数量</a></p>
-<p>用归并排序看待这个问题:<br>逆序对只存在三种情况, 在左半边, 在右半边, 或者横跨左右区间. 假设 <code>merge_sort</code> 能在排序的同时计算出逆序对的数量, 那么前两种情况等于递归调用 <code>merge_sort</code> 的值.<br>横跨左右区间的情况稍微比较复杂. 利用的是<code>merge</code>区间的单调性. 我们求的是<code>left</code>中每一个元素对应<code>right</code>中逆序对的数量. 假设我们找到了 <code>left[i] &gt; right[j]</code>, 那么一定有 <code>left[i...mid] &gt; right[j]</code>. 也就是说存在 <code>mid - i + 1</code> 个逆序对.</p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="function">LL <span class="title">merge_sort</span><span class="params">(<span class="type">int</span> q[], <span class="type">int</span> l, <span class="type">int</span> r)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(l &gt;= r) <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    <span class="type">int</span> mid = l + r &gt;&gt; <span class="number">1</span>;</span><br><span class="line">    LL res = <span class="built_in">merge_sort</span>(q, l, mid) + <span class="built_in">merge_sort</span>(q, mid + <span class="number">1</span>, r);</span><br><span class="line">    </span><br><span class="line">    <span class="type">int</span> k = <span class="number">0</span>, i = l, j = mid + <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">while</span>(i &lt;= mid &amp;&amp; j &lt;= r)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span>(q[i] &lt;= q[j])</span><br><span class="line">            tmp[k++] = q[i++];</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">        &#123;</span><br><span class="line">            res += mid - i + <span class="number">1</span>;</span><br><span class="line">            tmp[k++] = q[j++];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">while</span>(i &lt;= mid)</span><br><span class="line">        tmp[k++] = q[i++];</span><br><span class="line">    <span class="keyword">while</span>(j &lt;= r)</span><br><span class="line">        tmp[k++] = q[j++];</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span>(i = l, j = <span class="number">0</span>; i &lt;= r; i++, j++)</span><br><span class="line">        q[i] = tmp[j];</span><br><span class="line">    <span class="keyword">return</span> res;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>算法</category>
-      </categories>
-      <tags>
-        <tag>算法</tag>
-        <tag>排序</tag>
-        <tag>分治</tag>
       </tags>
   </entry>
 </search>

@@ -27,7 +27,7 @@
 <meta property="og:description" content="程序就是状态机。——jyy, on 2022 NJU OS Lecture 01  这句话道出了程序的本质. 实际上, 如今的计算机本质上就是通用图灵机, 而我们研究汇编语言就是研究程序在机器层面上的运行. 程序的进行依赖于rip寄存器, 它储存的值是当前运行的指令地址. 程序的进行实际上就是一条指令一条指令的移动(你可以在gdb里随时监控rip). 这和图灵机读写控制的方式本质上是一致的!">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2022-12-17T10:49:22.000Z">
-<meta property="article:modified_time" content="2022-12-17T13:13:19.149Z">
+<meta property="article:modified_time" content="2023-01-07T11:17:51.381Z">
 <meta property="article:author" content="Besthope">
 <meta property="article:tag" content="汇编">
 <meta property="article:tag" content="CSAPP">
@@ -236,9 +236,15 @@
         <i class="far fa-calendar"></i>
       </span>
       <span class="post-meta-item-text">发表于</span>
-      
 
-      <time title="创建时间：2022-12-17 18:49:22 / 修改时间：21:13:19" itemprop="dateCreated datePublished" datetime="2022-12-17T18:49:22+08:00">2022-12-17</time>
+      <time title="创建时间：2022-12-17 18:49:22" itemprop="dateCreated datePublished" datetime="2022-12-17T18:49:22+08:00">2022-12-17</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2023-01-07 19:17:51" itemprop="dateModified" datetime="2023-01-07T19:17:51+08:00">2023-01-07</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -257,14 +263,14 @@
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">本文字数：</span>
-      <span>2.3k</span>
+      <span>2.8k</span>
     </span>
     <span class="post-meta-item" title="阅读时长">
       <span class="post-meta-item-icon">
         <i class="far fa-clock"></i>
       </span>
       <span class="post-meta-item-text">阅读时长 &asymp;</span>
-      <span>8 分钟</span>
+      <span>10 分钟</span>
     </span>
 </div>
 
@@ -282,7 +288,7 @@
 <p>程序的进行依赖于<code>rip</code>寄存器, 它储存的值是当前运行的指令地址. 程序的进行实际上就是一条指令一条指令的移动(你可以在<code>gdb</code>里随时监控<code>rip</code>). 这和图灵机读写控制的方式本质上是一致的!</p>
 <span id="more"></span>
 <blockquote>
-<p>书中出示的汇编指令是<code>AT&amp;T</code>格式, 为<code>gcc</code>和<code>gdb</code>编译选项默认.<br>大部分情况下两种格式是互通的. 唯一值得注意的是读取顺序, 两者<strong>源操作数</strong>和<strong>目的操作数</strong>的顺序是<strong>反的</strong>. 例如下面的语句表示栈指针减8:</p>
+<p>书中出示的汇编指令是<code>AT&amp;T</code>格式, 为<code>gcc</code>和<code>gdb</code>编译选项默认.<br>如果不熟悉某一种风格的话, <code>set disassembly-flavor att</code>或者<code>intel</code>就可以切换成对应的反汇编风格啦.<br>大部分情况下两种格式是互通的. 唯一值得注意的是读取顺序, 两者<strong>源操作数</strong>和<strong>目的操作数</strong>的顺序是<strong>反的</strong>. 例如下面的语句表示栈指针减8:</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">subq     $8,%rsp             # ATT flavor</span><br><span class="line">sub      rsp,8               # Intel flavor</span><br></pre></td></tr></table></figure>
 </blockquote>
 <h2 id="访问值和访问地址"><a href="#访问值和访问地址" class="headerlink" title="访问值和访问地址"></a>访问值和访问地址</h2><p><code>%rsp</code> 表示 <code>rsp</code> 寄存器储存的值, 通常来说栈指针保存的是一个地址. 对于更一般的寄存器, 例如<code>rax</code>寄存器, 是可以保存值的, 而且通常是返回值. 我们用 $r_a$ 表示寄存器<code>a</code> 存储的值.<br>内存本质上是一个很长的数组, <strong>内存引用</strong>表示 $M[r_a]$, 例如 <code>(%rsp)</code>表示<code>*rsp</code>, 也就是<code>rsp</code> 寄存器储存地址上的值.</p>
@@ -301,7 +307,7 @@
 <p>区别下面的指令:</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mov    0x20(%rsp),%rbx </span><br><span class="line">lea    0x28(%rsp),%rax </span><br></pre></td></tr></table></figure>
 <p>其中<code>rbx</code>的值是内存地址<code>$rsp+32</code>上储存的值, <code>rax</code>现在是一个指针, 它的值是<code>$rsp+40</code>, 也就是一个内存地址.</p>
-<h2 id="控制语句"><a href="#控制语句" class="headerlink" title="控制语句"></a>控制语句</h2><p>跳转命令<code>jmp</code>等价于C中的<code>goto</code>.<br><code>if</code>语句对应条件跳转指令.<br>循环控制语句可以通过<code>if</code>和<code>goto</code>所模拟.</p>
+<h2 id="控制语句"><a href="#控制语句" class="headerlink" title="控制语句"></a>控制语句</h2><p>跳转命令<code>jmp</code>等价于C中的<code>goto</code>.<br><code>if</code>语句对应条件跳转指令.<br>循环控制语句都可以通过<code>if</code>和<code>goto</code>所模拟.</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">long</span> <span class="title function_">absdiff_se</span><span class="params">(<span class="type">long</span> x, <span class="type">long</span> y)</span> &#123;</span><br><span class="line">    <span class="type">long</span> res;</span><br><span class="line">    <span class="keyword">if</span> (x &lt; y) &#123;</span><br><span class="line">        res = y - x;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span> &#123;</span><br><span class="line">        res = x - y;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> res;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">/* x in %rdi, y in %rsi */</span><br><span class="line">absdiff_se:</span><br><span class="line">   cmpq %rsi, %rdi              ; x - y              </span><br><span class="line">   jge .L6                      ; if &gt;= goto .L6</span><br><span class="line">   movq %rsi, %rax              ; res = y</span><br><span class="line">   subq %rdi, %rax              ; res -= x</span><br><span class="line">   ret                          ; return</span><br><span class="line">.L6:                         </span><br><span class="line">   movq %rdi, %rax              ; res = x</span><br><span class="line">   subq %rsi, %rax              ; res -= y</span><br><span class="line">   ret                          ; return</span><br></pre></td></tr></table></figure>
 <p>判断条件(<code>if</code>括号内的语句)基于一组条件码寄存器, 通过<code>test</code>或<code>cmp</code>指令设置.</p>
@@ -311,17 +317,19 @@
 <p><code>jge</code>会先对条件码进行位运算, 这里:<code>~(SF ^ OF)</code>, 如果结果为<code>1</code>, 那么跳转, 否则程序继续执行下去.</p>
 </blockquote>
 <p>在实际阅读汇编代码的过程中, 可以忽略这部分细节, 明白程序按照条件跳转即可.</p>
-<p><code>-O1</code>级别以上的优化还会出现条件移动指令. 此处从略.</p>
-<p><code>do while</code> 作为最不常用的循环, 模拟方式却是最简单的. 它的流程就和它本身一致.</p>
+<p><code>-O1</code>级别以上的优化还会出现条件移动指令, 针对的是CPU条件预测的优化. 通常来说条件移动(<code>CMOV</code>类)指令可以用下面的C代码抽象:</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// v = test_expr ? then_expr : else_expr;</span></span><br><span class="line">v = then-expr;</span><br><span class="line">ve = <span class="keyword">else</span>-expr;</span><br><span class="line">t = test-expr;</span><br><span class="line"><span class="keyword">if</span> (!t) v = ve;</span><br></pre></td></tr></table></figure>
+<p>下面我们来讨论循环语句:<br><code>do while</code> 作为最不常用的循环, 模拟方式却是最简单的. 它的流程就和它本身一致.</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">loop:</span><br><span class="line">    body</span><br><span class="line">    t = test_expr;</span><br><span class="line">    <span class="keyword">if</span>(t)</span><br><span class="line">        <span class="keyword">goto</span> loop;</span><br></pre></td></tr></table></figure>
 <p>和<code>while</code>语句的区别是, <code>while</code>语句在进入之前会进行一次条件判断.</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">goto</span> test;</span><br><span class="line">loop:</span><br><span class="line">    body</span><br><span class="line">test:</span><br><span class="line">    t = test_expr;</span><br><span class="line">    <span class="keyword">if</span>(t)</span><br><span class="line">        <span class="keyword">goto</span> loop;</span><br></pre></td></tr></table></figure>
 <p>至于最常用的<code>for</code>语句, 它有等价的<code>while</code>表述, 此处从略.</p>
 <p>做完了要不要试试手? 要不要拆个<a target="_blank" rel="noopener" href="http://csapp.cs.cmu.edu/3e/bomb.tar">二进制炸弹</a>试试手:) 在Linux下输入下面的指令:</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">wget http://csapp.cs.cmu.edu/3e/bomb.tar</span><br><span class="line">tar xvf bomb.tar</span><br><span class="line"><span class="built_in">cd</span> bomb</span><br></pre></td></tr></table></figure>
+<p>你需要做的是<code>gdb bomb</code>然后对汇编代码进行分析, 然后给出拆弹必要的字符串! 在<code>bomb.c</code>给出了程序流, 你至少知道该在哪里打断点. 而函数具体如何实现, 这就得看你汇编的能力了!</p>
 <h2 id="函数调用的过程"><a href="#函数调用的过程" class="headerlink" title="函数调用的过程"></a>函数调用的过程</h2><p>函数调用的过程满足<strong>栈</strong>的前进后出(First in, Last out)原则.</p>
 <blockquote>
-<p><strong>Q:</strong> 怎么画函数栈帧的示意图? 是栈顶放最上面, 还是内存高位的一端放在最上面?<br><strong>A:</strong> 看个人习惯. <a target="_blank" rel="noopener" href="http://www.stackgrowsup.com/">UP?</a> 还是 <a target="_blank" rel="noopener" href="http://www.stackgrowsdown.com/">DOWN?</a> 只要你看别人的示意图不会被绕晕就可以.</p>
+<p><strong>Q:</strong> 怎么画函数栈帧的示意图? 是栈顶放最上面, 还是内存高位的一端放在最上面?<br><strong>A:</strong> 看个人习惯. <a target="_blank" rel="noopener" href="http://www.stackgrowsup.com/">UP?</a> 还是 <a target="_blank" rel="noopener" href="http://www.stackgrowsdown.com/">DOWN?</a> 只要你看别人的示意图不会被绕晕就可以. 通常来说, 栈朝着<strong>低地址</strong>增长, 从这个意义上来说, 往下画是更多人的选择.</p>
 </blockquote>
 <p>当过程P执行过程Q时, 会把返回地址, 也就是<code>call</code>指令的下一句(记作A)压入栈中(PC++), Q返回时就会从A开始继续执行. 我们认为A是P栈帧的一部分. 对应的 <code>ret</code> 会将A从栈中弹出, 然后将<code>rip</code>设置为A.</p>
 <p>调用函数的时候怎么传入参数? 一般来说, 如果还有空闲的寄存器, 程序在调用过程Q之前, 在过程P, 会先将参数移动到对应的寄存器, 例如第一个参数会移动到指定寄存器<code>rdi</code>上(<code>rsi</code>和<code>rdx</code>以此类推), 然后在过程Q中调用这几个寄存器, “共享”过程中, 实际上就实现了参数的传递.</p>
@@ -331,13 +339,20 @@
 <p><strong>Q1:</strong> <code>push</code>指令到底是什么意思?<br><strong>A:</strong> <code>push</code>指令实际上可以通过更简单的指令模拟出来: <code>pushq %rbp</code> 等价于 <code>subq $8,%rsp</code>然后 <code>movq %rbp,(%rsp)</code>. 区别在于<code>pushq</code>指令占的字节数更少. 同理可以知道<code>pop</code>的含义.</p>
 <p><strong>Q2:</strong> 还有什么时候需要用到栈帧?<br><strong>A:</strong> 上面提到了, 如果寄存器不足够放置所有的本地数据, 就需要用栈去储存. 此外, 对一个临时变量取地址<code>&amp;</code>, 局部变量是数组或结构, 同样需要分配栈帧. 栈帧的具体分配可以查阅书.</p>
 </blockquote>
-<p>传递参数存在保护机制. 方才我们提到参数传入靠的是<code>push</code>和<code>pop</code>, 实际是参数的复制. 在此之外, 我们还有一组特殊的寄存器: <code>rbx</code>, <code>rbp</code>和 <code>r12 ~ r15</code>寄存器被称为<strong>被调用者保存</strong>寄存器. 在P调用Q的过程中, Q必须保护这些寄存器的值, 使得当Q返回P的时候与调用Q时是一样的.</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">long</span> <span class="title function_">P</span><span class="params">(<span class="type">long</span> x, <span class="type">long</span> y)</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="type">long</span> u = Q(y);</span><br><span class="line">    <span class="type">long</span> v = Q(x);</span><br><span class="line">    <span class="keyword">return</span> u + v;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>第四行<code>sub $8,%rsp</code>是为了内存对齐. 第五行把<code>x</code>储存到了<code>rbp</code>寄存器上, 这样就不需要担心<code>rdi</code>寄存器后来被修改导致<code>x</code>丢失. 同样<code>rbx</code>储存了<code>Q(y)</code>的值, 这样就不用担心<code>rax</code>寄存器修改导致<code>Q(y)</code>的丢失.</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">// long P(long x, long y)</span><br><span class="line">// x in %rdi, y in %rsi</span><br><span class="line">   P:</span><br><span class="line">      pushq %rbp                Save %rbp</span><br><span class="line">      pushq %rbx                Save %rbx</span><br><span class="line">      subq $8, %rsp             Align stack frame</span><br><span class="line">      movq %rdi, %rbp           Save x</span><br><span class="line">      movq %rsi, %rdi           Move y to first argument</span><br><span class="line">      call Q                    Call Q(y)</span><br><span class="line">      movq %rax, %rbx           Save result</span><br><span class="line">      movq %rbp, %rdi           Move x to first argument</span><br><span class="line">      call Q                    Call Q(x)</span><br><span class="line">      addq %rbx, %rax           Add saved Q(y) to Q(x)</span><br><span class="line">      addq $8, %rsp             Deallocate last part of stack</span><br><span class="line">      popq %rbx                 Restore %rbx</span><br><span class="line">      popq %rbp                 Restore %rbp</span><br><span class="line">      ret</span><br></pre></td></tr></table></figure>
 <p>理解了函数调用的过程, 实际上你就可以实现将任何递归程序<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/467871987">改写</a>成非递归! 比方说, 写一个非递归版的汉诺塔程序.</p>
 <p>此外, 关于栈帧有一个有趣的话题: 内存越界和缓冲区溢出. 主要是这样一个库函数<code>gets()</code>, 它可以无视字符串长度向字符数组写入, 引起内存越界, 小则修改栈上的值, 大则修改返回地址, 使得函数调用到奇怪的地方!</p>
 <p>有关这部分, CSAPP提供了<a target="_blank" rel="noopener" href="http://csapp.cs.cmu.edu/3e/target1.tar">attack lab</a>, 让你模拟为一名hacker去攻击程序! 很有意思.</p>
+<p>在这里, 我们给出缓冲区溢出的一个例子:</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">void</span> <span class="title function_">win</span><span class="params">(<span class="type">int</span> arg)</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">if</span>(arg == <span class="number">0x15213</span>) &#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;You win 1 cookie! Great start!\n&quot;</span>);</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(arg == <span class="number">0x18213</span>) &#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;You win 2 cookies! Woohoo!\n&quot;</span>);</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(arg == <span class="number">0x18613</span>) &#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;You win 3 cookies! That&#x27;s right!\n&quot;</span>);</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="type">void</span> <span class="title function_">solve</span><span class="params">(<span class="type">void</span>)</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">volatile</span> <span class="type">long</span> before = <span class="number">0xb4</span>;</span><br><span class="line">    <span class="type">char</span> buf[<span class="number">16</span>];</span><br><span class="line">    <span class="keyword">volatile</span> <span class="type">long</span> after = <span class="number">0xaf</span>;</span><br><span class="line"></span><br><span class="line">    gets(buf);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span>(before == <span class="number">0x3331323531</span>)</span><br><span class="line">        win(<span class="number">0x15213</span>);</span><br><span class="line">    <span class="keyword">if</span>(after == <span class="number">0x3331323831</span>)</span><br><span class="line">        win(<span class="number">0x18213</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>修改<code>after</code>的值, 这个其实不难做到. 按照临时变量在栈上的顺序, 首先<code>before</code>先压栈, 然后是<code>buf</code>, 最后是<code>after</code>. 又因为栈是朝内存低的方向生长的, 知<code>buf</code>超出的部分会影响到<code>before</code>的值. 具体在内存中是怎么分配的呢? 可以尝试反汇编调试一下:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">Dump of assembler code for function solve:</span><br><span class="line">   0x00000000004006b5 &lt;+0&gt;:     sub    $0x38,%rsp</span><br><span class="line">   0x00000000004006b9 &lt;+4&gt;:     movq   $0xb4,0x28(%rsp)</span><br><span class="line">   0x00000000004006c2 &lt;+13&gt;:    movq   $0xaf,0x8(%rsp)</span><br><span class="line">   0x00000000004006cb &lt;+22&gt;:    lea    0x10(%rsp),%rdi</span><br><span class="line">   0x00000000004006d0 &lt;+27&gt;:    call   0x40073f &lt;Gets&gt;</span><br><span class="line">   0x00000000004006d5 &lt;+32&gt;:    mov    0x28(%rsp),%rdx</span><br><span class="line">   0x00000000004006da &lt;+37&gt;:    movabs $0x3331323531,%rax</span><br></pre></td></tr></table></figure>
+<p><code>buf</code> 在 <code>rsp+0x10</code> 的位置, <code>buf[16]</code> 在 <code>0x20</code>, 而 <code>0xb4</code> 在 <code>rsp+0x28</code> 的位置, 也就是要覆盖<code>before</code>的值还必须填充8个字节. 于是, 可以构造攻击字符串<code>00001111222233334444555515213</code>, 就可以获得1个cookie啦!</p>
+<p>想一想, 你可以怎么做, 来完成剩余的关卡? 例如, 修改<code>after</code>的值, 或者直接修改传递的<code>arg</code>参数值? 而这一切都可以通过缓冲区的溢出来实现! 如果你感兴趣, 可以下载CMU官网提供的rec:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">wget https://www.cs.cmu.edu/~213/activities/rec5.tar</span><br><span class="line">tar xvf rec5.tar</span><br><span class="line"><span class="built_in">cd</span> rec5</span><br></pre></td></tr></table></figure>
+<p>补充一些细节:<br>传递参数存在保护机制. 方才我们提到参数传入靠的是<code>push</code>和<code>pop</code>, 实际是参数的复制. 在此之外, 我们还有一组特殊的寄存器: <code>rbx</code>, <code>rbp</code>和 <code>r12 ~ r15</code>寄存器被称为<strong>被调用者保存</strong>寄存器. 在P调用Q的过程中, Q必须保护这些寄存器的值, 使得当Q返回P的时候与调用Q时是一样的.</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">long</span> <span class="title function_">P</span><span class="params">(<span class="type">long</span> x, <span class="type">long</span> y)</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="type">long</span> u = Q(y);</span><br><span class="line">    <span class="type">long</span> v = Q(x);</span><br><span class="line">    <span class="keyword">return</span> u + v;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>第四行<code>sub $8,%rsp</code>是为了内存对齐. 第五行把<code>x</code>储存到了<code>rbp</code>寄存器上, 这样就不需要担心<code>rdi</code>寄存器后来被修改导致<code>x</code>丢失. 同样<code>rbx</code>储存了<code>Q(y)</code>的值, 这样就不用担心<code>rax</code>寄存器修改导致<code>Q(y)</code>的丢失.</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">P:</span><br><span class="line">   pushq %rbp                Save %rbp</span><br><span class="line">   pushq %rbx                Save %rbx</span><br><span class="line">   subq $8, %rsp             Align stack frame</span><br><span class="line">   movq %rdi, %rbp           Save x</span><br><span class="line">   movq %rsi, %rdi           Move y to first argument</span><br><span class="line">   call Q                    Call Q(y)</span><br><span class="line">   movq %rax, %rbx           Save result</span><br><span class="line">   movq %rbp, %rdi           Move x to first argument</span><br><span class="line">   call Q                    Call Q(x)</span><br><span class="line">   addq %rbx, %rax           Add saved Q(y) to Q(x)</span><br><span class="line">   addq $8, %rsp             Deallocate last part of stack</span><br><span class="line">   popq %rbx                 Restore %rbx</span><br><span class="line">   popq %rbp                 Restore %rbp</span><br><span class="line">   ret</span><br></pre></td></tr></table></figure>
 
     </div>
 
@@ -372,7 +387,7 @@
 
 
 
-    <div class="comments utterances-container"></div>
+    <div class="comments gitalk-container"></div>
 </div>
   </main>
 
@@ -401,7 +416,7 @@
       <i class="fa fa-coffee"></i>
     </span>
       <span>站点阅读时长 &asymp;</span>
-    <span title="站点阅读时长">28 分钟</span>
+    <span title="站点阅读时长">30 分钟</span>
   </span>
 </div>
   <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/pisces/" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
@@ -439,8 +454,10 @@
 <script src="/js/third-party/math/mathjax.js"></script>
 
 
-<script class="next-config" data-name="utterances" type="application/json">{"enable":true,"repo":"Besthope-Official/Gittalk-repo","issue_term":"og:title","theme":"github-light"}</script>
-<script src="/js/third-party/comments/utterances.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/gitalk/1.8.0/gitalk.css" integrity="sha256-AJnUHL7dBv6PGaeyPQJcgQPDjt/Hn/PvYZde1iqfp8U=" crossorigin="anonymous">
+
+<script class="next-config" data-name="gitalk" type="application/json">{"enable":true,"github_id":"Besthope-Official","repo":"Gittalk-repo","client_id":"a30bcd98c6f188a719e4","client_secret":"bd7e03497f2a00490144e9e0756d511768622b0e","admin_user":"Besthope-Official","distraction_free_mode":true,"proxy":"https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token","language":"zh-CN","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/gitalk/1.8.0/gitalk.min.js","integrity":"sha256-MVK9MGD/XJaGyIghSVrONSnoXoGh3IFxLw0zfvzpxR4="},"path_md5":"53d45fade15974b0f1d542ae6458fcec"}</script>
+<script src="/js/third-party/comments/gitalk.js"></script>
 
 </body>
 <!-- click love -->
