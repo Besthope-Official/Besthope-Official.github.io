@@ -6,7 +6,7 @@
   <link href="http://example.com/atom.xml" rel="self"/>
   
   <link href="http://example.com/"/>
-  <updated>2023-01-05T14:17:25.024Z</updated>
+  <updated>2023-01-13T15:56:16.456Z</updated>
   <id>http://example.com/</id>
   
   <author>
@@ -15,6 +15,28 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>双指针算法</title>
+    <link href="http://example.com/2023/01/13/%E5%8F%8C%E6%8C%87%E9%92%88/"/>
+    <id>http://example.com/2023/01/13/%E5%8F%8C%E6%8C%87%E9%92%88/</id>
+    <published>2023-01-13T14:20:46.000Z</published>
+    <updated>2023-01-13T15:56:16.456Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;双指针核心要义是将含两层嵌套的朴素算法, 利用某种性质(例如单调性)将其优化成&lt;code&gt;O(n)&lt;/code&gt;的过程. 有种并发的感觉——一步能干两个人的事情, 就不要等另一个人干完再去做.&lt;/p&gt;
+&lt;p&gt;双指针一般会结合其他数据结构或者算法一起使用.&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="算法" scheme="http://example.com/categories/%E7%AE%97%E6%B3%95/"/>
+    
+    
+    <category term="算法" scheme="http://example.com/tags/%E7%AE%97%E6%B3%95/"/>
+    
+    <category term="双指针" scheme="http://example.com/tags/%E5%8F%8C%E6%8C%87%E9%92%88/"/>
+    
+  </entry>
   
   <entry>
     <title>简单的排序算法</title>
