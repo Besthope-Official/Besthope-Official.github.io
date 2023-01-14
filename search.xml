@@ -302,4 +302,49 @@
         <tag>双指针</tag>
       </tags>
   </entry>
+  <entry>
+    <title>2023寒假每日一题</title>
+    <url>/2023/01/14/%E5%AF%92%E5%81%87%E6%AF%8F%E6%97%A5%E4%B8%80%E9%A2%98/</url>
+    <content><![CDATA[<p>收录一些寒假做的题目. 题目来源: <a href="https://www.acwing.com/activity/content/introduction/2712/">寒假每日一题2023</a><br>我才不是水题大师呢, 因为蒟蒻所以只能做这些入门题 (</p>
+<span id="more"></span>
+<h2 id="USACO-2021-December-Contest-Bronze-孤独的照片"><a href="#USACO-2021-December-Contest-Bronze-孤独的照片" class="headerlink" title="USACO 2021 December Contest Bronze 孤独的照片"></a>USACO 2021 December Contest Bronze 孤独的照片</h2><p>导航: <a href="http://www.usaco.org/index.php?page=viewproblem2&amp;cpid=1155&amp;lang=zh">USACO 2021 December Contest, Bronze Problem 1. Lonely Photo</a></p>
+<p>题目等价于: 长度大于等于3, 且子串中两种字符中的一种, 数量小于等于1, 求这些子串的数目. 示例: <code>GHGHG</code> 输出 <code>3</code>, 其中 <code>GHG</code>, <code>HGH</code>, <code>GHG</code> 就是题目要求的.</p>
+<p>暴力枚举会超时. 自己思考这个问题, 你会发现这道题实际上是个<strong>排列组合问题</strong>. 高考数学遇到求 <code>GGGGHGGGG</code> 符合题目条件的子串, 你会怎么做? 分类讨论, 然后利用乘法原理:</p>
+<ul>
+<li><code>H</code> 左边连续的 <code>G</code> 有 4 个, 右边连续的 <code>G</code> 有 4 个.</li>
+<li>两边可以任选连续个数的 <code>G</code>, 左边可以不选, 也可以选1个, 一直到4个<code>G</code>; 右边也是同样的道理.<ul>
+<li>如果左右各选一个 <code>G</code>, 最小子串为 <code>GHG</code>, 剩下各边还有 <code>3</code> 个连续的 <code>G</code>, 可以不选, 或者选1个, 一直到3个, 依乘法原理有 <code>4 * 4 = 16</code>.</li>
+<li>如果 <code>H</code> 作为子串的右端点, 最短子串为 <code>GGH</code>, 剩下可以不选, 或者选1个或2个. 那么有 <code>4 - 1 = 3</code> 种情况.</li>
+<li>如果 <code>H</code> 作为子串的左端点, 本例中有 <code>4 - 1 = 3</code> 种情况.</li>
+</ul>
+</li>
+<li>一共有 <code>16 + 3 + 3 = 22</code> 种情况.</li>
+</ul>
+<p>推广: <code>ans = l * r + l - 1 + r - 1</code>, 其中 <code>l</code> 表示”孤独”字符左边连续的另一字符的数量, <code>r</code> 同理.<br>一个问题是, 对于”孤独”字符处于端点的情况, <code>l - 1</code> 必须大于等于<code>2</code>, 否则构成不了最短子串. 因此可以做一个小操作: <code>max(l - 1, 0)</code>.<br>然后依次遍历整个数组.</p>
+<p>通过数学做法, 计算每一个字符和左右满足的子串, 时间复杂度压到了<code>O(1)</code>.</p>
+<p>接下来是获取每一个字符对应的 <code>l</code> 和 <code>r</code>. 用 <code>g</code> 表示连续遇到的 <code>G</code>, <code>h</code> 表示连续遇到的 <code>H</code>.</p>
+<ul>
+<li>如果下一个字符不同, 假设当前字符为 <code>G</code>, 下一个字符为 <code>H</code>, 那么将 <code>g</code> 储存在 <code>l[i]</code> 或者 <code>r[i]</code>, 然后 <code>g</code> 归零, 因为不再连续.</li>
+<li>如果下一个字符相同, 那么 <code>g</code> 或者 <code>h</code> 自增, 然后将 <code>g</code>(或者 <code>h</code>) 存储在 <code>l</code> 或者 <code>r</code> 中.</li>
+</ul>
+<p>本题也需要注意卡 <code>int</code>.</p>
+<h2 id="USACO-2022-February-Contest-Bronze-上课睡觉"><a href="#USACO-2022-February-Contest-Bronze-上课睡觉" class="headerlink" title="USACO 2022 February Contest Bronze 上课睡觉"></a>USACO 2022 February Contest Bronze 上课睡觉</h2><p>导航: <a href="http://www.usaco.org/index.php?page=viewproblem2&amp;cpid=1203&amp;lang=zh">USACO 2022 February Contest, Bronze</a></p>
+<p>本地化导航: <a href="https://www.acwing.com/problem/content/description/4369/">AcWing 4366. 上课睡觉</a></p>
+<p>题目要求: 合并, 石子堆集合中的每堆石子的数量都相同</p>
+<p>假设总数 <code>sum</code> 的石子堆可以被平分成 <code>i</code> 堆, 每堆石子的个数为 <code>cnt</code>, 且易知 <code>cnt = sum / i</code>.<br>因为每次合并操作会使得石子堆的个数减一, 那么平分成 <code>i</code> 堆需要的操作数为 <code>n - i</code>, 所以最终输出的答案为 <code>n - i</code>. 我们只需要<strong>枚举找到这个最大的 <code>i</code></strong> 即可.<br>判断石子堆能否合并, 题目给出了一个良好的性质: <strong>仅可以</strong>合并两个<strong>相邻</strong>的元素, 也就是说, 合并的部分是一段连续的区间, 我们就可以用一个变量 <code>s</code> 来累加石子堆, 从 <code>a[0]</code> 开始累加, 并判断如果 <code>s == cnt</code>, 那么重置 <code>s = 0</code>; 如果大于 <code>0</code>, 说明我们假设的 <code>cnt</code> 不成立. 如果能够遍历完 <code>a</code>, 则说明可以平分成 <code>i</code> 份.<br>本题一定有解, 因为 <code>i = 1</code> 一定成立.</p>
+<h2 id="USACO-2022-December-Contest-Bronze-奶牛大学"><a href="#USACO-2022-December-Contest-Bronze-奶牛大学" class="headerlink" title="USACO 2022 December Contest Bronze 奶牛大学"></a>USACO 2022 December Contest Bronze 奶牛大学</h2><p>导航: <a href="http://www.usaco.org/index.php?page=viewproblem2&amp;cpid=1251">USACO 2022 December Contest, Bronze Problem 1. Cow College</a></p>
+<p>我们会首先会对输入进行排序, 使得 $c_0 \leqslant c_1 \leqslant c_2 \cdots \leqslant c_n$, 方便我们进一步讨论.</p>
+<p>首先可以证明, 选取的学费 $x \in \{c_0, c_1, \cdots, c_n \}$. 可以反证. 假设 $c_{i}&lt;x&lt;c_{i+1}$, 那么收取的总费用 $y = x\cdot (n - i) &lt; c_{i}\cdot(n - i)$, 需要比较的仅是 $c_{i}$ 和 $c_{i+1}$ 情况下的收取总费用. 对 $c$ 从 0 到 n 枚举即可.</p>
+<p>这题会卡<code>int</code>, 算收取总费用的时候要转换成<code>long long</code>.</p>
+]]></content>
+      <categories>
+        <category>算法</category>
+      </categories>
+      <tags>
+        <tag>算法</tag>
+        <tag>刷题</tag>
+        <tag>数论</tag>
+        <tag>枚举</tag>
+      </tags>
+  </entry>
 </search>

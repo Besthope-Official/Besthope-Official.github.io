@@ -6,7 +6,7 @@
   <link href="http://example.com/atom.xml" rel="self"/>
   
   <link href="http://example.com/"/>
-  <updated>2023-01-13T15:56:16.456Z</updated>
+  <updated>2023-01-14T15:39:39.512Z</updated>
   <id>http://example.com/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>2023寒假每日一题</title>
+    <link href="http://example.com/2023/01/14/%E5%AF%92%E5%81%87%E6%AF%8F%E6%97%A5%E4%B8%80%E9%A2%98/"/>
+    <id>http://example.com/2023/01/14/%E5%AF%92%E5%81%87%E6%AF%8F%E6%97%A5%E4%B8%80%E9%A2%98/</id>
+    <published>2023-01-14T12:45:49.000Z</published>
+    <updated>2023-01-14T15:39:39.512Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;收录一些寒假做的题目. 题目来源: &lt;a href=&quot;https://www.acwing.com/activity/content/introduction/2712/&quot;&gt;寒假每日一题2023&lt;/a&gt;&lt;br&gt;我才不是水题大师呢, 因为蒟蒻所以只能做这些入门题 (&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="算法" scheme="http://example.com/categories/%E7%AE%97%E6%B3%95/"/>
+    
+    
+    <category term="算法" scheme="http://example.com/tags/%E7%AE%97%E6%B3%95/"/>
+    
+    <category term="刷题" scheme="http://example.com/tags/%E5%88%B7%E9%A2%98/"/>
+    
+    <category term="数论" scheme="http://example.com/tags/%E6%95%B0%E8%AE%BA/"/>
+    
+    <category term="枚举" scheme="http://example.com/tags/%E6%9E%9A%E4%B8%BE/"/>
+    
+  </entry>
   
   <entry>
     <title>双指针算法</title>

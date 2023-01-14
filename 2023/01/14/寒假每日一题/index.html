@@ -19,29 +19,31 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Pisces","darkmode":false,"version":"8.14.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":true,"style":null},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
 
-    <meta name="description" content="双指针核心要义是将含两层嵌套的朴素算法, 利用某种性质(例如单调性)将其优化成O(n)的过程. 有种并发的感觉——一步能干两个人的事情, 就不要等另一个人干完再去做. 双指针一般会结合其他数据结构或者算法一起使用.">
+    <meta name="description" content="收录一些寒假做的题目. 题目来源: 寒假每日一题2023我才不是水题大师呢, 因为蒟蒻所以只能做这些入门题 (">
 <meta property="og:type" content="article">
-<meta property="og:title" content="双指针算法">
-<meta property="og:url" content="http://example.com/2023/01/13/%E5%8F%8C%E6%8C%87%E9%92%88/index.html">
+<meta property="og:title" content="2023寒假每日一题">
+<meta property="og:url" content="http://example.com/2023/01/14/%E5%AF%92%E5%81%87%E6%AF%8F%E6%97%A5%E4%B8%80%E9%A2%98/index.html">
 <meta property="og:site_name" content="Besthope&#39;s Blog">
-<meta property="og:description" content="双指针核心要义是将含两层嵌套的朴素算法, 利用某种性质(例如单调性)将其优化成O(n)的过程. 有种并发的感觉——一步能干两个人的事情, 就不要等另一个人干完再去做. 双指针一般会结合其他数据结构或者算法一起使用.">
+<meta property="og:description" content="收录一些寒假做的题目. 题目来源: 寒假每日一题2023我才不是水题大师呢, 因为蒟蒻所以只能做这些入门题 (">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2023-01-13T14:20:46.000Z">
-<meta property="article:modified_time" content="2023-01-13T15:56:16.456Z">
+<meta property="article:published_time" content="2023-01-14T12:45:49.000Z">
+<meta property="article:modified_time" content="2023-01-14T15:39:39.512Z">
 <meta property="article:author" content="Besthope">
 <meta property="article:tag" content="算法">
-<meta property="article:tag" content="双指针">
+<meta property="article:tag" content="刷题">
+<meta property="article:tag" content="数论">
+<meta property="article:tag" content="枚举">
 <meta name="twitter:card" content="summary">
 
 
-<link rel="canonical" href="http://example.com/2023/01/13/%E5%8F%8C%E6%8C%87%E9%92%88/">
+<link rel="canonical" href="http://example.com/2023/01/14/%E5%AF%92%E5%81%87%E6%AF%8F%E6%97%A5%E4%B8%80%E9%A2%98/">
 
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://example.com/2023/01/13/%E5%8F%8C%E6%8C%87%E9%92%88/","path":"2023/01/13/双指针/","title":"双指针算法"}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://example.com/2023/01/14/%E5%AF%92%E5%81%87%E6%AF%8F%E6%97%A5%E4%B8%80%E9%A2%98/","path":"2023/01/14/寒假每日一题/","title":"2023寒假每日一题"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
-<title>双指针算法 | Besthope's Blog</title>
+<title>2023寒假每日一题 | Besthope's Blog</title>
   
 
 
@@ -144,7 +146,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%80%9A%E7%94%A8%E6%A8%A1%E6%9D%BF"><span class="nav-number">1.</span> <span class="nav-text">通用模板</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%8C%E6%8C%87%E9%92%88%E5%BA%94%E7%94%A8"><span class="nav-number">2.</span> <span class="nav-text">双指针应用</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9C%80%E9%95%BF%E8%BF%9E%E7%BB%AD%E4%B8%8D%E9%87%8D%E5%A4%8D%E5%AD%90%E5%BA%8F%E5%88%97"><span class="nav-number">2.1.</span> <span class="nav-text">最长连续不重复子序列</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%95%B0%E7%BB%84%E5%85%83%E7%B4%A0%E7%9A%84%E7%9B%AE%E6%A0%87%E5%92%8C"><span class="nav-number">2.2.</span> <span class="nav-text">数组元素的目标和</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%88%A4%E6%96%AD%E5%AD%90%E5%BA%8F%E5%88%97"><span class="nav-number">2.3.</span> <span class="nav-text">判断子序列</span></a></li></ol></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#USACO-2021-December-Contest-Bronze-%E5%AD%A4%E7%8B%AC%E7%9A%84%E7%85%A7%E7%89%87"><span class="nav-number">1.</span> <span class="nav-text">USACO 2021 December Contest Bronze 孤独的照片</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#USACO-2022-February-Contest-Bronze-%E4%B8%8A%E8%AF%BE%E7%9D%A1%E8%A7%89"><span class="nav-number">2.</span> <span class="nav-text">USACO 2022 February Contest Bronze 上课睡觉</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#USACO-2022-December-Contest-Bronze-%E5%A5%B6%E7%89%9B%E5%A4%A7%E5%AD%A6"><span class="nav-number">3.</span> <span class="nav-text">USACO 2022 December Contest Bronze 奶牛大学</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -207,7 +209,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2023/01/13/%E5%8F%8C%E6%8C%87%E9%92%88/">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2023/01/14/%E5%AF%92%E5%81%87%E6%AF%8F%E6%97%A5%E4%B8%80%E9%A2%98/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/bocchi.png">
@@ -220,12 +222,12 @@
     </span>
 
     <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="双指针算法 | Besthope's Blog">
+      <meta itemprop="name" content="2023寒假每日一题 | Besthope's Blog">
       <meta itemprop="description" content="">
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          双指针算法
+          2023寒假每日一题
         </h1>
 
         <div class="post-meta-container">
@@ -237,7 +239,7 @@
       <span class="post-meta-item-text">发表于</span>
       
 
-      <time title="创建时间：2023-01-13 22:20:46 / 修改时间：23:56:16" itemprop="dateCreated datePublished" datetime="2023-01-13T22:20:46+08:00">2023-01-13</time>
+      <time title="创建时间：2023-01-14 20:45:49 / 修改时间：23:39:39" itemprop="dateCreated datePublished" datetime="2023-01-14T20:45:49+08:00">2023-01-14</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -256,14 +258,14 @@
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">本文字数：</span>
-      <span>430</span>
+      <span>1.1k</span>
     </span>
     <span class="post-meta-item" title="阅读时长">
       <span class="post-meta-item-icon">
         <i class="far fa-clock"></i>
       </span>
       <span class="post-meta-item-text">阅读时长 &asymp;</span>
-      <span>2 分钟</span>
+      <span>4 分钟</span>
     </span>
 </div>
 
@@ -274,22 +276,37 @@
     
     
     <div class="post-body" itemprop="articleBody">
-        <p>双指针核心要义是将含两层嵌套的朴素算法, 利用某种性质(例如单调性)将其优化成<code>O(n)</code>的过程. 有种并发的感觉——一步能干两个人的事情, 就不要等另一个人干完再去做.</p>
-<p>双指针一般会结合其他数据结构或者算法一起使用.</p>
+        <p>收录一些寒假做的题目. 题目来源: <a target="_blank" rel="noopener" href="https://www.acwing.com/activity/content/introduction/2712/">寒假每日一题2023</a><br>我才不是水题大师呢, 因为蒟蒻所以只能做这些入门题 (</p>
 <span id="more"></span>
-<h2 id="通用模板"><a href="#通用模板" class="headerlink" title="通用模板"></a>通用模板</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>, j = <span class="number">0</span>; i &lt; n; i++)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="comment">// 也可能是 j = n, 那么条件改为 j &gt; i, 以及 j--</span></span><br><span class="line">    <span class="keyword">while</span> (j &lt; i &amp;&amp; <span class="built_in">check</span>(i, j))</span><br><span class="line">        j++;</span><br><span class="line">    <span class="comment">// 每道题目的具体逻辑</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="双指针应用"><a href="#双指针应用" class="headerlink" title="双指针应用"></a>双指针应用</h2><h3 id="最长连续不重复子序列"><a href="#最长连续不重复子序列" class="headerlink" title="最长连续不重复子序列"></a>最长连续不重复子序列</h3><p><a target="_blank" rel="noopener" href="https://www.acwing.com/problem/content/description/801/">AcWing 799. 最长连续不重复子序列</a></p>
-<p>朴素算法:</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; n; i++)</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> j = <span class="number">0</span>; j &lt;= i; j++)</span><br><span class="line">        <span class="keyword">if</span> (<span class="built_in">check</span>(v1, j, i))</span><br><span class="line">            res = <span class="built_in">max</span>(res, i - j + <span class="number">1</span>);</span><br><span class="line"><span class="comment">// 检查 [l, r] 区间上有无重复元素</span></span><br><span class="line"><span class="function"><span class="type">bool</span> <span class="title">check</span><span class="params">(vector&lt;<span class="type">int</span>&gt;&amp; v1, <span class="type">int</span> l, <span class="type">int</span> r)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = l + <span class="number">1</span>; i &lt;= r; i++)</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> j = l; j &lt; i; j++)</span><br><span class="line">            <span class="keyword">if</span> (v1[i] == v1[j])</span><br><span class="line">                <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>换用双指针(有点hashmap的感觉):</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>, j = <span class="number">0</span>; i &lt; n; i++)</span><br><span class="line">&#123;</span><br><span class="line">    s[a[i]]++;          <span class="comment">// a[i]出现的次数(标记)加一</span></span><br><span class="line">    <span class="keyword">while</span> (j &lt; i &amp;&amp; s[a[i]] &gt; <span class="number">1</span>)</span><br><span class="line">        s[a[j++]]--;    <span class="comment">// 如果存在重复元素 标记减一 j 右移 </span></span><br><span class="line">    res = <span class="built_in">max</span>(res, i - j + <span class="number">1</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="数组元素的目标和"><a href="#数组元素的目标和" class="headerlink" title="数组元素的目标和"></a>数组元素的目标和</h3><p><a target="_blank" rel="noopener" href="https://www.acwing.com/problem/content/802/">AcWing 800. 数组元素的目标和</a></p>
-<p>朴素做法:</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">0</span>; i &lt; n; i++)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> j = <span class="number">0</span>; j &lt; m; j++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span>(A[i] + B[j] == x)</span><br><span class="line">            cout &lt;&lt; i &lt;&lt; <span class="string">&#x27; &#x27;</span> &lt;&lt; j &lt;&lt; endl;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>双指针:</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">0</span>, j = m - <span class="number">1</span>; i &lt; n; i++)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">while</span> (j &gt;= <span class="number">0</span> &amp;&amp; A[i] + B[j] &gt; x)</span><br><span class="line">        j--;</span><br><span class="line">    <span class="keyword">if</span>(j &gt;= <span class="number">0</span> &amp;&amp; A[i] + B[j] == x)</span><br><span class="line">        cout &lt;&lt; i &lt;&lt; <span class="string">&#x27; &#x27;</span> &lt;&lt; j &lt;&lt; endl;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="判断子序列"><a href="#判断子序列" class="headerlink" title="判断子序列"></a>判断子序列</h3><p><a target="_blank" rel="noopener" href="https://www.acwing.com/problem/content/2818/">AcWing 2816. 判断子序列</a></p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> i, j;</span><br><span class="line"><span class="keyword">for</span>(i = <span class="number">0</span>, j = <span class="number">0</span>; j &lt; m; j++)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">if</span>(i &lt; n &amp;&amp; a[i] == b[j])</span><br><span class="line">        i++;</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">printf</span>(<span class="string">&quot;%s\n&quot;</span>, (i == n) ? <span class="string">&quot;Yes&quot;</span> : <span class="string">&quot;No&quot;</span>);</span><br></pre></td></tr></table></figure>
+<h2 id="USACO-2021-December-Contest-Bronze-孤独的照片"><a href="#USACO-2021-December-Contest-Bronze-孤独的照片" class="headerlink" title="USACO 2021 December Contest Bronze 孤独的照片"></a>USACO 2021 December Contest Bronze 孤独的照片</h2><p>导航: <a target="_blank" rel="noopener" href="http://www.usaco.org/index.php?page=viewproblem2&amp;cpid=1155&amp;lang=zh">USACO 2021 December Contest, Bronze Problem 1. Lonely Photo</a></p>
+<p>题目等价于: 长度大于等于3, 且子串中两种字符中的一种, 数量小于等于1, 求这些子串的数目. 示例: <code>GHGHG</code> 输出 <code>3</code>, 其中 <code>GHG</code>, <code>HGH</code>, <code>GHG</code> 就是题目要求的.</p>
+<p>暴力枚举会超时. 自己思考这个问题, 你会发现这道题实际上是个<strong>排列组合问题</strong>. 高考数学遇到求 <code>GGGGHGGGG</code> 符合题目条件的子串, 你会怎么做? 分类讨论, 然后利用乘法原理:</p>
+<ul>
+<li><code>H</code> 左边连续的 <code>G</code> 有 4 个, 右边连续的 <code>G</code> 有 4 个.</li>
+<li>两边可以任选连续个数的 <code>G</code>, 左边可以不选, 也可以选1个, 一直到4个<code>G</code>; 右边也是同样的道理.<ul>
+<li>如果左右各选一个 <code>G</code>, 最小子串为 <code>GHG</code>, 剩下各边还有 <code>3</code> 个连续的 <code>G</code>, 可以不选, 或者选1个, 一直到3个, 依乘法原理有 <code>4 * 4 = 16</code>.</li>
+<li>如果 <code>H</code> 作为子串的右端点, 最短子串为 <code>GGH</code>, 剩下可以不选, 或者选1个或2个. 那么有 <code>4 - 1 = 3</code> 种情况.</li>
+<li>如果 <code>H</code> 作为子串的左端点, 本例中有 <code>4 - 1 = 3</code> 种情况.</li>
+</ul>
+</li>
+<li>一共有 <code>16 + 3 + 3 = 22</code> 种情况.</li>
+</ul>
+<p>推广: <code>ans = l * r + l - 1 + r - 1</code>, 其中 <code>l</code> 表示”孤独”字符左边连续的另一字符的数量, <code>r</code> 同理.<br>一个问题是, 对于”孤独”字符处于端点的情况, <code>l - 1</code> 必须大于等于<code>2</code>, 否则构成不了最短子串. 因此可以做一个小操作: <code>max(l - 1, 0)</code>.<br>然后依次遍历整个数组.</p>
+<p>通过数学做法, 计算每一个字符和左右满足的子串, 时间复杂度压到了<code>O(1)</code>.</p>
+<p>接下来是获取每一个字符对应的 <code>l</code> 和 <code>r</code>. 用 <code>g</code> 表示连续遇到的 <code>G</code>, <code>h</code> 表示连续遇到的 <code>H</code>.</p>
+<ul>
+<li>如果下一个字符不同, 假设当前字符为 <code>G</code>, 下一个字符为 <code>H</code>, 那么将 <code>g</code> 储存在 <code>l[i]</code> 或者 <code>r[i]</code>, 然后 <code>g</code> 归零, 因为不再连续.</li>
+<li>如果下一个字符相同, 那么 <code>g</code> 或者 <code>h</code> 自增, 然后将 <code>g</code>(或者 <code>h</code>) 存储在 <code>l</code> 或者 <code>r</code> 中.</li>
+</ul>
+<p>本题也需要注意卡 <code>int</code>.</p>
+<h2 id="USACO-2022-February-Contest-Bronze-上课睡觉"><a href="#USACO-2022-February-Contest-Bronze-上课睡觉" class="headerlink" title="USACO 2022 February Contest Bronze 上课睡觉"></a>USACO 2022 February Contest Bronze 上课睡觉</h2><p>导航: <a target="_blank" rel="noopener" href="http://www.usaco.org/index.php?page=viewproblem2&amp;cpid=1203&amp;lang=zh">USACO 2022 February Contest, Bronze</a></p>
+<p>本地化导航: <a target="_blank" rel="noopener" href="https://www.acwing.com/problem/content/description/4369/">AcWing 4366. 上课睡觉</a></p>
+<p>题目要求: 合并, 石子堆集合中的每堆石子的数量都相同</p>
+<p>假设总数 <code>sum</code> 的石子堆可以被平分成 <code>i</code> 堆, 每堆石子的个数为 <code>cnt</code>, 且易知 <code>cnt = sum / i</code>.<br>因为每次合并操作会使得石子堆的个数减一, 那么平分成 <code>i</code> 堆需要的操作数为 <code>n - i</code>, 所以最终输出的答案为 <code>n - i</code>. 我们只需要<strong>枚举找到这个最大的 <code>i</code></strong> 即可.<br>判断石子堆能否合并, 题目给出了一个良好的性质: <strong>仅可以</strong>合并两个<strong>相邻</strong>的元素, 也就是说, 合并的部分是一段连续的区间, 我们就可以用一个变量 <code>s</code> 来累加石子堆, 从 <code>a[0]</code> 开始累加, 并判断如果 <code>s == cnt</code>, 那么重置 <code>s = 0</code>; 如果大于 <code>0</code>, 说明我们假设的 <code>cnt</code> 不成立. 如果能够遍历完 <code>a</code>, 则说明可以平分成 <code>i</code> 份.<br>本题一定有解, 因为 <code>i = 1</code> 一定成立.</p>
+<h2 id="USACO-2022-December-Contest-Bronze-奶牛大学"><a href="#USACO-2022-December-Contest-Bronze-奶牛大学" class="headerlink" title="USACO 2022 December Contest Bronze 奶牛大学"></a>USACO 2022 December Contest Bronze 奶牛大学</h2><p>导航: <a target="_blank" rel="noopener" href="http://www.usaco.org/index.php?page=viewproblem2&amp;cpid=1251">USACO 2022 December Contest, Bronze Problem 1. Cow College</a></p>
+<p>我们会首先会对输入进行排序, 使得 $c_0 \leqslant c_1 \leqslant c_2 \cdots \leqslant c_n$, 方便我们进一步讨论.</p>
+<p>首先可以证明, 选取的学费 $x \in \{c_0, c_1, \cdots, c_n \}$. 可以反证. 假设 $c_{i}&lt;x&lt;c_{i+1}$, 那么收取的总费用 $y = x\cdot (n - i) &lt; c_{i}\cdot(n - i)$, 需要比较的仅是 $c_{i}$ 和 $c_{i+1}$ 情况下的收取总费用. 对 $c$ 从 0 到 n 枚举即可.</p>
+<p>这题会卡<code>int</code>, 算收取总费用的时候要转换成<code>long long</code>.</p>
 
     </div>
 
@@ -300,21 +317,20 @@
     <footer class="post-footer">
           <div class="post-tags">
               <a href="/tags/%E7%AE%97%E6%B3%95/" rel="tag"># 算法</a>
-              <a href="/tags/%E5%8F%8C%E6%8C%87%E9%92%88/" rel="tag"># 双指针</a>
+              <a href="/tags/%E5%88%B7%E9%A2%98/" rel="tag"># 刷题</a>
+              <a href="/tags/%E6%95%B0%E8%AE%BA/" rel="tag"># 数论</a>
+              <a href="/tags/%E6%9E%9A%E4%B8%BE/" rel="tag"># 枚举</a>
           </div>
 
         
 
           <div class="post-nav">
             <div class="post-nav-item">
-                <a href="/2023/01/05/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/" rel="prev" title="简单的排序算法">
-                  <i class="fa fa-chevron-left"></i> 简单的排序算法
+                <a href="/2023/01/13/%E5%8F%8C%E6%8C%87%E9%92%88/" rel="prev" title="双指针算法">
+                  <i class="fa fa-chevron-left"></i> 双指针算法
                 </a>
             </div>
             <div class="post-nav-item">
-                <a href="/2023/01/14/%E5%AF%92%E5%81%87%E6%AF%8F%E6%97%A5%E4%B8%80%E9%A2%98/" rel="next" title="2023寒假每日一题">
-                  2023寒假每日一题 <i class="fa fa-chevron-right"></i>
-                </a>
             </div>
           </div>
     </footer>
@@ -395,7 +411,7 @@
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/gitalk/1.8.0/gitalk.css" integrity="sha256-AJnUHL7dBv6PGaeyPQJcgQPDjt/Hn/PvYZde1iqfp8U=" crossorigin="anonymous">
 
-<script class="next-config" data-name="gitalk" type="application/json">{"enable":true,"github_id":"Besthope-Official","repo":"Gittalk-repo","client_id":"a30bcd98c6f188a719e4","client_secret":"bd7e03497f2a00490144e9e0756d511768622b0e","admin_user":"Besthope-Official","distraction_free_mode":true,"proxy":"https://luminous-druid-90cc61.netlify.app/github_access_token","language":"zh-CN","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/gitalk/1.8.0/gitalk.min.js","integrity":"sha256-MVK9MGD/XJaGyIghSVrONSnoXoGh3IFxLw0zfvzpxR4="},"path_md5":"b1f990a7f4734a890c87ff423391930e"}</script>
+<script class="next-config" data-name="gitalk" type="application/json">{"enable":true,"github_id":"Besthope-Official","repo":"Gittalk-repo","client_id":"a30bcd98c6f188a719e4","client_secret":"bd7e03497f2a00490144e9e0756d511768622b0e","admin_user":"Besthope-Official","distraction_free_mode":true,"proxy":"https://luminous-druid-90cc61.netlify.app/github_access_token","language":"zh-CN","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/gitalk/1.8.0/gitalk.min.js","integrity":"sha256-MVK9MGD/XJaGyIghSVrONSnoXoGh3IFxLw0zfvzpxR4="},"path_md5":"9cc023bf15d6cde46e152bca38803303"}</script>
 <script src="/js/third-party/comments/gitalk.js"></script>
 <script src="https://api.asilu.com/cdn/jquery.js,jquery.backstretch.min.js" type="text/javascript"></script>
 <body>
