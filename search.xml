@@ -305,9 +305,9 @@
   <entry>
     <title>2023寒假每日一题</title>
     <url>/2023/01/14/%E5%AF%92%E5%81%87%E6%AF%8F%E6%97%A5%E4%B8%80%E9%A2%98/</url>
-    <content><![CDATA[<p>收录一些寒假做的题目. 题目来源: <a href="https://www.acwing.com/activity/content/introduction/2712/">寒假每日一题2023</a><br>我才不是水题大师呢, 因为蒟蒻所以只能做这些入门题 (</p>
+    <content><![CDATA[<p>收录一些寒假做的题目. 题目来源: <a href="https://www.acwing.com/activity/content/introduction/2712/">寒假每日一题2023</a><br>我才不是水题大师呢, 因为蒟蒻所以只能做这些入门题, 但实际上更水的题目已经被我筛掉了 (</p>
 <span id="more"></span>
-<h2 id="USACO-2021-December-Contest-Bronze-孤独的照片"><a href="#USACO-2021-December-Contest-Bronze-孤独的照片" class="headerlink" title="USACO 2021 December Contest Bronze 孤独的照片"></a>USACO 2021 December Contest Bronze 孤独的照片</h2><p>导航: <a href="http://www.usaco.org/index.php?page=viewproblem2&amp;cpid=1155&amp;lang=zh">USACO 2021 December Contest, Bronze Problem 1. Lonely Photo</a></p>
+<h2 id="孤独的照片"><a href="#孤独的照片" class="headerlink" title="孤独的照片"></a>孤独的照片</h2><p>导航: <a href="http://www.usaco.org/index.php?page=viewproblem2&amp;cpid=1155&amp;lang=zh">USACO 2021 December Contest, Bronze Problem 1. Lonely Photo</a></p>
 <p>题目等价于: 长度大于等于3, 且子串中两种字符中的一种, 数量小于等于1, 求这些子串的数目. 示例: <code>GHGHG</code> 输出 <code>3</code>, 其中 <code>GHG</code>, <code>HGH</code>, <code>GHG</code> 就是题目要求的.</p>
 <p>暴力枚举会超时. 自己思考这个问题, 你会发现这道题实际上是个<strong>排列组合问题</strong>. 高考数学遇到求 <code>GGGGHGGGG</code> 符合题目条件的子串, 你会怎么做? 分类讨论, 然后利用乘法原理:</p>
 <ul>
@@ -328,14 +328,32 @@
 <li>如果下一个字符相同, 那么 <code>g</code> 或者 <code>h</code> 自增, 然后将 <code>g</code>(或者 <code>h</code>) 存储在 <code>l</code> 或者 <code>r</code> 中.</li>
 </ul>
 <p>本题也需要注意卡 <code>int</code>.</p>
-<h2 id="USACO-2022-February-Contest-Bronze-上课睡觉"><a href="#USACO-2022-February-Contest-Bronze-上课睡觉" class="headerlink" title="USACO 2022 February Contest Bronze 上课睡觉"></a>USACO 2022 February Contest Bronze 上课睡觉</h2><p>导航: <a href="http://www.usaco.org/index.php?page=viewproblem2&amp;cpid=1203&amp;lang=zh">USACO 2022 February Contest, Bronze</a></p>
+<h2 id="上课睡觉"><a href="#上课睡觉" class="headerlink" title="上课睡觉"></a>上课睡觉</h2><p>导航: <a href="http://www.usaco.org/index.php?page=viewproblem2&amp;cpid=1203&amp;lang=zh">USACO 2022 February Contest, Bronze, Problem 2 Sleep in Class</a></p>
 <p>本地化导航: <a href="https://www.acwing.com/problem/content/description/4369/">AcWing 4366. 上课睡觉</a></p>
 <p>题目要求: 合并, 石子堆集合中的每堆石子的数量都相同</p>
 <p>假设总数 <code>sum</code> 的石子堆可以被平分成 <code>i</code> 堆, 每堆石子的个数为 <code>cnt</code>, 且易知 <code>cnt = sum / i</code>.<br>因为每次合并操作会使得石子堆的个数减一, 那么平分成 <code>i</code> 堆需要的操作数为 <code>n - i</code>, 所以最终输出的答案为 <code>n - i</code>. 我们只需要<strong>枚举找到这个最大的 <code>i</code></strong> 即可.<br>判断石子堆能否合并, 题目给出了一个良好的性质: <strong>仅可以</strong>合并两个<strong>相邻</strong>的元素, 也就是说, 合并的部分是一段连续的区间, 我们就可以用一个变量 <code>s</code> 来累加石子堆, 从 <code>a[0]</code> 开始累加, 并判断如果 <code>s == cnt</code>, 那么重置 <code>s = 0</code>; 如果大于 <code>0</code>, 说明我们假设的 <code>cnt</code> 不成立. 如果能够遍历完 <code>a</code>, 则说明可以平分成 <code>i</code> 份.<br>本题一定有解, 因为 <code>i = 1</code> 一定成立.</p>
-<h2 id="USACO-2022-December-Contest-Bronze-奶牛大学"><a href="#USACO-2022-December-Contest-Bronze-奶牛大学" class="headerlink" title="USACO 2022 December Contest Bronze 奶牛大学"></a>USACO 2022 December Contest Bronze 奶牛大学</h2><p>导航: <a href="http://www.usaco.org/index.php?page=viewproblem2&amp;cpid=1251">USACO 2022 December Contest, Bronze Problem 1. Cow College</a></p>
+<h2 id="奶牛大学"><a href="#奶牛大学" class="headerlink" title="奶牛大学"></a>奶牛大学</h2><p>导航: <a href="http://www.usaco.org/index.php?page=viewproblem2&amp;cpid=1251">USACO 2022 December Contest, Bronze Problem 1. Cow College</a></p>
 <p>我们会首先会对输入进行排序, 使得 $c_0 \leqslant c_1 \leqslant c_2 \cdots \leqslant c_n$, 方便我们进一步讨论.</p>
 <p>首先可以证明, 选取的学费 $x \in \{c_0, c_1, \cdots, c_n \}$. 可以反证. 假设 $c_{i}&lt;x&lt;c_{i+1}$, 那么收取的总费用 $y = x\cdot (n - i) &lt; c_{i}\cdot(n - i)$, 需要比较的仅是 $c_{i}$ 和 $c_{i+1}$ 情况下的收取总费用. 对 $c$ 从 0 到 n 枚举即可.</p>
 <p>这题会卡<code>int</code>, 算收取总费用的时候要转换成<code>long long</code>.</p>
+<h2 id="选数异或"><a href="#选数异或" class="headerlink" title="选数异或"></a>选数异或</h2><p>导航: <a href="https://www.dotcpp.com/oj/problem2665.html">第十三届蓝桥杯省赛C++A/C/研究生组 Problem D</a></p>
+<p>目标: 在数组 $a$ 中找到满足 $p_i\oplus q_i = x$ 的最小区间 $[p_i,q_i]$, 判断每次询问的 $[l,r]$ 是否使得 $[a_l\dots a_r]$ 包含任一 $[p_i,q_i]$.</p>
+<p><strong>性质 1</strong> 如果 <code>p</code> 符合条件, 那么 <code>p ^ x</code> 一定存在于数组.<br><strong>证明</strong> 利用异或运算的性质</p>
+<script type="math/tex; mode=display">p\oplus q = x \iff q = p \oplus x</script><p>而 <code>q</code> 在数组里, 那么 <code>p ^ x</code> 存在. 换过来说, 如果 <code>q ^ x</code> 存在, 则能判定 <code>p</code> 存在.<br>利用这一点, 枚举 <code>i</code>, 然后找到距离 $q_i$ 最近的一个 $p_i$ 的位置, 我们记函数 $f(i)$, 它代表 $a_i$ 左侧与 $a_i$ 最近的一个配对数, 并约定, 如果左侧不存在配对, 那么 $f(i) = 0$.</p>
+<p>模拟样例:</p>
+<p><img src="/images/pic4.png" alt="模拟"></p>
+<p><strong>性质 2</strong> 原问题等价于: 判断 $f(r) \geqslant l$.</p>
+<p><strong>证明</strong> $f(r)$ 表示 $a_r$ 左侧最近的一个匹配数下标, 若存在, 那么一定存在 $q \leqslant r$, 且 $f(r)$ 大小为 $[1,r]$ 中最大的 $p$ 下标. 记 $i(x)$ 为元素 $x$ 在数组中的下标位置.<br>即能找到一个 $p$ 满足 $i(p) \geqslant l$, 使得 $l \leqslant i(p) &lt; i(q) \leqslant r \iff \{p\dots q\}\subseteq a[l\dots r]$.</p>
+<p>下一步就是求出 $f(i)$ 的递推表达式. 如果在 $[1,r]$ 找到了新的匹配数 $p’$, 那么就更新 $f(i) = i(p’)$, 否则 $f(i) = f(i-1)$.</p>
+<p>利用性质1, 可以利用一个哈希表. 如果哈希表内不存在 <code>a[i] ^ x</code> 的值, 那么会返回 <code>0</code>. 因为返回的是数值, 我们可以取 <code>f(i - 1)</code> 和 <code>hash(a[i] ^ x)</code> 的最大值作为 <code>f(i)</code>.</p>
+<p>下面的代码在处理输入时做了一些静态优化:</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="type">const</span> <span class="type">int</span> N = <span class="number">1e5</span> + <span class="number">5</span>;</span><br><span class="line"><span class="type">const</span> <span class="type">int</span> M = <span class="number">1</span> &gt;&gt; <span class="number">20</span> + <span class="number">5</span>;</span><br><span class="line"><span class="type">int</span> n, m, x;</span><br><span class="line"><span class="type">int</span> a[M], dp[N];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">signed</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    ios::<span class="built_in">sync_with_stdio</span>(<span class="literal">false</span>);</span><br><span class="line">    cin.<span class="built_in">tie</span>(<span class="number">0</span>);</span><br><span class="line">    cin &gt;&gt; n &gt;&gt; m &gt;&gt; x;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">1</span>; i &lt;= n; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="type">int</span> t;</span><br><span class="line">        cin &gt;&gt; t;</span><br><span class="line">        dp[i] = <span class="built_in">max</span>(dp[i - <span class="number">1</span>], a[t ^ x]);</span><br><span class="line">        a[t] = i;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">while</span> (m--)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="type">int</span> l, r;</span><br><span class="line">        cin &gt;&gt; l &gt;&gt; r;</span><br><span class="line">        cout &lt;&lt; (dp[r] &gt;= l ? <span class="string">&quot;yes&quot;</span> : <span class="string">&quot;no&quot;</span>) &lt;&lt; endl;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="数位排序"><a href="#数位排序" class="headerlink" title="数位排序"></a>数位排序</h2><p>导航: <a href="https://www.dotcpp.com/oj/problem2684.html">第十三届蓝桥杯省赛C++C组 数位排序</a></p>
+<p>本题自定义实现一个比较函数, 然后STL sort即可.</p>
+<p>但求数位和不能放在 <code>cmp</code> 里, 会TLE. 原因是<code>sort</code>的实现会进行 <code>n</code> 次 <code>cmp</code> 操作, 而 <code>cmp</code> 有 <code>c = 10^1</code> 级别的操作数, <code>sort</code> 时间复杂度为 <code>O(n logn)</code>, 最大数据量 <code>n = 10^6</code>, 那么操作数约有 <code>10 * 10 * 10^6 = 10^8</code>, 就会卡时间.</p>
+<p>在本地测试<code>0.98s</code>, 非常惊险, 但放oj平台TLE了.</p>
+<p>所以我们需要<strong>预处理</strong>求 <code>1~n</code> 的数位和, 并保存到另一个数组里. 更优解是写一个结构体, 储存这个值和它的数位和, 然后对结构体数组排序.</p>
+<p>这样能少一个常数级别的复杂度. 最大负载实际运行时间约为 <code>0.23s</code>.</p>
 ]]></content>
       <categories>
         <category>算法</category>
@@ -345,6 +363,7 @@
         <tag>刷题</tag>
         <tag>数论</tag>
         <tag>枚举</tag>
+        <tag>动态规划</tag>
       </tags>
   </entry>
 </search>
