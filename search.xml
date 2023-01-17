@@ -66,6 +66,15 @@
 <h3 id="应用"><a href="#应用" class="headerlink" title="应用"></a>应用</h3><p><a href="https://www.acwing.com/problem/content/790/">AcWing 788. 逆序对的数量</a></p>
 <p>用归并排序看待这个问题:<br>逆序对只存在三种情况, 在左半边, 在右半边, 或者横跨左右区间. 假设 <code>merge_sort</code> 能在排序的同时计算出逆序对的数量, 那么前两种情况等于递归调用 <code>merge_sort</code> 的值.<br>横跨左右区间的情况稍微比较复杂. 利用的是<code>merge</code>区间的单调性. 我们求的是<code>left</code>中每一个元素对应<code>right</code>中逆序对的数量. 假设我们找到了 <code>left[i] &gt; right[j]</code>, 那么一定有 <code>left[i...mid] &gt; right[j]</code>. 也就是说存在 <code>mid - i + 1</code> 个逆序对.</p>
 <figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="function">LL <span class="title">merge_sort</span><span class="params">(<span class="type">int</span> q[], <span class="type">int</span> l, <span class="type">int</span> r)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(l &gt;= r) <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    <span class="type">int</span> mid = l + r &gt;&gt; <span class="number">1</span>;</span><br><span class="line">    LL res = <span class="built_in">merge_sort</span>(q, l, mid) + <span class="built_in">merge_sort</span>(q, mid + <span class="number">1</span>, r);</span><br><span class="line">    </span><br><span class="line">    <span class="type">int</span> k = <span class="number">0</span>, i = l, j = mid + <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">while</span>(i &lt;= mid &amp;&amp; j &lt;= r)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span>(q[i] &lt;= q[j])</span><br><span class="line">            tmp[k++] = q[i++];</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">        &#123;</span><br><span class="line">            res += mid - i + <span class="number">1</span>;</span><br><span class="line">            tmp[k++] = q[j++];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">while</span>(i &lt;= mid)</span><br><span class="line">        tmp[k++] = q[i++];</span><br><span class="line">    <span class="keyword">while</span>(j &lt;= r)</span><br><span class="line">        tmp[k++] = q[j++];</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span>(i = l, j = <span class="number">0</span>; i &lt;= r; i++, j++)</span><br><span class="line">        q[i] = tmp[j];</span><br><span class="line">    <span class="keyword">return</span> res;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="k-way-merge"><a href="#k-way-merge" class="headerlink" title="k-way merge"></a>k-way merge</h3><p>如果需要merge的数组不止2个, 该怎么实现呢?</p>
+<ul>
+<li>建立一个小根堆.</li>
+<li>将每一路的第一个元素插入小根堆. 我们可以知道<code>heap[1]</code> 就是最小值.</li>
+<li>将堆顶元素弹出, 并将堆顶元素所在数组的下一元素加入堆中.</li>
+<li>重复上面两步, 直到每一路都读取结束.</li>
+</ul>
+<p>具体实现可以构造一个矩阵: 将各个数组放入一个矩阵当中.</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;vector&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;queue&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line">    <span class="keyword">using</span> VI = vector&lt;<span class="type">int</span>&gt;;</span><br><span class="line"></span><br><span class="line">    vector&lt;VI&gt; src = &#123;&#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>&#125;, &#123;<span class="number">2</span>, <span class="number">4</span>, <span class="number">6</span>&#125;, &#123;<span class="number">3</span>, <span class="number">5</span>, <span class="number">8</span>&#125;&#125;;</span><br><span class="line">    priority_queue&lt;VI&gt; pq;</span><br><span class="line">    VI vc;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; src.<span class="built_in">size</span>(); ++i)</span><br><span class="line">    &#123;</span><br><span class="line">        vc = &#123;src[i][<span class="number">0</span>], i, <span class="number">0</span>&#125;;</span><br><span class="line">        pq.<span class="built_in">emplace</span>(vc);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    VI ans;</span><br><span class="line">    <span class="keyword">while</span> (!pq.<span class="built_in">empty</span>())</span><br><span class="line">    &#123;</span><br><span class="line">        vc = pq.<span class="built_in">top</span>();</span><br><span class="line">        pq.<span class="built_in">pop</span>();</span><br><span class="line"></span><br><span class="line">        ans.<span class="built_in">emplace_back</span>(vc[<span class="number">0</span>]);</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">if</span> (src[vc[<span class="number">1</span>]].<span class="built_in">size</span>() - <span class="number">1</span> &gt; vc[<span class="number">2</span>])</span><br><span class="line">        &#123;</span><br><span class="line">            vc = &#123;src[vc[<span class="number">1</span>]][vc[<span class="number">2</span>] + <span class="number">1</span>], vc[<span class="number">1</span>], vc[<span class="number">2</span>] + <span class="number">1</span>&#125;;</span><br><span class="line">            pq.<span class="built_in">emplace</span>(vc);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">auto</span> &amp;x : ans)</span><br><span class="line">    &#123;</span><br><span class="line">        cout &lt;&lt; x &lt;&lt; <span class="string">&quot; &quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 ]]></content>
       <categories>
         <category>算法</category>
@@ -74,6 +83,7 @@
         <tag>算法</tag>
         <tag>排序</tag>
         <tag>分治</tag>
+        <tag>多路归并</tag>
       </tags>
   </entry>
   <entry>
@@ -353,7 +363,22 @@
 <p>但求数位和不能放在 <code>cmp</code> 里, 会TLE. 原因是<code>sort</code>的实现会进行 <code>n</code> 次 <code>cmp</code> 操作, 而 <code>cmp</code> 有 <code>c = 10^1</code> 级别的操作数, <code>sort</code> 时间复杂度为 <code>O(n logn)</code>, 最大数据量 <code>n = 10^6</code>, 那么操作数约有 <code>10 * 10 * 10^6 = 10^8</code>, 就会卡时间.</p>
 <p>在本地测试<code>0.98s</code>, 非常惊险, 但放oj平台TLE了.</p>
 <p>所以我们需要<strong>预处理</strong>求 <code>1~n</code> 的数位和, 并保存到另一个数组里. 更优解是写一个结构体, 储存这个值和它的数位和, 然后对结构体数组排序.</p>
-<p>这样能少一个常数级别的复杂度. 最大负载实际运行时间约为 <code>0.23s</code>.</p>
+<p>使用排序预处理可以降低求解问题所需要的时间复杂度. 本质上这属于以空间换时间的一个平衡.</p>
+<p>这样能少乘一个常数. 最大负载实际运行时间约为 <code>0.23s</code>.</p>
+<h2 id="重新排序"><a href="#重新排序" class="headerlink" title="重新排序"></a>重新排序</h2><p>导航: <a href="https://www.dotcpp.com/oj/problem2690.html">第十三届蓝桥杯省赛C++C组 H: 重新排序</a></p>
+<p>本题类似于<a href="https://vijos.org/p/1779">NOIP 2012 国王游戏</a> 以及 <a href="https://www.luogu.com.cn/problem/P2123">P2123 皇后游戏</a>.<br>题解可以参考: <a href="https://ouuan.github.io/post/%E6%B5%85%E8%B0%88%E9%82%BB%E9%A1%B9%E4%BA%A4%E6%8D%A2%E6%8E%92%E5%BA%8F%E7%9A%84%E5%BA%94%E7%94%A8%E4%BB%A5%E5%8F%8A%E9%9C%80%E8%A6%81%E6%B3%A8%E6%84%8F%E7%9A%84%E9%97%AE%E9%A2%98/">浅谈邻项交换排序的应用以及需要注意的问题</a></p>
+<p>贪心可以知道, 求和次数最多的位置, 重排后, 应当对应最大值. 这个可以通过邻项交换法证明.</p>
+<p>一个想法是构造一个结构体, 包含值和这个位置被求和的次数, 然后对其排序.</p>
+<p>但我们也可以构造两个数组, 对两个数组进行排序, 最后只用计算 <code>a[i] * b[i]</code> 的和就可以了, 甚至不用计算 <code>[1,n]</code> 上的前缀和, 因为如果一段区间如果没有被求和, <code>b[i] = 0</code>, 那么 <code>sum += 0</code>.</p>
+<p>求 <code>b[i]</code>, 利用每一组的 <code>l, r</code> 可以求得数组中各个元素被求和了多少次. 让 <code>[l,r]</code> 中的数据加上一个相同的数, 快速做法是<strong>差分</strong>.</p>
+<h2 id="技能升级"><a href="#技能升级" class="headerlink" title="技能升级"></a>技能升级</h2><p>类似问题: <a href="https://www.acwing.com/problem/content/description/1264/">鱼塘钓鱼</a></p>
+<p>钓鱼数量只和在某一鱼塘待的时间相关(因为不会折返). 我们要做的是以下几件事:</p>
+<ul>
+<li>枚举最远钓到哪个鱼塘(确定路上花费的时间)</li>
+<li>总钓鱼时间 = T - 走的时间</li>
+<li>已知总钓鱼时间 <code>n</code>, 分配各个鱼塘, 求最大和, 即三个数组排序, 求前<code>n</code>元素的和. 用多路归并排序</li>
+</ul>
+<p>这道题比这个更难一些.</p>
 ]]></content>
       <categories>
         <category>算法</category>
@@ -364,6 +389,7 @@
         <tag>数论</tag>
         <tag>枚举</tag>
         <tag>动态规划</tag>
+        <tag>差分</tag>
       </tags>
   </entry>
 </search>

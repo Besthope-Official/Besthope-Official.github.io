@@ -28,13 +28,14 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://example.com/images/pic4.png">
 <meta property="article:published_time" content="2023-01-14T12:45:49.000Z">
-<meta property="article:modified_time" content="2023-01-16T15:18:58.993Z">
+<meta property="article:modified_time" content="2023-01-17T15:35:05.156Z">
 <meta property="article:author" content="Besthope">
 <meta property="article:tag" content="算法">
 <meta property="article:tag" content="刷题">
 <meta property="article:tag" content="数论">
 <meta property="article:tag" content="枚举">
 <meta property="article:tag" content="动态规划">
+<meta property="article:tag" content="差分">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="http://example.com/images/pic4.png">
 
@@ -149,7 +150,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AD%A4%E7%8B%AC%E7%9A%84%E7%85%A7%E7%89%87"><span class="nav-number">1.</span> <span class="nav-text">孤独的照片</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%8A%E8%AF%BE%E7%9D%A1%E8%A7%89"><span class="nav-number">2.</span> <span class="nav-text">上课睡觉</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%A5%B6%E7%89%9B%E5%A4%A7%E5%AD%A6"><span class="nav-number">3.</span> <span class="nav-text">奶牛大学</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%80%89%E6%95%B0%E5%BC%82%E6%88%96"><span class="nav-number">4.</span> <span class="nav-text">选数异或</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%95%B0%E4%BD%8D%E6%8E%92%E5%BA%8F"><span class="nav-number">5.</span> <span class="nav-text">数位排序</span></a></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AD%A4%E7%8B%AC%E7%9A%84%E7%85%A7%E7%89%87"><span class="nav-number">1.</span> <span class="nav-text">孤独的照片</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%8A%E8%AF%BE%E7%9D%A1%E8%A7%89"><span class="nav-number">2.</span> <span class="nav-text">上课睡觉</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%A5%B6%E7%89%9B%E5%A4%A7%E5%AD%A6"><span class="nav-number">3.</span> <span class="nav-text">奶牛大学</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%80%89%E6%95%B0%E5%BC%82%E6%88%96"><span class="nav-number">4.</span> <span class="nav-text">选数异或</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%95%B0%E4%BD%8D%E6%8E%92%E5%BA%8F"><span class="nav-number">5.</span> <span class="nav-text">数位排序</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%87%8D%E6%96%B0%E6%8E%92%E5%BA%8F"><span class="nav-number">6.</span> <span class="nav-text">重新排序</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%8A%80%E8%83%BD%E5%8D%87%E7%BA%A7"><span class="nav-number">7.</span> <span class="nav-text">技能升级</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -173,7 +174,7 @@
         <span class="site-state-item-name">分类</span>
       </div>
       <div class="site-state-item site-state-tags">
-        <span class="site-state-item-count">13</span>
+        <span class="site-state-item-count">15</span>
         <span class="site-state-item-name">标签</span>
       </div>
   </nav>
@@ -248,7 +249,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2023-01-16 23:18:58" itemprop="dateModified" datetime="2023-01-16T23:18:58+08:00">2023-01-16</time>
+      <time title="修改时间：2023-01-17 23:35:05" itemprop="dateModified" datetime="2023-01-17T23:35:05+08:00">2023-01-17</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -267,14 +268,14 @@
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">本文字数：</span>
-      <span>1.8k</span>
+      <span>2.2k</span>
     </span>
     <span class="post-meta-item" title="阅读时长">
       <span class="post-meta-item-icon">
         <i class="far fa-clock"></i>
       </span>
       <span class="post-meta-item-text">阅读时长 &asymp;</span>
-      <span>7 分钟</span>
+      <span>8 分钟</span>
     </span>
 </div>
 
@@ -333,7 +334,22 @@
 <p>但求数位和不能放在 <code>cmp</code> 里, 会TLE. 原因是<code>sort</code>的实现会进行 <code>n</code> 次 <code>cmp</code> 操作, 而 <code>cmp</code> 有 <code>c = 10^1</code> 级别的操作数, <code>sort</code> 时间复杂度为 <code>O(n logn)</code>, 最大数据量 <code>n = 10^6</code>, 那么操作数约有 <code>10 * 10 * 10^6 = 10^8</code>, 就会卡时间.</p>
 <p>在本地测试<code>0.98s</code>, 非常惊险, 但放oj平台TLE了.</p>
 <p>所以我们需要<strong>预处理</strong>求 <code>1~n</code> 的数位和, 并保存到另一个数组里. 更优解是写一个结构体, 储存这个值和它的数位和, 然后对结构体数组排序.</p>
-<p>这样能少一个常数级别的复杂度. 最大负载实际运行时间约为 <code>0.23s</code>.</p>
+<p>使用排序预处理可以降低求解问题所需要的时间复杂度. 本质上这属于以空间换时间的一个平衡.</p>
+<p>这样能少乘一个常数. 最大负载实际运行时间约为 <code>0.23s</code>.</p>
+<h2 id="重新排序"><a href="#重新排序" class="headerlink" title="重新排序"></a>重新排序</h2><p>导航: <a target="_blank" rel="noopener" href="https://www.dotcpp.com/oj/problem2690.html">第十三届蓝桥杯省赛C++C组 H: 重新排序</a></p>
+<p>本题类似于<a target="_blank" rel="noopener" href="https://vijos.org/p/1779">NOIP 2012 国王游戏</a> 以及 <a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P2123">P2123 皇后游戏</a>.<br>题解可以参考: <a target="_blank" rel="noopener" href="https://ouuan.github.io/post/%E6%B5%85%E8%B0%88%E9%82%BB%E9%A1%B9%E4%BA%A4%E6%8D%A2%E6%8E%92%E5%BA%8F%E7%9A%84%E5%BA%94%E7%94%A8%E4%BB%A5%E5%8F%8A%E9%9C%80%E8%A6%81%E6%B3%A8%E6%84%8F%E7%9A%84%E9%97%AE%E9%A2%98/">浅谈邻项交换排序的应用以及需要注意的问题</a></p>
+<p>贪心可以知道, 求和次数最多的位置, 重排后, 应当对应最大值. 这个可以通过邻项交换法证明.</p>
+<p>一个想法是构造一个结构体, 包含值和这个位置被求和的次数, 然后对其排序.</p>
+<p>但我们也可以构造两个数组, 对两个数组进行排序, 最后只用计算 <code>a[i] * b[i]</code> 的和就可以了, 甚至不用计算 <code>[1,n]</code> 上的前缀和, 因为如果一段区间如果没有被求和, <code>b[i] = 0</code>, 那么 <code>sum += 0</code>.</p>
+<p>求 <code>b[i]</code>, 利用每一组的 <code>l, r</code> 可以求得数组中各个元素被求和了多少次. 让 <code>[l,r]</code> 中的数据加上一个相同的数, 快速做法是<strong>差分</strong>.</p>
+<h2 id="技能升级"><a href="#技能升级" class="headerlink" title="技能升级"></a>技能升级</h2><p>类似问题: <a target="_blank" rel="noopener" href="https://www.acwing.com/problem/content/description/1264/">鱼塘钓鱼</a></p>
+<p>钓鱼数量只和在某一鱼塘待的时间相关(因为不会折返). 我们要做的是以下几件事:</p>
+<ul>
+<li>枚举最远钓到哪个鱼塘(确定路上花费的时间)</li>
+<li>总钓鱼时间 = T - 走的时间</li>
+<li>已知总钓鱼时间 <code>n</code>, 分配各个鱼塘, 求最大和, 即三个数组排序, 求前<code>n</code>元素的和. 用多路归并排序</li>
+</ul>
+<p>这道题比这个更难一些.</p>
 
     </div>
 
@@ -348,6 +364,7 @@
               <a href="/tags/%E6%95%B0%E8%AE%BA/" rel="tag"># 数论</a>
               <a href="/tags/%E6%9E%9A%E4%B8%BE/" rel="tag"># 枚举</a>
               <a href="/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" rel="tag"># 动态规划</a>
+              <a href="/tags/%E5%B7%AE%E5%88%86/" rel="tag"># 差分</a>
           </div>
 
         
@@ -399,7 +416,7 @@
       <i class="fa fa-coffee"></i>
     </span>
       <span>站点阅读时长 &asymp;</span>
-    <span title="站点阅读时长">38 分钟</span>
+    <span title="站点阅读时长">41 分钟</span>
   </span>
 </div>
   <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/pisces/" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
@@ -447,7 +464,9 @@
 $.backstretch([
         '/images/bg1.jpg',
         '/images/bg2.jpg',
-        '/images/bg3.jpg'
+        '/images/bg3.jpg',
+        '/images/bg4.jpg',
+        '/images/bg5.jpg',
     ], {
         fade : 3000, // 动画时长; 单位：毫秒
         duration : 10000 // 切换延时
