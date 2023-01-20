@@ -6,7 +6,7 @@
   <link href="http://example.com/atom.xml" rel="self"/>
   
   <link href="http://example.com/"/>
-  <updated>2023-01-17T15:35:05.156Z</updated>
+  <updated>2023-01-20T14:11:37.772Z</updated>
   <id>http://example.com/</id>
   
   <author>
@@ -21,7 +21,7 @@
     <link href="http://example.com/2023/01/14/%E5%AF%92%E5%81%87%E6%AF%8F%E6%97%A5%E4%B8%80%E9%A2%98/"/>
     <id>http://example.com/2023/01/14/%E5%AF%92%E5%81%87%E6%AF%8F%E6%97%A5%E4%B8%80%E9%A2%98/</id>
     <published>2023-01-14T12:45:49.000Z</published>
-    <updated>2023-01-17T15:35:05.156Z</updated>
+    <updated>2023-01-20T14:11:37.772Z</updated>
     
     
     <summary type="html">&lt;p&gt;收录一些寒假做的题目. 题目来源: &lt;a href=&quot;https://www.acwing.com/activity/content/introduction/2712/&quot;&gt;寒假每日一题2023&lt;/a&gt;&lt;br&gt;我才不是水题大师呢, 因为蒟蒻所以只能做这些入门题, 但实际上更水的题目已经被我筛掉了 (&lt;/p&gt;</summary>
@@ -72,7 +72,7 @@
     <link href="http://example.com/2023/01/05/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/"/>
     <id>http://example.com/2023/01/05/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/</id>
     <published>2023-01-05T12:05:05.000Z</published>
-    <updated>2023-01-17T15:34:05.441Z</updated>
+    <updated>2023-01-18T00:46:14.496Z</updated>
     
     
     <summary type="html">&lt;p&gt;我们介绍两个基于分治且 &lt;code&gt;O(nlogn)&lt;/code&gt; 的排序算法: 快速排序和归并排序.&lt;br&gt;理解排序算法的最好方法是模拟, 手动模拟指针的移动, 感受数据是怎么逐渐变得有序的. 配合动图食用更佳.&lt;br&gt;两个算法困难的点在于边界分析. 不过记模板就可以了(&lt;/p&gt;</summary>
