@@ -6,7 +6,7 @@
   <link href="http://example.com/atom.xml" rel="self"/>
   
   <link href="http://example.com/"/>
-  <updated>2023-01-20T14:11:37.772Z</updated>
+  <updated>2023-01-24T17:18:18.419Z</updated>
   <id>http://example.com/</id>
   
   <author>
@@ -21,10 +21,13 @@
     <link href="http://example.com/2023/01/14/%E5%AF%92%E5%81%87%E6%AF%8F%E6%97%A5%E4%B8%80%E9%A2%98/"/>
     <id>http://example.com/2023/01/14/%E5%AF%92%E5%81%87%E6%AF%8F%E6%97%A5%E4%B8%80%E9%A2%98/</id>
     <published>2023-01-14T12:45:49.000Z</published>
-    <updated>2023-01-20T14:11:37.772Z</updated>
+    <updated>2023-01-24T17:18:18.419Z</updated>
     
     
-    <summary type="html">&lt;p&gt;收录一些寒假做的题目. 题目来源: &lt;a href=&quot;https://www.acwing.com/activity/content/introduction/2712/&quot;&gt;寒假每日一题2023&lt;/a&gt;&lt;br&gt;我才不是水题大师呢, 因为蒟蒻所以只能做这些入门题, 但实际上更水的题目已经被我筛掉了 (&lt;/p&gt;</summary>
+    <summary type="html">&lt;p&gt;收录一些寒假做的题目. 题目来源: &lt;a
+href=&quot;https://www.acwing.com/activity/content/introduction/2712/&quot;&gt;寒假每日一题2023&lt;/a&gt;
+我才不是水题大师呢, 因为蒟蒻所以只能做这些入门题,
+但实际上更水的题目已经被我筛掉了 (&lt;/p&gt;</summary>
     
     
     
@@ -53,7 +56,9 @@
     <updated>2023-01-13T15:56:16.456Z</updated>
     
     
-    <summary type="html">&lt;p&gt;双指针核心要义是将含两层嵌套的朴素算法, 利用某种性质(例如单调性)将其优化成&lt;code&gt;O(n)&lt;/code&gt;的过程. 有种并发的感觉——一步能干两个人的事情, 就不要等另一个人干完再去做.&lt;/p&gt;
+    <summary type="html">&lt;p&gt;双指针核心要义是将含两层嵌套的朴素算法,
+利用某种性质(例如单调性)将其优化成&lt;code&gt;O(n)&lt;/code&gt;的过程.
+有种并发的感觉——一步能干两个人的事情, 就不要等另一个人干完再去做.&lt;/p&gt;
 &lt;p&gt;双指针一般会结合其他数据结构或者算法一起使用.&lt;/p&gt;</summary>
     
     
@@ -75,7 +80,10 @@
     <updated>2023-01-18T00:46:14.496Z</updated>
     
     
-    <summary type="html">&lt;p&gt;我们介绍两个基于分治且 &lt;code&gt;O(nlogn)&lt;/code&gt; 的排序算法: 快速排序和归并排序.&lt;br&gt;理解排序算法的最好方法是模拟, 手动模拟指针的移动, 感受数据是怎么逐渐变得有序的. 配合动图食用更佳.&lt;br&gt;两个算法困难的点在于边界分析. 不过记模板就可以了(&lt;/p&gt;</summary>
+    <summary type="html">&lt;p&gt;我们介绍两个基于分治且 &lt;code&gt;O(nlogn)&lt;/code&gt; 的排序算法:
+快速排序和归并排序. 理解排序算法的最好方法是模拟, 手动模拟指针的移动,
+感受数据是怎么逐渐变得有序的. 配合动图食用更佳.
+两个算法困难的点在于边界分析. 不过记模板就可以了(&lt;/p&gt;</summary>
     
     
     
@@ -100,7 +108,9 @@
     <updated>2023-01-04T11:13:21.356Z</updated>
     
     
-    <summary type="html">&lt;p&gt;你会用什么关键字概括2022年呢……&lt;br&gt;各种意义上的Twist. 人生的转折, 政策的转折, 世界的转折.&lt;br&gt;年初的时候还祝福今年诸事皆顺, 不过心意到了抽签抽到凶也没办法.&lt;/p&gt;</summary>
+    <summary type="html">&lt;p&gt;你会用什么关键字概括2022年呢...... 各种意义上的Twist. 人生的转折,
+政策的转折, 世界的转折. 年初的时候还祝福今年诸事皆顺,
+不过心意到了抽签抽到凶也没办法.&lt;/p&gt;</summary>
     
     
     
@@ -119,8 +129,15 @@
     <updated>2023-01-04T05:56:52.745Z</updated>
     
     
-    <summary type="html">&lt;p&gt;感染新冠快成每日打卡项目了. 每天都能刷到同学感染的信息, “今天又发了39度的烧”——然而这并不是值得炫耀的一件事.&lt;br&gt;二阳化碳, 三阳开泰, 四阳方尊, 五阳电动车, 六阳魁首, 七阳化二锰, 八阳化二硫, 九阳豆浆机&lt;br&gt;如果能在全员感染的范围内存活下来, 那么你就是大赢. 我不相信染病后没有后遗症, 就算苟我也要撑到群体免疫快结束的时候. 提心吊胆地过着放开后的日子, 保持身处末世一般的警惕, 做好保护自己生命的职责.&lt;/p&gt;
-&lt;p&gt;更新: 12.28 阳了 估计是舍友交叉感染的&lt;br&gt;Q: 有个一声不吭的舍友是怎样的一种感受? 被害惨了.&lt;/p&gt;</summary>
+    <summary type="html">&lt;p&gt;感染新冠快成每日打卡项目了. 每天都能刷到同学感染的信息,
+&quot;今天又发了39度的烧&quot;——然而这并不是值得炫耀的一件事. 二阳化碳, 三阳开泰,
+四阳方尊, 五阳电动车, 六阳魁首, 七阳化二锰, 八阳化二硫, 九阳豆浆机
+如果能在全员感染的范围内存活下来, 那么你就是大赢.
+我不相信染病后没有后遗症, 就算苟我也要撑到群体免疫快结束的时候.
+提心吊胆地过着放开后的日子, 保持身处末世一般的警惕,
+做好保护自己生命的职责.&lt;/p&gt;
+&lt;p&gt;更新: 12.28 阳了 估计是舍友交叉感染的 Q:
+有个一声不吭的舍友是怎样的一种感受? 被害惨了.&lt;/p&gt;</summary>
     
     
     
@@ -139,17 +156,19 @@
     <updated>2022-12-21T17:42:17.536Z</updated>
     
     
-    <summary type="html">&lt;p&gt;做期末大作业里面有个字符串匹配的问题, 用暴力算法做完觉得不够爽, 于是自找的麻烦.&lt;/p&gt;
-&lt;p&gt;想用最简明的方式去解释这个较为抽象的算法!&lt;br&gt;事实上明白了一个道理: 缺乏数学的算法都是玄学, 只有数学证明了才能让人心服口服……&lt;/p&gt;</summary>
+    <summary type="html">&lt;p&gt;做期末大作业里面有个字符串匹配的问题, 用暴力算法做完觉得不够爽,
+于是自找的麻烦.&lt;/p&gt;
+&lt;p&gt;想用最简明的方式去解释这个较为抽象的算法! 事实上明白了一个道理:
+缺乏数学的算法都是玄学, 只有数学证明了才能让人心服口服......&lt;/p&gt;</summary>
     
     
     
     <category term="算法" scheme="http://example.com/categories/%E7%AE%97%E6%B3%95/"/>
     
     
-    <category term="算法" scheme="http://example.com/tags/%E7%AE%97%E6%B3%95/"/>
-    
     <category term="字符串" scheme="http://example.com/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2/"/>
+    
+    <category term="算法" scheme="http://example.com/tags/%E7%AE%97%E6%B3%95/"/>
     
   </entry>
   
@@ -164,8 +183,13 @@
     <summary type="html">&lt;blockquote&gt;
 &lt;p&gt;程序就是状态机。——jyy, on 2022 NJU OS Lecture 01&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;p&gt;这句话道出了程序的本质. 实际上, 如今的计算机本质上就是通用&lt;a href=&quot;https://plato.stanford.edu/entries/turing-machine/&quot;&gt;图灵机&lt;/a&gt;, 而我们研究汇编语言就是研究程序在机器层面上的运行.&lt;/p&gt;
-&lt;p&gt;程序的进行依赖于&lt;code&gt;rip&lt;/code&gt;寄存器, 它储存的值是当前运行的指令地址. 程序的进行实际上就是一条指令一条指令的移动(你可以在&lt;code&gt;gdb&lt;/code&gt;里随时监控&lt;code&gt;rip&lt;/code&gt;). 这和图灵机读写控制的方式本质上是一致的!&lt;/p&gt;</summary>
+&lt;p&gt;这句话道出了程序的本质. 实际上, 如今的计算机本质上就是通用&lt;a
+href=&quot;https://plato.stanford.edu/entries/turing-machine/&quot;&gt;图灵机&lt;/a&gt;,
+而我们研究汇编语言就是研究程序在机器层面上的运行.&lt;/p&gt;
+&lt;p&gt;程序的进行依赖于&lt;code&gt;rip&lt;/code&gt;寄存器,
+它储存的值是当前运行的指令地址.
+程序的进行实际上就是一条指令一条指令的移动(你可以在&lt;code&gt;gdb&lt;/code&gt;里随时监控&lt;code&gt;rip&lt;/code&gt;).
+这和图灵机读写控制的方式本质上是一致的!&lt;/p&gt;</summary>
     
     
     
