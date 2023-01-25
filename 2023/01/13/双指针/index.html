@@ -411,19 +411,29 @@ target="_blank" rel="noopener" href="https://www.acwing.com/problem/content/desc
 <script src="https://api.asilu.com/cdn/jquery.js,jquery.backstretch.min.js" type="text/javascript"></script>
 <body>
 <script type="text/javascript">
+window.onclick = window.onload = function () {
+  function shuffle(arr) {
+    let i = arr.length;
+    while (i) {
+      let j = Math.floor(Math.random() * i--);
+      [arr[j], arr[i]] = [arr[i], arr[j]];
+    }
+  }
 
+  const pic = 5;
+  var bgs = [];
 
+  for (i = 1; i <= pic; i++) {
+    bgs.push("/images/bg" + i + ".jpg");
+  }
 
-$.backstretch([
-        '/images/bg1.jpg',
-        '/images/bg2.jpg',
-        '/images/bg3.jpg',
-        '/images/bg4.jpg',
-        '/images/bg5.jpg',
-    ], {
-        fade : 3000, // 动画时长; 单位：毫秒
-        duration : 10000 // 切换延时
-});
+  shuffle(bgs);
+
+  $.backstretch(bgs, {
+    fade: 3000, // 动画时长; 单位：毫秒
+    duration: 10000, // 切换延时
+  });
+};
 </script>
 </body>
 </body>
