@@ -580,8 +580,9 @@ target="_blank" rel="noopener" href="http://csapp.cs.cmu.edu/3e/target1.tar">att
 <script src="https://api.asilu.com/cdn/jquery.js,jquery.backstretch.min.js" type="text/javascript"></script>
 <body>
 <script type="text/javascript">
-window.onclick = window.onload = function () {
-  function shuffle(arr) {
+function display()
+{
+    function shuffle(arr) {
     let i = arr.length;
     while (i) {
       let j = Math.floor(Math.random() * i--);
@@ -602,6 +603,12 @@ window.onclick = window.onload = function () {
     fade: 3000, // 动画时长; 单位：毫秒
     duration: 10000, // 切换延时
   });
+}
+
+display();
+
+window.onclick = window.onload = function () {
+  display();
 };
 </script>
 </body>
