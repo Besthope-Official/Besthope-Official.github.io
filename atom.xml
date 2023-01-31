@@ -2,11 +2,11 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title>Besthope&#39;s Blog</title>
   <icon>http://example.com/icon.png</icon>
-  <subtitle>hope u enjoy ur stay</subtitle>
+  <subtitle>more than a tech blog :)</subtitle>
   <link href="http://example.com/atom.xml" rel="self"/>
   
   <link href="http://example.com/"/>
-  <updated>2023-01-24T17:18:18.419Z</updated>
+  <updated>2023-01-31T15:27:34.281Z</updated>
   <id>http://example.com/</id>
   
   <author>
@@ -17,11 +17,32 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>随感录</title>
+    <link href="http://example.com/2023/01/28/%E9%9A%8F%E6%84%9F%E5%BD%95/"/>
+    <id>http://example.com/2023/01/28/%E9%9A%8F%E6%84%9F%E5%BD%95/</id>
+    <published>2023-01-28T14:41:17.000Z</published>
+    <updated>2023-01-31T15:27:34.281Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;记录不时的奇思妙想. 奇怪的梦, 无垠的呓语, 似非的感悟.
+忙碌后的凝思会带给人宁静, 或许人的创作欲此刻迸发. 胡诌数句,
+想想还是删去罢了.&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="杂谈" scheme="http://example.com/categories/%E6%9D%82%E8%B0%88/"/>
+    
+    
+    <category term="杂谈" scheme="http://example.com/tags/%E6%9D%82%E8%B0%88/"/>
+    
+  </entry>
+  
+  <entry>
     <title>2023寒假每日一题</title>
     <link href="http://example.com/2023/01/14/%E5%AF%92%E5%81%87%E6%AF%8F%E6%97%A5%E4%B8%80%E9%A2%98/"/>
     <id>http://example.com/2023/01/14/%E5%AF%92%E5%81%87%E6%AF%8F%E6%97%A5%E4%B8%80%E9%A2%98/</id>
     <published>2023-01-14T12:45:49.000Z</published>
-    <updated>2023-01-24T17:18:18.419Z</updated>
+    <updated>2023-01-31T15:04:35.166Z</updated>
     
     
     <summary type="html">&lt;p&gt;收录一些寒假做的题目. 题目来源: &lt;a
@@ -43,6 +64,8 @@ href=&quot;https://www.acwing.com/activity/content/introduction/2712/&quot;&gt;�
     <category term="枚举" scheme="http://example.com/tags/%E6%9E%9A%E4%B8%BE/"/>
     
     <category term="动态规划" scheme="http://example.com/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/"/>
+    
+    <category term="贪心" scheme="http://example.com/tags/%E8%B4%AA%E5%BF%83/"/>
     
     <category term="差分" scheme="http://example.com/tags/%E5%B7%AE%E5%88%86/"/>
     
@@ -105,7 +128,7 @@ href=&quot;https://www.acwing.com/activity/content/introduction/2712/&quot;&gt;�
     <link href="http://example.com/2022/12/31/2022%E5%B9%B4%E7%BB%88%E6%80%BB%E7%BB%93/"/>
     <id>http://example.com/2022/12/31/2022%E5%B9%B4%E7%BB%88%E6%80%BB%E7%BB%93/</id>
     <published>2022-12-31T11:37:52.000Z</published>
-    <updated>2023-01-04T11:13:21.356Z</updated>
+    <updated>2023-01-31T09:41:04.544Z</updated>
     
     
     <summary type="html">&lt;p&gt;你会用什么关键字概括2022年呢...... 各种意义上的Twist. 人生的转折,
@@ -153,7 +176,7 @@ href=&quot;https://www.acwing.com/activity/content/introduction/2712/&quot;&gt;�
     <link href="http://example.com/2022/12/21/KMP%E7%AE%97%E6%B3%95/"/>
     <id>http://example.com/2022/12/21/KMP%E7%AE%97%E6%B3%95/</id>
     <published>2022-12-21T12:37:01.000Z</published>
-    <updated>2022-12-21T17:42:17.536Z</updated>
+    <updated>2023-01-31T15:28:30.268Z</updated>
     
     
     <summary type="html">&lt;p&gt;做期末大作业里面有个字符串匹配的问题, 用暴力算法做完觉得不够爽,
