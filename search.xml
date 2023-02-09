@@ -1041,6 +1041,8 @@ href="https://www.zhihu.com/question/573023186/answer/2814221461">知乎:为什�
 忙碌后的凝思会带给人宁静, 或许人的创作欲此刻迸发. 胡诌数句,
 想想还是删去罢了.</p>
 <span id="more"></span>
+<h2 id="鬼话">鬼话</h2>
+<p>你见到的每个人都随身携带着粪便.</p>
 <h2 id="绮梦-一">绮梦 (一)</h2>
 <p>留坑.</p>
 <h2 id="绮梦-二">绮梦 (二)</h2>
@@ -1055,6 +1057,206 @@ href="https://www.zhihu.com/question/573023186/answer/2814221461">知乎:为什�
       </categories>
       <tags>
         <tag>杂谈</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>保研, 相亲, 找工作——背后的稳定匹配问题</title>
+    <url>/2023/02/06/%E7%A8%B3%E5%AE%9A%E5%8C%B9%E9%85%8D%E9%97%AE%E9%A2%98%E5%8F%8AGale-Shapley%E7%AE%97%E6%B3%95/</url>
+    <content><![CDATA[<h2 id="介绍">介绍</h2>
+<p><strong>稳定匹配问题</strong>(Stable Matching Problem)最早出自 D.Gale
+和 L.S.Sharpley
+1962年发表在美国数学月刊上的一篇关于<em>大学录取和婚姻稳定</em>的文章<a
+href="#fn1" class="footnote-ref" id="fnref1"
+role="doc-noteref"><sup>1</sup></a>. 解决这个问题的算法出奇地简单,
+甚至是<strong>自我执行</strong>(self-forcing)的——换言之,
+不需要系统的调度, 就能获得令人满意的结果!</p>
+<p>本文重点陈述算法的正确性——作为离散数学中<em>逻辑命题与证明</em>的简单应用.</p>
+<span id="more"></span>
+<h2 id="问题描述">问题描述</h2>
+<p>问题描述: 考虑你经营一家雇佣系统, 任务将 <span
+class="math inline">\(n\)</span> 个职位和 <span
+class="math inline">\(n\)</span> 名候选人匹配起来. 每项工作对 <span
+class="math inline">\(n\)</span> 名候选人有一排序的倾向表,
+每位候选人也有类似的表.</p>
+<p>例如, 考虑 <span class="math inline">\(n=3\)</span>, 为简化,
+我们假设候选人为 A, B, C, 岗位为 1, 2, 3. 对于 A, 他的倾向表为 2, 1, 3,
+表示最希望分配到2, 1次之, 3最后. 同样的, 岗位1选人的倾向表为 A, C, B,
+表示最希望招到 A, C次之, B最后.</p>
+<p>我们的目标是: 最大化总满足度, 最大化每个人的第一选择,
+以及减少倾向排名的差距</p>
+<p>Gale-Shapley 算法 (a.k.a. The Propose-and-Reject Algorithm)</p>
+<p>对于每一天:</p>
+<ul>
+<li>每个职位向它列表上最希望的候选人发offer.</li>
+<li>每个候选人都可以拒绝非自己最期望的offer.
+已得的offer会置于一个string上.</li>
+<li>被拒绝的职位会在表上划去拒绝人的名字.</li>
+</ul>
+<p>当每个人都拿到offer的时候, 程序停止.</p>
+<figure>
+<img src="/images/anim1.gif" alt="例子" />
+<figcaption aria-hidden="true">例子</figcaption>
+</figure>
+<h2 id="before-符号定义">Before: 符号定义</h2>
+<p><strong>定义 1</strong> 包含 <span class="math inline">\(n\)</span>
+对 pair 的不交集, 称为<strong>匹配</strong> <span
+class="math inline">\(S\)</span>.</p>
+<p>例如: <span class="math inline">\(S = \{(1, A), (2, B), (3,
+C)\}\)</span> 就是一个包含 <span class="math inline">\(3\)</span> 对
+pair 的匹配.</p>
+<p><strong>定义 2</strong> 如果 <span class="math inline">\(b\)</span>
+比起 <span class="math inline">\(g\)</span> 更喜欢 <span
+class="math inline">\(g^{*}\)</span>, 记 <span
+class="math inline">\(g^{*} &gt; g\)</span>. 特别地, 如果 <span
+class="math inline">\(b\)</span> 认为 <span
+class="math inline">\(g^{*}\)</span> 至少和 <span
+class="math inline">\(g\)</span> 一样好, 记 <span
+class="math inline">\(g^{*} \geqslant g\)</span>, 当且仅当 <span
+class="math inline">\(g^{*} = g\)</span> 取等.</p>
+<p><strong>定义 3</strong> 对于匹配 <span
+class="math inline">\(S\)</span> 中的元素 <span class="math inline">\(b,
+g^{*}\)</span>: 如果 <span class="math inline">\(b, g^{*}\)</span>
+是比当前 partner 更优的一对, 则称 <span class="math inline">\(b,
+g^{*}\)</span> 为一对<strong>rouge couple</strong>.</p>
+<p>例如: 假设对 <span class="math inline">\(1\)</span> 有 <span
+class="math inline">\(C&gt;B\)</span>, <span
+class="math inline">\(C\)</span> 认为 <span
+class="math inline">\(1&gt;2\)</span>, 那么匹配 <span
+class="math inline">\(S = \{(1, B), (2, C)\}\)</span> 中存在 rouge
+couple <span class="math inline">\(1, C\)</span>.</p>
+<p><strong>定义 4</strong> 不存在 rouge couple 的匹配 <span
+class="math inline">\(S\)</span> 称为<strong>稳定匹配</strong>.
+否则则为不稳定匹配.</p>
+<p>在上面的例子中: 因为 <span class="math inline">\(1\)</span> 可以追求
+<span class="math inline">\(C\)</span>, 同时 <span
+class="math inline">\(C\)</span> 也会欣然接受 <span
+class="math inline">\(1\)</span>, <span
+class="math inline">\((1,B)\)</span> 及 <span
+class="math inline">\((2,C)\)</span> 都有决裂的可能, 因此 <span
+class="math inline">\(S\)</span> 是一个不稳定匹配.</p>
+<h2 id="证明">证明</h2>
+<h3 id="总能停下">总能停下</h3>
+<p><strong>引理 1</strong> 算法总能停下.</p>
+<p><strong>证明</strong> 算法尚未停止时,
+每一天结束至少有一家公司将应聘者的人名从列表上划去. 因为列表有 <span
+class="math inline">\(n\)</span> 份, 每份上有 <span
+class="math inline">\(n\)</span> 个元素, 因此算法至多在 <span
+class="math inline">\(n^2\)</span> 的迭代(天)下终止.</p>
+<h3 id="进步引理">进步引理</h3>
+<p><strong>引理 2</strong> 对于第 <span class="math inline">\(t\)</span>
+天, 候选人 <span class="math inline">\(g\)</span> 手上有职位 <span
+class="math inline">\(b\)</span>, 那么第 <span
+class="math inline">\(t&#39;\)</span> 天结束, 他手上的 <span
+class="math inline">\(\forall b&#39;\)</span> 至少和 <span
+class="math inline">\(b\)</span> 一样好, 其中 <span
+class="math inline">\(t&#39; &gt; t\)</span>.</p>
+<p><strong>证明</strong> 我们对天数 <span
+class="math inline">\(i\geqslant k\)</span> 归纳.</p>
+<p>当 <span class="math inline">\(i = k\)</span>, <span
+class="math inline">\(C\)</span> <em>可以</em>收到至少一份offer(来自
+<span class="math inline">\(J\)</span>). 在第 <span
+class="math inline">\(k\)</span> 天结束, <span
+class="math inline">\(C\)</span> 手上至少会有 <span
+class="math inline">\(J\)</span> 或者比 <span
+class="math inline">\(J\)</span> 更好的offer(他可以自行选择).</p>
+<p>对于 <span class="math inline">\(\forall i \geqslant k\)</span>
+的情况, 假设命题成立, 只需归纳证明对 <span
+class="math inline">\(i+1\)</span> 命题同样成立.</p>
+<p>根据我们的假设, 第 <span class="math inline">\(i\)</span> 天 <span
+class="math inline">\(C\)</span> 获得了 <span
+class="math inline">\(J&#39;\geqslant J\)</span>, 根据算法, <span
+class="math inline">\(J&#39;\)</span> 在第 <span
+class="math inline">\(i+1\)</span> 天依然会向 <span
+class="math inline">\(C\)</span> 给出offer(因为 <span
+class="math inline">\(C\)</span> 在第 <span
+class="math inline">\(i\)</span> 天没理由拒绝或者 <span
+class="math inline">\(J&#39;\)</span> 凭空消失). 因此当第 <span
+class="math inline">\(i+1\)</span> 天结束, <span
+class="math inline">\(C\)</span> 手上要么是 <span
+class="math inline">\(J&#39;\)</span>, 要么是比 <span
+class="math inline">\(J&#39;\)</span> 更好的offer; 两种情况都 <span
+class="math inline">\(\geqslant J\)</span>, 因此结论对第 <span
+class="math inline">\(i+1\)</span> 天成立.</p>
+<h3 id="正确性">正确性</h3>
+<p><strong>引理 3</strong> Gale-Sharpley算法得出的匹配不存在rouge
+couple.</p>
+<p><strong>证明</strong> 反证法. 假设存在 <span
+class="math inline">\((b,g^{*})\)</span>, 且当前匹配为 <span
+class="math inline">\((b,g),(b^{*},g^{*})\)</span>. <span
+class="math inline">\(b\)</span> 比起 <span
+class="math inline">\(g\)</span> 更喜欢 <span
+class="math inline">\(g*\)</span>, 在给 <span
+class="math inline">\(g\)</span> 发出offer之前先给 <span
+class="math inline">\(g^{*}\)</span> 发出了offer, 而 <span
+class="math inline">\(g^{*}\)</span> 拒绝了 <span
+class="math inline">\(b\)</span>, 由引理 2, 知 <span
+class="math inline">\(g^{*}\)</span> 比起 <span
+class="math inline">\(b^{*}\)</span> 更喜欢 <span
+class="math inline">\(b\)</span>, 与条件矛盾.</p>
+<p><strong>定理 1</strong> Gale-Sharpley 算法是一种稳定的匹配算法.</p>
+<p><strong>证明</strong> 由引理 1 和引理 3 可知其正确.</p>
+<h3 id="最优性-对谁更有利">最优性: 对谁更有利?</h3>
+<p><strong>定义 5</strong> 如果 <span class="math inline">\(x\)</span>
+的 partner 在任何稳定匹配下皆为它的最佳 partner, 称匹配为 <span
+class="math inline">\(x\)</span> 最优的.</p>
+<p>同样可以给出 <span class="math inline">\(x\)</span> 最劣的定义.</p>
+<p><strong>定义 6</strong> 如果对全部工作/候选人 <span
+class="math inline">\(x\)</span> 都是 <span
+class="math inline">\(x\)</span> 最优的, 称匹配为工作/候选人最优.</p>
+<p>例子: A:1,2 B:2,1 1:A,B 2:A,B</p>
+<p>S: (A,1) (B,2) T: (A,2) (B,1)</p>
+<p>S, T 都是稳定的. 但 S 是对 A,B 最优, T 对 1,2 最优.</p>
+<p><strong>定理 2</strong> Gale-Sharpley算法是工作最优匹配.</p>
+<p><strong>证明</strong> 假设匹配对工作不是最优的: 存在 <span
+class="math inline">\(b\)</span> 得不到最优候选人 <span
+class="math inline">\(g\)</span>. 存在稳定匹配 <span
+class="math inline">\(S\)</span> 存在 <span
+class="math inline">\((b,g)\)</span> 匹配. 令 <span
+class="math inline">\(t\)</span> 为 <span
+class="math inline">\(b\)</span> 被 <span
+class="math inline">\(g\)</span> 拒绝的第一天, 那么在第 <span
+class="math inline">\(t\)</span> 日有 <span
+class="math inline">\(b^{*}\)</span> 与 <span
+class="math inline">\(g\)</span> 匹配, 也就意味着 <span
+class="math inline">\(g\)</span> 比起 <span
+class="math inline">\(b\)</span> 更喜欢 <span
+class="math inline">\(b^{*}\)</span>. <span
+class="math inline">\(b^{*}\)</span> 至少也会将 <span
+class="math inline">\(g\)</span> 作为它的最优候选人看待, 也就推出了"
+<span class="math inline">\(b^{*}\)</span> 比起他在 <span
+class="math inline">\(S\)</span> 中的 partner <span
+class="math inline">\(g^{*}\)</span> 更喜欢 <span
+class="math inline">\(g\)</span> "的结论, 而 <span
+class="math inline">\(b,g^{*}\)</span> 是一对rogue couple, 也即 <span
+class="math inline">\(S\)</span> 是不稳定的, 也就发生了矛盾.</p>
+<h2 id="拓展阅读">拓展阅读</h2>
+<p><a href="https://www.eecs70.org/assets/pdf/notes/n4.pdf">UCB CS70
+Note 4: Stable Matching Problem</a></p>
+<p>D. Gale and L.S. Shapley, “College Admissions and the Stability of
+Marriage,” <em>American Mathematical Monthly</em> <strong>69</strong>
+(1962), pp. 9–14.</p>
+<p>D. Gusfield and R.W. Irving, <em>The Stable Marriage Problem:
+Structure and Algorithms</em>, MIT Press, 1989.</p>
+<section id="footnotes" class="footnotes footnotes-end-of-document"
+role="doc-endnotes">
+<hr />
+<ol>
+<li id="fn1"><p>Matching领域的开山文章, 算法分析的伟大成就之一, 顺带一提
+Sharpley 也是<a
+href="https://news.yahoo.com/2-americans-win-nobel-economics-prize-111239568--finance.html">2012年诺贝尔经济学奖</a>的得主.
+题外话: 在文章的最后, 作者提到希望借此文章改变大众对数学/数学家的认知:
+我们真的不是只懂"一堆公式", 不说人话的家伙;
+还希望数学老师也能启发启发学生 :)<a href="#fnref1" class="footnote-back"
+role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section>
+]]></content>
+      <categories>
+        <category>算法</category>
+      </categories>
+      <tags>
+        <tag>算法</tag>
+        <tag>离散数学</tag>
       </tags>
   </entry>
 </search>

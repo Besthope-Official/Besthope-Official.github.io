@@ -1,0 +1,615 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 6.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-pepe.ico">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-pepe.ico">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha256-Z1K5uhUaJXA7Ll0XrZ/0JhX4lAtZFpT6jkKrEDT0drU=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Pisces","darkmode":false,"version":"8.14.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":true,"style":null},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="介绍 稳定匹配问题(Stable Matching Problem)最早出自 D.Gale 和 L.S.Sharpley 1962年发表在美国数学月刊上的一篇关于大学录取和婚姻稳定的文章1. 解决这个问题的算法出奇地简单, 甚至是自我执行(self-forcing)的——换言之, 不需要系统的调度, 就能获得令人满意的结果! 本文重点陈述算法的正确性——作为离散数学中逻辑命题与证明的简">
+<meta property="og:type" content="article">
+<meta property="og:title" content="保研, 相亲, 找工作——背后的稳定匹配问题">
+<meta property="og:url" content="http://example.com/2023/02/06/%E7%A8%B3%E5%AE%9A%E5%8C%B9%E9%85%8D%E9%97%AE%E9%A2%98%E5%8F%8AGale-Shapley%E7%AE%97%E6%B3%95/index.html">
+<meta property="og:site_name" content="Besthope&#39;s Blog">
+<meta property="og:description" content="介绍 稳定匹配问题(Stable Matching Problem)最早出自 D.Gale 和 L.S.Sharpley 1962年发表在美国数学月刊上的一篇关于大学录取和婚姻稳定的文章1. 解决这个问题的算法出奇地简单, 甚至是自我执行(self-forcing)的——换言之, 不需要系统的调度, 就能获得令人满意的结果! 本文重点陈述算法的正确性——作为离散数学中逻辑命题与证明的简">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/images/anim1.gif">
+<meta property="article:published_time" content="2023-02-06T08:28:11.000Z">
+<meta property="article:modified_time" content="2023-02-09T15:33:31.885Z">
+<meta property="article:author" content="Besthope">
+<meta property="article:tag" content="算法">
+<meta property="article:tag" content="离散数学">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/images/anim1.gif">
+
+
+<link rel="canonical" href="http://example.com/2023/02/06/%E7%A8%B3%E5%AE%9A%E5%8C%B9%E9%85%8D%E9%97%AE%E9%A2%98%E5%8F%8AGale-Shapley%E7%AE%97%E6%B3%95/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://example.com/2023/02/06/%E7%A8%B3%E5%AE%9A%E5%8C%B9%E9%85%8D%E9%97%AE%E9%A2%98%E5%8F%8AGale-Shapley%E7%AE%97%E6%B3%95/","path":"2023/02/06/稳定匹配问题及Gale-Shapley算法/","title":"保研, 相亲, 找工作——背后的稳定匹配问题"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>保研, 相亲, 找工作——背后的稳定匹配问题 | Besthope's Blog</title>
+  
+
+
+
+
+
+
+  <script async defer data-website-id="" src=""></script>
+
+  <script defer data-domain="" src=""></script>
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+<link rel="alternate" href="/atom.xml" title="Besthope's Blog" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">Besthope's Blog</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">more than a tech blog :)</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li><li class="menu-item menu-item-rss"><a href="/atom.xml" rel="section"><i class="fa fa-rss fa-fw"></i>RSS</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BB%8B%E7%BB%8D"><span class="nav-number">1.</span> <span class="nav-text">介绍</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%97%AE%E9%A2%98%E6%8F%8F%E8%BF%B0"><span class="nav-number">2.</span> <span class="nav-text">问题描述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#before-%E7%AC%A6%E5%8F%B7%E5%AE%9A%E4%B9%89"><span class="nav-number">3.</span> <span class="nav-text">Before: 符号定义</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%AF%81%E6%98%8E"><span class="nav-number">4.</span> <span class="nav-text">证明</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%80%BB%E8%83%BD%E5%81%9C%E4%B8%8B"><span class="nav-number">4.1.</span> <span class="nav-text">总能停下</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BF%9B%E6%AD%A5%E5%BC%95%E7%90%86"><span class="nav-number">4.2.</span> <span class="nav-text">进步引理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%AD%A3%E7%A1%AE%E6%80%A7"><span class="nav-number">4.3.</span> <span class="nav-text">正确性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9C%80%E4%BC%98%E6%80%A7-%E5%AF%B9%E8%B0%81%E6%9B%B4%E6%9C%89%E5%88%A9"><span class="nav-number">4.4.</span> <span class="nav-text">最优性: 对谁更有利?</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%8B%93%E5%B1%95%E9%98%85%E8%AF%BB"><span class="nav-number">5.</span> <span class="nav-text">拓展阅读</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Besthope"
+      src="/images/bocchi.png">
+  <p class="site-author-name" itemprop="name">Besthope</p>
+  <div class="site-description" itemprop="description">把好点子变现成实践</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">9</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-name">分类</span>
+      </div>
+      <div class="site-state-item site-state-tags">
+        <span class="site-state-item-count">17</span>
+        <span class="site-state-item-name">标签</span>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/Besthope-Official" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;Besthope-Official" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:874256269@qq.com" title="E-Mail → mailto:874256269@qq.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i></a>
+      </span>
+  </div>
+
+        </div>
+      </div>
+        <div class="back-to-top animated" role="button" aria-label="返回顶部">
+          <i class="fa fa-arrow-up"></i>
+          <span>0%</span>
+        </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2023/02/06/%E7%A8%B3%E5%AE%9A%E5%8C%B9%E9%85%8D%E9%97%AE%E9%A2%98%E5%8F%8AGale-Shapley%E7%AE%97%E6%B3%95/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/bocchi.png">
+      <meta itemprop="name" content="Besthope">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Besthope's Blog">
+      <meta itemprop="description" content="把好点子变现成实践">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="保研, 相亲, 找工作——背后的稳定匹配问题 | Besthope's Blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          保研, 相亲, 找工作——背后的稳定匹配问题
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2023-02-06 16:28:11" itemprop="dateCreated datePublished" datetime="2023-02-06T16:28:11+08:00">2023-02-06</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2023-02-09 23:33:31" itemprop="dateModified" datetime="2023-02-09T23:33:31+08:00">2023-02-09</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E7%AE%97%E6%B3%95/" itemprop="url" rel="index"><span itemprop="name">算法</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>1.5k</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>5 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h2 id="介绍">介绍</h2>
+<p><strong>稳定匹配问题</strong>(Stable Matching Problem)最早出自 D.Gale
+和 L.S.Sharpley
+1962年发表在美国数学月刊上的一篇关于<em>大学录取和婚姻稳定</em>的文章<a
+href="#fn1" class="footnote-ref" id="fnref1"
+role="doc-noteref"><sup>1</sup></a>. 解决这个问题的算法出奇地简单,
+甚至是<strong>自我执行</strong>(self-forcing)的——换言之,
+不需要系统的调度, 就能获得令人满意的结果!</p>
+<p>本文重点陈述算法的正确性——作为离散数学中<em>逻辑命题与证明</em>的简单应用.</p>
+<span id="more"></span>
+<h2 id="问题描述">问题描述</h2>
+<p>问题描述: 考虑你经营一家雇佣系统, 任务将 <span
+class="math inline">\(n\)</span> 个职位和 <span
+class="math inline">\(n\)</span> 名候选人匹配起来. 每项工作对 <span
+class="math inline">\(n\)</span> 名候选人有一排序的倾向表,
+每位候选人也有类似的表.</p>
+<p>例如, 考虑 <span class="math inline">\(n=3\)</span>, 为简化,
+我们假设候选人为 A, B, C, 岗位为 1, 2, 3. 对于 A, 他的倾向表为 2, 1, 3,
+表示最希望分配到2, 1次之, 3最后. 同样的, 岗位1选人的倾向表为 A, C, B,
+表示最希望招到 A, C次之, B最后.</p>
+<p>我们的目标是: 最大化总满足度, 最大化每个人的第一选择,
+以及减少倾向排名的差距</p>
+<p>Gale-Shapley 算法 (a.k.a. The Propose-and-Reject Algorithm)</p>
+<p>对于每一天:</p>
+<ul>
+<li>每个职位向它列表上最希望的候选人发offer.</li>
+<li>每个候选人都可以拒绝非自己最期望的offer.
+已得的offer会置于一个string上.</li>
+<li>被拒绝的职位会在表上划去拒绝人的名字.</li>
+</ul>
+<p>当每个人都拿到offer的时候, 程序停止.</p>
+<figure>
+<img src="/images/anim1.gif" alt="例子" />
+<figcaption aria-hidden="true">例子</figcaption>
+</figure>
+<h2 id="before-符号定义">Before: 符号定义</h2>
+<p><strong>定义 1</strong> 包含 <span class="math inline">\(n\)</span>
+对 pair 的不交集, 称为<strong>匹配</strong> <span
+class="math inline">\(S\)</span>.</p>
+<p>例如: <span class="math inline">\(S = \{(1, A), (2, B), (3,
+C)\}\)</span> 就是一个包含 <span class="math inline">\(3\)</span> 对
+pair 的匹配.</p>
+<p><strong>定义 2</strong> 如果 <span class="math inline">\(b\)</span>
+比起 <span class="math inline">\(g\)</span> 更喜欢 <span
+class="math inline">\(g^{*}\)</span>, 记 <span
+class="math inline">\(g^{*} &gt; g\)</span>. 特别地, 如果 <span
+class="math inline">\(b\)</span> 认为 <span
+class="math inline">\(g^{*}\)</span> 至少和 <span
+class="math inline">\(g\)</span> 一样好, 记 <span
+class="math inline">\(g^{*} \geqslant g\)</span>, 当且仅当 <span
+class="math inline">\(g^{*} = g\)</span> 取等.</p>
+<p><strong>定义 3</strong> 对于匹配 <span
+class="math inline">\(S\)</span> 中的元素 <span class="math inline">\(b,
+g^{*}\)</span>: 如果 <span class="math inline">\(b, g^{*}\)</span>
+是比当前 partner 更优的一对, 则称 <span class="math inline">\(b,
+g^{*}\)</span> 为一对<strong>rouge couple</strong>.</p>
+<p>例如: 假设对 <span class="math inline">\(1\)</span> 有 <span
+class="math inline">\(C&gt;B\)</span>, <span
+class="math inline">\(C\)</span> 认为 <span
+class="math inline">\(1&gt;2\)</span>, 那么匹配 <span
+class="math inline">\(S = \{(1, B), (2, C)\}\)</span> 中存在 rouge
+couple <span class="math inline">\(1, C\)</span>.</p>
+<p><strong>定义 4</strong> 不存在 rouge couple 的匹配 <span
+class="math inline">\(S\)</span> 称为<strong>稳定匹配</strong>.
+否则则为不稳定匹配.</p>
+<p>在上面的例子中: 因为 <span class="math inline">\(1\)</span> 可以追求
+<span class="math inline">\(C\)</span>, 同时 <span
+class="math inline">\(C\)</span> 也会欣然接受 <span
+class="math inline">\(1\)</span>, <span
+class="math inline">\((1,B)\)</span> 及 <span
+class="math inline">\((2,C)\)</span> 都有决裂的可能, 因此 <span
+class="math inline">\(S\)</span> 是一个不稳定匹配.</p>
+<h2 id="证明">证明</h2>
+<h3 id="总能停下">总能停下</h3>
+<p><strong>引理 1</strong> 算法总能停下.</p>
+<p><strong>证明</strong> 算法尚未停止时,
+每一天结束至少有一家公司将应聘者的人名从列表上划去. 因为列表有 <span
+class="math inline">\(n\)</span> 份, 每份上有 <span
+class="math inline">\(n\)</span> 个元素, 因此算法至多在 <span
+class="math inline">\(n^2\)</span> 的迭代(天)下终止.</p>
+<h3 id="进步引理">进步引理</h3>
+<p><strong>引理 2</strong> 对于第 <span class="math inline">\(t\)</span>
+天, 候选人 <span class="math inline">\(g\)</span> 手上有职位 <span
+class="math inline">\(b\)</span>, 那么第 <span
+class="math inline">\(t&#39;\)</span> 天结束, 他手上的 <span
+class="math inline">\(\forall b&#39;\)</span> 至少和 <span
+class="math inline">\(b\)</span> 一样好, 其中 <span
+class="math inline">\(t&#39; &gt; t\)</span>.</p>
+<p><strong>证明</strong> 我们对天数 <span
+class="math inline">\(i\geqslant k\)</span> 归纳.</p>
+<p>当 <span class="math inline">\(i = k\)</span>, <span
+class="math inline">\(C\)</span> <em>可以</em>收到至少一份offer(来自
+<span class="math inline">\(J\)</span>). 在第 <span
+class="math inline">\(k\)</span> 天结束, <span
+class="math inline">\(C\)</span> 手上至少会有 <span
+class="math inline">\(J\)</span> 或者比 <span
+class="math inline">\(J\)</span> 更好的offer(他可以自行选择).</p>
+<p>对于 <span class="math inline">\(\forall i \geqslant k\)</span>
+的情况, 假设命题成立, 只需归纳证明对 <span
+class="math inline">\(i+1\)</span> 命题同样成立.</p>
+<p>根据我们的假设, 第 <span class="math inline">\(i\)</span> 天 <span
+class="math inline">\(C\)</span> 获得了 <span
+class="math inline">\(J&#39;\geqslant J\)</span>, 根据算法, <span
+class="math inline">\(J&#39;\)</span> 在第 <span
+class="math inline">\(i+1\)</span> 天依然会向 <span
+class="math inline">\(C\)</span> 给出offer(因为 <span
+class="math inline">\(C\)</span> 在第 <span
+class="math inline">\(i\)</span> 天没理由拒绝或者 <span
+class="math inline">\(J&#39;\)</span> 凭空消失). 因此当第 <span
+class="math inline">\(i+1\)</span> 天结束, <span
+class="math inline">\(C\)</span> 手上要么是 <span
+class="math inline">\(J&#39;\)</span>, 要么是比 <span
+class="math inline">\(J&#39;\)</span> 更好的offer; 两种情况都 <span
+class="math inline">\(\geqslant J\)</span>, 因此结论对第 <span
+class="math inline">\(i+1\)</span> 天成立.</p>
+<h3 id="正确性">正确性</h3>
+<p><strong>引理 3</strong> Gale-Sharpley算法得出的匹配不存在rouge
+couple.</p>
+<p><strong>证明</strong> 反证法. 假设存在 <span
+class="math inline">\((b,g^{*})\)</span>, 且当前匹配为 <span
+class="math inline">\((b,g),(b^{*},g^{*})\)</span>. <span
+class="math inline">\(b\)</span> 比起 <span
+class="math inline">\(g\)</span> 更喜欢 <span
+class="math inline">\(g*\)</span>, 在给 <span
+class="math inline">\(g\)</span> 发出offer之前先给 <span
+class="math inline">\(g^{*}\)</span> 发出了offer, 而 <span
+class="math inline">\(g^{*}\)</span> 拒绝了 <span
+class="math inline">\(b\)</span>, 由引理 2, 知 <span
+class="math inline">\(g^{*}\)</span> 比起 <span
+class="math inline">\(b^{*}\)</span> 更喜欢 <span
+class="math inline">\(b\)</span>, 与条件矛盾.</p>
+<p><strong>定理 1</strong> Gale-Sharpley 算法是一种稳定的匹配算法.</p>
+<p><strong>证明</strong> 由引理 1 和引理 3 可知其正确.</p>
+<h3 id="最优性-对谁更有利">最优性: 对谁更有利?</h3>
+<p><strong>定义 5</strong> 如果 <span class="math inline">\(x\)</span>
+的 partner 在任何稳定匹配下皆为它的最佳 partner, 称匹配为 <span
+class="math inline">\(x\)</span> 最优的.</p>
+<p>同样可以给出 <span class="math inline">\(x\)</span> 最劣的定义.</p>
+<p><strong>定义 6</strong> 如果对全部工作/候选人 <span
+class="math inline">\(x\)</span> 都是 <span
+class="math inline">\(x\)</span> 最优的, 称匹配为工作/候选人最优.</p>
+<p>例子: A:1,2 B:2,1 1:A,B 2:A,B</p>
+<p>S: (A,1) (B,2) T: (A,2) (B,1)</p>
+<p>S, T 都是稳定的. 但 S 是对 A,B 最优, T 对 1,2 最优.</p>
+<p><strong>定理 2</strong> Gale-Sharpley算法是工作最优匹配.</p>
+<p><strong>证明</strong> 假设匹配对工作不是最优的: 存在 <span
+class="math inline">\(b\)</span> 得不到最优候选人 <span
+class="math inline">\(g\)</span>. 存在稳定匹配 <span
+class="math inline">\(S\)</span> 存在 <span
+class="math inline">\((b,g)\)</span> 匹配. 令 <span
+class="math inline">\(t\)</span> 为 <span
+class="math inline">\(b\)</span> 被 <span
+class="math inline">\(g\)</span> 拒绝的第一天, 那么在第 <span
+class="math inline">\(t\)</span> 日有 <span
+class="math inline">\(b^{*}\)</span> 与 <span
+class="math inline">\(g\)</span> 匹配, 也就意味着 <span
+class="math inline">\(g\)</span> 比起 <span
+class="math inline">\(b\)</span> 更喜欢 <span
+class="math inline">\(b^{*}\)</span>. <span
+class="math inline">\(b^{*}\)</span> 至少也会将 <span
+class="math inline">\(g\)</span> 作为它的最优候选人看待, 也就推出了"
+<span class="math inline">\(b^{*}\)</span> 比起他在 <span
+class="math inline">\(S\)</span> 中的 partner <span
+class="math inline">\(g^{*}\)</span> 更喜欢 <span
+class="math inline">\(g\)</span> "的结论, 而 <span
+class="math inline">\(b,g^{*}\)</span> 是一对rogue couple, 也即 <span
+class="math inline">\(S\)</span> 是不稳定的, 也就发生了矛盾.</p>
+<h2 id="拓展阅读">拓展阅读</h2>
+<p><a target="_blank" rel="noopener" href="https://www.eecs70.org/assets/pdf/notes/n4.pdf">UCB CS70
+Note 4: Stable Matching Problem</a></p>
+<p>D. Gale and L.S. Shapley, “College Admissions and the Stability of
+Marriage,” <em>American Mathematical Monthly</em> <strong>69</strong>
+(1962), pp. 9–14.</p>
+<p>D. Gusfield and R.W. Irving, <em>The Stable Marriage Problem:
+Structure and Algorithms</em>, MIT Press, 1989.</p>
+<section id="footnotes" class="footnotes footnotes-end-of-document"
+role="doc-endnotes">
+<hr />
+<ol>
+<li id="fn1"><p>Matching领域的开山文章, 算法分析的伟大成就之一, 顺带一提
+Sharpley 也是<a
+target="_blank" rel="noopener" href="https://news.yahoo.com/2-americans-win-nobel-economics-prize-111239568--finance.html">2012年诺贝尔经济学奖</a>的得主.
+题外话: 在文章的最后, 作者提到希望借此文章改变大众对数学/数学家的认知:
+我们真的不是只懂"一堆公式", 不说人话的家伙;
+还希望数学老师也能启发启发学生 :)<a href="#fnref1" class="footnote-back"
+role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E7%AE%97%E6%B3%95/" rel="tag"># 算法</a>
+              <a href="/tags/%E7%A6%BB%E6%95%A3%E6%95%B0%E5%AD%A6/" rel="tag"># 离散数学</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2023/01/28/%E9%9A%8F%E6%84%9F%E5%BD%95/" rel="prev" title="随感录">
+                  <i class="fa fa-chevron-left"></i> 随感录
+                </a>
+            </div>
+            <div class="post-nav-item">
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    <div class="comments gitalk-container"></div>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 2022 – 
+  <span itemprop="copyrightYear">2023</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Besthope</span>
+</div>
+<div class="wordcount">
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-line"></i>
+    </span>
+      <span>站点总字数：</span>
+    <span title="站点总字数">15k</span>
+  </span>
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+      <span>站点阅读时长 &asymp;</span>
+    <span title="站点阅读时长">54 分钟</span>
+  </span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/pisces/" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.1/search.js" integrity="sha256-1kfA5uHPf65M5cphT2dvymhkuyHPQp5A53EGZOnOLmc=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+
+
+
+  
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">true</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"none","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/gitalk/1.8.0/gitalk.css" integrity="sha256-AJnUHL7dBv6PGaeyPQJcgQPDjt/Hn/PvYZde1iqfp8U=" crossorigin="anonymous">
+
+<script class="next-config" data-name="gitalk" type="application/json">{"enable":true,"github_id":"Besthope-Official","repo":"Gittalk-repo","client_id":"a30bcd98c6f188a719e4","client_secret":"bd7e03497f2a00490144e9e0756d511768622b0e","admin_user":"Besthope-Official","distraction_free_mode":true,"proxy":"https://luminous-druid-90cc61.netlify.app/github_access_token","language":"zh-CN","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/gitalk/1.8.0/gitalk.min.js","integrity":"sha256-MVK9MGD/XJaGyIghSVrONSnoXoGh3IFxLw0zfvzpxR4="},"path_md5":"ef8a2c6e45a9357a18a5d937cb37f0e8"}</script>
+<script src="/js/third-party/comments/gitalk.js"></script>
+<script src="https://api.asilu.com/cdn/jquery.js,jquery.backstretch.min.js" type="text/javascript"></script>
+<body>
+<script type="text/javascript">
+function display()
+{
+    function shuffle(arr) {
+    let i = arr.length;
+    while (i) {
+      let j = Math.floor(Math.random() * i--);
+      [arr[j], arr[i]] = [arr[i], arr[j]];
+    }
+  }
+
+  const pic = 5;
+  var bgs = [];
+
+  for (i = 1; i <= pic; i++) {
+    bgs.push("/images/bg" + i + ".jpg");
+  }
+
+  shuffle(bgs);
+
+  $.backstretch(bgs, {
+    fade: 3000, // 动画时长; 单位：毫秒
+    duration: 10000, // 切换延时
+  });
+}
+
+display();
+
+window.onclick = window.onload = function () {
+  display();
+};
+</script>
+</body>
+</body>
+<!-- click love -->
+<script type="text/javascript" src="/js/clicklove.js"></script>
+</html>

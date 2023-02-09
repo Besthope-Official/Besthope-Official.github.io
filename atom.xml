@@ -6,7 +6,7 @@
   <link href="http://example.com/atom.xml" rel="self"/>
   
   <link href="http://example.com/"/>
-  <updated>2023-01-31T15:27:34.281Z</updated>
+  <updated>2023-02-09T15:33:31.885Z</updated>
   <id>http://example.com/</id>
   
   <author>
@@ -17,11 +17,40 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>保研, 相亲, 找工作——背后的稳定匹配问题</title>
+    <link href="http://example.com/2023/02/06/%E7%A8%B3%E5%AE%9A%E5%8C%B9%E9%85%8D%E9%97%AE%E9%A2%98%E5%8F%8AGale-Shapley%E7%AE%97%E6%B3%95/"/>
+    <id>http://example.com/2023/02/06/%E7%A8%B3%E5%AE%9A%E5%8C%B9%E9%85%8D%E9%97%AE%E9%A2%98%E5%8F%8AGale-Shapley%E7%AE%97%E6%B3%95/</id>
+    <published>2023-02-06T08:28:11.000Z</published>
+    <updated>2023-02-09T15:33:31.885Z</updated>
+    
+    
+    <summary type="html">&lt;h2 id=&quot;介绍&quot;&gt;介绍&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;稳定匹配问题&lt;/strong&gt;(Stable Matching Problem)最早出自 D.Gale
+和 L.S.Sharpley
+1962年发表在美国数学月刊上的一篇关于&lt;em&gt;大学录取和婚姻稳定&lt;/em&gt;的文章&lt;a
+href=&quot;#fn1&quot; class=&quot;footnote-ref&quot; id=&quot;fnref1&quot;
+role=&quot;doc-noteref&quot;&gt;&lt;sup&gt;1&lt;/sup&gt;&lt;/a&gt;. 解决这个问题的算法出奇地简单,
+甚至是&lt;strong&gt;自我执行&lt;/strong&gt;(self-forcing)的——换言之,
+不需要系统的调度, 就能获得令人满意的结果!&lt;/p&gt;
+&lt;p&gt;本文重点陈述算法的正确性——作为离散数学中&lt;em&gt;逻辑命题与证明&lt;/em&gt;的简单应用.&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="算法" scheme="http://example.com/categories/%E7%AE%97%E6%B3%95/"/>
+    
+    
+    <category term="算法" scheme="http://example.com/tags/%E7%AE%97%E6%B3%95/"/>
+    
+    <category term="离散数学" scheme="http://example.com/tags/%E7%A6%BB%E6%95%A3%E6%95%B0%E5%AD%A6/"/>
+    
+  </entry>
+  
+  <entry>
     <title>随感录</title>
     <link href="http://example.com/2023/01/28/%E9%9A%8F%E6%84%9F%E5%BD%95/"/>
     <id>http://example.com/2023/01/28/%E9%9A%8F%E6%84%9F%E5%BD%95/</id>
     <published>2023-01-28T14:41:17.000Z</published>
-    <updated>2023-01-31T15:27:34.281Z</updated>
+    <updated>2023-02-09T08:49:33.076Z</updated>
     
     
     <summary type="html">&lt;p&gt;记录不时的奇思妙想. 奇怪的梦, 无垠的呓语, 似非的感悟.
