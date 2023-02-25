@@ -1043,6 +1043,10 @@ href="https://www.zhihu.com/question/573023186/answer/2814221461">知乎:为什�
 <span id="more"></span>
 <h2 id="鬼话">鬼话</h2>
 <p>你见到的每个人都随身携带着粪便.</p>
+<p>心情愉快, 对谁都会抱有特殊的热情与善意.</p>
+<p>编程和学车: 编程纯死记硬背模板和学车纯死记点位一样,
+不懂原理最后的结果就是实战一团糟.</p>
+<p>呆在家里越久, 越容易恋家. 保证自己的独立性.</p>
 <h2 id="绮梦-一">绮梦 (一)</h2>
 <p>留坑.</p>
 <h2 id="绮梦-二">绮梦 (二)</h2>
@@ -1257,6 +1261,27 @@ role="doc-backlink">↩︎</a></p></li>
       <tags>
         <tag>算法</tag>
         <tag>离散数学</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>AI时代的算法学习指南</title>
+    <url>/2023/02/25/AI%E6%97%B6%E4%BB%A3%E7%9A%84%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0%E6%8C%87%E5%8D%97/</url>
+    <content><![CDATA[<p>日常刷知乎, 然后看到了这样一个问题: <a href="https://www.zhihu.com/question/585554274/">沃顿商学院教授要求学生必须用 ChatGPT 写作业，应该如何正确看待 AI 带来的利弊？</a></p>
+<p>之前我也看到一些态度截然相反的高校. 说实在话, 反对历史必然的行为, 无异于杯水车薪, 想想 Luddite movement 也不会真正让我们重回原始社会, 闭关锁国的历史也不必再度经历; 至于使用工具是否会反噬自身, 只要在不侵害他人的利益下, 我想这个自由最好让步于个人, 想想你是怎么注册上了ChatGPT的账号. 最后, 这句话送给AI时代下学习算法, 或者说, 学习一切的你和我:</p>
+<blockquote>
+<p>拥抱变化要比拒绝变化简单的多.</p>
+</blockquote>
+<span id="more"></span>
+<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>本文介绍一些ChatGPT帮助辅助学习算法的Tips.</p>
+<p>我也在摸索AI的使用方式, 有好的想法大家一起交流学习! :)</p>
+<h2 id="Prompt-的艺术"><a href="#Prompt-的艺术" class="headerlink" title="Prompt 的艺术"></a>Prompt 的艺术</h2><p>TODO</p>
+<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><p>[1]. Ibrahim John, The Art of Asking ChatGPT for High-Quality Answers, A Complete Guide to Prompt Engineering Techniques, ISBN-13: 9781234567890</p>
+]]></content>
+      <categories>
+        <category>杂谈</category>
+      </categories>
+      <tags>
+        <tag>杂谈 算法 学习经验</tag>
       </tags>
   </entry>
 </search>
