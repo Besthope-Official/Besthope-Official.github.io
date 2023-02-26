@@ -1,0 +1,670 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 6.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-pepe.ico">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-pepe.ico">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha256-Z1K5uhUaJXA7Ll0XrZ/0JhX4lAtZFpT6jkKrEDT0drU=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Pisces","darkmode":false,"version":"8.14.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":true,"style":null},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="做一个数据结构的小小总结. 其实数据结构和算法是不分家的, 例如 1+1&#x3D;2 是一个加法算法, 用到了整型的数据结构 1. 你就说是不是吧. DSA课程&#x2F;书本上更注重实现. 手搓一个泛型结构, 实现 std 里头的一堆方法, 这不劝退谁劝退. 实现是为了更好理解原理. 不要被复杂的构造带偏了学习的方向! 我们实现的标准是: ANSI C 也能做到! 剩下的内容: 怎么用STL来解决使用">
+<meta property="og:type" content="article">
+<meta property="og:title" content="简单的数据结构">
+<meta property="og:url" content="http://example.com/2023/02/25/%E7%AE%80%E5%8D%95%E7%9A%84%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/index.html">
+<meta property="og:site_name" content="Besthope&#39;s Blog">
+<meta property="og:description" content="做一个数据结构的小小总结. 其实数据结构和算法是不分家的, 例如 1+1&#x3D;2 是一个加法算法, 用到了整型的数据结构 1. 你就说是不是吧. DSA课程&#x2F;书本上更注重实现. 手搓一个泛型结构, 实现 std 里头的一堆方法, 这不劝退谁劝退. 实现是为了更好理解原理. 不要被复杂的构造带偏了学习的方向! 我们实现的标准是: ANSI C 也能做到! 剩下的内容: 怎么用STL来解决使用">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/2023/02/25/%E7%AE%80%E5%8D%95%E7%9A%84%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/images/Trie1.png">
+<meta property="article:published_time" content="2023-02-25T15:29:08.000Z">
+<meta property="article:modified_time" content="2023-02-26T05:11:18.569Z">
+<meta property="article:author" content="Besthope">
+<meta property="article:tag" content="算法">
+<meta property="article:tag" content="数据结构">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/2023/02/25/%E7%AE%80%E5%8D%95%E7%9A%84%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/images/Trie1.png">
+
+
+<link rel="canonical" href="http://example.com/2023/02/25/%E7%AE%80%E5%8D%95%E7%9A%84%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://example.com/2023/02/25/%E7%AE%80%E5%8D%95%E7%9A%84%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/","path":"2023/02/25/简单的数据结构/","title":"简单的数据结构"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>简单的数据结构 | Besthope's Blog</title>
+  
+
+
+
+
+
+
+  <script async defer data-website-id="" src=""></script>
+
+  <script defer data-domain="" src=""></script>
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+<link rel="alternate" href="/atom.xml" title="Besthope's Blog" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">Besthope's Blog</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">more than a tech blog :)</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li><li class="menu-item menu-item-rss"><a href="/atom.xml" rel="section"><i class="fa fa-rss fa-fw"></i>RSS</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%93%BE%E8%A1%A8"><span class="nav-number">1.</span> <span class="nav-text">链表</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8F%8C%E9%93%BE%E8%A1%A8"><span class="nav-number">1.1.</span> <span class="nav-text">双链表</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%A0%88"><span class="nav-number">2.</span> <span class="nav-text">栈</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8D%95%E8%B0%83%E6%A0%88"><span class="nav-number">2.1.</span> <span class="nav-text">单调栈</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%98%9F%E5%88%97"><span class="nav-number">3.</span> <span class="nav-text">队列</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8D%95%E8%B0%83%E9%98%9F%E5%88%97"><span class="nav-number">3.1.</span> <span class="nav-text">单调队列</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AD%97%E7%AC%A6%E4%B8%B2"><span class="nav-number">4.</span> <span class="nav-text">字符串</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#kmp"><span class="nav-number">4.1.</span> <span class="nav-text">KMP</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#trie%E6%A0%91%E5%AD%97%E5%85%B8%E6%A0%91"><span class="nav-number">4.2.</span> <span class="nav-text">Trie树(字典树)</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B9%B6%E6%9F%A5%E9%9B%86"><span class="nav-number">5.</span> <span class="nav-text">并查集</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9B%BE"><span class="nav-number">6.</span> <span class="nav-text">图</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BA%8C%E5%8F%89%E6%A0%91"><span class="nav-number">6.1.</span> <span class="nav-text">二叉树</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%A1%B6"><span class="nav-number">7.</span> <span class="nav-text">桶</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%93%88%E5%B8%8C%E8%A1%A8%E6%95%A3%E5%88%97%E8%A1%A8"><span class="nav-number">8.</span> <span class="nav-text">哈希表(散列表)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%93%88%E5%B8%8C"><span class="nav-number">8.1.</span> <span class="nav-text">字符串哈希</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%A0%86"><span class="nav-number">9.</span> <span class="nav-text">堆</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Besthope"
+      src="/images/bocchi.png">
+  <p class="site-author-name" itemprop="name">Besthope</p>
+  <div class="site-description" itemprop="description">把好点子变现成实践</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">11</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+        <span class="site-state-item-count">4</span>
+        <span class="site-state-item-name">分类</span>
+      </div>
+      <div class="site-state-item site-state-tags">
+        <span class="site-state-item-count">19</span>
+        <span class="site-state-item-name">标签</span>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/Besthope-Official" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;Besthope-Official" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:874256269@qq.com" title="E-Mail → mailto:874256269@qq.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i></a>
+      </span>
+  </div>
+
+        </div>
+      </div>
+        <div class="back-to-top animated" role="button" aria-label="返回顶部">
+          <i class="fa fa-arrow-up"></i>
+          <span>0%</span>
+        </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2023/02/25/%E7%AE%80%E5%8D%95%E7%9A%84%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/bocchi.png">
+      <meta itemprop="name" content="Besthope">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Besthope's Blog">
+      <meta itemprop="description" content="把好点子变现成实践">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="简单的数据结构 | Besthope's Blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          简单的数据结构
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2023-02-25 23:29:08" itemprop="dateCreated datePublished" datetime="2023-02-25T23:29:08+08:00">2023-02-25</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2023-02-26 13:11:18" itemprop="dateModified" datetime="2023-02-26T13:11:18+08:00">2023-02-26</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" itemprop="url" rel="index"><span itemprop="name">数据结构</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>3.2k</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>12 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <p>做一个数据结构的小小总结. 其实数据结构和算法是不分家的, 例如
+<code>1+1=2</code> 是一个加法算法, 用到了整型的数据结构 <a href="#fn1"
+class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>.
+你就说是不是吧.</p>
+<p>DSA课程/书本上更注重实现. 手搓一个泛型结构, 实现 <code>std</code>
+里头的一堆方法, 这不劝退谁劝退. 实现是为了更好理解原理.
+不要被复杂的构造带偏了学习的方向! 我们实现的标准是: ANSI C 也能做到!</p>
+<p>剩下的内容: 怎么用STL来解决使用到特定数据结构的题目, i.e. 会做题.
+但我们也懂原理!</p>
+<span id="more"></span>
+<h2 id="链表">链表</h2>
+<p>我们用数组模拟链表. 动态链表谁不会啊?</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">struct</span> <span class="title class_">Node</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="type">int</span> val;</span><br><span class="line">    Node *next;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">new</span> <span class="built_in">Node</span>(); <span class="comment">// TOO SLOW! 除非你用内存池优化</span></span><br></pre></td></tr></table></figure>
+<p>数组模拟单链表: 效率高 最大用处是<strong>邻接表</strong>
+邻接表能拿来储存图/树.</p>
+<p>储存方式: 区别于动态链表, 每个值对应一个地址,
+静态链表采用编号的形式.</p>
+<p>略过头节点, 第一个节点编号为 0, 然后是 1, 直到下一个节点不存在,
+这个next节点编号为-1. 编号和下标关联起来, 通过访问编号,
+也就访问了相应的元素值.</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> head, e[N], ne[N], idx;</span><br></pre></td></tr></table></figure>
+<p>把 <code>x</code> 插到链表第 <code>k</code> 个元素之后,
+要考虑插入的位置. 如果 <code>k = 0</code>,
+那么就把新节点设置为头节点即可:</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">newNode-&gt;data = data;</span><br><span class="line">newNode-&gt;next = head;</span><br><span class="line">head = newNode;</span><br></pre></td></tr></table></figure>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 找到第 k 个节点</span></span><br><span class="line">Node* current = head;</span><br><span class="line"><span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">1</span>; i &lt; k &amp;&amp; current != <span class="literal">NULL</span>; i++) &#123;</span><br><span class="line">    current = current-&gt;next;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 然后插入新节点</span></span><br><span class="line">newNode-&gt;data = data;</span><br><span class="line">newNode-&gt;next = current-&gt;next;</span><br><span class="line">current-&gt;next = newNode;</span><br></pre></td></tr></table></figure>
+<p>作为对比, 我们来关注下静态链表的实现:</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 头节点插入 x</span></span><br><span class="line">e[idx] = x;</span><br><span class="line">ne[idx] = head;</span><br><span class="line">head = idx++;</span><br></pre></td></tr></table></figure>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// x 插入到下标为 k 的后面</span></span><br><span class="line">e[idx] = x;</span><br><span class="line">ne[idx] = ne[k];</span><br><span class="line">ne[k] = idx++;</span><br></pre></td></tr></table></figure>
+<p>静态链表表示的含义基本上和动态链表无异.
+唯一的区别就是最后要手动更新下标idx. 此外, 这种规定下,
+第一个节点的下标为0, 实际操作可能要对下标偏移一位. 例如
+<code>insert(k - 1, x)</code> 表示在第 <code>k</code> 个节点后插入
+<code>x</code>. 当然你也可以将 <code>idx</code> 初始化为 1.
+你会发现静态链表实际上有空间换时间的做法. 因为多了一个 <code>ne</code>
+数组, 我们访问下标要比动态链表遍历找到第 <code>k</code>
+个元素快的多.</p>
+<p>删除操作, 实际上就是当原节点不存在, 并没有真正地在内存上把它抹除:</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ne[k] = ne[ne[k]];</span><br></pre></td></tr></table></figure>
+<h3 id="双链表">双链表</h3>
+<p>双链表多了一个 <code>prev</code>(前驱指针),
+操作其实和单链表没多大区别.</p>
+<p>双链表能优化某些问题.</p>
+<h2 id="栈">栈</h2>
+<p>先进后出</p>
+<p>数组模拟: <code>stk[N], tt</code></p>
+<p><code>push(x)</code> 就是 <code>stk[++tt] = x</code> (栈指针+1,
+然后赋值) <code>pop(x)</code> 就是 <code>tt--</code> (栈指针-1)
+<code>query()</code> 返回栈顶元素 <code>stk[tt]</code></p>
+<p>很自然的实现方式. 理解以后就不难理解汇编的函数栈.</p>
+<h3 id="单调栈">单调栈</h3>
+<p>要求: 输出每个数左边第一个比它小的数</p>
+<p>暴力做法:</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; n; i++)</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> j = i - <span class="number">1</span>; j &gt;= <span class="number">0</span>; j--)</span><br><span class="line">        <span class="keyword">if</span> (a[i] &gt; a[j])</span><br><span class="line">        &#123;</span><br><span class="line">            cout &lt;&lt; a[j] &lt;&lt; endl;</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br></pre></td></tr></table></figure>
+<p>优化: 所有逆序元素可以删掉 最后维护一个单调的栈 考虑
+<code>3 2 4 7 5 6</code>, 对于 <code>4</code> 而言 <code>2</code>
+是它的目标值, 而 <code>3</code> 之后再也不会用到了, 因为 <code>2</code>
+比它更靠后, 且比它更小. 于是 <code>3</code> 可以删去, 并且不影响问题.
+对于 <code>5</code> 而言, <code>4</code> 是它的目标值, 中间多插入了一个
+<code>7</code>, 是逆序的, 因此 <code>7</code>(栈顶元素) 可以删去.</p>
+<p>要判断的是 <code>stk[tt] &lt; a[i]</code>.</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; n; i++)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="type">int</span> x;</span><br><span class="line">    cin &gt;&gt; x;</span><br><span class="line">    <span class="keyword">while</span> (tt &amp;&amp; stk[tt] &gt;= x)</span><br><span class="line">        tt--;</span><br><span class="line">    <span class="keyword">if</span> (tt)</span><br><span class="line">        cout &lt;&lt; stk[tt] &lt;&lt; <span class="string">&#x27; &#x27;</span>;</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">        cout &lt;&lt; <span class="number">-1</span> &lt;&lt; endl;</span><br><span class="line"></span><br><span class="line">    stk[++tt] = x;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="队列">队列</h2>
+<p>先进先出 模拟队列和模拟栈是类似的</p>
+<h3 id="单调队列">单调队列</h3>
+<p>比喻: 公司来了一个更年轻的新人, 如果他比一些老员工还要优秀,
+那么这些老员工就会被立即淘汰(从队列中删除), 如果没有老员工优秀,
+那么老员工会一直干到退休然后被淘汰(从滑动窗口中出去)</p>
+<p>滑动窗口问题:</p>
+<ul>
+<li>普通队列怎么做</li>
+<li>将队列中没有用的元素删掉(单调性)</li>
+<li>取队头/队尾 O(1)</li>
+</ul>
+<p>本质上这是一个双端队列(deque). 我们用队列存储下标:</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> hh = <span class="number">0</span>, tt = <span class="number">-1</span>;</span><br><span class="line"><span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; n; i++)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">if</span> (hh &lt;= tt &amp;&amp; q[hh] &lt; i - k + <span class="number">1</span>)</span><br><span class="line">        hh++;</span><br><span class="line">    <span class="keyword">while</span> (hh &lt;= tt &amp;&amp; a[q[tt]] &gt;= a[i])</span><br><span class="line">        tt--;</span><br><span class="line">    </span><br><span class="line">    q[++tt] = i;</span><br><span class="line">    <span class="keyword">if</span> (i &gt;= k - <span class="number">1</span>)</span><br><span class="line">        cout &lt;&lt; a[q[hh]] &lt;&lt; <span class="string">&#x27; &#x27;</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>求最大值可以对称过去.</p>
+<p>单调队列可以优化部分dp问题.</p>
+<h2 id="字符串">字符串</h2>
+<h3 id="kmp">KMP</h3>
+<p>见其它文章.</p>
+<h3 id="trie树字典树">Trie树(字典树)</h3>
+<p>高效存储字符串及查找.</p>
+<figure>
+<img src="./images/Trie1.png" alt="Trie1" />
+<figcaption aria-hidden="true">Trie1</figcaption>
+</figure>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> son[N][<span class="number">26</span>], cnt[N], idx;</span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">insert</span><span class="params">(string str)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="type">int</span> p = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; str[i] != <span class="string">&#x27;\0&#x27;</span>; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="type">int</span> u = str[i] - <span class="string">&#x27;a&#x27;</span>;</span><br><span class="line">        <span class="keyword">if</span> (!son[p][u])</span><br><span class="line">            son[p][u] = ++idx;</span><br><span class="line">        p = son[p][u];</span><br><span class="line">    &#125;</span><br><span class="line">    cnt[p]++;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>应用: <a
+target="_blank" rel="noopener" href="https://www.acwing.com/problem/content/145/">最大异或值</a></p>
+<p>用字典树存储一个树的二进制表示</p>
+<h2 id="并查集">并查集</h2>
+<p>作用/功能:</p>
+<ol type="1">
+<li>将两个集合合并 近乎O(1)</li>
+<li>询问两个元素是否在同一个集合当中</li>
+</ol>
+<p>基本原理: 每个集合用一棵树来表示, 树根的编号就是整个集合的编号.
+每一个节点存储它的父节点, <code>p[x]</code> 表示 <code>x</code>
+的父节点.</p>
+<p>初始化: 每个数位于单独的集合. 每个数的父节点都是它自己.
+<code>std::iota(p.begin(), p.end(), 0)</code></p>
+<p>问题1: 如何判断树根 <code>if(p[x] == x)</code> 问题2: 如何求
+<code>x</code> 的集合编号 <code>while(p[x] != x) x = p[x];</code>
+这个可以写成递归的形式 问题3: 如何合并这两个集合 <code>p[x] = y</code>
+让加入集合的根节点作为原集合根节点的儿子</p>
+<p>优化: 路径压缩 按秩合并(不考虑)</p>
+<p>保证树是双层的.</p>
+<p>具体实现: <code>find(x)</code> 返回 <code>x</code> 的祖宗节点
+如果是根节点就返回自己 递归实现 <code>p[find(x)] = find(y)</code>
+实现合并操作. 注意对根节点进行 <code>find</code>
+操作就等同于返回它自身.</p>
+<p>经典题目: POJ1182 食物链</p>
+<p><a target="_blank" rel="noopener" href="https://vjudge.net/article/371">有生之年能做完的习题集
+并查集</a></p>
+<h2 id="图">图</h2>
+<p>图 = 顶点+边 的集合</p>
+<p>用 <span class="math inline">\(G(V,E)\)</span> 表示. G: Graph V:
+Vertex E: Edge</p>
+<p>边的方向: 有向图和无向图 带权和不带权: 边可以有权重,
+可以表示诸如距离或者时间之类的量</p>
+<p>可以用一个二维数组表示一个图, 这个数组又被称为邻接矩阵.</p>
+<p><code>a[i][j]</code> 表示顶点 <code>i</code> 到 <code>j</code>
+是否连通. 如果连通, 那么这个值为 <code>1</code>, 否则为 <code>0</code>.
+在带权图中, 这个值为 <code>i</code> 到 <code>j</code>
+所需要的边权值(如距离, 时间etc.) <code>+inf</code>
+表示不连通(无法到达).</p>
+<p>对于无向图, 邻接矩阵关于 0-0, 1-1, 2-2 这条对角线堆成. 对角线为
+<code>0</code>, 表示某定点到自己的边长为 <code>0</code>.</p>
+<p>我们也可以用链表来表示一个图, 这种方法也被称为图的邻接表.
+表头是一个图的节点数组, 对应图的顶点. 每个节点后连接一个链表或指针数组,
+存储与这个顶点相连的其他顶点的指针. 只要顶点A到顶点B之间有一条边,
+则A对应的表头后就有一个顶点B的指针. 如果要存储带权的边,
+在定义节点结构的时候可以附带存储一个变量.</p>
+<p>我们一般使用邻接表来表示稀疏图, 邻接矩阵表示稠密图.</p>
+<h3 id="二叉树">二叉树</h3>
+<p>注: 本题的综合性比较高.</p>
+<p>导航: <a
+target="_blank" rel="noopener" href="https://www.acwing.com/problem/content/description/1499/">1497.
+树的遍历</a></p>
+<p>这道题很classic. 怎么花式去遍历一棵树: 后序遍历 中序遍历 层序遍历</p>
+<p>解释下什么意思:</p>
+<figure class="highlight txt"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">     1</span><br><span class="line">   /   \</span><br><span class="line">  2     3</span><br><span class="line"> / \   / \</span><br><span class="line">4   5 6   7</span><br></pre></td></tr></table></figure>
+<ol type="1">
+<li>后序遍历: 4 -&gt; 5 -&gt; 2 -&gt; 6 -&gt; 7 -&gt; 3 -&gt; 1</li>
+<li>中序遍历: 4 -&gt; 2 -&gt; 5 -&gt; 1 -&gt; 6 -&gt; 3 -&gt; 7</li>
+<li>层序遍历: 1 -&gt; 2 -&gt; 3 -&gt; 4 -&gt; 5 -&gt; 6 -&gt; 7</li>
+</ol>
+<p>输入后序遍历和中序遍历, 可以确定一棵二叉树.</p>
+<p>通过后序遍历找到根的值,
+然后再到中序序列里找到根的位置再将该树分为左子树与右子树(对应区间分割),
+然后不断递归即可通过中序和后序重塑一棵树.</p>
+<p>例如找到了后序遍历到了2, 那么在中序遍历中找到这个2, 2前后的两个元素,
+即 4 和 5, 也就是一个 parent 2 和 left child 4 和 right child 5. parent
+可以看成是一个树的 root.</p>
+<p>一个难点是怎么确定 left child 和 right child 在后序遍历中的位置.
+解决方案如下: 因为我们知道中序遍历的区间范围,
+也即知道了左树和右树的大小, 而利用这个大小不会变我们可以反推:
+<code>pr' = pl + (k - 1 - il)</code>(左树的情形),
+<code>pl' = pl + (k + 1 - il) - 1</code>(右树)</p>
+<blockquote>
+<p>问题: 为什么要-1? 答案: 因为index从零开始取的</p>
+</blockquote>
+<p>因为存在在中序遍历搜索后序遍历里的值的过程,
+因此中序遍历用一个hash表存放.</p>
+<p>代码很精巧. 建议反复阅读orz</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="type">const</span> <span class="type">int</span> N = <span class="number">40</span>;</span><br><span class="line"><span class="type">int</span> n;</span><br><span class="line"></span><br><span class="line"><span class="type">int</span> postorder[N], inorder[N];</span><br><span class="line">unordered_map&lt;<span class="type">int</span>, <span class="type">int</span>&gt; l, r, pos;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">build</span><span class="params">(<span class="type">int</span> il, <span class="type">int</span> ir, <span class="type">int</span> pl, <span class="type">int</span> pr)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="type">int</span> root = postorder[pr];</span><br><span class="line">    <span class="type">int</span> k = pos[root];</span><br><span class="line">    <span class="keyword">if</span> (il &lt; k)</span><br><span class="line">        l[root] = <span class="built_in">build</span>(il, k - <span class="number">1</span>, pl, pl + k - <span class="number">1</span> - il);</span><br><span class="line">    <span class="keyword">if</span> (ir &gt; k)</span><br><span class="line">        r[root] = <span class="built_in">build</span>(k + <span class="number">1</span>, ir, pl + k - il, pr - <span class="number">1</span>);</span><br><span class="line">    <span class="keyword">return</span> root;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">bfs</span><span class="params">(<span class="type">int</span> root)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    queue&lt;<span class="type">int</span>&gt; q;</span><br><span class="line">    q.<span class="built_in">push</span>(root);</span><br><span class="line">    <span class="keyword">while</span> (q.<span class="built_in">size</span>())</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">auto</span> t = q.<span class="built_in">front</span>();</span><br><span class="line">        q.<span class="built_in">pop</span>();</span><br><span class="line">        cout &lt;&lt; t &lt;&lt; <span class="string">&#x27; &#x27;</span>;</span><br><span class="line">        <span class="keyword">if</span> (l.<span class="built_in">count</span>(t))</span><br><span class="line">            q.<span class="built_in">push</span>(l[t]);</span><br><span class="line">        <span class="keyword">if</span> (r.<span class="built_in">count</span>(t))</span><br><span class="line">            q.<span class="built_in">push</span>(r[t]);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">signed</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    ios::<span class="built_in">sync_with_stdio</span>(<span class="literal">false</span>);</span><br><span class="line">    cin.<span class="built_in">tie</span>(<span class="number">0</span>);</span><br><span class="line">    cin &gt;&gt; n;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; n; i++)</span><br><span class="line">        cin &gt;&gt; postorder[i];</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; n; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        cin &gt;&gt; inorder[i];</span><br><span class="line">        pos[inorder[i]] = i;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="type">int</span> root = <span class="built_in">build</span>(<span class="number">0</span>, n - <span class="number">1</span>, <span class="number">0</span>, n - <span class="number">1</span>);</span><br><span class="line">    <span class="built_in">bfs</span>(root);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="桶">桶</h2>
+<p>应用:</p>
+<ul>
+<li>桶排序</li>
+<li>计数器数组</li>
+</ul>
+<h2 id="哈希表散列表">哈希表(散列表)</h2>
+<p>数据量 <code>N 0~1e9</code> 中的数字映射到 <code>0~1e5</code>
+通过一个哈希函数 <code>h(x)</code></p>
+<p>离散化是一种及其特殊的哈希(离散化是保序的)</p>
+<p>哈希函数怎么取?</p>
+<ul>
+<li><span class="math inline">\(x \bmod 10^5\)</span></li>
+<li>数据冲突就处理冲突
+<ul>
+<li>拉链法: 储存当前槽上存储的数(类似邻接表)</li>
+<li>开放寻址法: (比喻: 上厕所)</li>
+</ul></li>
+</ul>
+<p>实现操作: 比赛里(一般)只会有添加和查找两个操作</p>
+<h3 id="字符串哈希">字符串哈希</h3>
+<p>比较重要的哈希方式 一些字符串问题不一定需要KMP 字符串前缀哈希法
+<code>h[i]</code> 表示前缀字符串对应的哈希值</p>
+<p>问题: 如何定义某一前缀字符串的哈希值?</p>
+<p>字符串P进制下的 "ABCD"-&gt; A B C D -&gt; 1 2 3 4 -&gt; 十进制数
+<span class="math inline">\(1\cdot p^3 + 2 \cdot p^2 + 3 \cdot p^1 + 4
+\cdot p^0\)</span> 最后对整个数取模 <span
+class="math inline">\(q\)</span> 字符串就映射到了 <code>0~q-1</code></p>
+<p>不能映射成 0 (A 0 那么 AA 也是 0) 字符串的哈希方法不考虑冲突的情况
+经验值 <code>p = 131</code> 或 <code>p = 13331</code>
+<code>q = 2^64</code> 在一般情况假定不会出现冲突 用
+<code>unsigned long long</code> 可以省去
+<code>mod 2^64</code>(因为溢出就等同于取模, 见CSAPP Chapter 2)</p>
+<p><span class="math display">\[h_R - h_{L-1} \cdot
+p^{R-L+1}\]</span></p>
+<p>表示 <code>L</code> 到 <code>R</code> 这一段的hash.</p>
+<h2 id="堆">堆</h2>
+<p>STL里的数据结构为 <code>priority_queue</code> 优先队列实现堆
+基本功能:</p>
+<ul>
+<li>插入一个数</li>
+<li>求集合中的最小值</li>
+<li>删除最小值</li>
+<li>删除任意一个元素(STL无)</li>
+<li>修改任意一个元素(STL无)</li>
+</ul>
+<p>堆是一棵完全二叉树.</p>
+<p>小根堆: 每个点都小于它的左右child, 那么根节点就是最小值</p>
+<p>堆的存储: 一维数组,
+下标从<code>1</code>开始.(因为<code>0</code>的左child也是<code>0</code>,
+不方便) 下标 <code>x</code> 的左child: 下标 <code>2x</code> 右child:
+<code>2x+1</code></p>
+<p><code>down(x)</code>: 让一个节点往下移动 <code>up(x)</code>:
+往上移动</p>
+<p>所有操作可以用这两个基本操作实现:</p>
+<p>插入: 原堆大小为 <code>size</code> 那么
+<code>heap[++size] = x;</code> <code>up(size)</code> 即可. 最小值:
+<code>heap[1]</code> 删除第一个元素:
+用堆里最后一个元素覆盖掉第一个元素<code>heap[1] = heap[size]</code>,
+然后<code>size--</code>, 维护根节点 <code>down(1)</code> 删除任意元素:
+<code>heap[k] = heap[size]</code>, <code>size--</code>,
+<code>down(k)</code>,
+<code>up(k)</code>(只会执行一步<code>up/down</code>操作). 修改任意元素:
+<code>heap[k] = x</code>, <code>down[k]</code>, <code>up[k]</code></p>
+<p>利用二叉堆实现堆排序. 只用实现<code>down</code>:</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">down</span><span class="params">(<span class="type">int</span> k)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="type">int</span> t = k;</span><br><span class="line">    <span class="keyword">if</span> (k * <span class="number">2</span> &lt;= s &amp;&amp; heap[k * <span class="number">2</span>] &lt; heap[t])</span><br><span class="line">        t = k * <span class="number">2</span>;</span><br><span class="line">    <span class="keyword">if</span> (k * <span class="number">2</span> + <span class="number">1</span> &lt;= s &amp;&amp; heap[k * <span class="number">2</span> + <span class="number">1</span>] &lt; heap[t])</span><br><span class="line">        t = k * <span class="number">2</span> + <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">if</span> (k != t)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">swap</span>(heap[k], heap[t]);</span><br><span class="line">        <span class="built_in">down</span>(t);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>然后不断向堆插入元素即可.</p>
+<section id="footnotes" class="footnotes footnotes-end-of-document"
+role="doc-endnotes">
+<hr />
+<ol>
+<li id="fn1"><p>严格来说这不算是一个"结构", 而是简单的类型.
+只要你懂我意思就行 :)<a href="#fnref1" class="footnote-back"
+role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E7%AE%97%E6%B3%95/" rel="tag"># 算法</a>
+              <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" rel="tag"># 数据结构</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2023/02/25/AI%E6%97%B6%E4%BB%A3%E7%9A%84%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0%E6%8C%87%E5%8D%97/" rel="prev" title="AI时代的算法学习指南">
+                  <i class="fa fa-chevron-left"></i> AI时代的算法学习指南
+                </a>
+            </div>
+            <div class="post-nav-item">
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    <div class="comments gitalk-container"></div>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 2022 – 
+  <span itemprop="copyrightYear">2023</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Besthope</span>
+</div>
+<div class="wordcount">
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-line"></i>
+    </span>
+      <span>站点总字数：</span>
+    <span title="站点总字数">19k</span>
+  </span>
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+      <span>站点阅读时长 &asymp;</span>
+    <span title="站点阅读时长">1:09</span>
+  </span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/pisces/" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.1/search.js" integrity="sha256-1kfA5uHPf65M5cphT2dvymhkuyHPQp5A53EGZOnOLmc=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+
+
+
+  
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">true</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"none","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/gitalk/1.8.0/gitalk.css" integrity="sha256-AJnUHL7dBv6PGaeyPQJcgQPDjt/Hn/PvYZde1iqfp8U=" crossorigin="anonymous">
+
+<script class="next-config" data-name="gitalk" type="application/json">{"enable":true,"github_id":"Besthope-Official","repo":"Gittalk-repo","client_id":"a30bcd98c6f188a719e4","client_secret":"bd7e03497f2a00490144e9e0756d511768622b0e","admin_user":"Besthope-Official","distraction_free_mode":true,"proxy":"https://luminous-druid-90cc61.netlify.app/github_access_token","language":"zh-CN","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/gitalk/1.8.0/gitalk.min.js","integrity":"sha256-MVK9MGD/XJaGyIghSVrONSnoXoGh3IFxLw0zfvzpxR4="},"path_md5":"622312428c4592899da65247b6f87c94"}</script>
+<script src="/js/third-party/comments/gitalk.js"></script>
+<script src="https://api.asilu.com/cdn/jquery.js,jquery.backstretch.min.js" type="text/javascript"></script>
+<body>
+<script type="text/javascript">
+function display()
+{
+    function shuffle(arr) {
+    let i = arr.length;
+    while (i) {
+      let j = Math.floor(Math.random() * i--);
+      [arr[j], arr[i]] = [arr[i], arr[j]];
+    }
+  }
+
+  const pic = 5;
+  var bgs = [];
+
+  for (i = 1; i <= pic; i++) {
+    bgs.push("/images/bg" + i + ".jpg");
+  }
+
+  shuffle(bgs);
+
+  $.backstretch(bgs, {
+    fade: 3000, // 动画时长; 单位：毫秒
+    duration: 10000, // 切换延时
+  });
+}
+
+display();
+
+window.onclick = window.onload = function () {
+  display();
+};
+</script>
+</body>
+</body>
+<!-- click love -->
+<script type="text/javascript" src="/js/clicklove.js"></script>
+</html>

@@ -10,16 +10,24 @@
 <h2 id="人生的转折">人生的转折</h2>
 <h3 id="上半年">上半年</h3>
 <p>年初还在高三上的课堂, 年末大一上快结束了. 弹指一瞬所谓如此.</p>
-<p>今年的大事, 要说还是高考. 忍受了高中三年那非人的安排就为了一张文凭,
+<p>不过高中到底干了啥? 很难用量化的指标记录下我的成长.
+可能每天多做了几张卷子, 但现在全然已经忘光了.
+或许仅存的笔记本还余留着少许记忆,
+但我想我也不会再度翻开当时的笔记了.</p>
+<p>今年的个人大事, 要说还是高考.</p>
+<p>忍受了高中三年那非人的安排就为了一张文凭,
 可有人还要把这个过程拉长到研究生阶段.
 不过也没必要过分批判中学的应试教育. 虽然阴郁得让人抬不起头, 但回忆高中,
 除了黑历史, 剩下快乐的也不少. 除此之外,
 高中接受的通识教育是我受益最大的. 当我阳了以后,
 那些学习的生物知识很庆幸还能用 (bushi</p>
-<p>最终去向是某财经211的CS专业. 一开始还在思考怎么自救. 现在想想,
-自己的赛道还算广阔. 至少学历坎越过双非, 择业方向可金融可CS,
-但最重要的是, 专业是自己喜欢的.
+<p>其实高考成绩不能算太糟, 至少比我一模二模都高.
+但也没有所谓的超常发挥啥的, 和真的佬差太多. 最终去向是某财经211的CS专业.
+一开始还在思考怎么自救. 现在想想, 自己的赛道还算广阔.
+至少学历坎越过双非, 择业方向可金融可CS, 但最重要的是, 专业是自己喜欢的.
 一想到自己下一个志愿的专业是机械电子我就魂打颤.</p>
+<p>虽然说成都有点远是了. 但现代社会距离已经不是一个问题了,
+去外边见见世面总是好的. (除了车票好贵QAQ)</p>
 <h3 id="下半年">下半年</h3>
 <p>总结一下自己大一学的知识:</p>
 <ul>
@@ -41,9 +49,11 @@
 <li>搭建了自己的博客 Hexo+NexT</li>
 <li>初步学习了算法/数据结构</li>
 <li>数学微积分上册</li>
+<li>啃了本古典经济学的著作</li>
 </ul>
-<p>挺内疚的, 来大学的一个月, 非常勤勉, 天天跑图书馆, Github每天更新,
-然后越到后面越咸鱼. 11月12月好像就没去过图书馆(</p>
+<p>挺内疚的, 来大学的第一个月, 非常勤勉, 天天跑图书馆, Github每天更新,
+然后越到后面越咸鱼. 11月12月好像就没去过图书馆(
+大部分精力投入到了CSAPP上, 不过收获也是巨大的.</p>
 <p>剩下的学习时间大部分浪费在了那些通识基础课上. 没错, 说的就是你,
 大学物理( 其实我的大一上还是比较悠闲的. 虽然每天早八,
 但基本上下午没啥课. 下学期就不是这样了.</p>
@@ -67,10 +77,11 @@ href="https://www.bilibili.com/video/BV1QM411C7kd/">合订本</a>.</p>
 常熟疫情, 线上网课. 2022年4月苏州疫情, 常熟的高中开始封校.
 在学校隔绝学习了一个月, 第一次感到自己的压抑.
 还记得五一还有各种节日自己窝在寝室里画画. 真的非常无聊的日子.
-第一次学会玩象棋. 2022年8月, 四川高温限电, 我是月底到的程度,
+第一次学会玩象棋. 2022年8月, 四川高温限电, 我是月底到的成都,
 此时限电基本结束. 9月, 成都疫情. 又封校了一个月. 2022年12月, 国家放开.
 12月28日, 我感染了新冠, 近年来最难受的几天.</p>
 <p>本来以为能这辈子不感染, 结果下一秒打脸 :(</p>
+<p>剩下一年的大事件, 估计就是俄乌战争吧. 对此no comment.</p>
 ]]></content>
       <categories>
         <category>杂谈</category>
@@ -86,6 +97,8 @@ href="https://www.bilibili.com/video/BV1QM411C7kd/">合订本</a>.</p>
 于是自找的麻烦.</p>
 <p>想用最简明的方式去解释这个较为抽象的算法! 事实上明白了一个道理:
 缺乏数学的算法都是玄学, 只有数学证明了才能让人心服口服......</p>
+<p>就好像物理规律, 如果数学上证明了成立, 你会感到无比安心.
+模拟样例终归比不了证明有说服力.</p>
 <span id="more"></span>
 <p>问题: 在一个<strong>文本串</strong>(<code>s</code>,
 也称主串)中找到一个<strong>匹配串</strong>(<code>p</code>),
@@ -290,11 +303,12 @@ href="https://ac.nowcoder.com/acm/contest/28737">牛客竞赛字符串专题班T
 2022年1月15日.</p>
 ]]></content>
       <categories>
-        <category>算法</category>
+        <category>数据结构</category>
       </categories>
       <tags>
         <tag>字符串</tag>
         <tag>算法</tag>
+        <tag>数据结构</tag>
       </tags>
   </entry>
   <entry>
@@ -848,12 +862,15 @@ href="http://csapp.cs.cmu.edu/3e/target1.tar">attack lab</a>,
       </tags>
   </entry>
   <entry>
-    <title>简单的排序算法</title>
+    <title>简单的分治排序算法</title>
     <url>/2023/01/05/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/</url>
     <content><![CDATA[<p>我们介绍两个基于分治且 <code>O(nlogn)</code> 的排序算法:
 快速排序和归并排序. 理解排序算法的最好方法是模拟, 手动模拟指针的移动,
-感受数据是怎么逐渐变得有序的. 配合动图食用更佳.
-两个算法困难的点在于边界分析. 不过记模板就可以了(</p>
+感受数据是怎么逐渐变得有序的. 配合动图食用更佳.</p>
+<p>你可能会问: <code>std::sort</code> 它不香吗? 答:
+让你手搓是为了理解算法思想, 没让你去用. 顺便提防将来的面试官.</p>
+<p>两个算法困难的点在于边界分析. 算法导论就是干这个证明的.
+不过正常人记模板就可以了 :)</p>
 <span id="more"></span>
 <h2 id="快速排序">快速排序</h2>
 <h3 id="原理">原理</h3>
@@ -948,6 +965,10 @@ href="https://www.acwing.com/problem/content/description/1264/">鱼塘钓鱼</a>
 <h2 id="通用模板">通用模板</h2>
 <figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>, j = <span class="number">0</span>; i &lt; n; i++)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="comment">// 也可能是 j = n, 那么条件改为 j &gt; i, 以及 j--</span></span><br><span class="line">    <span class="keyword">while</span> (j &lt; i &amp;&amp; <span class="built_in">check</span>(i, j))</span><br><span class="line">        j++;</span><br><span class="line">    <span class="comment">// 每道题目的具体逻辑</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h2 id="双指针应用">双指针应用</h2>
+<h3 id="字符串删减">字符串删减</h3>
+<p><a
+href="https://www.acwing.com/problem/content/3771/">https://www.acwing.com/problem/content/3771/</a></p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="type">int</span> n;</span><br><span class="line">string s;</span><br><span class="line"><span class="function"><span class="type">signed</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    ios::<span class="built_in">sync_with_stdio</span>(<span class="literal">false</span>);</span><br><span class="line">    cin.<span class="built_in">tie</span>(<span class="number">0</span>);</span><br><span class="line">    cin &gt;&gt; n &gt;&gt; s;</span><br><span class="line">    <span class="type">int</span> cnt = <span class="number">0</span>;</span><br><span class="line">    <span class="comment">// Brute Force</span></span><br><span class="line">    <span class="comment">// for (int i = 2; i &lt; n; i++)</span></span><br><span class="line">    <span class="comment">// &#123;</span></span><br><span class="line">    <span class="comment">//     if (s[i - 2] == &#x27;x&#x27; &amp;&amp; s[i - 1] == &#x27;x&#x27; &amp;&amp; s[i - 2] == &#x27;x&#x27;)</span></span><br><span class="line">    <span class="comment">//         cnt++;</span></span><br><span class="line">    <span class="comment">// &#125;</span></span><br><span class="line">    <span class="comment">// Optimization</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>, j = <span class="number">0</span>; i &lt; n; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span> (s[i] == <span class="string">&#x27;x&#x27;</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            j = i + <span class="number">1</span>;</span><br><span class="line">            <span class="keyword">while</span> (j &lt; n &amp;&amp; s[j] == <span class="string">&#x27;x&#x27;</span>)</span><br><span class="line">                j++;</span><br><span class="line">            cnt += <span class="built_in">max</span>(j - i - <span class="number">2</span>, <span class="number">0</span>);</span><br><span class="line">            i = j - <span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    cout &lt;&lt; cnt &lt;&lt; endl;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h3 id="最长连续不重复子序列">最长连续不重复子序列</h3>
 <p><a
 href="https://www.acwing.com/problem/content/description/801/">AcWing
@@ -1066,8 +1087,7 @@ href="https://www.zhihu.com/question/573023186/answer/2814221461">知乎:为什�
   <entry>
     <title>保研, 相亲, 找工作——背后的稳定匹配问题</title>
     <url>/2023/02/06/%E7%A8%B3%E5%AE%9A%E5%8C%B9%E9%85%8D%E9%97%AE%E9%A2%98%E5%8F%8AGale-Shapley%E7%AE%97%E6%B3%95/</url>
-    <content><![CDATA[<h2 id="介绍">介绍</h2>
-<p><strong>稳定匹配问题</strong>(Stable Matching Problem)最早出自 D.Gale
+    <content><![CDATA[<p><strong>稳定匹配问题</strong>(Stable Matching Problem)最早出自 D.Gale
 和 L.S.Sharpley
 1962年发表在美国数学月刊上的一篇关于<em>大学录取和婚姻稳定</em>的文章<a
 href="#fn1" class="footnote-ref" id="fnref1"
@@ -1233,13 +1253,34 @@ class="math inline">\(g^{*}\)</span> 更喜欢 <span
 class="math inline">\(g\)</span> "的结论, 而 <span
 class="math inline">\(b,g^{*}\)</span> 是一对rogue couple, 也即 <span
 class="math inline">\(S\)</span> 是不稳定的, 也就发生了矛盾.</p>
+<h2 id="后记">后记</h2>
+<p>TODO List:</p>
+<ul>
+<li>Talk is cheap, show me the code!
+<ul>
+<li>哪天写一个示例程序</li>
+</ul></li>
+<li>可读性很烂, 加上纯数更难理解了.
+<ul>
+<li>哪天重构下段落和语句</li>
+</ul></li>
+<li>想把证明方法背后的数学原理介绍给各位
+<ul>
+<li>例如反证法在数理逻辑上为什么是正确的</li>
+</ul></li>
+<li>现在还只停留在介绍的阶段.
+<ul>
+<li>推荐读物里有本书, 哪天有空去找找看, 提取一些有意思的内容</li>
+<li>多些深度和应用</li>
+</ul></li>
+</ul>
 <h2 id="拓展阅读">拓展阅读</h2>
-<p><a href="https://www.eecs70.org/assets/pdf/notes/n4.pdf">UCB CS70
-Note 4: Stable Matching Problem</a></p>
-<p>D. Gale and L.S. Shapley, “College Admissions and the Stability of
-Marriage,” <em>American Mathematical Monthly</em> <strong>69</strong>
+<p>[1]. <a href="https://www.eecs70.org/assets/pdf/notes/n4.pdf">UCB
+CS70 Note 4: Stable Matching Problem</a></p>
+<p>[2]. D. Gale and L.S. Shapley, “College Admissions and the Stability
+of Marriage,” <em>American Mathematical Monthly</em> <strong>69</strong>
 (1962), pp. 9–14.</p>
-<p>D. Gusfield and R.W. Irving, <em>The Stable Marriage Problem:
+<p>[3]. D. Gusfield and R.W. Irving, <em>The Stable Marriage Problem:
 Structure and Algorithms</em>, MIT Press, 1989.</p>
 <section id="footnotes" class="footnotes footnotes-end-of-document"
 role="doc-endnotes">
@@ -1282,6 +1323,261 @@ role="doc-backlink">↩︎</a></p></li>
       </categories>
       <tags>
         <tag>杂谈 算法 学习经验</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>简单的数据结构</title>
+    <url>/2023/02/25/%E7%AE%80%E5%8D%95%E7%9A%84%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/</url>
+    <content><![CDATA[<p>做一个数据结构的小小总结. 其实数据结构和算法是不分家的, 例如
+<code>1+1=2</code> 是一个加法算法, 用到了整型的数据结构 <a href="#fn1"
+class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>.
+你就说是不是吧.</p>
+<p>DSA课程/书本上更注重实现. 手搓一个泛型结构, 实现 <code>std</code>
+里头的一堆方法, 这不劝退谁劝退. 实现是为了更好理解原理.
+不要被复杂的构造带偏了学习的方向! 我们实现的标准是: ANSI C 也能做到!</p>
+<p>剩下的内容: 怎么用STL来解决使用到特定数据结构的题目, i.e. 会做题.
+但我们也懂原理!</p>
+<span id="more"></span>
+<h2 id="链表">链表</h2>
+<p>我们用数组模拟链表. 动态链表谁不会啊?</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="keyword">struct</span> <span class="title class_">Node</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="type">int</span> val;</span><br><span class="line">    Node *next;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">new</span> <span class="built_in">Node</span>(); <span class="comment">// TOO SLOW! 除非你用内存池优化</span></span><br></pre></td></tr></table></figure>
+<p>数组模拟单链表: 效率高 最大用处是<strong>邻接表</strong>
+邻接表能拿来储存图/树.</p>
+<p>储存方式: 区别于动态链表, 每个值对应一个地址,
+静态链表采用编号的形式.</p>
+<p>略过头节点, 第一个节点编号为 0, 然后是 1, 直到下一个节点不存在,
+这个next节点编号为-1. 编号和下标关联起来, 通过访问编号,
+也就访问了相应的元素值.</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="type">int</span> head, e[N], ne[N], idx;</span><br></pre></td></tr></table></figure>
+<p>把 <code>x</code> 插到链表第 <code>k</code> 个元素之后,
+要考虑插入的位置. 如果 <code>k = 0</code>,
+那么就把新节点设置为头节点即可:</p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line">newNode-&gt;data = data;</span><br><span class="line">newNode-&gt;next = head;</span><br><span class="line">head = newNode;</span><br></pre></td></tr></table></figure>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 找到第 k 个节点</span></span><br><span class="line">Node* current = head;</span><br><span class="line"><span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">1</span>; i &lt; k &amp;&amp; current != <span class="literal">NULL</span>; i++) &#123;</span><br><span class="line">    current = current-&gt;next;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 然后插入新节点</span></span><br><span class="line">newNode-&gt;data = data;</span><br><span class="line">newNode-&gt;next = current-&gt;next;</span><br><span class="line">current-&gt;next = newNode;</span><br></pre></td></tr></table></figure>
+<p>作为对比, 我们来关注下静态链表的实现:</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 头节点插入 x</span></span><br><span class="line">e[idx] = x;</span><br><span class="line">ne[idx] = head;</span><br><span class="line">head = idx++;</span><br></pre></td></tr></table></figure>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="comment">// x 插入到下标为 k 的后面</span></span><br><span class="line">e[idx] = x;</span><br><span class="line">ne[idx] = ne[k];</span><br><span class="line">ne[k] = idx++;</span><br></pre></td></tr></table></figure>
+<p>静态链表表示的含义基本上和动态链表无异.
+唯一的区别就是最后要手动更新下标idx. 此外, 这种规定下,
+第一个节点的下标为0, 实际操作可能要对下标偏移一位. 例如
+<code>insert(k - 1, x)</code> 表示在第 <code>k</code> 个节点后插入
+<code>x</code>. 当然你也可以将 <code>idx</code> 初始化为 1.
+你会发现静态链表实际上有空间换时间的做法. 因为多了一个 <code>ne</code>
+数组, 我们访问下标要比动态链表遍历找到第 <code>k</code>
+个元素快的多.</p>
+<p>删除操作, 实际上就是当原节点不存在, 并没有真正地在内存上把它抹除:</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line">ne[k] = ne[ne[k]];</span><br></pre></td></tr></table></figure>
+<h3 id="双链表">双链表</h3>
+<p>双链表多了一个 <code>prev</code>(前驱指针),
+操作其实和单链表没多大区别.</p>
+<p>双链表能优化某些问题.</p>
+<h2 id="栈">栈</h2>
+<p>先进后出</p>
+<p>数组模拟: <code>stk[N], tt</code></p>
+<p><code>push(x)</code> 就是 <code>stk[++tt] = x</code> (栈指针+1,
+然后赋值) <code>pop(x)</code> 就是 <code>tt--</code> (栈指针-1)
+<code>query()</code> 返回栈顶元素 <code>stk[tt]</code></p>
+<p>很自然的实现方式. 理解以后就不难理解汇编的函数栈.</p>
+<h3 id="单调栈">单调栈</h3>
+<p>要求: 输出每个数左边第一个比它小的数</p>
+<p>暴力做法:</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; n; i++)</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> j = i - <span class="number">1</span>; j &gt;= <span class="number">0</span>; j--)</span><br><span class="line">        <span class="keyword">if</span> (a[i] &gt; a[j])</span><br><span class="line">        &#123;</span><br><span class="line">            cout &lt;&lt; a[j] &lt;&lt; endl;</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br></pre></td></tr></table></figure>
+<p>优化: 所有逆序元素可以删掉 最后维护一个单调的栈 考虑
+<code>3 2 4 7 5 6</code>, 对于 <code>4</code> 而言 <code>2</code>
+是它的目标值, 而 <code>3</code> 之后再也不会用到了, 因为 <code>2</code>
+比它更靠后, 且比它更小. 于是 <code>3</code> 可以删去, 并且不影响问题.
+对于 <code>5</code> 而言, <code>4</code> 是它的目标值, 中间多插入了一个
+<code>7</code>, 是逆序的, 因此 <code>7</code>(栈顶元素) 可以删去.</p>
+<p>要判断的是 <code>stk[tt] &lt; a[i]</code>.</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; n; i++)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="type">int</span> x;</span><br><span class="line">    cin &gt;&gt; x;</span><br><span class="line">    <span class="keyword">while</span> (tt &amp;&amp; stk[tt] &gt;= x)</span><br><span class="line">        tt--;</span><br><span class="line">    <span class="keyword">if</span> (tt)</span><br><span class="line">        cout &lt;&lt; stk[tt] &lt;&lt; <span class="string">&#x27; &#x27;</span>;</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">        cout &lt;&lt; <span class="number">-1</span> &lt;&lt; endl;</span><br><span class="line"></span><br><span class="line">    stk[++tt] = x;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="队列">队列</h2>
+<p>先进先出 模拟队列和模拟栈是类似的</p>
+<h3 id="单调队列">单调队列</h3>
+<p>比喻: 公司来了一个更年轻的新人, 如果他比一些老员工还要优秀,
+那么这些老员工就会被立即淘汰(从队列中删除), 如果没有老员工优秀,
+那么老员工会一直干到退休然后被淘汰(从滑动窗口中出去)</p>
+<p>滑动窗口问题:</p>
+<ul>
+<li>普通队列怎么做</li>
+<li>将队列中没有用的元素删掉(单调性)</li>
+<li>取队头/队尾 O(1)</li>
+</ul>
+<p>本质上这是一个双端队列(deque). 我们用队列存储下标:</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="type">int</span> hh = <span class="number">0</span>, tt = <span class="number">-1</span>;</span><br><span class="line"><span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; n; i++)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">if</span> (hh &lt;= tt &amp;&amp; q[hh] &lt; i - k + <span class="number">1</span>)</span><br><span class="line">        hh++;</span><br><span class="line">    <span class="keyword">while</span> (hh &lt;= tt &amp;&amp; a[q[tt]] &gt;= a[i])</span><br><span class="line">        tt--;</span><br><span class="line">    </span><br><span class="line">    q[++tt] = i;</span><br><span class="line">    <span class="keyword">if</span> (i &gt;= k - <span class="number">1</span>)</span><br><span class="line">        cout &lt;&lt; a[q[hh]] &lt;&lt; <span class="string">&#x27; &#x27;</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>求最大值可以对称过去.</p>
+<p>单调队列可以优化部分dp问题.</p>
+<h2 id="字符串">字符串</h2>
+<h3 id="kmp">KMP</h3>
+<p>见其它文章.</p>
+<h3 id="trie树字典树">Trie树(字典树)</h3>
+<p>高效存储字符串及查找.</p>
+<figure>
+<img src="./images/Trie1.png" alt="Trie1" />
+<figcaption aria-hidden="true">Trie1</figcaption>
+</figure>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="type">int</span> son[N][<span class="number">26</span>], cnt[N], idx;</span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">insert</span><span class="params">(string str)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="type">int</span> p = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; str[i] != <span class="string">&#x27;\0&#x27;</span>; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="type">int</span> u = str[i] - <span class="string">&#x27;a&#x27;</span>;</span><br><span class="line">        <span class="keyword">if</span> (!son[p][u])</span><br><span class="line">            son[p][u] = ++idx;</span><br><span class="line">        p = son[p][u];</span><br><span class="line">    &#125;</span><br><span class="line">    cnt[p]++;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>应用: <a
+href="https://www.acwing.com/problem/content/145/">最大异或值</a></p>
+<p>用字典树存储一个树的二进制表示</p>
+<h2 id="并查集">并查集</h2>
+<p>作用/功能:</p>
+<ol type="1">
+<li>将两个集合合并 近乎O(1)</li>
+<li>询问两个元素是否在同一个集合当中</li>
+</ol>
+<p>基本原理: 每个集合用一棵树来表示, 树根的编号就是整个集合的编号.
+每一个节点存储它的父节点, <code>p[x]</code> 表示 <code>x</code>
+的父节点.</p>
+<p>初始化: 每个数位于单独的集合. 每个数的父节点都是它自己.
+<code>std::iota(p.begin(), p.end(), 0)</code></p>
+<p>问题1: 如何判断树根 <code>if(p[x] == x)</code> 问题2: 如何求
+<code>x</code> 的集合编号 <code>while(p[x] != x) x = p[x];</code>
+这个可以写成递归的形式 问题3: 如何合并这两个集合 <code>p[x] = y</code>
+让加入集合的根节点作为原集合根节点的儿子</p>
+<p>优化: 路径压缩 按秩合并(不考虑)</p>
+<p>保证树是双层的.</p>
+<p>具体实现: <code>find(x)</code> 返回 <code>x</code> 的祖宗节点
+如果是根节点就返回自己 递归实现 <code>p[find(x)] = find(y)</code>
+实现合并操作. 注意对根节点进行 <code>find</code>
+操作就等同于返回它自身.</p>
+<p>经典题目: POJ1182 食物链</p>
+<p><a href="https://vjudge.net/article/371">有生之年能做完的习题集
+并查集</a></p>
+<h2 id="图">图</h2>
+<p>图 = 顶点+边 的集合</p>
+<p>用 <span class="math inline">\(G(V,E)\)</span> 表示. G: Graph V:
+Vertex E: Edge</p>
+<p>边的方向: 有向图和无向图 带权和不带权: 边可以有权重,
+可以表示诸如距离或者时间之类的量</p>
+<p>可以用一个二维数组表示一个图, 这个数组又被称为邻接矩阵.</p>
+<p><code>a[i][j]</code> 表示顶点 <code>i</code> 到 <code>j</code>
+是否连通. 如果连通, 那么这个值为 <code>1</code>, 否则为 <code>0</code>.
+在带权图中, 这个值为 <code>i</code> 到 <code>j</code>
+所需要的边权值(如距离, 时间etc.) <code>+inf</code>
+表示不连通(无法到达).</p>
+<p>对于无向图, 邻接矩阵关于 0-0, 1-1, 2-2 这条对角线堆成. 对角线为
+<code>0</code>, 表示某定点到自己的边长为 <code>0</code>.</p>
+<p>我们也可以用链表来表示一个图, 这种方法也被称为图的邻接表.
+表头是一个图的节点数组, 对应图的顶点. 每个节点后连接一个链表或指针数组,
+存储与这个顶点相连的其他顶点的指针. 只要顶点A到顶点B之间有一条边,
+则A对应的表头后就有一个顶点B的指针. 如果要存储带权的边,
+在定义节点结构的时候可以附带存储一个变量.</p>
+<p>我们一般使用邻接表来表示稀疏图, 邻接矩阵表示稠密图.</p>
+<h3 id="二叉树">二叉树</h3>
+<p>注: 本题的综合性比较高.</p>
+<p>导航: <a
+href="https://www.acwing.com/problem/content/description/1499/">1497.
+树的遍历</a></p>
+<p>这道题很classic. 怎么花式去遍历一棵树: 后序遍历 中序遍历 层序遍历</p>
+<p>解释下什么意思:</p>
+<figure class="highlight txt"><table><tr><td class="code"><pre><span class="line">     1</span><br><span class="line">   /   \</span><br><span class="line">  2     3</span><br><span class="line"> / \   / \</span><br><span class="line">4   5 6   7</span><br></pre></td></tr></table></figure>
+<ol type="1">
+<li>后序遍历: 4 -&gt; 5 -&gt; 2 -&gt; 6 -&gt; 7 -&gt; 3 -&gt; 1</li>
+<li>中序遍历: 4 -&gt; 2 -&gt; 5 -&gt; 1 -&gt; 6 -&gt; 3 -&gt; 7</li>
+<li>层序遍历: 1 -&gt; 2 -&gt; 3 -&gt; 4 -&gt; 5 -&gt; 6 -&gt; 7</li>
+</ol>
+<p>输入后序遍历和中序遍历, 可以确定一棵二叉树.</p>
+<p>通过后序遍历找到根的值,
+然后再到中序序列里找到根的位置再将该树分为左子树与右子树(对应区间分割),
+然后不断递归即可通过中序和后序重塑一棵树.</p>
+<p>例如找到了后序遍历到了2, 那么在中序遍历中找到这个2, 2前后的两个元素,
+即 4 和 5, 也就是一个 parent 2 和 left child 4 和 right child 5. parent
+可以看成是一个树的 root.</p>
+<p>一个难点是怎么确定 left child 和 right child 在后序遍历中的位置.
+解决方案如下: 因为我们知道中序遍历的区间范围,
+也即知道了左树和右树的大小, 而利用这个大小不会变我们可以反推:
+<code>pr' = pl + (k - 1 - il)</code>(左树的情形),
+<code>pl' = pl + (k + 1 - il) - 1</code>(右树)</p>
+<blockquote>
+<p>问题: 为什么要-1? 答案: 因为index从零开始取的</p>
+</blockquote>
+<p>因为存在在中序遍历搜索后序遍历里的值的过程,
+因此中序遍历用一个hash表存放.</p>
+<p>代码很精巧. 建议反复阅读orz</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="type">const</span> <span class="type">int</span> N = <span class="number">40</span>;</span><br><span class="line"><span class="type">int</span> n;</span><br><span class="line"></span><br><span class="line"><span class="type">int</span> postorder[N], inorder[N];</span><br><span class="line">unordered_map&lt;<span class="type">int</span>, <span class="type">int</span>&gt; l, r, pos;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">build</span><span class="params">(<span class="type">int</span> il, <span class="type">int</span> ir, <span class="type">int</span> pl, <span class="type">int</span> pr)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="type">int</span> root = postorder[pr];</span><br><span class="line">    <span class="type">int</span> k = pos[root];</span><br><span class="line">    <span class="keyword">if</span> (il &lt; k)</span><br><span class="line">        l[root] = <span class="built_in">build</span>(il, k - <span class="number">1</span>, pl, pl + k - <span class="number">1</span> - il);</span><br><span class="line">    <span class="keyword">if</span> (ir &gt; k)</span><br><span class="line">        r[root] = <span class="built_in">build</span>(k + <span class="number">1</span>, ir, pl + k - il, pr - <span class="number">1</span>);</span><br><span class="line">    <span class="keyword">return</span> root;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">bfs</span><span class="params">(<span class="type">int</span> root)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    queue&lt;<span class="type">int</span>&gt; q;</span><br><span class="line">    q.<span class="built_in">push</span>(root);</span><br><span class="line">    <span class="keyword">while</span> (q.<span class="built_in">size</span>())</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">auto</span> t = q.<span class="built_in">front</span>();</span><br><span class="line">        q.<span class="built_in">pop</span>();</span><br><span class="line">        cout &lt;&lt; t &lt;&lt; <span class="string">&#x27; &#x27;</span>;</span><br><span class="line">        <span class="keyword">if</span> (l.<span class="built_in">count</span>(t))</span><br><span class="line">            q.<span class="built_in">push</span>(l[t]);</span><br><span class="line">        <span class="keyword">if</span> (r.<span class="built_in">count</span>(t))</span><br><span class="line">            q.<span class="built_in">push</span>(r[t]);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">signed</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    ios::<span class="built_in">sync_with_stdio</span>(<span class="literal">false</span>);</span><br><span class="line">    cin.<span class="built_in">tie</span>(<span class="number">0</span>);</span><br><span class="line">    cin &gt;&gt; n;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; n; i++)</span><br><span class="line">        cin &gt;&gt; postorder[i];</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; n; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        cin &gt;&gt; inorder[i];</span><br><span class="line">        pos[inorder[i]] = i;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="type">int</span> root = <span class="built_in">build</span>(<span class="number">0</span>, n - <span class="number">1</span>, <span class="number">0</span>, n - <span class="number">1</span>);</span><br><span class="line">    <span class="built_in">bfs</span>(root);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="桶">桶</h2>
+<p>应用:</p>
+<ul>
+<li>桶排序</li>
+<li>计数器数组</li>
+</ul>
+<h2 id="哈希表散列表">哈希表(散列表)</h2>
+<p>数据量 <code>N 0~1e9</code> 中的数字映射到 <code>0~1e5</code>
+通过一个哈希函数 <code>h(x)</code></p>
+<p>离散化是一种及其特殊的哈希(离散化是保序的)</p>
+<p>哈希函数怎么取?</p>
+<ul>
+<li><span class="math inline">\(x \bmod 10^5\)</span></li>
+<li>数据冲突就处理冲突
+<ul>
+<li>拉链法: 储存当前槽上存储的数(类似邻接表)</li>
+<li>开放寻址法: (比喻: 上厕所)</li>
+</ul></li>
+</ul>
+<p>实现操作: 比赛里(一般)只会有添加和查找两个操作</p>
+<h3 id="字符串哈希">字符串哈希</h3>
+<p>比较重要的哈希方式 一些字符串问题不一定需要KMP 字符串前缀哈希法
+<code>h[i]</code> 表示前缀字符串对应的哈希值</p>
+<p>问题: 如何定义某一前缀字符串的哈希值?</p>
+<p>字符串P进制下的 "ABCD"-&gt; A B C D -&gt; 1 2 3 4 -&gt; 十进制数
+<span class="math inline">\(1\cdot p^3 + 2 \cdot p^2 + 3 \cdot p^1 + 4
+\cdot p^0\)</span> 最后对整个数取模 <span
+class="math inline">\(q\)</span> 字符串就映射到了 <code>0~q-1</code></p>
+<p>不能映射成 0 (A 0 那么 AA 也是 0) 字符串的哈希方法不考虑冲突的情况
+经验值 <code>p = 131</code> 或 <code>p = 13331</code>
+<code>q = 2^64</code> 在一般情况假定不会出现冲突 用
+<code>unsigned long long</code> 可以省去
+<code>mod 2^64</code>(因为溢出就等同于取模, 见CSAPP Chapter 2)</p>
+<p><span class="math display">\[h_R - h_{L-1} \cdot
+p^{R-L+1}\]</span></p>
+<p>表示 <code>L</code> 到 <code>R</code> 这一段的hash.</p>
+<h2 id="堆">堆</h2>
+<p>STL里的数据结构为 <code>priority_queue</code> 优先队列实现堆
+基本功能:</p>
+<ul>
+<li>插入一个数</li>
+<li>求集合中的最小值</li>
+<li>删除最小值</li>
+<li>删除任意一个元素(STL无)</li>
+<li>修改任意一个元素(STL无)</li>
+</ul>
+<p>堆是一棵完全二叉树.</p>
+<p>小根堆: 每个点都小于它的左右child, 那么根节点就是最小值</p>
+<p>堆的存储: 一维数组,
+下标从<code>1</code>开始.(因为<code>0</code>的左child也是<code>0</code>,
+不方便) 下标 <code>x</code> 的左child: 下标 <code>2x</code> 右child:
+<code>2x+1</code></p>
+<p><code>down(x)</code>: 让一个节点往下移动 <code>up(x)</code>:
+往上移动</p>
+<p>所有操作可以用这两个基本操作实现:</p>
+<p>插入: 原堆大小为 <code>size</code> 那么
+<code>heap[++size] = x;</code> <code>up(size)</code> 即可. 最小值:
+<code>heap[1]</code> 删除第一个元素:
+用堆里最后一个元素覆盖掉第一个元素<code>heap[1] = heap[size]</code>,
+然后<code>size--</code>, 维护根节点 <code>down(1)</code> 删除任意元素:
+<code>heap[k] = heap[size]</code>, <code>size--</code>,
+<code>down(k)</code>,
+<code>up(k)</code>(只会执行一步<code>up/down</code>操作). 修改任意元素:
+<code>heap[k] = x</code>, <code>down[k]</code>, <code>up[k]</code></p>
+<p>利用二叉堆实现堆排序. 只用实现<code>down</code>:</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">down</span><span class="params">(<span class="type">int</span> k)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="type">int</span> t = k;</span><br><span class="line">    <span class="keyword">if</span> (k * <span class="number">2</span> &lt;= s &amp;&amp; heap[k * <span class="number">2</span>] &lt; heap[t])</span><br><span class="line">        t = k * <span class="number">2</span>;</span><br><span class="line">    <span class="keyword">if</span> (k * <span class="number">2</span> + <span class="number">1</span> &lt;= s &amp;&amp; heap[k * <span class="number">2</span> + <span class="number">1</span>] &lt; heap[t])</span><br><span class="line">        t = k * <span class="number">2</span> + <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">if</span> (k != t)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">swap</span>(heap[k], heap[t]);</span><br><span class="line">        <span class="built_in">down</span>(t);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>然后不断向堆插入元素即可.</p>
+<section id="footnotes" class="footnotes footnotes-end-of-document"
+role="doc-endnotes">
+<hr />
+<ol>
+<li id="fn1"><p>严格来说这不算是一个"结构", 而是简单的类型.
+只要你懂我意思就行 :)<a href="#fnref1" class="footnote-back"
+role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section>
+]]></content>
+      <categories>
+        <category>数据结构</category>
+      </categories>
+      <tags>
+        <tag>算法</tag>
+        <tag>数据结构</tag>
       </tags>
   </entry>
 </search>

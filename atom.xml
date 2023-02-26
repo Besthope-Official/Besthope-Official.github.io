@@ -6,7 +6,7 @@
   <link href="http://example.com/atom.xml" rel="self"/>
   
   <link href="http://example.com/"/>
-  <updated>2023-02-25T13:25:41.723Z</updated>
+  <updated>2023-02-26T05:11:18.569Z</updated>
   <id>http://example.com/</id>
   
   <author>
@@ -15,6 +15,35 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>简单的数据结构</title>
+    <link href="http://example.com/2023/02/25/%E7%AE%80%E5%8D%95%E7%9A%84%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
+    <id>http://example.com/2023/02/25/%E7%AE%80%E5%8D%95%E7%9A%84%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/</id>
+    <published>2023-02-25T15:29:08.000Z</published>
+    <updated>2023-02-26T05:11:18.569Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;做一个数据结构的小小总结. 其实数据结构和算法是不分家的, 例如
+&lt;code&gt;1+1=2&lt;/code&gt; 是一个加法算法, 用到了整型的数据结构 &lt;a href=&quot;#fn1&quot;
+class=&quot;footnote-ref&quot; id=&quot;fnref1&quot; role=&quot;doc-noteref&quot;&gt;&lt;sup&gt;1&lt;/sup&gt;&lt;/a&gt;.
+你就说是不是吧.&lt;/p&gt;
+&lt;p&gt;DSA课程/书本上更注重实现. 手搓一个泛型结构, 实现 &lt;code&gt;std&lt;/code&gt;
+里头的一堆方法, 这不劝退谁劝退. 实现是为了更好理解原理.
+不要被复杂的构造带偏了学习的方向! 我们实现的标准是: ANSI C 也能做到!&lt;/p&gt;
+&lt;p&gt;剩下的内容: 怎么用STL来解决使用到特定数据结构的题目, i.e. 会做题.
+但我们也懂原理!&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="数据结构" scheme="http://example.com/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
+    
+    
+    <category term="算法" scheme="http://example.com/tags/%E7%AE%97%E6%B3%95/"/>
+    
+    <category term="数据结构" scheme="http://example.com/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
+    
+  </entry>
   
   <entry>
     <title>AI时代的算法学习指南</title>
@@ -44,11 +73,10 @@
     <link href="http://example.com/2023/02/06/%E7%A8%B3%E5%AE%9A%E5%8C%B9%E9%85%8D%E9%97%AE%E9%A2%98%E5%8F%8AGale-Shapley%E7%AE%97%E6%B3%95/"/>
     <id>http://example.com/2023/02/06/%E7%A8%B3%E5%AE%9A%E5%8C%B9%E9%85%8D%E9%97%AE%E9%A2%98%E5%8F%8AGale-Shapley%E7%AE%97%E6%B3%95/</id>
     <published>2023-02-06T08:28:11.000Z</published>
-    <updated>2023-02-09T15:33:31.885Z</updated>
+    <updated>2023-02-25T16:12:42.761Z</updated>
     
     
-    <summary type="html">&lt;h2 id=&quot;介绍&quot;&gt;介绍&lt;/h2&gt;
-&lt;p&gt;&lt;strong&gt;稳定匹配问题&lt;/strong&gt;(Stable Matching Problem)最早出自 D.Gale
+    <summary type="html">&lt;p&gt;&lt;strong&gt;稳定匹配问题&lt;/strong&gt;(Stable Matching Problem)最早出自 D.Gale
 和 L.S.Sharpley
 1962年发表在美国数学月刊上的一篇关于&lt;em&gt;大学录取和婚姻稳定&lt;/em&gt;的文章&lt;a
 href=&quot;#fn1&quot; class=&quot;footnote-ref&quot; id=&quot;fnref1&quot;
@@ -128,7 +156,7 @@ href=&quot;https://www.acwing.com/activity/content/introduction/2712/&quot;&gt;�
     <link href="http://example.com/2023/01/13/%E5%8F%8C%E6%8C%87%E9%92%88/"/>
     <id>http://example.com/2023/01/13/%E5%8F%8C%E6%8C%87%E9%92%88/</id>
     <published>2023-01-13T14:20:46.000Z</published>
-    <updated>2023-01-13T15:56:16.456Z</updated>
+    <updated>2023-02-25T16:05:00.224Z</updated>
     
     
     <summary type="html">&lt;p&gt;双指针核心要义是将含两层嵌套的朴素算法,
@@ -148,17 +176,20 @@ href=&quot;https://www.acwing.com/activity/content/introduction/2712/&quot;&gt;�
   </entry>
   
   <entry>
-    <title>简单的排序算法</title>
+    <title>简单的分治排序算法</title>
     <link href="http://example.com/2023/01/05/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/"/>
     <id>http://example.com/2023/01/05/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/</id>
     <published>2023-01-05T12:05:05.000Z</published>
-    <updated>2023-01-18T00:46:14.496Z</updated>
+    <updated>2023-02-25T16:24:22.528Z</updated>
     
     
     <summary type="html">&lt;p&gt;我们介绍两个基于分治且 &lt;code&gt;O(nlogn)&lt;/code&gt; 的排序算法:
 快速排序和归并排序. 理解排序算法的最好方法是模拟, 手动模拟指针的移动,
-感受数据是怎么逐渐变得有序的. 配合动图食用更佳.
-两个算法困难的点在于边界分析. 不过记模板就可以了(&lt;/p&gt;</summary>
+感受数据是怎么逐渐变得有序的. 配合动图食用更佳.&lt;/p&gt;
+&lt;p&gt;你可能会问: &lt;code&gt;std::sort&lt;/code&gt; 它不香吗? 答:
+让你手搓是为了理解算法思想, 没让你去用. 顺便提防将来的面试官.&lt;/p&gt;
+&lt;p&gt;两个算法困难的点在于边界分析. 算法导论就是干这个证明的.
+不过正常人记模板就可以了 :)&lt;/p&gt;</summary>
     
     
     
@@ -180,7 +211,7 @@ href=&quot;https://www.acwing.com/activity/content/introduction/2712/&quot;&gt;�
     <link href="http://example.com/2022/12/31/2022%E5%B9%B4%E7%BB%88%E6%80%BB%E7%BB%93/"/>
     <id>http://example.com/2022/12/31/2022%E5%B9%B4%E7%BB%88%E6%80%BB%E7%BB%93/</id>
     <published>2022-12-31T11:37:52.000Z</published>
-    <updated>2023-01-31T09:41:04.544Z</updated>
+    <updated>2023-02-25T16:20:23.844Z</updated>
     
     
     <summary type="html">&lt;p&gt;你会用什么关键字概括2022年呢...... 各种意义上的Twist. 人生的转折,
@@ -228,22 +259,26 @@ href=&quot;https://www.acwing.com/activity/content/introduction/2712/&quot;&gt;�
     <link href="http://example.com/2022/12/21/KMP%E7%AE%97%E6%B3%95/"/>
     <id>http://example.com/2022/12/21/KMP%E7%AE%97%E6%B3%95/</id>
     <published>2022-12-21T12:37:01.000Z</published>
-    <updated>2023-01-31T15:28:30.268Z</updated>
+    <updated>2023-02-25T16:22:15.866Z</updated>
     
     
     <summary type="html">&lt;p&gt;做期末大作业里面有个字符串匹配的问题, 用暴力算法做完觉得不够爽,
 于是自找的麻烦.&lt;/p&gt;
 &lt;p&gt;想用最简明的方式去解释这个较为抽象的算法! 事实上明白了一个道理:
-缺乏数学的算法都是玄学, 只有数学证明了才能让人心服口服......&lt;/p&gt;</summary>
+缺乏数学的算法都是玄学, 只有数学证明了才能让人心服口服......&lt;/p&gt;
+&lt;p&gt;就好像物理规律, 如果数学上证明了成立, 你会感到无比安心.
+模拟样例终归比不了证明有说服力.&lt;/p&gt;</summary>
     
     
     
-    <category term="算法" scheme="http://example.com/categories/%E7%AE%97%E6%B3%95/"/>
+    <category term="数据结构" scheme="http://example.com/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
     
     
     <category term="字符串" scheme="http://example.com/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2/"/>
     
     <category term="算法" scheme="http://example.com/tags/%E7%AE%97%E6%B3%95/"/>
+    
+    <category term="数据结构" scheme="http://example.com/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
     
   </entry>
   
