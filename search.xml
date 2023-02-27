@@ -312,6 +312,288 @@ href="https://ac.nowcoder.com/acm/contest/28737">牛客竞赛字符串专题班T
       </tags>
   </entry>
   <entry>
+    <title>x86-64 汇编介绍</title>
+    <url>/2022/12/17/x86-64%E6%B1%87%E7%BC%96%E4%BB%8B%E7%BB%8D/</url>
+    <content><![CDATA[<blockquote>
+<p>程序就是状态机。——jyy, on 2022 NJU OS Lecture 01</p>
+</blockquote>
+<p>这句话道出了程序的本质. 实际上, 如今的计算机本质上就是通用<a
+href="https://plato.stanford.edu/entries/turing-machine/">图灵机</a>,
+而我们研究汇编语言就是研究程序在机器层面上的运行.</p>
+<p>程序的进行依赖于<code>rip</code>寄存器,
+它储存的值是当前运行的指令地址.
+程序的进行实际上就是一条指令一条指令的移动(你可以在<code>gdb</code>里随时监控<code>rip</code>).
+这和图灵机读写控制的方式本质上是一致的!</p>
+<span id="more"></span>
+<blockquote>
+<p>书中出示的汇编指令是<code>AT&amp;T</code>格式,
+为<code>gcc</code>和<code>gdb</code>编译选项默认.
+如果不熟悉某一种风格的话,
+<code>set disassembly-flavor att</code>或者<code>intel</code>就可以切换成对应的反汇编风格啦.
+大部分情况下两种格式是互通的. 唯一值得注意的是读取顺序,
+两者<strong>源操作数</strong>和<strong>目的操作数</strong>的顺序是<strong>反的</strong>.
+例如下面的语句表示栈指针减8:</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">subq     $8,%rsp             # ATT flavor</span><br><span class="line">sub      rsp,8               # Intel flavor</span><br></pre></td></tr></table></figure>
+</blockquote>
+<h2 id="访问值和访问地址">访问值和访问地址</h2>
+<p><code>%rsp</code> 表示 <code>rsp</code> 寄存器储存的值,
+通常来说栈指针保存的是一个地址. 对于更一般的寄存器,
+例如<code>rax</code>寄存器, 是可以保存值的, 而且通常是返回值. 我们用
+<span class="math inline">\(r_a\)</span> 表示寄存器<code>a</code>
+存储的值. 内存本质上是一个很长的数组, <strong>内存引用</strong>表示
+<span class="math inline">\(M[r_a]\)</span>, 例如
+<code>(%rsp)</code>表示<code>*rsp</code>, 也就是<code>rsp</code>
+寄存器储存地址上的值.</p>
+<p><code>lea</code>和<code>mov</code>指令间的区别:
+前者常用于简单的算术运算, 例如:</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">/* i in %rsi */</span><br><span class="line">leal    (%eax,%eax,2), %eax</span><br></pre></td></tr></table></figure>
+<p>实际上进行的操作是:
+源操作数计算为<code>S = M[%eax + 2 * %eax] = M[3 * %eax]</code>,
+然后求出 <code>&amp;S</code>(<code>S</code>的有效地址),
+然后将这个值复制给 <code>D</code>. 如果对<code>%rax</code>解引用,
+例如<code>gdb</code>指令 <code>p *(int*) $rax</code>,
+可以得到<code>3i</code>.</p>
+<p><code>mov</code>指令可以干两件事: 把内存地址复制给另一个寄存器,
+或者将一个值复制给寄存器.</p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="type">int</span> x = a[i];</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">/* x in %eax, a in %rdx, i in %rcx */</span><br><span class="line">movl    (%rdx,%rcx,4),%eax</span><br></pre></td></tr></table></figure>
+<p>源操作数<code>S = M[a + 4*i]</code>,
+<code>a</code>是<code>int</code>数组的起始地址.
+将内存地址<code>S</code>上的值赋值给寄存器<code>rax</code>. 此时
+<code>p $rax</code> 就是<code>a[i]</code>.</p>
+<blockquote>
+<p>数组和结构本质上就是人为规定的一段内存.
+上面的例子显示了数组<code>int a[N]</code>可以用<code>*(a+i)</code>访问<code>a[i]</code>的本质.
+对于下面的结构体:</p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">node</span> &#123;</span></span><br><span class="line">    <span class="type">long</span> val;</span><br><span class="line">    node* next; </span><br><span class="line">&#125; node;</span><br></pre></td></tr></table></figure>
+<p>假设<code>node</code>类型<code>node1</code>的指针为<code>ptr</code>,
+那么<code>*ptr</code>是什么? <code>*(ptr+8)</code>代表什么?
+<code>**(ptr+8)</code> 又是什么? <code>mov    0x8(%rdx),%rdx</code>
+假设<code>rdx</code>是<code>ptr</code>, 这句指令代表什么?</p>
+</blockquote>
+<p>区别下面的指令:</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">mov    0x20(%rsp),%rbx </span><br><span class="line">lea    0x28(%rsp),%rax </span><br></pre></td></tr></table></figure>
+<p>其中<code>rbx</code>的值是内存地址<code>$rsp+32</code>上储存的值,
+<code>rax</code>现在是一个指针, 它的值是<code>$rsp+40</code>,
+也就是一个内存地址.</p>
+<h2 id="控制语句">控制语句</h2>
+<p>跳转命令<code>jmp</code>等价于C中的<code>goto</code>.
+<code>if</code>语句对应条件跳转指令.
+循环控制语句都可以通过<code>if</code>和<code>goto</code>所模拟.</p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="type">long</span> <span class="title function_">absdiff_se</span><span class="params">(<span class="type">long</span> x, <span class="type">long</span> y)</span> &#123;</span><br><span class="line">    <span class="type">long</span> res;</span><br><span class="line">    <span class="keyword">if</span> (x &lt; y) &#123;</span><br><span class="line">        res = y - x;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span> &#123;</span><br><span class="line">        res = x - y;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> res;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">/* x in %rdi, y in %rsi */</span><br><span class="line">absdiff_se:</span><br><span class="line">   cmpq %rsi, %rdi              ; x - y              </span><br><span class="line">   jge .L6                      ; if &gt;= goto .L6</span><br><span class="line">   movq %rsi, %rax              ; res = y</span><br><span class="line">   subq %rdi, %rax              ; res -= x</span><br><span class="line">   ret                          ; return</span><br><span class="line">.L6:                         </span><br><span class="line">   movq %rdi, %rax              ; res = x</span><br><span class="line">   subq %rsi, %rax              ; res -= y</span><br><span class="line">   ret                          ; return</span><br></pre></td></tr></table></figure>
+<p>判断条件(<code>if</code>括号内的语句)基于一组条件码寄存器,
+通过<code>test</code>或<code>cmp</code>指令设置.</p>
+<blockquote>
+<p><strong>Q:</strong> 这里发生了什么? <strong>A:</strong>
+<code>cmq</code>等同为不修改源操作数的<code>sub</code>指令(<code>a-b</code>),
+<code>test</code>类似<code>and</code>指令(<code>a&amp;b</code>),
+程序根据结果设置<code>OF</code>和<code>SF</code>以及其他的条件码寄存器(默认为0).</p>
+<p>假设结果小于<code>0</code>,
+那么<code>SF</code>会被设置为<code>1</code>;
+还会判断是否发生数据类型的溢出, 假设溢出,
+<code>OF</code>会被设置为<code>1</code>.</p>
+<p><code>jge</code>会先对条件码进行位运算, 这里:<code>~(SF ^ OF)</code>,
+如果结果为<code>1</code>, 那么跳转, 否则程序继续执行下去.</p>
+</blockquote>
+<p>在实际阅读汇编代码的过程中, 可以忽略这部分细节,
+明白程序按照条件跳转即可.</p>
+<p><code>-O1</code>级别以上的优化还会出现条件移动指令,
+针对的是CPU条件预测的优化.
+通常来说条件移动(<code>CMOV</code>类)指令可以用下面的C代码抽象:</p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="comment">// v = test_expr ? then_expr : else_expr;</span></span><br><span class="line">v = then-expr;</span><br><span class="line">ve = <span class="keyword">else</span>-expr;</span><br><span class="line">t = test-expr;</span><br><span class="line"><span class="keyword">if</span> (!t) v = ve;</span><br></pre></td></tr></table></figure>
+<p>下面我们来讨论循环语句: <code>do while</code> 作为最不常用的循环,
+模拟方式却是最简单的. 它的流程就和它本身一致.</p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line">loop:</span><br><span class="line">    body</span><br><span class="line">    t = test_expr;</span><br><span class="line">    <span class="keyword">if</span>(t)</span><br><span class="line">        <span class="keyword">goto</span> loop;</span><br></pre></td></tr></table></figure>
+<p>和<code>while</code>语句的区别是,
+<code>while</code>语句在进入之前会进行一次条件判断.</p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="keyword">goto</span> test;</span><br><span class="line">loop:</span><br><span class="line">    body</span><br><span class="line">test:</span><br><span class="line">    t = test_expr;</span><br><span class="line">    <span class="keyword">if</span>(t)</span><br><span class="line">        <span class="keyword">goto</span> loop;</span><br></pre></td></tr></table></figure>
+<p>至于最常用的<code>for</code>语句, 它有等价的<code>while</code>表述,
+此处从略.</p>
+<p>做完了要不要试试手? 要不要拆个<a
+href="http://csapp.cs.cmu.edu/3e/bomb.tar">二进制炸弹</a>试试手:)
+在Linux下输入下面的指令:</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">wget http://csapp.cs.cmu.edu/3e/bomb.tar</span><br><span class="line">tar xvf bomb.tar</span><br><span class="line"><span class="built_in">cd</span> bomb</span><br></pre></td></tr></table></figure>
+<p>你需要做的是<code>gdb bomb</code>然后对汇编代码进行分析,
+然后给出拆弹必要的字符串! 在<code>bomb.c</code>给出了程序流,
+你至少知道该在哪里打断点. 而函数具体如何实现,
+这就得看你汇编的能力了!</p>
+<h2 id="函数调用的过程">函数调用的过程</h2>
+<p>函数调用的过程满足<strong>栈</strong>的前进后出(First in, Last
+out)原则.</p>
+<blockquote>
+<p><strong>Q:</strong> 怎么画函数栈帧的示意图? 是栈顶放最上面,
+还是内存高位的一端放在最上面? <strong>A:</strong> 看个人习惯. <a
+href="http://www.stackgrowsup.com/">UP?</a> 还是 <a
+href="http://www.stackgrowsdown.com/">DOWN?</a>
+只要你看别人的示意图不会被绕晕就可以. 通常来说,
+栈朝着<strong>低地址</strong>增长, 从这个意义上来说,
+往下画是更多人的选择.</p>
+</blockquote>
+<p>当过程P执行过程Q时, 会把返回地址,
+也就是<code>call</code>指令的下一句(记作A)压入栈中(PC++),
+Q返回时就会从A开始继续执行. 我们认为A是P栈帧的一部分. 对应的
+<code>ret</code> 会将A从栈中弹出, 然后将<code>rip</code>设置为A.</p>
+<p>调用函数的时候怎么传入参数? 一般来说, 如果还有空闲的寄存器,
+程序在调用过程Q之前, 在过程P, 会先将参数移动到对应的寄存器,
+例如第一个参数会移动到指定寄存器<code>rdi</code>上(<code>rsi</code>和<code>rdx</code>以此类推),
+然后在过程Q中调用这几个寄存器, "共享"过程中,
+实际上就实现了参数的传递.</p>
+<p>在函数调用的一开始, 会为过程Q分配栈空间.
+因为程序运行地址是往低址增长,
+所以扩大栈需要减小栈指针<code>rsp</code>(指向栈顶元素).
+将栈指针减小一个适当的值可以为没有初始值的数据在栈上分配空间.</p>
+<p>通常来说<code>push</code>指令(将参数压入栈)就可以满足需要.
+压栈实际上就是复制一个参数. 某些情况下,
+还需要通过主动利用<code>sub</code>指令来分配栈帧. 在结束调用时,
+对应的需要增加栈指针, 对应指令<code>pop</code>,
+本质上是<code>add</code>一个特定的值.</p>
+<blockquote>
+<p><strong>Q1:</strong> <code>push</code>指令到底是什么意思?
+<strong>A:</strong>
+<code>push</code>指令实际上可以通过更简单的指令模拟出来:
+<code>pushq %rbp</code> 等价于 <code>subq $8,%rsp</code>然后
+<code>movq %rbp,(%rsp)</code>.
+区别在于<code>pushq</code>指令占的字节数更少.
+同理可以知道<code>pop</code>的含义.</p>
+<p><strong>Q2:</strong> 还有什么时候需要用到栈帧? <strong>A:</strong>
+上面提到了, 如果寄存器不足够放置所有的本地数据, 就需要用栈去储存. 此外,
+对一个临时变量取地址<code>&amp;</code>, 局部变量是数组或结构,
+同样需要分配栈帧. 栈帧的具体分配可以查阅书.</p>
+</blockquote>
+<p>理解了函数调用的过程, 实际上你就可以实现将任何递归程序<a
+href="https://zhuanlan.zhihu.com/p/467871987">改写</a>成非递归! 比方说,
+写一个非递归版的汉诺塔程序.</p>
+<p>此外, 关于栈帧有一个有趣的话题: 内存越界和缓冲区溢出.
+主要是这样一个库函数<code>gets()</code>,
+它可以无视字符串长度向字符数组写入, 引起内存越界, 小则修改栈上的值,
+大则修改返回地址, 使得函数调用到奇怪的地方!</p>
+<p>有关这部分, CSAPP提供了<a
+href="http://csapp.cs.cmu.edu/3e/target1.tar">attack lab</a>,
+让你模拟为一名hacker去攻击程序! 很有意思.</p>
+<p>在这里, 我们给出缓冲区溢出的一个例子:</p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="type">void</span> <span class="title function_">win</span><span class="params">(<span class="type">int</span> arg)</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">if</span>(arg == <span class="number">0x15213</span>) &#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;You win 1 cookie! Great start!\n&quot;</span>);</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(arg == <span class="number">0x18213</span>) &#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;You win 2 cookies! Woohoo!\n&quot;</span>);</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(arg == <span class="number">0x18613</span>) &#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;You win 3 cookies! That&#x27;s right!\n&quot;</span>);</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="type">void</span> <span class="title function_">solve</span><span class="params">(<span class="type">void</span>)</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">volatile</span> <span class="type">long</span> before = <span class="number">0xb4</span>;</span><br><span class="line">    <span class="type">char</span> buf[<span class="number">16</span>];</span><br><span class="line">    <span class="keyword">volatile</span> <span class="type">long</span> after = <span class="number">0xaf</span>;</span><br><span class="line"></span><br><span class="line">    gets(buf);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span>(before == <span class="number">0x3331323531</span>)</span><br><span class="line">        win(<span class="number">0x15213</span>);</span><br><span class="line">    <span class="keyword">if</span>(after == <span class="number">0x3331323831</span>)</span><br><span class="line">        win(<span class="number">0x18213</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>修改<code>after</code>的值, 这个其实不难做到.
+按照临时变量在栈上的顺序, 首先<code>before</code>先压栈,
+然后是<code>buf</code>, 最后是<code>after</code>.
+又因为栈是朝内存低的方向生长的,
+知<code>buf</code>超出的部分会影响到<code>before</code>的值.
+具体在内存中是怎么分配的呢? 可以尝试反汇编调试一下:</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">Dump of assembler code for function solve:</span><br><span class="line">   0x00000000004006b5 &lt;+0&gt;:     sub    $0x38,%rsp</span><br><span class="line">   0x00000000004006b9 &lt;+4&gt;:     movq   $0xb4,0x28(%rsp)</span><br><span class="line">   0x00000000004006c2 &lt;+13&gt;:    movq   $0xaf,0x8(%rsp)</span><br><span class="line">   0x00000000004006cb &lt;+22&gt;:    lea    0x10(%rsp),%rdi</span><br><span class="line">   0x00000000004006d0 &lt;+27&gt;:    call   0x40073f &lt;Gets&gt;</span><br><span class="line">   0x00000000004006d5 &lt;+32&gt;:    mov    0x28(%rsp),%rdx</span><br><span class="line">   0x00000000004006da &lt;+37&gt;:    movabs $0x3331323531,%rax</span><br></pre></td></tr></table></figure>
+<p><code>buf</code> 在 <code>rsp+0x10</code> 的位置,
+<code>buf[16]</code> 在 <code>0x20</code>, 而 <code>0xb4</code> 在
+<code>rsp+0x28</code> 的位置,
+也就是要覆盖<code>before</code>的值还必须填充8个字节. 于是,
+可以构造攻击字符串<code>00001111222233334444555515213</code>,
+就可以获得1个cookie啦!</p>
+<p>想一想, 你可以怎么做, 来完成剩余的关卡? 例如,
+修改<code>after</code>的值, 或者直接修改传递的<code>arg</code>参数值?
+而这一切都可以通过缓冲区的溢出来实现! 如果你感兴趣,
+可以下载CMU官网提供的rec:</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">wget https://www.cs.cmu.edu/~213/activities/rec5.tar</span><br><span class="line">tar xvf rec5.tar</span><br><span class="line"><span class="built_in">cd</span> rec5</span><br></pre></td></tr></table></figure>
+<p>补充一些细节: 传递参数存在保护机制.
+方才我们提到参数传入靠的是<code>push</code>和<code>pop</code>,
+实际是参数的复制. 在此之外, 我们还有一组特殊的寄存器: <code>rbx</code>,
+<code>rbp</code>和
+<code>r12 ~ r15</code>寄存器被称为<strong>被调用者保存</strong>寄存器.
+在P调用Q的过程中, Q必须保护这些寄存器的值,
+使得当Q返回P的时候与调用Q时是一样的.</p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="type">long</span> <span class="title function_">P</span><span class="params">(<span class="type">long</span> x, <span class="type">long</span> y)</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="type">long</span> u = Q(y);</span><br><span class="line">    <span class="type">long</span> v = Q(x);</span><br><span class="line">    <span class="keyword">return</span> u + v;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>第四行<code>sub $8,%rsp</code>是为了内存对齐.
+第五行把<code>x</code>储存到了<code>rbp</code>寄存器上,
+这样就不需要担心<code>rdi</code>寄存器后来被修改导致<code>x</code>丢失.
+同样<code>rbx</code>储存了<code>Q(y)</code>的值,
+这样就不用担心<code>rax</code>寄存器修改导致<code>Q(y)</code>的丢失.</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">P:</span><br><span class="line">   pushq %rbp                Save %rbp</span><br><span class="line">   pushq %rbx                Save %rbx</span><br><span class="line">   subq $8, %rsp             Align stack frame</span><br><span class="line">   movq %rdi, %rbp           Save x</span><br><span class="line">   movq %rsi, %rdi           Move y to first argument</span><br><span class="line">   call Q                    Call Q(y)</span><br><span class="line">   movq %rax, %rbx           Save result</span><br><span class="line">   movq %rbp, %rdi           Move x to first argument</span><br><span class="line">   call Q                    Call Q(x)</span><br><span class="line">   addq %rbx, %rax           Add saved Q(y) to Q(x)</span><br><span class="line">   addq $8, %rsp             Deallocate last part of stack</span><br><span class="line">   popq %rbx                 Restore %rbx</span><br><span class="line">   popq %rbp                 Restore %rbp</span><br><span class="line">   ret</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>CSAPP</category>
+      </categories>
+      <tags>
+        <tag>汇编</tag>
+        <tag>CSAPP</tag>
+        <tag>计算机系统</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>AI时代的算法学习指南</title>
+    <url>/2023/02/25/AI%E6%97%B6%E4%BB%A3%E7%9A%84%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0%E6%8C%87%E5%8D%97/</url>
+    <content><![CDATA[<p>日常刷知乎, 然后看到了这样一个问题: <a
+href="https://www.zhihu.com/question/585554274/">沃顿商学院教授要求学生必须用
+ChatGPT 写作业，应该如何正确看待 AI 带来的利弊？</a></p>
+<p>之前我也看到一些态度截然相反的高校. 说实在话, 反对历史必然的行为,
+无异于杯水车薪, 想想 Luddite movement 也不会真正让我们重回原始社会,
+闭关锁国的历史也不必再度经历; 至于使用工具是否会反噬自身,
+只要在不侵害他人的利益下, 我想这个自由最好让步于个人,
+想想你是怎么注册上了ChatGPT的账号. 最后, 这句话送给AI时代下学习算法,
+或者说, 学习一切的你和我:</p>
+<blockquote>
+<p>拥抱变化要比拒绝变化简单的多.</p>
+</blockquote>
+<span id="more"></span>
+<h2 id="前言">前言</h2>
+<p>本文介绍一些ChatGPT帮助辅助学习算法的Tips.</p>
+<p>我也在摸索AI的使用方式, 有好的想法大家一起交流学习! :)</p>
+<h2 id="prompt-的艺术">Prompt 的艺术</h2>
+<p>TODO</p>
+<h2 id="参考资料">参考资料</h2>
+<p>[1]. Ibrahim John, The Art of Asking ChatGPT for High-Quality
+Answers, A Complete Guide to Prompt Engineering Techniques, ISBN-13:
+9781234567890</p>
+]]></content>
+      <categories>
+        <category>杂谈</category>
+      </categories>
+      <tags>
+        <tag>杂谈 算法 学习经验</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>把Python写成shell脚本</title>
+    <url>/2023/02/26/%E6%8A%8APython%E5%86%99%E6%88%90%E8%84%9A%E6%9C%AC%E8%AF%AD%E8%A8%80/</url>
+    <content><![CDATA[<p>为什么 Shell 脚本要用 Python 来写!? UNIX用户痛骂这是大逆不道.</p>
+<p>比起 BAT/Bash 我更喜欢 Python 的语法, 高效又简洁, 想想看一个list
+bash要怎么写. 有 os/sys 模块的存在完全可以把 Python
+写成类shell脚本(本质即调用shell命令), 再加上 <code>pandas</code>
+等包更是让 Python 实用到一个新的高度(Windows干活干的多).</p>
+<p>当然, 工具就是顺手就好. 你喜欢用什么写就用什么写.</p>
+<p>不考虑更底层的应用. 别扯什么嵌入式驱动, C语言顶着你的脑门问: 师傅,
+我是干什么的.</p>
+<span id="more"></span>
+<h2 id="文本处理">文本处理</h2>
+<h3 id="格式化文档">格式化文档</h3>
+<p>故事是这样的: 英语老师发了一个Word文档, 但纯文本非常的丑陋...文本拖进
+vscode, markdownlint 爆了 1000+ 的 warnings...</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> sys</span><br><span class="line"></span><br><span class="line">filename = sys.argv[<span class="number">1</span>]</span><br><span class="line"></span><br><span class="line"><span class="keyword">with</span> <span class="built_in">open</span>(filename, <span class="string">&#x27;r&#x27;</span>, encoding=<span class="string">&#x27;utf-8&#x27;</span>) <span class="keyword">as</span> f:</span><br><span class="line">    lines = f.readlines()</span><br><span class="line"></span><br><span class="line">new_lines = []</span><br><span class="line">count = <span class="number">0</span></span><br><span class="line"><span class="keyword">for</span> i, line <span class="keyword">in</span> <span class="built_in">enumerate</span>(lines):</span><br><span class="line">    <span class="keyword">if</span> line <span class="keyword">or</span> (i &gt; <span class="number">0</span> <span class="keyword">and</span> lines[i-<span class="number">1</span>]):</span><br><span class="line">        <span class="keyword">if</span> <span class="string">&#x27;。&#x27;</span> <span class="keyword">not</span> <span class="keyword">in</span> line:</span><br><span class="line">            new_lines.append(<span class="string">&#x27;&#x27;</span>)</span><br><span class="line">            new_lines.append(line)</span><br><span class="line">            new_lines.append(<span class="string">&#x27;&#x27;</span>)</span><br><span class="line">            count += <span class="number">1</span></span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            new_lines.append(line)</span><br><span class="line"></span><br><span class="line">lines = [line.rstrip() <span class="keyword">for</span> line <span class="keyword">in</span> new_lines]</span><br><span class="line"></span><br><span class="line">count += <span class="built_in">len</span>(new_lines) - <span class="built_in">len</span>(lines)</span><br><span class="line"></span><br><span class="line"><span class="keyword">while</span> lines <span class="keyword">and</span> <span class="keyword">not</span> lines[-<span class="number">1</span>]:</span><br><span class="line">    lines.pop()</span><br><span class="line">    count += <span class="number">1</span></span><br><span class="line"></span><br><span class="line">trimmed_lines = []</span><br><span class="line"><span class="keyword">for</span> i, line <span class="keyword">in</span> <span class="built_in">enumerate</span>(lines):</span><br><span class="line">    <span class="keyword">if</span> line <span class="keyword">or</span> (i &gt; <span class="number">0</span> <span class="keyword">and</span> lines[i-<span class="number">1</span>]):</span><br><span class="line">        trimmed_lines.append(line)</span><br><span class="line">        count += <span class="number">1</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">with</span> <span class="built_in">open</span>(filename, <span class="string">&#x27;w&#x27;</span>, encoding=<span class="string">&#x27;utf-8&#x27;</span>) <span class="keyword">as</span> f:</span><br><span class="line">    f.write(<span class="string">&#x27;\n&#x27;</span>.join(trimmed_lines))</span><br><span class="line">    f.write(<span class="string">&#x27;\n&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(<span class="string">f&quot;Modified <span class="subst">&#123;count&#125;</span> lines in file <span class="subst">&#123;filename&#125;</span>.&quot;</span>)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h2 id="系统操作">系统操作</h2>
+<h3 id="批量处理文件名">批量处理文件名</h3>
+<p>故事是这样的: 看到文件夹下的图片都是
+<code>微信图片_20210611232301</code>, <code>EAQ1vesW4AEaIdk</code>,
+<code>v2-1db136aa02affc53f6f31c99f6977a86</code> 这样的命名,
+我直接要爆炸了.</p>
+<p>百度之, 发现居然还有人为之专门开发了改名程序.</p>
+<p>明明几行代码就可以解决战斗的说.</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> os</span><br><span class="line"><span class="keyword">import</span> time</span><br><span class="line"></span><br><span class="line"><span class="comment"># 获取当前工作目录</span></span><br><span class="line">cwd = os.getcwd()</span><br><span class="line"></span><br><span class="line"><span class="comment"># 获取当前目录中所有的 .jpg 文件</span></span><br><span class="line">files = [f <span class="keyword">for</span> f <span class="keyword">in</span> os.listdir(cwd) <span class="keyword">if</span> f.endswith(<span class="string">&#x27;.jpg&#x27;</span>)]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 将文件重命名为 p(i).jpg, 其中 i 是文件的创建时间</span></span><br><span class="line"><span class="keyword">for</span> i, f <span class="keyword">in</span> <span class="built_in">enumerate</span>(<span class="built_in">sorted</span>(files, key=<span class="keyword">lambda</span> x: os.path.getctime(x))):</span><br><span class="line">    os.rename(f, <span class="string">&#x27;p(&#123;&#125;).jpg&#x27;</span>.<span class="built_in">format</span>(i+<span class="number">1</span>))</span><br></pre></td></tr></table></figure>
+<p>实际使用的时候可以改改代码. 例如多一个<code>.png</code>,
+<code>.webp</code>, <code>.gif</code> 的识别啥的.</p>
+<h2 id="拓展阅读">拓展阅读</h2>
+<p>[1]. <a
+href="https://google.github.io/styleguide/shellguide.html">Google Shell
+Style Guide</a> 里面解释了你什么时候不应该使用 shell, 该怎么写
+shell.</p>
+<p>[2]. <a
+href="https://missing-semester-cn.github.io/2020/shell-tools/">Shell
+工具和脚本 - The missing semester of your cs education</a>
+是一个很好的shell入门.</p>
+]]></content>
+      <categories>
+        <category>Python</category>
+      </categories>
+      <tags>
+        <tag>Python</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>2023寒假每日一题</title>
     <url>/2023/01/14/%E5%AF%92%E5%81%87%E6%AF%8F%E6%97%A5%E4%B8%80%E9%A2%98/</url>
     <content><![CDATA[<p>收录一些寒假做的题目. 题目来源: <a
@@ -658,207 +940,46 @@ cnt\)</span> 即可.</p>
       </tags>
   </entry>
   <entry>
-    <title>x86-64 汇编介绍</title>
-    <url>/2022/12/17/x86-64%E6%B1%87%E7%BC%96%E4%BB%8B%E7%BB%8D/</url>
-    <content><![CDATA[<blockquote>
-<p>程序就是状态机。——jyy, on 2022 NJU OS Lecture 01</p>
-</blockquote>
-<p>这句话道出了程序的本质. 实际上, 如今的计算机本质上就是通用<a
-href="https://plato.stanford.edu/entries/turing-machine/">图灵机</a>,
-而我们研究汇编语言就是研究程序在机器层面上的运行.</p>
-<p>程序的进行依赖于<code>rip</code>寄存器,
-它储存的值是当前运行的指令地址.
-程序的进行实际上就是一条指令一条指令的移动(你可以在<code>gdb</code>里随时监控<code>rip</code>).
-这和图灵机读写控制的方式本质上是一致的!</p>
+    <title>双指针算法</title>
+    <url>/2023/01/13/%E5%8F%8C%E6%8C%87%E9%92%88/</url>
+    <content><![CDATA[<p>双指针核心要义是将含两层嵌套的朴素算法,
+利用某种性质(例如单调性)将其优化成<code>O(n)</code>的过程.
+有种并发的感觉——一步能干两个人的事情, 就不要等另一个人干完再去做.</p>
+<p>双指针一般会结合其他数据结构或者算法一起使用.</p>
 <span id="more"></span>
-<blockquote>
-<p>书中出示的汇编指令是<code>AT&amp;T</code>格式,
-为<code>gcc</code>和<code>gdb</code>编译选项默认.
-如果不熟悉某一种风格的话,
-<code>set disassembly-flavor att</code>或者<code>intel</code>就可以切换成对应的反汇编风格啦.
-大部分情况下两种格式是互通的. 唯一值得注意的是读取顺序,
-两者<strong>源操作数</strong>和<strong>目的操作数</strong>的顺序是<strong>反的</strong>.
-例如下面的语句表示栈指针减8:</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">subq     $8,%rsp             # ATT flavor</span><br><span class="line">sub      rsp,8               # Intel flavor</span><br></pre></td></tr></table></figure>
-</blockquote>
-<h2 id="访问值和访问地址">访问值和访问地址</h2>
-<p><code>%rsp</code> 表示 <code>rsp</code> 寄存器储存的值,
-通常来说栈指针保存的是一个地址. 对于更一般的寄存器,
-例如<code>rax</code>寄存器, 是可以保存值的, 而且通常是返回值. 我们用
-<span class="math inline">\(r_a\)</span> 表示寄存器<code>a</code>
-存储的值. 内存本质上是一个很长的数组, <strong>内存引用</strong>表示
-<span class="math inline">\(M[r_a]\)</span>, 例如
-<code>(%rsp)</code>表示<code>*rsp</code>, 也就是<code>rsp</code>
-寄存器储存地址上的值.</p>
-<p><code>lea</code>和<code>mov</code>指令间的区别:
-前者常用于简单的算术运算, 例如:</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">/* i in %rsi */</span><br><span class="line">leal    (%eax,%eax,2), %eax</span><br></pre></td></tr></table></figure>
-<p>实际上进行的操作是:
-源操作数计算为<code>S = M[%eax + 2 * %eax] = M[3 * %eax]</code>,
-然后求出 <code>&amp;S</code>(<code>S</code>的有效地址),
-然后将这个值复制给 <code>D</code>. 如果对<code>%rax</code>解引用,
-例如<code>gdb</code>指令 <code>p *(int*) $rax</code>,
-可以得到<code>3i</code>.</p>
-<p><code>mov</code>指令可以干两件事: 把内存地址复制给另一个寄存器,
-或者将一个值复制给寄存器.</p>
-<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="type">int</span> x = a[i];</span><br></pre></td></tr></table></figure>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">/* x in %eax, a in %rdx, i in %rcx */</span><br><span class="line">movl    (%rdx,%rcx,4),%eax</span><br></pre></td></tr></table></figure>
-<p>源操作数<code>S = M[a + 4*i]</code>,
-<code>a</code>是<code>int</code>数组的起始地址.
-将内存地址<code>S</code>上的值赋值给寄存器<code>rax</code>. 此时
-<code>p $rax</code> 就是<code>a[i]</code>.</p>
-<blockquote>
-<p>数组和结构本质上就是人为规定的一段内存.
-上面的例子显示了数组<code>int a[N]</code>可以用<code>*(a+i)</code>访问<code>a[i]</code>的本质.
-对于下面的结构体:</p>
-<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">node</span> &#123;</span></span><br><span class="line">    <span class="type">long</span> val;</span><br><span class="line">    node* next; </span><br><span class="line">&#125; node;</span><br></pre></td></tr></table></figure>
-<p>假设<code>node</code>类型<code>node1</code>的指针为<code>ptr</code>,
-那么<code>*ptr</code>是什么? <code>*(ptr+8)</code>代表什么?
-<code>**(ptr+8)</code> 又是什么? <code>mov    0x8(%rdx),%rdx</code>
-假设<code>rdx</code>是<code>ptr</code>, 这句指令代表什么?</p>
-</blockquote>
-<p>区别下面的指令:</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">mov    0x20(%rsp),%rbx </span><br><span class="line">lea    0x28(%rsp),%rax </span><br></pre></td></tr></table></figure>
-<p>其中<code>rbx</code>的值是内存地址<code>$rsp+32</code>上储存的值,
-<code>rax</code>现在是一个指针, 它的值是<code>$rsp+40</code>,
-也就是一个内存地址.</p>
-<h2 id="控制语句">控制语句</h2>
-<p>跳转命令<code>jmp</code>等价于C中的<code>goto</code>.
-<code>if</code>语句对应条件跳转指令.
-循环控制语句都可以通过<code>if</code>和<code>goto</code>所模拟.</p>
-<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="type">long</span> <span class="title function_">absdiff_se</span><span class="params">(<span class="type">long</span> x, <span class="type">long</span> y)</span> &#123;</span><br><span class="line">    <span class="type">long</span> res;</span><br><span class="line">    <span class="keyword">if</span> (x &lt; y) &#123;</span><br><span class="line">        res = y - x;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span> &#123;</span><br><span class="line">        res = x - y;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> res;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">/* x in %rdi, y in %rsi */</span><br><span class="line">absdiff_se:</span><br><span class="line">   cmpq %rsi, %rdi              ; x - y              </span><br><span class="line">   jge .L6                      ; if &gt;= goto .L6</span><br><span class="line">   movq %rsi, %rax              ; res = y</span><br><span class="line">   subq %rdi, %rax              ; res -= x</span><br><span class="line">   ret                          ; return</span><br><span class="line">.L6:                         </span><br><span class="line">   movq %rdi, %rax              ; res = x</span><br><span class="line">   subq %rsi, %rax              ; res -= y</span><br><span class="line">   ret                          ; return</span><br></pre></td></tr></table></figure>
-<p>判断条件(<code>if</code>括号内的语句)基于一组条件码寄存器,
-通过<code>test</code>或<code>cmp</code>指令设置.</p>
-<blockquote>
-<p><strong>Q:</strong> 这里发生了什么? <strong>A:</strong>
-<code>cmq</code>等同为不修改源操作数的<code>sub</code>指令(<code>a-b</code>),
-<code>test</code>类似<code>and</code>指令(<code>a&amp;b</code>),
-程序根据结果设置<code>OF</code>和<code>SF</code>以及其他的条件码寄存器(默认为0).</p>
-<p>假设结果小于<code>0</code>,
-那么<code>SF</code>会被设置为<code>1</code>;
-还会判断是否发生数据类型的溢出, 假设溢出,
-<code>OF</code>会被设置为<code>1</code>.</p>
-<p><code>jge</code>会先对条件码进行位运算, 这里:<code>~(SF ^ OF)</code>,
-如果结果为<code>1</code>, 那么跳转, 否则程序继续执行下去.</p>
-</blockquote>
-<p>在实际阅读汇编代码的过程中, 可以忽略这部分细节,
-明白程序按照条件跳转即可.</p>
-<p><code>-O1</code>级别以上的优化还会出现条件移动指令,
-针对的是CPU条件预测的优化.
-通常来说条件移动(<code>CMOV</code>类)指令可以用下面的C代码抽象:</p>
-<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="comment">// v = test_expr ? then_expr : else_expr;</span></span><br><span class="line">v = then-expr;</span><br><span class="line">ve = <span class="keyword">else</span>-expr;</span><br><span class="line">t = test-expr;</span><br><span class="line"><span class="keyword">if</span> (!t) v = ve;</span><br></pre></td></tr></table></figure>
-<p>下面我们来讨论循环语句: <code>do while</code> 作为最不常用的循环,
-模拟方式却是最简单的. 它的流程就和它本身一致.</p>
-<figure class="highlight c"><table><tr><td class="code"><pre><span class="line">loop:</span><br><span class="line">    body</span><br><span class="line">    t = test_expr;</span><br><span class="line">    <span class="keyword">if</span>(t)</span><br><span class="line">        <span class="keyword">goto</span> loop;</span><br></pre></td></tr></table></figure>
-<p>和<code>while</code>语句的区别是,
-<code>while</code>语句在进入之前会进行一次条件判断.</p>
-<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="keyword">goto</span> test;</span><br><span class="line">loop:</span><br><span class="line">    body</span><br><span class="line">test:</span><br><span class="line">    t = test_expr;</span><br><span class="line">    <span class="keyword">if</span>(t)</span><br><span class="line">        <span class="keyword">goto</span> loop;</span><br></pre></td></tr></table></figure>
-<p>至于最常用的<code>for</code>语句, 它有等价的<code>while</code>表述,
-此处从略.</p>
-<p>做完了要不要试试手? 要不要拆个<a
-href="http://csapp.cs.cmu.edu/3e/bomb.tar">二进制炸弹</a>试试手:)
-在Linux下输入下面的指令:</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">wget http://csapp.cs.cmu.edu/3e/bomb.tar</span><br><span class="line">tar xvf bomb.tar</span><br><span class="line"><span class="built_in">cd</span> bomb</span><br></pre></td></tr></table></figure>
-<p>你需要做的是<code>gdb bomb</code>然后对汇编代码进行分析,
-然后给出拆弹必要的字符串! 在<code>bomb.c</code>给出了程序流,
-你至少知道该在哪里打断点. 而函数具体如何实现,
-这就得看你汇编的能力了!</p>
-<h2 id="函数调用的过程">函数调用的过程</h2>
-<p>函数调用的过程满足<strong>栈</strong>的前进后出(First in, Last
-out)原则.</p>
-<blockquote>
-<p><strong>Q:</strong> 怎么画函数栈帧的示意图? 是栈顶放最上面,
-还是内存高位的一端放在最上面? <strong>A:</strong> 看个人习惯. <a
-href="http://www.stackgrowsup.com/">UP?</a> 还是 <a
-href="http://www.stackgrowsdown.com/">DOWN?</a>
-只要你看别人的示意图不会被绕晕就可以. 通常来说,
-栈朝着<strong>低地址</strong>增长, 从这个意义上来说,
-往下画是更多人的选择.</p>
-</blockquote>
-<p>当过程P执行过程Q时, 会把返回地址,
-也就是<code>call</code>指令的下一句(记作A)压入栈中(PC++),
-Q返回时就会从A开始继续执行. 我们认为A是P栈帧的一部分. 对应的
-<code>ret</code> 会将A从栈中弹出, 然后将<code>rip</code>设置为A.</p>
-<p>调用函数的时候怎么传入参数? 一般来说, 如果还有空闲的寄存器,
-程序在调用过程Q之前, 在过程P, 会先将参数移动到对应的寄存器,
-例如第一个参数会移动到指定寄存器<code>rdi</code>上(<code>rsi</code>和<code>rdx</code>以此类推),
-然后在过程Q中调用这几个寄存器, "共享"过程中,
-实际上就实现了参数的传递.</p>
-<p>在函数调用的一开始, 会为过程Q分配栈空间.
-因为程序运行地址是往低址增长,
-所以扩大栈需要减小栈指针<code>rsp</code>(指向栈顶元素).
-将栈指针减小一个适当的值可以为没有初始值的数据在栈上分配空间.</p>
-<p>通常来说<code>push</code>指令(将参数压入栈)就可以满足需要.
-压栈实际上就是复制一个参数. 某些情况下,
-还需要通过主动利用<code>sub</code>指令来分配栈帧. 在结束调用时,
-对应的需要增加栈指针, 对应指令<code>pop</code>,
-本质上是<code>add</code>一个特定的值.</p>
-<blockquote>
-<p><strong>Q1:</strong> <code>push</code>指令到底是什么意思?
-<strong>A:</strong>
-<code>push</code>指令实际上可以通过更简单的指令模拟出来:
-<code>pushq %rbp</code> 等价于 <code>subq $8,%rsp</code>然后
-<code>movq %rbp,(%rsp)</code>.
-区别在于<code>pushq</code>指令占的字节数更少.
-同理可以知道<code>pop</code>的含义.</p>
-<p><strong>Q2:</strong> 还有什么时候需要用到栈帧? <strong>A:</strong>
-上面提到了, 如果寄存器不足够放置所有的本地数据, 就需要用栈去储存. 此外,
-对一个临时变量取地址<code>&amp;</code>, 局部变量是数组或结构,
-同样需要分配栈帧. 栈帧的具体分配可以查阅书.</p>
-</blockquote>
-<p>理解了函数调用的过程, 实际上你就可以实现将任何递归程序<a
-href="https://zhuanlan.zhihu.com/p/467871987">改写</a>成非递归! 比方说,
-写一个非递归版的汉诺塔程序.</p>
-<p>此外, 关于栈帧有一个有趣的话题: 内存越界和缓冲区溢出.
-主要是这样一个库函数<code>gets()</code>,
-它可以无视字符串长度向字符数组写入, 引起内存越界, 小则修改栈上的值,
-大则修改返回地址, 使得函数调用到奇怪的地方!</p>
-<p>有关这部分, CSAPP提供了<a
-href="http://csapp.cs.cmu.edu/3e/target1.tar">attack lab</a>,
-让你模拟为一名hacker去攻击程序! 很有意思.</p>
-<p>在这里, 我们给出缓冲区溢出的一个例子:</p>
-<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="type">void</span> <span class="title function_">win</span><span class="params">(<span class="type">int</span> arg)</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">if</span>(arg == <span class="number">0x15213</span>) &#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;You win 1 cookie! Great start!\n&quot;</span>);</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(arg == <span class="number">0x18213</span>) &#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;You win 2 cookies! Woohoo!\n&quot;</span>);</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(arg == <span class="number">0x18613</span>) &#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;You win 3 cookies! That&#x27;s right!\n&quot;</span>);</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="type">void</span> <span class="title function_">solve</span><span class="params">(<span class="type">void</span>)</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">volatile</span> <span class="type">long</span> before = <span class="number">0xb4</span>;</span><br><span class="line">    <span class="type">char</span> buf[<span class="number">16</span>];</span><br><span class="line">    <span class="keyword">volatile</span> <span class="type">long</span> after = <span class="number">0xaf</span>;</span><br><span class="line"></span><br><span class="line">    gets(buf);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span>(before == <span class="number">0x3331323531</span>)</span><br><span class="line">        win(<span class="number">0x15213</span>);</span><br><span class="line">    <span class="keyword">if</span>(after == <span class="number">0x3331323831</span>)</span><br><span class="line">        win(<span class="number">0x18213</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>修改<code>after</code>的值, 这个其实不难做到.
-按照临时变量在栈上的顺序, 首先<code>before</code>先压栈,
-然后是<code>buf</code>, 最后是<code>after</code>.
-又因为栈是朝内存低的方向生长的,
-知<code>buf</code>超出的部分会影响到<code>before</code>的值.
-具体在内存中是怎么分配的呢? 可以尝试反汇编调试一下:</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">Dump of assembler code for function solve:</span><br><span class="line">   0x00000000004006b5 &lt;+0&gt;:     sub    $0x38,%rsp</span><br><span class="line">   0x00000000004006b9 &lt;+4&gt;:     movq   $0xb4,0x28(%rsp)</span><br><span class="line">   0x00000000004006c2 &lt;+13&gt;:    movq   $0xaf,0x8(%rsp)</span><br><span class="line">   0x00000000004006cb &lt;+22&gt;:    lea    0x10(%rsp),%rdi</span><br><span class="line">   0x00000000004006d0 &lt;+27&gt;:    call   0x40073f &lt;Gets&gt;</span><br><span class="line">   0x00000000004006d5 &lt;+32&gt;:    mov    0x28(%rsp),%rdx</span><br><span class="line">   0x00000000004006da &lt;+37&gt;:    movabs $0x3331323531,%rax</span><br></pre></td></tr></table></figure>
-<p><code>buf</code> 在 <code>rsp+0x10</code> 的位置,
-<code>buf[16]</code> 在 <code>0x20</code>, 而 <code>0xb4</code> 在
-<code>rsp+0x28</code> 的位置,
-也就是要覆盖<code>before</code>的值还必须填充8个字节. 于是,
-可以构造攻击字符串<code>00001111222233334444555515213</code>,
-就可以获得1个cookie啦!</p>
-<p>想一想, 你可以怎么做, 来完成剩余的关卡? 例如,
-修改<code>after</code>的值, 或者直接修改传递的<code>arg</code>参数值?
-而这一切都可以通过缓冲区的溢出来实现! 如果你感兴趣,
-可以下载CMU官网提供的rec:</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">wget https://www.cs.cmu.edu/~213/activities/rec5.tar</span><br><span class="line">tar xvf rec5.tar</span><br><span class="line"><span class="built_in">cd</span> rec5</span><br></pre></td></tr></table></figure>
-<p>补充一些细节: 传递参数存在保护机制.
-方才我们提到参数传入靠的是<code>push</code>和<code>pop</code>,
-实际是参数的复制. 在此之外, 我们还有一组特殊的寄存器: <code>rbx</code>,
-<code>rbp</code>和
-<code>r12 ~ r15</code>寄存器被称为<strong>被调用者保存</strong>寄存器.
-在P调用Q的过程中, Q必须保护这些寄存器的值,
-使得当Q返回P的时候与调用Q时是一样的.</p>
-<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="type">long</span> <span class="title function_">P</span><span class="params">(<span class="type">long</span> x, <span class="type">long</span> y)</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="type">long</span> u = Q(y);</span><br><span class="line">    <span class="type">long</span> v = Q(x);</span><br><span class="line">    <span class="keyword">return</span> u + v;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>第四行<code>sub $8,%rsp</code>是为了内存对齐.
-第五行把<code>x</code>储存到了<code>rbp</code>寄存器上,
-这样就不需要担心<code>rdi</code>寄存器后来被修改导致<code>x</code>丢失.
-同样<code>rbx</code>储存了<code>Q(y)</code>的值,
-这样就不用担心<code>rax</code>寄存器修改导致<code>Q(y)</code>的丢失.</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">P:</span><br><span class="line">   pushq %rbp                Save %rbp</span><br><span class="line">   pushq %rbx                Save %rbx</span><br><span class="line">   subq $8, %rsp             Align stack frame</span><br><span class="line">   movq %rdi, %rbp           Save x</span><br><span class="line">   movq %rsi, %rdi           Move y to first argument</span><br><span class="line">   call Q                    Call Q(y)</span><br><span class="line">   movq %rax, %rbx           Save result</span><br><span class="line">   movq %rbp, %rdi           Move x to first argument</span><br><span class="line">   call Q                    Call Q(x)</span><br><span class="line">   addq %rbx, %rax           Add saved Q(y) to Q(x)</span><br><span class="line">   addq $8, %rsp             Deallocate last part of stack</span><br><span class="line">   popq %rbx                 Restore %rbx</span><br><span class="line">   popq %rbp                 Restore %rbp</span><br><span class="line">   ret</span><br></pre></td></tr></table></figure>
+<h2 id="通用模板">通用模板</h2>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>, j = <span class="number">0</span>; i &lt; n; i++)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="comment">// 也可能是 j = n, 那么条件改为 j &gt; i, 以及 j--</span></span><br><span class="line">    <span class="keyword">while</span> (j &lt; i &amp;&amp; <span class="built_in">check</span>(i, j))</span><br><span class="line">        j++;</span><br><span class="line">    <span class="comment">// 每道题目的具体逻辑</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="双指针应用">双指针应用</h2>
+<h3 id="字符串删减">字符串删减</h3>
+<p><a
+href="https://www.acwing.com/problem/content/3771/">https://www.acwing.com/problem/content/3771/</a></p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="type">int</span> n;</span><br><span class="line">string s;</span><br><span class="line"><span class="function"><span class="type">signed</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    ios::<span class="built_in">sync_with_stdio</span>(<span class="literal">false</span>);</span><br><span class="line">    cin.<span class="built_in">tie</span>(<span class="number">0</span>);</span><br><span class="line">    cin &gt;&gt; n &gt;&gt; s;</span><br><span class="line">    <span class="type">int</span> cnt = <span class="number">0</span>;</span><br><span class="line">    <span class="comment">// Brute Force</span></span><br><span class="line">    <span class="comment">// for (int i = 2; i &lt; n; i++)</span></span><br><span class="line">    <span class="comment">// &#123;</span></span><br><span class="line">    <span class="comment">//     if (s[i - 2] == &#x27;x&#x27; &amp;&amp; s[i - 1] == &#x27;x&#x27; &amp;&amp; s[i - 2] == &#x27;x&#x27;)</span></span><br><span class="line">    <span class="comment">//         cnt++;</span></span><br><span class="line">    <span class="comment">// &#125;</span></span><br><span class="line">    <span class="comment">// Optimization</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>, j = <span class="number">0</span>; i &lt; n; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span> (s[i] == <span class="string">&#x27;x&#x27;</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            j = i + <span class="number">1</span>;</span><br><span class="line">            <span class="keyword">while</span> (j &lt; n &amp;&amp; s[j] == <span class="string">&#x27;x&#x27;</span>)</span><br><span class="line">                j++;</span><br><span class="line">            cnt += <span class="built_in">max</span>(j - i - <span class="number">2</span>, <span class="number">0</span>);</span><br><span class="line">            i = j - <span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    cout &lt;&lt; cnt &lt;&lt; endl;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="最长连续不重复子序列">最长连续不重复子序列</h3>
+<p><a
+href="https://www.acwing.com/problem/content/description/801/">AcWing
+799. 最长连续不重复子序列</a></p>
+<p>朴素算法:</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; n; i++)</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> j = <span class="number">0</span>; j &lt;= i; j++)</span><br><span class="line">        <span class="keyword">if</span> (<span class="built_in">check</span>(v1, j, i))</span><br><span class="line">            res = <span class="built_in">max</span>(res, i - j + <span class="number">1</span>);</span><br><span class="line"><span class="comment">// 检查 [l, r] 区间上有无重复元素</span></span><br><span class="line"><span class="function"><span class="type">bool</span> <span class="title">check</span><span class="params">(vector&lt;<span class="type">int</span>&gt;&amp; v1, <span class="type">int</span> l, <span class="type">int</span> r)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = l + <span class="number">1</span>; i &lt;= r; i++)</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> j = l; j &lt; i; j++)</span><br><span class="line">            <span class="keyword">if</span> (v1[i] == v1[j])</span><br><span class="line">                <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>换用双指针(有点hashmap的感觉):</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>, j = <span class="number">0</span>; i &lt; n; i++)</span><br><span class="line">&#123;</span><br><span class="line">    s[a[i]]++;          <span class="comment">// a[i]出现的次数(标记)加一</span></span><br><span class="line">    <span class="keyword">while</span> (j &lt; i &amp;&amp; s[a[i]] &gt; <span class="number">1</span>)</span><br><span class="line">        s[a[j++]]--;    <span class="comment">// 如果存在重复元素 标记减一 j 右移 </span></span><br><span class="line">    res = <span class="built_in">max</span>(res, i - j + <span class="number">1</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="数组元素的目标和">数组元素的目标和</h3>
+<p><a href="https://www.acwing.com/problem/content/802/">AcWing 800.
+数组元素的目标和</a></p>
+<p>朴素做法:</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">0</span>; i &lt; n; i++)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> j = <span class="number">0</span>; j &lt; m; j++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span>(A[i] + B[j] == x)</span><br><span class="line">            cout &lt;&lt; i &lt;&lt; <span class="string">&#x27; &#x27;</span> &lt;&lt; j &lt;&lt; endl;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>双指针:</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">0</span>, j = m - <span class="number">1</span>; i &lt; n; i++)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">while</span> (j &gt;= <span class="number">0</span> &amp;&amp; A[i] + B[j] &gt; x)</span><br><span class="line">        j--;</span><br><span class="line">    <span class="keyword">if</span>(j &gt;= <span class="number">0</span> &amp;&amp; A[i] + B[j] == x)</span><br><span class="line">        cout &lt;&lt; i &lt;&lt; <span class="string">&#x27; &#x27;</span> &lt;&lt; j &lt;&lt; endl;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="判断子序列">判断子序列</h3>
+<p><a href="https://www.acwing.com/problem/content/2818/">AcWing 2816.
+判断子序列</a></p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="type">int</span> i, j;</span><br><span class="line"><span class="keyword">for</span>(i = <span class="number">0</span>, j = <span class="number">0</span>; j &lt; m; j++)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">if</span>(i &lt; n &amp;&amp; a[i] == b[j])</span><br><span class="line">        i++;</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">printf</span>(<span class="string">&quot;%s\n&quot;</span>, (i == n) ? <span class="string">&quot;Yes&quot;</span> : <span class="string">&quot;No&quot;</span>);</span><br></pre></td></tr></table></figure>
 ]]></content>
       <categories>
-        <category>CSAPP</category>
+        <category>算法</category>
       </categories>
       <tags>
-        <tag>汇编</tag>
-        <tag>CSAPP</tag>
-        <tag>计算机系统</tag>
+        <tag>算法</tag>
+        <tag>双指针</tag>
       </tags>
   </entry>
   <entry>
@@ -955,49 +1076,6 @@ href="https://www.acwing.com/problem/content/description/1264/">鱼塘钓鱼</a>
       </tags>
   </entry>
   <entry>
-    <title>双指针算法</title>
-    <url>/2023/01/13/%E5%8F%8C%E6%8C%87%E9%92%88/</url>
-    <content><![CDATA[<p>双指针核心要义是将含两层嵌套的朴素算法,
-利用某种性质(例如单调性)将其优化成<code>O(n)</code>的过程.
-有种并发的感觉——一步能干两个人的事情, 就不要等另一个人干完再去做.</p>
-<p>双指针一般会结合其他数据结构或者算法一起使用.</p>
-<span id="more"></span>
-<h2 id="通用模板">通用模板</h2>
-<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>, j = <span class="number">0</span>; i &lt; n; i++)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="comment">// 也可能是 j = n, 那么条件改为 j &gt; i, 以及 j--</span></span><br><span class="line">    <span class="keyword">while</span> (j &lt; i &amp;&amp; <span class="built_in">check</span>(i, j))</span><br><span class="line">        j++;</span><br><span class="line">    <span class="comment">// 每道题目的具体逻辑</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="双指针应用">双指针应用</h2>
-<h3 id="字符串删减">字符串删减</h3>
-<p><a
-href="https://www.acwing.com/problem/content/3771/">https://www.acwing.com/problem/content/3771/</a></p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="type">int</span> n;</span><br><span class="line">string s;</span><br><span class="line"><span class="function"><span class="type">signed</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    ios::<span class="built_in">sync_with_stdio</span>(<span class="literal">false</span>);</span><br><span class="line">    cin.<span class="built_in">tie</span>(<span class="number">0</span>);</span><br><span class="line">    cin &gt;&gt; n &gt;&gt; s;</span><br><span class="line">    <span class="type">int</span> cnt = <span class="number">0</span>;</span><br><span class="line">    <span class="comment">// Brute Force</span></span><br><span class="line">    <span class="comment">// for (int i = 2; i &lt; n; i++)</span></span><br><span class="line">    <span class="comment">// &#123;</span></span><br><span class="line">    <span class="comment">//     if (s[i - 2] == &#x27;x&#x27; &amp;&amp; s[i - 1] == &#x27;x&#x27; &amp;&amp; s[i - 2] == &#x27;x&#x27;)</span></span><br><span class="line">    <span class="comment">//         cnt++;</span></span><br><span class="line">    <span class="comment">// &#125;</span></span><br><span class="line">    <span class="comment">// Optimization</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>, j = <span class="number">0</span>; i &lt; n; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span> (s[i] == <span class="string">&#x27;x&#x27;</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            j = i + <span class="number">1</span>;</span><br><span class="line">            <span class="keyword">while</span> (j &lt; n &amp;&amp; s[j] == <span class="string">&#x27;x&#x27;</span>)</span><br><span class="line">                j++;</span><br><span class="line">            cnt += <span class="built_in">max</span>(j - i - <span class="number">2</span>, <span class="number">0</span>);</span><br><span class="line">            i = j - <span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    cout &lt;&lt; cnt &lt;&lt; endl;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="最长连续不重复子序列">最长连续不重复子序列</h3>
-<p><a
-href="https://www.acwing.com/problem/content/description/801/">AcWing
-799. 最长连续不重复子序列</a></p>
-<p>朴素算法:</p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; n; i++)</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> j = <span class="number">0</span>; j &lt;= i; j++)</span><br><span class="line">        <span class="keyword">if</span> (<span class="built_in">check</span>(v1, j, i))</span><br><span class="line">            res = <span class="built_in">max</span>(res, i - j + <span class="number">1</span>);</span><br><span class="line"><span class="comment">// 检查 [l, r] 区间上有无重复元素</span></span><br><span class="line"><span class="function"><span class="type">bool</span> <span class="title">check</span><span class="params">(vector&lt;<span class="type">int</span>&gt;&amp; v1, <span class="type">int</span> l, <span class="type">int</span> r)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = l + <span class="number">1</span>; i &lt;= r; i++)</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> j = l; j &lt; i; j++)</span><br><span class="line">            <span class="keyword">if</span> (v1[i] == v1[j])</span><br><span class="line">                <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>换用双指针(有点hashmap的感觉):</p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>, j = <span class="number">0</span>; i &lt; n; i++)</span><br><span class="line">&#123;</span><br><span class="line">    s[a[i]]++;          <span class="comment">// a[i]出现的次数(标记)加一</span></span><br><span class="line">    <span class="keyword">while</span> (j &lt; i &amp;&amp; s[a[i]] &gt; <span class="number">1</span>)</span><br><span class="line">        s[a[j++]]--;    <span class="comment">// 如果存在重复元素 标记减一 j 右移 </span></span><br><span class="line">    res = <span class="built_in">max</span>(res, i - j + <span class="number">1</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="数组元素的目标和">数组元素的目标和</h3>
-<p><a href="https://www.acwing.com/problem/content/802/">AcWing 800.
-数组元素的目标和</a></p>
-<p>朴素做法:</p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">0</span>; i &lt; n; i++)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> j = <span class="number">0</span>; j &lt; m; j++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span>(A[i] + B[j] == x)</span><br><span class="line">            cout &lt;&lt; i &lt;&lt; <span class="string">&#x27; &#x27;</span> &lt;&lt; j &lt;&lt; endl;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>双指针:</p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">0</span>, j = m - <span class="number">1</span>; i &lt; n; i++)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">while</span> (j &gt;= <span class="number">0</span> &amp;&amp; A[i] + B[j] &gt; x)</span><br><span class="line">        j--;</span><br><span class="line">    <span class="keyword">if</span>(j &gt;= <span class="number">0</span> &amp;&amp; A[i] + B[j] == x)</span><br><span class="line">        cout &lt;&lt; i &lt;&lt; <span class="string">&#x27; &#x27;</span> &lt;&lt; j &lt;&lt; endl;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="判断子序列">判断子序列</h3>
-<p><a href="https://www.acwing.com/problem/content/2818/">AcWing 2816.
-判断子序列</a></p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="type">int</span> i, j;</span><br><span class="line"><span class="keyword">for</span>(i = <span class="number">0</span>, j = <span class="number">0</span>; j &lt; m; j++)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">if</span>(i &lt; n &amp;&amp; a[i] == b[j])</span><br><span class="line">        i++;</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">printf</span>(<span class="string">&quot;%s\n&quot;</span>, (i == n) ? <span class="string">&quot;Yes&quot;</span> : <span class="string">&quot;No&quot;</span>);</span><br></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>算法</category>
-      </categories>
-      <tags>
-        <tag>算法</tag>
-        <tag>双指针</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>新冠生存手册</title>
     <url>/2022/12/22/%E6%96%B0%E5%86%A0%E7%94%9F%E5%AD%98%E6%89%8B%E5%86%8C/</url>
     <content><![CDATA[<p>感染新冠快成每日打卡项目了. 每天都能刷到同学感染的信息,
@@ -1047,35 +1125,6 @@ href="https://www.zhihu.com/question/573023186/answer/2814221461">知乎:为什�
 <p>第四天: 今天也没发烧 但喉咙依然很痛 胃口已经要比前几天好了
 生产力基本恢复正常 今天ddl 改完论文提交了 该接着复习考试了</p>
 <p>第五天开始: 基本上正常 除了喉咙痛 吃不了辣 基本上啥都能干了</p>
-]]></content>
-      <categories>
-        <category>杂谈</category>
-      </categories>
-      <tags>
-        <tag>杂谈</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>随感录</title>
-    <url>/2023/01/28/%E9%9A%8F%E6%84%9F%E5%BD%95/</url>
-    <content><![CDATA[<p>记录不时的奇思妙想. 奇怪的梦, 无垠的呓语, 似非的感悟.
-忙碌后的凝思会带给人宁静, 或许人的创作欲此刻迸发. 胡诌数句,
-想想还是删去罢了.</p>
-<span id="more"></span>
-<h2 id="鬼话">鬼话</h2>
-<p>你见到的每个人都随身携带着粪便.</p>
-<p>心情愉快, 对谁都会抱有特殊的热情与善意.</p>
-<p>编程和学车: 编程纯死记硬背模板和学车纯死记点位一样,
-不懂原理最后的结果就是实战一团糟.</p>
-<p>呆在家里越久, 越容易恋家. 保证自己的独立性.</p>
-<h2 id="绮梦-一">绮梦 (一)</h2>
-<p>留坑.</p>
-<h2 id="绮梦-二">绮梦 (二)</h2>
-<!-- ## 恋爱, 相亲, 然后是坟墓
-
-小镇做题家不懂恋爱.
-
-[陆蠡《嫁衣》](https://www.uuzuowen.com/kewaitushu/zhongguozuimeisanwen/14488.html) -->
 ]]></content>
       <categories>
         <category>杂谈</category>
@@ -1302,27 +1351,6 @@ role="doc-backlink">↩︎</a></p></li>
       <tags>
         <tag>算法</tag>
         <tag>离散数学</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>AI时代的算法学习指南</title>
-    <url>/2023/02/25/AI%E6%97%B6%E4%BB%A3%E7%9A%84%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0%E6%8C%87%E5%8D%97/</url>
-    <content><![CDATA[<p>日常刷知乎, 然后看到了这样一个问题: <a href="https://www.zhihu.com/question/585554274/">沃顿商学院教授要求学生必须用 ChatGPT 写作业，应该如何正确看待 AI 带来的利弊？</a></p>
-<p>之前我也看到一些态度截然相反的高校. 说实在话, 反对历史必然的行为, 无异于杯水车薪, 想想 Luddite movement 也不会真正让我们重回原始社会, 闭关锁国的历史也不必再度经历; 至于使用工具是否会反噬自身, 只要在不侵害他人的利益下, 我想这个自由最好让步于个人, 想想你是怎么注册上了ChatGPT的账号. 最后, 这句话送给AI时代下学习算法, 或者说, 学习一切的你和我:</p>
-<blockquote>
-<p>拥抱变化要比拒绝变化简单的多.</p>
-</blockquote>
-<span id="more"></span>
-<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>本文介绍一些ChatGPT帮助辅助学习算法的Tips.</p>
-<p>我也在摸索AI的使用方式, 有好的想法大家一起交流学习! :)</p>
-<h2 id="Prompt-的艺术"><a href="#Prompt-的艺术" class="headerlink" title="Prompt 的艺术"></a>Prompt 的艺术</h2><p>TODO</p>
-<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><p>[1]. Ibrahim John, The Art of Asking ChatGPT for High-Quality Answers, A Complete Guide to Prompt Engineering Techniques, ISBN-13: 9781234567890</p>
-]]></content>
-      <categories>
-        <category>杂谈</category>
-      </categories>
-      <tags>
-        <tag>杂谈 算法 学习经验</tag>
       </tags>
   </entry>
   <entry>
@@ -1581,48 +1609,32 @@ role="doc-backlink">↩︎</a></p></li>
       </tags>
   </entry>
   <entry>
-    <title>把Python写成shell脚本</title>
-    <url>/2023/02/26/%E6%8A%8APython%E5%86%99%E6%88%90%E8%84%9A%E6%9C%AC%E8%AF%AD%E8%A8%80/</url>
-    <content><![CDATA[<p>为什么 Shell 脚本要用 Python 来写!? UNIX用户痛骂这是大逆不道.</p>
-<p>比起 BAT/Bash 我更喜欢 Python 的语法, 高效又简洁, 想想看一个list
-bash要怎么写. 有 os/sys 模块的存在完全可以把 Python
-写成类shell脚本(本质即调用shell命令), 再加上 <code>pandas</code>
-等包更是让 Python 实用到一个新的高度(Windows干活干的多).</p>
-<p>当然, 工具就是顺手就好. 你喜欢用什么写就用什么写.</p>
-<p>不考虑更底层的应用. 别扯什么嵌入式驱动, C语言顶着你的脑门问: 师傅,
-我是干什么的.</p>
+    <title>随感录</title>
+    <url>/2023/01/28/%E9%9A%8F%E6%84%9F%E5%BD%95/</url>
+    <content><![CDATA[<p>记录不时的奇思妙想. 奇怪的梦, 无垠的呓语, 似非的感悟.
+忙碌后的凝思会带给人宁静, 或许人的创作欲此刻迸发. 胡诌数句,
+想想还是删去罢了.</p>
 <span id="more"></span>
-<h2 id="文本处理">文本处理</h2>
-<h3 id="格式化文档">格式化文档</h3>
-<p>故事是这样的: 英语老师发了一个Word文档, 但纯文本非常的丑陋...文本拖进
-vscode, markdownlint 爆了 1000+ 的 warnings...</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> sys</span><br><span class="line"></span><br><span class="line">filename = sys.argv[<span class="number">1</span>]</span><br><span class="line"></span><br><span class="line"><span class="keyword">with</span> <span class="built_in">open</span>(filename, <span class="string">&#x27;r&#x27;</span>, encoding=<span class="string">&#x27;utf-8&#x27;</span>) <span class="keyword">as</span> f:</span><br><span class="line">    lines = f.readlines()</span><br><span class="line"></span><br><span class="line">new_lines = []</span><br><span class="line">count = <span class="number">0</span></span><br><span class="line"><span class="keyword">for</span> i, line <span class="keyword">in</span> <span class="built_in">enumerate</span>(lines):</span><br><span class="line">    <span class="keyword">if</span> line <span class="keyword">or</span> (i &gt; <span class="number">0</span> <span class="keyword">and</span> lines[i-<span class="number">1</span>]):</span><br><span class="line">        <span class="keyword">if</span> <span class="string">&#x27;。&#x27;</span> <span class="keyword">not</span> <span class="keyword">in</span> line:</span><br><span class="line">            new_lines.append(<span class="string">&#x27;&#x27;</span>)</span><br><span class="line">            new_lines.append(line)</span><br><span class="line">            new_lines.append(<span class="string">&#x27;&#x27;</span>)</span><br><span class="line">            count += <span class="number">1</span></span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            new_lines.append(line)</span><br><span class="line"></span><br><span class="line">lines = [line.rstrip() <span class="keyword">for</span> line <span class="keyword">in</span> new_lines]</span><br><span class="line"></span><br><span class="line">count += <span class="built_in">len</span>(new_lines) - <span class="built_in">len</span>(lines)</span><br><span class="line"></span><br><span class="line"><span class="keyword">while</span> lines <span class="keyword">and</span> <span class="keyword">not</span> lines[-<span class="number">1</span>]:</span><br><span class="line">    lines.pop()</span><br><span class="line">    count += <span class="number">1</span></span><br><span class="line"></span><br><span class="line">trimmed_lines = []</span><br><span class="line"><span class="keyword">for</span> i, line <span class="keyword">in</span> <span class="built_in">enumerate</span>(lines):</span><br><span class="line">    <span class="keyword">if</span> line <span class="keyword">or</span> (i &gt; <span class="number">0</span> <span class="keyword">and</span> lines[i-<span class="number">1</span>]):</span><br><span class="line">        trimmed_lines.append(line)</span><br><span class="line">        count += <span class="number">1</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">with</span> <span class="built_in">open</span>(filename, <span class="string">&#x27;w&#x27;</span>, encoding=<span class="string">&#x27;utf-8&#x27;</span>) <span class="keyword">as</span> f:</span><br><span class="line">    f.write(<span class="string">&#x27;\n&#x27;</span>.join(trimmed_lines))</span><br><span class="line">    f.write(<span class="string">&#x27;\n&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(<span class="string">f&quot;Modified <span class="subst">&#123;count&#125;</span> lines in file <span class="subst">&#123;filename&#125;</span>.&quot;</span>)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<h2 id="系统操作">系统操作</h2>
-<h3 id="批量处理文件名">批量处理文件名</h3>
-<p>故事是这样的: 看到文件夹下的图片都是
-<code>微信图片_20210611232301</code>, <code>EAQ1vesW4AEaIdk</code>,
-<code>v2-1db136aa02affc53f6f31c99f6977a86</code> 这样的命名,
-我直接要爆炸了.</p>
-<p>百度之, 发现居然还有人为之专门开发了改名程序.</p>
-<p>明明几行代码就可以解决战斗的说.</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> os</span><br><span class="line"><span class="keyword">import</span> time</span><br><span class="line"></span><br><span class="line"><span class="comment"># 获取当前工作目录</span></span><br><span class="line">cwd = os.getcwd()</span><br><span class="line"></span><br><span class="line"><span class="comment"># 获取当前目录中所有的 .jpg 文件</span></span><br><span class="line">files = [f <span class="keyword">for</span> f <span class="keyword">in</span> os.listdir(cwd) <span class="keyword">if</span> f.endswith(<span class="string">&#x27;.jpg&#x27;</span>)]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 将文件重命名为 p(i).jpg, 其中 i 是文件的创建时间</span></span><br><span class="line"><span class="keyword">for</span> i, f <span class="keyword">in</span> <span class="built_in">enumerate</span>(<span class="built_in">sorted</span>(files, key=<span class="keyword">lambda</span> x: os.path.getctime(x))):</span><br><span class="line">    os.rename(f, <span class="string">&#x27;p(&#123;&#125;).jpg&#x27;</span>.<span class="built_in">format</span>(i+<span class="number">1</span>))</span><br></pre></td></tr></table></figure>
-<p>实际使用的时候可以改改代码. 例如多一个<code>.png</code>,
-<code>.webp</code>, <code>.gif</code> 的识别啥的.</p>
-<h2 id="拓展阅读">拓展阅读</h2>
-<p>[1]. <a
-href="https://google.github.io/styleguide/shellguide.html">Google Shell
-Style Guide</a> 里面解释了你什么时候不应该使用 shell, 该怎么写
-shell.</p>
-<p>[2]. <a
-href="https://missing-semester-cn.github.io/2020/shell-tools/">Shell
-工具和脚本 - The missing semester of your cs education</a>
-是一个很好的shell入门.</p>
+<h2 id="鬼话">鬼话</h2>
+<p>你见到的每个人都随身携带着粪便.</p>
+<p>心情愉快, 对谁都会抱有特殊的热情与善意.</p>
+<p>编程和学车: 编程纯死记硬背模板和学车纯死记点位一样,
+不懂原理最后的结果就是实战一团糟.</p>
+<p>呆在家里越久, 越容易恋家. 保证自己的独立性.</p>
+<h2 id="绮梦-一">绮梦 (一)</h2>
+<p>留坑.</p>
+<h2 id="绮梦-二">绮梦 (二)</h2>
+<!-- ## 恋爱, 相亲, 然后是坟墓
+
+小镇做题家不懂恋爱.
+
+[陆蠡《嫁衣》](https://www.uuzuowen.com/kewaitushu/zhongguozuimeisanwen/14488.html) -->
 ]]></content>
       <categories>
-        <category>Python</category>
+        <category>杂谈</category>
       </categories>
       <tags>
-        <tag>Python</tag>
+        <tag>杂谈</tag>
       </tags>
   </entry>
 </search>
