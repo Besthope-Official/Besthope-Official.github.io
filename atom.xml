@@ -6,7 +6,7 @@
   <link href="http://example.com/atom.xml" rel="self"/>
   
   <link href="http://example.com/"/>
-  <updated>2023-02-26T15:47:04.073Z</updated>
+  <updated>2023-02-26T17:03:37.465Z</updated>
   <id>http://example.com/</id>
   
   <author>
@@ -21,12 +21,17 @@
     <link href="http://example.com/2023/02/26/%E6%8A%8APython%E5%86%99%E6%88%90%E8%84%9A%E6%9C%AC%E8%AF%AD%E8%A8%80/"/>
     <id>http://example.com/2023/02/26/%E6%8A%8APython%E5%86%99%E6%88%90%E8%84%9A%E6%9C%AC%E8%AF%AD%E8%A8%80/</id>
     <published>2023-02-26T15:34:35.000Z</published>
-    <updated>2023-02-26T15:47:04.073Z</updated>
+    <updated>2023-02-26T17:03:37.465Z</updated>
     
     
-    <summary type="html">&lt;p&gt;比起 Powershell/Bash 我更喜欢 Python 的语法, 高效又简洁. 有 os/sys
-库的存在完全可以把 Python 写成类shell脚本, 处理文本起来那是嘎嘎快.&lt;/p&gt;
-&lt;p&gt;本文分享一些处理文本以及os库的小技巧.&lt;/p&gt;</summary>
+    <summary type="html">&lt;p&gt;为什么 Shell 脚本要用 Python 来写!? UNIX用户痛骂这是大逆不道.&lt;/p&gt;
+&lt;p&gt;比起 BAT/Bash 我更喜欢 Python 的语法, 高效又简洁, 想想看一个list
+bash要怎么写. 有 os/sys 模块的存在完全可以把 Python
+写成类shell脚本(本质即调用shell命令), 再加上 &lt;code&gt;pandas&lt;/code&gt;
+等包更是让 Python 实用到一个新的高度(Windows干活干的多).&lt;/p&gt;
+&lt;p&gt;当然, 工具就是顺手就好. 你喜欢用什么写就用什么写.&lt;/p&gt;
+&lt;p&gt;不考虑更底层的应用. 别扯什么嵌入式驱动, C语言顶着你的脑门问: 师傅,
+我是干什么的.&lt;/p&gt;</summary>
     
     
     

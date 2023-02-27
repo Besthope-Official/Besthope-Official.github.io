@@ -1583,21 +1583,40 @@ role="doc-backlink">↩︎</a></p></li>
   <entry>
     <title>把Python写成shell脚本</title>
     <url>/2023/02/26/%E6%8A%8APython%E5%86%99%E6%88%90%E8%84%9A%E6%9C%AC%E8%AF%AD%E8%A8%80/</url>
-    <content><![CDATA[<p>比起 Powershell/Bash 我更喜欢 Python 的语法, 高效又简洁. 有 os/sys
-库的存在完全可以把 Python 写成类shell脚本, 处理文本起来那是嘎嘎快.</p>
-<p>本文分享一些处理文本以及os库的小技巧.</p>
+    <content><![CDATA[<p>为什么 Shell 脚本要用 Python 来写!? UNIX用户痛骂这是大逆不道.</p>
+<p>比起 BAT/Bash 我更喜欢 Python 的语法, 高效又简洁, 想想看一个list
+bash要怎么写. 有 os/sys 模块的存在完全可以把 Python
+写成类shell脚本(本质即调用shell命令), 再加上 <code>pandas</code>
+等包更是让 Python 实用到一个新的高度(Windows干活干的多).</p>
+<p>当然, 工具就是顺手就好. 你喜欢用什么写就用什么写.</p>
+<p>不考虑更底层的应用. 别扯什么嵌入式驱动, C语言顶着你的脑门问: 师傅,
+我是干什么的.</p>
 <span id="more"></span>
-<h2 id="格式化文档">格式化文档</h2>
-<p>故事是这样的: 英语老师发了一个Word文档, 但纯文本非常的丑陋...拖进
+<h2 id="文本处理">文本处理</h2>
+<h3 id="格式化文档">格式化文档</h3>
+<p>故事是这样的: 英语老师发了一个Word文档, 但纯文本非常的丑陋...文本拖进
 vscode, markdownlint 爆了 1000+ 的 warnings...</p>
 <figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> sys</span><br><span class="line"></span><br><span class="line">filename = sys.argv[<span class="number">1</span>]</span><br><span class="line"></span><br><span class="line"><span class="keyword">with</span> <span class="built_in">open</span>(filename, <span class="string">&#x27;r&#x27;</span>, encoding=<span class="string">&#x27;utf-8&#x27;</span>) <span class="keyword">as</span> f:</span><br><span class="line">    lines = f.readlines()</span><br><span class="line"></span><br><span class="line">new_lines = []</span><br><span class="line">count = <span class="number">0</span></span><br><span class="line"><span class="keyword">for</span> i, line <span class="keyword">in</span> <span class="built_in">enumerate</span>(lines):</span><br><span class="line">    <span class="keyword">if</span> line <span class="keyword">or</span> (i &gt; <span class="number">0</span> <span class="keyword">and</span> lines[i-<span class="number">1</span>]):</span><br><span class="line">        <span class="keyword">if</span> <span class="string">&#x27;。&#x27;</span> <span class="keyword">not</span> <span class="keyword">in</span> line:</span><br><span class="line">            new_lines.append(<span class="string">&#x27;&#x27;</span>)</span><br><span class="line">            new_lines.append(line)</span><br><span class="line">            new_lines.append(<span class="string">&#x27;&#x27;</span>)</span><br><span class="line">            count += <span class="number">1</span></span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            new_lines.append(line)</span><br><span class="line"></span><br><span class="line">lines = [line.rstrip() <span class="keyword">for</span> line <span class="keyword">in</span> new_lines]</span><br><span class="line"></span><br><span class="line">count += <span class="built_in">len</span>(new_lines) - <span class="built_in">len</span>(lines)</span><br><span class="line"></span><br><span class="line"><span class="keyword">while</span> lines <span class="keyword">and</span> <span class="keyword">not</span> lines[-<span class="number">1</span>]:</span><br><span class="line">    lines.pop()</span><br><span class="line">    count += <span class="number">1</span></span><br><span class="line"></span><br><span class="line">trimmed_lines = []</span><br><span class="line"><span class="keyword">for</span> i, line <span class="keyword">in</span> <span class="built_in">enumerate</span>(lines):</span><br><span class="line">    <span class="keyword">if</span> line <span class="keyword">or</span> (i &gt; <span class="number">0</span> <span class="keyword">and</span> lines[i-<span class="number">1</span>]):</span><br><span class="line">        trimmed_lines.append(line)</span><br><span class="line">        count += <span class="number">1</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">with</span> <span class="built_in">open</span>(filename, <span class="string">&#x27;w&#x27;</span>, encoding=<span class="string">&#x27;utf-8&#x27;</span>) <span class="keyword">as</span> f:</span><br><span class="line">    f.write(<span class="string">&#x27;\n&#x27;</span>.join(trimmed_lines))</span><br><span class="line">    f.write(<span class="string">&#x27;\n&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(<span class="string">f&quot;Modified <span class="subst">&#123;count&#125;</span> lines in file <span class="subst">&#123;filename&#125;</span>.&quot;</span>)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<h2 id="批量处理文件名">批量处理文件名</h2>
+<h2 id="系统操作">系统操作</h2>
+<h3 id="批量处理文件名">批量处理文件名</h3>
 <p>故事是这样的: 看到文件夹下的图片都是
 <code>微信图片_20210611232301</code>, <code>EAQ1vesW4AEaIdk</code>,
 <code>v2-1db136aa02affc53f6f31c99f6977a86</code> 这样的命名,
 我直接要爆炸了.</p>
-<p>于是批处理:</p>
+<p>百度之, 发现居然还有人为之专门开发了改名程序.</p>
+<p>明明几行代码就可以解决战斗的说.</p>
 <figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> os</span><br><span class="line"><span class="keyword">import</span> time</span><br><span class="line"></span><br><span class="line"><span class="comment"># 获取当前工作目录</span></span><br><span class="line">cwd = os.getcwd()</span><br><span class="line"></span><br><span class="line"><span class="comment"># 获取当前目录中所有的 .jpg 文件</span></span><br><span class="line">files = [f <span class="keyword">for</span> f <span class="keyword">in</span> os.listdir(cwd) <span class="keyword">if</span> f.endswith(<span class="string">&#x27;.jpg&#x27;</span>)]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 将文件重命名为 p(i).jpg, 其中 i 是文件的创建时间</span></span><br><span class="line"><span class="keyword">for</span> i, f <span class="keyword">in</span> <span class="built_in">enumerate</span>(<span class="built_in">sorted</span>(files, key=<span class="keyword">lambda</span> x: os.path.getctime(x))):</span><br><span class="line">    os.rename(f, <span class="string">&#x27;p(&#123;&#125;).jpg&#x27;</span>.<span class="built_in">format</span>(i+<span class="number">1</span>))</span><br></pre></td></tr></table></figure>
+<p>实际使用的时候可以改改代码. 例如多一个<code>.png</code>,
+<code>.webp</code>, <code>.gif</code> 的识别啥的.</p>
+<h2 id="拓展阅读">拓展阅读</h2>
+<p>[1]. <a
+href="https://google.github.io/styleguide/shellguide.html">Google Shell
+Style Guide</a> 里面解释了你什么时候不应该使用 shell, 该怎么写
+shell.</p>
+<p>[2]. <a
+href="https://missing-semester-cn.github.io/2020/shell-tools/">Shell
+工具和脚本 - The missing semester of your cs education</a>
+是一个很好的shell入门.</p>
 ]]></content>
       <categories>
         <category>Python</category>
