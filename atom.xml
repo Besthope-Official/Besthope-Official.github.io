@@ -6,7 +6,7 @@
   <link href="http://example.com/atom.xml" rel="self"/>
   
   <link href="http://example.com/"/>
-  <updated>2023-03-06T09:03:03.549Z</updated>
+  <updated>2023-03-11T04:12:32.166Z</updated>
   <id>http://example.com/</id>
   
   <author>
@@ -17,15 +17,49 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>数理逻辑人话ver</title>
+    <link href="http://example.com/2023/03/11/%E6%95%B0%E7%90%86%E9%80%BB%E8%BE%91%E4%BA%BA%E8%AF%9Dver/"/>
+    <id>http://example.com/2023/03/11/%E6%95%B0%E7%90%86%E9%80%BB%E8%BE%91%E4%BA%BA%E8%AF%9Dver/</id>
+    <published>2023-03-11T03:09:39.000Z</published>
+    <updated>2023-03-11T04:12:32.166Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;为了严谨性以及交流方便, 我们需要术语来描述问题: 这很好,
+某些问题数学语言胜千言——但由terminology组成的句子经常会让人不知所云.
+尤其对于数理逻辑, 因为是翻译文字所以句子看起来就更糟心了.
+想要明白问题的核心要义, 非得二次翻译不可,
+但最后描述的事情却是显而易见的.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;It is not what you read, but how you read it.——Richard Feynman&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;一切在于你的理解:
+是愿意如背古诗一般去背定义——事实上这也足够你做题了——还是&lt;em&gt;真真正正地&lt;/em&gt;去理解所描述的问题?
+以及, 为什么要这么定义?&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="离散数学" scheme="http://example.com/categories/%E7%A6%BB%E6%95%A3%E6%95%B0%E5%AD%A6/"/>
+    
+    
+    <category term="离散数学" scheme="http://example.com/tags/%E7%A6%BB%E6%95%A3%E6%95%B0%E5%AD%A6/"/>
+    
+    <category term="数理逻辑" scheme="http://example.com/tags/%E6%95%B0%E7%90%86%E9%80%BB%E8%BE%91/"/>
+    
+  </entry>
+  
+  <entry>
     <title>综合算法题</title>
     <link href="http://example.com/2023/03/04/%E7%BB%BC%E5%90%88%E7%AE%97%E6%B3%95%E9%A2%98/"/>
     <id>http://example.com/2023/03/04/%E7%BB%BC%E5%90%88%E7%AE%97%E6%B3%95%E9%A2%98/</id>
     <published>2023-03-04T06:36:20.000Z</published>
-    <updated>2023-03-06T09:03:03.549Z</updated>
+    <updated>2023-03-08T16:03:03.587Z</updated>
     
     
-    <summary type="html">&lt;p&gt;收录一些平时做的比较综合的题目. 考察的知识点不止一点, 各种优化方式简直使出毕生所学.&lt;/p&gt;
-&lt;p&gt;大概是蓝桥杯国赛, ACM银, 提高组以上难度, 是比赛你不会轻易去碰的题目, 讲解起来也是额外麻烦.&lt;br&gt;虽然说比赛能保证签到题全对就已经很了不起了, 但这种题目就像高考数学的压轴题, 还是要有所接触才能有所突破嘛.&lt;/p&gt;</summary>
+    <summary type="html">&lt;p&gt;收录一些平时做的比较综合的题目. 考察的知识点不止一点,
+各种优化方式简直使出毕生所学.&lt;/p&gt;
+&lt;p&gt;大概是蓝桥杯国赛, ACM银, 提高组以上难度, 是比赛你不会轻易去碰的题目,
+讲解起来也是额外麻烦. 虽然说比赛能保证签到题全对就已经很了不起了,
+但这种题目就像高考数学的压轴题, 还是要有所接触才能有所突破嘛.&lt;/p&gt;</summary>
     
     
     
@@ -67,12 +101,18 @@ bash要怎么写. 有 os/sys 模块的存在完全可以把 Python
     <link href="http://example.com/2023/02/25/%E7%AE%80%E5%8D%95%E7%9A%84%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
     <id>http://example.com/2023/02/25/%E7%AE%80%E5%8D%95%E7%9A%84%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/</id>
     <published>2023-02-25T15:29:08.000Z</published>
-    <updated>2023-03-06T08:15:18.678Z</updated>
+    <updated>2023-03-11T10:01:26.026Z</updated>
     
     
-    <summary type="html">&lt;p&gt;做一个数据结构的小小总结. 其实数据结构和算法是不分家的, 例如 &lt;code&gt;1+1=2&lt;/code&gt; 是一个加法算法, 用到了整型的数据结构 &lt;sup&gt;&lt;a href=&quot;#fn_1&quot; id=&quot;reffn_1&quot;&gt;1&lt;/a&gt;&lt;/sup&gt;. 你就说是不是吧.&lt;/p&gt;
-&lt;p&gt;DSA课程/书本上更注重实现. 手搓一个泛型结构, 实现 &lt;code&gt;std&lt;/code&gt; 里头的一堆方法, 这不劝退谁劝退.&lt;br&gt;实现是为了更好理解原理. 不要被复杂的构造带偏了学习的方向! 我们实现的标准是: ANSI C 也能做到!&lt;/p&gt;
-&lt;p&gt;剩下的内容: 怎么用STL来解决使用到特定数据结构的题目, i.e. 会做题. 但我们也懂原理!&lt;/p&gt;</summary>
+    <summary type="html">&lt;p&gt;做一个数据结构的小小总结. 其实数据结构和算法是不分家的, 例如
+&lt;code&gt;1+1=2&lt;/code&gt; 是一个加法算法, 用到了整型的数据结构 &lt;a href=&quot;#fn1&quot;
+class=&quot;footnote-ref&quot; id=&quot;fnref1&quot; role=&quot;doc-noteref&quot;&gt;&lt;sup&gt;1&lt;/sup&gt;&lt;/a&gt;.
+你就说是不是吧.&lt;/p&gt;
+&lt;p&gt;DSA课程/书本上更注重实现. 手搓一个泛型结构, 实现 &lt;code&gt;std&lt;/code&gt;
+里头的一堆方法, 这不劝退谁劝退. 实现是为了更好理解原理.
+不要被复杂的构造带偏了学习的方向! 我们实现的标准是: ANSI C 也能做到!&lt;/p&gt;
+&lt;p&gt;剩下的内容: 怎么用STL来解决使用到特定数据结构的题目, i.e. 会做题.
+但我们也懂原理!&lt;/p&gt;</summary>
     
     
     
@@ -148,10 +188,12 @@ role=&quot;doc-noteref&quot;&gt;&lt;sup&gt;1&lt;/sup&gt;&lt;/a&gt;. 解决这个
     <link href="http://example.com/2023/01/28/%E9%9A%8F%E6%84%9F%E5%BD%95/"/>
     <id>http://example.com/2023/01/28/%E9%9A%8F%E6%84%9F%E5%BD%95/</id>
     <published>2023-01-28T14:41:17.000Z</published>
-    <updated>2023-03-04T10:06:54.237Z</updated>
+    <updated>2023-03-12T08:39:02.653Z</updated>
     
     
-    <summary type="html">&lt;p&gt;记录不时的奇思妙想. 奇怪的梦, 无垠的呓语, 似非的感悟.&lt;br&gt;忙碌后的凝思会带给人宁静, 或许人的创作欲此刻迸发. 胡诌数句, 想想还是删去罢了.&lt;/p&gt;</summary>
+    <summary type="html">&lt;p&gt;记录不时的奇思妙想. 奇怪的梦, 无垠的呓语, 似非的感悟.
+忙碌后的凝思会带给人宁静, 或许人的创作欲此刻迸发. 胡诌数句,
+想想还是删去罢了.&lt;/p&gt;</summary>
     
     
     
@@ -304,7 +346,7 @@ href=&quot;https://www.acwing.com/activity/content/introduction/2712/&quot;&gt;�
     <link href="http://example.com/2022/12/21/KMP%E7%AE%97%E6%B3%95/"/>
     <id>http://example.com/2022/12/21/KMP%E7%AE%97%E6%B3%95/</id>
     <published>2022-12-21T12:37:01.000Z</published>
-    <updated>2023-02-25T16:22:15.866Z</updated>
+    <updated>2023-03-11T01:56:04.034Z</updated>
     
     
     <summary type="html">&lt;p&gt;做期末大作业里面有个字符串匹配的问题, 用暴力算法做完觉得不够爽,
