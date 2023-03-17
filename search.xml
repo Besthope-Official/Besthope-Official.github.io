@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>AI时代的算法学习指南</title>
-    <url>/2023/02/25/AI%E6%97%B6%E4%BB%A3%E7%9A%84%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0%E6%8C%87%E5%8D%97/</url>
+    <title>AI时代的学习指南</title>
+    <url>/2023/02/25/AI%E6%97%B6%E4%BB%A3%E7%9A%84%E5%AD%A6%E4%B9%A0%E6%8C%87%E5%8D%97/</url>
     <content><![CDATA[<p>日常刷知乎, 然后看到了这样一个问题: <a
 href="https://www.zhihu.com/question/585554274/">沃顿商学院教授要求学生必须用
 ChatGPT 写作业，应该如何正确看待 AI 带来的利弊？</a></p>
@@ -10,21 +10,128 @@ ChatGPT 写作业，应该如何正确看待 AI 带来的利弊？</a></p>
 无异于杯水车薪, 想想 Luddite movement 也不会真正让我们重回原始社会,
 闭关锁国的历史也不必再度经历; 至于使用工具是否会反噬自身,
 只要在不侵害他人的利益下, 我想这个自由最好让步于个人,
-想想你是怎么注册上了ChatGPT的账号. 最后, 这句话送给AI时代下学习算法,
-或者说, 学习一切的你和我:</p>
+想想你是怎么注册上了ChatGPT的账号. 最后,
+这句话送给AI时代下学习一切的你和我:</p>
 <blockquote>
 <p>拥抱变化要比拒绝变化简单的多.</p>
 </blockquote>
 <span id="more"></span>
 <h2 id="前言">前言</h2>
-<p>本文介绍一些ChatGPT帮助辅助学习算法的Tips.</p>
+<p>本文介绍一些ChatGPT帮助辅助学习的Tips.</p>
 <p>我也在摸索AI的使用方式, 有好的想法大家一起交流学习! :)</p>
 <h2 id="prompt-的艺术">Prompt 的艺术</h2>
-<p>TODO</p>
+<h3 id="prompt-公式">Prompt 公式</h3>
+<p>prompt 其实有 formula. 如果想要得到一个比较高质量的回答,
+可以抓住以下几点:</p>
+<ul>
+<li>task 明确, 精准的陈述</li>
+<li>instructions 指令, model 遵循的要求</li>
+<li>role: 让 model 角色扮演</li>
+</ul>
+<p>prompt = task + instructions + role</p>
+<p>例如以下几种应用场景:</p>
+<ul>
+<li><em>作为</em>一名计算机科学与技术专业的大一<em>学生</em>,
+<strong>生成</strong>一篇关于人工智能技术发展的课程论文,
+<strong>内容包括</strong>[...] <strong>要求</strong>字数不少于 [...]
+字.</li>
+</ul>
+<p>CET 作文的 Direction 就可以作为 prompt 的标准,
+事实上给出的答案也是相当高质量的:</p>
+<ul>
+<li><strong>Suppose</strong> your university is selecting some students
+to teach kids in remote rural areas during the coming vacation.
+<strong>You</strong> are now to write <strong>an application
+letter</strong> to the university to explain <em>why you want to take
+part</em> and <em>what you can do for the kids</em>. You should write
+<strong>at least 120 words but no more than 180 words</strong>.</li>
+</ul>
+<h3 id="为-prompt-提供例子">为 prompt 提供例子</h3>
+<p>例如你可以自动生成一个函数的doctest.</p>
+<ul>
+<li>Generate a product comparison of this new smartphone <strong>with
+one example</strong> (latest iPhone)"</li>
+<li>生成一段关于DFS算法的解释（<strong>用一个例子</strong>说明：走迷宫）</li>
+<li>[code] 解释这段代码, 并模拟一个样例.</li>
+<li>[code] 为函数添加注释, 并提供 3 个 doctest.</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">summation</span>(<span class="params">n: <span class="built_in">int</span>, term: <span class="built_in">callable</span></span>) -&gt; <span class="built_in">float</span>:</span><br><span class="line">    <span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">    Compute the summation of the given term from 1 to n.</span></span><br><span class="line"><span class="string">    Args:</span></span><br><span class="line"><span class="string">        n: An integer representing the upper bound of the summation.</span></span><br><span class="line"><span class="string">        term: A callable that takes one argument and returns a float.</span></span><br><span class="line"><span class="string">    Returns:</span></span><br><span class="line"><span class="string">        A float representing the summation of the given term from 1 to n.</span></span><br><span class="line"><span class="string">    Examples:</span></span><br><span class="line"><span class="string">        &gt;&gt;&gt; summation(5, lambda x: x**2)</span></span><br><span class="line"><span class="string">        55.0</span></span><br><span class="line"><span class="string">        &gt;&gt;&gt; summation(10, lambda x: x)</span></span><br><span class="line"><span class="string">        55.0</span></span><br><span class="line"><span class="string">        &gt;&gt;&gt; summation(3, lambda x: 2**x)</span></span><br><span class="line"><span class="string">        7.0</span></span><br><span class="line"><span class="string">    &quot;&quot;&quot;</span></span><br><span class="line">    total, k = <span class="number">0</span>, <span class="number">1</span></span><br><span class="line">    <span class="keyword">while</span> k &lt;= n:</span><br><span class="line">        total, k =  total + term(k), k + <span class="number">1</span></span><br><span class="line">    <span class="keyword">return</span> total</span><br></pre></td></tr></table></figure>
+<h3 id="self-consistency-prompt">Self-Consistency Prompt</h3>
+<p>添加一条 "Please ensure the following text is self-consistent",
+对于检查文章前后内容一致性, 数据核查或者应付英语作业有奇效.</p>
+<ul>
+<li><strong>检查下面这段文字是前后一致的</strong>.
+它先声明了城市人口有500万, 随后又说人口有700万: [text]</li>
+<li>Complete the following sentence in a way that is consistent with the
+context provided: [sentence]</li>
+</ul>
+<h3 id="lets-think-about-this-topic">Let’s think about this:
+[topic]</h3>
+<p>当你brainstorm不出来东西的时候可以考虑这么提问.
+这个在应对传统课堂上的group discussion有奇效:</p>
+<ul>
+<li>Let's discuss the current state of artificial intelligence</li>
+<li>Let's talk about the benefits and drawbacks of remote work</li>
+</ul>
+<p>AI 通常会给出一些很发散的答案. 可以顺着给出的几点进行延伸.</p>
+<h3 id="数据分析信息整合">数据分析/信息整合</h3>
+<ul>
+<li><strong>Integrate</strong> the following information with the
+existing knowledge about [specific topic]: [insert new information]</li>
+<li><strong>Connect</strong> the following pieces of information in a
+way that is relevant and logical: [insert information 1] [insert
+information 2]</li>
+<li>Please generate new and original information about customer behavior
+from this <strong>dataset</strong></li>
+</ul>
+<h3 id="multiple-choice-prompts">Multiple Choice prompts</h3>
+<p>让 AI 做选择题/填空题.</p>
+<ul>
+<li>Complete the following sentence by selecting one of the following
+options: [insert sentence] [insert option 1] [insert option 2] [insert
+option 3]</li>
+</ul>
+<h3 id="可解释型控制型-prompts">可解释型/控制型 Prompts</h3>
+<p>给 model 一点灵活性(发挥). 打个比方你是作文命题人, 那么这里的 prompt
+就更加开放, 回答最好能够出乎你意外的:</p>
+<ul>
+<li>以鲁迅的风格补写下面的句子: 人是会死的,</li>
+</ul>
+<p>人之所以为人，不仅有生之谓人，更有死之谓人。生，有生的欢喜与苦痛，死，亦有死的悲哀与解脱。</p>
+<ul>
+<li>以莎士比亚的口吻补写下面的句子: people shall die</li>
+</ul>
+<p>Mortal beings are we, frail creatures of dust, destined one day to
+return to the earth from whence we came. The wheel of life turns, and
+birth and death are its spokes.</p>
+<p>控制型 prompt 要求 model 不能有多余的发挥,
+要在已有的模板里完成任务.</p>
+<ul>
+<li>Generate a story <strong>based on the following template</strong>:
+[insert template]</li>
+</ul>
+<h3 id="特殊-prompts">特殊 Prompts</h3>
+<ul>
+<li>"Use reinforcement learning to generate text that is consistent with
+the following style [insert style]"</li>
+<li>"Use curriculum learning to generate text that is consistent with
+the following styles [insert styles] in the following order [insert
+order]"</li>
+<li>Perform sentiment analysis on the following customer reviews [insert
+reviews] and classify them as positive, negative, or neutral.</li>
+<li>Perform named entity recognition on the following news article
+[insert article] and identify and classify people, organizations,
+locations, and dates.</li>
+<li>Perform text classification on the following customer reviews
+[insert reviews] and classify them into different categories such as
+electronics, clothing and furniture based on their content.</li>
+</ul>
 <h2 id="参考资料">参考资料</h2>
 <p>[1]. Ibrahim John, The Art of Asking ChatGPT for High-Quality
 Answers, A Complete Guide to Prompt Engineering Techniques, ISBN-13:
 9781234567890</p>
+<p>[2]. <a href="https://github.com/f/awesome-chatgpt-prompts">Awesome
+ChatGPT Prompts</a>: 里面有许多有意思的 Prompts</p>
 ]]></content>
       <categories>
         <category>杂谈</category>
@@ -639,99 +746,6 @@ href="http://csapp.cs.cmu.edu/3e/target1.tar">attack lab</a>,
       </tags>
   </entry>
   <entry>
-    <title>简单的分治排序算法</title>
-    <url>/2023/01/05/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/</url>
-    <content><![CDATA[<p>我们介绍两个基于分治且 <code>O(nlogn)</code> 的排序算法:
-快速排序和归并排序. 理解排序算法的最好方法是模拟, 手动模拟指针的移动,
-感受数据是怎么逐渐变得有序的. 配合动图食用更佳.</p>
-<p>你可能会问: <code>std::sort</code> 它不香吗? 答:
-让你手搓是为了理解算法思想, 没让你去用. 顺便提防将来的面试官.</p>
-<p>两个算法困难的点在于边界分析. 算法导论就是干这个证明的.
-不过正常人记模板就可以了 :)</p>
-<span id="more"></span>
-<h2 id="快速排序">快速排序</h2>
-<h3 id="原理">原理</h3>
-<p>快速排序的核心要义:
-任取一个数<code>x</code>作为<strong>基准值</strong>,
-<strong>调整<code>x</code>的左右区间</strong>,
-使得左区间的值小于<code>x</code>, 右区间的值都大于<code>x</code>,
-然后对这两个子区间<strong>递归调用</strong>.</p>
-<p>怎么调整区间:</p>
-<ul>
-<li><del>扫描并比较整个数组, 大于 <code>x</code> 的放在数组
-<code>a</code>, 小于的放在 <code>b</code>,
-最后再复制回去.</del>(空间开销大)</li>
-<li>双指针. <code>i</code> 从 <code>l</code> 开始移动, 确保
-<code>q[l...i-1]</code> 比 <code>x</code> 小. 当遇到比 <code>x</code>
-大的值, 就让这个值和 <code>j</code> 交换位置, 然后从后移动
-<code>j</code> 指针, 确保 <code>q[j...r]</code> 比 <code>x</code> 大.
-遇到比 <code>x</code> 小的值, 就再交换回去, 直到 <code>i</code>,
-<code>j</code> 相遇.</li>
-</ul>
-<p>这两个区间的值也可以等于<code>x</code>. 算法的正确性, 用<a
-href="https://www.acwing.com/solution/content/16777/">循环不变式</a>证明:
-<code>q[l..i] &lt;= x</code> 以及 <code>q[j..r] &gt;= x</code></p>
-<h3 id="性质">性质</h3>
-<p>朴素的快排是一种不稳定的排序方式.</p>
-<p>最优时间复杂度和平均时间复杂度为 <span class="math inline">\(O(n \log
-n)\)</span> (基准数是中位数的情况), 最差情况退化成冒泡排序 <span
-class="math inline">\(O(n^2)\)</span> (每一次基准数的选取都是最值).</p>
-<h3 id="模板">模板</h3>
-<p>来源: <a
-href="https://www.acwing.com/activity/content/code/content/39784/">AcWing
-785. 快速排序</a></p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">quick_sort</span><span class="params">(<span class="type">int</span> q[], <span class="type">int</span> l, <span class="type">int</span> r)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(l &gt;= r) <span class="keyword">return</span>;</span><br><span class="line"></span><br><span class="line">    <span class="type">int</span> i = l - <span class="number">1</span>, j = r + <span class="number">1</span>, x = q[l + r &gt;&gt; <span class="number">1</span>];</span><br><span class="line">    <span class="keyword">while</span>(i &lt; j)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">do</span> i++; <span class="keyword">while</span>(q[i] &lt; x);</span><br><span class="line">        <span class="keyword">do</span> j--; <span class="keyword">while</span>(q[j] &gt; x);</span><br><span class="line">        <span class="keyword">if</span>(i &lt; j) <span class="built_in">swap</span>(q[i], q[j]);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="built_in">quick_sort</span>(q, l, j), <span class="built_in">quick_sort</span>(q, j + <span class="number">1</span>, r);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="归并排序">归并排序</h2>
-<p>归并排序是典范的分治思想的例子. 归并排序的核心要义是: 把数组一分为二,
-一直分下去直到不能再分, 然后逐层合并两个有序的数组.</p>
-<p>用程序语言描述就是下面的代码:</p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">merge_sort</span><span class="params">(array)</span> </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (basecase) <span class="keyword">return</span>;</span><br><span class="line">  <span class="built_in">merge_sort</span>(left);</span><br><span class="line">  <span class="built_in">merge_sort</span>(right);</span><br><span class="line">  <span class="built_in">merge</span>(left, right);</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<p>核心是实现子程序 <code>merge</code>: 合并两个排好序的数组.
-实现起来很简单, 用到了临时数组, 令
-<code>tmp[k] = min(left[i], right[j])</code> 最后复制回原数组就可以了.
-整个过程要用到三个指针, 分别指向临时数组, 以及两个排好序的数组.</p>
-<h3 id="板子">板子</h3>
-<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">merge_sort</span><span class="params">(<span class="type">int</span> q[], <span class="type">int</span> l, <span class="type">int</span> r)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(l &gt;= r)</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    <span class="type">int</span> mid = l + r &gt;&gt; <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">    <span class="built_in">merge_sort</span>(q, l, mid);</span><br><span class="line">    <span class="built_in">merge_sort</span>(q, mid + <span class="number">1</span>, r);</span><br><span class="line"></span><br><span class="line">    <span class="type">int</span> k = <span class="number">0</span>, i = l, j = mid + <span class="number">1</span>;</span><br><span class="line">    <span class="type">int</span> N = l + r - <span class="number">1</span>;</span><br><span class="line">    <span class="type">int</span> tmp[N];</span><br><span class="line"></span><br><span class="line">    <span class="keyword">while</span> (i &lt;= mid &amp;&amp; j &lt;= r)</span><br><span class="line">        tmp[k++] = (q[i] &lt;= q[j]) ? q[i++] : q[j++];</span><br><span class="line">    <span class="keyword">while</span>(i &lt;= mid)</span><br><span class="line">        tmp[k++] = q[i++];</span><br><span class="line">    <span class="keyword">while</span>(j &lt;= r)</span><br><span class="line">        tmp[k++] = q[j++];</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span>(i = <span class="number">1</span>, j = <span class="number">0</span>; i &lt;= r; i++, j++)</span><br><span class="line">        q[i] = tmp[j];   </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="应用">应用</h3>
-<p><a href="https://www.acwing.com/problem/content/790/">AcWing 788.
-逆序对的数量</a></p>
-<p>用归并排序看待这个问题: 逆序对只存在三种情况, 在左半边, 在右半边,
-或者横跨左右区间. 假设 <code>merge_sort</code>
-能在排序的同时计算出逆序对的数量, 那么前两种情况等于递归调用
-<code>merge_sort</code> 的值. 横跨左右区间的情况稍微比较复杂.
-利用的是<code>merge</code>区间的单调性.
-我们求的是<code>left</code>中每一个元素对应<code>right</code>中逆序对的数量.
-假设我们找到了 <code>left[i] &gt; right[j]</code>, 那么一定有
-<code>left[i...mid] &gt; right[j]</code>. 也就是说存在
-<code>mid - i + 1</code> 个逆序对.</p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="function">LL <span class="title">merge_sort</span><span class="params">(<span class="type">int</span> q[], <span class="type">int</span> l, <span class="type">int</span> r)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(l &gt;= r) <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    <span class="type">int</span> mid = l + r &gt;&gt; <span class="number">1</span>;</span><br><span class="line">    LL res = <span class="built_in">merge_sort</span>(q, l, mid) + <span class="built_in">merge_sort</span>(q, mid + <span class="number">1</span>, r);</span><br><span class="line">    </span><br><span class="line">    <span class="type">int</span> k = <span class="number">0</span>, i = l, j = mid + <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">while</span>(i &lt;= mid &amp;&amp; j &lt;= r)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span>(q[i] &lt;= q[j])</span><br><span class="line">            tmp[k++] = q[i++];</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">        &#123;</span><br><span class="line">            res += mid - i + <span class="number">1</span>;</span><br><span class="line">            tmp[k++] = q[j++];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">while</span>(i &lt;= mid)</span><br><span class="line">        tmp[k++] = q[i++];</span><br><span class="line">    <span class="keyword">while</span>(j &lt;= r)</span><br><span class="line">        tmp[k++] = q[j++];</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span>(i = l, j = <span class="number">0</span>; i &lt;= r; i++, j++)</span><br><span class="line">        q[i] = tmp[j];</span><br><span class="line">    <span class="keyword">return</span> res;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="k-way-merge">k-way merge</h3>
-<p>如果需要merge的数组不止2个, 该怎么实现呢?</p>
-<ul>
-<li>建立一个小根堆.</li>
-<li>将每一路的第一个元素插入小根堆. 我们可以知道<code>heap[1]</code>
-就是最小值.</li>
-<li>将堆顶元素弹出, 并将堆顶元素所在数组的下一元素加入堆中.</li>
-<li>重复上面两步, 直到每一路都读取结束.</li>
-</ul>
-<p><a href="https://leetcode.cn/problems/merge-k-sorted-lists/">LeetCode
-第 23 号问题: 合并 K 个排序链表</a></p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="comment">// struct ListNode</span></span><br><span class="line"><span class="comment">// &#123;</span></span><br><span class="line"><span class="comment">//     int val;                                </span></span><br><span class="line"><span class="comment">//     ListNode *next;                         </span></span><br><span class="line"><span class="comment">//     ListNode(int x) : val(x), next(NULL) &#123;&#125;</span></span><br><span class="line"><span class="comment">// &#125;;</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span></span><br><span class="line">&#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="keyword">struct</span> <span class="title class_">mycomp</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="function"><span class="type">bool</span> <span class="title">operator</span><span class="params">()</span><span class="params">(ListNode *a, ListNode *b)</span></span></span><br><span class="line"><span class="function">        </span>&#123;</span><br><span class="line">            <span class="keyword">return</span> a-&gt;val &gt; b-&gt;val;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;;</span><br><span class="line">    <span class="function">ListNode *<span class="title">mergeKLists</span><span class="params">(vector&lt;ListNode *&gt; &amp;lists)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        priority_queue&lt;ListNode *, vector&lt;ListNode *&gt;, mycomp&gt; queue;</span><br><span class="line">        <span class="keyword">for</span> (ListNode *head : lists)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span> (head)</span><br><span class="line">                queue.<span class="built_in">push</span>(head);</span><br><span class="line">        &#125;</span><br><span class="line">        ListNode *dummy = <span class="keyword">new</span> <span class="built_in">ListNode</span>(<span class="number">-1</span>);</span><br><span class="line">        ListNode *temp = dummy;</span><br><span class="line">        <span class="keyword">while</span> (!queue.<span class="built_in">empty</span>())</span><br><span class="line">        &#123;</span><br><span class="line">            ListNode *p = queue.<span class="built_in">top</span>();</span><br><span class="line">            queue.<span class="built_in">pop</span>();</span><br><span class="line">            <span class="keyword">if</span> (p-&gt;next)</span><br><span class="line">                queue.<span class="built_in">push</span>(p-&gt;next);</span><br><span class="line">            temp-&gt;next = p;</span><br><span class="line">            temp = temp-&gt;next;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> dummy-&gt;next;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-<p><a
-href="https://www.acwing.com/problem/content/description/1264/">鱼塘钓鱼</a></p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;queue&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="keyword">typedef</span> pair&lt;<span class="type">int</span>, <span class="type">int</span>&gt; PII;</span><br><span class="line"></span><br><span class="line"><span class="type">const</span> <span class="type">int</span> N = <span class="number">110</span>;</span><br><span class="line"><span class="type">int</span> a[N], d[N], s[N];</span><br><span class="line">priority_queue&lt;PII&gt; q;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">work</span><span class="params">(<span class="type">int</span> t)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="type">int</span> res = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">1</span>; i &lt;= t; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">auto</span> p = q.<span class="built_in">top</span>();</span><br><span class="line">        q.<span class="built_in">pop</span>();</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (p.first &lt;= <span class="number">0</span>)</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        res += p.first;</span><br><span class="line">        p.first -= p.second;</span><br><span class="line">        q.<span class="built_in">push</span>(p);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> res;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="type">int</span> n, T;</span><br><span class="line">    cin &gt;&gt; n;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">1</span>; i &lt;= n; i++)</span><br><span class="line">        cin &gt;&gt; a[i];</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">1</span>; i &lt;= n; i++)</span><br><span class="line">        cin &gt;&gt; d[i];</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">2</span>; i &lt;= n; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        cin &gt;&gt; s[i];</span><br><span class="line">        s[i] += s[i - <span class="number">1</span>];</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    cin &gt;&gt; T;</span><br><span class="line">    <span class="type">int</span> ans = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">1</span>; i &lt;= n &amp;&amp; s[i] &lt;= T; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> j = <span class="number">1</span>; j &lt;= i; j++)</span><br><span class="line">            q.<span class="built_in">push</span>(&#123;a[j], d[j]&#125;);</span><br><span class="line"></span><br><span class="line">        ans = <span class="built_in">max</span>(ans, <span class="built_in">work</span>(T - s[i]));</span><br><span class="line">    &#125;</span><br><span class="line">    cout &lt;&lt; ans &lt;&lt; endl;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>算法</category>
-      </categories>
-      <tags>
-        <tag>算法</tag>
-        <tag>排序</tag>
-        <tag>分治</tag>
-        <tag>多路归并</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>把Python写成shell脚本</title>
     <url>/2023/02/26/%E6%8A%8APython%E5%86%99%E6%88%90%E8%84%9A%E6%9C%AC%E8%AF%AD%E8%A8%80/</url>
     <content><![CDATA[<p>为什么 Shell 脚本要用 Python 来写!? UNIX用户痛骂这是大逆不道.</p>
@@ -774,311 +788,6 @@ href="https://missing-semester-cn.github.io/2020/shell-tools/">Shell
       </categories>
       <tags>
         <tag>Python</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>数理逻辑人话ver</title>
-    <url>/2023/03/11/%E6%95%B0%E7%90%86%E9%80%BB%E8%BE%91%E4%BA%BA%E8%AF%9Dver/</url>
-    <content><![CDATA[<p>为了严谨性以及交流方便, 我们需要术语来描述问题: 这很好,
-某些问题数学语言胜千言——但由terminology组成的句子经常会让人不知所云.
-尤其对于数理逻辑, 因为是翻译文字所以句子看起来就更糟心了.
-想要明白问题的核心要义, 非得二次翻译不可,
-但最后描述的事情却是显而易见的.</p>
-<blockquote>
-<p>It is not what you read, but how you read it.——Richard Feynman</p>
-</blockquote>
-<p>一切在于你的理解:
-是愿意如背古诗一般去背定义——事实上这也足够你做题了——还是<em>真真正正地</em>去理解所描述的问题?
-以及, 为什么要这么定义?</p>
-<span id="more"></span>
-<p>命题逻辑</p>
-<p>脉络: 命题符号化 命题真值的判断 命题逻辑的推理</p>
-<p>TODO</p>
-]]></content>
-      <categories>
-        <category>离散数学</category>
-      </categories>
-      <tags>
-        <tag>离散数学</tag>
-        <tag>数理逻辑</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>新冠生存手册</title>
-    <url>/2022/12/22/%E6%96%B0%E5%86%A0%E7%94%9F%E5%AD%98%E6%89%8B%E5%86%8C/</url>
-    <content><![CDATA[<p>感染新冠快成每日打卡项目了. 每天都能刷到同学感染的信息,
-"今天又发了39度的烧"——然而这并不是值得炫耀的一件事. 二阳化碳, 三阳开泰,
-四阳方尊, 五阳电动车, 六阳魁首, 七阳化二锰, 八阳化二硫, 九阳豆浆机
-如果能在全员感染的范围内存活下来, 那么你就是大赢.
-我不相信染病后没有后遗症, 就算苟我也要撑到群体免疫快结束的时候.
-提心吊胆地过着放开后的日子, 保持身处末世一般的警惕,
-做好保护自己生命的职责.</p>
-<p>更新: 12.28 阳了 估计是舍友交叉感染的 Q:
-有个一声不吭的舍友是怎样的一种感受? 被害惨了.</p>
-<span id="more"></span>
-<p><a href="https://zhuanlan.zhihu.com/p/579970078">知乎回答</a></p>
-<p>气溶胶传染主要是通过呼吸道, 病毒接触皮肤表面只要不接触口鼻眼,
-之后消毒或清洁就行</p>
-<h2 id="防护方式">防护方式</h2>
-<p>谨防交叉感染! 自己防护做全了,
-也要<strong>确保</strong>家里人/舍友能够执行.</p>
-<p>回答来源于<a
-href="https://www.zhihu.com/question/570483700/answer/2796072947">知乎</a>:</p>
-<p>下水道消毒: 加盖加水防止气溶胶产生</p>
-<p>衣服消毒: 衣用消毒剂 紫外线灯 酒精喷雾</p>
-<p>室外消毒: 消毒凝胶 酒精喷雾随身携带</p>
-<p>口罩: 能不摘就不摘 医用4小时一换 N95/FFP2一天一换+备用 不放在口袋
-不要吝啬</p>
-<p>吃饭: 明确堂食必G</p>
-<p>头发消毒: 洗头洗澡</p>
-<p>外出装备: N95戴+备用 塑料面罩(防疫人员戴的) 装有消毒液的小喷壶</p>
-<h3 id="戴口罩的误区">戴口罩的误区</h3>
-<p><a
-href="https://www.zhihu.com/question/573023186/answer/2814221461">知乎:为什么全国人民都佩戴N95口罩后，新冠病毒还能爆发式传播？</a></p>
-<h2 id="感染后的感觉">感染后的感觉</h2>
-<p>感染前一天晚上: 好热 不太好睡 喉咙好干 半夜爬下去喝水</p>
-<p>第一天: 早上高数考试 考完感觉人没啥力气 联想到舍友咳嗽的事情
-中午吃完饭就去校医院 测了体温38.3度 抗原检测一开始看不到T线
-过了几分钟看到浅浅的一条线 G了 开了退烧药和银黄颗粒
-回了一趟寝室叫室友去校医院治治咳嗽 但他好像已经阳康了😅
-下午开始就在床上度过了极为痛苦的一天 乏力 体温不均 晚上测了体温39度
-吃了退烧药 稍微好些 这一晚非常痛苦 一开始冷的睡不着 套上了几件衣服
-半夜又被热醒了</p>
-<p>第二天: 依然乏力 体温依然是39度 疯狂喝水 一天去了不知道多少次厕所
-吃了退烧药 今天比昨天好很多 但依然很难受 晚上买了饭 结果一口也吃不下去
-鸡蛋是苦的 萝卜是苦的 啥都是苦的 10块钱浪费了 这一天解决了论文框架</p>
-<p>第三天: 今天退烧了 开始有能力在电脑前产出了 今天把论文写完了
-但喉咙巨难受 所谓的口吞刀片 腊八 吃了免费的腊八粥 晚饭吃原汤抄手
-事实上这几天只适合吃这些</p>
-<p>第四天: 今天也没发烧 但喉咙依然很痛 胃口已经要比前几天好了
-生产力基本恢复正常 今天ddl 改完论文提交了 该接着复习考试了</p>
-<p>第五天开始: 基本上正常 除了喉咙痛 吃不了辣 基本上啥都能干了</p>
-]]></content>
-      <categories>
-        <category>杂谈</category>
-      </categories>
-      <tags>
-        <tag>杂谈</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>保研, 相亲, 找工作——背后的稳定匹配问题</title>
-    <url>/2023/02/06/%E7%A8%B3%E5%AE%9A%E5%8C%B9%E9%85%8D%E9%97%AE%E9%A2%98%E5%8F%8AGale-Shapley%E7%AE%97%E6%B3%95/</url>
-    <content><![CDATA[<p><strong>稳定匹配问题</strong>(Stable Matching Problem)最早出自 D.Gale
-和 L.S.Sharpley
-1962年发表在美国数学月刊上的一篇关于<em>大学录取和婚姻稳定</em>的文章<a
-href="#fn1" class="footnote-ref" id="fnref1"
-role="doc-noteref"><sup>1</sup></a>. 解决这个问题的算法出奇地简单,
-甚至是<strong>自我执行</strong>(self-forcing)的——换言之,
-不需要系统的调度, 就能获得令人满意的结果!</p>
-<p>本文重点陈述算法的正确性——作为离散数学中<em>逻辑命题与证明</em>的简单应用.</p>
-<span id="more"></span>
-<h2 id="问题描述">问题描述</h2>
-<p>问题描述: 考虑你经营一家雇佣系统, 任务将 <span
-class="math inline">\(n\)</span> 个职位和 <span
-class="math inline">\(n\)</span> 名候选人匹配起来. 每项工作对 <span
-class="math inline">\(n\)</span> 名候选人有一排序的倾向表,
-每位候选人也有类似的表.</p>
-<p>例如, 考虑 <span class="math inline">\(n=3\)</span>, 为简化,
-我们假设候选人为 A, B, C, 岗位为 1, 2, 3. 对于 A, 他的倾向表为 2, 1, 3,
-表示最希望分配到2, 1次之, 3最后. 同样的, 岗位1选人的倾向表为 A, C, B,
-表示最希望招到 A, C次之, B最后.</p>
-<p>我们的目标是: 最大化总满足度, 最大化每个人的第一选择,
-以及减少倾向排名的差距</p>
-<p>Gale-Shapley 算法 (a.k.a. The Propose-and-Reject Algorithm)</p>
-<p>对于每一天:</p>
-<ul>
-<li>每个职位向它列表上最希望的候选人发offer.</li>
-<li>每个候选人都可以拒绝非自己最期望的offer.
-已得的offer会置于一个string上.</li>
-<li>被拒绝的职位会在表上划去拒绝人的名字.</li>
-</ul>
-<p>当每个人都拿到offer的时候, 程序停止.</p>
-<figure>
-<img src="/images/anim1.gif" alt="例子" />
-<figcaption aria-hidden="true">例子</figcaption>
-</figure>
-<h2 id="before-符号定义">Before: 符号定义</h2>
-<p><strong>定义 1</strong> 包含 <span class="math inline">\(n\)</span>
-对 pair 的不交集, 称为<strong>匹配</strong> <span
-class="math inline">\(S\)</span>.</p>
-<p>例如: <span class="math inline">\(S = \{(1, A), (2, B), (3,
-C)\}\)</span> 就是一个包含 <span class="math inline">\(3\)</span> 对
-pair 的匹配.</p>
-<p><strong>定义 2</strong> 如果 <span class="math inline">\(b\)</span>
-比起 <span class="math inline">\(g\)</span> 更喜欢 <span
-class="math inline">\(g^{*}\)</span>, 记 <span
-class="math inline">\(g^{*} &gt; g\)</span>. 特别地, 如果 <span
-class="math inline">\(b\)</span> 认为 <span
-class="math inline">\(g^{*}\)</span> 至少和 <span
-class="math inline">\(g\)</span> 一样好, 记 <span
-class="math inline">\(g^{*} \geqslant g\)</span>, 当且仅当 <span
-class="math inline">\(g^{*} = g\)</span> 取等.</p>
-<p><strong>定义 3</strong> 对于匹配 <span
-class="math inline">\(S\)</span> 中的元素 <span class="math inline">\(b,
-g^{*}\)</span>: 如果 <span class="math inline">\(b, g^{*}\)</span>
-是比当前 partner 更优的一对, 则称 <span class="math inline">\(b,
-g^{*}\)</span> 为一对<strong>rouge couple</strong>.</p>
-<p>例如: 假设对 <span class="math inline">\(1\)</span> 有 <span
-class="math inline">\(C&gt;B\)</span>, <span
-class="math inline">\(C\)</span> 认为 <span
-class="math inline">\(1&gt;2\)</span>, 那么匹配 <span
-class="math inline">\(S = \{(1, B), (2, C)\}\)</span> 中存在 rouge
-couple <span class="math inline">\(1, C\)</span>.</p>
-<p><strong>定义 4</strong> 不存在 rouge couple 的匹配 <span
-class="math inline">\(S\)</span> 称为<strong>稳定匹配</strong>.
-否则则为不稳定匹配.</p>
-<p>在上面的例子中: 因为 <span class="math inline">\(1\)</span> 可以追求
-<span class="math inline">\(C\)</span>, 同时 <span
-class="math inline">\(C\)</span> 也会欣然接受 <span
-class="math inline">\(1\)</span>, <span
-class="math inline">\((1,B)\)</span> 及 <span
-class="math inline">\((2,C)\)</span> 都有决裂的可能, 因此 <span
-class="math inline">\(S\)</span> 是一个不稳定匹配.</p>
-<h2 id="证明">证明</h2>
-<h3 id="总能停下">总能停下</h3>
-<p><strong>引理 1</strong> 算法总能停下.</p>
-<p><strong>证明</strong> 算法尚未停止时,
-每一天结束至少有一家公司将应聘者的人名从列表上划去. 因为列表有 <span
-class="math inline">\(n\)</span> 份, 每份上有 <span
-class="math inline">\(n\)</span> 个元素, 因此算法至多在 <span
-class="math inline">\(n^2\)</span> 的迭代(天)下终止.</p>
-<h3 id="进步引理">进步引理</h3>
-<p><strong>引理 2</strong> 对于第 <span class="math inline">\(t\)</span>
-天, 候选人 <span class="math inline">\(g\)</span> 手上有职位 <span
-class="math inline">\(b\)</span>, 那么第 <span
-class="math inline">\(t&#39;\)</span> 天结束, 他手上的 <span
-class="math inline">\(\forall b&#39;\)</span> 至少和 <span
-class="math inline">\(b\)</span> 一样好, 其中 <span
-class="math inline">\(t&#39; &gt; t\)</span>.</p>
-<p><strong>证明</strong> 我们对天数 <span
-class="math inline">\(i\geqslant k\)</span> 归纳.</p>
-<p>当 <span class="math inline">\(i = k\)</span>, <span
-class="math inline">\(C\)</span> <em>可以</em>收到至少一份offer(来自
-<span class="math inline">\(J\)</span>). 在第 <span
-class="math inline">\(k\)</span> 天结束, <span
-class="math inline">\(C\)</span> 手上至少会有 <span
-class="math inline">\(J\)</span> 或者比 <span
-class="math inline">\(J\)</span> 更好的offer(他可以自行选择).</p>
-<p>对于 <span class="math inline">\(\forall i \geqslant k\)</span>
-的情况, 假设命题成立, 只需归纳证明对 <span
-class="math inline">\(i+1\)</span> 命题同样成立.</p>
-<p>根据我们的假设, 第 <span class="math inline">\(i\)</span> 天 <span
-class="math inline">\(C\)</span> 获得了 <span
-class="math inline">\(J&#39;\geqslant J\)</span>, 根据算法, <span
-class="math inline">\(J&#39;\)</span> 在第 <span
-class="math inline">\(i+1\)</span> 天依然会向 <span
-class="math inline">\(C\)</span> 给出offer(因为 <span
-class="math inline">\(C\)</span> 在第 <span
-class="math inline">\(i\)</span> 天没理由拒绝或者 <span
-class="math inline">\(J&#39;\)</span> 凭空消失). 因此当第 <span
-class="math inline">\(i+1\)</span> 天结束, <span
-class="math inline">\(C\)</span> 手上要么是 <span
-class="math inline">\(J&#39;\)</span>, 要么是比 <span
-class="math inline">\(J&#39;\)</span> 更好的offer; 两种情况都 <span
-class="math inline">\(\geqslant J\)</span>, 因此结论对第 <span
-class="math inline">\(i+1\)</span> 天成立.</p>
-<h3 id="正确性">正确性</h3>
-<p><strong>引理 3</strong> Gale-Sharpley算法得出的匹配不存在rouge
-couple.</p>
-<p><strong>证明</strong> 反证法. 假设存在 <span
-class="math inline">\((b,g^{*})\)</span>, 且当前匹配为 <span
-class="math inline">\((b,g),(b^{*},g^{*})\)</span>. <span
-class="math inline">\(b\)</span> 比起 <span
-class="math inline">\(g\)</span> 更喜欢 <span
-class="math inline">\(g*\)</span>, 在给 <span
-class="math inline">\(g\)</span> 发出offer之前先给 <span
-class="math inline">\(g^{*}\)</span> 发出了offer, 而 <span
-class="math inline">\(g^{*}\)</span> 拒绝了 <span
-class="math inline">\(b\)</span>, 由引理 2, 知 <span
-class="math inline">\(g^{*}\)</span> 比起 <span
-class="math inline">\(b^{*}\)</span> 更喜欢 <span
-class="math inline">\(b\)</span>, 与条件矛盾.</p>
-<p><strong>定理 1</strong> Gale-Sharpley 算法是一种稳定的匹配算法.</p>
-<p><strong>证明</strong> 由引理 1 和引理 3 可知其正确.</p>
-<h3 id="最优性-对谁更有利">最优性: 对谁更有利?</h3>
-<p><strong>定义 5</strong> 如果 <span class="math inline">\(x\)</span>
-的 partner 在任何稳定匹配下皆为它的最佳 partner, 称匹配为 <span
-class="math inline">\(x\)</span> 最优的.</p>
-<p>同样可以给出 <span class="math inline">\(x\)</span> 最劣的定义.</p>
-<p><strong>定义 6</strong> 如果对全部工作/候选人 <span
-class="math inline">\(x\)</span> 都是 <span
-class="math inline">\(x\)</span> 最优的, 称匹配为工作/候选人最优.</p>
-<p>例子: A:1,2 B:2,1 1:A,B 2:A,B</p>
-<p>S: (A,1) (B,2) T: (A,2) (B,1)</p>
-<p>S, T 都是稳定的. 但 S 是对 A,B 最优, T 对 1,2 最优.</p>
-<p><strong>定理 2</strong> Gale-Sharpley算法是工作最优匹配.</p>
-<p><strong>证明</strong> 假设匹配对工作不是最优的: 存在 <span
-class="math inline">\(b\)</span> 得不到最优候选人 <span
-class="math inline">\(g\)</span>. 存在稳定匹配 <span
-class="math inline">\(S\)</span> 存在 <span
-class="math inline">\((b,g)\)</span> 匹配. 令 <span
-class="math inline">\(t\)</span> 为 <span
-class="math inline">\(b\)</span> 被 <span
-class="math inline">\(g\)</span> 拒绝的第一天, 那么在第 <span
-class="math inline">\(t\)</span> 日有 <span
-class="math inline">\(b^{*}\)</span> 与 <span
-class="math inline">\(g\)</span> 匹配, 也就意味着 <span
-class="math inline">\(g\)</span> 比起 <span
-class="math inline">\(b\)</span> 更喜欢 <span
-class="math inline">\(b^{*}\)</span>. <span
-class="math inline">\(b^{*}\)</span> 至少也会将 <span
-class="math inline">\(g\)</span> 作为它的最优候选人看待, 也就推出了"
-<span class="math inline">\(b^{*}\)</span> 比起他在 <span
-class="math inline">\(S\)</span> 中的 partner <span
-class="math inline">\(g^{*}\)</span> 更喜欢 <span
-class="math inline">\(g\)</span> "的结论, 而 <span
-class="math inline">\(b,g^{*}\)</span> 是一对rogue couple, 也即 <span
-class="math inline">\(S\)</span> 是不稳定的, 也就发生了矛盾.</p>
-<h2 id="后记">后记</h2>
-<p>TODO List:</p>
-<ul>
-<li>Talk is cheap, show me the code!
-<ul>
-<li>哪天写一个示例程序</li>
-</ul></li>
-<li>可读性很烂, 加上纯数更难理解了.
-<ul>
-<li>哪天重构下段落和语句</li>
-</ul></li>
-<li>想把证明方法背后的数学原理介绍给各位
-<ul>
-<li>例如反证法在数理逻辑上为什么是正确的</li>
-</ul></li>
-<li>现在还只停留在介绍的阶段.
-<ul>
-<li>推荐读物里有本书, 哪天有空去找找看, 提取一些有意思的内容</li>
-<li>多些深度和应用</li>
-</ul></li>
-</ul>
-<h2 id="拓展阅读">拓展阅读</h2>
-<p>[1]. <a href="https://www.eecs70.org/assets/pdf/notes/n4.pdf">UCB
-CS70 Note 4: Stable Matching Problem</a></p>
-<p>[2]. D. Gale and L.S. Shapley, “College Admissions and the Stability
-of Marriage,” <em>American Mathematical Monthly</em> <strong>69</strong>
-(1962), pp. 9–14.</p>
-<p>[3]. D. Gusfield and R.W. Irving, <em>The Stable Marriage Problem:
-Structure and Algorithms</em>, MIT Press, 1989.</p>
-<section id="footnotes" class="footnotes footnotes-end-of-document"
-role="doc-endnotes">
-<hr />
-<ol>
-<li id="fn1"><p>Matching领域的开山文章, 算法分析的伟大成就之一, 顺带一提
-Sharpley 也是<a
-href="https://news.yahoo.com/2-americans-win-nobel-economics-prize-111239568--finance.html">2012年诺贝尔经济学奖</a>的得主.
-题外话: 在文章的最后, 作者提到希望借此文章改变大众对数学/数学家的认知:
-我们真的不是只懂"一堆公式", 不说人话的家伙;
-还希望数学老师也能启发启发学生 :)<a href="#fnref1" class="footnote-back"
-role="doc-backlink">↩︎</a></p></li>
-</ol>
-</section>
-]]></content>
-      <categories>
-        <category>算法</category>
-      </categories>
-      <tags>
-        <tag>算法</tag>
-        <tag>离散数学</tag>
       </tags>
   </entry>
   <entry>
@@ -1428,158 +1137,411 @@ cnt\)</span> 即可.</p>
       </tags>
   </entry>
   <entry>
-    <title>综合算法题</title>
-    <url>/2023/03/04/%E7%BB%BC%E5%90%88%E7%AE%97%E6%B3%95%E9%A2%98/</url>
-    <content><![CDATA[<p>收录一些平时做的比较综合的题目. 考察的知识点不止一点,
-各种优化方式简直使出毕生所学.</p>
-<p>大概是蓝桥杯国赛, ACM银, 提高组以上难度, 是比赛你不会轻易去碰的题目,
-讲解起来也是额外麻烦. 虽然说比赛能保证签到题全对就已经很了不起了,
-但这种题目就像高考数学的压轴题, 还是要有所接触才能有所突破嘛.</p>
+    <title>数理逻辑人话ver</title>
+    <url>/2023/03/11/%E6%95%B0%E7%90%86%E9%80%BB%E8%BE%91%E4%BA%BA%E8%AF%9Dver/</url>
+    <content><![CDATA[<p>为了严谨性以及交流方便, 我们需要术语来描述问题: 这很好,
+某些问题数学语言胜千言——但由terminology组成的句子经常会让人不知所云.
+尤其对于数理逻辑, 因为是翻译文字所以句子看起来就更糟心了.
+想要明白问题的核心要义, 非得二次翻译不可,
+但最后描述的事情却是显而易见的.</p>
+<blockquote>
+<p>It is not what you read, but how you read it.——Richard Feynman</p>
+</blockquote>
+<p>一切在于你的理解:
+是愿意如背古诗一般去背定义——事实上这也足够你做题了——还是<em>真真正正地</em>去理解所描述的问题?
+以及, 为什么要这么定义?</p>
 <span id="more"></span>
-<h2 id="裁剪序列">裁剪序列</h2>
-<h3 id="题目">题目</h3>
-<p>导航: <a
-href="https://www.acwing.com/problem/content/description/301/">AcWing
-299. 裁剪序列</a></p>
-<h4 id="题目描述">题目描述</h4>
-<p>给定一个长度为 <span class="math inline">\(N\)</span> 的序列 <span
-class="math inline">\(A\)</span>，要求把该序列分成若干段，在满足“每段中所有数的和”不超过
-<span class="math inline">\(M\)</span>
-的前提下，让“每段中所有数的最大值”之和最小。</p>
-<p>试计算这个最小值.</p>
-<h4 id="输入格式">输入格式</h4>
-<p>第一行包含两个整数 <span class="math inline">\(N\)</span> 和 <span
-class="math inline">\(M\)</span>.</p>
-<p>第二行包含 <span class="math inline">\(N\)</span>
-个整数，表示完整的序列 <span class="math inline">\(A\)</span>.</p>
-<h4 id="输出格式">输出格式</h4>
-<p>输出一个整数，表示结果。</p>
-<p>如果结果不存在，则输出-1。</p>
-<h4 id="数据范围">数据范围</h4>
-<p><span class="math display">\[0 \leqslant N \leqslant
-10^5\]</span></p>
-<p><span class="math display">\[0 \leqslant M \leqslant
-10^{11}\]</span></p>
-<p>序列 <span class="math inline">\(A\)</span> 中的数非负, 且不超过
-<span class="math inline">\(10^6\)</span>.</p>
-<p>输入样例:</p>
-<figure class="highlight txt"><table><tr><td class="code"><pre><span class="line">8 17</span><br><span class="line">2 2 2 8 1 8 2 1</span><br></pre></td></tr></table></figure>
-<p>输出样例:</p>
-<figure class="highlight txt"><table><tr><td class="code"><pre><span class="line">12</span><br></pre></td></tr></table></figure>
-<p>样例解释:</p>
-<figure>
-<img src="/images/pic6.png" alt="样例解释" />
-<figcaption aria-hidden="true">样例解释</figcaption>
-</figure>
-<p>按照如此分组, 第一组中的最大值为2, 第二组中的最大值为8,
-第三组的最大值为2, 总和 2+8+2=12, 为最小值.</p>
-<h3 id="题解">题解</h3>
-<p>TAG: DP 双指针 贪心 单调队列 堆 STL Multiset</p>
-<h4 id="朴素dp">朴素DP</h4>
-<p>本题可以考虑区间DP的处理方式:</p>
+<h2 id="命题逻辑">命题逻辑</h2>
+<p>考前TODO 先挖个坑</p>
+<h3 id="命题符号化">命题符号化</h3>
+<h4 id="句子变符号">句子变符号</h4>
+<h4 id="联接词就是连起来">联接词就是连起来</h4>
+<h4 id="不确定的命题我需要解释">不确定的命题——我需要解释</h4>
+<h3 id="命题公式太多了标准化">命题公式太多了——标准化</h3>
+<h4 id="范式">范式</h4>
+<h4 id="主范式范式还不够用">主范式——范式还不够用</h4>
+<h3 id="最终任务-推理">最终任务: 推理</h3>
+<h2 id="量词逻辑">量词逻辑</h2>
+<h3 id="命题需要范围">命题需要范围</h3>
+<h3 id="所以我只是你的附庸">所以我只是你的附庸</h3>
+]]></content>
+      <categories>
+        <category>离散数学</category>
+      </categories>
+      <tags>
+        <tag>离散数学</tag>
+        <tag>数理逻辑</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>简单的分治排序算法</title>
+    <url>/2023/01/05/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/</url>
+    <content><![CDATA[<p>我们介绍两个基于分治且 <code>O(nlogn)</code> 的排序算法:
+快速排序和归并排序. 理解排序算法的最好方法是模拟, 手动模拟指针的移动,
+感受数据是怎么逐渐变得有序的. 配合动图食用更佳.</p>
+<p>你可能会问: <code>std::sort</code> 它不香吗? 答:
+让你手搓是为了理解算法思想, 没让你去用. 顺便提防将来的面试官.</p>
+<p>两个算法困难的点在于边界分析. 算法导论就是干这个证明的.
+不过正常人记模板就可以了 :)</p>
+<span id="more"></span>
+<h2 id="快速排序">快速排序</h2>
+<h3 id="原理">原理</h3>
+<p>快速排序的核心要义:
+任取一个数<code>x</code>作为<strong>基准值</strong>,
+<strong>调整<code>x</code>的左右区间</strong>,
+使得左区间的值小于<code>x</code>, 右区间的值都大于<code>x</code>,
+然后对这两个子区间<strong>递归调用</strong>.</p>
+<p>怎么调整区间:</p>
 <ul>
-<li>状态表示:
-<ul>
-<li>集合: <code>f[i]</code> 表示前 <code>i</code>
-个数中所有的划分区间中的最大值之和.</li>
-<li>状态: <code>min</code></li>
-</ul></li>
-<li>状态计算:
-<ul>
-<li>划分区间: <code>1~j</code> 和 <code>j+1~i</code>
-<ul>
-<li><code>1~j</code> 不管</li>
-<li>第二段的和要不超过 <code>M</code></li>
-</ul></li>
-<li>前一段区间很好表示: <code>f[j]</code></li>
-<li>后一段区间: 是 <code>j+1~i</code> 这一段区间上的最大值</li>
-<li><code>f[i] = min(f[j] + max A[k]), k in [j+1, i]</code></li>
-<li><code>f[n]</code> 就是答案.</li>
-</ul></li>
+<li><del>扫描并比较整个数组, 大于 <code>x</code> 的放在数组
+<code>a</code>, 小于的放在 <code>b</code>,
+最后再复制回去.</del>(空间开销大)</li>
+<li>双指针. <code>i</code> 从 <code>l</code> 开始移动, 确保
+<code>q[l...i-1]</code> 比 <code>x</code> 小. 当遇到比 <code>x</code>
+大的值, 就让这个值和 <code>j</code> 交换位置, 然后从后移动
+<code>j</code> 指针, 确保 <code>q[j...r]</code> 比 <code>x</code> 大.
+遇到比 <code>x</code> 小的值, 就再交换回去, 直到 <code>i</code>,
+<code>j</code> 相遇.</li>
 </ul>
-<figure>
-<img src="/images/pic8.png" alt="模拟样例" />
-<figcaption aria-hidden="true">模拟样例</figcaption>
-</figure>
-<p>例如 <code>i = 6</code>, 可能的分组有 <code>2 2 2 8 1</code>
-<code>8</code>, <code>2 2 2 8</code> <code>1 8</code>,
-<code>2 2 2</code> <code>8 1 8</code>...而 <code>f[i]</code>
-是这些方案中的最小值, 也即 <code>2 2 2</code> <code>8 1 8</code>
-分组下的 <code>10</code>.</p>
-<p>枚举 <code>i</code>, 再枚举 <code>j</code>, 还要枚举
-<code>j+1~i</code> 这段上的 <code>k</code>, 这种方法的时间复杂度是
-<code>O(n^3)</code>. 必定会TLE. 所以得考虑优化.
-如果想不出优化方式过几个数据就作罢.</p>
-<p>注: 在进一步优化之前请务必理解DP计算的正确性.</p>
-<h4 id="优化">优化</h4>
-<p><code>j</code> 可以从小到大枚举, 开一个变量就可以存最大的
-<code>a[k]</code>, 这样复杂度能压到 <code>O(n^2)</code>. 但还是会
-TLE.</p>
-<p><strong>定理 1</strong> 如果 <code>j</code> 能够成为
-<code>f[i]</code> 的唯一最优解, 那么 <code>j</code>
-必须满足以下条件之一:</p>
+<p>这两个区间的值也可以等于<code>x</code>. 算法的正确性, 用<a
+href="https://www.acwing.com/solution/content/16777/">循环不变式</a>证明:
+<code>q[l..i] &lt;= x</code> 以及 <code>q[j..r] &gt;= x</code></p>
+<h3 id="性质">性质</h3>
+<p>朴素的快排是一种不稳定的排序方式.</p>
+<p>最优时间复杂度和平均时间复杂度为 <span class="math inline">\(O(n \log
+n)\)</span> (基准数是中位数的情况), 最差情况退化成冒泡排序 <span
+class="math inline">\(O(n^2)\)</span> (每一次基准数的选取都是最值).</p>
+<h3 id="模板">模板</h3>
+<p>来源: <a
+href="https://www.acwing.com/activity/content/code/content/39784/">AcWing
+785. 快速排序</a></p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">quick_sort</span><span class="params">(<span class="type">int</span> q[], <span class="type">int</span> l, <span class="type">int</span> r)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(l &gt;= r) <span class="keyword">return</span>;</span><br><span class="line"></span><br><span class="line">    <span class="type">int</span> i = l - <span class="number">1</span>, j = r + <span class="number">1</span>, x = q[l + r &gt;&gt; <span class="number">1</span>];</span><br><span class="line">    <span class="keyword">while</span>(i &lt; j)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">do</span> i++; <span class="keyword">while</span>(q[i] &lt; x);</span><br><span class="line">        <span class="keyword">do</span> j--; <span class="keyword">while</span>(q[j] &gt; x);</span><br><span class="line">        <span class="keyword">if</span>(i &lt; j) <span class="built_in">swap</span>(q[i], q[j]);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="built_in">quick_sort</span>(q, l, j), <span class="built_in">quick_sort</span>(q, j + <span class="number">1</span>, r);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="归并排序">归并排序</h2>
+<p>归并排序是典范的分治思想的例子. 归并排序的核心要义是: 把数组一分为二,
+一直分下去直到不能再分, 然后逐层合并两个有序的数组.</p>
+<p>用程序语言描述就是下面的代码:</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">merge_sort</span><span class="params">(array)</span> </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (basecase) <span class="keyword">return</span>;</span><br><span class="line">  <span class="built_in">merge_sort</span>(left);</span><br><span class="line">  <span class="built_in">merge_sort</span>(right);</span><br><span class="line">  <span class="built_in">merge</span>(left, right);</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>核心是实现子程序 <code>merge</code>: 合并两个排好序的数组.
+实现起来很简单, 用到了临时数组, 令
+<code>tmp[k] = min(left[i], right[j])</code> 最后复制回原数组就可以了.
+整个过程要用到三个指针, 分别指向临时数组, 以及两个排好序的数组.</p>
+<h3 id="板子">板子</h3>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">merge_sort</span><span class="params">(<span class="type">int</span> q[], <span class="type">int</span> l, <span class="type">int</span> r)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(l &gt;= r)</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    <span class="type">int</span> mid = l + r &gt;&gt; <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">    <span class="built_in">merge_sort</span>(q, l, mid);</span><br><span class="line">    <span class="built_in">merge_sort</span>(q, mid + <span class="number">1</span>, r);</span><br><span class="line"></span><br><span class="line">    <span class="type">int</span> k = <span class="number">0</span>, i = l, j = mid + <span class="number">1</span>;</span><br><span class="line">    <span class="type">int</span> N = l + r - <span class="number">1</span>;</span><br><span class="line">    <span class="type">int</span> tmp[N];</span><br><span class="line"></span><br><span class="line">    <span class="keyword">while</span> (i &lt;= mid &amp;&amp; j &lt;= r)</span><br><span class="line">        tmp[k++] = (q[i] &lt;= q[j]) ? q[i++] : q[j++];</span><br><span class="line">    <span class="keyword">while</span>(i &lt;= mid)</span><br><span class="line">        tmp[k++] = q[i++];</span><br><span class="line">    <span class="keyword">while</span>(j &lt;= r)</span><br><span class="line">        tmp[k++] = q[j++];</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span>(i = <span class="number">1</span>, j = <span class="number">0</span>; i &lt;= r; i++, j++)</span><br><span class="line">        q[i] = tmp[j];   </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="应用">应用</h3>
+<p><a href="https://www.acwing.com/problem/content/790/">AcWing 788.
+逆序对的数量</a></p>
+<p>用归并排序看待这个问题: 逆序对只存在三种情况, 在左半边, 在右半边,
+或者横跨左右区间. 假设 <code>merge_sort</code>
+能在排序的同时计算出逆序对的数量, 那么前两种情况等于递归调用
+<code>merge_sort</code> 的值. 横跨左右区间的情况稍微比较复杂.
+利用的是<code>merge</code>区间的单调性.
+我们求的是<code>left</code>中每一个元素对应<code>right</code>中逆序对的数量.
+假设我们找到了 <code>left[i] &gt; right[j]</code>, 那么一定有
+<code>left[i...mid] &gt; right[j]</code>. 也就是说存在
+<code>mid - i + 1</code> 个逆序对.</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="function">LL <span class="title">merge_sort</span><span class="params">(<span class="type">int</span> q[], <span class="type">int</span> l, <span class="type">int</span> r)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(l &gt;= r) <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    <span class="type">int</span> mid = l + r &gt;&gt; <span class="number">1</span>;</span><br><span class="line">    LL res = <span class="built_in">merge_sort</span>(q, l, mid) + <span class="built_in">merge_sort</span>(q, mid + <span class="number">1</span>, r);</span><br><span class="line">    </span><br><span class="line">    <span class="type">int</span> k = <span class="number">0</span>, i = l, j = mid + <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">while</span>(i &lt;= mid &amp;&amp; j &lt;= r)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span>(q[i] &lt;= q[j])</span><br><span class="line">            tmp[k++] = q[i++];</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">        &#123;</span><br><span class="line">            res += mid - i + <span class="number">1</span>;</span><br><span class="line">            tmp[k++] = q[j++];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">while</span>(i &lt;= mid)</span><br><span class="line">        tmp[k++] = q[i++];</span><br><span class="line">    <span class="keyword">while</span>(j &lt;= r)</span><br><span class="line">        tmp[k++] = q[j++];</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span>(i = l, j = <span class="number">0</span>; i &lt;= r; i++, j++)</span><br><span class="line">        q[i] = tmp[j];</span><br><span class="line">    <span class="keyword">return</span> res;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="k-way-merge">k-way merge</h3>
+<p>如果需要merge的数组不止2个, 该怎么实现呢?</p>
 <ul>
-<li><code>A[j] = max(A[j], A[j+1], ..., A[i])</code></li>
-<li><code>A[j] + ... + A[i] &gt; M</code> 且
-<code>A[j+1] + ... + A[i] &lt;= M</code></li>
+<li>建立一个小根堆.</li>
+<li>将每一路的第一个元素插入小根堆. 我们可以知道<code>heap[1]</code>
+就是最小值.</li>
+<li>将堆顶元素弹出, 并将堆顶元素所在数组的下一元素加入堆中.</li>
+<li>重复上面两步, 直到每一路都读取结束.</li>
 </ul>
-<p><strong>证明</strong> 考虑反证法. 假设 <span
-class="math inline">\(j\)</span> 上述两个条件都不满足. 对于决策
-<code>j-1</code>:</p>
-<ul>
-<li><code>A[j] + ... + A[i] &lt;= M</code>, 考虑两种情况:
-<ol type="1">
-<li><code>A[j-1] + ... + A[i] &gt; M</code>, 此时 <code>j-1</code>
-满足上述条件之一.</li>
-<li><code>A[j-1] + ... + A[i] &lt;= M</code>:</li>
-</ol>
-<ul>
-<li><code>f[i]</code> 单调递增.</li>
-<li>同时 <code>A[j]</code> 不是 <code>A[j...i]</code> 中的最大值.
-<ul>
-<li>那么
-<code>f[j-1] + max A[j...i] &lt;= f[j] + max A[j+1...i]</code></li>
-</ul></li>
-</ul></li>
-<li><code>j-1</code> 是一个优于 <code>j</code> 或和 <code>j</code>
-一样优的方案.</li>
-</ul>
-<p>由假设可知不成立. 因此 <code>j</code> 必须满足上面条件之一. <span
-class="math inline">\(\Box\)</span></p>
-<p>那么我们的问题就转换为: 对于一个 <code>i</code>,
-找到一个满足上述条件的 <code>j</code>, 且 <code>j</code> 距离
-<code>i</code> 最远. <code>i</code> 和 <code>j</code> 是随同变化的,
-用双指针就可以压到一维.</p>
-<p>不过使用双指针之前还要验证单调性, 也就是移动 <code>i</code>,
-<code>j</code> 也会相应向后移动(无回溯). 不过这不是什么大的问题,
-我们给出一个简单的证明:</p>
-<p><strong>定理 2</strong> <code>j</code> 在 <code>i</code>
-变大的过程中同步增大.</p>
-<p><strong>证明</strong> 考虑反证法: 如果 <code>i</code> 移动到
-<code>i'</code> 而 <code>j</code> 不往后移动, 因为 <code>j</code> 是满足
-<code>A[j+1] + ... + A[i] &lt;= M</code> 最小的一个点, 必然有
-<code>A[j+1] + ... + A[i'] &gt; M</code> 不满足条件, 因此 <code>j</code>
-必须往后移动, 即 <code>j' &gt; j</code>. <span
-class="math inline">\(\Box\)</span></p>
-<p>有了这一点, 我们又得到一个性质: <code>[j, i]</code>
-这段区间实际上是一个<strong>滑动区间</strong>, 尽管长度不定,
-但最主要的是, <code>i</code> 和 <code>j</code> 都是单调的. 并且,
-我们实现的核心,
-是在这个区间内寻找<strong>区间最值</strong>——本质上这就是一个单调队列!
-也即, 我们可以用一个单调队列来维护滑动窗口中出现的最大值,
-并使得这段区间的总和小于 <code>m</code>.</p>
-<p>同时我们需要维护一个方案的集合, 使得集合能够动态求最小值, 添加一个数,
-删除一个数(头节点和尾节点). 你可能会想到使用堆存储,
-但堆不太方便同时存储头节点和尾节点, 最好用一个平衡树来维护,
-C++STL里可以用 <code>multiset</code>.</p>
-<h4 id="代码">代码</h4>
-<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="keyword">typedef</span> <span class="type">long</span> <span class="type">long</span> LL;</span><br><span class="line"></span><br><span class="line"><span class="type">const</span> <span class="type">int</span> N = <span class="number">100010</span>;</span><br><span class="line"></span><br><span class="line"><span class="type">int</span> n;</span><br><span class="line">LL m;</span><br><span class="line"><span class="type">int</span> w[N], q[N];</span><br><span class="line">LL f[N];</span><br><span class="line">multiset&lt;LL&gt; S;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 不用 S.remove 是因为他会把所有的 x 全删掉</span></span><br><span class="line"><span class="comment">// 我们只要删去重复的一个即可</span></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">remove</span><span class="params">(LL x)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">auto</span> it = S.<span class="built_in">find</span>(x);</span><br><span class="line">    S.<span class="built_in">erase</span>(it);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">&quot;%d%lld&quot;</span>, &amp;n, &amp;m);</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">1</span>; i &lt;= n; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>, &amp;w[i]);</span><br><span class="line">        <span class="keyword">if</span> (w[i] &gt; m)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="built_in">puts</span>(<span class="string">&quot;-1&quot;</span>);</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="type">int</span> hh = <span class="number">0</span>, tt = <span class="number">-1</span>;</span><br><span class="line">    LL sum = <span class="number">0</span>;</span><br><span class="line">    <span class="comment">// i 是滑动窗口的右端点 j 是左端点</span></span><br><span class="line">    <span class="comment">// 单调队列维护的是 a_max 的下标</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">1</span>, j = <span class="number">1</span>; i &lt;= n; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        sum += w[i];</span><br><span class="line">        <span class="keyword">while</span> (sum &gt; m)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="comment">// 减去滑动窗口的左端点</span></span><br><span class="line">            sum -= w[j++];</span><br><span class="line">            <span class="keyword">if</span> (hh &lt;= tt &amp;&amp; q[hh] &lt; j)</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="keyword">if</span> (hh &lt; tt)</span><br><span class="line">                    <span class="built_in">remove</span>(f[q[hh]] + w[q[hh] + <span class="number">1</span>]);</span><br><span class="line">                hh++;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">while</span> (hh &lt;= tt &amp;&amp; w[q[tt]] &lt;= w[i])</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span> (hh &lt; tt)</span><br><span class="line">                <span class="built_in">remove</span>(f[q[tt] - <span class="number">1</span>] + w[q[tt]]);</span><br><span class="line">            tt--;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        q[++tt] = i;</span><br><span class="line">        <span class="keyword">if</span> (hh &lt; tt)</span><br><span class="line">            S.<span class="built_in">insert</span>(f[q[tt] - <span class="number">1</span>] + w[q[tt]]);</span><br><span class="line">        f[i] = f[j - <span class="number">1</span>] + w[q[hh]];</span><br><span class="line">        <span class="keyword">if</span> (S.<span class="built_in">size</span>())</span><br><span class="line">            f[i] = <span class="built_in">min</span>(f[i], *S.<span class="built_in">begin</span>());</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;%lld\n&quot;</span>, f[n]);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><a href="https://leetcode.cn/problems/merge-k-sorted-lists/">LeetCode
+第 23 号问题: 合并 K 个排序链表</a></p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="comment">// struct ListNode</span></span><br><span class="line"><span class="comment">// &#123;</span></span><br><span class="line"><span class="comment">//     int val;                                </span></span><br><span class="line"><span class="comment">//     ListNode *next;                         </span></span><br><span class="line"><span class="comment">//     ListNode(int x) : val(x), next(NULL) &#123;&#125;</span></span><br><span class="line"><span class="comment">// &#125;;</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span></span><br><span class="line">&#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="keyword">struct</span> <span class="title class_">mycomp</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="function"><span class="type">bool</span> <span class="title">operator</span><span class="params">()</span><span class="params">(ListNode *a, ListNode *b)</span></span></span><br><span class="line"><span class="function">        </span>&#123;</span><br><span class="line">            <span class="keyword">return</span> a-&gt;val &gt; b-&gt;val;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;;</span><br><span class="line">    <span class="function">ListNode *<span class="title">mergeKLists</span><span class="params">(vector&lt;ListNode *&gt; &amp;lists)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        priority_queue&lt;ListNode *, vector&lt;ListNode *&gt;, mycomp&gt; queue;</span><br><span class="line">        <span class="keyword">for</span> (ListNode *head : lists)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span> (head)</span><br><span class="line">                queue.<span class="built_in">push</span>(head);</span><br><span class="line">        &#125;</span><br><span class="line">        ListNode *dummy = <span class="keyword">new</span> <span class="built_in">ListNode</span>(<span class="number">-1</span>);</span><br><span class="line">        ListNode *temp = dummy;</span><br><span class="line">        <span class="keyword">while</span> (!queue.<span class="built_in">empty</span>())</span><br><span class="line">        &#123;</span><br><span class="line">            ListNode *p = queue.<span class="built_in">top</span>();</span><br><span class="line">            queue.<span class="built_in">pop</span>();</span><br><span class="line">            <span class="keyword">if</span> (p-&gt;next)</span><br><span class="line">                queue.<span class="built_in">push</span>(p-&gt;next);</span><br><span class="line">            temp-&gt;next = p;</span><br><span class="line">            temp = temp-&gt;next;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> dummy-&gt;next;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p><a
+href="https://www.acwing.com/problem/content/description/1264/">鱼塘钓鱼</a></p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;queue&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="keyword">typedef</span> pair&lt;<span class="type">int</span>, <span class="type">int</span>&gt; PII;</span><br><span class="line"></span><br><span class="line"><span class="type">const</span> <span class="type">int</span> N = <span class="number">110</span>;</span><br><span class="line"><span class="type">int</span> a[N], d[N], s[N];</span><br><span class="line">priority_queue&lt;PII&gt; q;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">work</span><span class="params">(<span class="type">int</span> t)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="type">int</span> res = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">1</span>; i &lt;= t; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">auto</span> p = q.<span class="built_in">top</span>();</span><br><span class="line">        q.<span class="built_in">pop</span>();</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (p.first &lt;= <span class="number">0</span>)</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        res += p.first;</span><br><span class="line">        p.first -= p.second;</span><br><span class="line">        q.<span class="built_in">push</span>(p);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> res;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="type">int</span> n, T;</span><br><span class="line">    cin &gt;&gt; n;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">1</span>; i &lt;= n; i++)</span><br><span class="line">        cin &gt;&gt; a[i];</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">1</span>; i &lt;= n; i++)</span><br><span class="line">        cin &gt;&gt; d[i];</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">2</span>; i &lt;= n; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        cin &gt;&gt; s[i];</span><br><span class="line">        s[i] += s[i - <span class="number">1</span>];</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    cin &gt;&gt; T;</span><br><span class="line">    <span class="type">int</span> ans = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">1</span>; i &lt;= n &amp;&amp; s[i] &lt;= T; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> j = <span class="number">1</span>; j &lt;= i; j++)</span><br><span class="line">            q.<span class="built_in">push</span>(&#123;a[j], d[j]&#125;);</span><br><span class="line"></span><br><span class="line">        ans = <span class="built_in">max</span>(ans, <span class="built_in">work</span>(T - s[i]));</span><br><span class="line">    &#125;</span><br><span class="line">    cout &lt;&lt; ans &lt;&lt; endl;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 ]]></content>
       <categories>
         <category>算法</category>
       </categories>
       <tags>
         <tag>算法</tag>
+        <tag>排序</tag>
+        <tag>分治</tag>
+        <tag>多路归并</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>新冠生存手册</title>
+    <url>/2022/12/22/%E6%96%B0%E5%86%A0%E7%94%9F%E5%AD%98%E6%89%8B%E5%86%8C/</url>
+    <content><![CDATA[<p>感染新冠快成每日打卡项目了. 每天都能刷到同学感染的信息,
+"今天又发了39度的烧"——然而这并不是值得炫耀的一件事. 二阳化碳, 三阳开泰,
+四阳方尊, 五阳电动车, 六阳魁首, 七阳化二锰, 八阳化二硫, 九阳豆浆机
+如果能在全员感染的范围内存活下来, 那么你就是大赢.
+我不相信染病后没有后遗症, 就算苟我也要撑到群体免疫快结束的时候.
+提心吊胆地过着放开后的日子, 保持身处末世一般的警惕,
+做好保护自己生命的职责.</p>
+<p>更新: 12.28 阳了 估计是舍友交叉感染的 Q:
+有个一声不吭的舍友是怎样的一种感受? 被害惨了.</p>
+<span id="more"></span>
+<p><a href="https://zhuanlan.zhihu.com/p/579970078">知乎回答</a></p>
+<p>气溶胶传染主要是通过呼吸道, 病毒接触皮肤表面只要不接触口鼻眼,
+之后消毒或清洁就行</p>
+<h2 id="防护方式">防护方式</h2>
+<p>谨防交叉感染! 自己防护做全了,
+也要<strong>确保</strong>家里人/舍友能够执行.</p>
+<p>回答来源于<a
+href="https://www.zhihu.com/question/570483700/answer/2796072947">知乎</a>:</p>
+<p>下水道消毒: 加盖加水防止气溶胶产生</p>
+<p>衣服消毒: 衣用消毒剂 紫外线灯 酒精喷雾</p>
+<p>室外消毒: 消毒凝胶 酒精喷雾随身携带</p>
+<p>口罩: 能不摘就不摘 医用4小时一换 N95/FFP2一天一换+备用 不放在口袋
+不要吝啬</p>
+<p>吃饭: 明确堂食必G</p>
+<p>头发消毒: 洗头洗澡</p>
+<p>外出装备: N95戴+备用 塑料面罩(防疫人员戴的) 装有消毒液的小喷壶</p>
+<h3 id="戴口罩的误区">戴口罩的误区</h3>
+<p><a
+href="https://www.zhihu.com/question/573023186/answer/2814221461">知乎:为什么全国人民都佩戴N95口罩后，新冠病毒还能爆发式传播？</a></p>
+<h2 id="感染后的感觉">感染后的感觉</h2>
+<p>感染前一天晚上: 好热 不太好睡 喉咙好干 半夜爬下去喝水</p>
+<p>第一天: 早上高数考试 考完感觉人没啥力气 联想到舍友咳嗽的事情
+中午吃完饭就去校医院 测了体温38.3度 抗原检测一开始看不到T线
+过了几分钟看到浅浅的一条线 G了 开了退烧药和银黄颗粒
+回了一趟寝室叫室友去校医院治治咳嗽 但他好像已经阳康了😅
+下午开始就在床上度过了极为痛苦的一天 乏力 体温不均 晚上测了体温39度
+吃了退烧药 稍微好些 这一晚非常痛苦 一开始冷的睡不着 套上了几件衣服
+半夜又被热醒了</p>
+<p>第二天: 依然乏力 体温依然是39度 疯狂喝水 一天去了不知道多少次厕所
+吃了退烧药 今天比昨天好很多 但依然很难受 晚上买了饭 结果一口也吃不下去
+鸡蛋是苦的 萝卜是苦的 啥都是苦的 10块钱浪费了 这一天解决了论文框架</p>
+<p>第三天: 今天退烧了 开始有能力在电脑前产出了 今天把论文写完了
+但喉咙巨难受 所谓的口吞刀片 腊八 吃了免费的腊八粥 晚饭吃原汤抄手
+事实上这几天只适合吃这些</p>
+<p>第四天: 今天也没发烧 但喉咙依然很痛 胃口已经要比前几天好了
+生产力基本恢复正常 今天ddl 改完论文提交了 该接着复习考试了</p>
+<p>第五天开始: 基本上正常 除了喉咙痛 吃不了辣 基本上啥都能干了</p>
+]]></content>
+      <categories>
+        <category>杂谈</category>
+      </categories>
+      <tags>
+        <tag>杂谈</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>保研, 相亲, 找工作——背后的稳定匹配问题</title>
+    <url>/2023/02/06/%E7%A8%B3%E5%AE%9A%E5%8C%B9%E9%85%8D%E9%97%AE%E9%A2%98%E5%8F%8AGale-Shapley%E7%AE%97%E6%B3%95/</url>
+    <content><![CDATA[<p><strong>稳定匹配问题</strong>(Stable Matching Problem)最早出自 D.Gale
+和 L.S.Sharpley
+1962年发表在美国数学月刊上的一篇关于<em>大学录取和婚姻稳定</em>的文章<a
+href="#fn1" class="footnote-ref" id="fnref1"
+role="doc-noteref"><sup>1</sup></a>. 解决这个问题的算法出奇地简单,
+甚至是<strong>自我执行</strong>(self-forcing)的——换言之,
+不需要系统的调度, 就能获得令人满意的结果!</p>
+<p>本文重点陈述算法的正确性——作为离散数学中<em>逻辑命题与证明</em>的简单应用.</p>
+<span id="more"></span>
+<h2 id="问题描述">问题描述</h2>
+<p>问题描述: 考虑你经营一家雇佣系统, 任务将 <span
+class="math inline">\(n\)</span> 个职位和 <span
+class="math inline">\(n\)</span> 名候选人匹配起来. 每项工作对 <span
+class="math inline">\(n\)</span> 名候选人有一排序的倾向表,
+每位候选人也有类似的表.</p>
+<p>例如, 考虑 <span class="math inline">\(n=3\)</span>, 为简化,
+我们假设候选人为 A, B, C, 岗位为 1, 2, 3. 对于 A, 他的倾向表为 2, 1, 3,
+表示最希望分配到2, 1次之, 3最后. 同样的, 岗位1选人的倾向表为 A, C, B,
+表示最希望招到 A, C次之, B最后.</p>
+<p>我们的目标是: 最大化总满足度, 最大化每个人的第一选择,
+以及减少倾向排名的差距</p>
+<p>Gale-Shapley 算法 (a.k.a. The Propose-and-Reject Algorithm)</p>
+<p>对于每一天:</p>
+<ul>
+<li>每个职位向它列表上最希望的候选人发offer.</li>
+<li>每个候选人都可以拒绝非自己最期望的offer.
+已得的offer会置于一个string上.</li>
+<li>被拒绝的职位会在表上划去拒绝人的名字.</li>
+</ul>
+<p>当每个人都拿到offer的时候, 程序停止.</p>
+<figure>
+<img src="/images/anim1.gif" alt="例子" />
+<figcaption aria-hidden="true">例子</figcaption>
+</figure>
+<h2 id="before-符号定义">Before: 符号定义</h2>
+<p><strong>定义 1</strong> 包含 <span class="math inline">\(n\)</span>
+对 pair 的不交集, 称为<strong>匹配</strong> <span
+class="math inline">\(S\)</span>.</p>
+<p>例如: <span class="math inline">\(S = \{(1, A), (2, B), (3,
+C)\}\)</span> 就是一个包含 <span class="math inline">\(3\)</span> 对
+pair 的匹配.</p>
+<p><strong>定义 2</strong> 如果 <span class="math inline">\(b\)</span>
+比起 <span class="math inline">\(g\)</span> 更喜欢 <span
+class="math inline">\(g^{*}\)</span>, 记 <span
+class="math inline">\(g^{*} &gt; g\)</span>. 特别地, 如果 <span
+class="math inline">\(b\)</span> 认为 <span
+class="math inline">\(g^{*}\)</span> 至少和 <span
+class="math inline">\(g\)</span> 一样好, 记 <span
+class="math inline">\(g^{*} \geqslant g\)</span>, 当且仅当 <span
+class="math inline">\(g^{*} = g\)</span> 取等.</p>
+<p><strong>定义 3</strong> 对于匹配 <span
+class="math inline">\(S\)</span> 中的元素 <span class="math inline">\(b,
+g^{*}\)</span>: 如果 <span class="math inline">\(b, g^{*}\)</span>
+是比当前 partner 更优的一对, 则称 <span class="math inline">\(b,
+g^{*}\)</span> 为一对<strong>rouge couple</strong>.</p>
+<p>例如: 假设对 <span class="math inline">\(1\)</span> 有 <span
+class="math inline">\(C&gt;B\)</span>, <span
+class="math inline">\(C\)</span> 认为 <span
+class="math inline">\(1&gt;2\)</span>, 那么匹配 <span
+class="math inline">\(S = \{(1, B), (2, C)\}\)</span> 中存在 rouge
+couple <span class="math inline">\(1, C\)</span>.</p>
+<p><strong>定义 4</strong> 不存在 rouge couple 的匹配 <span
+class="math inline">\(S\)</span> 称为<strong>稳定匹配</strong>.
+否则则为不稳定匹配.</p>
+<p>在上面的例子中: 因为 <span class="math inline">\(1\)</span> 可以追求
+<span class="math inline">\(C\)</span>, 同时 <span
+class="math inline">\(C\)</span> 也会欣然接受 <span
+class="math inline">\(1\)</span>, <span
+class="math inline">\((1,B)\)</span> 及 <span
+class="math inline">\((2,C)\)</span> 都有决裂的可能, 因此 <span
+class="math inline">\(S\)</span> 是一个不稳定匹配.</p>
+<h2 id="证明">证明</h2>
+<h3 id="总能停下">总能停下</h3>
+<p><strong>引理 1</strong> 算法总能停下.</p>
+<p><strong>证明</strong> 算法尚未停止时,
+每一天结束至少有一家公司将应聘者的人名从列表上划去. 因为列表有 <span
+class="math inline">\(n\)</span> 份, 每份上有 <span
+class="math inline">\(n\)</span> 个元素, 因此算法至多在 <span
+class="math inline">\(n^2\)</span> 的迭代(天)下终止.</p>
+<h3 id="进步引理">进步引理</h3>
+<p><strong>引理 2</strong> 对于第 <span class="math inline">\(t\)</span>
+天, 候选人 <span class="math inline">\(g\)</span> 手上有职位 <span
+class="math inline">\(b\)</span>, 那么第 <span
+class="math inline">\(t&#39;\)</span> 天结束, 他手上的 <span
+class="math inline">\(\forall b&#39;\)</span> 至少和 <span
+class="math inline">\(b\)</span> 一样好, 其中 <span
+class="math inline">\(t&#39; &gt; t\)</span>.</p>
+<p><strong>证明</strong> 我们对天数 <span
+class="math inline">\(i\geqslant k\)</span> 归纳.</p>
+<p>当 <span class="math inline">\(i = k\)</span>, <span
+class="math inline">\(C\)</span> <em>可以</em>收到至少一份offer(来自
+<span class="math inline">\(J\)</span>). 在第 <span
+class="math inline">\(k\)</span> 天结束, <span
+class="math inline">\(C\)</span> 手上至少会有 <span
+class="math inline">\(J\)</span> 或者比 <span
+class="math inline">\(J\)</span> 更好的offer(他可以自行选择).</p>
+<p>对于 <span class="math inline">\(\forall i \geqslant k\)</span>
+的情况, 假设命题成立, 只需归纳证明对 <span
+class="math inline">\(i+1\)</span> 命题同样成立.</p>
+<p>根据我们的假设, 第 <span class="math inline">\(i\)</span> 天 <span
+class="math inline">\(C\)</span> 获得了 <span
+class="math inline">\(J&#39;\geqslant J\)</span>, 根据算法, <span
+class="math inline">\(J&#39;\)</span> 在第 <span
+class="math inline">\(i+1\)</span> 天依然会向 <span
+class="math inline">\(C\)</span> 给出offer(因为 <span
+class="math inline">\(C\)</span> 在第 <span
+class="math inline">\(i\)</span> 天没理由拒绝或者 <span
+class="math inline">\(J&#39;\)</span> 凭空消失). 因此当第 <span
+class="math inline">\(i+1\)</span> 天结束, <span
+class="math inline">\(C\)</span> 手上要么是 <span
+class="math inline">\(J&#39;\)</span>, 要么是比 <span
+class="math inline">\(J&#39;\)</span> 更好的offer; 两种情况都 <span
+class="math inline">\(\geqslant J\)</span>, 因此结论对第 <span
+class="math inline">\(i+1\)</span> 天成立.</p>
+<h3 id="正确性">正确性</h3>
+<p><strong>引理 3</strong> Gale-Sharpley算法得出的匹配不存在rouge
+couple.</p>
+<p><strong>证明</strong> 反证法. 假设存在 <span
+class="math inline">\((b,g^{*})\)</span>, 且当前匹配为 <span
+class="math inline">\((b,g),(b^{*},g^{*})\)</span>. <span
+class="math inline">\(b\)</span> 比起 <span
+class="math inline">\(g\)</span> 更喜欢 <span
+class="math inline">\(g*\)</span>, 在给 <span
+class="math inline">\(g\)</span> 发出offer之前先给 <span
+class="math inline">\(g^{*}\)</span> 发出了offer, 而 <span
+class="math inline">\(g^{*}\)</span> 拒绝了 <span
+class="math inline">\(b\)</span>, 由引理 2, 知 <span
+class="math inline">\(g^{*}\)</span> 比起 <span
+class="math inline">\(b^{*}\)</span> 更喜欢 <span
+class="math inline">\(b\)</span>, 与条件矛盾.</p>
+<p><strong>定理 1</strong> Gale-Sharpley 算法是一种稳定的匹配算法.</p>
+<p><strong>证明</strong> 由引理 1 和引理 3 可知其正确.</p>
+<h3 id="最优性-对谁更有利">最优性: 对谁更有利?</h3>
+<p><strong>定义 5</strong> 如果 <span class="math inline">\(x\)</span>
+的 partner 在任何稳定匹配下皆为它的最佳 partner, 称匹配为 <span
+class="math inline">\(x\)</span> 最优的.</p>
+<p>同样可以给出 <span class="math inline">\(x\)</span> 最劣的定义.</p>
+<p><strong>定义 6</strong> 如果对全部工作/候选人 <span
+class="math inline">\(x\)</span> 都是 <span
+class="math inline">\(x\)</span> 最优的, 称匹配为工作/候选人最优.</p>
+<p>例子: A:1,2 B:2,1 1:A,B 2:A,B</p>
+<p>S: (A,1) (B,2) T: (A,2) (B,1)</p>
+<p>S, T 都是稳定的. 但 S 是对 A,B 最优, T 对 1,2 最优.</p>
+<p><strong>定理 2</strong> Gale-Sharpley算法是工作最优匹配.</p>
+<p><strong>证明</strong> 假设匹配对工作不是最优的: 存在 <span
+class="math inline">\(b\)</span> 得不到最优候选人 <span
+class="math inline">\(g\)</span>. 存在稳定匹配 <span
+class="math inline">\(S\)</span> 存在 <span
+class="math inline">\((b,g)\)</span> 匹配. 令 <span
+class="math inline">\(t\)</span> 为 <span
+class="math inline">\(b\)</span> 被 <span
+class="math inline">\(g\)</span> 拒绝的第一天, 那么在第 <span
+class="math inline">\(t\)</span> 日有 <span
+class="math inline">\(b^{*}\)</span> 与 <span
+class="math inline">\(g\)</span> 匹配, 也就意味着 <span
+class="math inline">\(g\)</span> 比起 <span
+class="math inline">\(b\)</span> 更喜欢 <span
+class="math inline">\(b^{*}\)</span>. <span
+class="math inline">\(b^{*}\)</span> 至少也会将 <span
+class="math inline">\(g\)</span> 作为它的最优候选人看待, 也就推出了"
+<span class="math inline">\(b^{*}\)</span> 比起他在 <span
+class="math inline">\(S\)</span> 中的 partner <span
+class="math inline">\(g^{*}\)</span> 更喜欢 <span
+class="math inline">\(g\)</span> "的结论, 而 <span
+class="math inline">\(b,g^{*}\)</span> 是一对rogue couple, 也即 <span
+class="math inline">\(S\)</span> 是不稳定的, 也就发生了矛盾.</p>
+<h2 id="后记">后记</h2>
+<p>TODO List:</p>
+<ul>
+<li>Talk is cheap, show me the code!
+<ul>
+<li>哪天写一个示例程序</li>
+</ul></li>
+<li>可读性很烂, 加上纯数更难理解了.
+<ul>
+<li>哪天重构下段落和语句</li>
+</ul></li>
+<li>想把证明方法背后的数学原理介绍给各位
+<ul>
+<li>例如反证法在数理逻辑上为什么是正确的</li>
+</ul></li>
+<li>现在还只停留在介绍的阶段.
+<ul>
+<li>推荐读物里有本书, 哪天有空去找找看, 提取一些有意思的内容</li>
+<li>多些深度和应用</li>
+</ul></li>
+</ul>
+<h2 id="拓展阅读">拓展阅读</h2>
+<p>[1]. <a href="https://www.eecs70.org/assets/pdf/notes/n4.pdf">UCB
+CS70 Note 4: Stable Matching Problem</a></p>
+<p>[2]. D. Gale and L.S. Shapley, “College Admissions and the Stability
+of Marriage,” <em>American Mathematical Monthly</em> <strong>69</strong>
+(1962), pp. 9–14.</p>
+<p>[3]. D. Gusfield and R.W. Irving, <em>The Stable Marriage Problem:
+Structure and Algorithms</em>, MIT Press, 1989.</p>
+<section id="footnotes" class="footnotes footnotes-end-of-document"
+role="doc-endnotes">
+<hr />
+<ol>
+<li id="fn1"><p>Matching领域的开山文章, 算法分析的伟大成就之一, 顺带一提
+Sharpley 也是<a
+href="https://news.yahoo.com/2-americans-win-nobel-economics-prize-111239568--finance.html">2012年诺贝尔经济学奖</a>的得主.
+题外话: 在文章的最后, 作者提到希望借此文章改变大众对数学/数学家的认知:
+我们真的不是只懂"一堆公式", 不说人话的家伙;
+还希望数学老师也能启发启发学生 :)<a href="#fnref1" class="footnote-back"
+role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section>
+]]></content>
+      <categories>
+        <category>算法</category>
+      </categories>
+      <tags>
+        <tag>算法</tag>
+        <tag>离散数学</tag>
       </tags>
   </entry>
   <entry>
@@ -1700,7 +1662,7 @@ class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>.
 <h3 id="trie树字典树">Trie树(字典树)</h3>
 <p>高效存储字符串及查找.</p>
 <figure>
-<img src="/images/Trie1.png" alt="Trie1" />
+<img src="/images/trie1.png" alt="Trie1" />
 <figcaption aria-hidden="true">Trie1</figcaption>
 </figure>
 <p>每个节点存放它的编号.</p>
@@ -1889,6 +1851,161 @@ class="footnote-back" role="doc-backlink">↩︎</a></p></li>
       </tags>
   </entry>
   <entry>
+    <title>综合算法题</title>
+    <url>/2023/03/04/%E7%BB%BC%E5%90%88%E7%AE%97%E6%B3%95%E9%A2%98/</url>
+    <content><![CDATA[<p>收录一些平时做的比较综合的题目. 考察的知识点不止一点,
+各种优化方式简直使出毕生所学.</p>
+<p>大概是蓝桥杯国赛, ACM银, 提高组以上难度, 是比赛你不会轻易去碰的题目,
+讲解起来也是额外麻烦. 虽然说比赛能保证签到题全对就已经很了不起了,
+但这种题目就像高考数学的压轴题, 还是要有所接触才能有所突破嘛.</p>
+<span id="more"></span>
+<h2 id="裁剪序列">裁剪序列</h2>
+<h3 id="题目">题目</h3>
+<p>导航: <a
+href="https://www.acwing.com/problem/content/description/301/">AcWing
+299. 裁剪序列</a></p>
+<h4 id="题目描述">题目描述</h4>
+<p>给定一个长度为 <span class="math inline">\(N\)</span> 的序列 <span
+class="math inline">\(A\)</span>，要求把该序列分成若干段，在满足“每段中所有数的和”不超过
+<span class="math inline">\(M\)</span>
+的前提下，让“每段中所有数的最大值”之和最小。</p>
+<p>试计算这个最小值.</p>
+<h4 id="输入格式">输入格式</h4>
+<p>第一行包含两个整数 <span class="math inline">\(N\)</span> 和 <span
+class="math inline">\(M\)</span>.</p>
+<p>第二行包含 <span class="math inline">\(N\)</span>
+个整数，表示完整的序列 <span class="math inline">\(A\)</span>.</p>
+<h4 id="输出格式">输出格式</h4>
+<p>输出一个整数，表示结果。</p>
+<p>如果结果不存在，则输出-1。</p>
+<h4 id="数据范围">数据范围</h4>
+<p><span class="math display">\[0 \leqslant N \leqslant
+10^5\]</span></p>
+<p><span class="math display">\[0 \leqslant M \leqslant
+10^{11}\]</span></p>
+<p>序列 <span class="math inline">\(A\)</span> 中的数非负, 且不超过
+<span class="math inline">\(10^6\)</span>.</p>
+<p>输入样例:</p>
+<figure class="highlight txt"><table><tr><td class="code"><pre><span class="line">8 17</span><br><span class="line">2 2 2 8 1 8 2 1</span><br></pre></td></tr></table></figure>
+<p>输出样例:</p>
+<figure class="highlight txt"><table><tr><td class="code"><pre><span class="line">12</span><br></pre></td></tr></table></figure>
+<p>样例解释:</p>
+<figure>
+<img src="/images/pic6.png" alt="样例解释" />
+<figcaption aria-hidden="true">样例解释</figcaption>
+</figure>
+<p>按照如此分组, 第一组中的最大值为2, 第二组中的最大值为8,
+第三组的最大值为2, 总和 2+8+2=12, 为最小值.</p>
+<h3 id="题解">题解</h3>
+<p>TAG: DP 双指针 贪心 单调队列 堆 STL Multiset</p>
+<h4 id="朴素dp">朴素DP</h4>
+<p>本题可以考虑区间DP的处理方式:</p>
+<ul>
+<li>状态表示:
+<ul>
+<li>集合: <code>f[i]</code> 表示前 <code>i</code>
+个数中所有的划分区间中的最大值之和.</li>
+<li>状态: <code>min</code></li>
+</ul></li>
+<li>状态计算:
+<ul>
+<li>划分区间: <code>1~j</code> 和 <code>j+1~i</code>
+<ul>
+<li><code>1~j</code> 不管</li>
+<li>第二段的和要不超过 <code>M</code></li>
+</ul></li>
+<li>前一段区间很好表示: <code>f[j]</code></li>
+<li>后一段区间: 是 <code>j+1~i</code> 这一段区间上的最大值</li>
+<li><code>f[i] = min(f[j] + max A[k]), k in [j+1, i]</code></li>
+<li><code>f[n]</code> 就是答案.</li>
+</ul></li>
+</ul>
+<figure>
+<img src="/images/pic8.png" alt="模拟样例" />
+<figcaption aria-hidden="true">模拟样例</figcaption>
+</figure>
+<p>例如 <code>i = 6</code>, 可能的分组有 <code>2 2 2 8 1</code>
+<code>8</code>, <code>2 2 2 8</code> <code>1 8</code>,
+<code>2 2 2</code> <code>8 1 8</code>...而 <code>f[i]</code>
+是这些方案中的最小值, 也即 <code>2 2 2</code> <code>8 1 8</code>
+分组下的 <code>10</code>.</p>
+<p>枚举 <code>i</code>, 再枚举 <code>j</code>, 还要枚举
+<code>j+1~i</code> 这段上的 <code>k</code>, 这种方法的时间复杂度是
+<code>O(n^3)</code>. 必定会TLE. 所以得考虑优化.
+如果想不出优化方式过几个数据就作罢.</p>
+<p>注: 在进一步优化之前请务必理解DP计算的正确性.</p>
+<h4 id="优化">优化</h4>
+<p><code>j</code> 可以从小到大枚举, 开一个变量就可以存最大的
+<code>a[k]</code>, 这样复杂度能压到 <code>O(n^2)</code>. 但还是会
+TLE.</p>
+<p><strong>定理 1</strong> 如果 <code>j</code> 能够成为
+<code>f[i]</code> 的唯一最优解, 那么 <code>j</code>
+必须满足以下条件之一:</p>
+<ul>
+<li><code>A[j] = max(A[j], A[j+1], ..., A[i])</code></li>
+<li><code>A[j] + ... + A[i] &gt; M</code> 且
+<code>A[j+1] + ... + A[i] &lt;= M</code></li>
+</ul>
+<p><strong>证明</strong> 考虑反证法. 假设 <span
+class="math inline">\(j\)</span> 上述两个条件都不满足. 对于决策
+<code>j-1</code>:</p>
+<ul>
+<li><code>A[j] + ... + A[i] &lt;= M</code>, 考虑两种情况:
+<ol type="1">
+<li><code>A[j-1] + ... + A[i] &gt; M</code>, 此时 <code>j-1</code>
+满足上述条件之一.</li>
+<li><code>A[j-1] + ... + A[i] &lt;= M</code>:</li>
+</ol>
+<ul>
+<li><code>f[i]</code> 单调递增.</li>
+<li>同时 <code>A[j]</code> 不是 <code>A[j...i]</code> 中的最大值.
+<ul>
+<li>那么
+<code>f[j-1] + max A[j...i] &lt;= f[j] + max A[j+1...i]</code></li>
+</ul></li>
+</ul></li>
+<li><code>j-1</code> 是一个优于 <code>j</code> 或和 <code>j</code>
+一样优的方案.</li>
+</ul>
+<p>由假设可知不成立. 因此 <code>j</code> 必须满足上面条件之一. <span
+class="math inline">\(\Box\)</span></p>
+<p>那么我们的问题就转换为: 对于一个 <code>i</code>,
+找到一个满足上述条件的 <code>j</code>, 且 <code>j</code> 距离
+<code>i</code> 最远. <code>i</code> 和 <code>j</code> 是随同变化的,
+用双指针就可以压到一维.</p>
+<p>不过使用双指针之前还要验证单调性, 也就是移动 <code>i</code>,
+<code>j</code> 也会相应向后移动(无回溯). 不过这不是什么大的问题,
+我们给出一个简单的证明:</p>
+<p><strong>定理 2</strong> <code>j</code> 在 <code>i</code>
+变大的过程中同步增大.</p>
+<p><strong>证明</strong> 考虑反证法: 如果 <code>i</code> 移动到
+<code>i'</code> 而 <code>j</code> 不往后移动, 因为 <code>j</code> 是满足
+<code>A[j+1] + ... + A[i] &lt;= M</code> 最小的一个点, 必然有
+<code>A[j+1] + ... + A[i'] &gt; M</code> 不满足条件, 因此 <code>j</code>
+必须往后移动, 即 <code>j' &gt; j</code>. <span
+class="math inline">\(\Box\)</span></p>
+<p>有了这一点, 我们又得到一个性质: <code>[j, i]</code>
+这段区间实际上是一个<strong>滑动区间</strong>, 尽管长度不定,
+但最主要的是, <code>i</code> 和 <code>j</code> 都是单调的. 并且,
+我们实现的核心,
+是在这个区间内寻找<strong>区间最值</strong>——本质上这就是一个单调队列!
+也即, 我们可以用一个单调队列来维护滑动窗口中出现的最大值,
+并使得这段区间的总和小于 <code>m</code>.</p>
+<p>同时我们需要维护一个方案的集合, 使得集合能够动态求最小值, 添加一个数,
+删除一个数(头节点和尾节点). 你可能会想到使用堆存储,
+但堆不太方便同时存储头节点和尾节点, 最好用一个平衡树来维护,
+C++STL里可以用 <code>multiset</code>.</p>
+<h4 id="代码">代码</h4>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="keyword">typedef</span> <span class="type">long</span> <span class="type">long</span> LL;</span><br><span class="line"></span><br><span class="line"><span class="type">const</span> <span class="type">int</span> N = <span class="number">100010</span>;</span><br><span class="line"></span><br><span class="line"><span class="type">int</span> n;</span><br><span class="line">LL m;</span><br><span class="line"><span class="type">int</span> w[N], q[N];</span><br><span class="line">LL f[N];</span><br><span class="line">multiset&lt;LL&gt; S;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 不用 S.remove 是因为他会把所有的 x 全删掉</span></span><br><span class="line"><span class="comment">// 我们只要删去重复的一个即可</span></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">remove</span><span class="params">(LL x)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">auto</span> it = S.<span class="built_in">find</span>(x);</span><br><span class="line">    S.<span class="built_in">erase</span>(it);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">&quot;%d%lld&quot;</span>, &amp;n, &amp;m);</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">1</span>; i &lt;= n; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>, &amp;w[i]);</span><br><span class="line">        <span class="keyword">if</span> (w[i] &gt; m)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="built_in">puts</span>(<span class="string">&quot;-1&quot;</span>);</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="type">int</span> hh = <span class="number">0</span>, tt = <span class="number">-1</span>;</span><br><span class="line">    LL sum = <span class="number">0</span>;</span><br><span class="line">    <span class="comment">// i 是滑动窗口的右端点 j 是左端点</span></span><br><span class="line">    <span class="comment">// 单调队列维护的是 a_max 的下标</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">1</span>, j = <span class="number">1</span>; i &lt;= n; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        sum += w[i];</span><br><span class="line">        <span class="keyword">while</span> (sum &gt; m)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="comment">// 减去滑动窗口的左端点</span></span><br><span class="line">            sum -= w[j++];</span><br><span class="line">            <span class="keyword">if</span> (hh &lt;= tt &amp;&amp; q[hh] &lt; j)</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="keyword">if</span> (hh &lt; tt)</span><br><span class="line">                    <span class="built_in">remove</span>(f[q[hh]] + w[q[hh] + <span class="number">1</span>]);</span><br><span class="line">                hh++;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">while</span> (hh &lt;= tt &amp;&amp; w[q[tt]] &lt;= w[i])</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span> (hh &lt; tt)</span><br><span class="line">                <span class="built_in">remove</span>(f[q[tt] - <span class="number">1</span>] + w[q[tt]]);</span><br><span class="line">            tt--;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        q[++tt] = i;</span><br><span class="line">        <span class="keyword">if</span> (hh &lt; tt)</span><br><span class="line">            S.<span class="built_in">insert</span>(f[q[tt] - <span class="number">1</span>] + w[q[tt]]);</span><br><span class="line">        f[i] = f[j - <span class="number">1</span>] + w[q[hh]];</span><br><span class="line">        <span class="keyword">if</span> (S.<span class="built_in">size</span>())</span><br><span class="line">            f[i] = <span class="built_in">min</span>(f[i], *S.<span class="built_in">begin</span>());</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;%lld\n&quot;</span>, f[n]);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>算法</category>
+      </categories>
+      <tags>
+        <tag>算法</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>随感录</title>
     <url>/2023/01/28/%E9%9A%8F%E6%84%9F%E5%BD%95/</url>
     <content><![CDATA[<p>记录不时的奇思妙想. 奇怪的梦, 无垠的呓语, 似非的感悟.
@@ -1903,6 +2020,8 @@ class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 不懂原理最后的结果就是实战一团糟.</p>
 <p>呆在家里越久, 越容易恋家. 保证自己的独立性.</p>
 <p>只有你亲妈才能秒发现你今天毛衣穿反了.</p>
+<p>中国邮政一生黑. 寄个信用卡寄回老家去了,
+一看地址是四川省成都市的浙江省, 你在干什么.</p>
 <p>代码出现了四层嵌套, 要么这个算法出现了三层循环你优化不了,
 要么就是代码的抽象逻辑太烂, 总之——u suck.</p>
 <h2 id="绮梦-一">绮梦 (一)</h2>

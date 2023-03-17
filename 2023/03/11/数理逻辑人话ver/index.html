@@ -27,7 +27,7 @@
 <meta property="og:description" content="为了严谨性以及交流方便, 我们需要术语来描述问题: 这很好, 某些问题数学语言胜千言——但由terminology组成的句子经常会让人不知所云. 尤其对于数理逻辑, 因为是翻译文字所以句子看起来就更糟心了. 想要明白问题的核心要义, 非得二次翻译不可, 但最后描述的事情却是显而易见的.  It is not what you read, but how you read it.——Ri">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2023-03-11T03:09:39.000Z">
-<meta property="article:modified_time" content="2023-03-11T04:12:32.166Z">
+<meta property="article:modified_time" content="2023-03-17T14:40:56.804Z">
 <meta property="article:author" content="Besthope">
 <meta property="article:tag" content="离散数学">
 <meta property="article:tag" content="数理逻辑">
@@ -131,7 +131,7 @@
   
   <aside class="sidebar">
 
-    <div class="sidebar-inner sidebar-overview-active">
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
       <ul class="sidebar-nav">
         <li class="sidebar-nav-toc">
           文章目录
@@ -144,6 +144,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%91%BD%E9%A2%98%E9%80%BB%E8%BE%91"><span class="nav-number">1.</span> <span class="nav-text">命题逻辑</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%91%BD%E9%A2%98%E7%AC%A6%E5%8F%B7%E5%8C%96"><span class="nav-number">1.1.</span> <span class="nav-text">命题符号化</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%8F%A5%E5%AD%90%E5%8F%98%E7%AC%A6%E5%8F%B7"><span class="nav-number">1.1.1.</span> <span class="nav-text">句子变符号</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%81%94%E6%8E%A5%E8%AF%8D%E5%B0%B1%E6%98%AF%E8%BF%9E%E8%B5%B7%E6%9D%A5"><span class="nav-number">1.1.2.</span> <span class="nav-text">联接词就是连起来</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%B8%8D%E7%A1%AE%E5%AE%9A%E7%9A%84%E5%91%BD%E9%A2%98%E6%88%91%E9%9C%80%E8%A6%81%E8%A7%A3%E9%87%8A"><span class="nav-number">1.1.3.</span> <span class="nav-text">不确定的命题——我需要解释</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%91%BD%E9%A2%98%E5%85%AC%E5%BC%8F%E5%A4%AA%E5%A4%9A%E4%BA%86%E6%A0%87%E5%87%86%E5%8C%96"><span class="nav-number">1.2.</span> <span class="nav-text">命题公式太多了——标准化</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%8C%83%E5%BC%8F"><span class="nav-number">1.2.1.</span> <span class="nav-text">范式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%B8%BB%E8%8C%83%E5%BC%8F%E8%8C%83%E5%BC%8F%E8%BF%98%E4%B8%8D%E5%A4%9F%E7%94%A8"><span class="nav-number">1.2.2.</span> <span class="nav-text">主范式——范式还不够用</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9C%80%E7%BB%88%E4%BB%BB%E5%8A%A1-%E6%8E%A8%E7%90%86"><span class="nav-number">1.3.</span> <span class="nav-text">最终任务: 推理</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%87%8F%E8%AF%8D%E9%80%BB%E8%BE%91"><span class="nav-number">2.</span> <span class="nav-text">量词逻辑</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%91%BD%E9%A2%98%E9%9C%80%E8%A6%81%E8%8C%83%E5%9B%B4"><span class="nav-number">2.1.</span> <span class="nav-text">命题需要范围</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%89%80%E4%BB%A5%E6%88%91%E5%8F%AA%E6%98%AF%E4%BD%A0%E7%9A%84%E9%99%84%E5%BA%B8"><span class="nav-number">2.2.</span> <span class="nav-text">所以我只是你的附庸</span></a></li></ol></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -152,7 +153,7 @@
     <img class="site-author-image" itemprop="image" alt="Besthope"
       src="/images/bocchi.png">
   <p class="site-author-name" itemprop="name">Besthope</p>
-  <div class="site-description" itemprop="description">把好点子变现成实践</div>
+  <div class="site-description" itemprop="description">baka desu</div>
 </div>
 <div class="site-state-wrap animated">
   <nav class="site-state">
@@ -215,7 +216,7 @@
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="Besthope's Blog">
-      <meta itemprop="description" content="把好点子变现成实践">
+      <meta itemprop="description" content="baka desu">
     </span>
 
     <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
@@ -234,9 +235,15 @@
         <i class="far fa-calendar"></i>
       </span>
       <span class="post-meta-item-text">发表于</span>
-      
 
-      <time title="创建时间：2023-03-11 11:09:39 / 修改时间：12:12:32" itemprop="dateCreated datePublished" datetime="2023-03-11T11:09:39+08:00">2023-03-11</time>
+      <time title="创建时间：2023-03-11 11:09:39" itemprop="dateCreated datePublished" datetime="2023-03-11T11:09:39+08:00">2023-03-11</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2023-03-17 22:40:56" itemprop="dateModified" datetime="2023-03-17T22:40:56+08:00">2023-03-17</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -255,7 +262,7 @@
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">本文字数：</span>
-      <span>212</span>
+      <span>272</span>
     </span>
     <span class="post-meta-item" title="阅读时长">
       <span class="post-meta-item-icon">
@@ -285,9 +292,19 @@
 是愿意如背古诗一般去背定义——事实上这也足够你做题了——还是<em>真真正正地</em>去理解所描述的问题?
 以及, 为什么要这么定义?</p>
 <span id="more"></span>
-<p>命题逻辑</p>
-<p>脉络: 命题符号化 命题真值的判断 命题逻辑的推理</p>
-<p>TODO</p>
+<h2 id="命题逻辑">命题逻辑</h2>
+<p>考前TODO 先挖个坑</p>
+<h3 id="命题符号化">命题符号化</h3>
+<h4 id="句子变符号">句子变符号</h4>
+<h4 id="联接词就是连起来">联接词就是连起来</h4>
+<h4 id="不确定的命题我需要解释">不确定的命题——我需要解释</h4>
+<h3 id="命题公式太多了标准化">命题公式太多了——标准化</h3>
+<h4 id="范式">范式</h4>
+<h4 id="主范式范式还不够用">主范式——范式还不够用</h4>
+<h3 id="最终任务-推理">最终任务: 推理</h3>
+<h2 id="量词逻辑">量词逻辑</h2>
+<h3 id="命题需要范围">命题需要范围</h3>
+<h3 id="所以我只是你的附庸">所以我只是你的附庸</h3>
 
     </div>
 
@@ -343,14 +360,14 @@
       <i class="fa fa-chart-line"></i>
     </span>
       <span>站点总字数：</span>
-    <span title="站点总字数">23k</span>
+    <span title="站点总字数">24k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
       <span>站点阅读时长 &asymp;</span>
-    <span title="站点阅读时长">1:22</span>
+    <span title="站点阅读时长">1:26</span>
   </span>
 </div>
   <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/pisces/" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
@@ -405,7 +422,7 @@ function display()
     }
   }
 
-  const pic = 6;
+  const pic = 7;
   var bgs = [];
 
   for (i = 1; i <= pic; i++) {

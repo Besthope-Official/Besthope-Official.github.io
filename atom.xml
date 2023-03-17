@@ -6,7 +6,7 @@
   <link href="http://example.com/atom.xml" rel="self"/>
   
   <link href="http://example.com/"/>
-  <updated>2023-03-11T04:12:32.166Z</updated>
+  <updated>2023-03-17T14:40:56.804Z</updated>
   <id>http://example.com/</id>
   
   <author>
@@ -21,7 +21,7 @@
     <link href="http://example.com/2023/03/11/%E6%95%B0%E7%90%86%E9%80%BB%E8%BE%91%E4%BA%BA%E8%AF%9Dver/"/>
     <id>http://example.com/2023/03/11/%E6%95%B0%E7%90%86%E9%80%BB%E8%BE%91%E4%BA%BA%E8%AF%9Dver/</id>
     <published>2023-03-11T03:09:39.000Z</published>
-    <updated>2023-03-11T04:12:32.166Z</updated>
+    <updated>2023-03-17T14:40:56.804Z</updated>
     
     
     <summary type="html">&lt;p&gt;为了严谨性以及交流方便, 我们需要术语来描述问题: 这很好,
@@ -101,7 +101,7 @@ bash要怎么写. 有 os/sys 模块的存在完全可以把 Python
     <link href="http://example.com/2023/02/25/%E7%AE%80%E5%8D%95%E7%9A%84%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
     <id>http://example.com/2023/02/25/%E7%AE%80%E5%8D%95%E7%9A%84%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/</id>
     <published>2023-02-25T15:29:08.000Z</published>
-    <updated>2023-03-11T10:01:26.026Z</updated>
+    <updated>2023-03-13T10:21:02.481Z</updated>
     
     
     <summary type="html">&lt;p&gt;做一个数据结构的小小总结. 其实数据结构和算法是不分家的, 例如
@@ -126,11 +126,11 @@ class=&quot;footnote-ref&quot; id=&quot;fnref1&quot; role=&quot;doc-noteref&quot
   </entry>
   
   <entry>
-    <title>AI时代的算法学习指南</title>
-    <link href="http://example.com/2023/02/25/AI%E6%97%B6%E4%BB%A3%E7%9A%84%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0%E6%8C%87%E5%8D%97/"/>
-    <id>http://example.com/2023/02/25/AI%E6%97%B6%E4%BB%A3%E7%9A%84%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0%E6%8C%87%E5%8D%97/</id>
+    <title>AI时代的学习指南</title>
+    <link href="http://example.com/2023/02/25/AI%E6%97%B6%E4%BB%A3%E7%9A%84%E5%AD%A6%E4%B9%A0%E6%8C%87%E5%8D%97/"/>
+    <id>http://example.com/2023/02/25/AI%E6%97%B6%E4%BB%A3%E7%9A%84%E5%AD%A6%E4%B9%A0%E6%8C%87%E5%8D%97/</id>
     <published>2023-02-25T12:35:18.000Z</published>
-    <updated>2023-02-25T13:25:41.723Z</updated>
+    <updated>2023-03-17T14:39:29.965Z</updated>
     
     
     <summary type="html">&lt;p&gt;日常刷知乎, 然后看到了这样一个问题: &lt;a
@@ -140,8 +140,8 @@ ChatGPT 写作业，应该如何正确看待 AI 带来的利弊？&lt;/a&gt;&lt;
 无异于杯水车薪, 想想 Luddite movement 也不会真正让我们重回原始社会,
 闭关锁国的历史也不必再度经历; 至于使用工具是否会反噬自身,
 只要在不侵害他人的利益下, 我想这个自由最好让步于个人,
-想想你是怎么注册上了ChatGPT的账号. 最后, 这句话送给AI时代下学习算法,
-或者说, 学习一切的你和我:&lt;/p&gt;
+想想你是怎么注册上了ChatGPT的账号. 最后,
+这句话送给AI时代下学习一切的你和我:&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;拥抱变化要比拒绝变化简单的多.&lt;/p&gt;
 &lt;/blockquote&gt;</summary>
@@ -188,7 +188,7 @@ role=&quot;doc-noteref&quot;&gt;&lt;sup&gt;1&lt;/sup&gt;&lt;/a&gt;. 解决这个
     <link href="http://example.com/2023/01/28/%E9%9A%8F%E6%84%9F%E5%BD%95/"/>
     <id>http://example.com/2023/01/28/%E9%9A%8F%E6%84%9F%E5%BD%95/</id>
     <published>2023-01-28T14:41:17.000Z</published>
-    <updated>2023-03-12T08:39:02.653Z</updated>
+    <updated>2023-03-17T14:36:49.323Z</updated>
     
     
     <summary type="html">&lt;p&gt;记录不时的奇思妙想. 奇怪的梦, 无垠的呓语, 似非的感悟.
