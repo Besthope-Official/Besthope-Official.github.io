@@ -6,7 +6,7 @@
   <link href="http://example.com/atom.xml" rel="self"/>
   
   <link href="http://example.com/"/>
-  <updated>2023-03-17T14:40:56.804Z</updated>
+  <updated>2023-04-08T13:59:12.429Z</updated>
   <id>http://example.com/</id>
   
   <author>
@@ -15,6 +15,28 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>搭建一个tiny-docker</title>
+    <link href="http://example.com/2023/04/08/%E6%90%AD%E5%BB%BA%E4%B8%80%E4%B8%AAtiny-docker/"/>
+    <id>http://example.com/2023/04/08/%E6%90%AD%E5%BB%BA%E4%B8%80%E4%B8%AAtiny-docker/</id>
+    <published>2023-04-08T11:27:39.000Z</published>
+    <updated>2023-04-08T13:59:12.429Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;怎么理解Docker? 自己手搓一个.&lt;/p&gt;
+&lt;p&gt;这不是吹牛, 实际上核心技术就 Kernel 里的 Namespace 和 CGroup. 实现一个 tiny-docker, 对于了解 OS 也是大有裨益的!&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="小项目" scheme="http://example.com/categories/%E5%B0%8F%E9%A1%B9%E7%9B%AE/"/>
+    
+    
+    <category term="Linux系统编程" scheme="http://example.com/tags/Linux%E7%B3%BB%E7%BB%9F%E7%BC%96%E7%A8%8B/"/>
+    
+    <category term="Docker" scheme="http://example.com/tags/Docker/"/>
+    
+  </entry>
   
   <entry>
     <title>数理逻辑人话ver</title>
@@ -101,7 +123,7 @@ bash要怎么写. 有 os/sys 模块的存在完全可以把 Python
     <link href="http://example.com/2023/02/25/%E7%AE%80%E5%8D%95%E7%9A%84%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
     <id>http://example.com/2023/02/25/%E7%AE%80%E5%8D%95%E7%9A%84%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/</id>
     <published>2023-02-25T15:29:08.000Z</published>
-    <updated>2023-03-13T10:21:02.481Z</updated>
+    <updated>2023-04-05T06:16:44.548Z</updated>
     
     
     <summary type="html">&lt;p&gt;做一个数据结构的小小总结. 其实数据结构和算法是不分家的, 例如
@@ -130,7 +152,7 @@ class=&quot;footnote-ref&quot; id=&quot;fnref1&quot; role=&quot;doc-noteref&quot
     <link href="http://example.com/2023/02/25/AI%E6%97%B6%E4%BB%A3%E7%9A%84%E5%AD%A6%E4%B9%A0%E6%8C%87%E5%8D%97/"/>
     <id>http://example.com/2023/02/25/AI%E6%97%B6%E4%BB%A3%E7%9A%84%E5%AD%A6%E4%B9%A0%E6%8C%87%E5%8D%97/</id>
     <published>2023-02-25T12:35:18.000Z</published>
-    <updated>2023-03-17T14:39:29.965Z</updated>
+    <updated>2023-03-21T06:58:57.942Z</updated>
     
     
     <summary type="html">&lt;p&gt;日常刷知乎, 然后看到了这样一个问题: &lt;a
@@ -151,7 +173,11 @@ ChatGPT 写作业，应该如何正确看待 AI 带来的利弊？&lt;/a&gt;&lt;
     <category term="杂谈" scheme="http://example.com/categories/%E6%9D%82%E8%B0%88/"/>
     
     
-    <category term="杂谈 算法 学习经验" scheme="http://example.com/tags/%E6%9D%82%E8%B0%88-%E7%AE%97%E6%B3%95-%E5%AD%A6%E4%B9%A0%E7%BB%8F%E9%AA%8C/"/>
+    <category term="杂谈" scheme="http://example.com/tags/%E6%9D%82%E8%B0%88/"/>
+    
+    <category term="算法" scheme="http://example.com/tags/%E7%AE%97%E6%B3%95/"/>
+    
+    <category term="学习经验" scheme="http://example.com/tags/%E5%AD%A6%E4%B9%A0%E7%BB%8F%E9%AA%8C/"/>
     
   </entry>
   
@@ -188,7 +214,7 @@ role=&quot;doc-noteref&quot;&gt;&lt;sup&gt;1&lt;/sup&gt;&lt;/a&gt;. 解决这个
     <link href="http://example.com/2023/01/28/%E9%9A%8F%E6%84%9F%E5%BD%95/"/>
     <id>http://example.com/2023/01/28/%E9%9A%8F%E6%84%9F%E5%BD%95/</id>
     <published>2023-01-28T14:41:17.000Z</published>
-    <updated>2023-03-17T14:36:49.323Z</updated>
+    <updated>2023-04-05T11:31:52.330Z</updated>
     
     
     <summary type="html">&lt;p&gt;记录不时的奇思妙想. 奇怪的梦, 无垠的呓语, 似非的感悟.

@@ -29,8 +29,9 @@
 <meta property="og:image" content="http://example.com/images/pic7.png">
 <meta property="og:image" content="http://example.com/images/trie1.png">
 <meta property="og:image" content="http://example.com/images/disjoint-set.svg">
+<meta property="og:image" content="http://example.com/images/hashtable.svg">
 <meta property="article:published_time" content="2023-02-25T15:29:08.000Z">
-<meta property="article:modified_time" content="2023-03-13T10:21:02.481Z">
+<meta property="article:modified_time" content="2023-04-05T06:16:44.548Z">
 <meta property="article:author" content="Besthope">
 <meta property="article:tag" content="算法">
 <meta property="article:tag" content="数据结构">
@@ -148,7 +149,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%93%BE%E8%A1%A8"><span class="nav-number">1.</span> <span class="nav-text">链表</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8F%8C%E9%93%BE%E8%A1%A8"><span class="nav-number">1.1.</span> <span class="nav-text">双链表</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%A0%88"><span class="nav-number">2.</span> <span class="nav-text">栈</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8D%95%E8%B0%83%E6%A0%88"><span class="nav-number">2.1.</span> <span class="nav-text">单调栈</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%98%9F%E5%88%97"><span class="nav-number">3.</span> <span class="nav-text">队列</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8D%95%E8%B0%83%E9%98%9F%E5%88%97"><span class="nav-number">3.1.</span> <span class="nav-text">单调队列</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AD%97%E7%AC%A6%E4%B8%B2"><span class="nav-number">4.</span> <span class="nav-text">字符串</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#kmp"><span class="nav-number">4.1.</span> <span class="nav-text">KMP</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#trie%E6%A0%91%E5%AD%97%E5%85%B8%E6%A0%91"><span class="nav-number">4.2.</span> <span class="nav-text">Trie树(字典树)</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B9%B6%E6%9F%A5%E9%9B%86"><span class="nav-number">5.</span> <span class="nav-text">并查集</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9B%BE"><span class="nav-number">6.</span> <span class="nav-text">图</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BA%8C%E5%8F%89%E6%A0%91"><span class="nav-number">6.1.</span> <span class="nav-text">二叉树</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%A1%B6"><span class="nav-number">7.</span> <span class="nav-text">桶</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%93%88%E5%B8%8C%E8%A1%A8%E6%95%A3%E5%88%97%E8%A1%A8"><span class="nav-number">8.</span> <span class="nav-text">哈希表(散列表)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#std-%E5%BA%93%E7%9A%84%E5%93%88%E5%B8%8C%E8%A1%A8"><span class="nav-number">8.1.</span> <span class="nav-text">std 库的哈希表</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%93%88%E5%B8%8C"><span class="nav-number">8.2.</span> <span class="nav-text">字符串哈希</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%A0%86"><span class="nav-number">9.</span> <span class="nav-text">堆</span></a></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%93%BE%E8%A1%A8"><span class="nav-number">1.</span> <span class="nav-text">链表</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%9D%99%E6%80%81%E9%93%BE%E8%A1%A8"><span class="nav-number">1.1.</span> <span class="nav-text">静态链表</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8F%8C%E9%93%BE%E8%A1%A8"><span class="nav-number">1.2.</span> <span class="nav-text">双链表</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%A0%88"><span class="nav-number">2.</span> <span class="nav-text">栈</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8D%95%E8%B0%83%E6%A0%88"><span class="nav-number">2.1.</span> <span class="nav-text">单调栈</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%98%9F%E5%88%97"><span class="nav-number">3.</span> <span class="nav-text">队列</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8D%95%E8%B0%83%E9%98%9F%E5%88%97"><span class="nav-number">3.1.</span> <span class="nav-text">单调队列</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AD%97%E7%AC%A6%E4%B8%B2"><span class="nav-number">4.</span> <span class="nav-text">字符串</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#kmp"><span class="nav-number">4.1.</span> <span class="nav-text">KMP</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#trie%E6%A0%91%E5%AD%97%E5%85%B8%E6%A0%91"><span class="nav-number">4.2.</span> <span class="nav-text">Trie树(字典树)</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B9%B6%E6%9F%A5%E9%9B%86"><span class="nav-number">5.</span> <span class="nav-text">并查集</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9B%BE"><span class="nav-number">6.</span> <span class="nav-text">图</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BA%8C%E5%8F%89%E6%A0%91"><span class="nav-number">6.1.</span> <span class="nav-text">二叉树</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%A1%B6"><span class="nav-number">7.</span> <span class="nav-text">桶</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%93%88%E5%B8%8C%E8%A1%A8%E6%95%A3%E5%88%97%E8%A1%A8"><span class="nav-number">8.</span> <span class="nav-text">哈希表(散列表)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#std-%E5%BA%93%E7%9A%84%E5%93%88%E5%B8%8C%E8%A1%A8"><span class="nav-number">8.1.</span> <span class="nav-text">std 库的哈希表</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%93%88%E5%B8%8C"><span class="nav-number">8.2.</span> <span class="nav-text">字符串哈希</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%A0%86"><span class="nav-number">9.</span> <span class="nav-text">堆</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%A0%86%E5%AE%9E%E7%8E%B0"><span class="nav-number">9.1.</span> <span class="nav-text">堆实现</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#std-%E5%BA%93%E9%87%8C%E7%9A%84%E5%A0%86"><span class="nav-number">9.2.</span> <span class="nav-text">std 库里的堆</span></a></li></ol></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -163,16 +164,16 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">14</span>
+          <span class="site-state-item-count">15</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
-        <span class="site-state-item-count">6</span>
+        <span class="site-state-item-count">7</span>
         <span class="site-state-item-name">分类</span>
       </div>
       <div class="site-state-item site-state-tags">
-        <span class="site-state-item-count">21</span>
+        <span class="site-state-item-count">23</span>
         <span class="site-state-item-name">标签</span>
       </div>
   </nav>
@@ -247,7 +248,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2023-03-13 18:21:02" itemprop="dateModified" datetime="2023-03-13T18:21:02+08:00">2023-03-13</time>
+      <time title="修改时间：2023-04-05 14:16:44" itemprop="dateModified" datetime="2023-04-05T14:16:44+08:00">2023-04-05</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -266,14 +267,14 @@
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">本文字数：</span>
-      <span>3.9k</span>
+      <span>4.4k</span>
     </span>
     <span class="post-meta-item" title="阅读时长">
       <span class="post-meta-item-icon">
         <i class="far fa-clock"></i>
       </span>
       <span class="post-meta-item-text">阅读时长 &asymp;</span>
-      <span>14 分钟</span>
+      <span>16 分钟</span>
     </span>
 </div>
 
@@ -295,6 +296,7 @@ class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>.
 但我们也懂原理!</p>
 <span id="more"></span>
 <h2 id="链表">链表</h2>
+<h3 id="静态链表">静态链表</h3>
 <p>我们用数组模拟链表. 动态链表谁不会啊?</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">struct</span> <span class="title class_">Node</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="type">int</span> val;</span><br><span class="line">    Node *next;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">new</span> <span class="built_in">Node</span>(); <span class="comment">// TOO SLOW! 除非你用内存池优化</span></span><br></pre></td></tr></table></figure>
 <p>数组模拟单链表: 效率高 最大用处是<strong>邻接表</strong>
@@ -501,20 +503,43 @@ target="_blank" rel="noopener" href="https://www.acwing.com/problem/content/desc
 <li>桶排序</li>
 <li>计数器数组</li>
 </ul>
+<p>例如计算字符串中两个相同字符之间的距离, 可以这么写</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> cnt[N];</span><br><span class="line"><span class="built_in">memset</span>(cnt, <span class="number">-1</span>, <span class="keyword">sizeof</span> cnt);</span><br><span class="line"><span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt;= n; i++)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">if</span>(cnt[s[i]] != <span class="number">-1</span>)</span><br><span class="line">        cout &lt;&lt; s[i] - i &lt;&lt; endl;</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">        cnt[s[i]] = i;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h2 id="哈希表散列表">哈希表(散列表)</h2>
-<p>数据量 <code>N 0~1e9</code> 中的数字映射到 <code>0~1e5</code>
-通过一个哈希函数 <code>h(x)</code></p>
-<p>离散化是一种及其特殊的哈希(离散化是保序的)</p>
-<p>哈希函数怎么取?</p>
+<figure>
+<img src="/images/hashtable.svg" alt="哈希表" />
+<figcaption aria-hidden="true">哈希表</figcaption>
+</figure>
+<p>key-value 式的数据结构, 有 key 就能查询到 value, 实际上是一种映射.
+这个 key 可以是 <code>int</code>, <code>string</code>, 甚至结构体.
+可以把哈希表理解成一种高级的数组, 下标就是 key, key
+对应值在内存的位置.</p>
+<p>通过一个哈希函数 <code>h(x)</code> 假设我们用数组 <code>a</code>
+存放数据, 那么 <code>(key, value)</code> 就应该放在
+<code>a[h(key)]</code> 上.</p>
+<p>一个应用: 数据量 <code>N 0~1e9</code> 中的数字映射到
+<code>0~1e5</code> 哈希函数怎么取? <code>h(x) = x mod M</code>
+<code>M</code> 是一个大质数</p>
+<p><em>Remark</em>: 离散化是一种及其特殊的哈希(离散化是保序的)</p>
 <ul>
 <li><span class="math inline">\(x \bmod 10^5\)</span></li>
-<li>数据冲突就处理冲突
+<li>哈希冲突怎么办? (两个不同数据, 但哈希值相同)</li>
+<li>抽屉原理告诉我们这是不可避的.
 <ul>
-<li>拉链法: 储存当前槽上存储的数(类似邻接表)</li>
-<li>开放寻址法: (比喻: 上厕所)</li>
+<li>拉链法/开散列表(open hashing): 储存当前槽上存储的数(类似邻接表)
+<ul>
+<li>查询的时候扫描链表就行.</li>
+</ul></li>
+<li>开放寻址法/闭散列法: 如果插入数据的位置上已经有数据,
+就插入到下一个空余位置(比喻: 上厕所)
+<ul>
+<li>有线性探测, 二次探测, 双重散列(双哈希)等方法...</li>
+<li>OI 里一般用的是拉链法.</li>
+</ul></li>
 </ul></li>
 </ul>
 <p>实现操作: 比赛里(一般)只会有添加和查找两个操作</p>
+<p>MD5, SHA-1 背后原理都是 hash.</p>
 <h3 id="std-库的哈希表">std 库的哈希表</h3>
 <p><code>unordered_map</code> 或者 <code>unordered_set</code></p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">unordered_map&lt;<span class="type">int</span>,<span class="type">int</span>&gt; mp;</span><br><span class="line"><span class="comment">// 添加操作</span></span><br><span class="line">mp[x]++;</span><br><span class="line"><span class="comment">// 查询操作</span></span><br><span class="line"><span class="keyword">if</span>(mp[t] &gt; <span class="number">0</span>)</span><br><span class="line">    <span class="comment">// code</span></span><br></pre></td></tr></table></figure>
@@ -523,19 +548,30 @@ target="_blank" rel="noopener" href="https://www.acwing.com/problem/content/desc
 <p>比较重要的哈希方式 一些字符串问题不一定需要KMP 字符串前缀哈希法
 <code>h[i]</code> 表示前缀字符串对应的哈希值</p>
 <p>问题: 如何定义某一前缀字符串的哈希值?</p>
+<p>我们采用多项式 Hash 的方法.</p>
 <p>字符串P进制下的 "ABCD"-&gt; A B C D -&gt; 1 2 3 4 -&gt; 十进制数
 <span class="math inline">\(1\cdot p^3 + 2 \cdot p^2 + 3 \cdot p^1 + 4
 \cdot p^0\)</span> 最后对整个数取模 <span
 class="math inline">\(q\)</span> 字符串就映射到了 <code>0~q-1</code></p>
+<p>公式化: 对于一个长度 <span class="math inline">\(l\)</span> 的字符串
+<span class="math inline">\(s\)</span>, 那么它对应的哈希函数值为</p>
+<p><span class="math display">\[f(s) =
+\sum^{l}_{i=1}s[i]p^{l-i}\]</span></p>
 <p>不能映射成 0 (A 0 那么 AA 也是 0) 字符串的哈希方法不考虑冲突的情况
 经验值 <code>p = 131</code> 或 <code>p = 13331</code>
-<code>q = 2^64</code> 在一般情况假定不会出现冲突 用
-<code>unsigned long long</code> 可以省去
+<code>q = 2^64</code> 在一般情况假定不会出现冲突(冲突概率约为 <span
+class="math inline">\(|s|-1/q\)</span>)</p>
+<p>用 <code>unsigned long long</code> 可以省去
 <code>mod 2^64</code>(因为溢出就等同于取模, 见CSAPP Chapter 2)</p>
+<p>类似前缀和, 如果想求 <code>L</code> 到 <code>R</code> 这一段的hash,
+那么可以按照下面的方式</p>
 <p><span class="math display">\[h_R - h_{L-1} \cdot
 p^{R-L+1}\]</span></p>
-<p>表示 <code>L</code> 到 <code>R</code> 这一段的hash.</p>
+<p>你可以手动代入计算这个是否正确.</p>
+<p>应用: 字符串匹配.</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="keyword">typedef</span> <span class="type">unsigned</span> <span class="type">long</span> <span class="type">long</span> ULL;</span><br><span class="line"></span><br><span class="line"><span class="type">const</span> <span class="type">int</span> N = <span class="number">1e5</span> + <span class="number">5</span>, P = <span class="number">131</span>;</span><br><span class="line"><span class="type">int</span> n, m;</span><br><span class="line"><span class="type">char</span> str[N];</span><br><span class="line">ULL h[N], p[N];</span><br><span class="line"></span><br><span class="line"><span class="function">ULL <span class="title">get</span><span class="params">(<span class="type">int</span> l, <span class="type">int</span> r)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> h[r] - h[l - <span class="number">1</span>] * p[r - l + <span class="number">1</span>];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">signed</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    ios::<span class="built_in">sync_with_stdio</span>(<span class="literal">false</span>);</span><br><span class="line">    cin.<span class="built_in">tie</span>(<span class="number">0</span>);</span><br><span class="line">    cin &gt;&gt; n &gt;&gt; m &gt;&gt; (str + <span class="number">1</span>);</span><br><span class="line">    p[<span class="number">0</span>] = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">1</span>; i &lt;= n; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        p[i] = p[i - <span class="number">1</span>] * P;</span><br><span class="line">        h[i] = h[i - <span class="number">1</span>] * P + str[i];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">while</span> (m--)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="type">int</span> l1, r1, l2, r2;</span><br><span class="line">        cin &gt;&gt; l1 &gt;&gt; r1 &gt;&gt; l2 &gt;&gt; r2;</span><br><span class="line">        <span class="keyword">if</span> (<span class="built_in">get</span>(l1, r1) == <span class="built_in">get</span>(l2, r2))</span><br><span class="line">            cout &lt;&lt; <span class="string">&quot;Yes&quot;</span> &lt;&lt; endl;</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">            cout &lt;&lt; <span class="string">&quot;No&quot;</span> &lt;&lt; endl;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h2 id="堆">堆</h2>
+<h3 id="堆实现">堆实现</h3>
 <p>STL里的数据结构为 <code>priority_queue</code> 优先队列实现堆
 基本功能:</p>
 <ul>
@@ -566,6 +602,11 @@ p^{R-L+1}\]</span></p>
 <p>利用二叉堆实现堆排序. 只用实现<code>down</code>:</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">down</span><span class="params">(<span class="type">int</span> k)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="type">int</span> t = k;</span><br><span class="line">    <span class="keyword">if</span> (k * <span class="number">2</span> &lt;= s &amp;&amp; heap[k * <span class="number">2</span>] &lt; heap[t])</span><br><span class="line">        t = k * <span class="number">2</span>;</span><br><span class="line">    <span class="keyword">if</span> (k * <span class="number">2</span> + <span class="number">1</span> &lt;= s &amp;&amp; heap[k * <span class="number">2</span> + <span class="number">1</span>] &lt; heap[t])</span><br><span class="line">        t = k * <span class="number">2</span> + <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">if</span> (k != t)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">swap</span>(heap[k], heap[t]);</span><br><span class="line">        <span class="built_in">down</span>(t);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>然后不断向堆插入元素即可.</p>
+<h3 id="std-库里的堆">std 库里的堆</h3>
+<p>用优先队列
+<code>priority_queue&lt;T, vector&lt;T&gt;, ...&gt;</code></p>
+<p>最后一个可以填 <code>greater&lt;T&gt;</code>, 表示小根堆;
+<code>less&lt;T&gt;</code> 表示大根堆.</p>
 <section id="footnotes" class="footnotes footnotes-end-of-document"
 role="doc-endnotes">
 <hr />
@@ -636,14 +677,14 @@ class="footnote-back" role="doc-backlink">↩︎</a></p></li>
       <i class="fa fa-chart-line"></i>
     </span>
       <span>站点总字数：</span>
-    <span title="站点总字数">24k</span>
+    <span title="站点总字数">27k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
       <span>站点阅读时长 &asymp;</span>
-    <span title="站点阅读时长">1:26</span>
+    <span title="站点阅读时长">1:38</span>
   </span>
 </div>
   <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/pisces/" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
