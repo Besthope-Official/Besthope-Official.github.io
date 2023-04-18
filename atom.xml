@@ -6,7 +6,7 @@
   <link href="http://example.com/atom.xml" rel="self"/>
   
   <link href="http://example.com/"/>
-  <updated>2023-04-08T13:59:12.429Z</updated>
+  <updated>2023-04-09T11:14:59.351Z</updated>
   <id>http://example.com/</id>
   
   <author>
@@ -21,11 +21,13 @@
     <link href="http://example.com/2023/04/08/%E6%90%AD%E5%BB%BA%E4%B8%80%E4%B8%AAtiny-docker/"/>
     <id>http://example.com/2023/04/08/%E6%90%AD%E5%BB%BA%E4%B8%80%E4%B8%AAtiny-docker/</id>
     <published>2023-04-08T11:27:39.000Z</published>
-    <updated>2023-04-08T13:59:12.429Z</updated>
+    <updated>2023-04-09T11:14:59.351Z</updated>
     
     
     <summary type="html">&lt;p&gt;怎么理解Docker? 自己手搓一个.&lt;/p&gt;
-&lt;p&gt;这不是吹牛, 实际上核心技术就 Kernel 里的 Namespace 和 CGroup. 实现一个 tiny-docker, 对于了解 OS 也是大有裨益的!&lt;/p&gt;</summary>
+&lt;p&gt;这不是吹牛, 实际上核心技术就 Kernel 里的 Namespace, CGroup, UnionFS.
+实现一个 tiny-docker, 对于了解 OS 也是大有裨益的!&lt;/p&gt;
+&lt;p&gt;多说无用, show me the code!&lt;/p&gt;</summary>
     
     
     
@@ -43,14 +45,14 @@
     <link href="http://example.com/2023/03/11/%E6%95%B0%E7%90%86%E9%80%BB%E8%BE%91%E4%BA%BA%E8%AF%9Dver/"/>
     <id>http://example.com/2023/03/11/%E6%95%B0%E7%90%86%E9%80%BB%E8%BE%91%E4%BA%BA%E8%AF%9Dver/</id>
     <published>2023-03-11T03:09:39.000Z</published>
-    <updated>2023-03-17T14:40:56.804Z</updated>
+    <updated>2023-04-18T14:34:56.171Z</updated>
     
     
     <summary type="html">&lt;p&gt;为了严谨性以及交流方便, 我们需要术语来描述问题: 这很好,
 某些问题数学语言胜千言——但由terminology组成的句子经常会让人不知所云.
 尤其对于数理逻辑, 因为是翻译文字所以句子看起来就更糟心了.
-想要明白问题的核心要义, 非得二次翻译不可,
-但最后描述的事情却是显而易见的.&lt;/p&gt;
+本身不是数学专业, 还要被符号定义纠缠半死. 想要明白问题的核心要义,
+非得二次翻译不可, 但最后描述的事情却是显而易见的.&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;It is not what you read, but how you read it.——Richard Feynman&lt;/p&gt;
 &lt;/blockquote&gt;
@@ -214,7 +216,7 @@ role=&quot;doc-noteref&quot;&gt;&lt;sup&gt;1&lt;/sup&gt;&lt;/a&gt;. 解决这个
     <link href="http://example.com/2023/01/28/%E9%9A%8F%E6%84%9F%E5%BD%95/"/>
     <id>http://example.com/2023/01/28/%E9%9A%8F%E6%84%9F%E5%BD%95/</id>
     <published>2023-01-28T14:41:17.000Z</published>
-    <updated>2023-04-05T11:31:52.330Z</updated>
+    <updated>2023-04-09T11:15:17.548Z</updated>
     
     
     <summary type="html">&lt;p&gt;记录不时的奇思妙想. 奇怪的梦, 无垠的呓语, 似非的感悟.

@@ -19,19 +19,22 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Pisces","darkmode":false,"version":"8.14.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":true,"style":null},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
 
-    <meta name="description" content="为了严谨性以及交流方便, 我们需要术语来描述问题: 这很好, 某些问题数学语言胜千言——但由terminology组成的句子经常会让人不知所云. 尤其对于数理逻辑, 因为是翻译文字所以句子看起来就更糟心了. 想要明白问题的核心要义, 非得二次翻译不可, 但最后描述的事情却是显而易见的.  It is not what you read, but how you read it.——Ri">
+    <meta name="description" content="为了严谨性以及交流方便, 我们需要术语来描述问题: 这很好, 某些问题数学语言胜千言——但由terminology组成的句子经常会让人不知所云. 尤其对于数理逻辑, 因为是翻译文字所以句子看起来就更糟心了. 本身不是数学专业, 还要被符号定义纠缠半死. 想要明白问题的核心要义, 非得二次翻译不可, 但最后描述的事情却是显而易见的.  It is not what you read, b">
 <meta property="og:type" content="article">
 <meta property="og:title" content="数理逻辑人话ver">
 <meta property="og:url" content="http://example.com/2023/03/11/%E6%95%B0%E7%90%86%E9%80%BB%E8%BE%91%E4%BA%BA%E8%AF%9Dver/index.html">
 <meta property="og:site_name" content="Besthope&#39;s Blog">
-<meta property="og:description" content="为了严谨性以及交流方便, 我们需要术语来描述问题: 这很好, 某些问题数学语言胜千言——但由terminology组成的句子经常会让人不知所云. 尤其对于数理逻辑, 因为是翻译文字所以句子看起来就更糟心了. 想要明白问题的核心要义, 非得二次翻译不可, 但最后描述的事情却是显而易见的.  It is not what you read, but how you read it.——Ri">
+<meta property="og:description" content="为了严谨性以及交流方便, 我们需要术语来描述问题: 这很好, 某些问题数学语言胜千言——但由terminology组成的句子经常会让人不知所云. 尤其对于数理逻辑, 因为是翻译文字所以句子看起来就更糟心了. 本身不是数学专业, 还要被符号定义纠缠半死. 想要明白问题的核心要义, 非得二次翻译不可, 但最后描述的事情却是显而易见的.  It is not what you read, b">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/images/pic9.png">
+<meta property="og:image" content="http://example.com/images/pic10.png">
 <meta property="article:published_time" content="2023-03-11T03:09:39.000Z">
-<meta property="article:modified_time" content="2023-03-17T14:40:56.804Z">
+<meta property="article:modified_time" content="2023-04-18T14:34:56.171Z">
 <meta property="article:author" content="Besthope">
 <meta property="article:tag" content="离散数学">
 <meta property="article:tag" content="数理逻辑">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/images/pic9.png">
 
 
 <link rel="canonical" href="http://example.com/2023/03/11/%E6%95%B0%E7%90%86%E9%80%BB%E8%BE%91%E4%BA%BA%E8%AF%9Dver/">
@@ -144,7 +147,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%91%BD%E9%A2%98%E9%80%BB%E8%BE%91"><span class="nav-number">1.</span> <span class="nav-text">命题逻辑</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%91%BD%E9%A2%98%E7%AC%A6%E5%8F%B7%E5%8C%96"><span class="nav-number">1.1.</span> <span class="nav-text">命题符号化</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%8F%A5%E5%AD%90%E5%8F%98%E7%AC%A6%E5%8F%B7"><span class="nav-number">1.1.1.</span> <span class="nav-text">句子变符号</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%81%94%E6%8E%A5%E8%AF%8D%E5%B0%B1%E6%98%AF%E8%BF%9E%E8%B5%B7%E6%9D%A5"><span class="nav-number">1.1.2.</span> <span class="nav-text">联接词就是连起来</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%B8%8D%E7%A1%AE%E5%AE%9A%E7%9A%84%E5%91%BD%E9%A2%98%E6%88%91%E9%9C%80%E8%A6%81%E8%A7%A3%E9%87%8A"><span class="nav-number">1.1.3.</span> <span class="nav-text">不确定的命题——我需要解释</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%91%BD%E9%A2%98%E5%85%AC%E5%BC%8F%E5%A4%AA%E5%A4%9A%E4%BA%86%E6%A0%87%E5%87%86%E5%8C%96"><span class="nav-number">1.2.</span> <span class="nav-text">命题公式太多了——标准化</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%8C%83%E5%BC%8F"><span class="nav-number">1.2.1.</span> <span class="nav-text">范式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%B8%BB%E8%8C%83%E5%BC%8F%E8%8C%83%E5%BC%8F%E8%BF%98%E4%B8%8D%E5%A4%9F%E7%94%A8"><span class="nav-number">1.2.2.</span> <span class="nav-text">主范式——范式还不够用</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9C%80%E7%BB%88%E4%BB%BB%E5%8A%A1-%E6%8E%A8%E7%90%86"><span class="nav-number">1.3.</span> <span class="nav-text">最终任务: 推理</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%87%8F%E8%AF%8D%E9%80%BB%E8%BE%91"><span class="nav-number">2.</span> <span class="nav-text">量词逻辑</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%91%BD%E9%A2%98%E9%9C%80%E8%A6%81%E8%8C%83%E5%9B%B4"><span class="nav-number">2.1.</span> <span class="nav-text">命题需要范围</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%89%80%E4%BB%A5%E6%88%91%E5%8F%AA%E6%98%AF%E4%BD%A0%E7%9A%84%E9%99%84%E5%BA%B8"><span class="nav-number">2.2.</span> <span class="nav-text">所以我只是你的附庸</span></a></li></ol></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%91%BD%E9%A2%98%E9%80%BB%E8%BE%91"><span class="nav-number">1.</span> <span class="nav-text">命题逻辑</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%91%BD%E9%A2%98%E7%AC%A6%E5%8F%B7%E5%8C%96"><span class="nav-number">1.1.</span> <span class="nav-text">命题符号化</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%8F%A5%E5%AD%90%E5%8F%98%E7%AC%A6%E5%8F%B7"><span class="nav-number">1.1.1.</span> <span class="nav-text">句子变符号</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%81%94%E6%8E%A5%E8%AF%8D%E5%B0%B1%E6%98%AF%E8%BF%9E%E8%B5%B7%E6%9D%A5"><span class="nav-number">1.1.2.</span> <span class="nav-text">联接词就是连起来</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%91%BD%E9%A2%98%E8%A1%A8%E8%BE%BE%E5%BC%8F"><span class="nav-number">1.1.3.</span> <span class="nav-text">命题表达式</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%91%BD%E9%A2%98%E9%80%BB%E8%BE%91%E7%9A%84%E5%88%A4%E5%AE%9A"><span class="nav-number">1.2.</span> <span class="nav-text">命题逻辑的判定</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%A7%A3%E9%87%8A%E5%92%8C%E7%9C%9F%E5%80%BC%E8%A1%A8"><span class="nav-number">1.2.1.</span> <span class="nav-text">解释和真值表</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%91%BD%E9%A2%98%E8%A1%A8%E8%BE%BE%E5%BC%8F%E7%9A%84%E5%88%86%E7%B1%BB"><span class="nav-number">1.2.2.</span> <span class="nav-text">命题表达式的分类</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%80%BB%E8%BE%91%E7%AD%89%E4%BB%B7"><span class="nav-number">1.2.3.</span> <span class="nav-text">逻辑等价</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%80%BB%E8%BE%91%E8%95%B4%E5%90%AB"><span class="nav-number">1.2.4.</span> <span class="nav-text">逻辑蕴含</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%91%BD%E9%A2%98%E5%85%AC%E5%BC%8F%E5%A4%AA%E5%A4%9A%E4%BA%86%E6%A0%87%E5%87%86%E5%8C%96"><span class="nav-number">1.3.</span> <span class="nav-text">命题公式太多了——标准化</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%8C%83%E5%BC%8F%E5%92%8C%E4%B8%BB%E8%8C%83%E5%BC%8F"><span class="nav-number">1.3.1.</span> <span class="nav-text">范式和主范式</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9C%80%E7%BB%88%E4%BB%BB%E5%8A%A1-%E6%8E%A8%E7%90%86"><span class="nav-number">1.4.</span> <span class="nav-text">最终任务: 推理</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%B0%93%E8%AF%8D%E9%80%BB%E8%BE%91"><span class="nav-number">2.</span> <span class="nav-text">谓词逻辑</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%88%91%E5%9C%A8%E5%AD%A6%E8%AF%AD%E6%B3%95%E5%90%97"><span class="nav-number">2.1.</span> <span class="nav-text">我在学语法吗?</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%91%BD%E9%A2%98%E9%9C%80%E8%A6%81%E8%8C%83%E5%9B%B4-%E9%87%8F%E8%AF%8D"><span class="nav-number">2.2.</span> <span class="nav-text">命题需要范围: 量词</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%89%8D%E6%9D%9F%E8%8C%83%E5%BC%8F"><span class="nav-number">2.3.</span> <span class="nav-text">前束范式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%89%80%E4%BB%A5%E6%88%91%E5%8F%AA%E6%98%AF%E4%BD%A0%E7%9A%84%E9%99%84%E5%BA%B8"><span class="nav-number">2.4.</span> <span class="nav-text">所以我只是你的附庸</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99"><span class="nav-number">2.5.</span> <span class="nav-text">参考资料</span></a></li></ol></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -243,7 +246,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2023-03-17 22:40:56" itemprop="dateModified" datetime="2023-03-17T22:40:56+08:00">2023-03-17</time>
+      <time title="修改时间：2023-04-18 22:34:56" itemprop="dateModified" datetime="2023-04-18T22:34:56+08:00">2023-04-18</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -262,14 +265,14 @@
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">本文字数：</span>
-      <span>272</span>
+      <span>3.1k</span>
     </span>
     <span class="post-meta-item" title="阅读时长">
       <span class="post-meta-item-icon">
         <i class="far fa-clock"></i>
       </span>
       <span class="post-meta-item-text">阅读时长 &asymp;</span>
-      <span>1 分钟</span>
+      <span>11 分钟</span>
     </span>
 </div>
 
@@ -283,8 +286,8 @@
         <p>为了严谨性以及交流方便, 我们需要术语来描述问题: 这很好,
 某些问题数学语言胜千言——但由terminology组成的句子经常会让人不知所云.
 尤其对于数理逻辑, 因为是翻译文字所以句子看起来就更糟心了.
-想要明白问题的核心要义, 非得二次翻译不可,
-但最后描述的事情却是显而易见的.</p>
+本身不是数学专业, 还要被符号定义纠缠半死. 想要明白问题的核心要义,
+非得二次翻译不可, 但最后描述的事情却是显而易见的.</p>
 <blockquote>
 <p>It is not what you read, but how you read it.——Richard Feynman</p>
 </blockquote>
@@ -293,18 +296,332 @@
 以及, 为什么要这么定义?</p>
 <span id="more"></span>
 <h2 id="命题逻辑">命题逻辑</h2>
-<p>考前TODO 先挖个坑</p>
 <h3 id="命题符号化">命题符号化</h3>
 <h4 id="句子变符号">句子变符号</h4>
+<p>什么是<strong>命题</strong>(statement)? 一个布尔值.</p>
+<ul>
+<li><code>1 + 1 != 2</code> <code>false</code></li>
+<li><code>1 + 1 = 2</code> (<del>哈? 这不是赋值语句嘛.</del>)
+<code>true</code></li>
+</ul>
+<p>换句话说就是: 有<strong>确切</strong>真值的陈述句(定义).</p>
+<ul>
+<li><span class="math inline">\(\sqrt{2}\)</span> 是无理数.
+<code>true</code></li>
+</ul>
+<p>要求: 不能<em>含糊不清</em>(ambiguious).</p>
+<ul>
+<li><code>x + 1 == 2</code> (<code>x</code> is undefined)</li>
+<li>I love you. (Hmmm...)</li>
+</ul>
+<p>所谓命题的符号化就是给命题起一个标识符. 比方说:</p>
+<ul>
+<li><code>P = (1 == 2)</code> (<code>p = false</code>)</li>
+<li><code>P = 可导一定连续</code> (<code>p = true</code>)</li>
+</ul>
+<p>上面的 <code>P</code> 就称为<em>原子命题</em>. 举手: 老师,
+那有分子命题吗? 你猜对了. 不过我们叫它<em>复合命题</em>.</p>
 <h4 id="联接词就是连起来">联接词就是连起来</h4>
-<h4 id="不确定的命题我需要解释">不确定的命题——我需要解释</h4>
+<p><strong>联接词</strong>(connective)可以认为是连接原子命题之间的化学键.
+有离子键, 共价键...</p>
+<p>联接词是逻辑运算符. 熟悉编程语言, 这东西再简单不过.
+只不过是换成数学的符号, 多一个名字而已:</p>
+<ul>
+<li><span class="math inline">\(P\wedge Q\)</span>
+<strong>合取</strong>(conjunction) (<code>&amp;&amp;</code>,
+<code>and</code>)
+<ul>
+<li>当且仅当 <span class="math inline">\(P\)</span> 和 <span
+class="math inline">\(Q\)</span> 同为真为真.</li>
+<li>把合取理解成乘法: 如果有一个零, 乘积就是零, 真值就为 0.</li>
+<li><code>P = 1 != 2</code>, <code>Q = 1 % 2 == 0</code>, 那么 <span
+class="math inline">\(P \wedge Q = 1 \wedge 0 = 0\)</span>.</li>
+</ul></li>
+<li><span class="math inline">\(P\vee Q\)</span>
+<strong>析取</strong>(disjunction) (<code>||</code>, <code>or</code>)
+<ul>
+<li>当 <span class="math inline">\(P\)</span> 和 <span
+class="math inline">\(Q\)</span> 任一为真即为真.</li>
+<li>把析取理解成加法: 如果有一个 1, 和就必定大于等于 1, 那么真值就为
+1.</li>
+<li><code>P = 1 != 2</code>, <code>Q = 1 % 2 == 0</code>, 那么 <span
+class="math inline">\(P \vee Q = 1 \vee 0 = 1\)</span>.</li>
+</ul></li>
+</ul>
+<p>上面都是二元运算符, 联接词就是把<em>真值</em>连起来.</p>
+<p><em>否定</em>联接词稍微特殊一些, 它是一元的.
+搞得像它应该被开除联接词籍:</p>
+<ul>
+<li><span class="math inline">\(\neg P\)</span>
+<strong>否定</strong>(negation) (<code>!</code>, <code>not</code>)
+<ul>
+<li>反转一个布尔值.</li>
+<li><code>P = 1 &gt; 2</code>, 那么 <span class="math inline">\(\neg P =
+1\)</span>.</li>
+</ul></li>
+</ul>
+<p>如果你熟悉位运算的话, 这点联接词也能说是布尔变量(之间)的
+<code>&amp;</code> <code>|</code> <code>!</code> 运算. 你可能会好奇:
+我<em>异或</em> <code>xor</code> <code>^</code> 呢? 事实上,
+异或其实也是有对应联接词的(<span class="math inline">\(P\oplus
+Q\)</span>).</p>
+<p>试试看你能不能只用 <code>&amp;</code> 和 <code>!</code> 模拟出
+<code>^</code>!</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> <span class="title function_">bitXor</span><span class="params">(<span class="type">int</span> x, <span class="type">int</span> y)</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="type">int</span> p = ~((~x) &amp; (~y)); <span class="comment">// or</span></span><br><span class="line">    <span class="type">int</span> q = ~(x &amp; y);</span><br><span class="line">    <span class="keyword">return</span> p &amp; q; <span class="comment">// Xor</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>剩下两个联接词很常用. 但它们同样可以被上面三种联接词模拟出来.</p>
+<ul>
+<li><span class="math inline">\(P\rightarrow Q\)</span>
+<strong>蕴含</strong>(implication)
+<ul>
+<li><span class="math inline">\(P\)</span> 称作假设(hypothesis), <span
+class="math inline">\(Q\)</span> 为结论(conclusion).
+(<del>前件和后件?</del> 真不熟)</li>
+<li>规则: <code>1 ➡ 1 = 1</code>, <code>1 ➡ 0 = 0</code>,
+<code>0 ➡ 1 = 1</code>, <code>0 ➡ 0 = 1</code></li>
+<li>除了 <code>P = true, Q = false</code> 外其它情况都为
+<code>true</code>.</li>
+<li><code>P</code> 为 <code>false</code> 而整个蕴含式一定为真(vacuously
+true)<a href="#fn1" class="footnote-ref" id="fnref1"
+role="doc-noteref"><sup>1</sup></a>.</li>
+</ul></li>
+<li><span class="math inline">\(P\leftrightarrow Q\)</span>
+<strong>等价</strong>(equivlance) (<code>==</code>)
+<ul>
+<li><del>童贞</del>同真时为真, 同假时也为真.</li>
+<li>也叫<em>双蕴含</em>. <code>iff</code></li>
+</ul></li>
+</ul>
+<p>什么蕴含? 看符号不就是<em>推出</em>嘛. 就是 <code>P</code> 可以推出
+<code>Q</code>, 如果成立, 就为真(?).</p>
+<ul>
+<li><code>P: 1+1=2</code>, <code>Q: 地球绕着太阳转</code></li>
+<li><span class="math inline">\(P \rightarrow Q\)</span> 的含义:</li>
+<li><code>C: 如果 1 + 1 = 2, 那么地球绕着太阳转.</code></li>
+</ul>
+<p>你看规则上说的, 1 implies 1 is 1, 那么 <code>C</code> 也是 1.
+但这句话非常令人迷惑🤔. 两个毫不相关的事实, 然后声明"事实推事实"为真,
+这是在干什么.</p>
+<p>特别说明一点: <strong>真值的联结不等同于命题间的联结</strong>.
+牢记一点, <em>命题都是 1 和 0</em>.</p>
+<p>蕴含可能会出现各种各样的地方, 或许你意识不到:</p>
+<ul>
+<li>不能玩游戏( <span class="math inline">\(\neg p\)</span> ),
+除非写完作业(unless <span class="math inline">\(q\)</span>)</li>
+<li>不写完作业, 就不能玩游戏. (<span class="math inline">\(\neg q
+\rightarrow \neg q\)</span>)</li>
+</ul>
+<p>下面的都等价于 <span class="math inline">\(P \rightarrow
+Q\)</span>:</p>
+<ul>
+<li>if P, then Q</li>
+<li>Q if P</li>
+<li>P only if Q</li>
+<li>P 是 Q 的充分(sufficient)条件.</li>
+<li>Q 是 P 的必要(necessary)条件.</li>
+<li>Q unless not P.</li>
+</ul>
+<p>联接词有没有运算的优先级? 有. 要不要记? 不用. 总之按顺序算就对了.</p>
+<h4 id="命题表达式">命题表达式</h4>
+<p>我们之前提到过, 命题必须是一个<em>确切的真值语句</em>.</p>
+<p>那可真可假怎么办? 也就是一个布尔变量, 0 或 1.
+此时我们称其为<strong>命题变元</strong>.</p>
+<p>用联接词, 我们可以将原子(简单)命题联系起来, 得到了复合命题. 同样,
+命题变元的联结构成了一个<strong>命题表达式</strong>, 或者说是
+propositional form, 或者说是 Well-Formed Formula(WFF), 或者说是
+truth-value function...<del>记这么多名词干什么啊?</del></p>
+<p>严谨起见, 命题表达式是递归定义的:</p>
+<ul>
+<li>单个命题变元 <span class="math inline">\(p_1, p_2, \dots\)</span>
+是命题表达式.</li>
+<li>如果 <span class="math inline">\(\phi\)</span> 是命题表达式, 那么
+<span class="math inline">\(\neg \phi\)</span> 也是.</li>
+<li>如果 <span class="math inline">\(\phi\)</span> 和 <span
+class="math inline">\(\psi\)</span> 都是命题表达式,
+那么用联接词联结得到的新表达式也是.</li>
+<li>只有<em>有限次</em>应用上述规则的符号串才是命题表达式.</li>
+</ul>
+<p>这个定义约定了命题表达式的"语法". 现在, 你就可以写一个算法,
+来判定一个字符串是否是有效的命题表达式了! (我们留作习题 :)</p>
+<h3 id="命题逻辑的判定">命题逻辑的判定</h3>
+<h4 id="解释和真值表">解释和真值表</h4>
+<p>给命题表达式 <span class="math inline">\(G\)</span> 解释 <span
+class="math inline">\(I\)</span> == 给所有的命题变元 <span
+class="math inline">\(p_1, p_2,\dots,p_n\)</span> 赋值</p>
+<p>别扭的说法: 做一组<em>指派</em>(assignment), 如果命题表达式此时为真,
+则称做一组<em>成真指派</em>(<del>全真教派</del>).</p>
+<p>命题公式所有解释下得到的真值, 构成一张表,
+叫<strong>真值表</strong>(truth table).
+换句话说就是枚举了所有情况然后打表.</p>
+<p>我们给出一个例子:</p>
+<figure>
+<img src="\images\pic9.png" alt="真值表 例子" />
+<figcaption aria-hidden="true">真值表 例子</figcaption>
+</figure>
+<h4 id="命题表达式的分类">命题表达式的分类</h4>
+<p>如果打表发现所有解释下, 真值都为真,
+那么这个表达式就叫<strong>永真公式</strong>,
+也叫<em>重言式</em>(tautology). 真值全为假,
+称其<strong>永假公式</strong>, 也叫<em>矛盾式</em>(contradiction).
+不是矛盾式就是<em>可满足式</em>.</p>
+<p>判定一个公式是否是永真公式, 最简单的办法就是枚举,
+也就是列出真值表.</p>
+<p>例如上面的真值表, 我们实际上证明了 <span class="math inline">\((P
+\implies Q) \leftrightarrow (\neg P \vee Q)\)</span> 是一个永真公式.
+不信你再多看看.</p>
+<h4 id="逻辑等价">逻辑等价</h4>
+<p>如果我们能证明 <span class="math inline">\(P \leftrightarrow
+Q\)</span> 是个永真公式, 那么我们称 <span
+class="math inline">\(P\)</span> 和 <span
+class="math inline">\(Q\)</span>
+是<strong>逻辑等价的</strong>(也叫<em>重言等价</em>). 用符号 <span
+class="math inline">\(P=Q\)</span>, <span class="math inline">\(P
+\Leftrightarrow Q\)</span> 或者 <span class="math inline">\(P\equiv
+Q\)</span> 表示.</p>
+<p>那么 <span class="math inline">\(\equiv\)</span> 和 <span
+class="math inline">\(\leftrightarrow\)</span> 有什么区别吗? 结论:
+这里没区别. 到一阶谓词逻辑才有区别.</p>
+<p>类似的, 你可以用打表证明<em>德摩根律</em>(De Morgan's Laws):
+Distribute and Flip</p>
+<p><span class="math display">\[\neg (P \wedge Q) \equiv (\neg P \vee
+\neg Q)\]</span></p>
+<p><span class="math display">\[\neg(P \vee Q) \equiv (\neg P \wedge
+\neg Q)\]</span></p>
+<p>打表可以建立以下的 24 种基本的等价关系:</p>
+<figure>
+<img src="/images/pic10.png" alt="24 种基本的等价关系" />
+<figcaption aria-hidden="true">24 种基本的等价关系</figcaption>
+</figure>
+<p>举手: 这些公式都要记吗? 要. 但实际上不难记忆,
+就把联接词当成加法乘法来看待. 记住几个最常用的足足够了.</p>
+<p>对于一个 <span class="math inline">\(n\)</span> 元的命题表达式,
+显然有 <span class="math inline">\(2^n\)</span> 种赋值方式. 或者,
+对于一个表达式很长的命题公式,
+显然打表去求一个表达式的等价公式效率太低了.
+此时可以用上面的这些基本等价公式去化简, 有时甚至能直接判定:</p>
+<p><strong>例 1</strong> <span class="math inline">\(\neg(p \rightarrow
+q)\)</span> 和 <span class="math inline">\(p \wedge \neg q\)</span>
+逻辑等价吗?</p>
+<p><span class="math display">\[\begin{aligned}
+\neg(p \rightarrow q) &amp; \equiv \neg(\neg p \vee q) \\
+&amp; \equiv \neg(\neg p) \wedge \neg q \\
+&amp; \equiv p \wedge \neg q
+\end{aligned}\]</span></p>
+<p><strong>例 2</strong> 小明写了下面的程序</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (a) &#123;</span><br><span class="line">    <span class="keyword">if</span> (b) &#123;</span><br><span class="line">        <span class="built_in">x</span>();</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="built_in">y</span>();</span><br><span class="line">    &#125;</span><br><span class="line">&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (b) &#123;</span><br><span class="line">        <span class="built_in">x</span>();</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="built_in">y</span>();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>请你帮他改改代码.</p>
+<p><strong>解</strong> 分析一下, 执行 <span
+class="math inline">\(x\)</span> 条件是 <span
+class="math inline">\((a\wedge b)\vee (\neg a \wedge b) = b\)</span>,
+执行 <span class="math inline">\(y\)</span> 条件 <span
+class="math inline">\((a\wedge \neg b)\vee (\neg a \wedge \neg b) = \neg
+b\)</span>, 所以</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (b)</span><br><span class="line">    <span class="built_in">x</span>();</span><br><span class="line"><span class="keyword">else</span></span><br><span class="line">    <span class="built_in">y</span>();</span><br></pre></td></tr></table></figure>
+<p>这样写, 舒服了🥰</p>
+<h4 id="逻辑蕴含">逻辑蕴含</h4>
+<p>有逻辑等价, 有逻辑蕴含吗? 有!</p>
+<p><span class="math inline">\(\phi\models \psi\)</span> 定义为: 对于
+<span class="math inline">\(\phi\)</span> 任一为真的解释, <span
+class="math inline">\(\psi\)</span> 为真; 换言之 <span
+class="math inline">\(\phi \rightarrow \psi\)</span> 永真.</p>
+<p>例如 <span class="math inline">\((P \rightarrow Q) \models (\neg P
+\vee Q)\)</span>.</p>
+<p>此外我们定义 <span class="math inline">\(\phi\)</span> 永真当且仅当
+<span class="math inline">\(\models \phi\)</span>. (称 <span
+class="math inline">\(\phi\)</span> is valid)</p>
+<p>举手: 那么 <span class="math inline">\(\rightarrow\)</span> 和 <span
+class="math inline">\(\models\)</span> 有什么区别吗? <span
+class="math inline">\(\models\)</span> 和 <span
+class="math inline">\(\Rightarrow\)</span> 有什么区别吗?</p>
+<p>我们之前提到, 联接词是一种布尔值之间的<strong>运算</strong>,
+最后得到一个新的真值为 0 或 1 的命题(复合命题), 可以理解 <span
+class="math inline">\(\rightarrow\)</span> 就是一个运算符,
+我们关注的是运算后得到的<strong>值</strong>. 而 <span
+class="math inline">\(\models\)</span>
+表示的是<strong>命题之间的关联</strong>, <span
+class="math inline">\(P\)</span> 推 <span
+class="math inline">\(Q\)</span>, 这个"推"用的就是 <span
+class="math inline">\(\models\)</span>; 我们关注的侧重点不是 <span
+class="math inline">\(\phi\models \psi\)</span> 等于多少,
+它已经永真了.</p>
+<p>至于 <span class="math inline">\(\Rightarrow\)</span>,
+平时在写数学题你会用到这个记号, 例如从条件 1 可以推出条件 2, 条件 2
+推出条件 3, 直到推出结论. 那么这里的"推出"你会写 <span
+class="math inline">\(\Rightarrow\)</span> 而不是数理逻辑里的符号 <span
+class="math inline">\(\models\)</span>.</p>
+<p>当然, 这个世界上还存在一个 <span
+class="math inline">\(\vdash\)</span> 的东西. 如果你感兴趣, 你可以 check
+这个<a
+target="_blank" rel="noopener" href="https://www.zhihu.com/question/21191299/answer/17469774">回答</a>.</p>
 <h3 id="命题公式太多了标准化">命题公式太多了——标准化</h3>
-<h4 id="范式">范式</h4>
-<h4 id="主范式范式还不够用">主范式——范式还不够用</h4>
+<h4 id="范式和主范式">范式和主范式</h4>
+<p>"范式总让我想到范马."</p>
+<p>什么是范式?</p>
+<p><del>命题变元或命题变元的否定称为文字,
+有限个文字的析取式称为简单析取式(基本和),
+有限个文字的合取式称为简单合取式(基本积),
+由有限个简单合取式构成的析取式称为析取范式,
+由有限个简单析取式构成的合取式称为合取范式.</del></p>
+<p>简单来说, OR 连接 AND(称<em>简单合取式</em>)
+的式子称为<strong>析取范式(DNF)</strong>. AND 连接
+OR(称<em>简单析取式</em>) 的式子称为<strong>合取范式(CNF)</strong>.
+举几个例子就很清楚了:</p>
+<p><span class="math display">\[\begin{array}{l}
+(1) p \\
+(2) p \vee q \vee \neg r \\
+(3) \neg p \wedge q \wedge r \\
+(4) (p \wedge q) \vee(\neg p \wedge q) \\
+(5) (p \vee q) \wedge(\neg p \vee q)
+\end{array}\]</span></p>
+<p>约定类似 (1) 这样的命题表达式既是析取范式又是合取范式.</p>
+<ol start="2" type="1">
+<li><p>是一个析取范式(用 or 连接). 但同时也可以看成是一个合取范式,
+只需要 <span class="math inline">\((p \vee q \vee \neg r)\wedge
+T\)</span> 即可.</p></li>
+<li><p>是一个合取范式(用 or 连接). 但同时也可以看成是析取范式.</p></li>
+<li><p>只能是一个析取范式. (5) 只能是一个合取范式.</p></li>
+</ol>
+<p><strong>定理</strong> 任何命题公式可以化成 (...) AND (...) AND ... 或
+(...) OR (...) OR ... 的形式, 而且二者(重言)等价.</p>
+<p>我们的操作如下:</p>
+<ul>
+<li>首先用等价公式消去 <span class="math inline">\(\rightarrow\)</span>
+和 <span class="math inline">\(\leftrightarrow\)</span>.</li>
+<li>消去多余的 <span class="math inline">\(\neg\)</span>.</li>
+<li>用分配律化成 DNF 或 CNF.</li>
+</ul>
+<p>DNF 和 CNF 实际上不唯一. 例如 <span class="math inline">\(P \wedge (Q
+\vee R)\)</span> 还可以写成 <span class="math inline">\((P \vee P)
+\wedge (Q \vee R)\)</span> 之类. 也就是范式还不够强, 要进一步约束限定,
+于是就有了主范式. 主范式主要规定的是:</p>
+<p>对于合取范式中的每一个简单析取式, 要求包含所有的命题变元,
+且每个只能出现一次.(称其为<em>极大项</em>) 对于析取范式也是如此.
+简单合取式更名为了<em>极小项</em>.</p>
+<p>这样规范以后, 就保证了范式的唯一.</p>
+<p>极小项和极大项可以编码.</p>
+<p>主范式有什么用? 考试用.</p>
 <h3 id="最终任务-推理">最终任务: 推理</h3>
-<h2 id="量词逻辑">量词逻辑</h2>
-<h3 id="命题需要范围">命题需要范围</h3>
+<h2 id="谓词逻辑">谓词逻辑</h2>
+<h3 id="我在学语法吗">我在学语法吗?</h3>
+<p>谓词逻辑, in short, 就是把命题逻辑中的原子命题进一步分解.
+我们举个例子:</p>
+<h3 id="命题需要范围-量词">命题需要范围: 量词</h3>
+<h3 id="前束范式">前束范式</h3>
 <h3 id="所以我只是你的附庸">所以我只是你的附庸</h3>
+<h3 id="参考资料">参考资料</h3>
+<ol type="1">
+<li>离散数学及应用 原书第五版, Kenneth H. Rosen, 机械工业出版社</li>
+<li>离散数学及其应用(第三版), 傅彦等, 高等教育出版社</li>
+<li>符号逻辑讲义, 徐明</li>
+<li>校内PPT</li>
+</ol>
+<section id="footnotes" class="footnotes footnotes-end-of-document"
+role="doc-endnotes">
+<hr />
+<ol>
+<li id="fn1"><p>也称善意推定.<a href="#fnref1" class="footnote-back"
+role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section>
 
     </div>
 
@@ -363,14 +680,14 @@
       <i class="fa fa-chart-line"></i>
     </span>
       <span>站点总字数：</span>
-    <span title="站点总字数">27k</span>
+    <span title="站点总字数">30k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
       <span>站点阅读时长 &asymp;</span>
-    <span title="站点阅读时长">1:38</span>
+    <span title="站点阅读时长">1:49</span>
   </span>
 </div>
   <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/pisces/" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动

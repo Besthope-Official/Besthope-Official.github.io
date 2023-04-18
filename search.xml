@@ -1154,8 +1154,8 @@ cnt\)</span> 即可.</p>
     <content><![CDATA[<p>为了严谨性以及交流方便, 我们需要术语来描述问题: 这很好,
 某些问题数学语言胜千言——但由terminology组成的句子经常会让人不知所云.
 尤其对于数理逻辑, 因为是翻译文字所以句子看起来就更糟心了.
-想要明白问题的核心要义, 非得二次翻译不可,
-但最后描述的事情却是显而易见的.</p>
+本身不是数学专业, 还要被符号定义纠缠半死. 想要明白问题的核心要义,
+非得二次翻译不可, 但最后描述的事情却是显而易见的.</p>
 <blockquote>
 <p>It is not what you read, but how you read it.——Richard Feynman</p>
 </blockquote>
@@ -1164,18 +1164,332 @@ cnt\)</span> 即可.</p>
 以及, 为什么要这么定义?</p>
 <span id="more"></span>
 <h2 id="命题逻辑">命题逻辑</h2>
-<p>考前TODO 先挖个坑</p>
 <h3 id="命题符号化">命题符号化</h3>
 <h4 id="句子变符号">句子变符号</h4>
+<p>什么是<strong>命题</strong>(statement)? 一个布尔值.</p>
+<ul>
+<li><code>1 + 1 != 2</code> <code>false</code></li>
+<li><code>1 + 1 = 2</code> (<del>哈? 这不是赋值语句嘛.</del>)
+<code>true</code></li>
+</ul>
+<p>换句话说就是: 有<strong>确切</strong>真值的陈述句(定义).</p>
+<ul>
+<li><span class="math inline">\(\sqrt{2}\)</span> 是无理数.
+<code>true</code></li>
+</ul>
+<p>要求: 不能<em>含糊不清</em>(ambiguious).</p>
+<ul>
+<li><code>x + 1 == 2</code> (<code>x</code> is undefined)</li>
+<li>I love you. (Hmmm...)</li>
+</ul>
+<p>所谓命题的符号化就是给命题起一个标识符. 比方说:</p>
+<ul>
+<li><code>P = (1 == 2)</code> (<code>p = false</code>)</li>
+<li><code>P = 可导一定连续</code> (<code>p = true</code>)</li>
+</ul>
+<p>上面的 <code>P</code> 就称为<em>原子命题</em>. 举手: 老师,
+那有分子命题吗? 你猜对了. 不过我们叫它<em>复合命题</em>.</p>
 <h4 id="联接词就是连起来">联接词就是连起来</h4>
-<h4 id="不确定的命题我需要解释">不确定的命题——我需要解释</h4>
+<p><strong>联接词</strong>(connective)可以认为是连接原子命题之间的化学键.
+有离子键, 共价键...</p>
+<p>联接词是逻辑运算符. 熟悉编程语言, 这东西再简单不过.
+只不过是换成数学的符号, 多一个名字而已:</p>
+<ul>
+<li><span class="math inline">\(P\wedge Q\)</span>
+<strong>合取</strong>(conjunction) (<code>&amp;&amp;</code>,
+<code>and</code>)
+<ul>
+<li>当且仅当 <span class="math inline">\(P\)</span> 和 <span
+class="math inline">\(Q\)</span> 同为真为真.</li>
+<li>把合取理解成乘法: 如果有一个零, 乘积就是零, 真值就为 0.</li>
+<li><code>P = 1 != 2</code>, <code>Q = 1 % 2 == 0</code>, 那么 <span
+class="math inline">\(P \wedge Q = 1 \wedge 0 = 0\)</span>.</li>
+</ul></li>
+<li><span class="math inline">\(P\vee Q\)</span>
+<strong>析取</strong>(disjunction) (<code>||</code>, <code>or</code>)
+<ul>
+<li>当 <span class="math inline">\(P\)</span> 和 <span
+class="math inline">\(Q\)</span> 任一为真即为真.</li>
+<li>把析取理解成加法: 如果有一个 1, 和就必定大于等于 1, 那么真值就为
+1.</li>
+<li><code>P = 1 != 2</code>, <code>Q = 1 % 2 == 0</code>, 那么 <span
+class="math inline">\(P \vee Q = 1 \vee 0 = 1\)</span>.</li>
+</ul></li>
+</ul>
+<p>上面都是二元运算符, 联接词就是把<em>真值</em>连起来.</p>
+<p><em>否定</em>联接词稍微特殊一些, 它是一元的.
+搞得像它应该被开除联接词籍:</p>
+<ul>
+<li><span class="math inline">\(\neg P\)</span>
+<strong>否定</strong>(negation) (<code>!</code>, <code>not</code>)
+<ul>
+<li>反转一个布尔值.</li>
+<li><code>P = 1 &gt; 2</code>, 那么 <span class="math inline">\(\neg P =
+1\)</span>.</li>
+</ul></li>
+</ul>
+<p>如果你熟悉位运算的话, 这点联接词也能说是布尔变量(之间)的
+<code>&amp;</code> <code>|</code> <code>!</code> 运算. 你可能会好奇:
+我<em>异或</em> <code>xor</code> <code>^</code> 呢? 事实上,
+异或其实也是有对应联接词的(<span class="math inline">\(P\oplus
+Q\)</span>).</p>
+<p>试试看你能不能只用 <code>&amp;</code> 和 <code>!</code> 模拟出
+<code>^</code>!</p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="type">int</span> <span class="title function_">bitXor</span><span class="params">(<span class="type">int</span> x, <span class="type">int</span> y)</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="type">int</span> p = ~((~x) &amp; (~y)); <span class="comment">// or</span></span><br><span class="line">    <span class="type">int</span> q = ~(x &amp; y);</span><br><span class="line">    <span class="keyword">return</span> p &amp; q; <span class="comment">// Xor</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>剩下两个联接词很常用. 但它们同样可以被上面三种联接词模拟出来.</p>
+<ul>
+<li><span class="math inline">\(P\rightarrow Q\)</span>
+<strong>蕴含</strong>(implication)
+<ul>
+<li><span class="math inline">\(P\)</span> 称作假设(hypothesis), <span
+class="math inline">\(Q\)</span> 为结论(conclusion).
+(<del>前件和后件?</del> 真不熟)</li>
+<li>规则: <code>1 ➡ 1 = 1</code>, <code>1 ➡ 0 = 0</code>,
+<code>0 ➡ 1 = 1</code>, <code>0 ➡ 0 = 1</code></li>
+<li>除了 <code>P = true, Q = false</code> 外其它情况都为
+<code>true</code>.</li>
+<li><code>P</code> 为 <code>false</code> 而整个蕴含式一定为真(vacuously
+true)<a href="#fn1" class="footnote-ref" id="fnref1"
+role="doc-noteref"><sup>1</sup></a>.</li>
+</ul></li>
+<li><span class="math inline">\(P\leftrightarrow Q\)</span>
+<strong>等价</strong>(equivlance) (<code>==</code>)
+<ul>
+<li><del>童贞</del>同真时为真, 同假时也为真.</li>
+<li>也叫<em>双蕴含</em>. <code>iff</code></li>
+</ul></li>
+</ul>
+<p>什么蕴含? 看符号不就是<em>推出</em>嘛. 就是 <code>P</code> 可以推出
+<code>Q</code>, 如果成立, 就为真(?).</p>
+<ul>
+<li><code>P: 1+1=2</code>, <code>Q: 地球绕着太阳转</code></li>
+<li><span class="math inline">\(P \rightarrow Q\)</span> 的含义:</li>
+<li><code>C: 如果 1 + 1 = 2, 那么地球绕着太阳转.</code></li>
+</ul>
+<p>你看规则上说的, 1 implies 1 is 1, 那么 <code>C</code> 也是 1.
+但这句话非常令人迷惑🤔. 两个毫不相关的事实, 然后声明"事实推事实"为真,
+这是在干什么.</p>
+<p>特别说明一点: <strong>真值的联结不等同于命题间的联结</strong>.
+牢记一点, <em>命题都是 1 和 0</em>.</p>
+<p>蕴含可能会出现各种各样的地方, 或许你意识不到:</p>
+<ul>
+<li>不能玩游戏( <span class="math inline">\(\neg p\)</span> ),
+除非写完作业(unless <span class="math inline">\(q\)</span>)</li>
+<li>不写完作业, 就不能玩游戏. (<span class="math inline">\(\neg q
+\rightarrow \neg q\)</span>)</li>
+</ul>
+<p>下面的都等价于 <span class="math inline">\(P \rightarrow
+Q\)</span>:</p>
+<ul>
+<li>if P, then Q</li>
+<li>Q if P</li>
+<li>P only if Q</li>
+<li>P 是 Q 的充分(sufficient)条件.</li>
+<li>Q 是 P 的必要(necessary)条件.</li>
+<li>Q unless not P.</li>
+</ul>
+<p>联接词有没有运算的优先级? 有. 要不要记? 不用. 总之按顺序算就对了.</p>
+<h4 id="命题表达式">命题表达式</h4>
+<p>我们之前提到过, 命题必须是一个<em>确切的真值语句</em>.</p>
+<p>那可真可假怎么办? 也就是一个布尔变量, 0 或 1.
+此时我们称其为<strong>命题变元</strong>.</p>
+<p>用联接词, 我们可以将原子(简单)命题联系起来, 得到了复合命题. 同样,
+命题变元的联结构成了一个<strong>命题表达式</strong>, 或者说是
+propositional form, 或者说是 Well-Formed Formula(WFF), 或者说是
+truth-value function...<del>记这么多名词干什么啊?</del></p>
+<p>严谨起见, 命题表达式是递归定义的:</p>
+<ul>
+<li>单个命题变元 <span class="math inline">\(p_1, p_2, \dots\)</span>
+是命题表达式.</li>
+<li>如果 <span class="math inline">\(\phi\)</span> 是命题表达式, 那么
+<span class="math inline">\(\neg \phi\)</span> 也是.</li>
+<li>如果 <span class="math inline">\(\phi\)</span> 和 <span
+class="math inline">\(\psi\)</span> 都是命题表达式,
+那么用联接词联结得到的新表达式也是.</li>
+<li>只有<em>有限次</em>应用上述规则的符号串才是命题表达式.</li>
+</ul>
+<p>这个定义约定了命题表达式的"语法". 现在, 你就可以写一个算法,
+来判定一个字符串是否是有效的命题表达式了! (我们留作习题 :)</p>
+<h3 id="命题逻辑的判定">命题逻辑的判定</h3>
+<h4 id="解释和真值表">解释和真值表</h4>
+<p>给命题表达式 <span class="math inline">\(G\)</span> 解释 <span
+class="math inline">\(I\)</span> == 给所有的命题变元 <span
+class="math inline">\(p_1, p_2,\dots,p_n\)</span> 赋值</p>
+<p>别扭的说法: 做一组<em>指派</em>(assignment), 如果命题表达式此时为真,
+则称做一组<em>成真指派</em>(<del>全真教派</del>).</p>
+<p>命题公式所有解释下得到的真值, 构成一张表,
+叫<strong>真值表</strong>(truth table).
+换句话说就是枚举了所有情况然后打表.</p>
+<p>我们给出一个例子:</p>
+<figure>
+<img src="\images\pic9.png" alt="真值表 例子" />
+<figcaption aria-hidden="true">真值表 例子</figcaption>
+</figure>
+<h4 id="命题表达式的分类">命题表达式的分类</h4>
+<p>如果打表发现所有解释下, 真值都为真,
+那么这个表达式就叫<strong>永真公式</strong>,
+也叫<em>重言式</em>(tautology). 真值全为假,
+称其<strong>永假公式</strong>, 也叫<em>矛盾式</em>(contradiction).
+不是矛盾式就是<em>可满足式</em>.</p>
+<p>判定一个公式是否是永真公式, 最简单的办法就是枚举,
+也就是列出真值表.</p>
+<p>例如上面的真值表, 我们实际上证明了 <span class="math inline">\((P
+\implies Q) \leftrightarrow (\neg P \vee Q)\)</span> 是一个永真公式.
+不信你再多看看.</p>
+<h4 id="逻辑等价">逻辑等价</h4>
+<p>如果我们能证明 <span class="math inline">\(P \leftrightarrow
+Q\)</span> 是个永真公式, 那么我们称 <span
+class="math inline">\(P\)</span> 和 <span
+class="math inline">\(Q\)</span>
+是<strong>逻辑等价的</strong>(也叫<em>重言等价</em>). 用符号 <span
+class="math inline">\(P=Q\)</span>, <span class="math inline">\(P
+\Leftrightarrow Q\)</span> 或者 <span class="math inline">\(P\equiv
+Q\)</span> 表示.</p>
+<p>那么 <span class="math inline">\(\equiv\)</span> 和 <span
+class="math inline">\(\leftrightarrow\)</span> 有什么区别吗? 结论:
+这里没区别. 到一阶谓词逻辑才有区别.</p>
+<p>类似的, 你可以用打表证明<em>德摩根律</em>(De Morgan's Laws):
+Distribute and Flip</p>
+<p><span class="math display">\[\neg (P \wedge Q) \equiv (\neg P \vee
+\neg Q)\]</span></p>
+<p><span class="math display">\[\neg(P \vee Q) \equiv (\neg P \wedge
+\neg Q)\]</span></p>
+<p>打表可以建立以下的 24 种基本的等价关系:</p>
+<figure>
+<img src="/images/pic10.png" alt="24 种基本的等价关系" />
+<figcaption aria-hidden="true">24 种基本的等价关系</figcaption>
+</figure>
+<p>举手: 这些公式都要记吗? 要. 但实际上不难记忆,
+就把联接词当成加法乘法来看待. 记住几个最常用的足足够了.</p>
+<p>对于一个 <span class="math inline">\(n\)</span> 元的命题表达式,
+显然有 <span class="math inline">\(2^n\)</span> 种赋值方式. 或者,
+对于一个表达式很长的命题公式,
+显然打表去求一个表达式的等价公式效率太低了.
+此时可以用上面的这些基本等价公式去化简, 有时甚至能直接判定:</p>
+<p><strong>例 1</strong> <span class="math inline">\(\neg(p \rightarrow
+q)\)</span> 和 <span class="math inline">\(p \wedge \neg q\)</span>
+逻辑等价吗?</p>
+<p><span class="math display">\[\begin{aligned}
+\neg(p \rightarrow q) &amp; \equiv \neg(\neg p \vee q) \\
+&amp; \equiv \neg(\neg p) \wedge \neg q \\
+&amp; \equiv p \wedge \neg q
+\end{aligned}\]</span></p>
+<p><strong>例 2</strong> 小明写了下面的程序</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="keyword">if</span> (a) &#123;</span><br><span class="line">    <span class="keyword">if</span> (b) &#123;</span><br><span class="line">        <span class="built_in">x</span>();</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="built_in">y</span>();</span><br><span class="line">    &#125;</span><br><span class="line">&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (b) &#123;</span><br><span class="line">        <span class="built_in">x</span>();</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="built_in">y</span>();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>请你帮他改改代码.</p>
+<p><strong>解</strong> 分析一下, 执行 <span
+class="math inline">\(x\)</span> 条件是 <span
+class="math inline">\((a\wedge b)\vee (\neg a \wedge b) = b\)</span>,
+执行 <span class="math inline">\(y\)</span> 条件 <span
+class="math inline">\((a\wedge \neg b)\vee (\neg a \wedge \neg b) = \neg
+b\)</span>, 所以</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="keyword">if</span> (b)</span><br><span class="line">    <span class="built_in">x</span>();</span><br><span class="line"><span class="keyword">else</span></span><br><span class="line">    <span class="built_in">y</span>();</span><br></pre></td></tr></table></figure>
+<p>这样写, 舒服了🥰</p>
+<h4 id="逻辑蕴含">逻辑蕴含</h4>
+<p>有逻辑等价, 有逻辑蕴含吗? 有!</p>
+<p><span class="math inline">\(\phi\models \psi\)</span> 定义为: 对于
+<span class="math inline">\(\phi\)</span> 任一为真的解释, <span
+class="math inline">\(\psi\)</span> 为真; 换言之 <span
+class="math inline">\(\phi \rightarrow \psi\)</span> 永真.</p>
+<p>例如 <span class="math inline">\((P \rightarrow Q) \models (\neg P
+\vee Q)\)</span>.</p>
+<p>此外我们定义 <span class="math inline">\(\phi\)</span> 永真当且仅当
+<span class="math inline">\(\models \phi\)</span>. (称 <span
+class="math inline">\(\phi\)</span> is valid)</p>
+<p>举手: 那么 <span class="math inline">\(\rightarrow\)</span> 和 <span
+class="math inline">\(\models\)</span> 有什么区别吗? <span
+class="math inline">\(\models\)</span> 和 <span
+class="math inline">\(\Rightarrow\)</span> 有什么区别吗?</p>
+<p>我们之前提到, 联接词是一种布尔值之间的<strong>运算</strong>,
+最后得到一个新的真值为 0 或 1 的命题(复合命题), 可以理解 <span
+class="math inline">\(\rightarrow\)</span> 就是一个运算符,
+我们关注的是运算后得到的<strong>值</strong>. 而 <span
+class="math inline">\(\models\)</span>
+表示的是<strong>命题之间的关联</strong>, <span
+class="math inline">\(P\)</span> 推 <span
+class="math inline">\(Q\)</span>, 这个"推"用的就是 <span
+class="math inline">\(\models\)</span>; 我们关注的侧重点不是 <span
+class="math inline">\(\phi\models \psi\)</span> 等于多少,
+它已经永真了.</p>
+<p>至于 <span class="math inline">\(\Rightarrow\)</span>,
+平时在写数学题你会用到这个记号, 例如从条件 1 可以推出条件 2, 条件 2
+推出条件 3, 直到推出结论. 那么这里的"推出"你会写 <span
+class="math inline">\(\Rightarrow\)</span> 而不是数理逻辑里的符号 <span
+class="math inline">\(\models\)</span>.</p>
+<p>当然, 这个世界上还存在一个 <span
+class="math inline">\(\vdash\)</span> 的东西. 如果你感兴趣, 你可以 check
+这个<a
+href="https://www.zhihu.com/question/21191299/answer/17469774">回答</a>.</p>
 <h3 id="命题公式太多了标准化">命题公式太多了——标准化</h3>
-<h4 id="范式">范式</h4>
-<h4 id="主范式范式还不够用">主范式——范式还不够用</h4>
+<h4 id="范式和主范式">范式和主范式</h4>
+<p>"范式总让我想到范马."</p>
+<p>什么是范式?</p>
+<p><del>命题变元或命题变元的否定称为文字,
+有限个文字的析取式称为简单析取式(基本和),
+有限个文字的合取式称为简单合取式(基本积),
+由有限个简单合取式构成的析取式称为析取范式,
+由有限个简单析取式构成的合取式称为合取范式.</del></p>
+<p>简单来说, OR 连接 AND(称<em>简单合取式</em>)
+的式子称为<strong>析取范式(DNF)</strong>. AND 连接
+OR(称<em>简单析取式</em>) 的式子称为<strong>合取范式(CNF)</strong>.
+举几个例子就很清楚了:</p>
+<p><span class="math display">\[\begin{array}{l}
+(1) p \\
+(2) p \vee q \vee \neg r \\
+(3) \neg p \wedge q \wedge r \\
+(4) (p \wedge q) \vee(\neg p \wedge q) \\
+(5) (p \vee q) \wedge(\neg p \vee q)
+\end{array}\]</span></p>
+<p>约定类似 (1) 这样的命题表达式既是析取范式又是合取范式.</p>
+<ol start="2" type="1">
+<li><p>是一个析取范式(用 or 连接). 但同时也可以看成是一个合取范式,
+只需要 <span class="math inline">\((p \vee q \vee \neg r)\wedge
+T\)</span> 即可.</p></li>
+<li><p>是一个合取范式(用 or 连接). 但同时也可以看成是析取范式.</p></li>
+<li><p>只能是一个析取范式. (5) 只能是一个合取范式.</p></li>
+</ol>
+<p><strong>定理</strong> 任何命题公式可以化成 (...) AND (...) AND ... 或
+(...) OR (...) OR ... 的形式, 而且二者(重言)等价.</p>
+<p>我们的操作如下:</p>
+<ul>
+<li>首先用等价公式消去 <span class="math inline">\(\rightarrow\)</span>
+和 <span class="math inline">\(\leftrightarrow\)</span>.</li>
+<li>消去多余的 <span class="math inline">\(\neg\)</span>.</li>
+<li>用分配律化成 DNF 或 CNF.</li>
+</ul>
+<p>DNF 和 CNF 实际上不唯一. 例如 <span class="math inline">\(P \wedge (Q
+\vee R)\)</span> 还可以写成 <span class="math inline">\((P \vee P)
+\wedge (Q \vee R)\)</span> 之类. 也就是范式还不够强, 要进一步约束限定,
+于是就有了主范式. 主范式主要规定的是:</p>
+<p>对于合取范式中的每一个简单析取式, 要求包含所有的命题变元,
+且每个只能出现一次.(称其为<em>极大项</em>) 对于析取范式也是如此.
+简单合取式更名为了<em>极小项</em>.</p>
+<p>这样规范以后, 就保证了范式的唯一.</p>
+<p>极小项和极大项可以编码.</p>
+<p>主范式有什么用? 考试用.</p>
 <h3 id="最终任务-推理">最终任务: 推理</h3>
-<h2 id="量词逻辑">量词逻辑</h2>
-<h3 id="命题需要范围">命题需要范围</h3>
+<h2 id="谓词逻辑">谓词逻辑</h2>
+<h3 id="我在学语法吗">我在学语法吗?</h3>
+<p>谓词逻辑, in short, 就是把命题逻辑中的原子命题进一步分解.
+我们举个例子:</p>
+<h3 id="命题需要范围-量词">命题需要范围: 量词</h3>
+<h3 id="前束范式">前束范式</h3>
 <h3 id="所以我只是你的附庸">所以我只是你的附庸</h3>
+<h3 id="参考资料">参考资料</h3>
+<ol type="1">
+<li>离散数学及应用 原书第五版, Kenneth H. Rosen, 机械工业出版社</li>
+<li>离散数学及其应用(第三版), 傅彦等, 高等教育出版社</li>
+<li>符号逻辑讲义, 徐明</li>
+<li>校内PPT</li>
+</ol>
+<section id="footnotes" class="footnotes footnotes-end-of-document"
+role="doc-endnotes">
+<hr />
+<ol>
+<li id="fn1"><p>也称善意推定.<a href="#fnref1" class="footnote-back"
+role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section>
 ]]></content>
       <categories>
         <category>离散数学</category>
@@ -2065,6 +2379,8 @@ C++STL里可以用 <code>multiset</code>.</p>
 想想还是删去罢了.</p>
 <span id="more"></span>
 <h2 id="鬼话">鬼话</h2>
+<p>记录下一年来想说的鬼话(吐槽)和看到的鬼话.</p>
+<h3 id="feb">Feb</h3>
 <p>你见到的每个人都随身携带着粪便.</p>
 <p>坐电车说了句"尼玛难挤", 旁边日本人说了句"一起挤".</p>
 <p>心情愉快, 对谁都会抱有特殊的热情与善意.</p>
@@ -2072,6 +2388,7 @@ C++STL里可以用 <code>multiset</code>.</p>
 不懂原理最后的结果就是实战一团糟.</p>
 <p>呆在家里越久, 越容易恋家. 保证自己的独立性.</p>
 <p>只有你亲妈才能秒发现你今天毛衣穿反了.</p>
+<h3 id="mar">Mar</h3>
 <p>中国邮政一生黑. 寄个信用卡寄回老家去了,
 一看地址是四川省成都市的浙江省, 你在干什么.</p>
 <p>代码出现了四层嵌套, 要么这个算法出现了三层循环你优化不了,
@@ -2081,7 +2398,27 @@ C++STL里可以用 <code>multiset</code>.</p>
 <li>“有没看到一只铁鸟掉下来”.</li>
 <li>“铁鸟没看见，但昨天有一架阿帕奇AHMK1改RTM322涡轮发动机掉到山那边了。”</li>
 </ul>
+<h3 id="apr">Apr</h3>
 <p>越看越觉得自己是菜鸡. 不过自己开心才最重要.</p>
+<p>梦到自己不知道吃了啥反正饿醒了. 差点能写到我的绮梦里去.
+看来我也是美食猎人.</p>
+<p>有点想在自己的博客里GHS, 思来索去, 想想还是要点脸.
+或者说我将来是想要把网站给备案的.</p>
+<p>下半个年的 TODO List:</p>
+<ul>
+<li>想设计一个自动关灯小器械. 当然不是何同学那种类型.
+<ul>
+<li>因为宿舍熄灯实际上是断电. 要是开关忘了关,
+次日六点来电比闹钟还管用.</li>
+<li>网上看到有宿舍关灯神器的相关视频, 感觉可行性非常强.</li>
+<li>到时候搞一个单片机试试水. 开坑!</li>
+</ul></li>
+<li>想写一个 auto-grader, 就像 CS61 A 的 <code>ok</code> 一样好用.
+<ul>
+<li>学校没有 oj, 作业纯靠教师/助教一眼鉴定.</li>
+<li>想和学校一起维护. 自动化万岁! 最后流芳百世(</li>
+</ul></li>
+</ul>
 <h2 id="绮梦-一">绮梦 (一)</h2>
 <p>为我的文学梦留坑.</p>
 <h2 id="绮梦-二">绮梦 (二)</h2>
@@ -2102,32 +2439,66 @@ C++STL里可以用 <code>multiset</code>.</p>
     <title>搭建一个tiny-docker</title>
     <url>/2023/04/08/%E6%90%AD%E5%BB%BA%E4%B8%80%E4%B8%AAtiny-docker/</url>
     <content><![CDATA[<p>怎么理解Docker? 自己手搓一个.</p>
-<p>这不是吹牛, 实际上核心技术就 Kernel 里的 Namespace 和 CGroup. 实现一个 tiny-docker, 对于了解 OS 也是大有裨益的!</p>
+<p>这不是吹牛, 实际上核心技术就 Kernel 里的 Namespace, CGroup, UnionFS.
+实现一个 tiny-docker, 对于了解 OS 也是大有裨益的!</p>
+<p>多说无用, show me the code!</p>
 <span id="more"></span>
-<h2 id="命令"><a href="#命令" class="headerlink" title="命令"></a>命令</h2><p><code>ps</code>, <code>pstree -pan</code>(树结构表示)</p>
+<blockquote>
+<p>Simply put, a container is another process on your machine that has
+been isolated from all other processes on the host machine. That
+isolation leverages kernel namespaces and cgroups, features that have
+been in Linux for a long time. Docker has worked to make these
+capabilities approachable and easy to use.</p>
+</blockquote>
+<h2 id="命令">命令</h2>
+<p><code>ps</code>, <code>pstree -pan</code>(树结构表示)</p>
 <p><code>ps</code> 的一些 option:</p>
 <ul>
 <li><code>a</code>: 一个终端的<strong>所有</strong>进程</li>
 <li><code>u</code>：显示进程的<strong>归属用户</strong>以及<strong>内存使用</strong>情况</li>
 <li><code>x</code>：显示出和终端<strong>没有关联</strong>的进程</li>
-<li><code>j</code>：显示进程归属的<strong>进程组</strong> id, <strong>会话</strong> id, <strong>父进程</strong> id</li>
-<li><code>f</code>：以 ascii 形式显示出进程的<strong>层次</strong>关系</li>
+<li><code>j</code>：显示进程归属的<strong>进程组</strong> id,
+<strong>会话</strong> id, <strong>父进程</strong> id</li>
+<li><code>f</code>：以 ascii
+形式显示出进程的<strong>层次</strong>关系</li>
 </ul>
-<p>常用选项: <code>ps aux</code>(关注主进程) / <code>ps axjf</code>(关注进程间的关系)</p>
+<p>常用选项: <code>ps aux</code>(关注主进程) /
+<code>ps axjf</code>(关注进程间的关系)</p>
 <p>配合 <code>grep</code> pipeline 食用更佳.</p>
-<h2 id="进程管理"><a href="#进程管理" class="headerlink" title="进程管理"></a>进程管理</h2><p>程序就是一串二进制<strong>代码</strong>. 当程序被执行时, 它就成为了<strong>进程</strong>.<br>进程用一个唯一整数 <code>pid</code> 标记.</p>
-<p>众所周知一个程序可以开出多个进程. <code>fork</code> 函数可以在保留原进程的基础上开出新进程, 实际上就是父进程开出了子进程.</p>
-<p>执行一个文件使用 <code>execvp</code> 函数族. 结束一个程序, 一般是 <code>main</code> 函数 <code>return 0</code> 或者调用 <code>exit()</code></p>
-<p>子进程运行结束, 父进程需要用 <code>wait</code> 或 <code>waitpid</code> 回收子进程的资源. 不回收? 子进程会变成僵尸进程.(kernel 里的<code>task_struct</code> 没有释放) 或者你把它 <code>kill</code> 掉!<br>如果父进程先于子进程终止, 那么子进程就被 <code>init</code> 进程 <code>pid = 1</code> 收养.</p>
+<h2 id="进程管理">进程管理</h2>
+<p>程序就是一串二进制<strong>代码</strong>. 当程序被执行时,
+它就成为了<strong>进程</strong>. 进程用一个唯一整数 <code>pid</code>
+标记.</p>
+<p>众所周知一个程序可以开出多个进程. <code>fork</code>
+函数可以在保留原进程的基础上开出新进程,
+实际上就是父进程开出了子进程.</p>
+<p>执行一个文件使用 <code>execvp</code> 函数族. 结束一个程序, 一般是
+<code>main</code> 函数 <code>return 0</code> 或者调用
+<code>exit()</code></p>
+<p>子进程运行结束, 父进程需要用 <code>wait</code> 或
+<code>waitpid</code> 回收子进程的资源. 不回收?
+子进程会变成僵尸进程.(kernel 里的<code>task_struct</code> 没有释放)
+或者你把它 <code>kill</code> 掉! 如果父进程先于子进程终止,
+那么子进程就被 <code>init</code> 进程 <code>pid = 1</code> 收养.</p>
 <p>Docker 的第一步是复读机!</p>
 <figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;unistd.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;string.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;sys/types.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;sys/wait.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">static</span> string <span class="title">cmd</span><span class="params">(<span class="type">int</span> argc, <span class="type">char</span> **argv)</span></span>;</span><br><span class="line"><span class="function"><span class="type">static</span> <span class="type">void</span> <span class="title">run</span><span class="params">(<span class="type">int</span> argc, <span class="type">char</span> **argv)</span></span>;</span><br><span class="line"><span class="function"><span class="type">static</span> <span class="type">void</span> <span class="title">run_child</span><span class="params">(<span class="type">int</span> argc, <span class="type">char</span> **argv)</span></span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">(<span class="type">int</span> argc, <span class="type">char</span> **argv)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (argc &lt; <span class="number">3</span>) &#123;</span><br><span class="line">        cerr &lt;&lt; <span class="string">&quot;Too few arguments&quot;</span> &lt;&lt; endl;</span><br><span class="line">        <span class="built_in">exit</span>(<span class="number">-1</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (!<span class="built_in">strcmp</span>(argv[<span class="number">1</span>], <span class="string">&quot;run&quot;</span>))</span><br><span class="line">        <span class="built_in">run</span>(argc - <span class="number">2</span>, &amp;argv[<span class="number">2</span>]);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">static</span> <span class="type">void</span> <span class="title">run</span><span class="params">(<span class="type">int</span> argc, <span class="type">char</span> **argv)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    cout &lt;&lt; <span class="string">&quot;Running &quot;</span> &lt;&lt; <span class="built_in">cmd</span>(argc, argv) &lt;&lt; endl;</span><br><span class="line"></span><br><span class="line">    <span class="type">pid_t</span> child_pid = fork();</span><br><span class="line">    <span class="keyword">if</span>(child_pid &lt; <span class="number">0</span>) &#123;</span><br><span class="line">        cerr &lt;&lt; <span class="string">&quot;Failed to work&quot;</span> &lt;&lt; endl;</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span>(child_pid) &#123;</span><br><span class="line">        <span class="keyword">if</span>(<span class="built_in">waitpid</span>(child_pid, <span class="literal">NULL</span>, <span class="number">0</span>) &lt; <span class="number">0</span>)</span><br><span class="line">            cerr &lt;&lt; <span class="string">&quot;Fail to wait for child&quot;</span> &lt;&lt; endl;</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">            cout &lt;&lt; <span class="string">&quot;Child terminated&quot;</span> &lt;&lt; endl;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">        <span class="built_in">run_child</span>(argc, argv);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">static</span> <span class="type">void</span> <span class="title">run_child</span><span class="params">(<span class="type">int</span> argc, <span class="type">char</span> **argv)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (<span class="built_in">execvp</span>(argv[<span class="number">0</span>], argv))</span><br><span class="line">        cerr &lt;&lt; <span class="string">&quot;Failed to exec&quot;</span> &lt;&lt; endl;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">static</span> string <span class="title">cmd</span><span class="params">(<span class="type">int</span> argc, <span class="type">char</span> **argv)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    string prompt = <span class="string">&quot;&quot;</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; argc; i++)</span><br><span class="line">        prompt.<span class="built_in">append</span>(argv[i] + <span class="built_in">string</span>(<span class="string">&quot; &quot;</span>));</span><br><span class="line">    <span class="keyword">return</span> prompt;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>然后我们来干正事: 实现 isolation!</p>
-<h2 id="UTS-namespace"><a href="#UTS-namespace" class="headerlink" title="UTS namespace"></a>UTS namespace</h2><p>Linux Namespace: 内核级别<strong>隔离</strong>系统资源<br>UTS: 在 container 里显示主机名(hostname)</p>
-<p>Namespace 就好比 C++ 里的 namespace, <code>using namespace</code> 就是让你获取某一命名空间下的内容, Namespace 就是为了限制”你能看到什么”存在的.</p>
-<p>UTS 是系统资源隔离机制中的一种. 此外还有 <code>Mount</code>(隔离文件和挂载点), <code>PID</code>(隔离 <code>pid</code>), <code>User</code>(隔离用户和用户组)…<br>Namespace 类别负责限制进程在”某一方面”都能看到什么. 例如 <code>CLONE_NEWUTS</code>: 用于指定UTS Namespace.</p>
-<p>UTS Namespace 隔离了不同进程的 hostname view, 这样修改 container 的 UTS Namespace 中的主机名就和 host 进程 Namespace 中的主机名不同了.</p>
+<h2 id="uts-namespace">UTS namespace</h2>
+<p>Linux Namespace: 内核级别<strong>隔离</strong>系统资源 UTS: 在
+container 里显示主机名(hostname)</p>
+<p>Namespace 就好比 C++ 里的 namespace, <code>using namespace</code>
+就是让你获取某一命名空间下的内容, Namespace
+就是为了限制"你能看到什么"存在的.</p>
+<p>UTS 是系统资源隔离机制中的一种. 此外还有
+<code>Mount</code>(隔离文件和挂载点), <code>PID</code>(隔离
+<code>pid</code>), <code>User</code>(隔离用户和用户组)... Namespace
+类别负责限制进程在"某一方面"都能看到什么. 例如
+<code>CLONE_NEWUTS</code>: 用于指定UTS Namespace.</p>
+<p>UTS Namespace 隔离了不同进程的 hostname view, 这样修改 container 的
+UTS Namespace 中的主机名就和 host 进程 Namespace 中的主机名不同了.</p>
 <p>先回答一个问题: 为什么需要对主机名和域名进行隔离呢?</p>
-<p>因为主机名和域名可以用来代替IP地址.<br>如果没有这一层隔离, 同一主机上不同的容器的网络访问就可能出问题.</p>
+<p>因为主机名和域名可以用来代替IP地址. 如果没有这一层隔离,
+同一主机上不同的容器的网络访问就可能出问题.</p>
 <p>涉及到 Namespace 的操作接口包括:</p>
 <ul>
 <li><code>clone()</code>: 创建一个独立 Namespace 的进程.</li>
@@ -2135,45 +2506,75 @@ C++STL里可以用 <code>multiset</code>.</p>
 <li><code>unshare()</code>: 将进程脱离到新的 Namespace</li>
 <li>以及 <code>/proc</code> 下的部分文件</li>
 </ul>
-<p>通过 <code>/proc</code> 文件查看已存在的 Namespace<br>试试 <code>ls -al /proc/$pid/ns</code></p>
+<p>通过 <code>/proc</code> 文件查看已存在的 Namespace 试试
+<code>ls -al /proc/$pid/ns</code></p>
 <figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="type">static</span> <span class="type">void</span> <span class="title">run_child</span><span class="params">(<span class="type">int</span> argc, <span class="type">char</span> **argv)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="type">int</span> flags = CLONE_NEWUTS;</span><br><span class="line">    <span class="keyword">if</span>(<span class="built_in">unshare</span>(flags) &lt; <span class="number">0</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        cerr &lt;&lt; <span class="string">&quot;Fail to unshare in child&quot;</span> &lt;&lt; endl;</span><br><span class="line">        <span class="built_in">exit</span>(<span class="number">-1</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (<span class="built_in">execvp</span>(argv[<span class="number">0</span>], argv))</span><br><span class="line">        cerr &lt;&lt; <span class="string">&quot;Failed to exec&quot;</span> &lt;&lt; endl;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">besthope:~/mini-docker$ hostname</span><br><span class="line">LAPTOP-3CUODIL3</span><br><span class="line">besthope:~/mini-docker$ sudo ./mocker run /bin/bash</span><br><span class="line">Running /bin/bash</span><br><span class="line">root@LAPTOP-3CUODIL3:/home/besthope/mini-docker<span class="comment"># hostname container</span></span><br><span class="line">root@LAPTOP-3CUODIL3:/home/besthope/mini-docker<span class="comment"># hostname</span></span><br><span class="line">container</span><br><span class="line">root@LAPTOP-3CUODIL3:/home/besthope/mini-docker<span class="comment"># exit</span></span><br><span class="line"><span class="built_in">exit</span></span><br><span class="line">Child terminated</span><br><span class="line">besthope:~/mini-docker$ hostname</span><br><span class="line">LAPTOP-3CUODIL3</span><br></pre></td></tr></table></figure>
 <p>我们用 <code>sethostname</code> 给它自动化:</p>
 <figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="type">static</span> <span class="type">void</span> <span class="title">run_child</span><span class="params">(<span class="type">int</span> argc, <span class="type">char</span> **argv)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="type">int</span> flags = CLONE_NEWUTS;</span><br><span class="line">    <span class="keyword">if</span>(<span class="built_in">unshare</span>(flags) &lt; <span class="number">0</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        cerr &lt;&lt; <span class="string">&quot;Fail to unshare in child&quot;</span> &lt;&lt; endl;</span><br><span class="line">        <span class="built_in">exit</span>(<span class="number">-1</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(<span class="built_in">sethostname</span>(child_hostname, <span class="built_in">strlen</span>(child_hostname)) &lt; <span class="number">0</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        cerr &lt;&lt; <span class="string">&quot;Fail to change hostname&quot;</span> &lt;&lt; endl;</span><br><span class="line">        <span class="built_in">exit</span>(<span class="number">-1</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (<span class="built_in">execvp</span>(argv[<span class="number">0</span>], argv))</span><br><span class="line">        cerr &lt;&lt; <span class="string">&quot;Failed to exec&quot;</span> &lt;&lt; endl;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>现在就挺有模有样了, 不是嘛…?</p>
+<p>现在就挺有模有样了, 不是嘛...?</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">besthope:~/mini-docker$ sudo ./mocker run /bin/bash</span><br><span class="line">Running /bin/bash</span><br><span class="line">root@container:/home/besthope/mini-docker<span class="comment"># ls -l</span></span><br><span class="line">total 32</span><br><span class="line">-rwxr-xr-x 1 besthope besthope 24656 Apr  8 20:34 mocker</span><br><span class="line">-rw-r--r-- 1 besthope besthope  1507 Apr  8 20:34 mocker.cc</span><br><span class="line">root@container:/home/besthope/mini-docker<span class="comment"># ps</span></span><br><span class="line">    PID TTY          TIME CMD</span><br><span class="line">   1067 pts/6    00:00:00 sudo</span><br><span class="line">   1068 pts/6    00:00:00 mocker</span><br><span class="line">   1069 pts/6    00:00:00 bash</span><br><span class="line">   1085 pts/6    00:00:00 ps</span><br></pre></td></tr></table></figure>
-<h2 id="PID-namespace"><a href="#PID-namespace" class="headerlink" title="PID namespace"></a>PID namespace</h2><p><code>mocker</code> 中执行进程的 pid 是从 host 中增长而来的. 如果我想要 pid 从 1 开始增长, 要怎么做呢? 这就需要隔离 pid namespace.</p>
+<h2 id="pid-namespace">PID namespace</h2>
+<p><code>mocker</code> 中执行进程的 pid 是从 host 中增长而来的.
+如果我想要 pid 从 1 开始增长, 要怎么做呢? 这就需要隔离 pid
+namespace.</p>
 <figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="type">static</span> <span class="type">void</span> <span class="title">run</span><span class="params">(<span class="type">int</span> argc, <span class="type">char</span> **argv)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    cout &lt;&lt; <span class="string">&quot;Parent running &quot;</span> &lt;&lt; <span class="built_in">cmd</span>(argc, argv) &lt;&lt; <span class="string">&quot;as &quot;</span> &lt;&lt; <span class="built_in">getpid</span>() &lt;&lt; endl;</span><br><span class="line">    <span class="keyword">if</span>(<span class="built_in">unshare</span>(CLONE_NEWPID) &lt; <span class="number">0</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        cerr &lt;&lt; <span class="string">&quot;Fail to unshare PID namespace&quot;</span> &lt;&lt; endl;</span><br><span class="line">        <span class="built_in">exit</span>(<span class="number">-1</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="type">pid_t</span> child_pid = fork();</span><br><span class="line">    <span class="keyword">if</span>(child_pid &lt; <span class="number">0</span>) &#123;</span><br><span class="line">        cerr &lt;&lt; <span class="string">&quot;Failed to work&quot;</span> &lt;&lt; endl;</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span>(child_pid) &#123;</span><br><span class="line">        <span class="keyword">if</span>(<span class="built_in">waitpid</span>(child_pid, <span class="literal">NULL</span>, <span class="number">0</span>) &lt; <span class="number">0</span>)</span><br><span class="line">            cerr &lt;&lt; <span class="string">&quot;Fail to wait for child&quot;</span> &lt;&lt; endl;</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">            cout &lt;&lt; <span class="string">&quot;Child terminated&quot;</span> &lt;&lt; endl;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">        <span class="built_in">run_child</span>(argc, argv);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">besthope:~/mini-docker$ sudo ./mocker run /bin/bash</span><br><span class="line">Parent running /bin/bash as 1176</span><br><span class="line">Child running /bin/bash as 1</span><br><span class="line">root@container:/home/besthope/mini-docker<span class="comment"># ps</span></span><br><span class="line">    PID TTY          TIME CMD</span><br><span class="line">   1175 pts/6    00:00:00 sudo</span><br><span class="line">   1176 pts/6    00:00:00 mocker</span><br><span class="line">   1177 pts/6    00:00:00 bash</span><br><span class="line">   1184 pts/6    00:00:00 ps</span><br></pre></td></tr></table></figure>
-<p><code>ps</code> 的 pid 怎么和 <code>getpid</code> 的不一样? 这个是 <code>ps</code> 的锅. 具体来说, <code>ps</code> 读取的是 <code>/proc</code> 目录下的进程信息, <code>container</code> 虽然放到了一个新的 <code>pid namespace</code>, 但是读取 <code>/proc</code> 的信息依然和 host 进程是相同的.</p>
+<p><code>ps</code> 的 pid 怎么和 <code>getpid</code> 的不一样? 这个是
+<code>ps</code> 的锅. 具体来说, <code>ps</code> 读取的是
+<code>/proc</code> 目录下的进程信息, <code>container</code>
+虽然放到了一个新的 <code>pid namespace</code>, 但是读取
+<code>/proc</code> 的信息依然和 host 进程是相同的.</p>
 <p>但这不影响我们成功隔离了 pid namespace.</p>
-<p>一个细节: <code>unshare</code> 创建 pid namespace 是在父进程中进行的, 而不是像 UTS namespace 在子进程中进行.<br>原因: Kernel 这么做!</p>
-<h2 id="文件系统隔离"><a href="#文件系统隔离" class="headerlink" title="文件系统隔离"></a>文件系统隔离</h2><p>不同的 mount namespace 本身不能提供 filesystem 的隔离.</p>
+<p>一个细节: <code>unshare</code> 创建 pid namespace 是在父进程中进行的,
+而不是像 UTS namespace 在子进程中进行. 原因: Kernel 这么做!</p>
+<h2 id="文件系统隔离">文件系统隔离</h2>
+<p>不同的 mount namespace 本身不能提供 filesystem 的隔离.</p>
 <p>问题: mount isolation != filesystem isolation</p>
 <p>为什么?</p>
 <p>假设我手头有一个 <code>ubuntu-fs</code>, 里头有:</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">bin  boot  dev  etc  home  init  lib  lib32  lib64  libx32  lost+found  media  mnt  opt  proc  root  run  sbin  snap  srv  sys  tmp  usr  var</span><br></pre></td></tr></table></figure>
-<p>我们可以对子进程代码做简单的修改, 将 container 对整个 filesystem 的 <code>view</code> 限制在这个目录下:</p>
+<p>我们可以对子进程代码做简单的修改, 将 container 对整个 filesystem 的
+<code>view</code> 限制在这个目录下:</p>
 <figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="type">static</span> <span class="type">void</span> <span class="title">run_child</span><span class="params">(<span class="type">int</span> argc, <span class="type">char</span> **argv)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    cout &lt;&lt; <span class="string">&quot;Child running &quot;</span> &lt;&lt; <span class="built_in">cmd</span>(argc, argv) &lt;&lt; <span class="string">&quot;as &quot;</span> &lt;&lt; <span class="built_in">getpid</span>() &lt;&lt; endl;</span><br><span class="line"></span><br><span class="line">    <span class="type">int</span> flags = CLONE_NEWUTS;</span><br><span class="line">    <span class="keyword">if</span>(<span class="built_in">unshare</span>(flags) &lt; <span class="number">0</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        cerr &lt;&lt; <span class="string">&quot;Fail to unshare in child&quot;</span> &lt;&lt; endl;</span><br><span class="line">        <span class="built_in">exit</span>(<span class="number">-1</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span>(<span class="built_in">chroot</span>(<span class="string">&quot;../ubuntu-fs&quot;</span>) &lt; <span class="number">0</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        cerr &lt;&lt; <span class="string">&quot;Fail to chroot&quot;</span> &lt;&lt; endl;</span><br><span class="line">        <span class="built_in">exit</span>(<span class="number">-1</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(<span class="built_in">chdir</span>(<span class="string">&quot;/&quot;</span>) &lt; <span class="number">0</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        cerr &lt;&lt; <span class="string">&quot;Fail to chdir to /&quot;</span> &lt;&lt; endl;</span><br><span class="line">        <span class="built_in">exit</span>(<span class="number">-1</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">if</span>(<span class="built_in">sethostname</span>(child_hostname, <span class="built_in">strlen</span>(child_hostname)) &lt; <span class="number">0</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        cerr &lt;&lt; <span class="string">&quot;Fail to change hostname&quot;</span> &lt;&lt; endl;</span><br><span class="line">        <span class="built_in">exit</span>(<span class="number">-1</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (<span class="built_in">execvp</span>(argv[<span class="number">0</span>], argv))</span><br><span class="line">        cerr &lt;&lt; <span class="string">&quot;Failed to exec&quot;</span> &lt;&lt; endl;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>核心在于 <code>chroot</code>: make path root directory. 后续的 absolute path 文件访问全都从这个新的根目录开始.<br>注意 <code>chroot</code> 只是 view isolation. 你可以利用相对目录访问来逃离这个根目录.</p>
-<p>用 <code>chdir</code> 将目录切换到新设置的 <code>/</code>: change working directory to path</p>
-<p>看起来已经像那么回事了…?</p>
-<p>当然要注意到一点: <code>/proc</code> 目录的问题依然没有解决. 如果这时候运行 <code>ps</code> 会直接报错, 原因是 <code>ubuntu-fs</code> 下的 <code>/proc</code> 里是什么都没有的…</p>
+<p>核心在于 <code>chroot</code>: make path root directory. 后续的
+absolute path 文件访问全都从这个新的根目录开始. 注意 <code>chroot</code>
+只是 view isolation. 你可以利用相对目录访问来逃离这个根目录.</p>
+<p>用 <code>chdir</code> 将目录切换到新设置的 <code>/</code>: change
+working directory to path</p>
+<p>看起来已经像那么回事了...?</p>
+<p>当然要注意到一点: <code>/proc</code> 目录的问题依然没有解决.
+如果这时候运行 <code>ps</code> 会直接报错, 原因是 <code>ubuntu-fs</code>
+下的 <code>/proc</code> 里是什么都没有的...</p>
 <p>但我们可以用一步挂载解决问题:</p>
 <figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="type">static</span> <span class="type">void</span> <span class="title">run_child</span><span class="params">(<span class="type">int</span> argc, <span class="type">char</span> **argv)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    cout &lt;&lt; <span class="string">&quot;Child running &quot;</span> &lt;&lt; <span class="built_in">cmd</span>(argc, argv) &lt;&lt; <span class="string">&quot;as &quot;</span> &lt;&lt; <span class="built_in">getpid</span>() &lt;&lt; endl;</span><br><span class="line"></span><br><span class="line">    <span class="type">int</span> flags = CLONE_NEWUTS;</span><br><span class="line">    <span class="keyword">if</span>(<span class="built_in">unshare</span>(flags) &lt; <span class="number">0</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        cerr &lt;&lt; <span class="string">&quot;Fail to unshare in child&quot;</span> &lt;&lt; endl;</span><br><span class="line">        <span class="built_in">exit</span>(<span class="number">-1</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span>(<span class="built_in">chroot</span>(<span class="string">&quot;../ubuntu-fs&quot;</span>) &lt; <span class="number">0</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        cerr &lt;&lt; <span class="string">&quot;Fail to chroot&quot;</span> &lt;&lt; endl;</span><br><span class="line">        <span class="built_in">exit</span>(<span class="number">-1</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(<span class="built_in">chdir</span>(<span class="string">&quot;/&quot;</span>) &lt; <span class="number">0</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        cerr &lt;&lt; <span class="string">&quot;Fail to chdir to /&quot;</span> &lt;&lt; endl;</span><br><span class="line">        <span class="built_in">exit</span>(<span class="number">-1</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(<span class="built_in">mount</span>(<span class="string">&quot;proc&quot;</span>, <span class="string">&quot;proc&quot;</span>, <span class="string">&quot;proc&quot;</span>, <span class="number">0</span>, <span class="literal">NULL</span>) &lt; <span class="number">0</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        cerr &lt;&lt; <span class="string">&quot;Fail to mount /proc&quot;</span> &lt;&lt; endl;</span><br><span class="line">        <span class="built_in">exit</span>(<span class="number">-1</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(<span class="built_in">sethostname</span>(child_hostname, <span class="built_in">strlen</span>(child_hostname)) &lt; <span class="number">0</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        cerr &lt;&lt; <span class="string">&quot;Fail to change hostname&quot;</span> &lt;&lt; endl;</span><br><span class="line">        <span class="built_in">exit</span>(<span class="number">-1</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (<span class="built_in">execvp</span>(argv[<span class="number">0</span>], argv))</span><br><span class="line">        cerr &lt;&lt; <span class="string">&quot;Failed to exec&quot;</span> &lt;&lt; endl;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>新的问题是: 当我们回到 host, <code>cat /proc/mounts | grep ^proc</code>, 你会发现 <code>proc /home/user/ubuntu-fs/proc proc rw,relatime 0 0</code> 也出现在了 host 里!</p>
-<h2 id="Mount-namespace"><a href="#Mount-namespace" class="headerlink" title="Mount namespace"></a>Mount namespace</h2><p>Mount 比较蛋疼的一点在于, 你没法简单的加一个 flag 就实现 mount point isolation. 你需要重新设置根目录mount point的propagation type.</p>
+<p>新的问题是: 当我们回到 host,
+<code>cat /proc/mounts | grep ^proc</code>, 你会发现
+<code>proc /home/user/ubuntu-fs/proc proc rw,relatime 0 0</code>
+也出现在了 host 里!</p>
+<h2 id="mount-namespace">Mount namespace</h2>
+<p>Mount 比较蛋疼的一点在于, 你没法简单的加一个 flag 就实现 mount point
+isolation. 你需要重新设置根目录mount point的propagation type.</p>
 <figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="type">static</span> <span class="type">void</span> <span class="title">run_child</span><span class="params">(<span class="type">int</span> argc, <span class="type">char</span> **argv)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    cout &lt;&lt; <span class="string">&quot;Child running &quot;</span> &lt;&lt; <span class="built_in">cmd</span>(argc, argv) &lt;&lt; <span class="string">&quot;as &quot;</span> &lt;&lt; <span class="built_in">getpid</span>() &lt;&lt; endl;</span><br><span class="line"></span><br><span class="line">    <span class="type">int</span> flags = CLONE_NEWUTS | CLONE_NEWNS;</span><br><span class="line">    <span class="keyword">if</span>(<span class="built_in">unshare</span>(flags) &lt; <span class="number">0</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        cerr &lt;&lt; <span class="string">&quot;Fail to unshare in child&quot;</span> &lt;&lt; endl;</span><br><span class="line">        <span class="built_in">exit</span>(<span class="number">-1</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(<span class="built_in">mount</span>(<span class="literal">NULL</span>,<span class="string">&quot;/&quot;</span>, <span class="literal">NULL</span>, MS_SLAVE | MS_REC, <span class="literal">NULL</span>) &lt; <span class="number">0</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        cerr &lt;&lt; <span class="string">&quot;Fail to mount /&quot;</span> &lt;&lt; endl;</span><br><span class="line">        <span class="built_in">exit</span>(<span class="number">-1</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(<span class="built_in">chroot</span>(<span class="string">&quot;../ubuntu-fs&quot;</span>) &lt; <span class="number">0</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        cerr &lt;&lt; <span class="string">&quot;Fail to chroot&quot;</span> &lt;&lt; endl;</span><br><span class="line">        <span class="built_in">exit</span>(<span class="number">-1</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(<span class="built_in">chdir</span>(<span class="string">&quot;/&quot;</span>) &lt; <span class="number">0</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        cerr &lt;&lt; <span class="string">&quot;Fail to chdir to /&quot;</span> &lt;&lt; endl;</span><br><span class="line">        <span class="built_in">exit</span>(<span class="number">-1</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(<span class="built_in">mount</span>(<span class="string">&quot;proc&quot;</span>, <span class="string">&quot;proc&quot;</span>, <span class="string">&quot;proc&quot;</span>, <span class="number">0</span>, <span class="literal">NULL</span>) &lt; <span class="number">0</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        cerr &lt;&lt; <span class="string">&quot;Fail to mount /proc&quot;</span> &lt;&lt; endl;</span><br><span class="line">        <span class="built_in">exit</span>(<span class="number">-1</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(<span class="built_in">sethostname</span>(child_hostname, <span class="built_in">strlen</span>(child_hostname)) &lt; <span class="number">0</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        cerr &lt;&lt; <span class="string">&quot;Fail to change hostname&quot;</span> &lt;&lt; endl;</span><br><span class="line">        <span class="built_in">exit</span>(<span class="number">-1</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (<span class="built_in">execvp</span>(argv[<span class="number">0</span>], argv))</span><br><span class="line">        cerr &lt;&lt; <span class="string">&quot;Failed to exec&quot;</span> &lt;&lt; endl;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>这样我们运行 container 的时候挂载 <code>\proc</code> 就不会 propagate 到 host view, container 的 <code>\proc</code> mount point visibility 就被限制在了 <code>container</code> 的 <code>mount container</code> 中.</p>
-<p>当然, 你在 container 运行着的时候在 host 中依然能看到这个 <code>mount namespace</code> 的存在.</p>
-<h2 id="完"><a href="#完" class="headerlink" title="完"></a>完</h2><p>附一个完整代码:</p>
+<p>这样我们运行 container 的时候挂载 <code>\proc</code> 就不会 propagate
+到 host view, container 的 <code>\proc</code> mount point visibility
+就被限制在了 <code>container</code> 的 <code>mount container</code>
+中.</p>
+<p>当然, 你在 container 运行着的时候在 host 中依然能看到这个
+<code>mount namespace</code> 的存在.</p>
+<h2 id="完">完</h2>
+<p>附一个完整代码:</p>
 <figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;unistd.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;string.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;sys/types.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;sys/wait.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;sys/mount.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="type">const</span> <span class="type">char</span> *child_hostname = <span class="string">&quot;container&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">static</span> string <span class="title">cmd</span><span class="params">(<span class="type">int</span> argc, <span class="type">char</span> **argv)</span></span>;</span><br><span class="line"><span class="function"><span class="type">static</span> <span class="type">void</span> <span class="title">run</span><span class="params">(<span class="type">int</span> argc, <span class="type">char</span> **argv)</span></span>;</span><br><span class="line"><span class="function"><span class="type">static</span> <span class="type">void</span> <span class="title">run_child</span><span class="params">(<span class="type">int</span> argc, <span class="type">char</span> **argv)</span></span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">(<span class="type">int</span> argc, <span class="type">char</span> **argv)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (argc &lt; <span class="number">3</span>) &#123;</span><br><span class="line">        cerr &lt;&lt; <span class="string">&quot;Too few arguments&quot;</span> &lt;&lt; endl;</span><br><span class="line">        <span class="built_in">exit</span>(<span class="number">-1</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (!<span class="built_in">strcmp</span>(argv[<span class="number">1</span>], <span class="string">&quot;run&quot;</span>))</span><br><span class="line">        <span class="built_in">run</span>(argc - <span class="number">2</span>, &amp;argv[<span class="number">2</span>]);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">static</span> <span class="type">void</span> <span class="title">run</span><span class="params">(<span class="type">int</span> argc, <span class="type">char</span> **argv)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    cout &lt;&lt; <span class="string">&quot;Parent running &quot;</span> &lt;&lt; <span class="built_in">cmd</span>(argc, argv) &lt;&lt; <span class="string">&quot;as &quot;</span> &lt;&lt; <span class="built_in">getpid</span>() &lt;&lt; endl;</span><br><span class="line">    <span class="keyword">if</span>(<span class="built_in">unshare</span>(CLONE_NEWPID) &lt; <span class="number">0</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        cerr &lt;&lt; <span class="string">&quot;Fail to unshare PID namespace&quot;</span> &lt;&lt; endl;</span><br><span class="line">        <span class="built_in">exit</span>(<span class="number">-1</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="type">pid_t</span> child_pid = fork();</span><br><span class="line">    <span class="keyword">if</span>(child_pid &lt; <span class="number">0</span>) &#123;</span><br><span class="line">        cerr &lt;&lt; <span class="string">&quot;Failed to work&quot;</span> &lt;&lt; endl;</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span>(child_pid) &#123;</span><br><span class="line">        <span class="keyword">if</span>(<span class="built_in">waitpid</span>(child_pid, <span class="literal">NULL</span>, <span class="number">0</span>) &lt; <span class="number">0</span>)</span><br><span class="line">            cerr &lt;&lt; <span class="string">&quot;Fail to wait for child&quot;</span> &lt;&lt; endl;</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">            cout &lt;&lt; <span class="string">&quot;Child terminated&quot;</span> &lt;&lt; endl;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">        <span class="built_in">run_child</span>(argc, argv);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">static</span> <span class="type">void</span> <span class="title">run_child</span><span class="params">(<span class="type">int</span> argc, <span class="type">char</span> **argv)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    cout &lt;&lt; <span class="string">&quot;Child running &quot;</span> &lt;&lt; <span class="built_in">cmd</span>(argc, argv) &lt;&lt; <span class="string">&quot;as &quot;</span> &lt;&lt; <span class="built_in">getpid</span>() &lt;&lt; endl;</span><br><span class="line"></span><br><span class="line">    <span class="type">int</span> flags = CLONE_NEWUTS | CLONE_NEWNS;</span><br><span class="line">    <span class="keyword">if</span>(<span class="built_in">unshare</span>(flags) &lt; <span class="number">0</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        cerr &lt;&lt; <span class="string">&quot;Fail to unshare in child&quot;</span> &lt;&lt; endl;</span><br><span class="line">        <span class="built_in">exit</span>(<span class="number">-1</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(<span class="built_in">mount</span>(<span class="literal">NULL</span>,<span class="string">&quot;/&quot;</span>, <span class="literal">NULL</span>, MS_SLAVE | MS_REC, <span class="literal">NULL</span>) &lt; <span class="number">0</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        cerr &lt;&lt; <span class="string">&quot;Fail to mount /&quot;</span> &lt;&lt; endl;</span><br><span class="line">        <span class="built_in">exit</span>(<span class="number">-1</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(<span class="built_in">chroot</span>(<span class="string">&quot;../ubuntu-fs&quot;</span>) &lt; <span class="number">0</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        cerr &lt;&lt; <span class="string">&quot;Fail to chroot&quot;</span> &lt;&lt; endl;</span><br><span class="line">        <span class="built_in">exit</span>(<span class="number">-1</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(<span class="built_in">chdir</span>(<span class="string">&quot;/&quot;</span>) &lt; <span class="number">0</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        cerr &lt;&lt; <span class="string">&quot;Fail to chdir to /&quot;</span> &lt;&lt; endl;</span><br><span class="line">        <span class="built_in">exit</span>(<span class="number">-1</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(<span class="built_in">mount</span>(<span class="string">&quot;proc&quot;</span>, <span class="string">&quot;proc&quot;</span>, <span class="string">&quot;proc&quot;</span>, <span class="number">0</span>, <span class="literal">NULL</span>) &lt; <span class="number">0</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        cerr &lt;&lt; <span class="string">&quot;Fail to mount /proc&quot;</span> &lt;&lt; endl;</span><br><span class="line">        <span class="built_in">exit</span>(<span class="number">-1</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(<span class="built_in">sethostname</span>(child_hostname, <span class="built_in">strlen</span>(child_hostname)) &lt; <span class="number">0</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        cerr &lt;&lt; <span class="string">&quot;Fail to change hostname&quot;</span> &lt;&lt; endl;</span><br><span class="line">        <span class="built_in">exit</span>(<span class="number">-1</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (<span class="built_in">execvp</span>(argv[<span class="number">0</span>], argv))</span><br><span class="line">        cerr &lt;&lt; <span class="string">&quot;Failed to exec&quot;</span> &lt;&lt; endl;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">static</span> string <span class="title">cmd</span><span class="params">(<span class="type">int</span> argc, <span class="type">char</span> **argv)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    string prompt = <span class="string">&quot;&quot;</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; argc; i++)</span><br><span class="line">        prompt.<span class="built_in">append</span>(argv[i] + <span class="built_in">string</span>(<span class="string">&quot; &quot;</span>));</span><br><span class="line">    <span class="keyword">return</span> prompt;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>代码并不算长(?)</p>
-<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ol>
-<li><p><a href="https://www.youtube.com/watch?app=desktop&amp;v=8fi7uSYlOdc&amp;feature=youtu.be">Containers From Scratch • Liz Rice • GOTO 2018</a></p>
-</li>
-<li><p><a href="https://github.com/Kirhhoff/mini-docker">mini-docker: illustrate what docker really is in 100 lines of C/C++</a> 是一个 C++ 的实现版本, 这是对应的<a href="https://www.zhihu.com/question/28300645/answer/2488146755">中文版本</a>.</p>
-</li>
+<h2 id="参考">参考</h2>
+<ol type="1">
+<li><p><a
+href="https://www.youtube.com/watch?app=desktop&amp;v=8fi7uSYlOdc&amp;feature=youtu.be">Containers
+From Scratch • Liz Rice • GOTO 2018</a></p></li>
+<li><p><a href="https://github.com/Kirhhoff/mini-docker">mini-docker:
+illustrate what docker really is in 100 lines of C/C++</a> 是一个 C++
+的实现版本, 这是对应的<a
+href="https://www.zhihu.com/question/28300645/answer/2488146755">中文版本</a>.</p></li>
 </ol>
 ]]></content>
       <categories>
