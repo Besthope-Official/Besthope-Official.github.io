@@ -1164,6 +1164,7 @@ cnt\)</span> 即可.</p>
 以及, 为什么要这么定义?</p>
 <span id="more"></span>
 <h2 id="命题逻辑">命题逻辑</h2>
+<p>免责声明: 这不是教会你怎么去应试的.</p>
 <h3 id="命题符号化">命题符号化</h3>
 <h4 id="句子变符号">句子变符号</h4>
 <p>什么是<strong>命题</strong>(statement)? 一个布尔值.</p>
@@ -1235,6 +1236,13 @@ Q\)</span>).</p>
 <p>试试看你能不能只用 <code>&amp;</code> 和 <code>!</code> 模拟出
 <code>^</code>!</p>
 <figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="type">int</span> <span class="title function_">bitXor</span><span class="params">(<span class="type">int</span> x, <span class="type">int</span> y)</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="type">int</span> p = ~((~x) &amp; (~y)); <span class="comment">// or</span></span><br><span class="line">    <span class="type">int</span> q = ~(x &amp; y);</span><br><span class="line">    <span class="keyword">return</span> p &amp; q; <span class="comment">// Xor</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>Remark: 这个例子实际上说明了基本运算符<em>可以剪裁</em>.
+<code>or</code> 可以被 <code>and</code> 和 <code>neg</code> 模拟,
+等价的一种说法是在 <span class="math inline">\(\{ \neg,
+\wedge\}\)</span> 上构造 <span class="math inline">\(L\)</span>. (<span
+class="math inline">\(L\)</span> 是一个命题公式)</p>
+</blockquote>
 <p>剩下两个联接词很常用. 但它们同样可以被上面三种联接词模拟出来.</p>
 <ul>
 <li><span class="math inline">\(P\rightarrow Q\)</span>
@@ -1335,6 +1343,12 @@ class="math inline">\(p_1, p_2,\dots,p_n\)</span> 赋值</p>
 <p>例如上面的真值表, 我们实际上证明了 <span class="math inline">\((P
 \implies Q) \leftrightarrow (\neg P \vee Q)\)</span> 是一个永真公式.
 不信你再多看看.</p>
+<p>有无算法, 能够判定对于一个任意的命题公式 <span
+class="math inline">\(\phi\)</span>, 其是否可满足? 这个问题也叫 SAT(或
+3-SAT) Problem, The Satisfiability Problem.</p>
+<p>求解: 真值表枚举, 指数级的时间复杂度. 它是 NP-Complete 问题,
+<strong>Cook-Levin Theorem</strong> 描述的就是这个事情.
+如果你对算法分析感兴趣可以 Google 一下!</p>
 <h4 id="逻辑等价">逻辑等价</h4>
 <p>如果我们能证明 <span class="math inline">\(P \leftrightarrow
 Q\)</span> 是个永真公式, 那么我们称 <span
@@ -1383,7 +1397,6 @@ class="math inline">\((a\wedge b)\vee (\neg a \wedge b) = b\)</span>,
 class="math inline">\((a\wedge \neg b)\vee (\neg a \wedge \neg b) = \neg
 b\)</span>, 所以</p>
 <figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="keyword">if</span> (b)</span><br><span class="line">    <span class="built_in">x</span>();</span><br><span class="line"><span class="keyword">else</span></span><br><span class="line">    <span class="built_in">y</span>();</span><br></pre></td></tr></table></figure>
-<p>这样写, 舒服了🥰</p>
 <h4 id="逻辑蕴含">逻辑蕴含</h4>
 <p>有逻辑等价, 有逻辑蕴含吗? 有!</p>
 <p><span class="math inline">\(\phi\models \psi\)</span> 定义为: 对于
@@ -1420,8 +1433,8 @@ class="math inline">\(\vdash\)</span> 的东西. 如果你感兴趣, 你可以 c
 这个<a
 href="https://www.zhihu.com/question/21191299/answer/17469774">回答</a>.</p>
 <h3 id="命题公式太多了标准化">命题公式太多了——标准化</h3>
-<h4 id="范式和主范式">范式和主范式</h4>
-<p>"范式总让我想到范马."</p>
+<h4 id="范式">范式</h4>
+<p><del>"范式总让我想到范马."</del></p>
 <p>什么是范式?</p>
 <p><del>命题变元或命题变元的否定称为文字,
 有限个文字的析取式称为简单析取式(基本和),
@@ -1456,17 +1469,61 @@ T\)</span> 即可.</p></li>
 <li>消去多余的 <span class="math inline">\(\neg\)</span>.</li>
 <li>用分配律化成 DNF 或 CNF.</li>
 </ul>
+<h4 id="主范式">主范式</h4>
 <p>DNF 和 CNF 实际上不唯一. 例如 <span class="math inline">\(P \wedge (Q
 \vee R)\)</span> 还可以写成 <span class="math inline">\((P \vee P)
-\wedge (Q \vee R)\)</span> 之类. 也就是范式还不够强, 要进一步约束限定,
-于是就有了主范式. 主范式主要规定的是:</p>
-<p>对于合取范式中的每一个简单析取式, 要求包含所有的命题变元,
-且每个只能出现一次.(称其为<em>极大项</em>) 对于析取范式也是如此.
-简单合取式更名为了<em>极小项</em>.</p>
-<p>这样规范以后, 就保证了范式的唯一.</p>
-<p>极小项和极大项可以编码.</p>
+\wedge (Q \vee R)\)</span> 之类.</p>
+<p>范式还不够强, 要进一步约束限定, 于是就有了主范式.
+主范式主要规定的是:</p>
+<ul>
+<li>对于合取范式中的每一个简单析取式, 要求包含所有的命题变元,
+且每个只能出现一次.(称其为<em>极大项</em>)</li>
+<li>对于析取范式也是如此. 简单合取式更名为了<em>极小项</em>.</li>
+</ul>
+<p>举个例子: <span class="math inline">\(P \wedge Q\)</span>
+是一个极大项, 每一个变元前可以加一个 <span
+class="math inline">\(\neg\)</span>, 所以对于只有两个变元的情况,
+极大项有 4 个, 极小项也有 4 个.</p>
+<blockquote>
+<p>容易推广, 对于 <span class="math inline">\(n\)</span> 个命题变元,
+可以组合出 <span class="math inline">\(2^n\)</span> 个极大项和 <span
+class="math inline">\(2^n\)</span> 个极小项.</p>
+</blockquote>
+<p>极小项和极大项可以编码. 我们用 <span class="math inline">\(1\)</span>
+表示一个命题变元, <span class="math inline">\(0\)</span>
+表示命题变元的否, 那么 <span class="math inline">\(P \wedge Q\)</span>
+就可以编码成 <span class="math inline">\(11\)</span>, 用 <span
+class="math inline">\(m_{11}(m_3)\)</span> 表示.</p>
+<blockquote>
+<p>计算思维的体现: 假设 <span class="math inline">\(B = \{0,
+1\}\)</span>, <span class="math inline">\(B^{A}\)</span> 表示 <span
+class="math inline">\(A\)</span> 到 <span
+class="math inline">\(B\)</span> 的所有函数构成的集合, 那么 <span
+class="math inline">\(B^A = P(A)\)</span>, 通常也记 <span
+class="math inline">\(2^{A}\)</span>,
+我们可以用类似编码的思想来说明!</p>
+</blockquote>
+<p>全体极大项的合取永假(总存在一个假的极大项),
+全体极小项的析取永真(总存在一个永真的极小项).</p>
+<p>显然没有两个不同的极大项(极小项同理)是等价的.
+那么极大项的组合(极小项同理)也是唯一的. 这样规范以后,
+就保证了范式的唯一性.</p>
+<blockquote>
+<p>这实际上表示了一种 <span class="math inline">\(B^{n}\to B\)</span>
+的一种映射关系(函数).</p>
+</blockquote>
+<p>在求出了主合取范式了以后, 它的主析取范式也就确定了. 反之亦然.
+我们可以简单推导一下: 假设主合取范式为 <span
+class="math inline">\(G\)</span>, 那么</p>
+<p><span class="math display">\[G = \vee^{k}_{i = 1}
+M_{l_i}\]</span></p>
+<p>对应主析取范式 <span class="math inline">\(G=\neg(\neg G)=\neg
+(\vee^{2^{n}-k}_{i = 1} M_{l_i})=\vee^{2^{n}-k}_{i=1}(\neg
+M_{l_i})=\vee^{2^{n}-k}_{i=1}m_{l_i}\)</span>.</p>
+<p>用真值表就很清楚了. 动手试试看!</p>
 <p>主范式有什么用? 考试用.</p>
 <h3 id="最终任务-推理">最终任务: 推理</h3>
+<h4 id="基于规则的推理">基于规则的推理</h4>
 <h2 id="谓词逻辑">谓词逻辑</h2>
 <h3 id="我在学语法吗">我在学语法吗?</h3>
 <p>谓词逻辑, in short, 就是把命题逻辑中的原子命题进一步分解.
@@ -2462,6 +2519,10 @@ href="https://www.luogu.com.cn/blog/P6174/post-cuo-pai?tdsourcetag=s_pcqq_aiomsg
 <li>想和学校一起维护. 自动化万岁! 最后流芳百世(</li>
 </ul></li>
 </ul>
+<p>第一次感受到内推的强大. 进学校实验室了. 好耶!</p>
+<p>有些人就是把内心独白怼脸上, 敏感, 纠缠. 是我这种随意天性的克星,
+不果断一点真不行.</p>
+<p>反思下自己, 我的处事可能有些令人无语. 优柔寡断, 有时还有些神经质.</p>
 <h2 id="绮梦-一">绮梦 (一)</h2>
 <p>为我的文学梦留坑.</p>
 <h2 id="绮梦-二">绮梦 (二)</h2>
@@ -2626,6 +2687,21 @@ href="https://www.zhihu.com/question/28300645/answer/2488146755">中文版本</a
       <tags>
         <tag>Linux系统编程</tag>
         <tag>Docker</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Flask从入门到入土</title>
+    <url>/2023/04/25/Flask%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E5%85%A5%E5%9C%9F/</url>
+    <content><![CDATA[<p>TODO</p>
+<span id="more"></span>
+]]></content>
+      <categories>
+        <category>Python</category>
+      </categories>
+      <tags>
+        <tag>Python</tag>
+        <tag>后端</tag>
+        <tag>Flask</tag>
       </tags>
   </entry>
 </search>

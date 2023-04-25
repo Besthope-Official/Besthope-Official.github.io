@@ -6,7 +6,7 @@
   <link href="http://example.com/atom.xml" rel="self"/>
   
   <link href="http://example.com/"/>
-  <updated>2023-04-09T11:14:59.351Z</updated>
+  <updated>2023-04-25T15:44:11.754Z</updated>
   <id>http://example.com/</id>
   
   <author>
@@ -15,6 +15,29 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Flask从入门到入土</title>
+    <link href="http://example.com/2023/04/25/Flask%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E5%85%A5%E5%9C%9F/"/>
+    <id>http://example.com/2023/04/25/Flask%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E5%85%A5%E5%9C%9F/</id>
+    <published>2023-04-25T10:10:59.000Z</published>
+    <updated>2023-04-25T15:44:11.754Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;TODO&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="Python" scheme="http://example.com/categories/Python/"/>
+    
+    
+    <category term="Python" scheme="http://example.com/tags/Python/"/>
+    
+    <category term="后端" scheme="http://example.com/tags/%E5%90%8E%E7%AB%AF/"/>
+    
+    <category term="Flask" scheme="http://example.com/tags/Flask/"/>
+    
+  </entry>
   
   <entry>
     <title>搭建一个tiny-docker</title>
@@ -45,7 +68,7 @@
     <link href="http://example.com/2023/03/11/%E6%95%B0%E7%90%86%E9%80%BB%E8%BE%91%E4%BA%BA%E8%AF%9Dver/"/>
     <id>http://example.com/2023/03/11/%E6%95%B0%E7%90%86%E9%80%BB%E8%BE%91%E4%BA%BA%E8%AF%9Dver/</id>
     <published>2023-03-11T03:09:39.000Z</published>
-    <updated>2023-04-22T03:07:14.797Z</updated>
+    <updated>2023-04-25T15:43:51.450Z</updated>
     
     
     <summary type="html">&lt;p&gt;为了严谨性以及交流方便, 我们需要术语来描述问题: 这很好,
@@ -216,7 +239,7 @@ role=&quot;doc-noteref&quot;&gt;&lt;sup&gt;1&lt;/sup&gt;&lt;/a&gt;. 解决这个
     <link href="http://example.com/2023/01/28/%E9%9A%8F%E6%84%9F%E5%BD%95/"/>
     <id>http://example.com/2023/01/28/%E9%9A%8F%E6%84%9F%E5%BD%95/</id>
     <published>2023-01-28T14:41:17.000Z</published>
-    <updated>2023-04-09T11:15:17.548Z</updated>
+    <updated>2023-04-25T15:33:13.547Z</updated>
     
     
     <summary type="html">&lt;p&gt;记录不时的奇思妙想. 奇怪的梦, 无垠的呓语, 似非的感悟.
