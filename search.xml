@@ -1152,7 +1152,7 @@ cnt\)</span> 即可.</p>
     <title>数理逻辑人话ver</title>
     <url>/2023/03/11/%E6%95%B0%E7%90%86%E9%80%BB%E8%BE%91%E4%BA%BA%E8%AF%9Dver/</url>
     <content><![CDATA[<p>为了严谨性以及交流方便, 我们需要术语来描述问题: 这很好,
-某些问题数学语言胜千言——但由terminology组成的句子经常会让人不知所云.
+某些问题数学语言胜千言——但由 terminology 组成的句子经常会让人不知所云.
 尤其对于数理逻辑, 因为是翻译文字所以句子看起来就更糟心了.
 本身不是数学专业, 还要被符号定义纠缠半死. 想要明白问题的核心要义,
 非得二次翻译不可, 但最后描述的事情却是显而易见的.</p>
@@ -1165,6 +1165,8 @@ cnt\)</span> 即可.</p>
 <span id="more"></span>
 <h2 id="命题逻辑">命题逻辑</h2>
 <p>免责声明: 这不是教会你怎么去应试的.</p>
+<p>你学的是 CS, 那么学数学理应把数学和 CS 紧密联系起来.
+说我们学习数学是效用主义, 没错, 就要这样.</p>
 <h3 id="命题符号化">命题符号化</h3>
 <h4 id="句子变符号">句子变符号</h4>
 <p>什么是<strong>命题</strong>(statement)? 一个布尔值.</p>
@@ -1274,7 +1276,7 @@ role="doc-noteref"><sup>1</sup></a>.</li>
 <li><code>C: 如果 1 + 1 = 2, 那么地球绕着太阳转.</code></li>
 </ul>
 <p>你看规则上说的, 1 implies 1 is 1, 那么 <code>C</code> 也是 1.
-但这句话非常令人迷惑🤔. 两个毫不相关的事实, 然后声明"事实推事实"为真,
+但这句话非常令人迷惑 🤔. 两个毫不相关的事实, 然后声明"事实推事实"为真,
 这是在干什么.</p>
 <p>特别说明一点: <strong>真值的联结不等同于命题间的联结</strong>.
 牢记一点, <em>命题都是 1 和 0</em>.</p>
@@ -1332,6 +1334,37 @@ class="math inline">\(p_1, p_2,\dots,p_n\)</span> 赋值</p>
 <img src="\images\pic9.png" alt="真值表 例子" />
 <figcaption aria-hidden="true">真值表 例子</figcaption>
 </figure>
+<table>
+<thead>
+<tr class="header">
+<th>P</th>
+<th>Q</th>
+<th>P ➡ Q</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>0</td>
+<td>0</td>
+<td>1</td>
+</tr>
+<tr class="even">
+<td>0</td>
+<td>1</td>
+<td>1</td>
+</tr>
+<tr class="odd">
+<td>1</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr class="even">
+<td>1</td>
+<td>1</td>
+<td>1</td>
+</tr>
+</tbody>
+</table>
 <h4 id="命题表达式的分类">命题表达式的分类</h4>
 <p>如果打表发现所有解释下, 真值都为真,
 那么这个表达式就叫<strong>永真公式</strong>,
@@ -1382,11 +1415,13 @@ Distribute and Flip</p>
 <p><strong>例 1</strong> <span class="math inline">\(\neg(p \rightarrow
 q)\)</span> 和 <span class="math inline">\(p \wedge \neg q\)</span>
 逻辑等价吗?</p>
-<p><span class="math display">\[\begin{aligned}
+<p><span class="math display">\[
+\begin{aligned}
 \neg(p \rightarrow q) &amp; \equiv \neg(\neg p \vee q) \\
 &amp; \equiv \neg(\neg p) \wedge \neg q \\
 &amp; \equiv p \wedge \neg q
-\end{aligned}\]</span></p>
+\end{aligned}
+\]</span></p>
 <p><strong>例 2</strong> 小明写了下面的程序</p>
 <figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="keyword">if</span> (a) &#123;</span><br><span class="line">    <span class="keyword">if</span> (b) &#123;</span><br><span class="line">        <span class="built_in">x</span>();</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="built_in">y</span>();</span><br><span class="line">    &#125;</span><br><span class="line">&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (b) &#123;</span><br><span class="line">        <span class="built_in">x</span>();</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="built_in">y</span>();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>请你帮他改改代码.</p>
@@ -1445,13 +1480,15 @@ href="https://www.zhihu.com/question/21191299/answer/17469774">回答</a>.</p>
 的式子称为<strong>析取范式(DNF)</strong>. AND 连接
 OR(称<em>简单析取式</em>) 的式子称为<strong>合取范式(CNF)</strong>.
 举几个例子就很清楚了:</p>
-<p><span class="math display">\[\begin{array}{l}
+<p><span class="math display">\[
+\begin{array}{l}
 (1) p \\
 (2) p \vee q \vee \neg r \\
 (3) \neg p \wedge q \wedge r \\
 (4) (p \wedge q) \vee(\neg p \wedge q) \\
 (5) (p \vee q) \wedge(\neg p \vee q)
-\end{array}\]</span></p>
+\end{array}
+\]</span></p>
 <p>约定类似 (1) 这样的命题表达式既是析取范式又是合取范式.</p>
 <ol start="2" type="1">
 <li><p>是一个析取范式(用 or 连接). 但同时也可以看成是一个合取范式,
@@ -1528,8 +1565,49 @@ M_{l_i})=\vee^{2^{n}-k}_{i=1}m_{l_i}\)</span>.</p>
 <h3 id="我在学语法吗">我在学语法吗?</h3>
 <p>谓词逻辑, in short, 就是把命题逻辑中的原子命题进一步分解.
 我们举个例子:</p>
-<p>谓词(predicate): 返回 <code>bool</code> 的一个函数.</p>
+<ul>
+<li>地球绕着太阳转.</li>
+</ul>
+<p>可以分解成: 地球-绕-太阳, 那么我们用 <code>绕(x, y)</code> 表示
+<code>x</code> 绕着 <code>y</code>, 它的值域是 0 和 1. 这里
+<code>绕(..)</code> 就是所谓"谓词".</p>
+<p>换言之, 谓词(predicate): 返回 <code>bool</code> 的一个函数.</p>
+<p>既然也是 true or false, 问题来了: <em>谓词是一个命题吗</em>?
+这个问题等价于 <code>x == 1</code> 是命题吗? 显然不是. 因为
+<code>x</code> 不确定.</p>
+<p>谓词要成为命题, 需要赋值. 例如 <code>绕(地球, 太阳)</code>
+就是一个命题. 实际上, 我们一般研究的是<em>一阶</em>谓词逻辑,
+也就是变量数为一的情形. 一般来说, 我们会这么符号化: <code>绕(x)</code>
+为 <code>x</code> 绕着太阳转.</p>
+<p>你可能会好奇: 不是说好了主谓宾吗? 怎么谓词还包含宾语呢? 实际上,
+<code>绕(x) = 绕(x, c)</code>, 而 <code>c = 太阳</code>,
+因为我们把太阳看成了常量, 因此这个可以降为一阶谓词.</p>
+<p>当然, 一般我们都会用符号来表示这些文字, 因此 <span
+class="math inline">\(P(x)\)</span> 就是我们研究谓词的一般形式.</p>
+<p>更严格来说, <span class="math inline">\(x\)</span>
+也称为<em>个体词</em>, 或者说<em>项</em>. 它可以是常量 <span
+class="math inline">\(1,2,...\)</span>, 也可以是变量 <span
+class="math inline">\(x, y,...\)</span>, 也可以是函数 <span
+class="math inline">\(x^2,\cos y,...\)</span>. 所谓谓词就是一个 <span
+class="math inline">\(D^{n} \to \{0,1\}\)</span> 的一个映射.</p>
 <h3 id="命题需要范围-量词">命题需要范围: 量词</h3>
+<p>之前提过, 如果谓词想要成为命题, 就需要赋值. 例如: <span
+class="math inline">\(P(x): x \text{is prime}\)</span>, 我们给定 <span
+class="math inline">\(x\)</span> 的范围是 <span class="math inline">\(0
+\leqslant x \leqslant 5\)</span>, 那么命题</p>
+<p><span class="math display">\[P(0) \wedge P(1) \wedge P(2) \wedge P(3)
+\wedge P(4) \wedge P(5)\]</span></p>
+<p>就表示 <span class="math inline">\(P(x)\)</span> 在 <span
+class="math inline">\(0 \leqslant x \leqslant 5\)</span>
+上是否<em>都满足</em>条件.</p>
+<p><span class="math display">\[P(0) \vee P(1) \vee P(2) \vee P(3) \vee
+P(4) \vee P(5)\]</span></p>
+<p>就表示 <span class="math inline">\(P(x)\)</span> 在 <span
+class="math inline">\(0 \leqslant x \leqslant 5\)</span>
+上是否<em>有一个</em>满足条件的项.</p>
+<p>因为这么写太麻烦了. 而且对于某些无穷集, 如 <span
+class="math inline">\(\mathbb{N}^{+}\)</span>, 显然枚举到头也不是个办法,
+因此我们引入了<strong>量词</strong>.</p>
 <h3 id="前束范式">前束范式</h3>
 <h3 id="所以我只是你的附庸">所以我只是你的附庸</h3>
 <h3 id="参考资料">参考资料</h3>
@@ -1537,7 +1615,7 @@ M_{l_i})=\vee^{2^{n}-k}_{i=1}m_{l_i}\)</span>.</p>
 <li>离散数学及应用 原书第五版, Kenneth H. Rosen, 机械工业出版社</li>
 <li>离散数学及其应用(第三版), 傅彦等, 高等教育出版社</li>
 <li>符号逻辑讲义, 徐明</li>
-<li>校内PPT</li>
+<li>校内 PPT</li>
 </ol>
 <section id="footnotes" class="footnotes footnotes-end-of-document"
 role="doc-endnotes">
@@ -2523,6 +2601,51 @@ href="https://www.luogu.com.cn/blog/P6174/post-cuo-pai?tdsourcetag=s_pcqq_aiomsg
 <p>有些人就是把内心独白怼脸上, 敏感, 纠缠. 是我这种随意天性的克星,
 不果断一点真不行.</p>
 <p>反思下自己, 我的处事可能有些令人无语. 优柔寡断, 有时还有些神经质.</p>
+<p>突然想起来今天是自己的19岁生日. 希望新的一岁能有新的突破.
+当然春节也是这么说的.</p>
+<p>感觉自己好老了, 下一秒就要工作养家糊口的感觉.
+但内心其实还是小孩子.</p>
+<p>GPLT捞了个省三. 好耶!</p>
+<h3 id="may">May</h3>
+<p>学完 Flask 打算之后搞一个文件管理项目. 管理什么,
+当然是...不告诉你.</p>
+<p>5.1 宅寝室打游戏了. 崩铁挺有意思. 以后发疯文学的文笔可以参考参考.</p>
+<p>本来是想去漫展的, 但想想一个人太孤独又其实不是很想去.</p>
+<p>Rehaku &amp; Shishi 是神!</p>
+<h2 id="彷徨者的独白">彷徨者的独白</h2>
+<p>总感觉自己是个冷漠的人. 心里总是回荡着默尔索的那句自白.</p>
+<p>父亲生日, 忘记发一句祝福了. 让父亲等到下午才见姗姗来迟的道歉.
+酝酿许久后语音发出去的.</p>
+<p>好久没和奶奶联系了, 家里人让我打个视频通话. 我不愿意, 但还是打了.
+尴尬地杵在那里. 要好好学习啊. 点头, 傻笑, 结束.
+明明我才是会话的发起人.</p>
+<p>同学要送我礼物, 说是以表感谢. 谢谢你帮了我那么多. 我只觉得麻烦.
+问我什么时候送好. 随时都好.</p>
+<p>或许换位思考很重要. 我知道爷爷去的早,
+父亲不过是想在特殊的一天多体验些未曾感受的父爱而已; 奶奶也是寡居无事,
+想多获取些温暖而已; 同学的礼物很用心, 一片真心相待换来我的冷眼.</p>
+<p><strong>我把很多事情都归结为无意义的社会令词, 无甚所谓的嘘寒问暖.
+把生命中遇见的人, 都看得无足轻重.</strong></p>
+<p>可能真的印证了大学里我班长的一句话. 那天他刚打完辩论赛,
+依稀记得那天的辩题是: 爱情里有无必要说他/她想听的.</p>
+<p>我想我没真正去爱过, 也没有真正学会所谓"责任".</p>
+<p>"<strong>能有一个为之付出, 珍视的人, 是多么幸福啊.</strong>"</p>
+<p>我想这就是爱情的意义吧. 学会责任. 说什么灵魂交互.
+你的真命天人还在梦里. 理想就和风干的厕纸一样脆弱.</p>
+<p>相遇就是一种缘. 缘和因果结下了不解之缘.
+要是信禅宗我也不会纠缠在此喋喋不休.</p>
+<p><strong>所以. 珍惜人生的一切相遇吧. 因为相遇的结局便是分离, 永别.
+趁着结局到来之前, 让自己不留缺憾.</strong></p>
+<p>自己热情发出的一点光热, 总会或多或少影响到他人.</p>
+<p>我很钦佩小王子, 因为我缺乏他身上的那份热情, 勇敢, 为责任付出的行动力.
+要让我挑自己的毛病可以说一天.</p>
+<p>不过至少这一次, 会不一样. 好歹让我不再彷徨.</p>
+<p>"各位, 晚安"</p>
+<p>希望收到这最后一条消息的你能开心起来.</p>
+<p>因为我估计, 现在的我,</p>
+<p>已经死了.</p>
+<p>(完)</p>
+<p>后记: 胡乱写的. 勿当真.</p>
 <h2 id="绮梦-一">绮梦 (一)</h2>
 <p>为我的文学梦留坑.</p>
 <h2 id="绮梦-二">绮梦 (二)</h2>
@@ -2537,6 +2660,7 @@ href="https://www.luogu.com.cn/blog/P6174/post-cuo-pai?tdsourcetag=s_pcqq_aiomsg
       </categories>
       <tags>
         <tag>杂谈</tag>
+        <tag>小说</tag>
       </tags>
   </entry>
   <entry>
