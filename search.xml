@@ -2609,9 +2609,26 @@ href="https://www.luogu.com.cn/blog/P6174/post-cuo-pai?tdsourcetag=s_pcqq_aiomsg
 <h3 id="may">May</h3>
 <p>学完 Flask 打算之后搞一个文件管理项目. 管理什么,
 当然是...不告诉你.</p>
+<ul>
+<li>核心技术: Flask + Electron</li>
+</ul>
 <p>5.1 宅寝室打游戏了. 崩铁挺有意思. 以后发疯文学的文笔可以参考参考.</p>
-<p>本来是想去漫展的, 但想想一个人太孤独又其实不是很想去.</p>
-<p>Rehaku &amp; Shishi 是神!</p>
+<p>本来是想去漫展的, 但想想一个人太孤独又其实不是很想去.
+下次cos波奇酱吧.</p>
+<p>天选3的网卡一直被人吐槽. 这次算是体会到了. 三天蓝屏4次, 我无语了.
+重装了驱动现在总算能用了.</p>
+<p>我发现白日梦通常是奇幻的. 而且真实. 流的我一身汗.</p>
+<ul>
+<li>能梦到 T 大联合培养的方案,
+进了机房和一个没听过的专业(我问到了)的同学坐一起,
+主持人讲了一堆高中应试的提优, 看到了高中的年级主任, 发了试卷,
+我可怜的在那里招手想要一份资料, 但没有一个人理我. 最后我退课了.</li>
+</ul>
+<p>天选3的无线网卡驱动又出毛病了. 这回是直接蓝屏. 重装了几次都有问题,
+寄了. 一怒之下遂买了 Intel 的 ax210 和一个1T的致态SSD.
+后来发现重装的时候选择英文就可以解决所以网卡又白买了.(?)</p>
+<p>这一周又有考试, 又有论文选题, 还有实验室的项目, 各种due, 各种要命
+QAQ</p>
 <h2 id="彷徨者的独白">彷徨者的独白</h2>
 <p>总感觉自己是个冷漠的人. 心里总是回荡着默尔索的那句自白.</p>
 <p>父亲生日, 忘记发一句祝福了. 让父亲等到下午才见姗姗来迟的道歉.
@@ -2645,7 +2662,8 @@ href="https://www.luogu.com.cn/blog/P6174/post-cuo-pai?tdsourcetag=s_pcqq_aiomsg
 <p>因为我估计, 现在的我,</p>
 <p>已经死了.</p>
 <p>(完)</p>
-<p>后记: 胡乱写的. 勿当真.</p>
+<h2 id="回到你的过去">回到你的过去</h2>
+<p>留坑.</p>
 <h2 id="绮梦-一">绮梦 (一)</h2>
 <p>为我的文学梦留坑.</p>
 <h2 id="绮梦-二">绮梦 (二)</h2>
@@ -2816,8 +2834,68 @@ href="https://www.zhihu.com/question/28300645/answer/2488146755">中文版本</a
   <entry>
     <title>Flask从入门到入土</title>
     <url>/2023/04/25/Flask%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E5%85%A5%E5%9C%9F/</url>
-    <content><![CDATA[<p>TODO</p>
+    <content><![CDATA[<p>所谓人生苦短, 我用 Python. 经常戏称别的语言 Python 化, 不就是说明了
+Python 作为现代语言的优越性. 当然, 不吹不贬地说, 其实关键在于项目需求,
+所以用什么其实并不重要.</p>
+<p>在 Python Web 开发这块, Django 和 Flask 平分天下, 而 Flask
+框架的优点就在于它"轻量", "微", 简直就是 vscode 的翻版, 靠社区 extension
+高效驱动.</p>
+<p>当然, Flask 的使用不局限于 Web 应用的开发, 甚至说,
+<strong>作为后端提供接口</strong>才是发挥它功用的最好做法.
+这正是本文要完成的事情!</p>
 <span id="more"></span>
+<p>先把框架搭好. 其它的之后再说.</p>
+<h2 id="工欲善其事-必先利其器">工欲善其事, 必先利其器</h2>
+<h3 id="当然-你要安装flask">当然, 你要安装Flask</h3>
+<p>推荐 PyCharm, 专属IDE, 你值得拥有. <del>说得好, 我用 VSCode</del></p>
+<p>推荐在虚拟环境 venv 中开发.</p>
+<h3 id="git-是你的基本功">Git 是你的基本功</h3>
+<p>平时 Github 解决一切. <del>Gitee是什么真不熟</del></p>
+<p>基础的 commit, branch, push 操作要会.</p>
+<p>但也记得上手 Gitlab. 因为企业一般用的它.</p>
+<h3 id="文档编写测试工具">文档编写/测试工具</h3>
+<p>Show Doc: 文档编写工具</p>
+<p>Postman: 接口测试工具</p>
+<h3 id="数据库系统">数据库系统</h3>
+<p>我们使用关系型数据库系统: MySQL</p>
+<p>实验室的老师贴心地为你在外网搭建了一个 MySQL 的数据连接.</p>
+<p>配套 VScode 插件: <a
+href="https://marketplace.visualstudio.com/items?itemName=cweijan.vscode-mysql-client2">My
+SQL</a></p>
+<h2 id="先别急着coding-你还有文档没写">先别急着coding,
+你还有文档没写</h2>
+<h3 id="产品原型先解构">产品原型——先解构</h3>
+<p>对产品原型的解构. 大致的实现需求. 好了, 这就是你的 TODO-LIST.</p>
+<p>看起来比较复杂的项目, 分模块分时期去实现, 一个页面一个页面慢慢来.</p>
+<h3 id="restful-api">RESTful API</h3>
+<p>接口规范. 就这么写.</p>
+<h3 id="和前端配合">和前端配合</h3>
+<p>交流很重要.</p>
+<p>确定哪些业务逻辑在放前端实现, 哪些业务逻辑放在后端实现.</p>
+<p>看看API设计是否合理. 俩人得出共识就可以各干各的了.</p>
+<h2 id="我还没学过数据库">我还没学过数据库!</h2>
+<h3 id="创表-你是个设计师-老弟">创表: 你是个设计师, 老弟</h3>
+<p><code>CREATE</code></p>
+<p>can can need: <a
+href="https://open.yesapi.cn/list.html">开源的MySQL数据库表设计</a></p>
+<h3 id="query-我只会增删改查">Query: 我只会增删改查</h3>
+<p><a href="https://zhuanlan.zhihu.com/p/170046187">MySQL
+的增删改查语句总结</a></p>
+<p><code>insert</code>, <code>update</code>, <code>delete</code>,
+<code>select</code></p>
+<p><a href="https://www.sqlstyle.guide/">SQL Style Guide</a></p>
+<h2 id="好了-现在开始进入flask">好了, 现在开始进入Flask</h2>
+<h3 id="动身前-先规范好你的项目框架">动身前, 先规范好你的项目框架</h3>
+<h2 id="参考资料">参考资料</h2>
+<ol type="1">
+<li><a href="https://www.sqlstyle.guide/">SQL Style Guide</a></li>
+<li>Flask Web 开发: 基于 Python 的 Web 应用开发实践: 第2版. ISBN
+978-7-115-48945-6</li>
+<li>阮一峰, <a
+href="http://ruanyifeng.com/blog/2018/10/restful-api-best-practices.html">RESTful
+API 最佳实践</a>.</li>
+<li>Flask 官方<a href="https://flask.net.cn/">中文文档</a>.</li>
+</ol>
 ]]></content>
       <categories>
         <category>Python</category>
@@ -2826,6 +2904,7 @@ href="https://www.zhihu.com/question/28300645/answer/2488146755">中文版本</a
         <tag>Python</tag>
         <tag>后端</tag>
         <tag>Flask</tag>
+        <tag>数据库</tag>
       </tags>
   </entry>
 </search>

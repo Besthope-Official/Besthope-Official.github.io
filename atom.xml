@@ -6,7 +6,7 @@
   <link href="http://example.com/atom.xml" rel="self"/>
   
   <link href="http://example.com/"/>
-  <updated>2023-04-25T15:44:11.754Z</updated>
+  <updated>2023-05-12T13:55:40.661Z</updated>
   <id>http://example.com/</id>
   
   <author>
@@ -21,10 +21,18 @@
     <link href="http://example.com/2023/04/25/Flask%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E5%85%A5%E5%9C%9F/"/>
     <id>http://example.com/2023/04/25/Flask%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E5%85%A5%E5%9C%9F/</id>
     <published>2023-04-25T10:10:59.000Z</published>
-    <updated>2023-04-25T15:44:11.754Z</updated>
+    <updated>2023-05-12T13:55:40.661Z</updated>
     
     
-    <summary type="html">&lt;p&gt;TODO&lt;/p&gt;</summary>
+    <summary type="html">&lt;p&gt;所谓人生苦短, 我用 Python. 经常戏称别的语言 Python 化, 不就是说明了
+Python 作为现代语言的优越性. 当然, 不吹不贬地说, 其实关键在于项目需求,
+所以用什么其实并不重要.&lt;/p&gt;
+&lt;p&gt;在 Python Web 开发这块, Django 和 Flask 平分天下, 而 Flask
+框架的优点就在于它&quot;轻量&quot;, &quot;微&quot;, 简直就是 vscode 的翻版, 靠社区 extension
+高效驱动.&lt;/p&gt;
+&lt;p&gt;当然, Flask 的使用不局限于 Web 应用的开发, 甚至说,
+&lt;strong&gt;作为后端提供接口&lt;/strong&gt;才是发挥它功用的最好做法.
+这正是本文要完成的事情!&lt;/p&gt;</summary>
     
     
     
@@ -36,6 +44,8 @@
     <category term="后端" scheme="http://example.com/tags/%E5%90%8E%E7%AB%AF/"/>
     
     <category term="Flask" scheme="http://example.com/tags/Flask/"/>
+    
+    <category term="数据库" scheme="http://example.com/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
     
   </entry>
   
@@ -239,7 +249,7 @@ role=&quot;doc-noteref&quot;&gt;&lt;sup&gt;1&lt;/sup&gt;&lt;/a&gt;. 解决这个
     <link href="http://example.com/2023/01/28/%E9%9A%8F%E6%84%9F%E5%BD%95/"/>
     <id>http://example.com/2023/01/28/%E9%9A%8F%E6%84%9F%E5%BD%95/</id>
     <published>2023-01-28T14:41:17.000Z</published>
-    <updated>2023-05-02T17:06:09.385Z</updated>
+    <updated>2023-05-10T04:49:29.318Z</updated>
     
     
     <summary type="html">&lt;p&gt;记录不时的奇思妙想. 奇怪的梦, 无垠的呓语, 似非的感悟.
