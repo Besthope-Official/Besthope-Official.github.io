@@ -2629,6 +2629,7 @@ href="https://www.luogu.com.cn/blog/P6174/post-cuo-pai?tdsourcetag=s_pcqq_aiomsg
 后来发现重装的时候选择英文就可以解决所以网卡又白买了.(?)</p>
 <p>这一周又有考试, 又有论文选题, 还有实验室的项目, 各种due, 各种要命
 QAQ</p>
+<p>本来想做听力的, 一看周日晚7点due, 瞬间没了兴致.</p>
 <h2 id="彷徨者的独白">彷徨者的独白</h2>
 <p>总感觉自己是个冷漠的人. 心里总是回荡着默尔索的那句自白.</p>
 <p>父亲生日, 忘记发一句祝福了. 让父亲等到下午才见姗姗来迟的道歉.
@@ -2846,11 +2847,12 @@ Python 作为现代语言的优越性. 当然, 不吹不贬地说, 其实关键�
 <span id="more"></span>
 <p>先把框架搭好. 其它的之后再说.</p>
 <h2 id="工欲善其事-必先利其器">工欲善其事, 必先利其器</h2>
-<h3 id="当然-你要安装flask">当然, 你要安装Flask</h3>
-<p>推荐 PyCharm, 专属IDE, 你值得拥有. <del>说得好, 我用 VSCode</del></p>
+<h3 id="当然-你要安装-flask">当然, 你要安装 Flask</h3>
+<p>推荐 PyCharm, 专属 IDE, 你值得拥有. <del>说得好, 我用
+VSCode</del></p>
 <p>推荐在虚拟环境 venv 中开发.</p>
 <h3 id="git-是你的基本功">Git 是你的基本功</h3>
-<p>平时 Github 解决一切. <del>Gitee是什么真不熟</del></p>
+<p>平时 Github 解决一切. <del>Gitee 是什么真不熟</del></p>
 <p>基础的 commit, branch, push 操作要会.</p>
 <p>但也记得上手 Gitlab. 因为企业一般用的它.</p>
 <h3 id="文档编写测试工具">文档编写/测试工具</h3>
@@ -2862,38 +2864,167 @@ Python 作为现代语言的优越性. 当然, 不吹不贬地说, 其实关键�
 <p>配套 VScode 插件: <a
 href="https://marketplace.visualstudio.com/items?itemName=cweijan.vscode-mysql-client2">My
 SQL</a></p>
-<h2 id="先别急着coding-你还有文档没写">先别急着coding,
+<h2 id="先别急着-coding-你还有文档没写">先别急着 coding,
 你还有文档没写</h2>
 <h3 id="产品原型先解构">产品原型——先解构</h3>
 <p>对产品原型的解构. 大致的实现需求. 好了, 这就是你的 TODO-LIST.</p>
 <p>看起来比较复杂的项目, 分模块分时期去实现, 一个页面一个页面慢慢来.</p>
 <h3 id="restful-api">RESTful API</h3>
-<p>接口规范. 就这么写.</p>
+<h4 id="简单介绍-rest-架构和-web-基础">简单介绍 REST 架构和 Web
+基础</h4>
+<p>RESTful 架构是个什么东西? <strong>Representational State
+Transfer</strong>是 REST 的全称, "表现层状态发生转移".</p>
+<p>REST <em>对信息的核心抽象</em>就是 <strong>资源</strong>(Resources),
+通常以 <strong><a
+href="https://en.wikipedia.org/wiki/Uniform_Resource_Identifier">URI</a>(统一资源定位符)</strong>
+的形式表现. 这里的资源可以是文本, 图片, 或者<em>任何能被命名的信息</em>.
+换句话说, 如果某一信息能被超链接导航到, 那它就符合资源的定义.
+要访问某一"资源", 访问它的 URI 即可. URI
+就是这个"资源"独一无二的<strong>标识符</strong>!</p>
+<p>不过要注意的是, "资源"是对信息的<em>抽象</em>:
+它代表的是<strong>一组</strong>相关的实体, 而非一个单独的实体.
+具体的实体会发生变化, 但"资源"表示实体的结构和行为是不变的.</p>
+<p>"资源"具体表现的形式,
+就称作它的"<strong>表现层</strong>"(Representation).</p>
+<p>例如, 文本可以用 txt 格式表现, 也可以用 JSON, xml 格式,
+甚至二进制格式表现; 图片可以用 jpg 格式表现, 也可以用 png 格式表现.</p>
+<p>访问一个网站, 就代表了<strong>客户端和服务器的一个互动过程</strong>.
+在这个过程中, 必然涉及数据和状态的改变. 互联网通信协议<a
+href="https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Overview#http_%E6%98%AF%E6%97%A0%E7%8A%B6%E6%80%81%EF%BC%8C%E6%9C%89%E4%BC%9A%E8%AF%9D%E7%9A%84">HTTP
+协议</a>, 是一个<em>无状态协议</em>. 所有的状态都保存在服务器端,
+如果客户端想要操作服务器, <strong>必须通过某种途径</strong>,
+使得服务器端发生"<strong>状态转移</strong>"(State Transfer).
+而这种状态转移是建立在表现层之上的. 所以, 你现在就能明白 REST
+到底指的是个啥.</p>
+<p>至于客户端用到的手段, 只能是<a
+href="https://developer.mozilla.org/zh-CN/docs/web/http/methods">HTTP
+的请求方法</a>. 下面这五种方法对应的 <strong>CRUD(增删改查)</strong>
+操作:</p>
+<table>
+<thead>
+<tr class="header">
+<th>请求方法</th>
+<th>效果</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>GET</td>
+<td>读取（Read）</td>
+</tr>
+<tr class="even">
+<td>POST</td>
+<td>新建（Create）</td>
+</tr>
+<tr class="odd">
+<td>PUT</td>
+<td>更新（Update）</td>
+</tr>
+<tr class="even">
+<td>PATCH</td>
+<td>更新（Update），通常是部分更新</td>
+</tr>
+<tr class="odd">
+<td>DELETE</td>
+<td>删除（Delete）</td>
+</tr>
+</tbody>
+</table>
+<p>根据HTTP协议, 请求方法(Request)由客户端提出,
+由服务器决定是否执行或拒绝. 例如, 你发起了一个 <code>GET</code> 请求,
+想获取 <code>/clients</code> 下的资源. 但这个文件获取需要有权限,
+服务器就可以有如下的执行方式:</p>
+<ul>
+<li><code>404 Not found</code>: 这个状态码表示文件不存在.
+当然是服务器装的.</li>
+<li><code>403 Forbidden</code>: 这个文件拒绝访问.</li>
+<li><code>405 Method Not Allowed</code>: 然后用 <code>Allow</code>
+头告诉你可以用 <code>HEAD</code> 方法获取文件的元信息.</li>
+</ul>
+<h4 id="restful-的设计细节">RESTful 的设计细节</h4>
+<p>主要内容:</p>
+<ul>
+<li>URI 设计:
+<ul>
+<li>任何请求都是<strong>动宾结构</strong>. 例如 <code>GET /images</code>
+<del><code>/create-order</code></del></li>
+<li>使用<strong>集合资源</strong>: 为了避免单数出现的歧义.
+<code>images/2</code> <del><code>image/2</code></del></li>
+<li>避免多级 URI: 尽量避免三级以上.
+<code>/authors/12?categories=2</code>(字符串查询)
+<del><code>/authors/12/categories/2</code></del></li>
+<li>用<strong>字符串查询</strong>: Filtering, Sorting, and Pagination
+<code>GET: /articles/?published=true&amp;page=2&amp;page_size=20</code></li>
+</ul></li>
+<li>状态码设计:
+<ul>
+<li>参考 <a
+href="https://en.wikipedia.org/wiki/List_of_HTTP_status_codes">HTTP
+Status Code</a>
+<ul>
+<li><code>1xx</code>: 相关信息</li>
+<li><code>2xx:</code> 操作成功</li>
+<li>...</li>
+</ul></li>
+</ul></li>
+<li>服务器回应:
+<ul>
+<li>不要返回纯文本: HTTP 头的 Content-Type 属性要设为
+<code>application/json</code>, 接受 JSON 结构化数据</li>
+<li>考虑 <a
+href="https://learn.microsoft.com/en-us/azure/architecture/best-practices/api-design#use-hateoas-to-enable-navigation-to-related-resources">HATEOAS</a>
+将关联资源联系起来(提供超链接).</li>
+</ul></li>
+</ul>
+<p>具体参考官方或者他人总结的教程.(见参考资料)</p>
 <h3 id="和前端配合">和前端配合</h3>
 <p>交流很重要.</p>
 <p>确定哪些业务逻辑在放前端实现, 哪些业务逻辑放在后端实现.</p>
-<p>看看API设计是否合理. 俩人得出共识就可以各干各的了.</p>
-<h2 id="我还没学过数据库">我还没学过数据库!</h2>
+<p>看看 API 设计是否合理. 俩人得出共识就可以各干各的了.</p>
+<h2 id="我还没学过数据库">我还没学过数据库</h2>
 <h3 id="创表-你是个设计师-老弟">创表: 你是个设计师, 老弟</h3>
 <p><code>CREATE</code></p>
-<p>can can need: <a
-href="https://open.yesapi.cn/list.html">开源的MySQL数据库表设计</a></p>
+<p>can can need: <a href="https://open.yesapi.cn/list.html">开源的 MySQL
+数据库表设计</a></p>
+<p>可以参考 <a href="https://www.sqlstyle.guide/zh/">SQL Style
+Guide</a>.</p>
+<p>一些比较重要的原则:</p>
+<ul>
+<li><del>驼峰命名</del>不适合扫读.</li>
+<li><del>面向对象编程的原则(OOP)</del>不该应用到 SQL
+或数据库结构上.</li>
+<li>保证名字<strong>独一无二</strong>且不是保留字.</li>
+<li>尽量避免连接两个表的名字作为<strong>关系表</strong>的名字.
+<code>cars_mechanics</code> 不如用 <code>services</code></li>
+<li>列名总是使用<strong>单数</strong>形式.</li>
+<li>等...</li>
+</ul>
 <h3 id="query-我只会增删改查">Query: 我只会增删改查</h3>
 <p><a href="https://zhuanlan.zhihu.com/p/170046187">MySQL
 的增删改查语句总结</a></p>
-<p><code>insert</code>, <code>update</code>, <code>delete</code>,
+<p>学会 <code>insert</code>, <code>update</code>, <code>delete</code>,
 <code>select</code></p>
-<p><a href="https://www.sqlstyle.guide/">SQL Style Guide</a></p>
-<h2 id="好了-现在开始进入flask">好了, 现在开始进入Flask</h2>
+<h2 id="好了-现在开始进入-flask">好了, 现在开始进入 Flask</h2>
 <h3 id="动身前-先规范好你的项目框架">动身前, 先规范好你的项目框架</h3>
+<h3 id="啊这-真的要再写一遍-model-吗">啊这, 真的要再写一遍 Model 吗</h3>
+<h3 id="只返回json而已-很简单">只返回JSON而已, 很简单</h3>
+<h3 id="最喜欢的一集-写测试">最喜欢的一集: 写测试</h3>
 <h2 id="参考资料">参考资料</h2>
 <ol type="1">
 <li><a href="https://www.sqlstyle.guide/">SQL Style Guide</a></li>
-<li>Flask Web 开发: 基于 Python 的 Web 应用开发实践: 第2版. ISBN
+<li>Flask Web 开发: 基于 Python 的 Web 应用开发实践: 第 2 版. ISBN
 978-7-115-48945-6</li>
+<li><a
+href="https://www.ics.uci.edu/~fielding/pubs/dissertation/top.htm">Roy
+Thomas Fielding 在他 2000 年的博士论文提出的 REST 原则</a></li>
+<li><a href="https://restfulapi.net/">REST API 的官方教程</a></li>
 <li>阮一峰, <a
 href="http://ruanyifeng.com/blog/2018/10/restful-api-best-practices.html">RESTful
 API 最佳实践</a>.</li>
+<li><a
+href="https://learn.microsoft.com/en-us/azure/architecture/best-practices/api-design">微软出品的API教程</a></li>
+<li><a href="https://mathieu.fenniak.net/the-api-checklist/">Web API
+Checklist</a></li>
 <li>Flask 官方<a href="https://flask.net.cn/">中文文档</a>.</li>
 </ol>
 ]]></content>
@@ -2905,6 +3036,429 @@ API 最佳实践</a>.</li>
         <tag>后端</tag>
         <tag>Flask</tag>
         <tag>数据库</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>SQL cheetsheet</title>
+    <url>/2023/05/16/SQL-cheetsheet/</url>
+    <content><![CDATA[<p>初步接触 DBMS: 不就是存个数据吗, 有什么难的. 增删改查,
+我上我也行.</p>
+<p>进一步了解 DBMS: 好像有点东西<del>(全然余裕)</del>.</p>
+<p>看完一本 DBMS 的书后: B+树索引结构, 关系模型和外键约束,
+连接优化、投影消除...我错了呜呜呜❤要被灌成泡芙了❤</p>
+<p>记这么多DML作甚? <del>实际还不是用的GUI.</del>
+涉及复杂业务逻辑的时候, 写SQL语句照样烧脑. 设计表的时候还不是照样头疼.
+不考虑优化, 结果性能巨差有谁来负责. 没个 Cheatsheet
+还真没一下想不出来.</p>
+<span id="more"></span>
+<h2 id="检索数据">检索数据</h2>
+<h3 id="基础操作-select">基础操作: SELECT</h3>
+<ul>
+<li>所有的 SQL 语句用 <code>;</code> 结尾.</li>
+<li>SQL 关键字大写是好习惯.</li>
+<li>结果是未排序的.</li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="comment">-- 查找单列</span></span><br><span class="line"><span class="keyword">SELECT</span> course_id <span class="keyword">FROM</span> courses;</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 查找多列</span></span><br><span class="line"><span class="keyword">SELECT</span> course_id, course_name <span class="keyword">FROM</span> courses;</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 检索所有列</span></span><br><span class="line"><span class="comment">-- * 是个通配符. 检索不必要的列通常会降低性能.</span></span><br><span class="line"><span class="keyword">SELECT</span> <span class="operator">*</span> <span class="keyword">FROM</span> courses;</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 检索不同的行</span></span><br><span class="line"><span class="comment">-- 不能部分使用 DISTINCT</span></span><br><span class="line"><span class="keyword">SELECT</span> <span class="keyword">DISTINCT</span> course_id <span class="keyword">FROM</span> courses;</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 限制结果</span></span><br><span class="line"><span class="comment">-- 返回结果不多于 5 行</span></span><br><span class="line"><span class="keyword">SELECT</span> course_id <span class="keyword">FROM</span> courses</span><br><span class="line">LIMIT <span class="number">5</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 完全限定名称</span></span><br><span class="line"><span class="comment">-- 为了避免命名空间冲突</span></span><br><span class="line"><span class="keyword">SELECT</span> courses.course_id <span class="keyword">FROM</span> courses;</span><br></pre></td></tr></table></figure>
+<h3 id="排序检索-order-by">排序检索: ORDER BY</h3>
+<p>SQL 语句由子句(clause)构成, 有些子句是必须的, 有些则不是.</p>
+<p><code>ORDER BY</code> 字句</p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="comment">-- 按 course_name 排序</span></span><br><span class="line"><span class="keyword">SELECT</span> course_name <span class="keyword">FROM</span> courses</span><br><span class="line"><span class="keyword">ORDER</span> <span class="keyword">BY</span> course_name;</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 按多列排序</span></span><br><span class="line"><span class="keyword">SELECT</span> course_id, course_name <span class="keyword">FROM</span> courses</span><br><span class="line"><span class="keyword">ORDER</span> <span class="keyword">BY</span> course_id, course_name;</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 按指定排序方向, 关键字: DESC(ascending)</span></span><br><span class="line"><span class="comment">-- 默认是 ASC(ascending)</span></span><br><span class="line"><span class="comment">-- 本例按 id 高排序</span></span><br><span class="line"><span class="keyword">SELECT</span> course_id, course_name <span class="keyword">FROM</span> courses</span><br><span class="line"><span class="keyword">ORDER</span> <span class="keyword">BY</span> course_id <span class="keyword">DESC</span>, course_name;</span><br></pre></td></tr></table></figure>
+<h3 id="数据过滤-where">数据过滤: WHERE</h3>
+<ul>
+<li>通常数据过滤在服务器而不是在客户端解决. 想想为什么?</li>
+<li><code>ORDER BY</code> 得放在 <code>WHERE</code> 后面.</li>
+<li>使用圆括号分组操作符是个好习惯.</li>
+<li>MySQL 里的 <code>NOT</code> 和其他 SQL 语句略有不同.
+<code>NOT IN</code>, <code>NOT BETWEEN</code> 也支持.</li>
+</ul>
+<table>
+<thead>
+<tr class="header">
+<th>操作符</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>=</code></td>
+<td>等于</td>
+</tr>
+<tr class="even">
+<td><code>&lt;&gt;</code></td>
+<td>不等于<a href="#fn1" class="footnote-ref" id="fnref1"
+role="doc-noteref"><sup>1</sup></a></td>
+</tr>
+<tr class="odd">
+<td><code>!=</code></td>
+<td>不等于</td>
+</tr>
+<tr class="even">
+<td><code>&lt;</code></td>
+<td>小于</td>
+</tr>
+<tr class="odd">
+<td><code>&lt;=</code></td>
+<td>小于等于</td>
+</tr>
+<tr class="even">
+<td><code>&gt;</code></td>
+<td>大于</td>
+</tr>
+<tr class="odd">
+<td><code>&gt;=</code></td>
+<td>大于等于</td>
+</tr>
+<tr class="even">
+<td><code>BETWEEN AND</code></td>
+<td>在指定的两个值之间</td>
+</tr>
+</tbody>
+</table>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="comment">-- 按指定的搜索条件条件过滤</span></span><br><span class="line"><span class="keyword">SELECT</span> prod_name, prod_price</span><br><span class="line"><span class="keyword">FROM</span> products</span><br><span class="line"><span class="keyword">WHERE</span> prod_price <span class="operator">=</span> <span class="number">2.50</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 空值检查</span></span><br><span class="line"><span class="keyword">SELECT</span> prod_name <span class="keyword">FROM</span> products</span><br><span class="line"><span class="keyword">WHERE</span> prod_price <span class="keyword">IS</span> <span class="keyword">NULL</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">-- AND, OR</span></span><br><span class="line"><span class="comment">-- AND 运算优先级高于 OR</span></span><br><span class="line"><span class="keyword">SELECT</span> prod_name, prod_price</span><br><span class="line"><span class="keyword">FROM</span> products</span><br><span class="line"><span class="keyword">WHERE</span> (vend_id <span class="operator">=</span> <span class="number">1002</span> <span class="keyword">OR</span> vend_id <span class="operator">=</span> <span class="number">1003</span>) <span class="keyword">AND</span> prod_price <span class="operator">&gt;=</span> <span class="number">10</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">-- IN</span></span><br><span class="line"><span class="comment">-- 像是个语法糖</span></span><br><span class="line"><span class="comment">-- 但比常规的 OR 要快</span></span><br><span class="line"><span class="keyword">SELECT</span> prod_name, prod_price</span><br><span class="line"><span class="keyword">FROM</span> products</span><br><span class="line"><span class="keyword">WHERE</span> vend_id <span class="keyword">IN</span> (<span class="number">1002</span>, <span class="number">1003</span>) <span class="keyword">AND</span> prod_price <span class="operator">&gt;=</span> <span class="number">10</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">-- NOT</span></span><br><span class="line"><span class="comment">-- 和 Python 里的一样</span></span><br><span class="line"><span class="keyword">SELECT</span> prod_name, prod_price</span><br><span class="line"><span class="keyword">FROM</span> products</span><br><span class="line"><span class="keyword">WHERE</span> vend_id <span class="keyword">NOT</span> <span class="keyword">IN</span> (<span class="number">1002</span>, <span class="number">1003</span>)</span><br><span class="line"><span class="keyword">ORDER</span> <span class="keyword">BY</span> prod_name;</span><br></pre></td></tr></table></figure>
+<h3 id="通配符和-regex">通配符和 regex</h3>
+<ul>
+<li><strong>通配符</strong>(wildcard)用来匹配值的一部分的特殊字符.</li>
+<li><strong>搜索模式</strong>(search pattern<a href="#fn2"
+class="footnote-ref" id="fnref2"
+role="doc-noteref"><sup>2</sup></a>)由字面值(literal),
+通配符或两者组合构成的搜索条件.</li>
+<li>通配符就是 WHERE 字句中具有特殊含义的字符.</li>
+<li><code>%</code> 匹配不了 <code>NULL</code>.</li>
+<li>不要过度使用通配符, 注意通配符位置.</li>
+<li>MySQL 只实现 REGEX 里的很小一块子集.</li>
+<li><code>LIKE</code> 和 <code>REGEXP</code><a href="#fn3"
+class="footnote-ref" id="fnref3"
+role="doc-noteref"><sup>3</sup></a>的区别:
+完全匹配整个列和部分匹配.</li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="comment">-- % 通配符: 任何字符出现次数</span></span><br><span class="line"><span class="comment">-- &#x27;jet%&#x27; 匹配模式: 任何以词jet开头的产品</span></span><br><span class="line"><span class="comment">-- % 可以多次出现, 可以出现在任何位置</span></span><br><span class="line"><span class="keyword">SELECT</span> prod_id, prod_name</span><br><span class="line"><span class="keyword">FROM</span> products</span><br><span class="line"><span class="keyword">WHERE</span> prod_name <span class="keyword">LIKE</span> <span class="string">&#x27;jet%&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">-- _ 通配符: 只匹配单个字符</span></span><br><span class="line"><span class="keyword">SELECT</span> prod_id, prod_name</span><br><span class="line"><span class="keyword">FROM</span> products</span><br><span class="line"><span class="keyword">WHERE</span> prod_name <span class="keyword">LIKE</span> <span class="string">&#x27;_ ton anvil&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 使用正则表达式</span></span><br><span class="line"><span class="comment">-- &#x27;.000&#x27; 匹配诸如 `1000`, `2000`...</span></span><br><span class="line"><span class="comment">-- &#x27;1000|2000&#x27; 类似于 OR</span></span><br><span class="line"><span class="comment">-- &#x27;[1234]000&#x27; 几个字符之一 简写`[1-4]`</span></span><br><span class="line"><span class="comment">-- 剩下的 REGEX 就不介绍了</span></span><br><span class="line"><span class="keyword">SELECT</span> prod_name, prod_price</span><br><span class="line"><span class="keyword">FROM</span> products</span><br><span class="line"><span class="keyword">WHERE</span> prod_name REGEXP <span class="string">&#x27;.000&#x27;</span></span><br><span class="line"><span class="keyword">ORDER</span> <span class="keyword">BY</span> prod_name;</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 区分大小写: BINARY 关键字</span></span><br><span class="line"><span class="keyword">SELECT</span> prod_id, prod_name</span><br><span class="line"><span class="keyword">FROM</span> products</span><br><span class="line"><span class="keyword">WHERE</span> prod_name REGEXP <span class="string">&#x27;JetPack .000&#x27;</span>;</span><br></pre></td></tr></table></figure>
+<h3 id="计算字段">计算字段</h3>
+<ul>
+<li>字段(field)基本上就是列的意思.</li>
+<li>拼接字段得到一个导出列(derived column)</li>
+<li><code>AS</code> 关键字: 别名(alias)</li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="comment">-- 拼接字段</span></span><br><span class="line"><span class="comment">-- 示例输出:</span></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">+----------------------+</span></span><br><span class="line"><span class="comment">| vend_title           |</span></span><br><span class="line"><span class="comment">+----------------------+</span></span><br><span class="line"><span class="comment">| Vendor 1 (USA)       |</span></span><br><span class="line"><span class="comment">| Vendor 2 (Germany)   |</span></span><br><span class="line"><span class="comment">+----------------------+</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="keyword">SELECT</span> Concat(vend_name, <span class="string">&#x27; (&#x27;</span>, vend_country, <span class="string">&#x27;)&#x27;</span>) <span class="keyword">AS</span> vend_title</span><br><span class="line"><span class="keyword">FROM</span> vendors</span><br><span class="line"><span class="keyword">ORDER</span> <span class="keyword">BY</span> vend_name;</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 执行算术运算</span></span><br><span class="line"><span class="comment">-- 支持加减乘除</span></span><br><span class="line"><span class="keyword">SELECT</span> prod_id,</span><br><span class="line">       quantity,</span><br><span class="line">       item_price,</span><br><span class="line">       quantity <span class="operator">*</span> item_price <span class="keyword">AS</span> expanded_price</span><br><span class="line"><span class="keyword">FROM</span> orderitems</span><br><span class="line"><span class="keyword">WHERE</span> order_num <span class="operator">=</span> <span class="number">20005</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">-- SELECT 可以拿来测试计算</span></span><br><span class="line"><span class="keyword">SELECT</span> <span class="number">3</span> <span class="operator">*</span> <span class="number">2</span></span><br><span class="line"><span class="keyword">SELECT</span> <span class="built_in">Trim</span>(<span class="string">&#x27;abc&#x27;</span>)</span><br><span class="line"><span class="keyword">SELECT</span> Now()</span><br></pre></td></tr></table></figure>
+<h3 id="数据处理函数">数据处理函数</h3>
+<p>文本处理函数:</p>
+<table>
+<thead>
+<tr class="header">
+<th>函数名</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>CONCAT</td>
+<td>用于连接多个字符串</td>
+</tr>
+<tr class="even">
+<td>UPPER</td>
+<td>将字符串转换为大写</td>
+</tr>
+<tr class="odd">
+<td>LOWER</td>
+<td>将字符串转换为小写</td>
+</tr>
+<tr class="even">
+<td>SUBSTRING</td>
+<td>从字符串中提取子字符串</td>
+</tr>
+<tr class="odd">
+<td>LENGTH</td>
+<td>返回字符串的长度</td>
+</tr>
+<tr class="even">
+<td>TRIM</td>
+<td>去除字符串首尾的空格</td>
+</tr>
+<tr class="odd">
+<td>LTRIM</td>
+<td>去除字符串开头的空格</td>
+</tr>
+<tr class="even">
+<td>RTRIM</td>
+<td>去除字符串末尾的空格</td>
+</tr>
+<tr class="odd">
+<td>LEFT</td>
+<td>返回字符串左边指定长度的子字符串</td>
+</tr>
+<tr class="even">
+<td>RIGHT</td>
+<td>返回字符串右边指定长度的子字符串</td>
+</tr>
+<tr class="odd">
+<td>REPLACE</td>
+<td>替换字符串中的指定子字符串</td>
+</tr>
+<tr class="even">
+<td>CHARINDEX</td>
+<td>返回指定子字符串在字符串中第一次出现的位置</td>
+</tr>
+<tr class="odd">
+<td>REVERSE</td>
+<td>反转字符串</td>
+</tr>
+<tr class="even">
+<td>FORMAT</td>
+<td>将数值或日期格式化为指定的字符串表示</td>
+</tr>
+<tr class="odd">
+<td>COALESCE</td>
+<td>返回第一个非空表达式的值</td>
+</tr>
+<tr class="even">
+<td>CASE</td>
+<td>条件语句，用于在结果中根据条件返回不同的值</td>
+</tr>
+<tr class="odd">
+<td>REGEXP_REPLACE</td>
+<td>使用正则表达式替换字符串中的内容</td>
+</tr>
+<tr class="even">
+<td>TRANSLATE</td>
+<td>替换字符串中的指定字符</td>
+</tr>
+<tr class="odd">
+<td>SOUNDEX</td>
+<td>返回字符串的 SOUNDEX 码，用于模糊匹配字符串的发音</td>
+</tr>
+<tr class="even">
+<td>CONCAT_WS</td>
+<td>用指定的分隔符连接多个字符串，并去除空字符串</td>
+</tr>
+<tr class="odd">
+<td>INITCAP</td>
+<td>将字符串的首字母大写</td>
+</tr>
+<tr class="even">
+<td>STRPOS</td>
+<td>返回指定子字符串在字符串中第一次出现的位置</td>
+</tr>
+<tr class="odd">
+<td>LEFTPAD</td>
+<td>在字符串的左侧填充指定字符</td>
+</tr>
+<tr class="even">
+<td>RIGHTPAD</td>
+<td>在字符串的右侧填充指定字符</td>
+</tr>
+</tbody>
+</table>
+<p>日期函数:</p>
+<table>
+<thead>
+<tr class="header">
+<th>函数名</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>AddDate</td>
+<td>增加一个日期（天、周等）</td>
+</tr>
+<tr class="even">
+<td>AddTime</td>
+<td>增加一个时间（时、分等）</td>
+</tr>
+<tr class="odd">
+<td>CurDate</td>
+<td>返回当前日期</td>
+</tr>
+<tr class="even">
+<td>CurTime</td>
+<td>返回当前时间</td>
+</tr>
+<tr class="odd">
+<td>Date</td>
+<td>返回日期时间的日期部分</td>
+</tr>
+<tr class="even">
+<td>DateDiff</td>
+<td>计算两个日期之差</td>
+</tr>
+<tr class="odd">
+<td>Date_Add</td>
+<td>高度灵活的日期运算函数</td>
+</tr>
+<tr class="even">
+<td>Date_Format</td>
+<td>返回一个格式化的日期或时间串</td>
+</tr>
+<tr class="odd">
+<td>Day</td>
+<td>返回一个日期的天数部分</td>
+</tr>
+<tr class="even">
+<td>DayOfWeek</td>
+<td>对于一个日期，返回对应的星期几</td>
+</tr>
+<tr class="odd">
+<td>Hour</td>
+<td>返回一个时间的小时部分</td>
+</tr>
+<tr class="even">
+<td>Minute</td>
+<td>返回一个时间的分钟部分</td>
+</tr>
+<tr class="odd">
+<td>Month</td>
+<td>返回一个日期的月份部分</td>
+</tr>
+<tr class="even">
+<td>Now</td>
+<td>返回当前日期和时间</td>
+</tr>
+<tr class="odd">
+<td>Second</td>
+<td>返回一个时间的秒部分</td>
+</tr>
+<tr class="even">
+<td>Time</td>
+<td>返回一个日期时间的时间部分</td>
+</tr>
+<tr class="odd">
+<td>Year</td>
+<td>返回一个日期的年份部分</td>
+</tr>
+</tbody>
+</table>
+<p>不同的 DBMS 对函数的实现和语法有些区别. <del>这么多谁记得住.</del>
+建议看<a
+href="https://dev.mysql.com/doc/refman/8.0/en/functions.html">文档</a>.</p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="comment">-- 使用范例:</span></span><br><span class="line"><span class="keyword">SELECT</span> cust_id, order_num</span><br><span class="line"><span class="keyword">FROM</span> orders</span><br><span class="line"><span class="keyword">WHERE</span> <span class="keyword">Year</span>(order_date) <span class="operator">=</span> <span class="number">2005</span> <span class="keyword">AND</span> <span class="keyword">Month</span>(order_date) <span class="operator">=</span> <span class="number">9</span>;</span><br></pre></td></tr></table></figure>
+<h3 id="汇总数据-聚集函数">汇总数据: 聚集函数</h3>
+<ul>
+<li>汇总数据严格来说<strong>不是检索数据</strong>.</li>
+<li>聚集函数(aggregate function): 运行在行组上,
+计算和返回单个值的函数.</li>
+<li><code>COUNT(*)</code>: 行的值为空依然计数
+<code>COUNT(column)</code>: column 有值的计数</li>
+<li><code>MAX()</code> 要求<strong>指定</strong>列名</li>
+<li><code>ALL</code> 默认 <code>DISTINCT</code> 只包含不同的值</li>
+<li>可以组合聚集函数.</li>
+</ul>
+<p>聚合函数:</p>
+<table>
+<thead>
+<tr class="header">
+<th>函数名</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>AVG()</td>
+<td>返回某列的平均值</td>
+</tr>
+<tr class="even">
+<td>COUNT()</td>
+<td>返回某列的行数</td>
+</tr>
+<tr class="odd">
+<td>MAX()</td>
+<td>返回某列的最大值</td>
+</tr>
+<tr class="even">
+<td>MIN()</td>
+<td>返回某列的最小值</td>
+</tr>
+<tr class="odd">
+<td>SUM()</td>
+<td>返回某列值之和</td>
+</tr>
+</tbody>
+</table>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="comment">-- 聚集函数</span></span><br><span class="line"><span class="comment">-- 效率更高. 想想看和下面的差在哪?</span></span><br><span class="line"><span class="keyword">SELECT</span> <span class="built_in">MAX</span>(column_name) <span class="keyword">AS</span> max_value</span><br><span class="line"><span class="keyword">FROM</span> table_name;</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 普通的查询</span></span><br><span class="line"><span class="keyword">SELECT</span> column_name <span class="keyword">FROM</span> table_name</span><br><span class="line"><span class="keyword">ORDER</span> <span class="keyword">BY</span> column_name</span><br><span class="line"><span class="keyword">DESC</span> LIMIT <span class="number">1</span>;</span><br></pre></td></tr></table></figure>
+<h3 id="分组数据-group-by-和-having">分组数据: GROUP BY 和 HAVING</h3>
+<ul>
+<li><code>GROUP BY</code>(创建分组) 和
+<code>HAVING</code>(过滤分组)</li>
+<li><code>GROUP BY</code> 支持多级分组.
+数据将在最后规定的分组上进行汇总.</li>
+<li><code>GROUP BY</code> 在 <code>WHERE</code> 后,
+<code>ORDER BY</code> 前</li>
+<li><code>WHERE</code> 过滤行, 而 <code>HAVING</code>
+过滤分组(两者很相似, 操作符通用)</li>
+<li>可以这么想: <code>WHERE</code> 在分组前过滤, <code>HAVING</code>
+在分组后过滤.</li>
+<li>而且 <code>HAVING</code> 可以和 <code>WHERE</code> 混着用</li>
+</ul>
+<table>
+<colgroup>
+<col style="width: 8%" />
+<col style="width: 35%" />
+<col style="width: 55%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th></th>
+<th>ORDER BY</th>
+<th>GROUP BY</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>输出</td>
+<td>按指定列排序的结果</td>
+<td>分组后的结果，但输出可能不按照分组的顺序</td>
+</tr>
+<tr class="even">
+<td>列的使用</td>
+<td>任意列，甚至非选择的列也可以使用</td>
+<td>只能使用选择列或表达式列，必须使用每个选择列表达式</td>
+</tr>
+<tr class="odd">
+<td>必要性</td>
+<td>不一定需要</td>
+<td>如果与聚集函数一起使用列（或表达式），则必须使用</td>
+</tr>
+</tbody>
+</table>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="comment">-- 创建分组</span></span><br><span class="line"><span class="comment">-- GROUP BY 按 vend_id 排序并分组数据</span></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">| vend_id | num_prods |</span></span><br><span class="line"><span class="comment">|---------|-----------|</span></span><br><span class="line"><span class="comment">|   1     |    5      |</span></span><br><span class="line"><span class="comment">|   2     |    3      |</span></span><br><span class="line"><span class="comment">|   3     |    7      |</span></span><br><span class="line"><span class="comment">|   4     |    2      |</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="keyword">SELECT</span> vend_id, <span class="built_in">COUNT</span>(<span class="operator">*</span>) <span class="keyword">AS</span> num_prods</span><br><span class="line"><span class="keyword">FROM</span> products</span><br><span class="line"><span class="keyword">GROUP</span> <span class="keyword">BY</span> vend_id;</span><br><span class="line"></span><br><span class="line"><span class="comment">-- WITH ROLLUP: 添加汇总行</span></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">| vend_id | num_prods |</span></span><br><span class="line"><span class="comment">|---------|-----------|</span></span><br><span class="line"><span class="comment">|   1     |    5      |</span></span><br><span class="line"><span class="comment">|   2     |    3      |</span></span><br><span class="line"><span class="comment">|   3     |    7      |</span></span><br><span class="line"><span class="comment">|   4     |    2      |</span></span><br><span class="line"><span class="comment">|  NULL   |    17     |</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="keyword">SELECT</span> vend_id, <span class="built_in">COUNT</span>(<span class="operator">*</span>) <span class="keyword">AS</span> num_prods</span><br><span class="line"><span class="keyword">FROM</span> products</span><br><span class="line"><span class="keyword">GROUP</span> <span class="keyword">BY</span> vend_id <span class="keyword">WITH</span> <span class="keyword">ROLLUP</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">-- GROUP BY 多级分组</span></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">| customer_id | order_date | order_amount |</span></span><br><span class="line"><span class="comment">|-------------|------------|--------------|</span></span><br><span class="line"><span class="comment">|     1001    | 2023-01-01 |     50.00    |</span></span><br><span class="line"><span class="comment">|     1002    | 2023-01-01 |     75.00    |</span></span><br><span class="line"><span class="comment">|     1001    | 2023-01-02 |     30.00    |</span></span><br><span class="line"><span class="comment">|     1003    | 2023-01-02 |     20.00    |</span></span><br><span class="line"><span class="comment">|     1002    | 2023-01-03 |     45.00    |</span></span><br><span class="line"><span class="comment">|     1001    | 2023-01-03 |     60.00    |</span></span><br><span class="line"><span class="comment">|     1003    | 2023-01-03 |     35.00    |</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="keyword">SELECT</span> customer_id, order_date, <span class="built_in">SUM</span>(order_amount) <span class="keyword">AS</span> total_amount</span><br><span class="line"><span class="keyword">FROM</span> orders</span><br><span class="line"><span class="keyword">GROUP</span> <span class="keyword">BY</span> customer_id, order_date;</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 过滤分组</span></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">| cust_id | orders |</span></span><br><span class="line"><span class="comment">|---------|--------|</span></span><br><span class="line"><span class="comment">|   1001  |   3    |</span></span><br><span class="line"><span class="comment">|   1003  |   2    |</span></span><br><span class="line"><span class="comment">|   1002  |   2    |</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="keyword">SELECT</span> cust_id, <span class="built_in">COUNT</span>(<span class="operator">*</span>) <span class="keyword">AS</span> orders</span><br><span class="line"><span class="keyword">FROM</span> orders</span><br><span class="line"><span class="keyword">GROUP</span> <span class="keyword">BY</span> cust_id</span><br><span class="line"><span class="keyword">HAVING</span> <span class="built_in">COUNT</span>(<span class="operator">*</span>) <span class="operator">&gt;=</span> <span class="number">2</span>;</span><br></pre></td></tr></table></figure>
+<p>在SQL查询中, <code>SELECT</code> 子句的一般顺序如下:</p>
+<ul>
+<li><code>SELECT</code>：指定要检索的列或表达式。</li>
+<li><code>FROM</code>：指定要从中检索数据的表或视图。</li>
+<li><code>WHERE</code>：应用条件来筛选满足特定条件的行。</li>
+<li><code>GROUP BY</code>：根据指定的列或表达式对结果进行分组。</li>
+<li><code>HAVING</code>：筛选分组后的结果集。</li>
+<li><code>ORDER BY</code>：指定结果集的排序顺序。</li>
+<li><code>LIMIT</code> /
+<code>OFFSET</code>（在某些数据库中可用）：限制返回的行数或指定结果集的偏移量。</li>
+</ul>
+<h3 id="使用子查询">使用子查询</h3>
+<ul>
+<li>子查询(subquery): 查找一遍又一遍</li>
+<li>子查询总是<strong>从内向外</strong>处理.</li>
+<li>相关子查询(correlated subquery): 涉及外部查询的子查询.</li>
+<li>逐渐增加子查询来建立查询. 也就是先分成多部查询,
+确定正常后再写进子查询.</li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="comment">-- 用子查询</span></span><br><span class="line"><span class="comment">-- 括号里的先算</span></span><br><span class="line"><span class="keyword">SELECT</span> cust_id</span><br><span class="line"><span class="keyword">FROM</span> orders</span><br><span class="line"><span class="keyword">WHERE</span> order_num <span class="keyword">IN</span> (<span class="keyword">SELECT</span> order_num</span><br><span class="line">                    <span class="keyword">FROM</span> orderitems</span><br><span class="line">                    <span class="keyword">WHERE</span> prod_id <span class="operator">=</span> <span class="string">&#x27;TNT2&#x27;</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 其实你可以拆成两个查询. 最好先写成两步, 然后合并为子查询.</span></span><br><span class="line"></span><br><span class="line"><span class="comment">-- 作为计算字段使用子查询</span></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">| cust_name | cust_state | orders |</span></span><br><span class="line"><span class="comment">|-----------|------------|--------|</span></span><br><span class="line"><span class="comment">|   John    |     NY     |   3    |</span></span><br><span class="line"><span class="comment">|   Mary    |     CA     |   2    |</span></span><br><span class="line"><span class="comment">|   David   |     TX     |   0    |</span></span><br><span class="line"><span class="comment">|   Lisa    |     NY     |   1    |</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="keyword">SELECT</span> cust_name,</span><br><span class="line">       cust_state,</span><br><span class="line">       (<span class="keyword">SELECT</span> <span class="built_in">COUNT</span>(<span class="operator">*</span>) <span class="keyword">FROM</span> orders </span><br><span class="line">       <span class="keyword">WHERE</span> orders.cust_id <span class="operator">=</span> customers.cust_id) <span class="keyword">AS</span> orders</span><br><span class="line"><span class="keyword">FROM</span> customers</span><br><span class="line"><span class="keyword">ORDER</span> <span class="keyword">BY</span> cust_name</span><br></pre></td></tr></table></figure>
+<section id="footnotes" class="footnotes footnotes-end-of-document"
+role="doc-endnotes">
+<hr />
+<ol>
+<li id="fn1"><p>我去, 这不是我们 PASCAL 的写法吗!<a href="#fnref1"
+class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2"><p><code>schema</code> 和 <code>pattern</code>
+都译作模式.<a href="#fnref2" class="footnote-back"
+role="doc-backlink">↩︎</a></p></li>
+<li id="fn3"><p>MPE 的问题, REGEXP 代码块里应当高亮.<a href="#fnref3"
+class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section>
+]]></content>
+      <categories>
+        <category>后端</category>
+      </categories>
+      <tags>
+        <tag>数据库</tag>
+        <tag>SQL</tag>
       </tags>
   </entry>
 </search>

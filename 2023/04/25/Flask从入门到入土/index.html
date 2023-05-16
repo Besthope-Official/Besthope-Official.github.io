@@ -27,7 +27,7 @@
 <meta property="og:description" content="所谓人生苦短, 我用 Python. 经常戏称别的语言 Python 化, 不就是说明了 Python 作为现代语言的优越性. 当然, 不吹不贬地说, 其实关键在于项目需求, 所以用什么其实并不重要. 在 Python Web 开发这块, Django 和 Flask 平分天下, 而 Flask 框架的优点就在于它&quot;轻量&quot;, &quot;微&quot;, 简直就是 vscode 的翻版, 靠社区 extens">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2023-04-25T10:10:59.000Z">
-<meta property="article:modified_time" content="2023-05-12T13:55:40.661Z">
+<meta property="article:modified_time" content="2023-05-16T15:40:50.024Z">
 <meta property="article:author" content="Besthope">
 <meta property="article:tag" content="Python">
 <meta property="article:tag" content="后端">
@@ -146,8 +146,9 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B7%A5%E6%AC%B2%E5%96%84%E5%85%B6%E4%BA%8B-%E5%BF%85%E5%85%88%E5%88%A9%E5%85%B6%E5%99%A8"><span class="nav-number">1.</span> <span class="nav-text">工欲善其事, 必先利其器</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%BD%93%E7%84%B6-%E4%BD%A0%E8%A6%81%E5%AE%89%E8%A3%85flask"><span class="nav-number">1.1.</span> <span class="nav-text">当然, 你要安装Flask</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#git-%E6%98%AF%E4%BD%A0%E7%9A%84%E5%9F%BA%E6%9C%AC%E5%8A%9F"><span class="nav-number">1.2.</span> <span class="nav-text">Git 是你的基本功</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%96%87%E6%A1%A3%E7%BC%96%E5%86%99%E6%B5%8B%E8%AF%95%E5%B7%A5%E5%85%B7"><span class="nav-number">1.3.</span> <span class="nav-text">文档编写&#x2F;测试工具</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E5%BA%93%E7%B3%BB%E7%BB%9F"><span class="nav-number">1.4.</span> <span class="nav-text">数据库系统</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%88%E5%88%AB%E6%80%A5%E7%9D%80coding-%E4%BD%A0%E8%BF%98%E6%9C%89%E6%96%87%E6%A1%A3%E6%B2%A1%E5%86%99"><span class="nav-number">2.</span> <span class="nav-text">先别急着coding,
-你还有文档没写</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BA%A7%E5%93%81%E5%8E%9F%E5%9E%8B%E5%85%88%E8%A7%A3%E6%9E%84"><span class="nav-number">2.1.</span> <span class="nav-text">产品原型——先解构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#restful-api"><span class="nav-number">2.2.</span> <span class="nav-text">RESTful API</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%92%8C%E5%89%8D%E7%AB%AF%E9%85%8D%E5%90%88"><span class="nav-number">2.3.</span> <span class="nav-text">和前端配合</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%88%91%E8%BF%98%E6%B2%A1%E5%AD%A6%E8%BF%87%E6%95%B0%E6%8D%AE%E5%BA%93"><span class="nav-number">3.</span> <span class="nav-text">我还没学过数据库!</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%88%9B%E8%A1%A8-%E4%BD%A0%E6%98%AF%E4%B8%AA%E8%AE%BE%E8%AE%A1%E5%B8%88-%E8%80%81%E5%BC%9F"><span class="nav-number">3.1.</span> <span class="nav-text">创表: 你是个设计师, 老弟</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#query-%E6%88%91%E5%8F%AA%E4%BC%9A%E5%A2%9E%E5%88%A0%E6%94%B9%E6%9F%A5"><span class="nav-number">3.2.</span> <span class="nav-text">Query: 我只会增删改查</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%A5%BD%E4%BA%86-%E7%8E%B0%E5%9C%A8%E5%BC%80%E5%A7%8B%E8%BF%9B%E5%85%A5flask"><span class="nav-number">4.</span> <span class="nav-text">好了, 现在开始进入Flask</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8A%A8%E8%BA%AB%E5%89%8D-%E5%85%88%E8%A7%84%E8%8C%83%E5%A5%BD%E4%BD%A0%E7%9A%84%E9%A1%B9%E7%9B%AE%E6%A1%86%E6%9E%B6"><span class="nav-number">4.1.</span> <span class="nav-text">动身前, 先规范好你的项目框架</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99"><span class="nav-number">5.</span> <span class="nav-text">参考资料</span></a></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B7%A5%E6%AC%B2%E5%96%84%E5%85%B6%E4%BA%8B-%E5%BF%85%E5%85%88%E5%88%A9%E5%85%B6%E5%99%A8"><span class="nav-number">1.</span> <span class="nav-text">工欲善其事, 必先利其器</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%BD%93%E7%84%B6-%E4%BD%A0%E8%A6%81%E5%AE%89%E8%A3%85-flask"><span class="nav-number">1.1.</span> <span class="nav-text">当然, 你要安装 Flask</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#git-%E6%98%AF%E4%BD%A0%E7%9A%84%E5%9F%BA%E6%9C%AC%E5%8A%9F"><span class="nav-number">1.2.</span> <span class="nav-text">Git 是你的基本功</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%96%87%E6%A1%A3%E7%BC%96%E5%86%99%E6%B5%8B%E8%AF%95%E5%B7%A5%E5%85%B7"><span class="nav-number">1.3.</span> <span class="nav-text">文档编写&#x2F;测试工具</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E5%BA%93%E7%B3%BB%E7%BB%9F"><span class="nav-number">1.4.</span> <span class="nav-text">数据库系统</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%88%E5%88%AB%E6%80%A5%E7%9D%80-coding-%E4%BD%A0%E8%BF%98%E6%9C%89%E6%96%87%E6%A1%A3%E6%B2%A1%E5%86%99"><span class="nav-number">2.</span> <span class="nav-text">先别急着 coding,
+你还有文档没写</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BA%A7%E5%93%81%E5%8E%9F%E5%9E%8B%E5%85%88%E8%A7%A3%E6%9E%84"><span class="nav-number">2.1.</span> <span class="nav-text">产品原型——先解构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#restful-api"><span class="nav-number">2.2.</span> <span class="nav-text">RESTful API</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%AE%80%E5%8D%95%E4%BB%8B%E7%BB%8D-rest-%E6%9E%B6%E6%9E%84%E5%92%8C-web-%E5%9F%BA%E7%A1%80"><span class="nav-number">2.2.1.</span> <span class="nav-text">简单介绍 REST 架构和 Web
+基础</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#restful-%E7%9A%84%E8%AE%BE%E8%AE%A1%E7%BB%86%E8%8A%82"><span class="nav-number">2.2.2.</span> <span class="nav-text">RESTful 的设计细节</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%92%8C%E5%89%8D%E7%AB%AF%E9%85%8D%E5%90%88"><span class="nav-number">2.3.</span> <span class="nav-text">和前端配合</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%88%91%E8%BF%98%E6%B2%A1%E5%AD%A6%E8%BF%87%E6%95%B0%E6%8D%AE%E5%BA%93"><span class="nav-number">3.</span> <span class="nav-text">我还没学过数据库</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%88%9B%E8%A1%A8-%E4%BD%A0%E6%98%AF%E4%B8%AA%E8%AE%BE%E8%AE%A1%E5%B8%88-%E8%80%81%E5%BC%9F"><span class="nav-number">3.1.</span> <span class="nav-text">创表: 你是个设计师, 老弟</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#query-%E6%88%91%E5%8F%AA%E4%BC%9A%E5%A2%9E%E5%88%A0%E6%94%B9%E6%9F%A5"><span class="nav-number">3.2.</span> <span class="nav-text">Query: 我只会增删改查</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%A5%BD%E4%BA%86-%E7%8E%B0%E5%9C%A8%E5%BC%80%E5%A7%8B%E8%BF%9B%E5%85%A5-flask"><span class="nav-number">4.</span> <span class="nav-text">好了, 现在开始进入 Flask</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8A%A8%E8%BA%AB%E5%89%8D-%E5%85%88%E8%A7%84%E8%8C%83%E5%A5%BD%E4%BD%A0%E7%9A%84%E9%A1%B9%E7%9B%AE%E6%A1%86%E6%9E%B6"><span class="nav-number">4.1.</span> <span class="nav-text">动身前, 先规范好你的项目框架</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%95%8A%E8%BF%99-%E7%9C%9F%E7%9A%84%E8%A6%81%E5%86%8D%E5%86%99%E4%B8%80%E9%81%8D-model-%E5%90%97"><span class="nav-number">4.2.</span> <span class="nav-text">啊这, 真的要再写一遍 Model 吗</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8F%AA%E8%BF%94%E5%9B%9Ejson%E8%80%8C%E5%B7%B2-%E5%BE%88%E7%AE%80%E5%8D%95"><span class="nav-number">4.3.</span> <span class="nav-text">只返回JSON而已, 很简单</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9C%80%E5%96%9C%E6%AC%A2%E7%9A%84%E4%B8%80%E9%9B%86-%E5%86%99%E6%B5%8B%E8%AF%95"><span class="nav-number">4.4.</span> <span class="nav-text">最喜欢的一集: 写测试</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99"><span class="nav-number">5.</span> <span class="nav-text">参考资料</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -162,16 +163,16 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">16</span>
+          <span class="site-state-item-count">17</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
-        <span class="site-state-item-count">7</span>
+        <span class="site-state-item-count">8</span>
         <span class="site-state-item-name">分类</span>
       </div>
       <div class="site-state-item site-state-tags">
-        <span class="site-state-item-count">27</span>
+        <span class="site-state-item-count">28</span>
         <span class="site-state-item-name">标签</span>
       </div>
   </nav>
@@ -246,7 +247,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2023-05-12 21:55:40" itemprop="dateModified" datetime="2023-05-12T21:55:40+08:00">2023-05-12</time>
+      <time title="修改时间：2023-05-16 23:40:50" itemprop="dateModified" datetime="2023-05-16T23:40:50+08:00">2023-05-16</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -265,14 +266,14 @@
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">本文字数：</span>
-      <span>610</span>
+      <span>1.6k</span>
     </span>
     <span class="post-meta-item" title="阅读时长">
       <span class="post-meta-item-icon">
         <i class="far fa-clock"></i>
       </span>
       <span class="post-meta-item-text">阅读时长 &asymp;</span>
-      <span>2 分钟</span>
+      <span>6 分钟</span>
     </span>
 </div>
 
@@ -295,11 +296,12 @@ Python 作为现代语言的优越性. 当然, 不吹不贬地说, 其实关键�
 <span id="more"></span>
 <p>先把框架搭好. 其它的之后再说.</p>
 <h2 id="工欲善其事-必先利其器">工欲善其事, 必先利其器</h2>
-<h3 id="当然-你要安装flask">当然, 你要安装Flask</h3>
-<p>推荐 PyCharm, 专属IDE, 你值得拥有. <del>说得好, 我用 VSCode</del></p>
+<h3 id="当然-你要安装-flask">当然, 你要安装 Flask</h3>
+<p>推荐 PyCharm, 专属 IDE, 你值得拥有. <del>说得好, 我用
+VSCode</del></p>
 <p>推荐在虚拟环境 venv 中开发.</p>
 <h3 id="git-是你的基本功">Git 是你的基本功</h3>
-<p>平时 Github 解决一切. <del>Gitee是什么真不熟</del></p>
+<p>平时 Github 解决一切. <del>Gitee 是什么真不熟</del></p>
 <p>基础的 commit, branch, push 操作要会.</p>
 <p>但也记得上手 Gitlab. 因为企业一般用的它.</p>
 <h3 id="文档编写测试工具">文档编写/测试工具</h3>
@@ -311,38 +313,167 @@ Python 作为现代语言的优越性. 当然, 不吹不贬地说, 其实关键�
 <p>配套 VScode 插件: <a
 target="_blank" rel="noopener" href="https://marketplace.visualstudio.com/items?itemName=cweijan.vscode-mysql-client2">My
 SQL</a></p>
-<h2 id="先别急着coding-你还有文档没写">先别急着coding,
+<h2 id="先别急着-coding-你还有文档没写">先别急着 coding,
 你还有文档没写</h2>
 <h3 id="产品原型先解构">产品原型——先解构</h3>
 <p>对产品原型的解构. 大致的实现需求. 好了, 这就是你的 TODO-LIST.</p>
 <p>看起来比较复杂的项目, 分模块分时期去实现, 一个页面一个页面慢慢来.</p>
 <h3 id="restful-api">RESTful API</h3>
-<p>接口规范. 就这么写.</p>
+<h4 id="简单介绍-rest-架构和-web-基础">简单介绍 REST 架构和 Web
+基础</h4>
+<p>RESTful 架构是个什么东西? <strong>Representational State
+Transfer</strong>是 REST 的全称, "表现层状态发生转移".</p>
+<p>REST <em>对信息的核心抽象</em>就是 <strong>资源</strong>(Resources),
+通常以 <strong><a
+target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Uniform_Resource_Identifier">URI</a>(统一资源定位符)</strong>
+的形式表现. 这里的资源可以是文本, 图片, 或者<em>任何能被命名的信息</em>.
+换句话说, 如果某一信息能被超链接导航到, 那它就符合资源的定义.
+要访问某一"资源", 访问它的 URI 即可. URI
+就是这个"资源"独一无二的<strong>标识符</strong>!</p>
+<p>不过要注意的是, "资源"是对信息的<em>抽象</em>:
+它代表的是<strong>一组</strong>相关的实体, 而非一个单独的实体.
+具体的实体会发生变化, 但"资源"表示实体的结构和行为是不变的.</p>
+<p>"资源"具体表现的形式,
+就称作它的"<strong>表现层</strong>"(Representation).</p>
+<p>例如, 文本可以用 txt 格式表现, 也可以用 JSON, xml 格式,
+甚至二进制格式表现; 图片可以用 jpg 格式表现, 也可以用 png 格式表现.</p>
+<p>访问一个网站, 就代表了<strong>客户端和服务器的一个互动过程</strong>.
+在这个过程中, 必然涉及数据和状态的改变. 互联网通信协议<a
+target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Overview#http_%E6%98%AF%E6%97%A0%E7%8A%B6%E6%80%81%EF%BC%8C%E6%9C%89%E4%BC%9A%E8%AF%9D%E7%9A%84">HTTP
+协议</a>, 是一个<em>无状态协议</em>. 所有的状态都保存在服务器端,
+如果客户端想要操作服务器, <strong>必须通过某种途径</strong>,
+使得服务器端发生"<strong>状态转移</strong>"(State Transfer).
+而这种状态转移是建立在表现层之上的. 所以, 你现在就能明白 REST
+到底指的是个啥.</p>
+<p>至于客户端用到的手段, 只能是<a
+target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/web/http/methods">HTTP
+的请求方法</a>. 下面这五种方法对应的 <strong>CRUD(增删改查)</strong>
+操作:</p>
+<table>
+<thead>
+<tr class="header">
+<th>请求方法</th>
+<th>效果</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>GET</td>
+<td>读取（Read）</td>
+</tr>
+<tr class="even">
+<td>POST</td>
+<td>新建（Create）</td>
+</tr>
+<tr class="odd">
+<td>PUT</td>
+<td>更新（Update）</td>
+</tr>
+<tr class="even">
+<td>PATCH</td>
+<td>更新（Update），通常是部分更新</td>
+</tr>
+<tr class="odd">
+<td>DELETE</td>
+<td>删除（Delete）</td>
+</tr>
+</tbody>
+</table>
+<p>根据HTTP协议, 请求方法(Request)由客户端提出,
+由服务器决定是否执行或拒绝. 例如, 你发起了一个 <code>GET</code> 请求,
+想获取 <code>/clients</code> 下的资源. 但这个文件获取需要有权限,
+服务器就可以有如下的执行方式:</p>
+<ul>
+<li><code>404 Not found</code>: 这个状态码表示文件不存在.
+当然是服务器装的.</li>
+<li><code>403 Forbidden</code>: 这个文件拒绝访问.</li>
+<li><code>405 Method Not Allowed</code>: 然后用 <code>Allow</code>
+头告诉你可以用 <code>HEAD</code> 方法获取文件的元信息.</li>
+</ul>
+<h4 id="restful-的设计细节">RESTful 的设计细节</h4>
+<p>主要内容:</p>
+<ul>
+<li>URI 设计:
+<ul>
+<li>任何请求都是<strong>动宾结构</strong>. 例如 <code>GET /images</code>
+<del><code>/create-order</code></del></li>
+<li>使用<strong>集合资源</strong>: 为了避免单数出现的歧义.
+<code>images/2</code> <del><code>image/2</code></del></li>
+<li>避免多级 URI: 尽量避免三级以上.
+<code>/authors/12?categories=2</code>(字符串查询)
+<del><code>/authors/12/categories/2</code></del></li>
+<li>用<strong>字符串查询</strong>: Filtering, Sorting, and Pagination
+<code>GET: /articles/?published=true&amp;page=2&amp;page_size=20</code></li>
+</ul></li>
+<li>状态码设计:
+<ul>
+<li>参考 <a
+target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/List_of_HTTP_status_codes">HTTP
+Status Code</a>
+<ul>
+<li><code>1xx</code>: 相关信息</li>
+<li><code>2xx:</code> 操作成功</li>
+<li>...</li>
+</ul></li>
+</ul></li>
+<li>服务器回应:
+<ul>
+<li>不要返回纯文本: HTTP 头的 Content-Type 属性要设为
+<code>application/json</code>, 接受 JSON 结构化数据</li>
+<li>考虑 <a
+target="_blank" rel="noopener" href="https://learn.microsoft.com/en-us/azure/architecture/best-practices/api-design#use-hateoas-to-enable-navigation-to-related-resources">HATEOAS</a>
+将关联资源联系起来(提供超链接).</li>
+</ul></li>
+</ul>
+<p>具体参考官方或者他人总结的教程.(见参考资料)</p>
 <h3 id="和前端配合">和前端配合</h3>
 <p>交流很重要.</p>
 <p>确定哪些业务逻辑在放前端实现, 哪些业务逻辑放在后端实现.</p>
-<p>看看API设计是否合理. 俩人得出共识就可以各干各的了.</p>
-<h2 id="我还没学过数据库">我还没学过数据库!</h2>
+<p>看看 API 设计是否合理. 俩人得出共识就可以各干各的了.</p>
+<h2 id="我还没学过数据库">我还没学过数据库</h2>
 <h3 id="创表-你是个设计师-老弟">创表: 你是个设计师, 老弟</h3>
 <p><code>CREATE</code></p>
-<p>can can need: <a
-target="_blank" rel="noopener" href="https://open.yesapi.cn/list.html">开源的MySQL数据库表设计</a></p>
+<p>can can need: <a target="_blank" rel="noopener" href="https://open.yesapi.cn/list.html">开源的 MySQL
+数据库表设计</a></p>
+<p>可以参考 <a target="_blank" rel="noopener" href="https://www.sqlstyle.guide/zh/">SQL Style
+Guide</a>.</p>
+<p>一些比较重要的原则:</p>
+<ul>
+<li><del>驼峰命名</del>不适合扫读.</li>
+<li><del>面向对象编程的原则(OOP)</del>不该应用到 SQL
+或数据库结构上.</li>
+<li>保证名字<strong>独一无二</strong>且不是保留字.</li>
+<li>尽量避免连接两个表的名字作为<strong>关系表</strong>的名字.
+<code>cars_mechanics</code> 不如用 <code>services</code></li>
+<li>列名总是使用<strong>单数</strong>形式.</li>
+<li>等...</li>
+</ul>
 <h3 id="query-我只会增删改查">Query: 我只会增删改查</h3>
 <p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/170046187">MySQL
 的增删改查语句总结</a></p>
-<p><code>insert</code>, <code>update</code>, <code>delete</code>,
+<p>学会 <code>insert</code>, <code>update</code>, <code>delete</code>,
 <code>select</code></p>
-<p><a target="_blank" rel="noopener" href="https://www.sqlstyle.guide/">SQL Style Guide</a></p>
-<h2 id="好了-现在开始进入flask">好了, 现在开始进入Flask</h2>
+<h2 id="好了-现在开始进入-flask">好了, 现在开始进入 Flask</h2>
 <h3 id="动身前-先规范好你的项目框架">动身前, 先规范好你的项目框架</h3>
+<h3 id="啊这-真的要再写一遍-model-吗">啊这, 真的要再写一遍 Model 吗</h3>
+<h3 id="只返回json而已-很简单">只返回JSON而已, 很简单</h3>
+<h3 id="最喜欢的一集-写测试">最喜欢的一集: 写测试</h3>
 <h2 id="参考资料">参考资料</h2>
 <ol type="1">
 <li><a target="_blank" rel="noopener" href="https://www.sqlstyle.guide/">SQL Style Guide</a></li>
-<li>Flask Web 开发: 基于 Python 的 Web 应用开发实践: 第2版. ISBN
+<li>Flask Web 开发: 基于 Python 的 Web 应用开发实践: 第 2 版. ISBN
 978-7-115-48945-6</li>
+<li><a
+target="_blank" rel="noopener" href="https://www.ics.uci.edu/~fielding/pubs/dissertation/top.htm">Roy
+Thomas Fielding 在他 2000 年的博士论文提出的 REST 原则</a></li>
+<li><a target="_blank" rel="noopener" href="https://restfulapi.net/">REST API 的官方教程</a></li>
 <li>阮一峰, <a
 target="_blank" rel="noopener" href="http://ruanyifeng.com/blog/2018/10/restful-api-best-practices.html">RESTful
 API 最佳实践</a>.</li>
+<li><a
+target="_blank" rel="noopener" href="https://learn.microsoft.com/en-us/azure/architecture/best-practices/api-design">微软出品的API教程</a></li>
+<li><a target="_blank" rel="noopener" href="https://mathieu.fenniak.net/the-api-checklist/">Web API
+Checklist</a></li>
 <li>Flask 官方<a target="_blank" rel="noopener" href="https://flask.net.cn/">中文文档</a>.</li>
 </ol>
 
@@ -369,6 +500,9 @@ API 最佳实践</a>.</li>
                 </a>
             </div>
             <div class="post-nav-item">
+                <a href="/2023/05/16/SQL-cheetsheet/" rel="next" title="SQL cheetsheet">
+                  SQL cheetsheet <i class="fa fa-chevron-right"></i>
+                </a>
             </div>
           </div>
     </footer>
@@ -402,14 +536,14 @@ API 最佳实践</a>.</li>
       <i class="fa fa-chart-line"></i>
     </span>
       <span>站点总字数：</span>
-    <span title="站点总字数">33k</span>
+    <span title="站点总字数">37k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
       <span>站点阅读时长 &asymp;</span>
-    <span title="站点阅读时长">2:01</span>
+    <span title="站点阅读时长">2:14</span>
   </span>
 </div>
   <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/pisces/" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动

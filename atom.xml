@@ -6,7 +6,7 @@
   <link href="http://example.com/atom.xml" rel="self"/>
   
   <link href="http://example.com/"/>
-  <updated>2023-05-12T13:55:40.661Z</updated>
+  <updated>2023-05-16T15:47:29.181Z</updated>
   <id>http://example.com/</id>
   
   <author>
@@ -17,11 +17,40 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>SQL cheetsheet</title>
+    <link href="http://example.com/2023/05/16/SQL-cheetsheet/"/>
+    <id>http://example.com/2023/05/16/SQL-cheetsheet/</id>
+    <published>2023-05-16T15:27:40.000Z</published>
+    <updated>2023-05-16T15:47:29.181Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;初步接触 DBMS: 不就是存个数据吗, 有什么难的. 增删改查,
+我上我也行.&lt;/p&gt;
+&lt;p&gt;进一步了解 DBMS: 好像有点东西&lt;del&gt;(全然余裕)&lt;/del&gt;.&lt;/p&gt;
+&lt;p&gt;看完一本 DBMS 的书后: B+树索引结构, 关系模型和外键约束,
+连接优化、投影消除...我错了呜呜呜❤要被灌成泡芙了❤&lt;/p&gt;
+&lt;p&gt;记这么多DML作甚? &lt;del&gt;实际还不是用的GUI.&lt;/del&gt;
+涉及复杂业务逻辑的时候, 写SQL语句照样烧脑. 设计表的时候还不是照样头疼.
+不考虑优化, 结果性能巨差有谁来负责. 没个 Cheatsheet
+还真没一下想不出来.&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="后端" scheme="http://example.com/categories/%E5%90%8E%E7%AB%AF/"/>
+    
+    
+    <category term="数据库" scheme="http://example.com/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
+    
+    <category term="SQL" scheme="http://example.com/tags/SQL/"/>
+    
+  </entry>
+  
+  <entry>
     <title>Flask从入门到入土</title>
     <link href="http://example.com/2023/04/25/Flask%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E5%85%A5%E5%9C%9F/"/>
     <id>http://example.com/2023/04/25/Flask%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E5%85%A5%E5%9C%9F/</id>
     <published>2023-04-25T10:10:59.000Z</published>
-    <updated>2023-05-12T13:55:40.661Z</updated>
+    <updated>2023-05-16T15:40:50.024Z</updated>
     
     
     <summary type="html">&lt;p&gt;所谓人生苦短, 我用 Python. 经常戏称别的语言 Python 化, 不就是说明了
@@ -249,7 +278,7 @@ role=&quot;doc-noteref&quot;&gt;&lt;sup&gt;1&lt;/sup&gt;&lt;/a&gt;. 解决这个
     <link href="http://example.com/2023/01/28/%E9%9A%8F%E6%84%9F%E5%BD%95/"/>
     <id>http://example.com/2023/01/28/%E9%9A%8F%E6%84%9F%E5%BD%95/</id>
     <published>2023-01-28T14:41:17.000Z</published>
-    <updated>2023-05-10T04:49:29.318Z</updated>
+    <updated>2023-05-14T14:37:13.209Z</updated>
     
     
     <summary type="html">&lt;p&gt;记录不时的奇思妙想. 奇怪的梦, 无垠的呓语, 似非的感悟.
