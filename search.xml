@@ -2552,123 +2552,81 @@ href="https://www.luogu.com.cn/blog/P6174/post-cuo-pai?tdsourcetag=s_pcqq_aiomsg
   <entry>
     <title>随感录</title>
     <url>/2023/01/28/%E9%9A%8F%E6%84%9F%E5%BD%95/</url>
-    <content><![CDATA[<p>记录不时的奇思妙想. 奇怪的梦, 无垠的呓语, 似非的感悟.
-忙碌后的凝思会带给人宁静, 或许人的创作欲此刻迸发. 胡诌数句,
-想想还是删去罢了.</p>
+    <content><![CDATA[<p>记录不时的奇思妙想. 奇怪的梦, 无垠的呓语, 似非的感悟.<br>忙碌后的凝思会带给人宁静, 或许人的创作欲此刻迸发. 胡诌数句, 想想还是删去罢了.</p>
 <span id="more"></span>
-<h2 id="鬼话">鬼话</h2>
-<p>记录下一年来想说的鬼话(吐槽)和看到的鬼话.</p>
-<h3 id="feb">Feb</h3>
-<p>你见到的每个人都随身携带着粪便.</p>
-<p>坐电车说了句"尼玛难挤", 旁边日本人说了句"一起挤".</p>
+<h2 id="鬼话"><a href="#鬼话" class="headerlink" title="鬼话"></a>鬼话</h2><p>记录下一年来想说的鬼话(吐槽)和看到的鬼话.</p>
+<h3 id="Feb"><a href="#Feb" class="headerlink" title="Feb"></a>Feb</h3><p>你见到的每个人都随身携带着粪便.</p>
+<p>坐电车说了句”尼玛难挤”, 旁边日本人说了句”一起挤”.</p>
 <p>心情愉快, 对谁都会抱有特殊的热情与善意.</p>
-<p>编程和学车: 编程纯死记硬背模板和学车纯死记点位一样,
-不懂原理最后的结果就是实战一团糟.</p>
+<p>编程和学车: 编程纯死记硬背模板和学车纯死记点位一样, 不懂原理最后的结果就是实战一团糟.</p>
 <p>呆在家里越久, 越容易恋家. 保证自己的独立性.</p>
 <p>只有你亲妈才能秒发现你今天毛衣穿反了.</p>
-<h3 id="mar">Mar</h3>
-<p>中国邮政一生黑. 寄个信用卡寄回老家去了,
-一看地址是四川省成都市的浙江省, 你在干什么.</p>
-<p>代码出现了四层嵌套, 要么这个算法出现了三层循环你优化不了,
-要么就是代码的抽象逻辑太烂, 总之——u suck.</p>
+<h3 id="Mar"><a href="#Mar" class="headerlink" title="Mar"></a>Mar</h3><p>中国邮政一生黑. 寄个信用卡寄回老家去了, 一看地址是四川省成都市的浙江省, 你在干什么.</p>
+<p>代码出现了四层嵌套, 要么这个算法出现了三层循环你优化不了, 要么就是代码的抽象逻辑太烂, 总之——u suck.</p>
 <p>军队训练的时候一架直升机掉到山区了, 司令找到当地土著老太太.</p>
 <ul>
 <li>“有没看到一只铁鸟掉下来”.</li>
 <li>“铁鸟没看见，但昨天有一架阿帕奇AHMK1改RTM322涡轮发动机掉到山那边了。”</li>
 </ul>
-<h3 id="apr">Apr</h3>
-<p>越看越觉得自己是菜鸡. 不过自己开心才最重要.</p>
-<p>梦到自己不知道吃了啥反正饿醒了. 差点能写到我的绮梦里去.
-看来我也是美食猎人.</p>
-<p>有点想在自己的博客里GHS, 思来索去, 想想还是要点脸.
-或者说我将来是想要把网站给备案的.</p>
+<h3 id="Apr"><a href="#Apr" class="headerlink" title="Apr"></a>Apr</h3><p>越看越觉得自己是菜鸡. 不过自己开心才最重要.</p>
+<p>梦到自己不知道吃了啥反正饿醒了. 差点能写到我的绮梦里去. 看来我也是美食猎人.</p>
+<p>有点想在自己的博客里GHS, 思来索去, 想想还是要点脸. 或者说我将来是想要把网站给备案的.</p>
 <p>下半个年的 TODO List:</p>
 <ul>
-<li>想设计一个自动关灯小器械. 当然不是何同学那种类型.
-<ul>
-<li>因为宿舍熄灯实际上是断电. 要是开关忘了关,
-次日六点来电比闹钟还管用.</li>
+<li>想设计一个自动关灯小器械. 当然不是何同学那种类型.<ul>
+<li>因为宿舍熄灯实际上是断电. 要是开关忘了关, 次日六点来电比闹钟还管用.</li>
 <li>网上看到有宿舍关灯神器的相关视频, 感觉可行性非常强.</li>
 <li>到时候搞一个单片机试试水. 开坑!</li>
-</ul></li>
-<li>想写一个 auto-grader, 就像 CS61 A 的 <code>ok</code> 一样好用.
-<ul>
+</ul>
+</li>
+<li>想写一个 auto-grader, 就像 CS61 A 的 <code>ok</code> 一样好用.<ul>
 <li>学校没有 oj, 作业纯靠教师/助教一眼鉴定.</li>
 <li>想和学校一起维护. 自动化万岁! 最后流芳百世(</li>
-</ul></li>
+</ul>
+</li>
 </ul>
 <p>第一次感受到内推的强大. 进学校实验室了. 好耶!</p>
-<p>有些人就是把内心独白怼脸上, 敏感, 纠缠. 是我这种随意天性的克星,
-不果断一点真不行.</p>
-<p>反思下自己, 我的处事可能有些令人无语. 优柔寡断, 有时还有些神经质.</p>
-<p>突然想起来今天是自己的19岁生日. 希望新的一岁能有新的突破.
-当然春节也是这么说的.</p>
-<p>感觉自己好老了, 下一秒就要工作养家糊口的感觉.
-但内心其实还是小孩子.</p>
-<p>GPLT捞了个省三. 好耶!</p>
-<h3 id="may">May</h3>
-<p>学完 Flask 打算之后搞一个文件管理项目. 管理什么,
-当然是...不告诉你.</p>
+<p>有些人就是把内心独白怼脸上, 敏感, 纠缠. 是我这种随意天性的克星, 不果断一点真不行. 反思下自己, 我的处事可能有些令人无语. 优柔寡断, 有时还有些神经质.</p>
+<p>突然想起来今天是自己的19岁生日. 希望新的一岁能有新的突破. 当然春节也是这么说的. 感觉自己好老了, 下一秒就要工作养家糊口的感觉. 但内心其实还是小孩子.</p>
+<p>GPLT捞了个省三. 好耶! 感觉自己不适合打算法, 主要还是没那个兴致, 半学期都摸了, 结果确实好不到哪里去.</p>
+<h3 id="May"><a href="#May" class="headerlink" title="May"></a>May</h3><p>学完 Flask 打算之后搞一个文件管理项目. 管理什么, 当然是…不告诉你.</p>
 <ul>
 <li>核心技术: Flask + Electron</li>
 </ul>
 <p>5.1 宅寝室打游戏了. 崩铁挺有意思. 以后发疯文学的文笔可以参考参考.</p>
-<p>本来是想去漫展的, 但想想一个人太孤独又其实不是很想去.
-下次cos波奇酱吧.</p>
-<p>天选3的网卡一直被人吐槽. 这次算是体会到了. 三天蓝屏4次, 我无语了.
-重装了驱动现在总算能用了.</p>
+<p>本来是想去漫展的, 但想想一个人太孤独又其实不是很想去. 下次cos波奇酱吧.</p>
+<p>天选3的网卡一直被人吐槽. 这次算是体会到了. 三天蓝屏4次, 我无语了. 重装了驱动现在总算能用了.</p>
 <p>我发现白日梦通常是奇幻的. 而且真实. 流的我一身汗.</p>
 <ul>
-<li>能梦到 T 大联合培养的方案,
-进了机房和一个没听过的专业(我问到了)的同学坐一起,
-主持人讲了一堆高中应试的提优, 看到了高中的年级主任, 发了试卷,
-我可怜的在那里招手想要一份资料, 但没有一个人理我. 最后我退课了.</li>
+<li>能梦到 T 大联合培养的方案, 进了机房和一个没听过的专业(我问到了)的同学坐一起, 主持人讲了一堆高中应试的提优, 看到了高中的年级主任, 发了试卷, 我可怜的在那里招手想要一份资料, 但没有一个人理我. 最后我退课了.</li>
 </ul>
-<p>天选3的无线网卡驱动又出毛病了. 这回是直接蓝屏. 重装了几次都有问题,
-寄了. 一怒之下遂买了 Intel 的 ax210 和一个1T的致态SSD.
-后来发现重装的时候选择英文就可以解决所以网卡又白买了.(?)</p>
-<p>这一周又有考试, 又有论文选题, 还有实验室的项目, 各种due, 各种要命
-QAQ</p>
+<p>天选3的无线网卡驱动又出毛病了. 这回是直接蓝屏. 重装了几次都有问题, 寄了. 一怒之下遂买了 Intel 的 ax210 和一个1T的致态SSD. 后来发现重装的时候选择英文就可以解决所以网卡又白买了.(?)</p>
+<p>这一周又有考试, 又有论文选题, 还有实验室的项目, 各种due, 各种要命 QAQ</p>
 <p>本来想做听力的, 一看周日晚7点due, 瞬间没了兴致.</p>
-<h2 id="彷徨者的独白">彷徨者的独白</h2>
-<p>总感觉自己是个冷漠的人. 心里总是回荡着默尔索的那句自白.</p>
-<p>父亲生日, 忘记发一句祝福了. 让父亲等到下午才见姗姗来迟的道歉.
-酝酿许久后语音发出去的.</p>
-<p>好久没和奶奶联系了, 家里人让我打个视频通话. 我不愿意, 但还是打了.
-尴尬地杵在那里. 要好好学习啊. 点头, 傻笑, 结束.
-明明我才是会话的发起人.</p>
-<p>同学要送我礼物, 说是以表感谢. 谢谢你帮了我那么多. 我只觉得麻烦.
-问我什么时候送好. 随时都好.</p>
-<p>或许换位思考很重要. 我知道爷爷去的早,
-父亲不过是想在特殊的一天多体验些未曾感受的父爱而已; 奶奶也是寡居无事,
-想多获取些温暖而已; 同学的礼物很用心, 一片真心相待换来我的冷眼.</p>
-<p><strong>我把很多事情都归结为无意义的社会令词, 无甚所谓的嘘寒问暖.
-把生命中遇见的人, 都看得无足轻重.</strong></p>
-<p>可能真的印证了大学里我班长的一句话. 那天他刚打完辩论赛,
-依稀记得那天的辩题是: 爱情里有无必要说他/她想听的.</p>
-<p>我想我没真正去爱过, 也没有真正学会所谓"责任".</p>
-<p>"<strong>能有一个为之付出, 珍视的人, 是多么幸福啊.</strong>"</p>
-<p>我想这就是爱情的意义吧. 学会责任. 说什么灵魂交互.
-你的真命天人还在梦里. 理想就和风干的厕纸一样脆弱.</p>
-<p>相遇就是一种缘. 缘和因果结下了不解之缘.
-要是信禅宗我也不会纠缠在此喋喋不休.</p>
-<p><strong>所以. 珍惜人生的一切相遇吧. 因为相遇的结局便是分离, 永别.
-趁着结局到来之前, 让自己不留缺憾.</strong></p>
+<p>5.20 了, 又见一群人秀恩爱, 甚至杯子打折, 笑死. 感觉自己还是有点精神洁癖, 不是说谈不了恋爱, 就是接受不了廉价的恋爱, 估计自己还是会走上相亲的道路.</p>
+<h2 id="彷徨者的独白"><a href="#彷徨者的独白" class="headerlink" title="彷徨者的独白"></a>彷徨者的独白</h2><p>总感觉自己是个冷漠的人. 心里总是回荡着默尔索的那句自白.</p>
+<p>父亲生日, 忘记发一句祝福了. 让父亲等到下午才见姗姗来迟的道歉. 酝酿许久后语音发出去的.</p>
+<p>好久没和奶奶联系了, 家里人让我打个视频通话. 我不愿意, 但还是打了. 尴尬地杵在那里. 要好好学习啊. 点头, 傻笑, 结束. 明明我才是会话的发起人.</p>
+<p>同学要送我礼物, 说是以表感谢. 谢谢你帮了我那么多. 我只觉得麻烦. 问我什么时候送好. 随时都好.</p>
+<p>或许换位思考很重要. 我知道爷爷去的早, 父亲不过是想在特殊的一天多体验些未曾感受的父爱而已; 奶奶也是寡居无事, 想多获取些温暖而已; 同学的礼物很用心, 一片真心相待换来我的冷眼.</p>
+<p><strong>我把很多事情都归结为无意义的社会令词, 无甚所谓的嘘寒问暖. 把生命中遇见的人, 都看得无足轻重.</strong></p>
+<p>可能真的印证了大学里我班长的一句话. 那天他刚打完辩论赛, 依稀记得那天的辩题是: 爱情里有无必要说他/她想听的.</p>
+<p>我想我没真正去爱过, 也没有真正学会所谓”责任”.</p>
+<p>“<strong>能有一个为之付出, 珍视的人, 是多么幸福啊.</strong>“</p>
+<p>我想这就是爱情的意义吧. 学会责任. 说什么灵魂交互. 你的真命天人还在梦里. 理想就和风干的厕纸一样脆弱.</p>
+<p>相遇就是一种缘. 缘和因果结下了不解之缘. 要是信禅宗我也不会纠缠在此喋喋不休.</p>
+<p><strong>所以. 珍惜人生的一切相遇吧. 因为相遇的结局便是分离, 永别. 趁着结局到来之前, 让自己不留缺憾.</strong></p>
 <p>自己热情发出的一点光热, 总会或多或少影响到他人.</p>
-<p>我很钦佩小王子, 因为我缺乏他身上的那份热情, 勇敢, 为责任付出的行动力.
-要让我挑自己的毛病可以说一天.</p>
+<p>我很钦佩小王子, 因为我缺乏他身上的那份热情, 勇敢, 为责任付出的行动力. 要让我挑自己的毛病可以说一天.</p>
 <p>不过至少这一次, 会不一样. 好歹让我不再彷徨.</p>
-<p>"各位, 晚安"</p>
-<p>希望收到这最后一条消息的你能开心起来.</p>
-<p>因为我估计, 现在的我,</p>
-<p>已经死了.</p>
+<p>仔细想了想, 这个消息还是可能太突兀了. 不过我已经尽我最大可能在思考发送什么了. 啊. 应该再个性化一些吗? 群发还是太狡猾了. 最后还要敷衍各位真是对不起. 全键盘打字果然没九宫格快. 点击发送. 我人生最重要的时刻怎么总是出差错.</p>
+<p>不管怎的, 现在我也去呵护我的玫瑰了.</p>
+<p>希望收到这最后一条消息的你能舒心.</p>
+<p>“各位, 晚安”</p>
 <p>(完)</p>
-<h2 id="回到你的过去">回到你的过去</h2>
-<p>留坑.</p>
-<h2 id="绮梦-一">绮梦 (一)</h2>
-<p>为我的文学梦留坑.</p>
-<h2 id="绮梦-二">绮梦 (二)</h2>
-<!-- ## 恋爱, 相亲, 然后是坟墓
+<h2 id="回到你的过去"><a href="#回到你的过去" class="headerlink" title="回到你的过去"></a>回到你的过去</h2><p>留坑.</p>
+<h2 id="绮梦-一"><a href="#绮梦-一" class="headerlink" title="绮梦 (一)"></a>绮梦 (一)</h2><p>为我的文学梦留坑.</p>
+<h2 id="绮梦-二"><a href="#绮梦-二" class="headerlink" title="绮梦 (二)"></a>绮梦 (二)</h2><!-- ## 恋爱, 相亲, 然后是坟墓
 
 小镇做题家不懂恋爱.
 
@@ -2835,196 +2793,146 @@ href="https://www.zhihu.com/question/28300645/answer/2488146755">中文版本</a
   <entry>
     <title>Flask从入门到入土</title>
     <url>/2023/04/25/Flask%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E5%85%A5%E5%9C%9F/</url>
-    <content><![CDATA[<p>所谓人生苦短, 我用 Python. 经常戏称别的语言 Python 化, 不就是说明了
-Python 作为现代语言的优越性. 当然, 不吹不贬地说, 其实关键在于项目需求,
-所以用什么其实并不重要.</p>
-<p>在 Python Web 开发这块, Django 和 Flask 平分天下, 而 Flask
-框架的优点就在于它"轻量", "微", 简直就是 vscode 的翻版, 靠社区 extension
-高效驱动.</p>
-<p>当然, Flask 的使用不局限于 Web 应用的开发, 甚至说,
-<strong>作为后端提供接口</strong>才是发挥它功用的最好做法.
-这正是本文要完成的事情!</p>
+    <content><![CDATA[<p>所谓人生苦短, 我用 Python. 经常戏称别的语言 Python 化, 不就是说明了 Python 作为现代语言的优越性. 当然, 不吹不贬地说, 其实关键在于项目需求, 所以用什么其实并不重要.</p>
+<p>在 Python Web 开发这块, Django 和 Flask 平分天下, 而 Flask 框架的优点就在于它”轻量”, “微”, 简直就是 vscode 的翻版, 靠社区 extension 高效驱动.</p>
+<p>当然, Flask 的使用不局限于 Web 应用的开发, 甚至说, <strong>作为后端提供接口</strong>才是发挥它功用的最好做法. 这正是本文要完成的事情!</p>
 <span id="more"></span>
 <p>先把框架搭好. 其它的之后再说.</p>
-<h2 id="工欲善其事-必先利其器">工欲善其事, 必先利其器</h2>
-<h3 id="当然-你要安装-flask">当然, 你要安装 Flask</h3>
-<p>推荐 PyCharm, 专属 IDE, 你值得拥有. <del>说得好, 我用
-VSCode</del></p>
+<h2 id="工欲善其事-必先利其器"><a href="#工欲善其事-必先利其器" class="headerlink" title="工欲善其事, 必先利其器"></a>工欲善其事, 必先利其器</h2><h3 id="当然-你要安装-Flask"><a href="#当然-你要安装-Flask" class="headerlink" title="当然, 你要安装 Flask"></a>当然, 你要安装 Flask</h3><p>推荐 PyCharm, 专属 IDE, 你值得拥有. <del>说得好, 我用 VSCode</del></p>
 <p>推荐在虚拟环境 venv 中开发.</p>
-<h3 id="git-是你的基本功">Git 是你的基本功</h3>
-<p>平时 Github 解决一切. <del>Gitee 是什么真不熟</del></p>
-<p>基础的 commit, branch, push 操作要会.</p>
-<p>但也记得上手 Gitlab. 因为企业一般用的它.</p>
-<h3 id="文档编写测试工具">文档编写/测试工具</h3>
-<p>Show Doc: 文档编写工具</p>
-<p>Postman: 接口测试工具</p>
-<h3 id="数据库系统">数据库系统</h3>
-<p>我们使用关系型数据库系统: MySQL</p>
-<p>实验室的老师贴心地为你在外网搭建了一个 MySQL 的数据连接.</p>
-<p>配套 VScode 插件: <a
-href="https://marketplace.visualstudio.com/items?itemName=cweijan.vscode-mysql-client2">My
-SQL</a></p>
-<h2 id="先别急着-coding-你还有文档没写">先别急着 coding,
-你还有文档没写</h2>
-<h3 id="产品原型先解构">产品原型——先解构</h3>
-<p>对产品原型的解构. 大致的实现需求. 好了, 这就是你的 TODO-LIST.</p>
+<h3 id="Git-是你的基本功"><a href="#Git-是你的基本功" class="headerlink" title="Git 是你的基本功"></a>Git 是你的基本功</h3><p>平时 Github 解决一切. 但也记得上手 Gitlab, 因为企业一般用的它. <del>Gitee 是什么真不熟</del></p>
+<p><a href="https://learngitbranching.js.org/?locale=zh_CN">学习 Git 分支</a></p>
+<ul>
+<li><code>git clone</code>: 克隆项目副本 <del>2023年了不要还在问为什么SSH connection refused</del></li>
+<li><code>git checkout [-b] [feature-name]</code>: 切换分支 (<code>-b</code> 顺带创建分支)</li>
+<li><code>git add .</code>: 把当前路径下的文件放到暂存区</li>
+<li><code>git commit -m &quot;Message&quot;</code>: 提交暂存的更改 <del>不要问在IDE里怎么退出VIM :wq</del></li>
+<li><code>git pull --rebase origin main</code>: 避免落后主分支, 顺带处理冲突</li>
+<li><code>git push origin main</code>: 推送到主分支</li>
+</ul>
+<p>以上操作 IDE 其实都有GUI. 不需要你手敲.</p>
+<h3 id="文档编写-测试工具"><a href="#文档编写-测试工具" class="headerlink" title="文档编写/测试工具"></a>文档编写/测试工具</h3><p>这一部分因人而异. 这里只给出我使用的工具:</p>
+<p>Show Doc: 文档编写工具(项目组用的)</p>
+<p>Postman: 接口测试工具 <del>其实命令行工具 <code>curl</code> 对于后端测试简单的接口来说就够了</del></p>
+<h3 id="数据库系统"><a href="#数据库系统" class="headerlink" title="数据库系统"></a>数据库系统</h3><p>我们使用关系型数据库系统: MySQL</p>
+<p>实验室的老师贴心地为你在外网搭建了一个 MySQL 的数据连接. <del>没有被MySQL安装折磨过的人生是不完整的</del></p>
+<p>我的平台: WSL 安装参考这篇微软的<a href="https://learn.microsoft.com/zh-cn/windows/wsl/tutorials/wsl-database">文章</a></p>
+<p>解决第三方插件连接 <code>Access Denied</code>: 原因是 MySQL 把 Windows 下的程序视作远程 MYSQL 请求, 如果没有远程权限就会出错.</p>
+<p>解决方案:</p>
+<p><code>sudo mysql</code> 进入 <code>mysql</code>:</p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line">USE mysql;</span><br><span class="line"><span class="comment">-- 创建一个账号, 不带密码</span></span><br><span class="line"><span class="comment">-- 注: IDENTIFIED BY password with GRANT 语句在 MySQL ver 5.7.6 不再适用</span></span><br><span class="line"><span class="keyword">CREATE</span> <span class="keyword">USER</span> <span class="string">&#x27;besthope&#x27;</span>@<span class="string">&#x27;localhost&#x27;</span> IDENTIFIED <span class="keyword">BY</span> <span class="string">&#x27;&#x27;</span>;</span><br><span class="line"><span class="keyword">GRANT</span> <span class="keyword">ALL</span> PRIVILEGES <span class="keyword">ON</span> <span class="operator">*</span>.<span class="operator">*</span> <span class="keyword">TO</span> <span class="string">&#x27;besthope&#x27;</span>@<span class="string">&#x27;localhost&#x27;</span>;</span><br><span class="line">FLUSH PRIVILEGES;</span><br></pre></td></tr></table></figure>
+<p>我使用的 VScode 插件: <a href="https://marketplace.visualstudio.com/items?itemName=cweijan.vscode-mysql-client2">My SQL</a>(个人认为最方便的一个)</p>
+<h2 id="先别急着-coding-你还有文档没写"><a href="#先别急着-coding-你还有文档没写" class="headerlink" title="先别急着 coding, 你还有文档没写"></a>先别急着 coding, 你还有文档没写</h2><h3 id="产品原型——先解构"><a href="#产品原型——先解构" class="headerlink" title="产品原型——先解构"></a>产品原型——先解构</h3><p>对产品原型的解构. 大致的实现需求. 好了, 这就是你的 TODO-LIST.</p>
 <p>看起来比较复杂的项目, 分模块分时期去实现, 一个页面一个页面慢慢来.</p>
-<h3 id="restful-api">RESTful API</h3>
-<h4 id="简单介绍-rest-架构和-web-基础">简单介绍 REST 架构和 Web
-基础</h4>
-<p>RESTful 架构是个什么东西? <strong>Representational State
-Transfer</strong>是 REST 的全称, "表现层状态发生转移".</p>
-<p>REST <em>对信息的核心抽象</em>就是 <strong>资源</strong>(Resources),
-通常以 <strong><a
-href="https://en.wikipedia.org/wiki/Uniform_Resource_Identifier">URI</a>(统一资源定位符)</strong>
-的形式表现. 这里的资源可以是文本, 图片, 或者<em>任何能被命名的信息</em>.
-换句话说, 如果某一信息能被超链接导航到, 那它就符合资源的定义.
-要访问某一"资源", 访问它的 URI 即可. URI
-就是这个"资源"独一无二的<strong>标识符</strong>!</p>
-<p>不过要注意的是, "资源"是对信息的<em>抽象</em>:
-它代表的是<strong>一组</strong>相关的实体, 而非一个单独的实体.
-具体的实体会发生变化, 但"资源"表示实体的结构和行为是不变的.</p>
-<p>"资源"具体表现的形式,
-就称作它的"<strong>表现层</strong>"(Representation).</p>
-<p>例如, 文本可以用 txt 格式表现, 也可以用 JSON, xml 格式,
-甚至二进制格式表现; 图片可以用 jpg 格式表现, 也可以用 png 格式表现.</p>
-<p>访问一个网站, 就代表了<strong>客户端和服务器的一个互动过程</strong>.
-在这个过程中, 必然涉及数据和状态的改变. 互联网通信协议<a
-href="https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Overview#http_%E6%98%AF%E6%97%A0%E7%8A%B6%E6%80%81%EF%BC%8C%E6%9C%89%E4%BC%9A%E8%AF%9D%E7%9A%84">HTTP
-协议</a>, 是一个<em>无状态协议</em>. 所有的状态都保存在服务器端,
-如果客户端想要操作服务器, <strong>必须通过某种途径</strong>,
-使得服务器端发生"<strong>状态转移</strong>"(State Transfer).
-而这种状态转移是建立在表现层之上的. 所以, 你现在就能明白 REST
-到底指的是个啥.</p>
-<p>至于客户端用到的手段, 只能是<a
-href="https://developer.mozilla.org/zh-CN/docs/web/http/methods">HTTP
-的请求方法</a>. 下面这五种方法对应的 <strong>CRUD(增删改查)</strong>
-操作:</p>
+<h3 id="RESTful-API"><a href="#RESTful-API" class="headerlink" title="RESTful API"></a>RESTful API</h3><h4 id="简单介绍-REST-架构和-Web-基础"><a href="#简单介绍-REST-架构和-Web-基础" class="headerlink" title="简单介绍 REST 架构和 Web 基础"></a>简单介绍 REST 架构和 Web 基础</h4><p>RESTful 架构是个什么东西? <strong>Representational State Transfer</strong>是 REST 的全称, “表现层状态发生转移”.</p>
+<p>REST <em>对信息的核心抽象</em>就是 <strong>资源</strong>(Resources), 通常以 <strong><a href="https://en.wikipedia.org/wiki/Uniform_Resource_Identifier">URI</a>(统一资源定位符)</strong> 的形式表现. 这里的资源可以是文本, 图片, 或者<em>任何能被命名的信息</em>. 换句话说, 如果某一信息能被超链接导航到, 那它就符合资源的定义. 要访问某一”资源”, 访问它的 URI 即可. URI 就是这个”资源”独一无二的<strong>标识符</strong>!</p>
+<p>不过要注意的是, “资源”是对信息的<em>抽象</em>: 它代表的是<strong>一组</strong>相关的实体, 而非一个单独的实体. 具体的实体会发生变化, 但”资源”表示实体的结构和行为是不变的.</p>
+<p>“资源”具体表现的形式, 就称作它的”<strong>表现层</strong>“(Representation).</p>
+<p>例如, 文本可以用 txt 格式表现, 也可以用 JSON, xml 格式, 甚至二进制格式表现; 图片可以用 jpg 格式表现, 也可以用 png 格式表现.</p>
+<p>访问一个网站, 就代表了<strong>客户端和服务器的一个互动过程</strong>. 在这个过程中, 必然涉及数据和状态的改变. 互联网通信协议<a href="https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Overview#http_%E6%98%AF%E6%97%A0%E7%8A%B6%E6%80%81%EF%BC%8C%E6%9C%89%E4%BC%9A%E8%AF%9D%E7%9A%84">HTTP 协议</a>, 是一个<em>无状态协议</em>. 所有的状态都保存在服务器端, 如果客户端想要操作服务器, <strong>必须通过某种途径</strong>, 使得服务器端发生”<strong>状态转移</strong>“(State Transfer). 而这种状态转移是建立在表现层之上的. 所以, 你现在就能明白 REST 到底指的是个啥.</p>
+<p>至于客户端用到的手段, 只能是<a href="https://developer.mozilla.org/zh-CN/docs/web/http/methods">HTTP 的请求方法</a>. 下面这五种方法对应的 <strong>CRUD(增删改查)</strong> 操作:</p>
+<div class="table-container">
 <table>
 <thead>
-<tr class="header">
+<tr>
 <th>请求方法</th>
 <th>效果</th>
 </tr>
 </thead>
 <tbody>
-<tr class="odd">
+<tr>
 <td>GET</td>
 <td>读取（Read）</td>
 </tr>
-<tr class="even">
+<tr>
 <td>POST</td>
 <td>新建（Create）</td>
 </tr>
-<tr class="odd">
+<tr>
 <td>PUT</td>
 <td>更新（Update）</td>
 </tr>
-<tr class="even">
+<tr>
 <td>PATCH</td>
 <td>更新（Update），通常是部分更新</td>
 </tr>
-<tr class="odd">
+<tr>
 <td>DELETE</td>
 <td>删除（Delete）</td>
 </tr>
 </tbody>
 </table>
-<p>根据HTTP协议, 请求方法(Request)由客户端提出,
-由服务器决定是否执行或拒绝. 例如, 你发起了一个 <code>GET</code> 请求,
-想获取 <code>/clients</code> 下的资源. 但这个文件获取需要有权限,
-服务器就可以有如下的执行方式:</p>
+</div>
+<p>根据HTTP协议, 请求方法(Request)由客户端提出, 由服务器决定是否执行或拒绝. 例如, 你发起了一个 <code>GET</code> 请求, 想获取 <code>/clients</code> 下的资源. 但这个文件获取需要有权限, 服务器就可以有如下的执行方式:</p>
 <ul>
-<li><code>404 Not found</code>: 这个状态码表示文件不存在.
-当然是服务器装的.</li>
+<li><code>404 Not found</code>: 这个状态码表示文件不存在. 当然是服务器装的.</li>
 <li><code>403 Forbidden</code>: 这个文件拒绝访问.</li>
-<li><code>405 Method Not Allowed</code>: 然后用 <code>Allow</code>
-头告诉你可以用 <code>HEAD</code> 方法获取文件的元信息.</li>
+<li><code>405 Method Not Allowed</code>: 然后用 <code>Allow</code> 头告诉你可以用 <code>HEAD</code> 方法获取文件的元信息.</li>
 </ul>
-<h4 id="restful-的设计细节">RESTful 的设计细节</h4>
-<p>主要内容:</p>
+<h4 id="RESTful-的设计细节"><a href="#RESTful-的设计细节" class="headerlink" title="RESTful 的设计细节"></a>RESTful 的设计细节</h4><p>主要内容:</p>
 <ul>
-<li>URI 设计:
-<ul>
-<li>任何请求都是<strong>动宾结构</strong>. 例如 <code>GET /images</code>
-<del><code>/create-order</code></del></li>
-<li>使用<strong>集合资源</strong>: 为了避免单数出现的歧义.
-<code>images/2</code> <del><code>image/2</code></del></li>
-<li>避免多级 URI: 尽量避免三级以上.
-<code>/authors/12?categories=2</code>(字符串查询)
-<del><code>/authors/12/categories/2</code></del></li>
-<li>用<strong>字符串查询</strong>: Filtering, Sorting, and Pagination
-<code>GET: /articles/?published=true&amp;page=2&amp;page_size=20</code></li>
-</ul></li>
-<li>状态码设计:
-<ul>
-<li>参考 <a
-href="https://en.wikipedia.org/wiki/List_of_HTTP_status_codes">HTTP
-Status Code</a>
-<ul>
+<li>URI 设计:<ul>
+<li>任何请求都是<strong>动宾结构</strong>. 例如 <code>GET /images</code>  <del><code>/create-order</code></del></li>
+<li>使用<strong>集合资源</strong>: 为了避免单数出现的歧义. <code>images/2</code> <del><code>image/2</code></del></li>
+<li>避免多级 URI: 尽量避免三级以上. <code>/authors/12?categories=2</code>(字符串查询) <del><code>/authors/12/categories/2</code></del></li>
+<li>用<strong>字符串查询</strong>: Filtering, Sorting, and Pagination <code>GET: /articles/?published=true&amp;page=2&amp;page_size=20</code></li>
+</ul>
+</li>
+<li>状态码设计:<ul>
+<li>参考 <a href="https://en.wikipedia.org/wiki/List_of_HTTP_status_codes">HTTP Status Code</a><ul>
 <li><code>1xx</code>: 相关信息</li>
 <li><code>2xx:</code> 操作成功</li>
-<li>...</li>
-</ul></li>
-</ul></li>
-<li>服务器回应:
-<ul>
-<li>不要返回纯文本: HTTP 头的 Content-Type 属性要设为
-<code>application/json</code>, 接受 JSON 结构化数据</li>
-<li>考虑 <a
-href="https://learn.microsoft.com/en-us/azure/architecture/best-practices/api-design#use-hateoas-to-enable-navigation-to-related-resources">HATEOAS</a>
-将关联资源联系起来(提供超链接).</li>
-</ul></li>
+<li>…</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>服务器回应:<ul>
+<li>不要返回纯文本: HTTP 头的 Content-Type 属性要设为 <code>application/json</code>, 接受 JSON 结构化数据</li>
+<li>考虑 <a href="https://learn.microsoft.com/en-us/azure/architecture/best-practices/api-design#use-hateoas-to-enable-navigation-to-related-resources">HATEOAS</a> 将关联资源联系起来(提供超链接).</li>
+</ul>
+</li>
 </ul>
 <p>具体参考官方或者他人总结的教程.(见参考资料)</p>
-<h3 id="和前端配合">和前端配合</h3>
-<p>交流很重要.</p>
+<h3 id="和前端配合"><a href="#和前端配合" class="headerlink" title="和前端配合"></a>和前端配合</h3><p>交流很重要.</p>
 <p>确定哪些业务逻辑在放前端实现, 哪些业务逻辑放在后端实现.</p>
 <p>看看 API 设计是否合理. 俩人得出共识就可以各干各的了.</p>
-<h2 id="我还没学过数据库">我还没学过数据库</h2>
-<h3 id="创表-你是个设计师-老弟">创表: 你是个设计师, 老弟</h3>
-<p><code>CREATE</code></p>
-<p>can can need: <a href="https://open.yesapi.cn/list.html">开源的 MySQL
-数据库表设计</a></p>
-<p>可以参考 <a href="https://www.sqlstyle.guide/zh/">SQL Style
-Guide</a>.</p>
+<h2 id="我还没学过数据库"><a href="#我还没学过数据库" class="headerlink" title="我还没学过数据库"></a>我还没学过数据库</h2><h3 id="创表-你是个设计师-老弟"><a href="#创表-你是个设计师-老弟" class="headerlink" title="创表: 你是个设计师, 老弟"></a>创表: 你是个设计师, 老弟</h3><p><code>CREATE TABLE</code>: 一切的开始</p>
+<p>创建表至少要包含名字, 还有一个列. <em>最好</em>为表设置主键(不会重复的列).</p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="comment">-- 创建表: 一个简单的示例</span></span><br><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> customers</span><br><span class="line">(</span><br><span class="line">    cust_id     <span class="type">int</span> <span class="keyword">NOT</span> <span class="keyword">NULL</span> AUTO_INCREMENT,</span><br><span class="line">    cust_name   <span class="type">char</span>(<span class="number">50</span>) <span class="keyword">NOT</span> <span class="keyword">NULL</span>,</span><br><span class="line">    cust_city   <span class="type">char</span>(<span class="number">50</span>) <span class="keyword">NULL</span>,</span><br><span class="line">    <span class="keyword">PRIMARY</span> KEY (cust_id)</span><br><span class="line">) ENGINE<span class="operator">=</span>InnoDB;</span><br></pre></td></tr></table></figure>
+<p>can can need: <a href="https://open.yesapi.cn/list.html">开源的 MySQL 数据库表设计</a></p>
+<p>可以参考 <a href="https://www.sqlstyle.guide/zh/">SQL Style Guide</a>.</p>
 <p>一些比较重要的原则:</p>
 <ul>
 <li><del>驼峰命名</del>不适合扫读.</li>
-<li><del>面向对象编程的原则(OOP)</del>不该应用到 SQL
-或数据库结构上.</li>
+<li><del>面向对象编程的原则(OOP)</del>不该应用到 SQL 或数据库结构上.</li>
 <li>保证名字<strong>独一无二</strong>且不是保留字.</li>
-<li>尽量避免连接两个表的名字作为<strong>关系表</strong>的名字.
-<code>cars_mechanics</code> 不如用 <code>services</code></li>
+<li>尽量避免连接两个表的名字作为<strong>关系表</strong>的名字. <code>cars_mechanics</code> 不如用 <code>services</code></li>
 <li>列名总是使用<strong>单数</strong>形式.</li>
-<li>等...</li>
+<li>等…</li>
 </ul>
-<h3 id="query-我只会增删改查">Query: 我只会增删改查</h3>
-<p><a href="https://zhuanlan.zhihu.com/p/170046187">MySQL
-的增删改查语句总结</a></p>
-<p>学会 <code>insert</code>, <code>update</code>, <code>delete</code>,
-<code>select</code></p>
-<h2 id="好了-现在开始进入-flask">好了, 现在开始进入 Flask</h2>
-<h3 id="动身前-先规范好你的项目框架">动身前, 先规范好你的项目框架</h3>
-<h3 id="啊这-真的要再写一遍-model-吗">啊这, 真的要再写一遍 Model 吗</h3>
-<h3 id="只返回json而已-很简单">只返回JSON而已, 很简单</h3>
-<h3 id="最喜欢的一集-写测试">最喜欢的一集: 写测试</h3>
-<h2 id="参考资料">参考资料</h2>
-<ol type="1">
+<p>怎么实现关联表? 例如, 课程底下有视频, 怎么把视频表和课程表发生关联? 在设计表的时候就要考虑这一点. 实际上这并不复杂:</p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> course_title, video_title</span><br><span class="line"><span class="keyword">FROM</span> videos, courses</span><br><span class="line"><span class="keyword">WHERE</span> videos.course_id <span class="operator">=</span> courses.id</span><br></pre></td></tr></table></figure>
+<p>也就是说, 我们在视频表里添加一个 <code>course_id</code> 的列, 作为<strong>外键</strong>, 它对应的是 <code>courses</code> 表下的<strong>主键</strong> <code>id</code>. 这样 <code>videos.course_id = courses.id</code> 作为查询语句就可以将两个表进行关联了.</p>
+<p>不需要你手写 SQL 语句(当然你乐意也可以). 在插件里创建表之后就可以在GUI里设计表(<code>ALTER</code>)了.</p>
+<h3 id="Query-我只会增删改查"><a href="#Query-我只会增删改查" class="headerlink" title="Query: 我只会增删改查"></a>Query: 我只会增删改查</h3><p><a href="https://zhuanlan.zhihu.com/p/170046187">MySQL 的增删改查语句总结</a></p>
+<p><del>学会 <code>insert</code>, <code>update</code>, <code>delete</code>, <code>select</code></del></p>
+<p>GUI 解决一切. 又快又好.</p>
+<h2 id="好了-现在开始进入-Flask"><a href="#好了-现在开始进入-Flask" class="headerlink" title="好了, 现在开始进入 Flask"></a>好了, 现在开始进入 Flask</h2><h3 id="动身前-先规范好你的项目框架"><a href="#动身前-先规范好你的项目框架" class="headerlink" title="动身前, 先规范好你的项目框架"></a>动身前, 先规范好你的项目框架</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">.</span><br><span class="line">├── APIs</span><br><span class="line">│   ├── course</span><br><span class="line">│   │   └── views.py</span><br><span class="line">│   ├── __init__.py</span><br><span class="line">│   ├── models.py</span><br><span class="line">│   └── sections</span><br><span class="line">│       └── views.py</span><br><span class="line">├── config.py</span><br><span class="line">├── README.md</span><br><span class="line">├── requirements.txt</span><br><span class="line">├── run.py</span><br><span class="line">└── tests</span><br><span class="line">    └── test_api.py</span><br></pre></td></tr></table></figure>
+<p>这只是一个最简单的项目框架.</p>
+<h4 id="配置文件"><a href="#配置文件" class="headerlink" title="配置文件"></a>配置文件</h4><p><code>config.py</code> 配置环境</p>
+<h4 id="工厂函数和蓝图"><a href="#工厂函数和蓝图" class="headerlink" title="工厂函数和蓝图"></a>工厂函数和蓝图</h4><h3 id="啊这-真的要再写一遍-Model-吗"><a href="#啊这-真的要再写一遍-Model-吗" class="headerlink" title="啊这, 真的要再写一遍 Model 吗"></a>啊这, 真的要再写一遍 Model 吗</h3><h4 id="sqlacodegen"><a href="#sqlacodegen" class="headerlink" title="sqlacodegen"></a>sqlacodegen</h4><p>血的教训: <strong>配好你的环境</strong></p>
+<h3 id="只返回JSON而已-很简单"><a href="#只返回JSON而已-很简单" class="headerlink" title="只返回JSON而已, 很简单"></a>只返回JSON而已, 很简单</h3><p><code>jsonify</code></p>
+<h3 id="最喜欢的一集-写测试"><a href="#最喜欢的一集-写测试" class="headerlink" title="最喜欢的一集: 写测试"></a>最喜欢的一集: 写测试</h3><p><code>unitest</code></p>
+<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><ol>
 <li><a href="https://www.sqlstyle.guide/">SQL Style Guide</a></li>
-<li>Flask Web 开发: 基于 Python 的 Web 应用开发实践: 第 2 版. ISBN
-978-7-115-48945-6</li>
-<li><a
-href="https://www.ics.uci.edu/~fielding/pubs/dissertation/top.htm">Roy
-Thomas Fielding 在他 2000 年的博士论文提出的 REST 原则</a></li>
+<li>Flask Web 开发: 基于 Python 的 Web 应用开发实践: 第 2 版. ISBN 978-7-115-48945-6</li>
+<li><a href="https://www.ics.uci.edu/~fielding/pubs/dissertation/top.htm">Roy Thomas Fielding 在他 2000 年的博士论文提出的 REST 原则</a></li>
 <li><a href="https://restfulapi.net/">REST API 的官方教程</a></li>
-<li>阮一峰, <a
-href="http://ruanyifeng.com/blog/2018/10/restful-api-best-practices.html">RESTful
-API 最佳实践</a>.</li>
-<li><a
-href="https://learn.microsoft.com/en-us/azure/architecture/best-practices/api-design">微软出品的API教程</a></li>
-<li><a href="https://mathieu.fenniak.net/the-api-checklist/">Web API
-Checklist</a></li>
+<li>阮一峰, <a href="http://ruanyifeng.com/blog/2018/10/restful-api-best-practices.html">RESTful API 最佳实践</a>.</li>
+<li><a href="https://learn.microsoft.com/en-us/azure/architecture/best-practices/api-design">微软出品的API教程</a></li>
+<li><a href="https://mathieu.fenniak.net/the-api-checklist/">Web API Checklist</a></li>
+<li><a href="https://techglimpse.com/error-grant-identified-by-password/">Error using GRANT with IDENTIFIED by password in MySQL</a>: 讨论了为什么 MySQL 5.7.6 之后为什么不再适用 GRANT IDENTIFIED BY.</li>
 <li>Flask 官方<a href="https://flask.net.cn/">中文文档</a>.</li>
 </ol>
 ]]></content>
