@@ -6,7 +6,7 @@
   <link href="http://example.com/atom.xml" rel="self"/>
   
   <link href="http://example.com/"/>
-  <updated>2023-06-12T14:20:02.507Z</updated>
+  <updated>2023-06-13T16:20:33.652Z</updated>
   <id>http://example.com/</id>
   
   <author>
@@ -21,7 +21,7 @@
     <link href="http://example.com/2023/06/12/%E7%A6%BB%E6%95%A3%E8%80%83%E5%89%8D%E6%8C%A3%E6%89%8E/"/>
     <id>http://example.com/2023/06/12/%E7%A6%BB%E6%95%A3%E8%80%83%E5%89%8D%E6%8C%A3%E6%89%8E/</id>
     <published>2023-06-12T06:09:54.000Z</published>
-    <updated>2023-06-12T14:20:02.507Z</updated>
+    <updated>2023-06-13T16:20:33.652Z</updated>
     
     
     <summary type="html">&lt;p&gt;考前的最后挣扎. 全是题目, 不再一五一十地复习基本概念了, 会做题和懂数学是两码事, 时间该留到平时钻研.&lt;/p&gt;
@@ -124,7 +124,7 @@
     <link href="http://example.com/2023/03/11/%E6%95%B0%E7%90%86%E9%80%BB%E8%BE%91%E4%BA%BA%E8%AF%9Dver/"/>
     <id>http://example.com/2023/03/11/%E6%95%B0%E7%90%86%E9%80%BB%E8%BE%91%E4%BA%BA%E8%AF%9Dver/</id>
     <published>2023-03-11T03:09:39.000Z</published>
-    <updated>2023-06-12T13:57:26.019Z</updated>
+    <updated>2023-06-13T08:50:36.364Z</updated>
     
     
     <summary type="html">&lt;p&gt;为了严谨性以及交流方便, 我们需要术语来描述问题: 这很好, 某些问题数学语言胜千言——但由 terminology 组成的句子经常会让人不知所云. 尤其对于数理逻辑, 因为是翻译文字所以句子看起来就更糟心了. 本身不是数学专业, 还要被符号定义纠缠半死. 想要明白问题的核心要义, 非得二次翻译不可, 但最后描述的事情却是显而易见的.&lt;/p&gt;
@@ -223,18 +223,11 @@ class=&quot;footnote-ref&quot; id=&quot;fnref1&quot; role=&quot;doc-noteref&quot
     <link href="http://example.com/2023/02/25/AI%E6%97%B6%E4%BB%A3%E7%9A%84%E5%AD%A6%E4%B9%A0%E6%8C%87%E5%8D%97/"/>
     <id>http://example.com/2023/02/25/AI%E6%97%B6%E4%BB%A3%E7%9A%84%E5%AD%A6%E4%B9%A0%E6%8C%87%E5%8D%97/</id>
     <published>2023-02-25T12:35:18.000Z</published>
-    <updated>2023-03-21T06:58:57.942Z</updated>
+    <updated>2023-06-13T05:31:00.038Z</updated>
     
     
-    <summary type="html">&lt;p&gt;日常刷知乎, 然后看到了这样一个问题: &lt;a
-href=&quot;https://www.zhihu.com/question/585554274/&quot;&gt;沃顿商学院教授要求学生必须用
-ChatGPT 写作业，应该如何正确看待 AI 带来的利弊？&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;之前我也看到一些态度截然相反的高校. 说实在话, 反对历史必然的行为,
-无异于杯水车薪, 想想 Luddite movement 也不会真正让我们重回原始社会,
-闭关锁国的历史也不必再度经历; 至于使用工具是否会反噬自身,
-只要在不侵害他人的利益下, 我想这个自由最好让步于个人,
-想想你是怎么注册上了ChatGPT的账号. 最后,
-这句话送给AI时代下学习一切的你和我:&lt;/p&gt;
+    <summary type="html">&lt;p&gt;日常刷知乎, 然后看到了这样一个问题: &lt;a href=&quot;https://www.zhihu.com/question/585554274/&quot;&gt;沃顿商学院教授要求学生必须用 ChatGPT 写作业，应该如何正确看待 AI 带来的利弊？&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;之前我也看到一些态度截然相反的高校. 说实在话, 反对历史必然的行为, 无异于杯水车薪, 想想 Luddite movement 也不会真正让我们重回原始社会, 闭关锁国的历史也不必再度经历; 至于使用工具是否会反噬自身, 只要在不侵害他人的利益下, 我想这个自由最好让步于个人, 想想你是怎么注册上了ChatGPT的账号. 最后, 这句话送给AI时代下学习一切的你和我:&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;拥抱变化要比拒绝变化简单的多.&lt;/p&gt;
 &lt;/blockquote&gt;</summary>

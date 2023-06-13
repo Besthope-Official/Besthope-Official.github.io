@@ -33,7 +33,7 @@
 <meta property="og:image" content="http://example.com/images/pic12.png">
 <meta property="og:image" content="http://example.com/images/pic13.png">
 <meta property="article:published_time" content="2023-03-11T03:09:39.000Z">
-<meta property="article:modified_time" content="2023-06-12T13:57:26.019Z">
+<meta property="article:modified_time" content="2023-06-13T08:50:36.364Z">
 <meta property="article:author" content="Besthope">
 <meta property="article:tag" content="离散数学">
 <meta property="article:tag" content="数理逻辑">
@@ -250,7 +250,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2023-06-12 21:57:26" itemprop="dateModified" datetime="2023-06-12T21:57:26+08:00">2023-06-12</time>
+      <time title="修改时间：2023-06-13 16:50:36" itemprop="dateModified" datetime="2023-06-13T16:50:36+08:00">2023-06-13</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -269,14 +269,14 @@
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">本文字数：</span>
-      <span>5.6k</span>
+      <span>6.2k</span>
     </span>
     <span class="post-meta-item" title="阅读时长">
       <span class="post-meta-item-icon">
         <i class="far fa-clock"></i>
       </span>
       <span class="post-meta-item-text">阅读时长 &asymp;</span>
-      <span>20 分钟</span>
+      <span>23 分钟</span>
     </span>
 </div>
 
@@ -295,6 +295,8 @@
 <span id="more"></span>
 <h2 id="命题逻辑"><a href="#命题逻辑" class="headerlink" title="命题逻辑"></a>命题逻辑</h2><p>免责声明: 这不是教会你怎么去应试的.</p>
 <p>你学的是 CS, 那么学数学理应把数学和 CS 紧密联系起来. 说我们学习数学是效用主义, 没错, 就要这样.</p>
+<p>与其在脑子里装些不明不白的”定义”, 倒不如对逻辑学里讨论的问题以及讨论的方法多一些认真.</p>
+<p>这篇文章只是对数理逻辑的一个简单梳理, 忽略了许多数学上的严谨性, 某些”末节”和”小技”在应对复杂的数学问题时就体现出它应有的作用.</p>
 <h3 id="命题符号化"><a href="#命题符号化" class="headerlink" title="命题符号化"></a>命题符号化</h3><h4 id="句子变符号"><a href="#句子变符号" class="headerlink" title="句子变符号"></a>句子变符号</h4><p>什么是<strong>命题</strong>(statement)? 一个布尔值.</p>
 <ul>
 <li><code>1 + 1 != 2</code> <code>false</code></li>
@@ -344,7 +346,7 @@
 <p>试试看你能不能只用 <code>&amp;</code> 和 <code>!</code> 模拟出 <code>^</code>!</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> <span class="title function_">bitXor</span><span class="params">(<span class="type">int</span> x, <span class="type">int</span> y)</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="type">int</span> p = ~((~x) &amp; (~y)); <span class="comment">// or</span></span><br><span class="line">    <span class="type">int</span> q = ~(x &amp; y);</span><br><span class="line">    <span class="keyword">return</span> p &amp; q; <span class="comment">// Xor</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <blockquote>
-<p>Remark: 这个例子实际上说明了基本运算符<em>可以剪裁</em>. <code>or</code> 可以被 <code>and</code> 和 <code>neg</code> 模拟, 等价的一种说法是在 $\{ \neg, \wedge\}$ 上构造 $L$. ($L$ 是一个命题公式)</p>
+<p>Remark: 这个例子实际上说明了基本运算符<em>可以剪裁</em>. <code>or</code> 可以被 <code>and</code> 和 <code>neg</code> 模拟, 等价的一种说法是在 $\{ \neg, \wedge\}$ 上构造 $L$. ($L = \oplus$). 这也说明了某些真值联接词具有<strong>函数完全性</strong>, 比方说所有真值函数都可以在 $\mathscr{L}_{\neg,\vee,\wedge}$ 中表达.</p>
 </blockquote>
 <p>剩下两个联接词很常用. 但它们同样可以被上面三种联接词模拟出来.</p>
 <ul>
@@ -369,6 +371,7 @@
 </ul>
 <p>你看规则上说的, 1 implies 1 is 1, 那么 <code>C</code> 也是 1. 但这句话非常令人迷惑 🤔. 两个毫不相关的事实, 然后声明”事实推事实”为真, 这是在干什么.</p>
 <p>特别说明一点: <strong>真值的联结不等同于命题间的联结</strong>. 牢记一点, <em>命题都是 1 和 0</em>.</p>
+<p>讨论符号和公式的理论称为<strong>语义</strong>(semantics)理论. 1 + 1 = 2 和 one plus one equals two 是同一个语义.</p>
 <p>蕴含可能会出现各种各样的地方, 或许你意识不到:</p>
 <ul>
 <li>不能玩游戏( $\neg p$ ), 除非写完作业(unless $q$)</li>
@@ -386,7 +389,7 @@
 <p>联接词有没有运算的优先级? 有. 要不要记? 不用. 总之按顺序算就对了.</p>
 <h4 id="命题表达式"><a href="#命题表达式" class="headerlink" title="命题表达式"></a>命题表达式</h4><p>我们之前提到过, 命题必须是一个<em>确切的真值语句</em>.</p>
 <p>那可真可假怎么办? 也就是一个布尔变量, 0 或 1. 此时我们称其为<strong>命题变元</strong>.</p>
-<p>用联接词, 我们可以将原子(简单)命题联系起来, 得到了复合命题. 同样, 命题变元的联结构成了一个<strong>命题表达式</strong>, 或者说是 propositional form, 或者说是 Well-Formed Formula(WFF), 或者说是 truth-value function.</p>
+<p>用联接词, 我们可以将原子(简单)命题联系起来, 得到了复合命题. 同样, 命题变元的联结构成了一个<strong>命题表达式</strong>, 或者说是 propositional form, 或者说是 Well-Formed Formula(WFF)<sup><a href="#fn_4" id="reffn_4">4</a></sup>, 或者说是 truth-value function.</p>
 <p>严谨起见, 命题表达式是递归定义的:</p>
 <ul>
 <li>单个命题变元 $p_1, p_2, \dots$ 是命题表达式.</li>
@@ -434,6 +437,7 @@
 </table>
 </div>
 <h4 id="命题表达式的分类"><a href="#命题表达式的分类" class="headerlink" title="命题表达式的分类"></a>命题表达式的分类</h4><p>如果打表发现所有解释下, 真值都为真, 那么这个表达式就叫<strong>永真公式</strong>, 也叫<em>重言式</em>(tautology). 真值全为假, 称其<strong>永假公式</strong>, 也叫<em>矛盾式</em>(contradiction). 不是矛盾式就是<em>可满足式</em>.</p>
+<p>注意: 可满足式不是<em>偶然式</em>(或然式, contingency).</p>
 <p>判定一个公式是否是永真公式, 最简单的办法就是枚举, 也就是列出真值表.</p>
 <p>例如上面的真值表, 我们实际上证明了 $(P \rightarrow Q) \leftrightarrow (\neg P \vee Q)$ 是一个永真公式. 不信你再多看看.</p>
 <p>有无算法, 能够判定对于一个任意的命题公式 $\phi$, 其是否可满足? 这个问题也叫 SAT(或 3-SAT) Problem, The Satisfiability Problem.</p>
@@ -464,8 +468,7 @@
 <p>我们之前提到, 联接词是一种布尔值之间的<strong>运算</strong>, 最后得到一个新的真值为 0 或 1 的命题(复合命题), 可以理解 $\rightarrow$ 就是一个运算符, 我们关注的是运算后得到的<strong>值</strong>. 而 $\models$ 表示的是<strong>命题之间的关联</strong>, $P$ 推 $Q$, 这个”推”用的就是 $\models$; 我们关注的侧重点不是 $\phi\models \psi$ 等于多少, 它已经永真了.</p>
 <p>至于 $\Rightarrow$, 平时在写数学题你会用到这个记号, 例如从条件 1 可以推出条件 2, 条件 2 推出条件 3, 直到推出结论. 那么这里的”推出”你会写 $\Rightarrow$ 而不是数理逻辑里的符号 $\models$. 当然, 一般来说我们也不区分 $\Rightarrow$ 和 $\models$, 你也可以认为这两个符号等价.</p>
 <p>当然, 这个世界上还存在一个 $\vdash$ 的东西. 如果你感兴趣, 你可以 check 这个<a target="_blank" rel="noopener" href="https://www.zhihu.com/question/21191299/answer/17469774">回答</a>.</p>
-<h3 id="规范化-canonical"><a href="#规范化-canonical" class="headerlink" title="规范化(canonical)"></a>规范化(canonical)</h3><h4 id="范式"><a href="#范式" class="headerlink" title="范式"></a>范式</h4><p><del>“范式总让我想到范马.”</del></p>
-<p>什么是范式? 在回答这个问题之前, 我们需要引入一些相关的定义:</p>
+<h3 id="规范化-canonical"><a href="#规范化-canonical" class="headerlink" title="规范化(canonical)"></a>规范化(canonical)</h3><h4 id="范式"><a href="#范式" class="headerlink" title="范式"></a>范式</h4><p>什么是范式? 在回答这个问题之前, 我们需要引入一些相关的定义:</p>
 <ul>
 <li>命题变元或命题变元的否定称为文字.</li>
 <li>有限个文字的析取式称为简单析取式(基本和)</li>
@@ -521,8 +524,8 @@
 <blockquote>
 <p>容易推广, 对于 $n$ 个命题变元, 可以组合出 $2^n$ 个极大项和 $2^n$ 个极小项.</p>
 </blockquote>
-<p>为什么称规范后的简单析取式为极大项? 这个问题你得问 <a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E5%A8%81%E6%8B%89%E5%BE%B7%C2%B7%E8%8C%83%C2%B7%E5%A5%A5%E6%9B%BC%C2%B7%E8%92%AF%E5%9B%A0">Quine</a> 本人. <del>好吧其实我也不能给出合理的解释</del></p>
-<p>观察到一个性质: 全体极大项的合取永假(总存在<strong>唯一的</strong>一个假的极大项), 全体极小项的析取永真(总存在<strong>唯一的</strong>一个真的极小项).</p>
+<p>为什么称规范后的简单析取式为极大项? 一种解释是, 析取是对所有变元(或变元的否)取极大值:</p>
+<script type="math/tex; mode=display">p_1 \vee p_2 \vee ... \vee p_n = \max \{p_1, p_2, ..., p_n \}</script><p>观察到一个性质: 全体极大项的合取永假(总存在<strong>唯一的</strong>一个假的极大项), 全体极小项的析取永真(总存在<strong>唯一的</strong>一个真的极小项).</p>
 <p>这其实很好理解: 当且仅当所有变元为假时, 简单析取式为假; 当且仅当所有变元为真时, 简单合取式为真.</p>
 <p>利用<strong>唯一性</strong>, 我们可以对极小项和极大项<strong>编码</strong>. 我们用 $1$ 表示一个命题变元, $0$ 表示命题变元的否, 这么做恰好能满足编码的<strong>完备性</strong>, 对于极小项:</p>
 <ul>
@@ -549,17 +552,26 @@
 <li>A: 下雨</li>
 <li>B: 路上有水</li>
 </ul>
-<p>这就是一个<strong>有效(valid)推理</strong>. 这里<strong>前提</strong>(premises)是 A 和 A-&gt;B, <strong>结论</strong>(conclusion)为 B.</p>
+<p>这就是一个<strong>有效(valid)推理</strong>(或者说这个论说是<strong>好的</strong>). 这里<strong>前提</strong>(premises)是 A 和 A-&gt;B, <strong>结论</strong>(conclusion)为 B.</p>
 <p>所谓有效推理, 并不要求我们的前提和结论一定为真. 若前提为真, 则结论为真, 这就<strong>合乎逻辑</strong>.</p>
-<p>比方说上例, 如果今天没下雨, 显然天下雨了这个前提不成立, 但这影响这个推理的有效性吗?</p>
-<p>“今天下雨”的情况取决于实际情况, 也就是需要一个<strong>解释</strong>. 我们的推理如果有效, 对于任意的解释, 都成立.</p>
+<p>有一个误区是:”你的前提是假的, 即便论说是有效的, 但结论一定是假的”. 例如你怎能确定今天一定下雨? 如果不下雨, 路上就没有水, 结论明显为假, 你的论证不对.</p>
+<p>我们可以举出一个反例:</p>
+<p>前提: 1. 所有的猫都是人. 2. 所有的学生都是猫<br>结论: 所有的学生都是人</p>
+<p>两个前提都是假的, 但结论无疑是真的. 此时你可能会开始质疑, 是这个论证的问题吗? 换句话说, 怎么去说明一个论证是<strong>坏的</strong>?</p>
+<p>如果一个论说的形式存在<strong>反例</strong>(counterexample), 那么他就是坏的. 例如:</p>
+<p>前提: 1. 企鹅都是鸟 2. 猴子都不是企鹅<br>结论: 猴子都不是鸟</p>
+<p>考虑反例:</p>
+<p>前提: 1. 企鹅都是鸟 2. 麻雀都不是企鹅<br>结论: 麻雀都不是鸟</p>
+<p>显然两个前提为真, 但结论为假. 这明显和上面的例子矛盾! 这个论说是不满足<strong>一致性</strong>(consistency)的, 或者说不自洽的. 这个例子, 和上面的例子, 都是一个无效的论证.</p>
+<p>回到上例, 如果今天没下雨, 显然天下雨了这个前提不成立, 但这影响这个推理的有效性吗?</p>
+<p>“今天下雨”的情况取决于实际情况, 也就是需要一个<strong>解释</strong>. 我们的推理如果有效, 对于任意的解释, 都成立. 这里的成立指的是</p>
 <p>在我们的符号化中, 我们实际上要说明的是 $A \wedge (A\rightarrow  B)\rightarrow B$ 在任何解释 $I$ 下都为真, 也即, 它是个永真公式, 也即 $A \wedge (A\rightarrow  B)\Rightarrow B$ (条件 $\Gamma$ 逻辑蕴含 $H$)</p>
 <p>这就是我们推理有效的理论支撑!</p>
 <p>进一步推广, $\Gamma$ 是一组前提构成的集合, 这些前提的合取可以推出 $H$. 我们验证一个推理是否有效, 只要证明 $G_1\wedge G_2\wedge…\wedge G_n\rightarrow H$ 永真即可! 不过, 正如我们上面所叙述的, 判断永真公式是个 NP hard 的问题, 我们需要一种更有效的推理方法, 这就引出了<strong>演绎法</strong>.</p>
 <h4 id="基于规则的推理-演绎法"><a href="#基于规则的推理-演绎法" class="headerlink" title="基于规则的推理: 演绎法"></a>基于规则的推理: 演绎法</h4><p>命题逻辑有不同的演绎系统, 例如希尔伯特式推演系统. 最常研究的希尔伯特风格演绎系统只有一个推理规则, 即肯定前件(MP)和<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E5%B8%8C%E5%B0%94%E4%BC%AF%E7%89%B9%E6%BC%94%E7%BB%8E%E7%B3%BB%E7%BB%9F">几个无限公理模式</a>:</p>
 <p><img src="/images/pic14.png" alt="希尔伯特式推演系统"></p>
 <p>Hilbert 的这套系统好处是很简单. 坏处是太难用了.</p>
-<p>自然演绎系统(Gerhard Gentzen 提出)做了相反的取舍, 包括了很多演绎规则但有非常少甚至没有公理模式. 它基于一套引入(introduction)和消去(elimination)的规则<sup><a href="#fn_3" id="reffn_3">3</a></sup>.</p>
+<p>自然演绎系统(Gerhard Gentzen 提出)做了相反的取舍, 包括了很多演绎规则但有非常少甚至没有公理模式. 它(例如Finch-style, Jaśkowski style)基于一套引入(introduction)和消去(elimination)的规则<sup><a href="#fn_3" id="reffn_3">3</a></sup>.</p>
 <p>那我们教科书上的这套演绎规则是什么呢?</p>
 <ul>
 <li>规则 P(引入前提): 可引入前提集合中任意一个前提.</li>
@@ -576,6 +588,7 @@
 </ul>
 <p>使用附加前提的证明称为<strong>条件证明</strong>. 我们再给出一种特殊的条件证明: <strong>反证法</strong></p>
 <p>我们将结论 $R$ 的否定 $\neg R$ 作为附加前提作为条件, 倘若得到了 $\Gamma \wedge \neg R$ 为矛盾式, 那么 $R$ 为真.</p>
+<p>事实上还可以证明命题逻辑的可靠性(soundness), 即: 凡是系统中可证明的都是系统的语言的重言式. 同理我们有完全性(completeness), 任何重言式都可以在系统中被证明.</p>
 <h2 id="谓词逻辑"><a href="#谓词逻辑" class="headerlink" title="谓词逻辑"></a>谓词逻辑</h2><h3 id="我在学语法吗"><a href="#我在学语法吗" class="headerlink" title="我在学语法吗?"></a>我在学语法吗?</h3><p>谓词逻辑, in short, 就是把命题逻辑中的原子命题进一步分解. 我们举个例子:</p>
 <ul>
 <li>地球绕着太阳转.</li>
@@ -600,10 +613,10 @@
 </ul>
 </li>
 <li>UG(Universal Generalize): $G(y)\Rightarrow (\forall x)G(x)$</li>
-<li>ES(Existential Specify): $(\exist x)G(x)\Rightarrow G(c)$ ($c$ 特定的个体常量)</li>
+<li>ES(Existential Specify): $(\exists x)G(x)\Rightarrow G(c)$ ($c$ 特定的个体常量)</li>
 <li>EG(Existential Generalize):<ul>
-<li>$G(c)\Rightarrow (\exist x)G(x)$: $c$ 为特定的个体常量, $G(c)$ 中无自由变元 $x$</li>
-<li>$G(y)\Rightarrow (\exist x)G(x)$: $G(y)$ 不含自由变元 $x$</li>
+<li>$G(c)\Rightarrow (\exists x)G(x)$: $c$ 为特定的个体常量, $G(c)$ 中无自由变元 $x$</li>
+<li>$G(y)\Rightarrow (\exists x)G(x)$: $G(y)$ 不含自由变元 $x$</li>
 </ul>
 </li>
 </ul>
@@ -623,6 +636,9 @@
 </blockquote>
 <blockquote id="fn_3">
 <sup>3</sup>. 感兴趣可以参考 <em>Logic in Computer Science</em> 一书.<a href="#reffn_3" title="Jump back to footnote [3] in the text."> &#8617;</a>
+</blockquote>
+<blockquote id="fn_4">
+<sup>4</sup>. 也叫做合式公式, 问题是有什么公式是不合式的?<a href="#reffn_4" title="Jump back to footnote [4] in the text."> &#8617;</a>
 </blockquote>
 
     </div>
@@ -682,14 +698,14 @@
       <i class="fa fa-chart-line"></i>
     </span>
       <span>站点总字数：</span>
-    <span title="站点总字数">40k</span>
+    <span title="站点总字数">42k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
       <span>站点阅读时长 &asymp;</span>
-    <span title="站点阅读时长">2:27</span>
+    <span title="站点阅读时长">2:33</span>
   </span>
 </div>
   <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/pisces/" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动

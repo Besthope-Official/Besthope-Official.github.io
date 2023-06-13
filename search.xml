@@ -268,36 +268,20 @@ href="https://www.bilibili.com/video/BV1QM411C7kd/">合订本</a>.</p>
   <entry>
     <title>AI时代的学习指南</title>
     <url>/2023/02/25/AI%E6%97%B6%E4%BB%A3%E7%9A%84%E5%AD%A6%E4%B9%A0%E6%8C%87%E5%8D%97/</url>
-    <content><![CDATA[<p>日常刷知乎, 然后看到了这样一个问题: <a
-href="https://www.zhihu.com/question/585554274/">沃顿商学院教授要求学生必须用
-ChatGPT 写作业，应该如何正确看待 AI 带来的利弊？</a></p>
-<p>之前我也看到一些态度截然相反的高校. 说实在话, 反对历史必然的行为,
-无异于杯水车薪, 想想 Luddite movement 也不会真正让我们重回原始社会,
-闭关锁国的历史也不必再度经历; 至于使用工具是否会反噬自身,
-只要在不侵害他人的利益下, 我想这个自由最好让步于个人,
-想想你是怎么注册上了ChatGPT的账号. 最后,
-这句话送给AI时代下学习一切的你和我:</p>
+    <content><![CDATA[<p>日常刷知乎, 然后看到了这样一个问题: <a href="https://www.zhihu.com/question/585554274/">沃顿商学院教授要求学生必须用 ChatGPT 写作业，应该如何正确看待 AI 带来的利弊？</a></p>
+<p>之前我也看到一些态度截然相反的高校. 说实在话, 反对历史必然的行为, 无异于杯水车薪, 想想 Luddite movement 也不会真正让我们重回原始社会, 闭关锁国的历史也不必再度经历; 至于使用工具是否会反噬自身, 只要在不侵害他人的利益下, 我想这个自由最好让步于个人, 想想你是怎么注册上了ChatGPT的账号. 最后, 这句话送给AI时代下学习一切的你和我:</p>
 <blockquote>
 <p>拥抱变化要比拒绝变化简单的多.</p>
 </blockquote>
 <span id="more"></span>
-<h2 id="前言">前言</h2>
+<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>ChatGPT 对每个人来说不是同等的. 你要有使用能力. 所谓能力是提问的能力. 提问也是门学问, 但我们没有一个问问题的课程, 也没有那个分数.</p>
 <p>本文介绍一些ChatGPT帮助辅助学习的Tips.</p>
 <p>我也在摸索AI的使用方式, 有好的想法大家一起交流学习! :)</p>
-<h2 id="把-ai-当成你的-ta">把 AI 当成你的 TA</h2>
-<p>对于自学的同学来说, 能有一个随叫即到,
-同时能有效答疑的助教是多么的幸福.</p>
-<p>AI 不会嫌你愚蠢, 就算多么 trivial 它也能给你一个详尽的解答.
-对于很多社恐的同学, 害怕 ask stupid questions
-可能这会是一个很好的选择.</p>
-<p>比方说, 题解的代码看不懂, 那么可以让 AI 帮助你生成注释,
-或者解释代码的核心内容, 分析算法的时间复杂度等.</p>
-<p>假设 model 给不出什么建设性的答复, 那么还是好好利用大学里的office
-hour, 或者去找课程专门的 TA 解决问题吧.</p>
-<h2 id="prompt-的艺术">Prompt 的艺术</h2>
-<h3 id="prompt-公式">Prompt 公式</h3>
-<p>prompt 其实有 formula. 如果想要得到一个比较高质量的回答,
-可以抓住以下几点:</p>
+<h2 id="把-AI-当成你的-TA"><a href="#把-AI-当成你的-TA" class="headerlink" title="把 AI 当成你的 TA"></a>把 AI 当成你的 TA</h2><p>对于自学的同学来说, 能有一个随叫即到, 同时能有效答疑的助教是多么的幸福.</p>
+<p>AI 不会嫌你愚蠢, 就算多么 trivial 它也能给你一个详尽的解答. 对于很多社恐的同学, 害怕 ask stupid questions 可能这会是一个很好的选择.</p>
+<p>比方说, 题解的代码看不懂, 那么可以让 AI 帮助你生成注释, 或者解释代码的核心内容, 分析算法的时间复杂度等.</p>
+<p>假设 model 给不出什么建设性的答复, 那么还是好好利用大学里的office hour, 或者去找课程专门的 TA 解决问题吧.</p>
+<h2 id="Prompt-的艺术"><a href="#Prompt-的艺术" class="headerlink" title="Prompt 的艺术"></a>Prompt 的艺术</h2><h3 id="Prompt-公式"><a href="#Prompt-公式" class="headerlink" title="Prompt 公式"></a>Prompt 公式</h3><p>prompt 其实有 formula. 如果想要得到一个比较高质量的回答, 可以抓住以下几点:</p>
 <ul>
 <li>task 明确, 精准的陈述</li>
 <li>instructions 指令, model 遵循的要求</li>
@@ -306,69 +290,41 @@ hour, 或者去找课程专门的 TA 解决问题吧.</p>
 <p>prompt = task + instructions + role</p>
 <p>例如以下几种应用场景:</p>
 <ul>
-<li><em>作为</em>一名计算机科学与技术专业的大一<em>学生</em>,
-<strong>生成</strong>一篇关于人工智能技术发展的课程论文,
-<strong>内容包括</strong>[...] <strong>要求</strong>字数不少于 [...]
-字.</li>
+<li><em>作为</em>一名计算机科学与技术专业的大一<em>学生</em>, <strong>生成</strong>一篇关于人工智能技术发展的课程论文, <strong>内容包括</strong>[…] <strong>要求</strong>字数不少于 […] 字.</li>
 </ul>
-<p>CET 作文的 Direction 就可以作为 prompt 的标准,
-事实上给出的答案也是相当高质量的:</p>
+<p>CET 作文的 Direction 就可以作为 prompt 的标准, 事实上给出的答案也是相当高质量的:</p>
 <ul>
-<li><strong>Suppose</strong> your university is selecting some students
-to teach kids in remote rural areas during the coming vacation.
-<strong>You</strong> are now to write <strong>an application
-letter</strong> to the university to explain <em>why you want to take
-part</em> and <em>what you can do for the kids</em>. You should write
-<strong>at least 120 words but no more than 180 words</strong>.</li>
+<li><strong>Suppose</strong> your university is selecting some students to teach kids in remote rural areas during the coming vacation. <strong>You</strong> are now to write <strong>an application letter</strong> to the university to explain <em>why you want to take part</em> and <em>what you can do for the kids</em>. You should write <strong>at least 120 words but no more than 180 words</strong>.</li>
 </ul>
-<h3 id="为-prompt-提供例子">为 prompt 提供例子</h3>
-<p>例如你可以自动生成一个函数的doctest.</p>
+<h3 id="为-prompt-提供例子"><a href="#为-prompt-提供例子" class="headerlink" title="为 prompt 提供例子"></a>为 prompt 提供例子</h3><p>例如你可以自动生成一个函数的doctest.</p>
 <ul>
-<li>Generate a product comparison of this new smartphone <strong>with
-one example</strong> (latest iPhone)"</li>
+<li>Generate a product comparison of this new smartphone <strong>with one example</strong> (latest iPhone)”</li>
 <li>生成一段关于DFS算法的解释（<strong>用一个例子</strong>说明：走迷宫）</li>
 <li>[code] 解释这段代码, 并模拟一个样例.</li>
 <li>[code] 为函数添加注释, 并提供 3 个 doctest.</li>
 </ul>
 <figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">summation</span>(<span class="params">n: <span class="built_in">int</span>, term: <span class="built_in">callable</span></span>) -&gt; <span class="built_in">float</span>:</span><br><span class="line">    <span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">    Compute the summation of the given term from 1 to n.</span></span><br><span class="line"><span class="string">    Args:</span></span><br><span class="line"><span class="string">        n: An integer representing the upper bound of the summation.</span></span><br><span class="line"><span class="string">        term: A callable that takes one argument and returns a float.</span></span><br><span class="line"><span class="string">    Returns:</span></span><br><span class="line"><span class="string">        A float representing the summation of the given term from 1 to n.</span></span><br><span class="line"><span class="string">    Examples:</span></span><br><span class="line"><span class="string">        &gt;&gt;&gt; summation(5, lambda x: x**2)</span></span><br><span class="line"><span class="string">        55.0</span></span><br><span class="line"><span class="string">        &gt;&gt;&gt; summation(10, lambda x: x)</span></span><br><span class="line"><span class="string">        55.0</span></span><br><span class="line"><span class="string">        &gt;&gt;&gt; summation(3, lambda x: 2**x)</span></span><br><span class="line"><span class="string">        7.0</span></span><br><span class="line"><span class="string">    &quot;&quot;&quot;</span></span><br><span class="line">    total, k = <span class="number">0</span>, <span class="number">1</span></span><br><span class="line">    <span class="keyword">while</span> k &lt;= n:</span><br><span class="line">        total, k =  total + term(k), k + <span class="number">1</span></span><br><span class="line">    <span class="keyword">return</span> total</span><br></pre></td></tr></table></figure>
-<h3 id="self-consistency-prompt">Self-Consistency Prompt</h3>
-<p>添加一条 "Please ensure the following text is self-consistent",
-对于检查文章前后内容一致性, 数据核查或者应付英语作业有奇效.</p>
+<h3 id="Self-Consistency-Prompt"><a href="#Self-Consistency-Prompt" class="headerlink" title="Self-Consistency Prompt"></a>Self-Consistency Prompt</h3><p>添加一条 “Please ensure the following text is self-consistent”, 对于检查文章前后内容一致性, 数据核查或者应付英语作业有奇效.</p>
 <ul>
-<li><strong>检查下面这段文字是前后一致的</strong>.
-它先声明了城市人口有500万, 随后又说人口有700万: [text]</li>
-<li>Complete the following sentence in a way that is consistent with the
-context provided: [sentence]</li>
+<li><strong>检查下面这段文字是前后一致的</strong>. 它先声明了城市人口有500万, 随后又说人口有700万: [text]</li>
+<li>Complete the following sentence in a way that is consistent with the context provided: [sentence]</li>
 </ul>
-<h3 id="lets-think-about-this-topic">Let’s think about this:
-[topic]</h3>
-<p>当你brainstorm不出来东西的时候可以考虑这么提问.
-这个在应对传统课堂上的group discussion有奇效:</p>
+<h3 id="Let’s-think-about-this-topic"><a href="#Let’s-think-about-this-topic" class="headerlink" title="Let’s think about this: [topic]"></a>Let’s think about this: [topic]</h3><p>当你brainstorm不出来东西的时候可以考虑这么提问. 这个在应对传统课堂上的group discussion有奇效:</p>
 <ul>
-<li>Let's discuss the current state of artificial intelligence</li>
-<li>Let's talk about the benefits and drawbacks of remote work</li>
+<li>Let’s discuss the current state of artificial intelligence</li>
+<li>Let’s talk about the benefits and drawbacks of remote work</li>
 </ul>
 <p>AI 通常会给出一些很发散的答案. 可以顺着给出的几点进行延伸.</p>
-<h3 id="数据分析信息整合">数据分析/信息整合</h3>
-<ul>
-<li><strong>Integrate</strong> the following information with the
-existing knowledge about [specific topic]: [insert new information]</li>
-<li><strong>Connect</strong> the following pieces of information in a
-way that is relevant and logical: [insert information 1] [insert
-information 2]</li>
-<li>Please generate new and original information about customer behavior
-from this <strong>dataset</strong></li>
+<h3 id="数据分析-信息整合"><a href="#数据分析-信息整合" class="headerlink" title="数据分析/信息整合"></a>数据分析/信息整合</h3><ul>
+<li><strong>Integrate</strong> the following information with the existing knowledge about [specific topic]: [insert new information]</li>
+<li><strong>Connect</strong> the following pieces of information in a way that is relevant and logical: [insert information 1] [insert information 2]</li>
+<li>Please generate new and original information about customer behavior from this <strong>dataset</strong></li>
 </ul>
-<h3 id="multiple-choice-prompts">Multiple Choice prompts</h3>
-<p>让 AI 做选择题/填空题.</p>
+<h3 id="Multiple-Choice-prompts"><a href="#Multiple-Choice-prompts" class="headerlink" title="Multiple Choice prompts"></a>Multiple Choice prompts</h3><p>让 AI 做选择题/填空题.</p>
 <ul>
-<li>Complete the following sentence by selecting one of the following
-options: [insert sentence] [insert option 1] [insert option 2] [insert
-option 3]</li>
+<li>Complete the following sentence by selecting one of the following options: [insert sentence] [insert option 1] [insert option 2] [insert option 3]</li>
 </ul>
-<h3 id="可解释型控制型-prompts">可解释型/控制型 Prompts</h3>
-<p>给 model 一点灵活性(发挥). 打个比方你是作文命题人, 那么这里的 prompt
-就更加开放, 回答最好能够出乎你意外的:</p>
+<h3 id="可解释型-控制型-Prompts"><a href="#可解释型-控制型-Prompts" class="headerlink" title="可解释型/控制型 Prompts"></a>可解释型/控制型 Prompts</h3><p>给 model 一点灵活性(发挥). 打个比方你是作文命题人, 那么这里的 prompt 就更加开放, 回答最好能够出乎你意外的:</p>
 <ul>
 <li>以鲁迅的风格补写下面的句子: 人是会死的,</li>
 </ul>
@@ -376,37 +332,20 @@ option 3]</li>
 <ul>
 <li>以莎士比亚的口吻补写下面的句子: people shall die</li>
 </ul>
-<p>Mortal beings are we, frail creatures of dust, destined one day to
-return to the earth from whence we came. The wheel of life turns, and
-birth and death are its spokes.</p>
-<p>控制型 prompt 要求 model 不能有多余的发挥,
-要在已有的模板里完成任务.</p>
+<p>Mortal beings are we, frail creatures of dust, destined one day to return to the earth from whence we came. The wheel of life turns, and birth and death are its spokes.</p>
+<p>控制型 prompt 要求 model 不能有多余的发挥, 要在已有的模板里完成任务.</p>
 <ul>
-<li>Generate a story <strong>based on the following template</strong>:
-[insert template]</li>
+<li>Generate a story <strong>based on the following template</strong>: [insert template]</li>
 </ul>
-<h3 id="特殊-prompts">特殊 Prompts</h3>
-<ul>
-<li>"Use reinforcement learning to generate text that is consistent with
-the following style [insert style]"</li>
-<li>"Use curriculum learning to generate text that is consistent with
-the following styles [insert styles] in the following order [insert
-order]"</li>
-<li>Perform sentiment analysis on the following customer reviews [insert
-reviews] and classify them as positive, negative, or neutral.</li>
-<li>Perform named entity recognition on the following news article
-[insert article] and identify and classify people, organizations,
-locations, and dates.</li>
-<li>Perform text classification on the following customer reviews
-[insert reviews] and classify them into different categories such as
-electronics, clothing and furniture based on their content.</li>
+<h3 id="特殊-Prompts"><a href="#特殊-Prompts" class="headerlink" title="特殊 Prompts"></a>特殊 Prompts</h3><ul>
+<li>“Use reinforcement learning to generate text that is consistent with the following style [insert style]”</li>
+<li>“Use curriculum learning to generate text that is consistent with the following styles [insert styles] in the following order [insert order]”</li>
+<li>Perform sentiment analysis on the following customer reviews [insert reviews] and classify them as positive, negative, or neutral.</li>
+<li>Perform named entity recognition on the following news article [insert article] and identify and classify people, organizations, locations, and dates.</li>
+<li>Perform text classification on the following customer reviews [insert reviews] and classify them into different categories such as electronics, clothing and furniture based on their content.</li>
 </ul>
-<h2 id="参考资料">参考资料</h2>
-<p>[1]. Ibrahim John, The Art of Asking ChatGPT for High-Quality
-Answers, A Complete Guide to Prompt Engineering Techniques, ISBN-13:
-9781234567890</p>
-<p>[2]. <a href="https://github.com/f/awesome-chatgpt-prompts">Awesome
-ChatGPT Prompts</a>: 里面有许多有意思的 Prompts</p>
+<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><p>[1]. Ibrahim John, The Art of Asking ChatGPT for High-Quality Answers, A Complete Guide to Prompt Engineering Techniques, ISBN-13: 9781234567890</p>
+<p>[2]. <a href="https://github.com/f/awesome-chatgpt-prompts">Awesome ChatGPT Prompts</a>: 里面有许多有意思的 Prompts</p>
 ]]></content>
       <categories>
         <category>杂谈</category>
@@ -1988,6 +1927,8 @@ href="https://www.zhihu.com/question/28300645/answer/2488146755">中文版本</a
 <span id="more"></span>
 <h2 id="命题逻辑"><a href="#命题逻辑" class="headerlink" title="命题逻辑"></a>命题逻辑</h2><p>免责声明: 这不是教会你怎么去应试的.</p>
 <p>你学的是 CS, 那么学数学理应把数学和 CS 紧密联系起来. 说我们学习数学是效用主义, 没错, 就要这样.</p>
+<p>与其在脑子里装些不明不白的”定义”, 倒不如对逻辑学里讨论的问题以及讨论的方法多一些认真.</p>
+<p>这篇文章只是对数理逻辑的一个简单梳理, 忽略了许多数学上的严谨性, 某些”末节”和”小技”在应对复杂的数学问题时就体现出它应有的作用.</p>
 <h3 id="命题符号化"><a href="#命题符号化" class="headerlink" title="命题符号化"></a>命题符号化</h3><h4 id="句子变符号"><a href="#句子变符号" class="headerlink" title="句子变符号"></a>句子变符号</h4><p>什么是<strong>命题</strong>(statement)? 一个布尔值.</p>
 <ul>
 <li><code>1 + 1 != 2</code> <code>false</code></li>
@@ -2037,7 +1978,7 @@ href="https://www.zhihu.com/question/28300645/answer/2488146755">中文版本</a
 <p>试试看你能不能只用 <code>&amp;</code> 和 <code>!</code> 模拟出 <code>^</code>!</p>
 <figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="type">int</span> <span class="title function_">bitXor</span><span class="params">(<span class="type">int</span> x, <span class="type">int</span> y)</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="type">int</span> p = ~((~x) &amp; (~y)); <span class="comment">// or</span></span><br><span class="line">    <span class="type">int</span> q = ~(x &amp; y);</span><br><span class="line">    <span class="keyword">return</span> p &amp; q; <span class="comment">// Xor</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <blockquote>
-<p>Remark: 这个例子实际上说明了基本运算符<em>可以剪裁</em>. <code>or</code> 可以被 <code>and</code> 和 <code>neg</code> 模拟, 等价的一种说法是在 $\{ \neg, \wedge\}$ 上构造 $L$. ($L$ 是一个命题公式)</p>
+<p>Remark: 这个例子实际上说明了基本运算符<em>可以剪裁</em>. <code>or</code> 可以被 <code>and</code> 和 <code>neg</code> 模拟, 等价的一种说法是在 $\{ \neg, \wedge\}$ 上构造 $L$. ($L = \oplus$). 这也说明了某些真值联接词具有<strong>函数完全性</strong>, 比方说所有真值函数都可以在 $\mathscr{L}_{\neg,\vee,\wedge}$ 中表达.</p>
 </blockquote>
 <p>剩下两个联接词很常用. 但它们同样可以被上面三种联接词模拟出来.</p>
 <ul>
@@ -2062,6 +2003,7 @@ href="https://www.zhihu.com/question/28300645/answer/2488146755">中文版本</a
 </ul>
 <p>你看规则上说的, 1 implies 1 is 1, 那么 <code>C</code> 也是 1. 但这句话非常令人迷惑 🤔. 两个毫不相关的事实, 然后声明”事实推事实”为真, 这是在干什么.</p>
 <p>特别说明一点: <strong>真值的联结不等同于命题间的联结</strong>. 牢记一点, <em>命题都是 1 和 0</em>.</p>
+<p>讨论符号和公式的理论称为<strong>语义</strong>(semantics)理论. 1 + 1 = 2 和 one plus one equals two 是同一个语义.</p>
 <p>蕴含可能会出现各种各样的地方, 或许你意识不到:</p>
 <ul>
 <li>不能玩游戏( $\neg p$ ), 除非写完作业(unless $q$)</li>
@@ -2079,7 +2021,7 @@ href="https://www.zhihu.com/question/28300645/answer/2488146755">中文版本</a
 <p>联接词有没有运算的优先级? 有. 要不要记? 不用. 总之按顺序算就对了.</p>
 <h4 id="命题表达式"><a href="#命题表达式" class="headerlink" title="命题表达式"></a>命题表达式</h4><p>我们之前提到过, 命题必须是一个<em>确切的真值语句</em>.</p>
 <p>那可真可假怎么办? 也就是一个布尔变量, 0 或 1. 此时我们称其为<strong>命题变元</strong>.</p>
-<p>用联接词, 我们可以将原子(简单)命题联系起来, 得到了复合命题. 同样, 命题变元的联结构成了一个<strong>命题表达式</strong>, 或者说是 propositional form, 或者说是 Well-Formed Formula(WFF), 或者说是 truth-value function.</p>
+<p>用联接词, 我们可以将原子(简单)命题联系起来, 得到了复合命题. 同样, 命题变元的联结构成了一个<strong>命题表达式</strong>, 或者说是 propositional form, 或者说是 Well-Formed Formula(WFF)<sup><a href="#fn_4" id="reffn_4">4</a></sup>, 或者说是 truth-value function.</p>
 <p>严谨起见, 命题表达式是递归定义的:</p>
 <ul>
 <li>单个命题变元 $p_1, p_2, \dots$ 是命题表达式.</li>
@@ -2127,6 +2069,7 @@ href="https://www.zhihu.com/question/28300645/answer/2488146755">中文版本</a
 </table>
 </div>
 <h4 id="命题表达式的分类"><a href="#命题表达式的分类" class="headerlink" title="命题表达式的分类"></a>命题表达式的分类</h4><p>如果打表发现所有解释下, 真值都为真, 那么这个表达式就叫<strong>永真公式</strong>, 也叫<em>重言式</em>(tautology). 真值全为假, 称其<strong>永假公式</strong>, 也叫<em>矛盾式</em>(contradiction). 不是矛盾式就是<em>可满足式</em>.</p>
+<p>注意: 可满足式不是<em>偶然式</em>(或然式, contingency).</p>
 <p>判定一个公式是否是永真公式, 最简单的办法就是枚举, 也就是列出真值表.</p>
 <p>例如上面的真值表, 我们实际上证明了 $(P \rightarrow Q) \leftrightarrow (\neg P \vee Q)$ 是一个永真公式. 不信你再多看看.</p>
 <p>有无算法, 能够判定对于一个任意的命题公式 $\phi$, 其是否可满足? 这个问题也叫 SAT(或 3-SAT) Problem, The Satisfiability Problem.</p>
@@ -2157,8 +2100,7 @@ href="https://www.zhihu.com/question/28300645/answer/2488146755">中文版本</a
 <p>我们之前提到, 联接词是一种布尔值之间的<strong>运算</strong>, 最后得到一个新的真值为 0 或 1 的命题(复合命题), 可以理解 $\rightarrow$ 就是一个运算符, 我们关注的是运算后得到的<strong>值</strong>. 而 $\models$ 表示的是<strong>命题之间的关联</strong>, $P$ 推 $Q$, 这个”推”用的就是 $\models$; 我们关注的侧重点不是 $\phi\models \psi$ 等于多少, 它已经永真了.</p>
 <p>至于 $\Rightarrow$, 平时在写数学题你会用到这个记号, 例如从条件 1 可以推出条件 2, 条件 2 推出条件 3, 直到推出结论. 那么这里的”推出”你会写 $\Rightarrow$ 而不是数理逻辑里的符号 $\models$. 当然, 一般来说我们也不区分 $\Rightarrow$ 和 $\models$, 你也可以认为这两个符号等价.</p>
 <p>当然, 这个世界上还存在一个 $\vdash$ 的东西. 如果你感兴趣, 你可以 check 这个<a href="https://www.zhihu.com/question/21191299/answer/17469774">回答</a>.</p>
-<h3 id="规范化-canonical"><a href="#规范化-canonical" class="headerlink" title="规范化(canonical)"></a>规范化(canonical)</h3><h4 id="范式"><a href="#范式" class="headerlink" title="范式"></a>范式</h4><p><del>“范式总让我想到范马.”</del></p>
-<p>什么是范式? 在回答这个问题之前, 我们需要引入一些相关的定义:</p>
+<h3 id="规范化-canonical"><a href="#规范化-canonical" class="headerlink" title="规范化(canonical)"></a>规范化(canonical)</h3><h4 id="范式"><a href="#范式" class="headerlink" title="范式"></a>范式</h4><p>什么是范式? 在回答这个问题之前, 我们需要引入一些相关的定义:</p>
 <ul>
 <li>命题变元或命题变元的否定称为文字.</li>
 <li>有限个文字的析取式称为简单析取式(基本和)</li>
@@ -2214,8 +2156,8 @@ href="https://www.zhihu.com/question/28300645/answer/2488146755">中文版本</a
 <blockquote>
 <p>容易推广, 对于 $n$ 个命题变元, 可以组合出 $2^n$ 个极大项和 $2^n$ 个极小项.</p>
 </blockquote>
-<p>为什么称规范后的简单析取式为极大项? 这个问题你得问 <a href="https://zh.wikipedia.org/wiki/%E5%A8%81%E6%8B%89%E5%BE%B7%C2%B7%E8%8C%83%C2%B7%E5%A5%A5%E6%9B%BC%C2%B7%E8%92%AF%E5%9B%A0">Quine</a> 本人. <del>好吧其实我也不能给出合理的解释</del></p>
-<p>观察到一个性质: 全体极大项的合取永假(总存在<strong>唯一的</strong>一个假的极大项), 全体极小项的析取永真(总存在<strong>唯一的</strong>一个真的极小项).</p>
+<p>为什么称规范后的简单析取式为极大项? 一种解释是, 析取是对所有变元(或变元的否)取极大值:</p>
+<script type="math/tex; mode=display">p_1 \vee p_2 \vee ... \vee p_n = \max \{p_1, p_2, ..., p_n \}</script><p>观察到一个性质: 全体极大项的合取永假(总存在<strong>唯一的</strong>一个假的极大项), 全体极小项的析取永真(总存在<strong>唯一的</strong>一个真的极小项).</p>
 <p>这其实很好理解: 当且仅当所有变元为假时, 简单析取式为假; 当且仅当所有变元为真时, 简单合取式为真.</p>
 <p>利用<strong>唯一性</strong>, 我们可以对极小项和极大项<strong>编码</strong>. 我们用 $1$ 表示一个命题变元, $0$ 表示命题变元的否, 这么做恰好能满足编码的<strong>完备性</strong>, 对于极小项:</p>
 <ul>
@@ -2242,17 +2184,26 @@ href="https://www.zhihu.com/question/28300645/answer/2488146755">中文版本</a
 <li>A: 下雨</li>
 <li>B: 路上有水</li>
 </ul>
-<p>这就是一个<strong>有效(valid)推理</strong>. 这里<strong>前提</strong>(premises)是 A 和 A-&gt;B, <strong>结论</strong>(conclusion)为 B.</p>
+<p>这就是一个<strong>有效(valid)推理</strong>(或者说这个论说是<strong>好的</strong>). 这里<strong>前提</strong>(premises)是 A 和 A-&gt;B, <strong>结论</strong>(conclusion)为 B.</p>
 <p>所谓有效推理, 并不要求我们的前提和结论一定为真. 若前提为真, 则结论为真, 这就<strong>合乎逻辑</strong>.</p>
-<p>比方说上例, 如果今天没下雨, 显然天下雨了这个前提不成立, 但这影响这个推理的有效性吗?</p>
-<p>“今天下雨”的情况取决于实际情况, 也就是需要一个<strong>解释</strong>. 我们的推理如果有效, 对于任意的解释, 都成立.</p>
+<p>有一个误区是:”你的前提是假的, 即便论说是有效的, 但结论一定是假的”. 例如你怎能确定今天一定下雨? 如果不下雨, 路上就没有水, 结论明显为假, 你的论证不对.</p>
+<p>我们可以举出一个反例:</p>
+<p>前提: 1. 所有的猫都是人. 2. 所有的学生都是猫<br>结论: 所有的学生都是人</p>
+<p>两个前提都是假的, 但结论无疑是真的. 此时你可能会开始质疑, 是这个论证的问题吗? 换句话说, 怎么去说明一个论证是<strong>坏的</strong>?</p>
+<p>如果一个论说的形式存在<strong>反例</strong>(counterexample), 那么他就是坏的. 例如:</p>
+<p>前提: 1. 企鹅都是鸟 2. 猴子都不是企鹅<br>结论: 猴子都不是鸟</p>
+<p>考虑反例:</p>
+<p>前提: 1. 企鹅都是鸟 2. 麻雀都不是企鹅<br>结论: 麻雀都不是鸟</p>
+<p>显然两个前提为真, 但结论为假. 这明显和上面的例子矛盾! 这个论说是不满足<strong>一致性</strong>(consistency)的, 或者说不自洽的. 这个例子, 和上面的例子, 都是一个无效的论证.</p>
+<p>回到上例, 如果今天没下雨, 显然天下雨了这个前提不成立, 但这影响这个推理的有效性吗?</p>
+<p>“今天下雨”的情况取决于实际情况, 也就是需要一个<strong>解释</strong>. 我们的推理如果有效, 对于任意的解释, 都成立. 这里的成立指的是</p>
 <p>在我们的符号化中, 我们实际上要说明的是 $A \wedge (A\rightarrow  B)\rightarrow B$ 在任何解释 $I$ 下都为真, 也即, 它是个永真公式, 也即 $A \wedge (A\rightarrow  B)\Rightarrow B$ (条件 $\Gamma$ 逻辑蕴含 $H$)</p>
 <p>这就是我们推理有效的理论支撑!</p>
 <p>进一步推广, $\Gamma$ 是一组前提构成的集合, 这些前提的合取可以推出 $H$. 我们验证一个推理是否有效, 只要证明 $G_1\wedge G_2\wedge…\wedge G_n\rightarrow H$ 永真即可! 不过, 正如我们上面所叙述的, 判断永真公式是个 NP hard 的问题, 我们需要一种更有效的推理方法, 这就引出了<strong>演绎法</strong>.</p>
 <h4 id="基于规则的推理-演绎法"><a href="#基于规则的推理-演绎法" class="headerlink" title="基于规则的推理: 演绎法"></a>基于规则的推理: 演绎法</h4><p>命题逻辑有不同的演绎系统, 例如希尔伯特式推演系统. 最常研究的希尔伯特风格演绎系统只有一个推理规则, 即肯定前件(MP)和<a href="https://zh.wikipedia.org/wiki/%E5%B8%8C%E5%B0%94%E4%BC%AF%E7%89%B9%E6%BC%94%E7%BB%8E%E7%B3%BB%E7%BB%9F">几个无限公理模式</a>:</p>
 <p><img src="/images/pic14.png" alt="希尔伯特式推演系统"></p>
 <p>Hilbert 的这套系统好处是很简单. 坏处是太难用了.</p>
-<p>自然演绎系统(Gerhard Gentzen 提出)做了相反的取舍, 包括了很多演绎规则但有非常少甚至没有公理模式. 它基于一套引入(introduction)和消去(elimination)的规则<sup><a href="#fn_3" id="reffn_3">3</a></sup>.</p>
+<p>自然演绎系统(Gerhard Gentzen 提出)做了相反的取舍, 包括了很多演绎规则但有非常少甚至没有公理模式. 它(例如Finch-style, Jaśkowski style)基于一套引入(introduction)和消去(elimination)的规则<sup><a href="#fn_3" id="reffn_3">3</a></sup>.</p>
 <p>那我们教科书上的这套演绎规则是什么呢?</p>
 <ul>
 <li>规则 P(引入前提): 可引入前提集合中任意一个前提.</li>
@@ -2269,6 +2220,7 @@ href="https://www.zhihu.com/question/28300645/answer/2488146755">中文版本</a
 </ul>
 <p>使用附加前提的证明称为<strong>条件证明</strong>. 我们再给出一种特殊的条件证明: <strong>反证法</strong></p>
 <p>我们将结论 $R$ 的否定 $\neg R$ 作为附加前提作为条件, 倘若得到了 $\Gamma \wedge \neg R$ 为矛盾式, 那么 $R$ 为真.</p>
+<p>事实上还可以证明命题逻辑的可靠性(soundness), 即: 凡是系统中可证明的都是系统的语言的重言式. 同理我们有完全性(completeness), 任何重言式都可以在系统中被证明.</p>
 <h2 id="谓词逻辑"><a href="#谓词逻辑" class="headerlink" title="谓词逻辑"></a>谓词逻辑</h2><h3 id="我在学语法吗"><a href="#我在学语法吗" class="headerlink" title="我在学语法吗?"></a>我在学语法吗?</h3><p>谓词逻辑, in short, 就是把命题逻辑中的原子命题进一步分解. 我们举个例子:</p>
 <ul>
 <li>地球绕着太阳转.</li>
@@ -2293,10 +2245,10 @@ href="https://www.zhihu.com/question/28300645/answer/2488146755">中文版本</a
 </ul>
 </li>
 <li>UG(Universal Generalize): $G(y)\Rightarrow (\forall x)G(x)$</li>
-<li>ES(Existential Specify): $(\exist x)G(x)\Rightarrow G(c)$ ($c$ 特定的个体常量)</li>
+<li>ES(Existential Specify): $(\exists x)G(x)\Rightarrow G(c)$ ($c$ 特定的个体常量)</li>
 <li>EG(Existential Generalize):<ul>
-<li>$G(c)\Rightarrow (\exist x)G(x)$: $c$ 为特定的个体常量, $G(c)$ 中无自由变元 $x$</li>
-<li>$G(y)\Rightarrow (\exist x)G(x)$: $G(y)$ 不含自由变元 $x$</li>
+<li>$G(c)\Rightarrow (\exists x)G(x)$: $c$ 为特定的个体常量, $G(c)$ 中无自由变元 $x$</li>
+<li>$G(y)\Rightarrow (\exists x)G(x)$: $G(y)$ 不含自由变元 $x$</li>
 </ul>
 </li>
 </ul>
@@ -2316,6 +2268,9 @@ href="https://www.zhihu.com/question/28300645/answer/2488146755">中文版本</a
 </blockquote>
 <blockquote id="fn_3">
 <sup>3</sup>. 感兴趣可以参考 <em>Logic in Computer Science</em> 一书.<a href="#reffn_3" title="Jump back to footnote [3] in the text."> &#8617;</a>
+</blockquote>
+<blockquote id="fn_4">
+<sup>4</sup>. 也叫做合式公式, 问题是有什么公式是不合式的?<a href="#reffn_4" title="Jump back to footnote [4] in the text."> &#8617;</a>
 </blockquote>
 ]]></content>
       <categories>
@@ -3250,7 +3205,24 @@ href="https://www.luogu.com.cn/blog/P6174/post-cuo-pai?tdsourcetag=s_pcqq_aiomsg
 <p>总结一下往年的试卷和作业试题. 总的来说还是很简单的. 其实我还有一个习题集, 但那个超纲很多, 说不定哪天合并一下.</p>
 <span id="more"></span>
 <h2 id="数理逻辑"><a href="#数理逻辑" class="headerlink" title="数理逻辑"></a>数理逻辑</h2><h3 id="求主范式"><a href="#求主范式" class="headerlink" title="求主范式"></a>求主范式</h3><p>求命题公式 $G(P,Q,R)=\neg (\neg P \rightarrow Q) \vee (Q \wedge R)$ 的主合取范式和主析取范式, 求解结果用 $m_i$ 和 $M_i$ 的编码形式表示.</p>
-<h3 id="求前束范式"><a href="#求前束范式" class="headerlink" title="求前束范式"></a>求前束范式</h3><p>求谓词公式 $(\exists x)((\forall y)(\exists z)P(x,y,z)\to(\exists z)(\forall t)(Q(x,z)\lor R(x,t,z)))$ 的前束范式. 其前束范式和原公式之间的关系满足什么性质?</p>
+<p><strong>解</strong></p>
+<script type="math/tex; mode=display">\begin{aligned}
+G(P,Q,R) &= \neg (P \vee Q) \vee (Q \land R) \\
+&=(\neg P \land \neg Q) \vee (Q \land R) \\
+&=(\neg P \land \neg Q \land \neg R) \vee (\neg P \land \neg Q \land R) \vee (\neg P \land Q \land R) \vee (P \land Q \land R)\\
+&= m_0\vee m_1 \vee m_3 \vee m_7 \\
+&=M_2 \wedge M_4 \wedge M_5 \wedge M_6\\
+&=(P \vee \neg Q \vee R) \wedge (\neg P \vee Q \vee R) \wedge (\neg P \vee Q \vee \neg R) \wedge (\neg P \vee \neg Q \vee R)
+\end{aligned}</script><h3 id="求前束范式"><a href="#求前束范式" class="headerlink" title="求前束范式"></a>求前束范式</h3><p>求谓词公式 $(\exists x)((\forall y)(\exists z)P(x,y,z)\to(\exists z)(\forall t)(Q(x,z)\lor R(x,t,z)))$ 的前束范式. 其前束范式和原公式之间的关系满足什么性质?</p>
+<p><strong>解</strong></p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+&(\exists x)((\forall y)(\exists z)P(x,y,z)\to(\exists z)(\forall t)(Q(x,z)\lor R(x,t,z))) \\
+&=(\exists x)(\neg(\forall y)(\exists z)P(x,y,z)\lor(\exists z)(\forall t)(Q(x,z)\lor R(x,t,z))) \\
+&=(\exists x)((\exists y)(\forall z)\neg P(x,y,z)\lor(\exists z)(\forall t)(Q(x,z)\lor R(x,t,z))) \\
+&=(\exists x)((\exists y)(\forall z)\neg P(x,y,z)\lor(\exists w)(\forall t)(Q(x,w)\lor R(x,t,w))) \\
+&=(\exists x)(\exists y)(\forall z)(\exists w)(\forall t)(\neg P(x,y,z)\lor Q(x,w)\lor R(x,t,w))
+\end{aligned}</script><p>它们是等价关系.</p>
 <h3 id="演绎证明"><a href="#演绎证明" class="headerlink" title="演绎证明"></a>演绎证明</h3><p>用演绎法证明下述推理的有效性:</p>
 <ol>
 <li><p>明天下午或者是天晴，或者是下雨；仅当我去登山，明天下午才是天晴；只有我不学习，我才去登山。因此，如果我在学习，则天在下雨。</p>
@@ -3258,19 +3230,53 @@ href="https://www.luogu.com.cn/blog/P6174/post-cuo-pai?tdsourcetag=s_pcqq_aiomsg
 <li><p>每个喜欢吃肉的人都不喜欢吃汤圆；每个人或者喜欢吃饺子或者喜欢吃汤圆；有的人不喜欢饺子。因而有的人不喜欢吃肉。</p>
 </li>
 </ol>
+<p><strong>解</strong> (1) 符号化:</p>
+<ul>
+<li>P: 明天下午天晴</li>
+<li>Q: 明天下午下雨</li>
+<li>R: 明天下午登山</li>
+<li>S: 明天下午学习</li>
+</ul>
+<p>上述命题可以翻译为: $P \oplus Q, P \to R,R \to \neg S\Rightarrow S \to Q$</p>
+<p>下面是证明:</p>
+<p>(1) $S \qquad \qquad \quad P(附加前提)$<br>(2) $R\to \neg S \qquad P$<br>(3) $\neg R \qquad \qquad T,1,2,I$<br>(4) $P\to R \qquad \quad P$<br>(5) $\neg P \qquad \qquad T,3,4,I$<br>(6) $P \oplus Q \qquad \qquad P$<br>(7) $Q \qquad \qquad \quad T,5,6,I$<br>(8) $S\to Q \qquad \quad CP,1,7$</p>
+<p>(2) 符号化:</p>
+<ul>
+<li>$H(x)$: $x$ 是人</li>
+<li>$P(x)$: $x$ 喜欢吃汤圆</li>
+<li>$Q(x)$: $x$ 喜欢吃饺子</li>
+<li>$R(x)$: $x$ 喜欢吃肉</li>
+</ul>
+<p>翻译: $(\forall x)(H(x)\land R(x)\to \neg P(x)), (\forall x)(H(x)\to P(x) \lor Q(x)),(\exists x)(H(x)\land \neg Q(x))\Rightarrow (\exists x) (H(x)\land \neg R(x))$</p>
+<p>下面是证明:</p>
+<p>(1) $(\exists x)(H(x)\land \neg Q(x)) \qquad \qquad P$<br>(2) $H(c)\land \neg Q(c) \qquad \quad \qquad \qquad ES, 1$<br>(3) $H(c) \quad \qquad \qquad \qquad \qquad \qquad T,2,I$<br>(4) $\neg Q(c) \qquad \qquad \qquad \qquad \qquad T,2,I$<br>(5) $(\forall x)(H(x)\to P(x) \lor Q(x)) \qquad P$<br>(6) $H(c)\to P(c) \lor Q(c) \qquad \qquad US,5$<br>(7) $P(c) \lor Q(c) \qquad \qquad \qquad \qquad T,3,6,I$<br>(8) $P(c) \qquad \quad \qquad \qquad \qquad\qquad T,4,7,I$<br>(9) $(\forall x)(H(x)\land R(x)\to \neg P(x)) \qquad P$<br>(10) $H(c)\land R(c)\to \neg P(c)\qquad \qquad US,9$<br>(11) $\neg (H(c)\land R(c)) \qquad \qquad\qquad T,8,10,I$<br>(12) $\neg  H(c) \lor \neg R(c)  \qquad\qquad\qquad T,11,E$<br>(13) $\neg R(c) \qquad\qquad\qquad\qquad\qquad T,3,12,I$<br>(14) $H(c)\land \neg R(c) \qquad\qquad\qquad T,3,13,I$<br>(15) $(\exists x) (H(x)\land \neg R(x)) \qquad\qquad EG, 14$</p>
 <h2 id="关系代数"><a href="#关系代数" class="headerlink" title="关系代数"></a>关系代数</h2><h3 id="证明关系"><a href="#证明关系" class="headerlink" title="证明关系"></a>证明关系</h3><p>设 $A=\{1,2,3,4\}$, 在 $P(A)$ 上规定二元关系如下:</p>
 <script type="math/tex; mode=display">R = \{ <u,v>|u,v\in P(A) \land(|u|=|v|) \}</script><ol>
 <li>证明: $R$ 是 $P(A)$ 上的等价关系.</li>
 <li>写出商集 $P(A) / R$.</li>
 </ol>
+<p><strong>解</strong> (1) 分别证明自反, 对称, 传递性.</p>
+<ul>
+<li>对于 $\forall s \in P(A)$, $|s|=|s|$, 于是 $<s,s>\in R$, 自反性得证.</li>
+<li>对于 $\forall s, t \in P(A)$, $<s,t> \in R$, 显然 $|s|=|t|$, $|t|=|s|$, 于是 $<s,t>\in R, <t,s>\in R$, 对称性得证.</li>
+<li>对于 $\forall s,t,r\in P(A)$, $<s,t>\in R, <t,r>\in R$, 显然 $|s|=|t|=|r|$, 于是有 $<s,r>\in R$, 传递性得证.</li>
+</ul>
+<p>因此 $R$ 是 $P(A)$ 上的等价关系.</p>
+<p>(2) $P(A)=\{\{\varnothing \},\{1\},\{1,2\},\{1,2,3\},\{1,2,3,4\}\}$</p>
 <h3 id="闭包运算"><a href="#闭包运算" class="headerlink" title="闭包运算"></a>闭包运算</h3><p>设 $A = \{a, b, w+1, \varnothing\}$, 定义 $A$ 上的二元关系</p>
-<script type="math/tex; mode=display">R=\{<a,b>,<b,w+1>,<w+1,\varnothing>,<0,a>\}</script><p>求: $r(R), s(R)$ 以及 $t(R)$.</p>
+<script type="math/tex; mode=display">R=\{<a,b>,<b,w+1>,<w+1,\varnothing>,<\varnothing,a>\}</script><p>求: $r(R), s(R)$ 以及 $t(R)$.</p>
+<p><strong>解</strong></p>
+<script type="math/tex; mode=display">r(R)=\{<a,b>,<b,w+1>,<w+1,\varnothing>,<\varnothing,a>,<a,a>,<b,b>,<w+1,w+1>,<\varnothing,\varnothing>\}</script><script type="math/tex; mode=display">s(R)=\{<a,b>,<b,w+1>,<w+1,\varnothing>,<\varnothing,a>, <b,a>, <w+1,b>, <\varnothing, w+1>,<a,\varnothing>\}</script><p>$R$ 的关系矩阵 $M_1=\begin{pmatrix}0&amp;1&amp;0&amp;0\\ 0&amp;0&amp;1&amp;0\\ 0&amp;0&amp;0&amp;1\\ 1&amp;0&amp;0&amp;0\end{pmatrix}$</p>
+<p>$t(R)$ 的关系矩阵为 $M=M_1\vee M_2\vee M_3\vee M_4=\begin{pmatrix}1&amp;1&amp;1&amp;1\\ 1&amp;1&amp;1&amp;1\\ 1&amp;1&amp;1&amp;1\\ 1&amp;1&amp;1&amp;1\end{pmatrix}$, 于是 $t(R)$ 即为 $A\times A$.</p>
 <h2 id="图论"><a href="#图论" class="headerlink" title="图论"></a>图论</h2><h3 id="距离和连通性"><a href="#距离和连通性" class="headerlink" title="距离和连通性"></a>距离和连通性</h3><p>设有向图 $G=<V,E>$, $V=\{v_1,v_2,v_3, v_4\}$, 如下图所示, 回答:</p>
 <p><img src="/images/pic15.png" alt="图 G"></p>
 <ol>
 <li>长度为 $3$ 的路一共有几条? 其中回路有几条?</li>
 <li>图论中, 哪类图的可达性矩阵一定是对称的? 计算 $G$ 的可达性矩阵, 判断其是否是对称矩阵.</li>
 </ol>
+<p><strong>解</strong> (1) 图 $G$ 的邻接矩阵为</p>
+<script type="math/tex; mode=display">\text{A}=\begin{pmatrix}1&2&0&0\\ 0&0&1&0\\ 1&0&0&1\\ 0&0&1&0\end{pmatrix}</script><script type="math/tex; mode=display">A^2=\begin{pmatrix}1&2&2&0\\ 1&0&0&1\\ 1&2&1&0\\ 1&0&0&1\end{pmatrix}\mathrm{A}^3=\begin{pmatrix}3&2&2&2\\ 1&2&1&0\\ 2&2&2&1\\ 1&2&1&0\end{pmatrix},\mathrm{A}^4=\begin{pmatrix}5&6&4&2\\ 2&2&2&1\\ 4&4&3&2\\ 2&2&2&1\end{pmatrix}</script><p>于是 $G$ 中长度为 3 的通路有 24 条, 有 7 条回路.</p>
+<p>(2) $G$ 可达矩阵为 $P=\begin{pmatrix}1&amp;1&amp;1&amp;1\\ 1&amp;1&amp;1&amp;1\\ 1&amp;1&amp;1&amp;1\\ 1&amp;1&amp;1&amp;1\end{pmatrix}$, 是一个对称矩阵.</p>
 <h3 id="证明题"><a href="#证明题" class="headerlink" title="证明题"></a>证明题</h3><p>设 $G$ 是具有 $k (k \geqslant 2)$ 个连通分支的平面图, 证明:</p>
 <script type="math/tex; mode=display">n - m + r = k + 1</script><p>其中 $n,m,r$ 分别为 $G$ 的结点数, 边数和面数.</p>
 ]]></content>
