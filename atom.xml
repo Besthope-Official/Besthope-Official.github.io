@@ -24,9 +24,14 @@
     <updated>2023-06-13T16:20:33.652Z</updated>
     
     
-    <summary type="html">&lt;p&gt;考前的最后挣扎. 全是题目, 不再一五一十地复习基本概念了, 会做题和懂数学是两码事, 时间该留到平时钻研.&lt;/p&gt;
-&lt;p&gt;说实话这学期的离散学的内容还是太松散了. 数理逻辑, 关系代数, 图论, 然后没了. 我觉得这门课改成 Introduction to Discrete Mathematics 可能更合适. 隔壁 UESTC 同一本教材讲得明显比咱好, NJU 的佬问我问题一查大半天, 惭愧.&lt;/p&gt;
-&lt;p&gt;总结一下往年的试卷和作业试题. 总的来说还是很简单的. 其实我还有一个习题集, 但那个超纲很多, 说不定哪天合并一下.&lt;/p&gt;</summary>
+    <summary type="html">&lt;p&gt;考前的最后挣扎. 全是题目, 不再一五一十地复习基本概念了,
+会做题和懂数学是两码事, 时间该留到平时钻研.&lt;/p&gt;
+&lt;p&gt;说实话这学期的离散学的内容还是太松散了. 数理逻辑, 关系代数, 图论,
+然后没了. 我觉得这门课改成 Introduction to Discrete Mathematics
+可能更合适. 隔壁 UESTC 同一本教材讲得明显比咱好, NJU
+的佬问我问题一查大半天, 惭愧.&lt;/p&gt;
+&lt;p&gt;总结一下往年的试卷和作业试题. 总的来说还是很简单的.
+其实我还有一个习题集, 但那个超纲很多, 说不定哪天合并一下.&lt;/p&gt;</summary>
     
     
     
@@ -76,9 +81,15 @@
     <updated>2023-06-12T08:52:30.831Z</updated>
     
     
-    <summary type="html">&lt;p&gt;所谓人生苦短, 我用 Python. 经常戏称别的语言 Python 化, 不就是说明了 Python 作为现代语言的优越性. 当然, 不吹不贬地说, 其实关键在于项目需求, 所以用什么其实并不重要.&lt;/p&gt;
-&lt;p&gt;在 Python Web 开发这块, Django 和 Flask 平分天下, 而 Flask 框架的优点就在于它”轻量”, “微”, 简直就是 vscode 的翻版, 靠社区 extension 高效驱动.&lt;/p&gt;
-&lt;p&gt;当然, Flask 的使用不局限于 Web 应用的开发, 甚至说, &lt;strong&gt;作为后端提供接口&lt;/strong&gt;才是发挥它功用的最好做法. 这正是本文要完成的事情!&lt;/p&gt;</summary>
+    <summary type="html">&lt;p&gt;所谓人生苦短, 我用 Python. 经常戏称别的语言 Python 化, 不就是说明了
+Python 作为现代语言的优越性. 当然, 不吹不贬地说, 其实关键在于项目需求,
+所以用什么其实并不重要.&lt;/p&gt;
+&lt;p&gt;在 Python Web 开发这块, Django 和 Flask 平分天下, 而 Flask
+框架的优点就在于它&quot;轻量&quot;, &quot;微&quot;, 简直就是 vscode 的翻版, 靠社区 extension
+高效驱动.&lt;/p&gt;
+&lt;p&gt;当然, Flask 的使用不局限于 Web 应用的开发, 甚至说,
+&lt;strong&gt;作为后端提供接口&lt;/strong&gt;才是发挥它功用的最好做法.
+这正是本文要完成的事情!&lt;/p&gt;</summary>
     
     
     
@@ -182,9 +193,13 @@
     
     
     <summary type="html">&lt;p&gt;为什么 Shell 脚本要用 Python 来写!? UNIX用户痛骂这是大逆不道.&lt;/p&gt;
-&lt;p&gt;比起 BAT/Bash 我更喜欢 Python 的语法, 高效又简洁, 想想看一个list bash要怎么写. 有 os/sys 模块的存在完全可以把 Python 写成类shell脚本(本质即调用shell命令), 再加上 &lt;code&gt;pandas&lt;/code&gt; 等包更是让 Python 实用到一个新的高度(Windows干活干的多).&lt;/p&gt;
+&lt;p&gt;比起 BAT/Bash 我更喜欢 Python 的语法, 高效又简洁, 想想看一个list
+bash要怎么写. 有 os/sys 模块的存在完全可以把 Python
+写成类shell脚本(本质即调用shell命令), 再加上 &lt;code&gt;pandas&lt;/code&gt;
+等包更是让 Python 实用到一个新的高度(Windows干活干的多).&lt;/p&gt;
 &lt;p&gt;当然, 工具就是顺手就好. 你喜欢用什么写就用什么写.&lt;/p&gt;
-&lt;p&gt;不考虑更底层的应用. 别扯什么嵌入式驱动, C语言顶着你的脑门问: 师傅, 我是干什么的.&lt;/p&gt;</summary>
+&lt;p&gt;不考虑更底层的应用. 别扯什么嵌入式驱动, C语言顶着你的脑门问: 师傅,
+我是干什么的.&lt;/p&gt;</summary>
     
     
     
@@ -232,8 +247,15 @@ class=&quot;footnote-ref&quot; id=&quot;fnref1&quot; role=&quot;doc-noteref&quot
     <updated>2023-06-13T05:31:00.038Z</updated>
     
     
-    <summary type="html">&lt;p&gt;日常刷知乎, 然后看到了这样一个问题: &lt;a href=&quot;https://www.zhihu.com/question/585554274/&quot;&gt;沃顿商学院教授要求学生必须用 ChatGPT 写作业，应该如何正确看待 AI 带来的利弊？&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;之前我也看到一些态度截然相反的高校. 说实在话, 反对历史必然的行为, 无异于杯水车薪, 想想 Luddite movement 也不会真正让我们重回原始社会, 闭关锁国的历史也不必再度经历; 至于使用工具是否会反噬自身, 只要在不侵害他人的利益下, 我想这个自由最好让步于个人, 想想你是怎么注册上了ChatGPT的账号. 最后, 这句话送给AI时代下学习一切的你和我:&lt;/p&gt;
+    <summary type="html">&lt;p&gt;日常刷知乎, 然后看到了这样一个问题: &lt;a
+href=&quot;https://www.zhihu.com/question/585554274/&quot;&gt;沃顿商学院教授要求学生必须用
+ChatGPT 写作业，应该如何正确看待 AI 带来的利弊？&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;之前我也看到一些态度截然相反的高校. 说实在话, 反对历史必然的行为,
+无异于杯水车薪, 想想 Luddite movement 也不会真正让我们重回原始社会,
+闭关锁国的历史也不必再度经历; 至于使用工具是否会反噬自身,
+只要在不侵害他人的利益下, 我想这个自由最好让步于个人,
+想想你是怎么注册上了ChatGPT的账号. 最后,
+这句话送给AI时代下学习一切的你和我:&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;拥抱变化要比拒绝变化简单的多.&lt;/p&gt;
 &lt;/blockquote&gt;</summary>
