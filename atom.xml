@@ -6,7 +6,7 @@
   <link href="http://example.com/atom.xml" rel="self"/>
   
   <link href="http://example.com/"/>
-  <updated>2023-06-13T16:20:33.652Z</updated>
+  <updated>2023-08-04T14:22:25.732Z</updated>
   <id>http://example.com/</id>
   
   <author>
@@ -15,6 +15,57 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>杭电暑期训练</title>
+    <link href="http://example.com/2023/07/19/%E6%9D%AD%E7%94%B5%E6%9A%91%E6%9C%9F%E8%AE%AD%E7%BB%83/"/>
+    <id>http://example.com/2023/07/19/%E6%9D%AD%E7%94%B5%E6%9A%91%E6%9C%9F%E8%AE%AD%E7%BB%83/</id>
+    <published>2023-07-19T05:20:11.000Z</published>
+    <updated>2023-08-04T14:22:25.732Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;补点杭电暑期训练营的题目.&lt;/p&gt;
+&lt;p&gt;菜比不如去补点 CF 上的思维模拟题, 或者跟着闫总做题去. 给自己的任务:
+做出签到题就是胜利. 银牌题怕是这辈子也做不出了. 8.22 就是 CCPC 的网络赛,
+估计到时候要被川内其他学校薄纱.&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="算法" scheme="http://example.com/categories/%E7%AE%97%E6%B3%95/"/>
+    
+    
+    <category term="算法" scheme="http://example.com/tags/%E7%AE%97%E6%B3%95/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Effective-GDB!</title>
+    <link href="http://example.com/2023/06/27/Effective-GDB/"/>
+    <id>http://example.com/2023/06/27/Effective-GDB/</id>
+    <published>2023-06-27T02:31:00.000Z</published>
+    <updated>2023-06-27T03:26:51.685Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;真的有人会用 GDB 调试吗? 是旧朝遗老显摆, 还是没事找事? IDE 的
+Debugger 不好用吗...&lt;/p&gt;
+&lt;p&gt;估计做完CSAPP的Lab就把GDB丢掉了, 或者在OS作业里耍耍, 又或者去打CTF了,
+别的想不到 GDB 能干什么了, 吗?&lt;/p&gt;
+&lt;p&gt;可能你没有了解完全 GDB 可以做的一切. 你可能觉得 GDB 一点也不直观,
+那为什么不试试 TUI; 你可能觉得反复键入指令太麻烦, 为什么不用 Python
+写脚本...&lt;/p&gt;
+&lt;p&gt;不过话又说回来, 学习 GDB, 其实学习更主要, 学会调试的技巧,
+总会在未来的某一天帮助到你.&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="调试" scheme="http://example.com/categories/%E8%B0%83%E8%AF%95/"/>
+    
+    
+    <category term="GDB" scheme="http://example.com/tags/GDB/"/>
+    
+    <category term="调试" scheme="http://example.com/tags/%E8%B0%83%E8%AF%95/"/>
+    
+  </entry>
   
   <entry>
     <title>离散考前挣扎</title>
@@ -49,14 +100,14 @@
     <link href="http://example.com/2023/05/16/SQL-cheetsheet/"/>
     <id>http://example.com/2023/05/16/SQL-cheetsheet/</id>
     <published>2023-05-16T15:27:40.000Z</published>
-    <updated>2023-05-16T15:47:29.181Z</updated>
+    <updated>2023-06-26T07:32:55.224Z</updated>
     
     
     <summary type="html">&lt;p&gt;初步接触 DBMS: 不就是存个数据吗, 有什么难的. 增删改查,
 我上我也行.&lt;/p&gt;
 &lt;p&gt;进一步了解 DBMS: 好像有点东西&lt;del&gt;(全然余裕)&lt;/del&gt;.&lt;/p&gt;
 &lt;p&gt;看完一本 DBMS 的书后: B+树索引结构, 关系模型和外键约束,
-连接优化、投影消除...我错了呜呜呜❤要被灌成泡芙了❤&lt;/p&gt;
+连接优化、投影消除...&lt;/p&gt;
 &lt;p&gt;记这么多DML作甚? &lt;del&gt;实际还不是用的GUI.&lt;/del&gt;
 涉及复杂业务逻辑的时候, 写SQL语句照样烧脑. 设计表的时候还不是照样头疼.
 不考虑优化, 结果性能巨差有谁来负责. 没个 Cheatsheet
@@ -78,7 +129,7 @@
     <link href="http://example.com/2023/04/25/Flask%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E5%85%A5%E5%9C%9F/"/>
     <id>http://example.com/2023/04/25/Flask%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E5%85%A5%E5%9C%9F/</id>
     <published>2023-04-25T10:10:59.000Z</published>
-    <updated>2023-06-12T08:52:30.831Z</updated>
+    <updated>2023-07-01T15:42:54.428Z</updated>
     
     
     <summary type="html">&lt;p&gt;所谓人生苦短, 我用 Python. 经常戏称别的语言 Python 化, 不就是说明了
@@ -306,7 +357,7 @@ role=&quot;doc-noteref&quot;&gt;&lt;sup&gt;1&lt;/sup&gt;&lt;/a&gt;. 解决这个
     <link href="http://example.com/2023/01/28/%E9%9A%8F%E6%84%9F%E5%BD%95/"/>
     <id>http://example.com/2023/01/28/%E9%9A%8F%E6%84%9F%E5%BD%95/</id>
     <published>2023-01-28T14:41:17.000Z</published>
-    <updated>2023-06-18T02:47:09.151Z</updated>
+    <updated>2023-08-23T02:23:45.145Z</updated>
     
     
     <summary type="html">&lt;p&gt;记录不时的奇思妙想. 奇怪的梦, 无垠的呓语, 似非的感悟.

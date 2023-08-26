@@ -27,7 +27,7 @@
 <meta property="og:description" content="所谓人生苦短, 我用 Python. 经常戏称别的语言 Python 化, 不就是说明了 Python 作为现代语言的优越性. 当然, 不吹不贬地说, 其实关键在于项目需求, 所以用什么其实并不重要. 在 Python Web 开发这块, Django 和 Flask 平分天下, 而 Flask 框架的优点就在于它&quot;轻量&quot;, &quot;微&quot;, 简直就是 vscode 的翻版, 靠社区 extens">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2023-04-25T10:10:59.000Z">
-<meta property="article:modified_time" content="2023-06-12T08:52:30.831Z">
+<meta property="article:modified_time" content="2023-07-01T15:42:54.428Z">
 <meta property="article:author" content="Besthope">
 <meta property="article:tag" content="Python">
 <meta property="article:tag" content="Flask">
@@ -95,7 +95,7 @@
 
 
 <nav class="site-nav">
-  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li><li class="menu-item menu-item-links"><a href="/links/" rel="section"><i class="fa fa-link fa-fw"></i>友链</a></li><li class="menu-item menu-item-rss"><a href="/atom.xml" rel="section"><i class="fa fa-rss fa-fw"></i>RSS</a></li>
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li><li class="menu-item menu-item-links"><a href="/links/" rel="section"><i class="fa fa-link fa-fw"></i>友链</a></li><li class="menu-item menu-item-gallery"><a href="/gallery/" rel="section"><i class="fa fa-paint-brush fa-fw"></i>画廊</a></li><li class="menu-item menu-item-rss"><a href="/atom.xml" rel="section"><i class="fa fa-rss fa-fw"></i>RSS</a></li>
       <li class="menu-item menu-item-search">
         <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
         </a>
@@ -148,7 +148,7 @@
         <div class="post-toc-wrap sidebar-panel">
             <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%90%8E%E7%AB%AF-%E4%BA%A4%E4%BA%92%E6%95%B0%E6%8D%AE%E5%BA%93"><span class="nav-number">1.</span> <span class="nav-text">后端: 交互数据库</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B7%A5%E6%AC%B2%E5%96%84%E5%85%B6%E4%BA%8B-%E5%BF%85%E5%85%88%E5%88%A9%E5%85%B6%E5%99%A8"><span class="nav-number">2.</span> <span class="nav-text">工欲善其事, 必先利其器</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%BD%93%E7%84%B6-%E4%BD%A0%E8%A6%81%E5%AE%89%E8%A3%85-flask"><span class="nav-number">2.1.</span> <span class="nav-text">当然, 你要安装 Flask</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#git-%E6%98%AF%E4%BD%A0%E7%9A%84%E5%9F%BA%E6%9C%AC%E5%8A%9F"><span class="nav-number">2.2.</span> <span class="nav-text">Git 是你的基本功</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%96%87%E6%A1%A3%E7%BC%96%E5%86%99%E6%B5%8B%E8%AF%95%E5%B7%A5%E5%85%B7"><span class="nav-number">2.3.</span> <span class="nav-text">文档编写&#x2F;测试工具</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E5%BA%93%E7%B3%BB%E7%BB%9F"><span class="nav-number">2.4.</span> <span class="nav-text">数据库系统</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%88%E5%88%AB%E6%80%A5%E7%9D%80-coding-%E4%BD%A0%E8%BF%98%E6%9C%89%E6%96%87%E6%A1%A3%E6%B2%A1%E5%86%99"><span class="nav-number">3.</span> <span class="nav-text">先别急着 coding,
 你还有文档没写</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BA%A7%E5%93%81%E5%8E%9F%E5%9E%8B%E5%85%88%E8%A7%A3%E6%9E%84"><span class="nav-number">3.1.</span> <span class="nav-text">产品原型——先解构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#restful-api"><span class="nav-number">3.2.</span> <span class="nav-text">RESTful API</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%AE%80%E5%8D%95%E4%BB%8B%E7%BB%8D-rest-%E6%9E%B6%E6%9E%84%E5%92%8C-web-%E5%9F%BA%E7%A1%80"><span class="nav-number">3.2.1.</span> <span class="nav-text">简单介绍 REST 架构和 Web
-基础</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#restful-%E7%9A%84%E8%AE%BE%E8%AE%A1%E7%BB%86%E8%8A%82"><span class="nav-number">3.2.2.</span> <span class="nav-text">RESTful 的设计细节</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%92%8C%E5%89%8D%E7%AB%AF%E9%85%8D%E5%90%88"><span class="nav-number">3.3.</span> <span class="nav-text">和前端配合</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%88%91%E8%BF%98%E6%B2%A1%E5%AD%A6%E8%BF%87%E6%95%B0%E6%8D%AE%E5%BA%93"><span class="nav-number">4.</span> <span class="nav-text">我还没学过数据库</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%88%9B%E8%A1%A8-%E4%BD%A0%E6%98%AF%E4%B8%AA%E8%AE%BE%E8%AE%A1%E5%B8%88-%E8%80%81%E5%BC%9F"><span class="nav-number">4.1.</span> <span class="nav-text">创表: 你是个设计师, 老弟</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#query-%E6%88%91%E5%8F%AA%E4%BC%9A%E5%A2%9E%E5%88%A0%E6%94%B9%E6%9F%A5"><span class="nav-number">4.2.</span> <span class="nav-text">Query: 我只会增删改查</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%A5%BD%E4%BA%86-%E7%8E%B0%E5%9C%A8%E5%BC%80%E5%A7%8B%E8%BF%9B%E5%85%A5-flask"><span class="nav-number">5.</span> <span class="nav-text">好了, 现在开始进入 Flask</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8A%A8%E8%BA%AB%E5%89%8D-%E5%85%88%E8%A7%84%E8%8C%83%E5%A5%BD%E4%BD%A0%E7%9A%84%E9%A1%B9%E7%9B%AE%E6%A1%86%E6%9E%B6"><span class="nav-number">5.1.</span> <span class="nav-text">动身前, 先规范好你的项目框架</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6"><span class="nav-number">5.1.1.</span> <span class="nav-text">配置文件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%B7%A5%E5%8E%82%E5%87%BD%E6%95%B0%E5%92%8C%E8%93%9D%E5%9B%BE"><span class="nav-number">5.1.2.</span> <span class="nav-text">工厂函数和蓝图</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BF%85%E9%80%9F%E5%90%AF%E5%8A%A8%E9%A1%B9%E7%9B%AE"><span class="nav-number">5.2.</span> <span class="nav-text">迅速启动项目</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%95%8A%E8%BF%99-%E7%9C%9F%E7%9A%84%E8%A6%81%E5%86%8D%E5%86%99%E4%B8%80%E9%81%8D-model-%E5%90%97"><span class="nav-number">5.3.</span> <span class="nav-text">啊这, 真的要再写一遍 Model 吗</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#sqlacodegen"><span class="nav-number">5.3.1.</span> <span class="nav-text">sqlacodegen</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8F%AA%E8%BF%94%E5%9B%9Ejson%E8%80%8C%E5%B7%B2-%E5%BE%88%E7%AE%80%E5%8D%95"><span class="nav-number">5.4.</span> <span class="nav-text">只返回JSON而已, 很简单</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9C%80%E5%96%9C%E6%AC%A2%E7%9A%84%E4%B8%80%E9%9B%86-%E5%86%99%E6%B5%8B%E8%AF%95"><span class="nav-number">5.5.</span> <span class="nav-text">最喜欢的一集: 写测试</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99"><span class="nav-number">6.</span> <span class="nav-text">参考资料</span></a></li></ol></div>
+基础</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#restful-%E7%9A%84%E8%AE%BE%E8%AE%A1%E7%BB%86%E8%8A%82"><span class="nav-number">3.2.2.</span> <span class="nav-text">RESTful 的设计细节</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%92%8C%E5%89%8D%E7%AB%AF%E9%85%8D%E5%90%88"><span class="nav-number">3.3.</span> <span class="nav-text">和前端配合</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%88%91%E8%BF%98%E6%B2%A1%E5%AD%A6%E8%BF%87%E6%95%B0%E6%8D%AE%E5%BA%93"><span class="nav-number">4.</span> <span class="nav-text">我还没学过数据库</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%88%9B%E8%A1%A8-%E4%BD%A0%E6%98%AF%E4%B8%AA%E8%AE%BE%E8%AE%A1%E5%B8%88-%E8%80%81%E5%BC%9F"><span class="nav-number">4.1.</span> <span class="nav-text">创表: 你是个设计师, 老弟</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#query-%E6%88%91%E5%8F%AA%E4%BC%9A%E5%A2%9E%E5%88%A0%E6%94%B9%E6%9F%A5"><span class="nav-number">4.2.</span> <span class="nav-text">Query: 我只会增删改查</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%A5%BD%E4%BA%86-%E7%8E%B0%E5%9C%A8%E5%BC%80%E5%A7%8B%E8%BF%9B%E5%85%A5-flask"><span class="nav-number">5.</span> <span class="nav-text">好了, 现在开始进入 Flask</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BF%85%E9%80%9F%E5%90%AF%E5%8A%A8%E9%A1%B9%E7%9B%AE"><span class="nav-number">5.1.</span> <span class="nav-text">迅速启动项目</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6"><span class="nav-number">5.1.1.</span> <span class="nav-text">配置文件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%B7%A5%E5%8E%82%E5%87%BD%E6%95%B0%E5%92%8C%E8%93%9D%E5%9B%BE"><span class="nav-number">5.1.2.</span> <span class="nav-text">工厂函数和蓝图</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%95%8A%E8%BF%99-%E7%9C%9F%E7%9A%84%E8%A6%81%E5%86%8D%E5%86%99%E4%B8%80%E9%81%8D-model-%E5%90%97"><span class="nav-number">5.2.</span> <span class="nav-text">啊这, 真的要再写一遍 Model 吗</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#sqlacodegen"><span class="nav-number">5.2.1.</span> <span class="nav-text">sqlacodegen</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8F%AA%E8%BF%94%E5%9B%9Ejson%E8%80%8C%E5%B7%B2-%E5%BE%88%E7%AE%80%E5%8D%95"><span class="nav-number">5.3.</span> <span class="nav-text">只返回JSON而已, 很简单</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9C%80%E5%96%9C%E6%AC%A2%E7%9A%84%E4%B8%80%E9%9B%86-%E5%86%99%E6%B5%8B%E8%AF%95"><span class="nav-number">5.4.</span> <span class="nav-text">最喜欢的一集: 写测试</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99"><span class="nav-number">6.</span> <span class="nav-text">参考资料</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -163,16 +163,16 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">18</span>
+          <span class="site-state-item-count">20</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
-        <span class="site-state-item-count">8</span>
+        <span class="site-state-item-count">9</span>
         <span class="site-state-item-name">分类</span>
       </div>
       <div class="site-state-item site-state-tags">
-        <span class="site-state-item-count">29</span>
+        <span class="site-state-item-count">31</span>
         <span class="site-state-item-name">标签</span>
       </div>
   </nav>
@@ -247,7 +247,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2023-06-12 16:52:30" itemprop="dateModified" datetime="2023-06-12T16:52:30+08:00">2023-06-12</time>
+      <time title="修改时间：2023-07-01 23:42:54" itemprop="dateModified" datetime="2023-07-01T23:42:54+08:00">2023-07-01</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -266,7 +266,7 @@
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">本文字数：</span>
-      <span>2.6k</span>
+      <span>2.7k</span>
     </span>
     <span class="post-meta-item" title="阅读时长">
       <span class="post-meta-item-icon">
@@ -296,6 +296,9 @@ Python 作为现代语言的优越性. 当然, 不吹不贬地说, 其实关键�
 <span id="more"></span>
 <p>先把框架搭好. 其它的之后再说.</p>
 <h2 id="后端-交互数据库">后端: 交互数据库</h2>
+<p>前后端: 简单来说就是前端负责页面和交互,
+后端负责提供数据以及实现与数据库的交互</p>
+<p>后端干的事情一点也不酷</p>
 <h2 id="工欲善其事-必先利其器">工欲善其事, 必先利其器</h2>
 <h3 id="当然-你要安装-flask">当然, 你要安装 Flask</h3>
 <p>配好 Python 开发环境. 我这里用的是WSL,
@@ -526,13 +529,12 @@ Guide</a>.</p>
 <h2 id="好了-现在开始进入-flask">好了, 现在开始进入 Flask</h2>
 <p>网上有很多优秀的 Flask 项目值得学习: <a
 target="_blank" rel="noopener" href="https://github.com/humiaozuzu/awesome-flask">Awesome Flask</a></p>
-<h3 id="动身前-先规范好你的项目框架">动身前, 先规范好你的项目框架</h3>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">.</span><br><span class="line">├── APIs</span><br><span class="line">│   ├── course</span><br><span class="line">│   │   └── views.py</span><br><span class="line">│   ├── __init__.py</span><br><span class="line">│   ├── models.py</span><br><span class="line">│   └── sections</span><br><span class="line">│       └── views.py</span><br><span class="line">├── config.py</span><br><span class="line">├── README.md</span><br><span class="line">├── requirements.txt</span><br><span class="line">├── run.py</span><br><span class="line">└── tests</span><br><span class="line">    └── test_api.py</span><br></pre></td></tr></table></figure>
-<p>这只是一个最简单的项目框架.</p>
+<h3 id="迅速启动项目">迅速启动项目</h3>
+<p>Flask 比其它框架(例如 Spring Boot)好的一点在于它很干净.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> flask <span class="keyword">import</span> Flask</span><br><span class="line"></span><br><span class="line">app = Flask(__name__)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="meta">@app.route(<span class="params"><span class="string">&#x27;/&#x27;</span></span>)</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">hello_world</span>():  <span class="comment"># put application&#x27;s code here</span></span><br><span class="line">    <span class="keyword">return</span> <span class="string">&#x27;Hello World!&#x27;</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    app.run()</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 <h4 id="配置文件">配置文件</h4>
 <p><code>config.py</code> 配置环境</p>
 <h4 id="工厂函数和蓝图">工厂函数和蓝图</h4>
-<h3 id="迅速启动项目">迅速启动项目</h3>
 <h3 id="啊这-真的要再写一遍-model-吗">啊这, 真的要再写一遍 Model 吗</h3>
 <h4 id="sqlacodegen">sqlacodegen</h4>
 <p>血的教训: <strong>配好你的环境</strong></p>
@@ -623,14 +625,14 @@ using GRANT with IDENTIFIED by password in MySQL</a>: 讨论了为什么 MySQL
       <i class="fa fa-chart-line"></i>
     </span>
       <span>站点总字数：</span>
-    <span title="站点总字数">43k</span>
+    <span title="站点总字数">48k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
       <span>站点阅读时长 &asymp;</span>
-    <span title="站点阅读时长">2:35</span>
+    <span title="站点阅读时长">2:56</span>
   </span>
 </div>
   <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/pisces/" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
@@ -687,7 +689,7 @@ function display()
 
   const pic = 8;
   var bgs = [];
-
+  
   for (i = 1; i <= pic; i++) {
     bgs.push("/images/bg" + i + ".jpg");
   }
