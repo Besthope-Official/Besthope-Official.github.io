@@ -6,7 +6,7 @@
   <link href="http://example.com/atom.xml" rel="self"/>
   
   <link href="http://example.com/"/>
-  <updated>2023-09-16T13:09:01.829Z</updated>
+  <updated>2023-09-25T15:52:23.201Z</updated>
   <id>http://example.com/</id>
   
   <author>
@@ -15,6 +15,56 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>我的刷题日记</title>
+    <link href="http://example.com/2023/09/25/%E4%B9%9D%E6%9C%88%E4%BD%A0%E5%88%B7%E9%A2%98%E4%BA%86%E5%90%97/"/>
+    <id>http://example.com/2023/09/25/%E4%B9%9D%E6%9C%88%E4%BD%A0%E5%88%B7%E9%A2%98%E4%BA%86%E5%90%97/</id>
+    <published>2023-09-25T13:47:48.000Z</published>
+    <updated>2023-09-25T15:52:23.201Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;悲报: 要去CCPC桂林赛区坐牢了.&lt;/p&gt;
+&lt;p&gt;校赛被队友带飞了, 身不由己, 现在希望自己要打出点成绩不要太丢脸.
+从今天开始高强度刷题. Codeforces Div 1/2 一题不落, Atcoder ABC 狠狠开刷,
+区域赛的 vp 狠狠开打...&lt;/p&gt;
+&lt;p&gt;就看看我又没有恒心做到日更了, 不管怎的先开个究极大坑在这里.&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="算法" scheme="http://example.com/categories/%E7%AE%97%E6%B3%95/"/>
+    
+    
+    <category term="算法" scheme="http://example.com/tags/%E7%AE%97%E6%B3%95/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Python OOP Cookbook</title>
+    <link href="http://example.com/2023/09/25/Python-OOP/"/>
+    <id>http://example.com/2023/09/25/Python-OOP/</id>
+    <published>2023-09-25T02:40:25.000Z</published>
+    <updated>2023-09-25T06:23:06.023Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;学习数据结构一个重要的点是&lt;strong&gt;数据抽象&lt;/strong&gt;,
+也是计算机人毕生所追求的理念: 将现实世界的问题抽象成形式语言,
+变为&lt;em&gt;计算机可读&lt;/em&gt;的数据. 这种数据的组织结构,
+在&lt;em&gt;面向对象编程&lt;/em&gt;(&lt;strong&gt;O&lt;/strong&gt;bject
+&lt;strong&gt;O&lt;/strong&gt;riented &lt;strong&gt;P&lt;/strong&gt;rogramming)范式中,
+被抽象成一个&lt;strong&gt;类&lt;/strong&gt;, 这也是 OOP 的核心.&lt;/p&gt;
+&lt;p&gt;Python 的 OOP 和其它语言有些细微的差距, 但是 Python 本身作为一门 OOP
+语言, 自然在机制的实现上不输他者. 正好这学期的 DSA 拿 Python 教学,
+正好也想更系统地学习 OOP, 遂有了这篇文章的产生.&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="Python" scheme="http://example.com/categories/Python/"/>
+    
+    
+    <category term="Python" scheme="http://example.com/tags/Python/"/>
+    
+  </entry>
   
   <entry>
     <title>日常刷题</title>
@@ -378,7 +428,7 @@ role=&quot;doc-noteref&quot;&gt;&lt;sup&gt;1&lt;/sup&gt;&lt;/a&gt;. 解决这个
     <link href="http://example.com/2023/01/28/%E9%9A%8F%E6%84%9F%E5%BD%95/"/>
     <id>http://example.com/2023/01/28/%E9%9A%8F%E6%84%9F%E5%BD%95/</id>
     <published>2023-01-28T14:41:17.000Z</published>
-    <updated>2023-09-11T15:55:28.363Z</updated>
+    <updated>2023-09-25T04:45:51.424Z</updated>
     
     
     <summary type="html">&lt;p&gt;记录不时的奇思妙想. 奇怪的梦, 无垠的呓语, 似非的感悟.
@@ -503,61 +553,6 @@ href=&quot;https://www.acwing.com/activity/content/introduction/2712/&quot;&gt;�
     
     
     <category term="杂谈" scheme="http://example.com/tags/%E6%9D%82%E8%B0%88/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>新冠生存手册</title>
-    <link href="http://example.com/2022/12/22/%E6%96%B0%E5%86%A0%E7%94%9F%E5%AD%98%E6%89%8B%E5%86%8C/"/>
-    <id>http://example.com/2022/12/22/%E6%96%B0%E5%86%A0%E7%94%9F%E5%AD%98%E6%89%8B%E5%86%8C/</id>
-    <published>2022-12-22T08:15:32.000Z</published>
-    <updated>2023-01-04T05:56:52.745Z</updated>
-    
-    
-    <summary type="html">&lt;p&gt;感染新冠快成每日打卡项目了. 每天都能刷到同学感染的信息,
-&quot;今天又发了39度的烧&quot;——然而这并不是值得炫耀的一件事. 二阳化碳, 三阳开泰,
-四阳方尊, 五阳电动车, 六阳魁首, 七阳化二锰, 八阳化二硫, 九阳豆浆机
-如果能在全员感染的范围内存活下来, 那么你就是大赢.
-我不相信染病后没有后遗症, 就算苟我也要撑到群体免疫快结束的时候.
-提心吊胆地过着放开后的日子, 保持身处末世一般的警惕,
-做好保护自己生命的职责.&lt;/p&gt;
-&lt;p&gt;更新: 12.28 阳了 估计是舍友交叉感染的 Q:
-有个一声不吭的舍友是怎样的一种感受? 被害惨了.&lt;/p&gt;</summary>
-    
-    
-    
-    <category term="杂谈" scheme="http://example.com/categories/%E6%9D%82%E8%B0%88/"/>
-    
-    
-    <category term="杂谈" scheme="http://example.com/tags/%E6%9D%82%E8%B0%88/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>前缀函数和KMP算法</title>
-    <link href="http://example.com/2022/12/21/KMP%E7%AE%97%E6%B3%95/"/>
-    <id>http://example.com/2022/12/21/KMP%E7%AE%97%E6%B3%95/</id>
-    <published>2022-12-21T12:37:01.000Z</published>
-    <updated>2023-03-11T01:56:04.034Z</updated>
-    
-    
-    <summary type="html">&lt;p&gt;做期末大作业里面有个字符串匹配的问题, 用暴力算法做完觉得不够爽,
-于是自找的麻烦.&lt;/p&gt;
-&lt;p&gt;想用最简明的方式去解释这个较为抽象的算法! 事实上明白了一个道理:
-缺乏数学的算法都是玄学, 只有数学证明了才能让人心服口服......&lt;/p&gt;
-&lt;p&gt;就好像物理规律, 如果数学上证明了成立, 你会感到无比安心.
-模拟样例终归比不了证明有说服力.&lt;/p&gt;</summary>
-    
-    
-    
-    <category term="数据结构" scheme="http://example.com/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
-    
-    
-    <category term="算法" scheme="http://example.com/tags/%E7%AE%97%E6%B3%95/"/>
-    
-    <category term="字符串" scheme="http://example.com/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2/"/>
-    
-    <category term="数据结构" scheme="http://example.com/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
     
   </entry>
   
