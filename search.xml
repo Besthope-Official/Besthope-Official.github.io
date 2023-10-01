@@ -4794,80 +4794,61 @@ class="math inline">\(f(a_{l_i...r_i})\)</span>.</p>
   <entry>
     <title>Python OOP Cookbook</title>
     <url>/2023/09/25/Python-OOP/</url>
-    <content><![CDATA[<p>学习数据结构一个重要的点是<strong>数据抽象</strong>,
-也是计算机人毕生所追求的理念: 将现实世界的问题抽象成形式语言,
-变为<em>计算机可读</em>的数据. 这种数据的组织结构,
-在<em>面向对象编程</em>(<strong>O</strong>bject
-<strong>O</strong>riented <strong>P</strong>rogramming)范式中,
-被抽象成一个<strong>类</strong>, 这也是 OOP 的核心.</p>
-<p>Python 的 OOP 和其它语言有些细微的差距, 但是 Python 本身作为一门 OOP
-语言, 自然在机制的实现上不输他者. 正好这学期的 DSA 拿 Python 教学,
-正好也想更系统地学习 OOP, 遂有了这篇文章的产生.</p>
+    <content><![CDATA[<p>学习数据结构一个重要的点是<strong>数据抽象</strong>, 也是计算机人毕生所追求的理念: 将现实世界的问题抽象成形式语言, 变为<em>计算机可读</em>的数据. 这种数据的组织结构, 在<em>面向对象编程</em>(<strong>O</strong>bject <strong>O</strong>riented <strong>P</strong>rogramming)范式中, 被抽象成一个<strong>类</strong>, 这也是 OOP 的核心.</p>
+<p>Python 的 OOP 和其它语言有些细微的差距, 但是 Python 本身作为一门 OOP 语言, 自然在机制的实现上不输他者. 正好这学期的 DSA 拿 Python 教学, 正好也想更系统地学习 OOP, 遂有了这篇文章的产生.</p>
 <span id="more"></span>
-<h2 id="before-作用域与命名空间">Before: 作用域与命名空间</h2>
-<ul>
-<li><code>namespace</code> 各位肯定不陌生.
-命名空间表示<em>名称到对象的映射</em>.
-<ul>
+<h2 id="Before-作用域与命名空间"><a href="#Before-作用域与命名空间" class="headerlink" title="Before: 作用域与命名空间"></a>Before: 作用域与命名空间</h2><ul>
+<li><code>namespace</code> 各位肯定不陌生. 命名空间表示<em>名称到对象的映射</em>.<ul>
 <li>是个标识符, 指向不同的内存区域.</li>
-<li>有它, 两个不同模块就都可以定义例如 <code>max</code>, 且不会混淆
-<code>A.max</code>, <code>B.max</code></li>
-<li>命名空间是<em>隐式</em>创建的. Python 里莫得 <code>namespace</code>
-关键字.</li>
-</ul></li>
-<li>点后面的名称称为<strong>属性</strong>(<em>attribute</em>).
-<ul>
-<li><code>math.sqrt</code> <code>math</code> 是模块对象,
-<code>sqrt</code> 是模块的属性.</li>
-</ul></li>
+<li>有它, 两个不同模块就都可以定义例如 <code>max</code>, 且不会混淆 <code>A.max</code>, <code>B.max</code></li>
+<li>命名空间是<em>隐式</em>创建的. Python 里莫得 <code>namespace</code> 关键字.</li>
+</ul>
+</li>
+<li>点后面的名称称为<strong>属性</strong>(<em>attribute</em>).<ul>
+<li><code>math.sqrt</code> <code>math</code> 是模块对象, <code>sqrt</code> 是模块的属性.</li>
+</ul>
+</li>
 </ul>
 <p>属性是可读可写的. 例如, 可以如下操作</p>
 <figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">import</span> my_module</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>my_module.answer</span><br><span class="line"><span class="number">100</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">del</span> my_module.answer</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>my_module.answer</span><br><span class="line">Traceback (most recent call last):</span><br><span class="line">  File <span class="string">&quot;&lt;stdin&gt;&quot;</span>, line <span class="number">1</span>, <span class="keyword">in</span> &lt;module&gt;</span><br><span class="line">AttributeError: module <span class="string">&#x27;my_module&#x27;</span> has no attribute <span class="string">&#x27;answer&#x27;</span></span><br></pre></td></tr></table></figure>
 <ul>
-<li>命名空间在不同时刻创建, 拥有不同的生命周期.
-<ul>
-<li><code>builtins</code> 的 namespace 就是 Python
-解释器一打开就创建的.</li>
+<li>命名空间在不同时刻创建, 拥有不同的生命周期.<ul>
+<li><code>builtins</code> 的 namespace 就是 Python 解释器一打开就创建的.</li>
 <li>模块的全局命名空间在读取模块定义时创建(合理).</li>
-</ul></li>
-<li>函数的局部命名空间: 函数调用时创建
-<ul>
-<li><code>return</code> / <code>raise ...Exception()</code>
-之后就没了(或者说, 被"遗忘"了)</li>
-</ul></li>
+</ul>
+</li>
+<li>函数的局部命名空间: 函数调用时创建<ul>
+<li><code>return</code> / <code>raise ...Exception()</code> 之后就没了(或者说, 被”遗忘”了)</li>
+</ul>
+</li>
 </ul>
 <blockquote>
 <p>大慈树王对小草神说: 把关于我的知识放到函数栈上.</p>
 </blockquote>
 <ul>
-<li>命名空间的<strong>作用域</strong>(scope):
-这个区域里<em>可以直接访问</em>该命名空间
-<ul>
+<li>命名空间的<strong>作用域</strong>(scope): 这个区域里<em>可以直接访问</em>该命名空间<ul>
 <li>可以直接访问?</li>
 <li>把查找范围扩大到这个命名空间</li>
-</ul></li>
-<li>问题: 如果 count 在局部定义了一个, 全局定义了一个, 找的是谁
-<ul>
-<li>原则: <strong>从内向外</strong></li>
-<li>内层(局部) -&gt; 外层闭包函数的作用域 -&gt; 全局 -&gt; builtins
-namespace</li>
-</ul></li>
-<li><code>nonlocal</code> 关键字
-<ul>
-<li>很直接, 在外层作用域里重新绑定(总之不是局部变量, 往上层找)</li>
-<li>也很好理解这个错误 SyntaxError: nonlocal declaration not allowed at
-module level</li>
-</ul></li>
-<li><code>global</code> 关键字
-<ul>
-<li>表明某一变量在全局作用域</li>
-</ul></li>
 </ul>
-<h3 id="实验-1-作用域一二事">实验 1: 作用域一二事</h3>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">scope_test</span>():</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">do_local</span>():</span><br><span class="line">        spam = <span class="string">&quot;local spam&quot;</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">do_nonlocal</span>():</span><br><span class="line">        <span class="keyword">nonlocal</span> spam</span><br><span class="line">        spam = <span class="string">&quot;nonlocal spam&quot;</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">do_global</span>():</span><br><span class="line">        <span class="keyword">global</span> spam</span><br><span class="line">        spam = <span class="string">&quot;global spam&quot;</span></span><br><span class="line"></span><br><span class="line">    spam = <span class="string">&quot;test spam&quot;</span></span><br><span class="line">    do_local()</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;After local assignment:&quot;</span>, spam)</span><br><span class="line">    do_nonlocal()</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;After nonlocal assignment:&quot;</span>, spam)</span><br><span class="line">    do_global()</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;After global assignment:&quot;</span>, spam)</span><br><span class="line"></span><br><span class="line">scope_test()</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;In global scope:&quot;</span>, spam)</span><br></pre></td></tr></table></figure>
+</li>
+<li>问题: 如果 count 在局部定义了一个, 全局定义了一个, 找的是谁<ul>
+<li>原则: <strong>从内向外</strong></li>
+<li>内层(局部) -&gt; 外层闭包函数的作用域 -&gt; 全局 -&gt; builtins namespace</li>
+</ul>
+</li>
+<li><code>nonlocal</code> 关键字<ul>
+<li>很直接, 在外层作用域里重新绑定(总之不是局部变量, 往上层找)</li>
+<li>也很好理解这个错误 SyntaxError: nonlocal declaration not allowed at module level</li>
+</ul>
+</li>
+<li><code>global</code> 关键字<ul>
+<li>表明某一变量在全局作用域</li>
+</ul>
+</li>
+</ul>
+<h3 id="实验-1-作用域一二事"><a href="#实验-1-作用域一二事" class="headerlink" title="实验 1: 作用域一二事"></a>实验 1: 作用域一二事</h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">scope_test</span>():</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">do_local</span>():</span><br><span class="line">        spam = <span class="string">&quot;local spam&quot;</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">do_nonlocal</span>():</span><br><span class="line">        <span class="keyword">nonlocal</span> spam</span><br><span class="line">        spam = <span class="string">&quot;nonlocal spam&quot;</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">do_global</span>():</span><br><span class="line">        <span class="keyword">global</span> spam</span><br><span class="line">        spam = <span class="string">&quot;global spam&quot;</span></span><br><span class="line"></span><br><span class="line">    spam = <span class="string">&quot;test spam&quot;</span></span><br><span class="line">    do_local()</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;After local assignment:&quot;</span>, spam)</span><br><span class="line">    do_nonlocal()</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;After nonlocal assignment:&quot;</span>, spam)</span><br><span class="line">    do_global()</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;After global assignment:&quot;</span>, spam)</span><br><span class="line"></span><br><span class="line">scope_test()</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;In global scope:&quot;</span>, spam)</span><br></pre></td></tr></table></figure>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">After local assignment: test spam</span><br><span class="line">After nonlocal assignment: nonlocal spam</span><br><span class="line">After global assignment: nonlocal spam</span><br><span class="line">In global scope: global spam</span><br></pre></td></tr></table></figure>
-<h2 id="类">类</h2>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">ClassName</span>:</span><br><span class="line">    <span class="keyword">pass</span></span><br></pre></td></tr></table></figure>
+<h2 id="类"><a href="#类" class="headerlink" title="类"></a>类</h2><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">ClassName</span>:</span><br><span class="line">    <span class="keyword">pass</span></span><br></pre></td></tr></table></figure>
 <ul>
 <li>进入类会创建一个新的命名空间, 并将其作用于局部作用域</li>
 <li>离开类定义, 将创建一个<em>类对象</em>.</li>
@@ -4876,110 +4857,108 @@ module level</li>
 <ul>
 <li>类对象支持两种操作</li>
 </ul>
-<ol type="1">
+<ol>
 <li><em>属性引用</em>: <code>obj.name</code></li>
 </ol>
 <figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">A</span>:</span><br><span class="line">    i = <span class="number">12345</span></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">f</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&#x27;a&#x27;</span>)</span><br></pre></td></tr></table></figure>
 <figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>A.i</span><br><span class="line"><span class="number">12345</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>A.f</span><br><span class="line">&lt;function A.f at <span class="number">0x7fb863b1f9a0</span>&gt;</span><br></pre></td></tr></table></figure>
-<ol start="2" type="1">
+<ol>
 <li><em>实例化</em>: <code>instance = ClassName()</code></li>
 </ol>
 <ul>
 <li>构造函数 <code>__init__()</code></li>
 </ul>
 <figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Complex</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self, realpart, imagpart</span>):</span><br><span class="line">        self.r = realpart</span><br><span class="line">        self.i = imagpart</span><br><span class="line"></span><br><span class="line">x = Complex(<span class="number">3.0</span>, -<span class="number">4.5</span>)</span><br><span class="line">x.r, x.i</span><br></pre></td></tr></table></figure>
-<h3 id="类实例变量">类/实例变量</h3>
-<ul>
+<h3 id="类-实例变量"><a href="#类-实例变量" class="headerlink" title="类/实例变量"></a>类/实例变量</h3><ul>
 <li>类变量: 所有实例共享</li>
-<li>实例变量: 单独实例唯一数据
-<ul>
+<li>实例变量: 单独实例唯一数据<ul>
 <li>如果同名, 优先是实例变量.</li>
-</ul></li>
+</ul>
+</li>
 </ul>
 <figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">A</span>:</span><br><span class="line">    x = <span class="number">10</span>  <span class="comment"># class variable</span></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self, name</span>):   <span class="comment"># instance variable</span></span><br><span class="line">        self.name = name</span><br></pre></td></tr></table></figure>
-<h2 id="继承">继承</h2>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">DerivedClass</span>(<span class="title class_ inherited__">BaseClass</span>):</span><br><span class="line">    <span class="keyword">pass</span></span><br></pre></td></tr></table></figure>
+<h2 id="继承"><a href="#继承" class="headerlink" title="继承"></a>继承</h2><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">DerivedClass</span>(<span class="title class_ inherited__">BaseClass</span>):</span><br><span class="line">    <span class="keyword">pass</span></span><br></pre></td></tr></table></figure>
 <ul>
 <li>派生类如果找不到某一属性, 就递归式地查找基类</li>
-<li>派生类里的方法自带 C++ 里面的 <code>virtual</code> 关键字,
-也就都是虚函数</li>
-<li>继承机制有用的两个内置函数:
-<ul>
-<li><code>isinstance</code>: 检查一个类的实例类型
-<ul>
+<li>派生类里的方法自带 C++ 里面的 <code>virtual</code> 关键字, 也就都是虚函数</li>
+<li>继承机制有用的两个内置函数:<ul>
+<li><code>isinstance</code>: 检查一个类的实例类型<ul>
 <li><code>isinstance(2, int)</code> <code>True</code></li>
-</ul></li>
-<li><code>issubclass</code>: 检查类的继承关系
-<ul>
-<li><code>issubclass(bool, int)</code> <code>True</code></li>
-</ul></li>
-</ul></li>
 </ul>
-<h3 id="多重继承">多重继承</h3>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">DerivedClassName</span>(Base1, Base2, Base3):</span><br><span class="line">    <span class="keyword">pass</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><code>issubclass</code>: 检查类的继承关系<ul>
+<li><code>issubclass(bool, int)</code> <code>True</code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="多重继承"><a href="#多重继承" class="headerlink" title="多重继承"></a>多重继承</h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">DerivedClassName</span>(Base1, Base2, Base3):</span><br><span class="line">    <span class="keyword">pass</span></span><br></pre></td></tr></table></figure>
 <ul>
-<li>搜索父类的顺序?
-<ul>
+<li>搜索父类的顺序?<ul>
 <li>DFS, 从左往右?</li>
-<li>万一搜索过程中遇到相同的父类怎么办...</li>
-</ul></li>
+<li>万一搜索过程中遇到相同的父类怎么办…</li>
+</ul>
+</li>
 </ul>
 <figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">A</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">method</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&quot;CommonA&quot;</span>)</span><br><span class="line"><span class="keyword">class</span> <span class="title class_">B</span>(<span class="title class_ inherited__">A</span>):</span><br><span class="line">    <span class="keyword">pass</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">C</span>(<span class="title class_ inherited__">A</span>):</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">method</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&quot;CommonC&quot;</span>)</span><br><span class="line"><span class="keyword">class</span> <span class="title class_">D</span>(B, C):</span><br><span class="line">    <span class="keyword">pass</span></span><br><span class="line"></span><br><span class="line">D().method()</span><br></pre></td></tr></table></figure>
 <ul>
-<li>搜索顺序: D-&gt;B-&gt;A-&gt;C-&gt;A
-<ul>
+<li>搜索顺序: D-&gt;B-&gt;A-&gt;C-&gt;A<ul>
 <li>A 在前, 所以输出的是 A 的 method.</li>
-</ul></li>
-<li>需要一套新的方法解析顺序(Method Resolution Order, MRO)算法
-<ul>
+</ul>
+</li>
+<li>需要一套新的方法解析顺序(Method Resolution Order, MRO)算法<ul>
 <li>有重复, 只保留最后一个 <code>A</code>?</li>
-<li>然而单调性不能保证...</li>
-</ul></li>
+<li>然而单调性不能保证…</li>
+</ul>
+</li>
 </ul>
 <figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">X</span>(<span class="title class_ inherited__">object</span>):</span><br><span class="line">    <span class="keyword">pass</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Y</span>(<span class="title class_ inherited__">object</span>):</span><br><span class="line">    <span class="keyword">pass</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">A</span>(X, Y):</span><br><span class="line">    <span class="keyword">pass</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">B</span>(Y, X):</span><br><span class="line">    <span class="keyword">pass</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">C</span>(A, B):</span><br><span class="line">    <span class="keyword">pass</span></span><br></pre></td></tr></table></figure>
 <p>按照上面的遍历方式</p>
 <ul>
 <li><code>A-&gt;X-&gt;Y-&gt;object</code></li>
 <li><code>B-&gt;Y-&gt;X-&gt;object</code></li>
-<li><code>C-&gt;A-&gt;B-&gt;X-&gt;Y-&gt;object</code>
-<ul>
-<li>等等, B 怎么先去遍历 X 了...</li>
-</ul></li>
+<li><code>C-&gt;A-&gt;B-&gt;X-&gt;Y-&gt;object</code><ul>
+<li>等等, B 怎么先去遍历 X 了…</li>
 </ul>
-<p>Python 的 MRO 算法采用了一种 C3 方法, 它是一种很精巧的线性化算法.
-在这里就不过多讨论了.</p>
-<h2 id="封装与私有变量">封装与私有变量</h2>
-<ul>
+</li>
+</ul>
+<p>Python 的 MRO 算法采用了一种 C3 方法, 它是一种很精巧的线性化算法. 在这里就不过多讨论了.</p>
+<h2 id="封装与私有变量"><a href="#封装与私有变量" class="headerlink" title="封装与私有变量"></a>封装与私有变量</h2><ul>
 <li>没有 <code>private</code> 关键字</li>
-<li>只有一套编码约定: 带一个下划线 <code>_x</code> API 的非共有部分
-<ul>
+<li>只有一套编码约定: 带一个下划线 <code>_x</code> API 的非共有部分<ul>
 <li>其实你是可以访问的, 不会报错</li>
 <li>伪私有性</li>
-</ul></li>
-<li>名称改写机制(name mangling)
-<ul>
-<li>想让 <code>__init__</code> 调用的父类的 update, 但不被子类版本的
-override</li>
+</ul>
+</li>
+<li>名称改写机制(name mangling)<ul>
+<li>想让 <code>__init__</code> 调用的父类的 update, 但不被子类版本的 override</li>
 <li>双下划线 <code>__x</code></li>
 <li>最后会改名成 <code>_ClassName__x</code></li>
-</ul></li>
+</ul>
+</li>
 </ul>
 <figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Mapping</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self, iterable</span>):</span><br><span class="line">        self.items = []</span><br><span class="line">        self.__update(iterable)</span><br><span class="line">        </span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">update</span>(<span class="params">self, iterable</span>):</span><br><span class="line">        <span class="keyword">for</span> item <span class="keyword">in</span> iterable:</span><br><span class="line">            self.items.append(item)</span><br><span class="line">    <span class="comment"># _Mapping__update</span></span><br><span class="line">    __update = update</span><br><span class="line">    </span><br><span class="line"><span class="keyword">class</span> <span class="title class_">MappingSubclass</span>(<span class="title class_ inherited__">Mapping</span>):</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">update</span>(<span class="params">self, keys, values</span>):</span><br><span class="line">        <span class="keyword">for</span> item <span class="keyword">in</span> <span class="built_in">zip</span>(keys, values):</span><br><span class="line">            self.items.append(item)</span><br></pre></td></tr></table></figure>
 <figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>MappingSubclass._Mapping__update</span><br><span class="line">&lt;function Mapping.update at <span class="number">0x7ffa754cba30</span>&gt;</span><br></pre></td></tr></table></figure>
-<h2 id="c-风格结构体">C 风格结构体</h2>
+<h3 id="属性"><a href="#属性" class="headerlink" title="属性"></a>属性</h3><ul>
+<li>私有变量通过函数获取</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">A</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self, x</span>) -&gt; <span class="literal">None</span>:</span><br><span class="line">        self._x = x</span><br><span class="line">        </span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">get_x</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="keyword">return</span> self._x</span><br></pre></td></tr></table></figure>
 <ul>
+<li>有点像 C# 里的 property</li>
+<li>Python 里也有 property 的这样一个装饰器</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">A</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self, x</span>) -&gt; <span class="literal">None</span>:</span><br><span class="line">        self._x = x</span><br><span class="line">    </span><br><span class="line"><span class="meta">    @property</span></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">x</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="keyword">return</span> self._x</span><br></pre></td></tr></table></figure>
+<p>你就可以像访问变量一样访问 <code>x</code></p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>a = A(<span class="number">2</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>a.x</span><br><span class="line"><span class="number">2</span></span><br></pre></td></tr></table></figure>
+<h2 id="C-风格结构体"><a href="#C-风格结构体" class="headerlink" title="C 风格结构体"></a>C 风格结构体</h2><ul>
 <li>用 <code>dataclass</code> 的一个装饰器</li>
 </ul>
 <figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> dataclasses <span class="keyword">import</span> dataclass</span><br><span class="line"></span><br><span class="line"><span class="meta">@dataclass</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Employee</span>:</span><br><span class="line">    name: <span class="built_in">str</span></span><br><span class="line">    dept: <span class="built_in">str</span></span><br><span class="line">    salary: <span class="built_in">int</span></span><br></pre></td></tr></table></figure>
 <figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>john = Employee(<span class="string">&#x27;john&#x27;</span>, <span class="string">&#x27;computer lab&#x27;</span>, <span class="number">1000</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>john.dept</span><br><span class="line"><span class="string">&#x27;computer lab&#x27;</span></span><br></pre></td></tr></table></figure>
-<h3 id="迭代器和生成器">迭代器和生成器</h3>
-<h2 id="参考资料">参考资料</h2>
-<ol type="1">
-<li><a
-href="https://docs.python.org/zh-cn/3/tutorial/classes.html">Python 文档
-- 类</a></li>
-<li><a href="https://www.python.org/download/releases/2.3/mro/">多重继承
-C3 方法</a></li>
+<h3 id="迭代器和生成器"><a href="#迭代器和生成器" class="headerlink" title="迭代器和生成器"></a>迭代器和生成器</h3><h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><ol>
+<li><a href="https://docs.python.org/zh-cn/3/tutorial/classes.html">Python 文档 - 类</a></li>
+<li><a href="https://www.python.org/download/releases/2.3/mro/">多重继承 C3 方法</a></li>
 </ol>
 ]]></content>
       <categories>
@@ -5064,6 +5043,183 @@ class="math inline">\(k_0\)</span> 个数, 答案就是 <span
 class="math inline">\(2^k \cdot cnt_{k_0}\)</span>.</li>
 </ul>
 <figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">solve</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="type">int</span> n;</span><br><span class="line">    cin &gt;&gt; n;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; n; i++)</span><br><span class="line">        cin &gt;&gt; a[i];</span><br><span class="line">    <span class="type">int</span> f[<span class="number">2</span>][<span class="number">35</span>];</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; n; i++)</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> j = <span class="number">0</span>; j &lt; <span class="number">30</span>; j++)</span><br><span class="line">            f[(a[i] &lt;&lt; j) &amp; <span class="number">1</span>][j] ++;</span><br><span class="line"></span><br><span class="line">    LL ans = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; n; i++)</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> j = <span class="number">0</span>; j &lt; <span class="number">30</span>; j++)</span><br><span class="line">            ans += f[((a[i] &lt;&lt; j) &amp; <span class="number">1</span>) ^ <span class="number">1</span>][j] * (<span class="number">1</span> &lt;&lt; j);</span><br><span class="line">    cout &lt;&lt; ans &lt;&lt; <span class="string">&#x27;\n&#x27;</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="codeforces-round-899-div.-2">Codeforces Round 899 (Div. 2)</h1>
+<h2 id="a.-increasing-sequence">A. Increasing Sequence</h2>
+<p>题意: 给定序列 <code>a</code>, 定义序列 <code>b</code>
+如果满足各个数大于 0 且单调递增, 同时 <span
+class="math inline">\(a_i\neq b_i\)</span>, 则称 <code>b</code>
+为好数组. 找到所有好数组中 <span class="math inline">\(b_n\)</span>
+的最小值.</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> LL = <span class="type">long</span> <span class="type">long</span>;</span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="keyword">typedef</span> pair&lt;<span class="type">int</span>, <span class="type">int</span>&gt; PII;</span><br><span class="line"></span><br><span class="line"><span class="type">const</span> <span class="type">int</span> MOD = <span class="number">998244353</span>, N = <span class="number">1e2</span> + <span class="number">5</span>;</span><br><span class="line"><span class="type">int</span> T = <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">solve</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="type">int</span> n;</span><br><span class="line">    cin &gt;&gt; n;</span><br><span class="line">    <span class="type">int</span> ans[<span class="number">2</span>] = &#123;<span class="number">1</span>, <span class="number">1</span>&#125;;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; n; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="type">int</span> a;</span><br><span class="line">        cin &gt;&gt; a;</span><br><span class="line">        ans[<span class="number">0</span>] = ans[<span class="number">1</span>];</span><br><span class="line">        <span class="keyword">if</span> (a == ans[<span class="number">0</span>])</span><br><span class="line">            ans[<span class="number">0</span>] ++;</span><br><span class="line">        ans[<span class="number">1</span>] = ans[<span class="number">0</span>] + <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    cout &lt;&lt; ans[<span class="number">0</span>] &lt;&lt; <span class="string">&#x27;\n&#x27;</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    ios::<span class="built_in">sync_with_stdio</span>(<span class="literal">false</span>);</span><br><span class="line">    cin.<span class="built_in">tie</span>(<span class="number">0</span>);</span><br><span class="line">    cout.<span class="built_in">tie</span>(<span class="number">0</span>);</span><br><span class="line">    <span class="comment">// freopen(&quot;input.txt&quot;, &quot;r&quot;, stdin);</span></span><br><span class="line">    <span class="comment">// freopen(&quot;output.txt&quot;, &quot;w&quot;, stdout);</span></span><br><span class="line">    cin &gt;&gt; T;</span><br><span class="line">    <span class="keyword">while</span> (T--)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">solve</span>();</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="b.-sets-and-union">B. Sets and Union</h2>
+<p>题意: 如果集合 <span class="math inline">\(S\)</span> 等于 <span
+class="math inline">\(S_1, S_2, \dots, S_n\)</span> 之中一些集合的并,
+那么称 <span class="math inline">\(S\)</span> 可维护. 注意这里 <span
+class="math inline">\(S\neq \bigcup S_i\)</span>.</p>
+<p>找到最大的可维护集合 <span class="math inline">\(S\)</span>,
+输出它元素的个数.</p>
+<p>题解: 关注下这道题的数据大小 (<span class="math inline">\(1\leqslant
+s_i \leqslant 50\)</span>), 集合不用 <code>std::set</code>,
+可以用位向量表示.</p>
+<p>例如一个位向量 <code>[0...011]</code> 代表集合 <span
+class="math inline">\(\{0,1\}\)</span>.</p>
+<p>这样操作的好处:</p>
+<ul>
+<li>集合的并可以用 <code>a | b</code></li>
+<li>集合的大小就是 1 的个数: <code>__builtin_popcount</code></li>
+</ul>
+<p>我们要做的是求: 所有集合的并, 扣掉一个集合, 剩下集合的并.</p>
+<p>可以这么做: 枚举所有元素 <span class="math inline">\(a_i\)</span>,
+只要判断 <span class="math inline">\(a_i\in S_j\)</span>, 把所有不包含
+<span class="math inline">\(a_i\)</span> 的集合合并即可. 答案取一个
+max.</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> LL = <span class="type">long</span> <span class="type">long</span>;</span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="type">int</span> T = <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">solve</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="type">int</span> n;</span><br><span class="line">    cin &gt;&gt; n;</span><br><span class="line">    LL Or = <span class="number">0</span>;</span><br><span class="line">    <span class="function">vector&lt;LL&gt; <span class="title">a</span><span class="params">(n + <span class="number">1</span>)</span></span>;</span><br><span class="line">    <span class="type">int</span> ans = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; n; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="type">int</span> k;</span><br><span class="line">        cin &gt;&gt; k;</span><br><span class="line">        <span class="keyword">while</span> (k--)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="type">int</span> x;</span><br><span class="line">            cin &gt;&gt; x;</span><br><span class="line">            a[i] |= <span class="number">1LL</span> &lt;&lt; x;</span><br><span class="line">        &#125;</span><br><span class="line">        Or |= a[i];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">1</span>; i &lt;= <span class="number">50</span>; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span> (Or &gt;&gt; i &amp; <span class="number">1</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            LL v = <span class="number">0</span>;</span><br><span class="line">            <span class="keyword">for</span> (<span class="type">int</span> j = <span class="number">0</span>; j &lt; n; j++)</span><br><span class="line">                <span class="keyword">if</span> (~a[j] &gt;&gt; i &amp; <span class="number">1</span>)</span><br><span class="line">                    v |= a[j];</span><br><span class="line">            ans = <span class="built_in">max</span>(ans, __builtin_popcountll(v));</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    cout &lt;&lt; ans &lt;&lt; <span class="string">&#x27;\n&#x27;</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    ios::<span class="built_in">sync_with_stdio</span>(<span class="literal">false</span>);</span><br><span class="line">    cin.<span class="built_in">tie</span>(<span class="number">0</span>);</span><br><span class="line">    cout.<span class="built_in">tie</span>(<span class="number">0</span>);</span><br><span class="line">    <span class="comment">// freopen(&quot;input.txt&quot;, &quot;r&quot;, stdin);</span></span><br><span class="line">    <span class="comment">// freopen(&quot;output.txt&quot;, &quot;w&quot;, stdout);</span></span><br><span class="line">    cin &gt;&gt; T;</span><br><span class="line">    <span class="keyword">while</span> (T--)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">solve</span>();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="c.-card-game">C. Card Game</h2>
+<p>题意: <span class="math inline">\(n\)</span>
+张牌按顺序从下往上堆叠(最上面是最高位的), 每张牌有属性 <span
+class="math inline">\(a_i\)</span>. 你可以删除第 <span
+class="math inline">\(i\leqslant n\)</span>
+张牌(每次删除会重新计算索引), 如果 <span
+class="math inline">\(i\)</span> 是奇数, 你可以获得 <span
+class="math inline">\(a_i\)</span> 个点数. 你可以在任意时刻结束游戏.
+求最大分数.</p>
+<p>注意 <span class="math inline">\(a_i\)</span> 可能是负的.</p>
+<p>题解: 从上往下删, 首先我们可以把所有奇数位 &gt;0 的删去, 如果偶数位是
+&gt;0 的我们在最下面调整一次奇偶, 就可以将偶数位的正数加入分数.</p>
+<p>调整奇偶考虑 <code>a[1]</code>, 但如果 <code>a[1] &lt; 0</code>
+就考虑删去 <code>a[2]</code>.</p>
+<p>讨论一下, <code>a[1] &lt; 0</code> 就取
+<code>max(0, a[1]+a[2])</code>, <code>a[1] &gt; 0</code> 就取
+<code>max(a[1], a[1]+a[2])</code>.</p>
+<p>你会发现我们可能需要同时删去 <code>a[1]</code> 和 <code>a[2]</code>,
+这不就改变不了奇偶了么. 但实际上, 先删 <code>a[1]</code> 就能改变奇偶,
+把上面的删掉了, 然后再删去 <code>a[2]</code> 就可以了.</p>
+<p>注意卡 int 和 n &gt; 1 的特判.</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> LL = <span class="type">long</span> <span class="type">long</span>;</span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="keyword">typedef</span> pair&lt;<span class="type">int</span>, <span class="type">int</span>&gt; PII;</span><br><span class="line"></span><br><span class="line"><span class="type">const</span> <span class="type">int</span> MOD = <span class="number">998244353</span>, N = <span class="number">1e5</span> + <span class="number">5</span>;</span><br><span class="line"><span class="type">int</span> T = <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">solve</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="type">int</span> n;</span><br><span class="line">    cin &gt;&gt; n;</span><br><span class="line">    <span class="function">vector&lt;<span class="type">int</span>&gt; <span class="title">a</span><span class="params">(n + <span class="number">1</span>)</span></span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">1</span>; i &lt;= n; i++)</span><br><span class="line">        cin &gt;&gt; a[i];</span><br><span class="line">    LL ans = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">3</span>; i &lt;= n; i++)</span><br><span class="line">        ans += <span class="built_in">max</span>(<span class="number">0</span>, a[i]);</span><br><span class="line">    ans += <span class="built_in">max</span>(a[<span class="number">1</span>] &gt; <span class="number">0</span> ? a[<span class="number">1</span>] : <span class="number">0</span>, n &gt; <span class="number">1</span> ? a[<span class="number">1</span>] + a[<span class="number">2</span>] : a[<span class="number">1</span>]);</span><br><span class="line">    cout &lt;&lt; ans &lt;&lt; <span class="string">&#x27;\n&#x27;</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    ios::<span class="built_in">sync_with_stdio</span>(<span class="literal">false</span>);</span><br><span class="line">    cin.<span class="built_in">tie</span>(<span class="number">0</span>);</span><br><span class="line">    cout.<span class="built_in">tie</span>(<span class="number">0</span>);</span><br><span class="line">    <span class="comment">// freopen(&quot;input.txt&quot;, &quot;r&quot;, stdin);</span></span><br><span class="line">    <span class="comment">// freopen(&quot;output.txt&quot;, &quot;w&quot;, stdout);</span></span><br><span class="line">    cin &gt;&gt; T;</span><br><span class="line">    <span class="keyword">while</span> (T--)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">solve</span>();</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="d.-tree-xor">D. Tree XOR</h2>
+<p>换根DP, 不会做.</p>
+<h1 id="codeforces-round-900-div.-3">Codeforces Round #900 (Div. 3)</h1>
+<h2 id="a.-how-much-does-daytona-cost">A. How Much Does Daytona
+Cost?</h2>
+<p>题意: 给定数组 a, 整数 k, 确定是否存在一个 a 的连续子区间使得 k
+是这个子区间的众数.</p>
+<p>只需要回答 yes or no.</p>
+<p>题解: 题目没有提到子区间的长度, 我们考虑长度为 1 的子序列, 只要 k
+存在于 a, 那么它就是这个子序列的众数.</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">solve</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="type">int</span> n, k;</span><br><span class="line">    cin &gt;&gt; n &gt;&gt; k;</span><br><span class="line">    <span class="function">vector&lt;<span class="type">int</span>&gt; <span class="title">a</span><span class="params">(n + <span class="number">1</span>)</span></span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; n; i++)</span><br><span class="line">        cin &gt;&gt; a[i];</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; n; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span> (a[i] == k)</span><br><span class="line">        &#123;</span><br><span class="line">            cout &lt;&lt; <span class="string">&quot;YES\n&quot;</span>;</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    cout &lt;&lt; <span class="string">&quot;NO\n&quot;</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="b.-aleksa-and-stack">B. Aleksa and Stack</h2>
+<p>题意: 构造一个长度为 <span class="math inline">\(n\geqslant
+3\)</span> 的严格单调递增数组, 使得 <span
+class="math inline">\(3a_{i+2}\)</span> 不能被 <span
+class="math inline">\(a_i+a_{i+1}\)</span> 整除. 输出这样的一个数组.</p>
+<p>例如 <code>n = 3</code>, 那么 <code>6 8 12</code> 就是一个答案.</p>
+<p>题解: <span class="math inline">\(n\leqslant 2\cdot 10^5\)</span>
+那么给每个数添加一个大数, 例如 5e5 就可以避免整除的问题了.</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">solve</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="type">int</span> n;</span><br><span class="line">    cin &gt;&gt; n;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; n; i++)</span><br><span class="line">        cout &lt;&lt; i + <span class="number">5e5</span> &lt;&lt; <span class="string">&#x27; &#x27;</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>不偷鸡你可以模拟整个过程, 从 2, 3 然后判断整除关系即可.</p>
+<h2 id="c.-vasilije-in-cacak">C. Vasilije in Cacak</h2>
+<p>题意: 给定 3 个正整数 <span class="math inline">\(n, k, x\)</span>,
+判断能否在 1~n 之间挑出 k 个不同的数字, 使得它们的和为 <span
+class="math inline">\(x\)</span>.</p>
+<p>题解: x 的下界 <span class="math inline">\(\sum_{1}^{k}\)</span>,
+上界 <span class="math inline">\(\sum_{n-k+1}^{n}\)</span>,
+判断是否在这之间即可.</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">solve</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="type">int</span> n, k;</span><br><span class="line">    LL x;</span><br><span class="line">    cin &gt;&gt; n &gt;&gt; k &gt;&gt; x;</span><br><span class="line">    <span class="keyword">if</span> (x &gt;= <span class="number">1LL</span> * (<span class="number">1</span> + k) * k / <span class="number">2</span> &amp;&amp; x &lt;= <span class="number">1LL</span> * (<span class="number">2</span> * n - k + <span class="number">1</span>) * k / <span class="number">2</span>)</span><br><span class="line">        cout &lt;&lt; <span class="string">&quot;YES\n&quot;</span>;</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">        cout &lt;&lt; <span class="string">&quot;NO\n&quot;</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="d.-reverse-madness">D. Reverse Madness</h2>
+<p>题意: 给定小写字符组成的字符串 <code>s</code>, 长度为 <code>n</code>,
+两个长度为 <code>k</code> 的整数数组 <code>l</code> 和 <code>r</code>,
+两个数组满足</p>
+<ul>
+<li><span class="math inline">\(l_1 = 1, r_k = n\)</span></li>
+<li><span class="math inline">\(l_i \leqslant r_i\)</span></li>
+<li><span class="math inline">\(l_i = r_{i-1}+1, i \geqslant
+2\)</span></li>
+</ul>
+<p>需要对 <code>s</code> 进行 <code>q</code> 次操作,
+每次操作给出一个整数 <code>x</code></p>
+<ul>
+<li>找到 <span class="math inline">\(l_i \leqslant x \leqslant
+r_i\)</span> 的下标 <span class="math inline">\(i\)</span></li>
+<li>令 <span class="math inline">\(a=\min(x,r_i+l_i-x)\)</span>, <span
+class="math inline">\(b=\max(x, r_i+l_i-x)\)</span></li>
+<li><code>reverse(s[a:b])</code></li>
+</ul>
+<p>输出 <code>q</code> 次操作后的字符串 <code>s</code>.</p>
+<h2 id="e.-iva-pav">E. Iva &amp; Pav</h2>
+<h1 id="codeforces-round-901-div.-2">Codeforces Round 901 (Div. 2)</h1>
+<h2 id="a.-jellyfish-and-undertale">A. Jellyfish and Undertale</h2>
+<p>题意: 炸弹有 <span class="math inline">\(b\)</span> 的爆炸时间,
+选择工具可以增加 <span class="math inline">\(x_i\)</span> 的时间,
+但时间不能超过 <span class="math inline">\(a\)</span>, 即 <span
+class="math inline">\(\min{(x_i+c, a)}\)</span>,
+问炸弹爆炸能拖多长时间才爆炸.</p>
+<p>题解: 模拟即可</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">solve</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    LL a, b, n;</span><br><span class="line">    cin &gt;&gt; a &gt;&gt; b &gt;&gt; n;</span><br><span class="line">    <span class="function">vector&lt;LL&gt; <span class="title">x</span><span class="params">(n + <span class="number">1</span>)</span></span>;</span><br><span class="line">    LL ans = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; n; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        cin &gt;&gt; x[i];</span><br><span class="line">        ans += <span class="built_in">min</span>(a - <span class="number">1</span>, x[i]);</span><br><span class="line">    &#125;</span><br><span class="line">    cout &lt;&lt; ans + b &lt;&lt; endl;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="b.-jellyfish-and-game">B. Jellyfish and Game</h2>
+<p>题意: 进行 <code>k</code> 轮比赛, A 有 <span
+class="math inline">\(n\)</span> 个价值 <span
+class="math inline">\(a_i\)</span> 的苹果, B 有 <span
+class="math inline">\(m\)</span> 个价值 <span
+class="math inline">\(b_i\)</span> 的苹果, 他们会进行 <span
+class="math inline">\(k\)</span> 轮次的比赛, 如果 <span
+class="math inline">\(i\)</span> 是奇数, A 可以交换 B
+的一个苹果或者不动, 偶数就是轮到 B 行动.</p>
+<p>A 和 B 都想最大化他们的分数, 求 A 最后最高分是多少.</p>
+<p>题解: 每个选手的策略都是交换自己价值最低的苹果和对手价值最高的苹果,
+或者考虑不进行交换(因为自己价值最低的比对手价值最高的还要高). 答案和
+<code>k</code> 的奇偶相关, k 为奇数对 A 最优, 偶数则对 B 最优.</p>
+<p>偶数情况的代码实现还是有些难写的. 调了好久.</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">solve</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="type">int</span> n, m, k;</span><br><span class="line">    cin &gt;&gt; n &gt;&gt; m &gt;&gt; k;</span><br><span class="line">    <span class="function">vector&lt;LL&gt; <span class="title">a</span><span class="params">(n)</span>, <span class="title">b</span><span class="params">(m)</span></span>;</span><br><span class="line">    LL ans = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; n; i++)</span><br><span class="line">        cin &gt;&gt; a[i], ans += a[i];</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; m; i++)</span><br><span class="line">        cin &gt;&gt; b[i];</span><br><span class="line"> </span><br><span class="line">    <span class="built_in">sort</span>(a.<span class="built_in">begin</span>(), a.<span class="built_in">end</span>());</span><br><span class="line">    <span class="built_in">sort</span>(b.<span class="built_in">begin</span>(), b.<span class="built_in">end</span>());</span><br><span class="line"> </span><br><span class="line">    <span class="keyword">if</span> (k &amp; <span class="number">1</span>) &#123;</span><br><span class="line">        ans = <span class="built_in">max</span>(ans, ans + b[m - <span class="number">1</span>] - a[<span class="number">0</span>]);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span> &#123;</span><br><span class="line">        LL mi = b[<span class="number">0</span>], ma = a[n - <span class="number">1</span>];</span><br><span class="line">        <span class="comment">// need swap</span></span><br><span class="line">        <span class="keyword">if</span> (a[<span class="number">0</span>] &lt; b[m - <span class="number">1</span>])</span><br><span class="line">        &#123;</span><br><span class="line">            mi = <span class="built_in">min</span>(mi, a[<span class="number">0</span>]);</span><br><span class="line">            ma = <span class="built_in">max</span>(ma, b[m - <span class="number">1</span>]);</span><br><span class="line">            ans += b[m - <span class="number">1</span>] - a[<span class="number">0</span>];</span><br><span class="line">        &#125;</span><br><span class="line">        ans += mi - ma;</span><br><span class="line">    &#125;</span><br><span class="line">    cout &lt;&lt; ans &lt;&lt; <span class="string">&#x27;\n&#x27;</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="c.-jellyfish-and-green-apple">C. Jellyfish and Green Apple</h2>
+<p>题意: 有 <span class="math inline">\(n\)</span> 个苹果,
+每个苹果的重量相同, 将这些苹果平分给 <span
+class="math inline">\(m\)</span> 个人, 允许将苹果切成两半.
+输出需要切几刀. 如果不能在有限次数内平分输出 -1.</p>
+<p>题解: 考虑 <code>n / m</code> 的最简形式, 例如 <code>24 / 32</code>
+可以约分至 <code>3 / 4</code>, 答案就是 <code>ans * gcd(n, m)</code>.
+如果整除, 不用切输出 0, 如果 m 不是 2 的幂次则无解 -1.</p>
+<p>接下来考虑 <code>3 / 4</code> 怎么分:</p>
+<ul>
+<li>4 个人分出 4 份的 1/4 + 4 份的 1/2.</li>
+<li>一个苹果需要切 3 刀, 分出 4 份的 1/4.</li>
+<li>剩下两个苹果需要各切 1 刀.</li>
+</ul>
+<p>推广: 记 <span class="math inline">\(2^t = m\)</span>, 如果 <span
+class="math inline">\(n\)</span> 的第 <span
+class="math inline">\(i\)</span> 位(从0开始记)为 1, 代表需要切 <span
+class="math inline">\(2^{t - i} - 1\)</span> 刀, 1 个苹果可以切出 <span
+class="math inline">\(2^{t - i}\)</span> 个. 那么答案</p>
+<p><span class="math display">\[\sum\frac{m}{2^{t- i}}(2^{t - i} -
+1)=\sum\frac{2^t}{2^{t- i}}(2^{t - i} - 1)=\sum 2^i\cdot (2^{t - i} -
+1)=\sum m - 2^i\]</span></p>
+<p>记得开 LL? 反正我卡了好久.</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">solve</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="type">int</span> n, m;</span><br><span class="line">    LL ans = <span class="number">0</span>;</span><br><span class="line">    cin &gt;&gt; n &gt;&gt; m;</span><br><span class="line"></span><br><span class="line">    <span class="type">int</span> div = __gcd(n, m);</span><br><span class="line">    n /= div, m /= div;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (n % m == <span class="number">0</span>)</span><br><span class="line">        cout &lt;&lt; <span class="number">0</span> &lt;&lt; <span class="string">&#x27;\n&#x27;</span>;</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span> (__builtin_popcount(m) != <span class="number">1</span>)</span><br><span class="line">        cout &lt;&lt; <span class="number">-1</span> &lt;&lt; <span class="string">&#x27;\n&#x27;</span>;</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="type">int</span> t = __builtin_ffs(m) - <span class="number">1</span>;</span><br><span class="line">        n %= m;</span><br><span class="line">        <span class="comment">// printf(&quot;n=%d m=%d t=%d\n&quot;, n, m, t);</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; t; i++)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span> (n &gt;&gt; i &amp; <span class="number">1</span>)</span><br><span class="line">                ans += (m - (<span class="number">1</span> &lt;&lt; i));</span><br><span class="line">        &#125;</span><br><span class="line">        cout &lt;&lt; <span class="number">1ll</span> * div * ans &lt;&lt; <span class="string">&#x27;\n&#x27;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="d.-jellyfish-and-mex">D. Jellyfish and Mex</h2>
+<p>题意: 给定长度为 <code>n</code> 的非负整数数组 <code>a</code>,
+<code>m</code> 初始化为 0, 然后执行 <code>n</code> 次如下的操作: 删去
+<code>a[i]</code>, 然后 <code>m += MEX(a)</code>. 这里
+<code>MEX(a)</code> 表示不属于数组 <code>a</code> 最小的数(minimum
+excluded). 求 <code>m</code> 最小值.</p>
+<p>题解: 我们只关心把 <code>a</code> 中的 0 删去, 因为之后
+<code>mex(a)</code> 就一定是 0. 而且 <code>mex(a)</code>
+一定是单调不增的.</p>
+<p>观察样例我们发现删去一个数, 就一定是一口气解决掉, 不会半途换个数.
+至于是先删 0 还是 1, 2... 这里情况就很多了.</p>
+<p>结合上面的分析我们可以这么去写 DP</p>
+<ul>
+<li>状态表示: <code>f[i]</code>
+<ul>
+<li>集合: 删去 <code>i</code> 需要的代价</li>
+<li>属性: 最小值</li>
+</ul></li>
+<li>状态转移:
+<ul>
+<li>直接删 <code>i</code> / 上一次删除的是 <code>j</code>,
+<code>j &gt; i</code></li>
+<li>后者 <code>f[j] + j * (cnt[i] - 1) + i</code></li>
+<li>取最小值</li>
+</ul></li>
+</ul>
 ]]></content>
       <categories>
         <category>算法</category>
