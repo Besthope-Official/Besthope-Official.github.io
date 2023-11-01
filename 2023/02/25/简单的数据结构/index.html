@@ -19,19 +19,19 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Pisces","darkmode":false,"version":"8.14.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":true,"style":null},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
 
-    <meta name="description" content="做一个数据结构的小小总结. 其实数据结构和算法是不分家的, 例如 1+1&#x3D;2 是一个加法算法, 用到了整型的数据结构 1. 你就说是不是吧. DSA课程&#x2F;书本上更注重实现. 手搓一个泛型结构, 实现 std 里头的一堆方法, 这不劝退谁劝退. 实现是为了更好理解原理. 不要被复杂的构造带偏了学习的方向! 我们实现的标准是: ANSI C 也能做到! 剩下的内容: 怎么用STL来解决使用">
+    <meta name="description" content="做一个数据结构的小小总结. 其实数据结构和算法是不分家的, 例如 1+1&#x3D;2 是一个加法算法, 用到了整型的数据结构 1. 你就说是不是吧. DSA课程&#x2F;书本上更注重实现. 手搓一个泛型结构, 实现 std 里头的一堆方法, 这不劝退谁劝退.实现是为了更好理解原理. 不要被复杂的构造带偏了学习的方向! 我们实现的标准是: ANSI C 也能做到! 剩下的内容: 怎么用STL来解决使用到特定数据结构">
 <meta property="og:type" content="article">
 <meta property="og:title" content="简单的数据结构">
 <meta property="og:url" content="http://example.com/2023/02/25/%E7%AE%80%E5%8D%95%E7%9A%84%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/index.html">
 <meta property="og:site_name" content="Besthope&#39;s Blog">
-<meta property="og:description" content="做一个数据结构的小小总结. 其实数据结构和算法是不分家的, 例如 1+1&#x3D;2 是一个加法算法, 用到了整型的数据结构 1. 你就说是不是吧. DSA课程&#x2F;书本上更注重实现. 手搓一个泛型结构, 实现 std 里头的一堆方法, 这不劝退谁劝退. 实现是为了更好理解原理. 不要被复杂的构造带偏了学习的方向! 我们实现的标准是: ANSI C 也能做到! 剩下的内容: 怎么用STL来解决使用">
+<meta property="og:description" content="做一个数据结构的小小总结. 其实数据结构和算法是不分家的, 例如 1+1&#x3D;2 是一个加法算法, 用到了整型的数据结构 1. 你就说是不是吧. DSA课程&#x2F;书本上更注重实现. 手搓一个泛型结构, 实现 std 里头的一堆方法, 这不劝退谁劝退.实现是为了更好理解原理. 不要被复杂的构造带偏了学习的方向! 我们实现的标准是: ANSI C 也能做到! 剩下的内容: 怎么用STL来解决使用到特定数据结构">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://example.com/images/pic7.png">
 <meta property="og:image" content="http://example.com/images/trie1.png">
 <meta property="og:image" content="http://example.com/images/disjoint-set.svg">
 <meta property="og:image" content="http://example.com/images/hashtable.svg">
 <meta property="article:published_time" content="2023-02-25T15:29:08.000Z">
-<meta property="article:modified_time" content="2023-10-10T09:23:13.602Z">
+<meta property="article:modified_time" content="2023-10-31T05:55:35.425Z">
 <meta property="article:author" content="Besthope">
 <meta property="article:tag" content="算法">
 <meta property="article:tag" content="数据结构">
@@ -149,7 +149,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%93%BE%E8%A1%A8"><span class="nav-number">1.</span> <span class="nav-text">链表</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%9D%99%E6%80%81%E9%93%BE%E8%A1%A8"><span class="nav-number">1.1.</span> <span class="nav-text">静态链表</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8F%8C%E9%93%BE%E8%A1%A8"><span class="nav-number">1.2.</span> <span class="nav-text">双链表</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%A0%88"><span class="nav-number">2.</span> <span class="nav-text">栈</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8D%95%E8%B0%83%E6%A0%88"><span class="nav-number">2.1.</span> <span class="nav-text">单调栈</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%98%9F%E5%88%97"><span class="nav-number">3.</span> <span class="nav-text">队列</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8D%95%E8%B0%83%E9%98%9F%E5%88%97"><span class="nav-number">3.1.</span> <span class="nav-text">单调队列</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AD%97%E7%AC%A6%E4%B8%B2"><span class="nav-number">4.</span> <span class="nav-text">字符串</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#kmp"><span class="nav-number">4.1.</span> <span class="nav-text">KMP</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#trie%E6%A0%91%E5%AD%97%E5%85%B8%E6%A0%91"><span class="nav-number">4.2.</span> <span class="nav-text">Trie树(字典树)</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B9%B6%E6%9F%A5%E9%9B%86"><span class="nav-number">5.</span> <span class="nav-text">并查集</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9B%BE"><span class="nav-number">6.</span> <span class="nav-text">图</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BA%8C%E5%8F%89%E6%A0%91"><span class="nav-number">6.1.</span> <span class="nav-text">二叉树</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%A1%B6"><span class="nav-number">7.</span> <span class="nav-text">桶</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%93%88%E5%B8%8C%E8%A1%A8%E6%95%A3%E5%88%97%E8%A1%A8"><span class="nav-number">8.</span> <span class="nav-text">哈希表(散列表)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#std-%E5%BA%93%E7%9A%84%E5%93%88%E5%B8%8C%E8%A1%A8"><span class="nav-number">8.1.</span> <span class="nav-text">std 库的哈希表</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%93%88%E5%B8%8C"><span class="nav-number">8.2.</span> <span class="nav-text">字符串哈希</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%A0%86"><span class="nav-number">9.</span> <span class="nav-text">堆</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%A0%86%E5%AE%9E%E7%8E%B0"><span class="nav-number">9.1.</span> <span class="nav-text">堆实现</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#std-%E5%BA%93%E9%87%8C%E7%9A%84%E5%A0%86"><span class="nav-number">9.2.</span> <span class="nav-text">std 库里的堆</span></a></li></ol></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%93%BE%E8%A1%A8"><span class="nav-number">1.</span> <span class="nav-text">链表</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%9D%99%E6%80%81%E9%93%BE%E8%A1%A8"><span class="nav-number">1.1.</span> <span class="nav-text">静态链表</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8F%8C%E9%93%BE%E8%A1%A8"><span class="nav-number">1.2.</span> <span class="nav-text">双链表</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%A0%88"><span class="nav-number">2.</span> <span class="nav-text">栈</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8D%95%E8%B0%83%E6%A0%88"><span class="nav-number">2.1.</span> <span class="nav-text">单调栈</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%98%9F%E5%88%97"><span class="nav-number">3.</span> <span class="nav-text">队列</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8D%95%E8%B0%83%E9%98%9F%E5%88%97"><span class="nav-number">3.1.</span> <span class="nav-text">单调队列</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AD%97%E7%AC%A6%E4%B8%B2"><span class="nav-number">4.</span> <span class="nav-text">字符串</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#KMP"><span class="nav-number">4.1.</span> <span class="nav-text">KMP</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Trie%E6%A0%91-%E5%AD%97%E5%85%B8%E6%A0%91"><span class="nav-number">4.2.</span> <span class="nav-text">Trie树(字典树)</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B9%B6%E6%9F%A5%E9%9B%86"><span class="nav-number">5.</span> <span class="nav-text">并查集</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9B%BE"><span class="nav-number">6.</span> <span class="nav-text">图</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BA%8C%E5%8F%89%E6%A0%91"><span class="nav-number">6.1.</span> <span class="nav-text">二叉树</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%A1%B6"><span class="nav-number">7.</span> <span class="nav-text">桶</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%93%88%E5%B8%8C%E8%A1%A8-%E6%95%A3%E5%88%97%E8%A1%A8"><span class="nav-number">8.</span> <span class="nav-text">哈希表(散列表)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#std-%E5%BA%93%E7%9A%84%E5%93%88%E5%B8%8C%E8%A1%A8"><span class="nav-number">8.1.</span> <span class="nav-text">std 库的哈希表</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%93%88%E5%B8%8C"><span class="nav-number">8.2.</span> <span class="nav-text">字符串哈希</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%A0%86"><span class="nav-number">9.</span> <span class="nav-text">堆</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%A0%86%E5%AE%9E%E7%8E%B0"><span class="nav-number">9.1.</span> <span class="nav-text">堆实现</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#std-%E5%BA%93%E9%87%8C%E7%9A%84%E5%A0%86"><span class="nav-number">9.2.</span> <span class="nav-text">std 库里的堆</span></a></li></ol></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -164,16 +164,16 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">23</span>
+          <span class="site-state-item-count">24</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
-        <span class="site-state-item-count">9</span>
+        <span class="site-state-item-count">10</span>
         <span class="site-state-item-name">分类</span>
       </div>
       <div class="site-state-item site-state-tags">
-        <span class="site-state-item-count">31</span>
+        <span class="site-state-item-count">32</span>
         <span class="site-state-item-name">标签</span>
       </div>
   </nav>
@@ -248,7 +248,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2023-10-10 17:23:13" itemprop="dateModified" datetime="2023-10-10T17:23:13+08:00">2023-10-10</time>
+      <time title="修改时间：2023-10-31 13:55:35" itemprop="dateModified" datetime="2023-10-31T13:55:35+08:00">2023-10-31</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -267,14 +267,14 @@
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">本文字数：</span>
-      <span>4.5k</span>
+      <span>4.6k</span>
     </span>
     <span class="post-meta-item" title="阅读时长">
       <span class="post-meta-item-icon">
         <i class="far fa-clock"></i>
       </span>
       <span class="post-meta-item-text">阅读时长 &asymp;</span>
-      <span>16 分钟</span>
+      <span>17 分钟</span>
     </span>
 </div>
 
@@ -285,105 +285,50 @@
     
     
     <div class="post-body" itemprop="articleBody">
-        <p>做一个数据结构的小小总结. 其实数据结构和算法是不分家的, 例如
-<code>1+1=2</code> 是一个加法算法, 用到了整型的数据结构 <a href="#fn1"
-class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>.
-你就说是不是吧.</p>
-<p>DSA课程/书本上更注重实现. 手搓一个泛型结构, 实现 <code>std</code>
-里头的一堆方法, 这不劝退谁劝退. 实现是为了更好理解原理.
-不要被复杂的构造带偏了学习的方向! 我们实现的标准是: ANSI C 也能做到!</p>
-<p>剩下的内容: 怎么用STL来解决使用到特定数据结构的题目, i.e. 会做题.
-但我们也懂原理!</p>
+        <p>做一个数据结构的小小总结. 其实数据结构和算法是不分家的, 例如 <code>1+1=2</code> 是一个加法算法, 用到了整型的数据结构 <sup><a href="#fn_1" id="reffn_1">1</a></sup>. 你就说是不是吧.</p>
+<p>DSA课程/书本上更注重实现. 手搓一个泛型结构, 实现 <code>std</code> 里头的一堆方法, 这不劝退谁劝退.<br>实现是为了更好理解原理. 不要被复杂的构造带偏了学习的方向! 我们实现的标准是: ANSI C 也能做到!</p>
+<p>剩下的内容: 怎么用STL来解决使用到特定数据结构的题目, i.e. 会做题. 但我们也懂原理!</p>
 <span id="more"></span>
-<h2 id="链表">链表</h2>
-<h3 id="静态链表">静态链表</h3>
-<p>我们用数组模拟链表. 动态链表谁不会啊?</p>
+<h2 id="链表"><a href="#链表" class="headerlink" title="链表"></a>链表</h2><h3 id="静态链表"><a href="#静态链表" class="headerlink" title="静态链表"></a>静态链表</h3><p>我们用数组模拟链表. 动态链表谁不会啊?</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">struct</span> <span class="title class_">Node</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="type">int</span> val;</span><br><span class="line">    Node *next;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">new</span> <span class="built_in">Node</span>(); <span class="comment">// TOO SLOW! 除非你用内存池优化</span></span><br></pre></td></tr></table></figure>
-<p>数组模拟单链表: 效率高 最大用处是<strong>邻接表</strong>
-邻接表能拿来储存图/树.</p>
-<p>储存方式: 区别于动态链表, 每个值对应一个地址,
-静态链表采用编号的形式.</p>
-<p>略过头节点, 第一个节点编号为 0, 然后是 1, 直到下一个节点不存在,
-这个next节点编号为-1. 编号和下标关联起来, 通过访问编号,
-也就访问了相应的元素值.</p>
+<p>数组模拟单链表: 效率高 最大用处是<strong>邻接表</strong><br>邻接表能拿来储存图/树.</p>
+<p>储存方式: 区别于动态链表, 每个值对应一个地址, 静态链表采用编号的形式.</p>
+<p>略过头节点, 第一个节点编号为 0, 然后是 1, 直到下一个节点不存在, 这个next节点编号为-1. 编号和下标关联起来, 通过访问编号, 也就访问了相应的元素值.</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> head, e[N], ne[N], idx;</span><br></pre></td></tr></table></figure>
-<p>把 <code>x</code> 插到链表第 <code>k</code> 个元素之后,
-要考虑插入的位置. 如果 <code>k = 0</code>,
-那么就把新节点设置为头节点即可:</p>
+<p>把 <code>x</code> 插到链表第 <code>k</code> 个元素之后, 要考虑插入的位置. 如果 <code>k = 0</code>, 那么就把新节点设置为头节点即可:</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">newNode-&gt;data = data;</span><br><span class="line">newNode-&gt;next = head;</span><br><span class="line">head = newNode;</span><br></pre></td></tr></table></figure>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 找到第 k 个节点</span></span><br><span class="line">Node* current = head;</span><br><span class="line"><span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">1</span>; i &lt; k &amp;&amp; current != <span class="literal">NULL</span>; i++) &#123;</span><br><span class="line">    current = current-&gt;next;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 然后插入新节点</span></span><br><span class="line">newNode-&gt;data = data;</span><br><span class="line">newNode-&gt;next = current-&gt;next;</span><br><span class="line">current-&gt;next = newNode;</span><br></pre></td></tr></table></figure>
 <p>作为对比, 我们来关注下静态链表的实现:</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 头节点插入 x</span></span><br><span class="line">e[idx] = x;</span><br><span class="line">ne[idx] = head;</span><br><span class="line">head = idx++;</span><br></pre></td></tr></table></figure>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// x 插入到下标为 k 的后面</span></span><br><span class="line">e[idx] = x;</span><br><span class="line">ne[idx] = ne[k];</span><br><span class="line">ne[k] = idx++;</span><br></pre></td></tr></table></figure>
-<p>静态链表表示的含义基本上和动态链表无异.
-唯一的区别就是最后要手动更新下标idx. 此外, 这种规定下,
-第一个节点的下标为0, 实际操作可能要对下标偏移一位. 例如
-<code>insert(k - 1, x)</code> 表示在第 <code>k</code> 个节点后插入
-<code>x</code>. 当然你也可以将 <code>idx</code> 初始化为 1.
-你会发现静态链表实际上有空间换时间的做法. 因为多了一个 <code>ne</code>
-数组, 我们访问下标要比动态链表遍历找到第 <code>k</code>
-个元素快的多.</p>
+<p>静态链表表示的含义基本上和动态链表无异. 唯一的区别就是最后要手动更新下标idx. 此外, 这种规定下, 第一个节点的下标为0, 实际操作可能要对下标偏移一位. 例如 <code>insert(k - 1, x)</code> 表示在第 <code>k</code> 个节点后插入 <code>x</code>. 当然你也可以将 <code>idx</code> 初始化为 1.<br>你会发现静态链表实际上有空间换时间的做法. 因为多了一个 <code>ne</code> 数组, 我们访问下标要比动态链表遍历找到第 <code>k</code> 个元素快的多.</p>
 <p>删除操作, 实际上就是当原节点不存在, 并没有真正地在内存上把它抹除:</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ne[k] = ne[ne[k]];</span><br></pre></td></tr></table></figure>
-<h3 id="双链表">双链表</h3>
-<p>双链表多了一个 <code>prev</code>(前驱指针),
-操作其实和单链表没多大区别.</p>
-<p>我们规定 head: 0 (头节点) tail: 1 (尾节点) 这两个节点不储存值,
-表示链表的头尾 怎么初始化? <code>ne[0] = 1</code>,
-<code>prev[1] = 0</code>, idx 0 和 1 表示头和尾 然后 <code>idx</code>
-就从 <code>2</code> 开始.</p>
-<p>双链表新增的操作是往左边插入, 实际上就是
-<code>add(prev[k + 1], x)</code>.</p>
+<h3 id="双链表"><a href="#双链表" class="headerlink" title="双链表"></a>双链表</h3><p>双链表多了一个 <code>prev</code>(前驱指针), 操作其实和单链表没多大区别.</p>
+<p>我们规定 head: 0 (头节点) tail: 1 (尾节点) 这两个节点不储存值, 表示链表的头尾<br>怎么初始化? <code>ne[0] = 1</code>, <code>prev[1] = 0</code>, idx 0 和 1 表示头和尾<br>然后 <code>idx</code> 就从 <code>2</code> 开始.</p>
+<p>双链表新增的操作是往左边插入, 实际上就是 <code>add(prev[k + 1], x)</code>.</p>
 <p>链表就像看图说话. 看着图就知道代码怎么写了.</p>
 <p>双链表能优化某些问题.</p>
-<h2 id="栈">栈</h2>
-<p>先进后出</p>
+<h2 id="栈"><a href="#栈" class="headerlink" title="栈"></a>栈</h2><p>先进后出</p>
 <p>数组模拟: <code>stk[N], tt</code></p>
-<p><code>push(x)</code> 就是 <code>stk[++tt] = x</code> (栈指针+1,
-然后赋值) <code>pop(x)</code> 就是 <code>tt--</code> (栈指针-1)
-<code>query()</code> 返回栈顶元素 <code>stk[tt]</code></p>
+<p><code>push(x)</code> 就是 <code>stk[++tt] = x</code> (栈指针+1, 然后赋值)<br><code>pop(x)</code> 就是 <code>tt--</code> (栈指针-1)<br><code>query()</code> 返回栈顶元素 <code>stk[tt]</code></p>
 <p>很自然的实现方式. 理解以后就不难理解汇编的函数栈.</p>
 <p>应用: 表达式求值</p>
-<p>模拟样例: 计算 <code>2*(5-3)</code>, <code>2</code>, <code>*</code>,
-<code>(</code>, <code>5</code>, <code>-</code>, <code>3</code> 依次入栈,
-当读到 <code>)</code> 时开始出栈, 直到 <code>(</code> 停下, 也即
-<code>3</code>, <code>-</code>, <code>5</code>, <code>(</code>
-出栈并计算, 结果为 <code>2</code>, 入栈, 然后出栈 <code>2</code>,
-<code>*</code>, <code>2</code> 并计算, 入栈 <code>4</code>,
-然后打印栈顶元素.</p>
-<h3 id="单调栈">单调栈</h3>
-<p>要求: 输出每个数左边第一个比它小的数</p>
+<p>模拟样例: 计算 <code>2*(5-3)</code>, <code>2</code>, <code>*</code>, <code>(</code>, <code>5</code>, <code>-</code>, <code>3</code> 依次入栈, 当读到 <code>)</code> 时开始出栈, 直到 <code>(</code> 停下, 也即 <code>3</code>, <code>-</code>, <code>5</code>, <code>(</code> 出栈并计算, 结果为 <code>2</code>, 入栈, 然后出栈 <code>2</code>, <code>*</code>, <code>2</code> 并计算, 入栈 <code>4</code>, 然后打印栈顶元素.</p>
+<h3 id="单调栈"><a href="#单调栈" class="headerlink" title="单调栈"></a>单调栈</h3><p>要求: 输出每个数左边第一个比它小的数</p>
 <p>暴力做法:</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; n; i++)</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> j = i - <span class="number">1</span>; j &gt;= <span class="number">0</span>; j--)</span><br><span class="line">        <span class="keyword">if</span> (a[i] &gt; a[j])</span><br><span class="line">        &#123;</span><br><span class="line">            cout &lt;&lt; a[j] &lt;&lt; endl;</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br></pre></td></tr></table></figure>
-<p>优化: 所有逆序元素可以删掉 最后维护一个单调的栈 考虑
-<code>3 2 4 7 5 6</code>, 对于 <code>4</code> 而言 <code>2</code>
-是它的目标值, 而 <code>3</code> 之后再也不会用到了, 因为 <code>2</code>
-比它更靠后, 且比它更小. 于是 <code>3</code> 可以删去, 并且不影响问题.
-对于 <code>5</code> 而言, <code>4</code> 是它的目标值, 中间多插入了一个
-<code>7</code>, 是逆序的, 因此 <code>7</code>(栈顶元素) 可以删去.</p>
+<p>优化: 所有逆序元素可以删掉 最后维护一个单调的栈<br>考虑 <code>3 2 4 7 5 6</code>, 对于 <code>4</code> 而言 <code>2</code> 是它的目标值, 而 <code>3</code> 之后再也不会用到了, 因为 <code>2</code> 比它更靠后, 且比它更小. 于是 <code>3</code> 可以删去, 并且不影响问题. 对于 <code>5</code> 而言, <code>4</code> 是它的目标值, 中间多插入了一个 <code>7</code>, 是逆序的, 因此 <code>7</code>(栈顶元素) 可以删去.</p>
 <p>要判断的是 <code>stk[tt] &lt; a[i]</code>.</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; n; i++)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="type">int</span> x;</span><br><span class="line">    cin &gt;&gt; x;</span><br><span class="line">    <span class="keyword">while</span> (tt &amp;&amp; stk[tt] &gt;= x)</span><br><span class="line">        tt--;</span><br><span class="line">    <span class="keyword">if</span> (tt)</span><br><span class="line">        cout &lt;&lt; stk[tt] &lt;&lt; <span class="string">&#x27; &#x27;</span>;</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">        cout &lt;&lt; <span class="number">-1</span> &lt;&lt; endl;</span><br><span class="line"></span><br><span class="line">    stk[++tt] = x;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>例题: <a
-target="_blank" rel="noopener" href="https://codeforces.com/contest/1886/problem/C">Codeforces Edu.
-Round 156(Rated for Div 2): C. Decreasing String</a></p>
-<h2 id="队列">队列</h2>
-<p>先进先出</p>
+<p>例题: <a target="_blank" rel="noopener" href="https://codeforces.com/contest/1886/problem/C">Codeforces Edu. Round 156(Rated for Div 2): C. Decreasing String</a></p>
+<h2 id="队列"><a href="#队列" class="headerlink" title="队列"></a>队列</h2><p>先进先出</p>
 <p>模拟队列和模拟栈是类似的, 多了一个队尾</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> hh = <span class="number">0</span>, tt = <span class="number">-1</span>;</span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">push</span><span class="params">(<span class="type">int</span> x)</span> </span>&#123;</span><br><span class="line">    q[++tt] = x;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">pop</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    hh++</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="type">bool</span> <span class="title">empty</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (tt &gt;= hh) <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 返回队头元素</span></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">front</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> q[hh];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="单调队列">单调队列</h3>
-<p>比喻: 公司来了一个更年轻的新人, 如果他比一些老员工还要优秀,
-那么这些老员工就会被立即淘汰(从队列中删除), 如果没有老员工优秀,
-那么老员工会一直干到退休然后被淘汰(从滑动窗口中出去)</p>
-<p>模板题: 长度为 <span class="math inline">\(n\)</span> 的序列当中,
-求每个长度为 <span class="math inline">\(m\)</span> 的区间区间最值.
-时间复杂度为 <span class="math inline">\(O(n)\)</span>.</p>
-<figure>
-<img src="/images/pic7.png" alt="单调队列" />
-<figcaption aria-hidden="true">单调队列</figcaption>
-</figure>
-<p>假设我们求的是区间最大值. 实际上每个滑动窗口中的队列为:
-<code>6,2</code> -&gt; <code>6,5</code> -&gt; <code>6,5,1</code> -&gt;
-<code>7</code></p>
+<h3 id="单调队列"><a href="#单调队列" class="headerlink" title="单调队列"></a>单调队列</h3><p>比喻: 公司来了一个更年轻的新人, 如果他比一些老员工还要优秀, 那么这些老员工就会被立即淘汰(从队列中删除), 如果没有老员工优秀, 那么老员工会一直干到退休然后被淘汰(从滑动窗口中出去)</p>
+<p>模板题: 长度为 $n$ 的序列当中, 求每个长度为 $m$ 的区间区间最值. 时间复杂度为 $O(n)$.</p>
+<p><img src="/images/pic7.png" alt="单调队列"></p>
+<p>假设我们求的是区间最大值. 实际上每个滑动窗口中的队列为: <code>6,2</code> -&gt; <code>6,5</code> -&gt; <code>6,5,1</code> -&gt; <code>7</code></p>
 <p>队列中成员单调递减(或递增), 因此称这个队列为单调队列.</p>
 <p>滑动窗口问题:</p>
 <ul>
@@ -391,59 +336,35 @@ Round 156(Rated for Div 2): C. Decreasing String</a></p>
 <li>将队列中没有用的元素删掉(单调性)</li>
 <li>取队头/队尾 O(1)</li>
 </ul>
-<p>本质上这是一个双端队列(deque).
-用数组模拟可以这么实现(在队列的基础上拓展):</p>
+<p>本质上这是一个双端队列(deque). 用数组模拟可以这么实现(在队列的基础上拓展):</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> hh = <span class="number">0</span>, tt = <span class="number">-1</span>; <span class="comment">// 队列存储下标</span></span><br><span class="line"><span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; n; i++)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="comment">// i 是窗口的右端点 i-k+1 右端点</span></span><br><span class="line">    <span class="comment">// 如果队头元素在窗口内部</span></span><br><span class="line">    <span class="comment">// 那么就将队头元素后移</span></span><br><span class="line">    <span class="keyword">if</span> (hh &lt;= tt &amp;&amp; q[hh] &lt; i - k + <span class="number">1</span>)</span><br><span class="line">        hh++;</span><br><span class="line">    <span class="comment">// 保证队尾元素大于等于右端点的值</span></span><br><span class="line">    <span class="keyword">while</span> (hh &lt;= tt &amp;&amp; a[q[tt]] &gt;= a[i])</span><br><span class="line">        tt--;</span><br><span class="line">    <span class="comment">// 将 i 入队</span></span><br><span class="line">    q[++tt] = i;</span><br><span class="line">    <span class="keyword">if</span> (i &gt;= k - <span class="number">1</span>)</span><br><span class="line">        cout &lt;&lt; a[q[hh]] &lt;&lt; <span class="string">&#x27; &#x27;</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>用 STL 可以这么写(更符合抽象思维):</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">deque&lt;<span class="type">int</span>&gt; q; <span class="comment">// 存储的是编号</span></span><br><span class="line"><span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; n; i++)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">if</span> (!q.<span class="built_in">empty</span>() &amp;&amp; i - q.<span class="built_in">front</span>() &gt;= k)</span><br><span class="line">        q.<span class="built_in">pop_front</span>();</span><br><span class="line">    <span class="keyword">while</span> (!q.<span class="built_in">empty</span>() &amp;&amp; v[q.<span class="built_in">back</span>()] &gt;= v[i])</span><br><span class="line">        q.<span class="built_in">pop_back</span>();</span><br><span class="line"></span><br><span class="line">    q.<span class="built_in">push_back</span>(i);</span><br><span class="line">    <span class="keyword">if</span> (i &gt;= k - <span class="number">1</span>)</span><br><span class="line">        cout &lt;&lt; v[q.<span class="built_in">front</span>()] &lt;&lt; <span class="string">&#x27; &#x27;</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>求最大值可以对称过去. 很容易处理.</p>
 <p>单调队列可以优化部分dp问题.</p>
-<h2 id="字符串">字符串</h2>
-<h3 id="kmp">KMP</h3>
-<p>见其它文章.</p>
-<h3 id="trie树字典树">Trie树(字典树)</h3>
-<p>高效存储字符串及查找.</p>
-<figure>
-<img src="/images/trie1.png" alt="Trie1" />
-<figcaption aria-hidden="true">Trie1</figcaption>
-</figure>
+<h2 id="字符串"><a href="#字符串" class="headerlink" title="字符串"></a>字符串</h2><h3 id="KMP"><a href="#KMP" class="headerlink" title="KMP"></a>KMP</h3><p>见其它文章.</p>
+<h3 id="Trie树-字典树"><a href="#Trie树-字典树" class="headerlink" title="Trie树(字典树)"></a>Trie树(字典树)</h3><p>高效存储字符串及查找.</p>
+<p><img src="/images/trie1.png" alt="Trie1"></p>
 <p>每个节点存放它的编号.</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> son[N][<span class="number">26</span>], cnt[N], idx;</span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">insert</span><span class="params">(string str)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="type">int</span> p = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; str[i] != <span class="string">&#x27;\0&#x27;</span>; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="type">int</span> u = str[i] - <span class="string">&#x27;a&#x27;</span>;</span><br><span class="line">        <span class="keyword">if</span> (!son[p][u])</span><br><span class="line">            son[p][u] = ++idx;</span><br><span class="line">        p = son[p][u];</span><br><span class="line">    &#125;</span><br><span class="line">    cnt[p]++;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>应用: <a
-target="_blank" rel="noopener" href="https://www.acwing.com/problem/content/145/">最大异或值</a></p>
+<p>应用: <a target="_blank" rel="noopener" href="https://www.acwing.com/problem/content/145/">最大异或值</a></p>
 <p>用字典树存储一个树的二进制表示</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">insert</span><span class="params">(<span class="type">int</span> x)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="type">int</span> p = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">30</span>; ~i; i--)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="type">int</span> &amp;s = son[p][x &gt;&gt; i &amp; <span class="number">1</span>];</span><br><span class="line">        <span class="keyword">if</span> (!s)</span><br><span class="line">            s = ++idx;</span><br><span class="line">        p = s;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="并查集">并查集</h2>
-<p>作用/功能:</p>
-<ol type="1">
-<li>将两个集合合并 近乎O(1) <a href="#fn2" class="footnote-ref"
-id="fnref2" role="doc-noteref"><sup>2</sup></a></li>
+<h2 id="并查集"><a href="#并查集" class="headerlink" title="并查集"></a>并查集</h2><p>作用/功能:</p>
+<ol>
+<li>将两个集合合并 近乎O(1) <sup><a href="#fn_2" id="reffn_2">2</a></sup></li>
 <li>询问两个元素是否在同一个集合当中</li>
 </ol>
-<p>基本原理: 每个集合用一棵树来表示, 树根的编号就是整个集合的编号.
-每一个节点存储它的父节点, <code>p[x]</code> 表示 <code>x</code>
-的父节点.</p>
-<figure>
-<img src="/images/disjoint-set.svg" alt="并查集" />
-<figcaption aria-hidden="true">并查集</figcaption>
-</figure>
-<p>初始化: 每个数位于单独的集合. 每个数的父节点都是它自己.
-<code>std::iota(p.begin(), p.end(), 0)</code></p>
+<p>基本原理: 每个集合用一棵树来表示, 树根的编号就是整个集合的编号. 每一个节点存储它的父节点, <code>p[x]</code> 表示 <code>x</code> 的父节点.</p>
+<p><img src="/images/disjoint-set.svg" alt="并查集"></p>
+<p>初始化: 每个数位于单独的集合. 每个数的父节点都是它自己. <code>std::iota(p.begin(), p.end(), 0)</code></p>
 <p>问题1: 如何判断树根 <code>if(p[x] == x)</code></p>
-<p>问题2: 如何求 <code>x</code> 的集合编号
-<code>while(p[x] != x) x = p[x];</code> 这个可以写成递归的形式</p>
-<p>问题3: 如何合并这两个集合 <code>p[x] = y</code>
-让加入集合的根节点作为原集合根节点的儿子</p>
-<p>*启发式合并:
-选择哪棵树的根节点作为新树的根节点会影响未来操作的复杂度,
-可以将节点较少或深度较小的树连到另一棵 当然这个是optional,
-通常不采用启发式合并题目也能过的.</p>
+<p>问题2: 如何求 <code>x</code> 的集合编号 <code>while(p[x] != x) x = p[x];</code> 这个可以写成递归的形式</p>
+<p>问题3: 如何合并这两个集合 <code>p[x] = y</code> 让加入集合的根节点作为原集合根节点的儿子</p>
+<p>*启发式合并: 选择哪棵树的根节点作为新树的根节点会影响未来操作的复杂度, 可以将节点较少或深度较小的树连到另一棵<br>当然这个是optional, 通常不采用启发式合并题目也能过的.</p>
 <p>优化: 路径压缩 <del>按秩合并(不考虑)</del></p>
 <p>保证树是双层的.</p>
-<p>具体实现: <code>find(x)</code> 返回 <code>x</code> 的祖宗节点
-如果是根节点就返回自己 递归实现 <code>p[find(x)] = find(y)</code>
-实现合并操作. 注意对根节点进行 <code>find</code>
-操作就等同于返回它自身.</p>
+<p>具体实现: <code>find(x)</code> 返回 <code>x</code> 的祖宗节点 如果是根节点就返回自己 递归实现<br><code>p[find(x)] = find(y)</code> 实现合并操作. 注意对根节点进行 <code>find</code> 操作就等同于返回它自身.</p>
 <p>难点:</p>
 <ul>
 <li>理解 <code>find</code> 函数里的递归</li>
@@ -451,137 +372,101 @@ id="fnref2" role="doc-noteref"><sup>2</sup></a></li>
 </ul>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="type">const</span> <span class="type">int</span> N = <span class="number">1e5</span> + <span class="number">5</span>;</span><br><span class="line"><span class="type">int</span> n, m;</span><br><span class="line"><span class="type">int</span> p[N];</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">find</span><span class="params">(<span class="type">int</span> x)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(p[x] != x)</span><br><span class="line">        p[x] = <span class="built_in">find</span>(p[x]);</span><br><span class="line">    <span class="keyword">return</span> p[x];</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="type">signed</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    ios::<span class="built_in">sync_with_stdio</span>(<span class="literal">false</span>);</span><br><span class="line">    cin.<span class="built_in">tie</span>(<span class="number">0</span>);</span><br><span class="line">    cin &gt;&gt; n &gt;&gt; m;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">1</span>; i &lt;= n; i++)</span><br><span class="line">        p[i] = i;</span><br><span class="line">    <span class="keyword">while</span> (m--)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="type">char</span> op[<span class="number">2</span>];</span><br><span class="line">        <span class="type">int</span> a, b;</span><br><span class="line">        cin &gt;&gt; op &gt;&gt; a &gt;&gt; b;</span><br><span class="line">        <span class="keyword">if</span>(op[<span class="number">0</span>] == <span class="string">&#x27;M&#x27;</span>)</span><br><span class="line">            p[<span class="built_in">find</span>(a)] = <span class="built_in">find</span>(b);</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span>(<span class="built_in">find</span>(a) == <span class="built_in">find</span>(b))</span><br><span class="line">                cout &lt;&lt; <span class="string">&quot;Yes&quot;</span> &lt;&lt; endl;</span><br><span class="line">            <span class="keyword">else</span></span><br><span class="line">                cout &lt;&lt; <span class="string">&quot;No&quot;</span> &lt;&lt; endl;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>经典题目: POJ1182 食物链</p>
-<p><a target="_blank" rel="noopener" href="https://vjudge.net/article/371">有生之年能做完的习题集
-并查集</a></p>
-<h2 id="图">图</h2>
+<p><a target="_blank" rel="noopener" href="https://vjudge.net/article/371">有生之年能做完的习题集 并查集</a></p>
+<h2 id="图"><a href="#图" class="headerlink" title="图"></a>图</h2><p>一些图论基础:</p>
 <p>图 = 顶点+边 的集合</p>
-<p>用 <span class="math inline">\(G(V,E)\)</span> 表示. G: Graph V:
-Vertex E: Edge</p>
-<p>边的方向: 有向图和无向图 带权和不带权: 边可以有权重,
-可以表示诸如距离或者时间之类的量</p>
+<p>用 $G(V,E)$ 表示. G: Graph V: Vertex E: Edge</p>
+<p>边的方向: 有向图和无向图<br>带权和不带权: 边可以有权重, 可以表示诸如距离或者时间之类的量</p>
+<p>图的存储</p>
+<ul>
+<li>直接存边 例如 Kruskal 算法</li>
+<li>邻接矩阵 很符合直觉的一种方式</li>
+<li>邻接表 链表升级版</li>
+</ul>
 <p>可以用一个二维数组表示一个图, 这个数组又被称为邻接矩阵.</p>
-<p><code>a[i][j]</code> 表示顶点 <code>i</code> 到 <code>j</code>
-是否连通. 如果连通, 那么这个值为 <code>1</code>, 否则为 <code>0</code>.
-在带权图中, 这个值为 <code>i</code> 到 <code>j</code>
-所需要的边权值(如距离, 时间etc.) <code>+inf</code>
-表示不连通(无法到达).</p>
-<p>对于无向图, 邻接矩阵关于 0-0, 1-1, 2-2 这条对角线堆成. 对角线为
-<code>0</code>, 表示某定点到自己的边长为 <code>0</code>.</p>
-<p>我们也可以用链表来表示一个图, 这种方法也被称为图的邻接表.
-表头是一个图的节点数组, 对应图的顶点. 每个节点后连接一个链表或指针数组,
-存储与这个顶点相连的其他顶点的指针. 只要顶点A到顶点B之间有一条边,
-则A对应的表头后就有一个顶点B的指针. 如果要存储带权的边,
-在定义节点结构的时候可以附带存储一个变量.</p>
+<p><code>a[i][j]</code> 表示顶点 <code>i</code> 到 <code>j</code> 是否连通. 如果连通, 那么这个值为 <code>1</code>, 否则为 <code>0</code>.<br>在带权图中, 这个值为 <code>i</code> 到 <code>j</code> 所需要的边权值(如距离, 时间etc.) <code>+inf</code> 表示不连通(无法到达).</p>
+<p>对于无向图, 邻接矩阵关于主对角线对称. 对角线为 <code>0</code>, 表示某定点到自己的边长为 <code>0</code>(对于简单图而言).</p>
+<p>邻接矩阵的优点: O(1) 的查询时间</p>
+<p>我们也可以用链表来表示一个图, 这种方法也被称为图的邻接表.</p>
+<ul>
+<li>存放有关边的信息, 只存邻居点的信息</li>
+<li><code>e[u][i]</code> 表示节点 <code>u</code> 的第 <code>i</code> 条边</li>
+</ul>
 <p>我们一般使用邻接表来表示稀疏图, 邻接矩阵表示稠密图.</p>
-<h3 id="二叉树">二叉树</h3>
-<p>注: 本题的综合性比较高.</p>
-<p>导航: <a
-target="_blank" rel="noopener" href="https://www.acwing.com/problem/content/description/1499/">1497.
-树的遍历</a></p>
+<p>如果要存储带权的边, 在定义节点结构的时候可以附带存储一个变量.</p>
+<p>链式前向星</p>
+<ul>
+<li>用静态数组模拟邻接表的方式</li>
+<li>比较复杂, 建议结合图片食用</li>
+</ul>
+<p>习题: <a target="_blank" rel="noopener" href="https://www.acwing.com/problem/content/848/">树的重心</a></p>
+<p>核心思想: DFS 枚举图中的每一个点, 求出”向下”子树的最大大小, 然后利用总结点数 - 子树大小之和, 得出”向上”子树的大小, 每次 DFS 依照定义更新 <code>min(ans, max(res, n - sum))</code>.</p>
+<p><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P1364">P1364 医院设置</a>: 带权的树的重心</p>
+<h3 id="二叉树"><a href="#二叉树" class="headerlink" title="二叉树"></a>二叉树</h3><p>注: 本题的综合性比较高.</p>
+<p>导航: <a target="_blank" rel="noopener" href="https://www.acwing.com/problem/content/description/1499/">1497. 树的遍历</a></p>
 <p>这道题很classic. 怎么花式去遍历一棵树: 后序遍历 中序遍历 层序遍历</p>
 <p>解释下什么意思:</p>
 <figure class="highlight txt"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">     1</span><br><span class="line">   /   \</span><br><span class="line">  2     3</span><br><span class="line"> / \   / \</span><br><span class="line">4   5 6   7</span><br></pre></td></tr></table></figure>
-<ol type="1">
+<ol>
 <li>后序遍历: 4 -&gt; 5 -&gt; 2 -&gt; 6 -&gt; 7 -&gt; 3 -&gt; 1</li>
 <li>中序遍历: 4 -&gt; 2 -&gt; 5 -&gt; 1 -&gt; 6 -&gt; 3 -&gt; 7</li>
 <li>层序遍历: 1 -&gt; 2 -&gt; 3 -&gt; 4 -&gt; 5 -&gt; 6 -&gt; 7</li>
 </ol>
 <p>输入后序遍历和中序遍历, 可以确定一棵二叉树.</p>
-<p>通过后序遍历找到根的值,
-然后再到中序序列里找到根的位置再将该树分为左子树与右子树(对应区间分割),
-然后不断递归即可通过中序和后序重塑一棵树.</p>
-<p>例如找到了后序遍历到了2, 那么在中序遍历中找到这个2, 2前后的两个元素,
-即 4 和 5, 也就是一个 parent 2 和 left child 4 和 right child 5. parent
-可以看成是一个树的 root.</p>
-<p>一个难点是怎么确定 left child 和 right child 在后序遍历中的位置.
-解决方案如下: 因为我们知道中序遍历的区间范围,
-也即知道了左树和右树的大小, 而利用这个大小不会变我们可以反推:
-<code>pr' = pl + (k - 1 - il)</code>(左树的情形),
-<code>pl' = pl + (k + 1 - il) - 1</code>(右树)</p>
+<p>通过后序遍历找到根的值, 然后再到中序序列里找到根的位置再将该树分为左子树与右子树(对应区间分割), 然后不断递归即可通过中序和后序重塑一棵树.</p>
+<p>例如找到了后序遍历到了2, 那么在中序遍历中找到这个2, 2前后的两个元素, 即 4 和 5, 也就是一个 parent 2 和 left child 4 和 right child 5. parent 可以看成是一个树的 root.</p>
+<p>一个难点是怎么确定 left child 和 right child 在后序遍历中的位置. 解决方案如下: 因为我们知道中序遍历的区间范围, 也即知道了左树和右树的大小, 而利用这个大小不会变我们可以反推: <code>pr&#39; = pl + (k - 1 - il)</code>(左树的情形), <code>pl&#39; = pl + (k + 1 - il) - 1</code>(右树)</p>
 <blockquote>
 <p>问题: 为什么要-1? 答案: 因为index从零开始取的</p>
 </blockquote>
-<p>因为存在在中序遍历搜索后序遍历里的值的过程,
-因此中序遍历用一个hash表存放.</p>
+<p>因为存在在中序遍历搜索后序遍历里的值的过程, 因此中序遍历用一个hash表存放.</p>
 <p>代码很精巧. 建议反复阅读orz</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="type">const</span> <span class="type">int</span> N = <span class="number">40</span>;</span><br><span class="line"><span class="type">int</span> n;</span><br><span class="line"></span><br><span class="line"><span class="type">int</span> postorder[N], inorder[N];</span><br><span class="line">unordered_map&lt;<span class="type">int</span>, <span class="type">int</span>&gt; l, r, pos;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">build</span><span class="params">(<span class="type">int</span> il, <span class="type">int</span> ir, <span class="type">int</span> pl, <span class="type">int</span> pr)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="type">int</span> root = postorder[pr];</span><br><span class="line">    <span class="type">int</span> k = pos[root];</span><br><span class="line">    <span class="keyword">if</span> (il &lt; k)</span><br><span class="line">        l[root] = <span class="built_in">build</span>(il, k - <span class="number">1</span>, pl, pl + k - <span class="number">1</span> - il);</span><br><span class="line">    <span class="keyword">if</span> (ir &gt; k)</span><br><span class="line">        r[root] = <span class="built_in">build</span>(k + <span class="number">1</span>, ir, pl + k - il, pr - <span class="number">1</span>);</span><br><span class="line">    <span class="keyword">return</span> root;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">bfs</span><span class="params">(<span class="type">int</span> root)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    queue&lt;<span class="type">int</span>&gt; q;</span><br><span class="line">    q.<span class="built_in">push</span>(root);</span><br><span class="line">    <span class="keyword">while</span> (q.<span class="built_in">size</span>())</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">auto</span> t = q.<span class="built_in">front</span>();</span><br><span class="line">        q.<span class="built_in">pop</span>();</span><br><span class="line">        cout &lt;&lt; t &lt;&lt; <span class="string">&#x27; &#x27;</span>;</span><br><span class="line">        <span class="keyword">if</span> (l.<span class="built_in">count</span>(t))</span><br><span class="line">            q.<span class="built_in">push</span>(l[t]);</span><br><span class="line">        <span class="keyword">if</span> (r.<span class="built_in">count</span>(t))</span><br><span class="line">            q.<span class="built_in">push</span>(r[t]);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">signed</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    ios::<span class="built_in">sync_with_stdio</span>(<span class="literal">false</span>);</span><br><span class="line">    cin.<span class="built_in">tie</span>(<span class="number">0</span>);</span><br><span class="line">    cin &gt;&gt; n;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; n; i++)</span><br><span class="line">        cin &gt;&gt; postorder[i];</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; n; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        cin &gt;&gt; inorder[i];</span><br><span class="line">        pos[inorder[i]] = i;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="type">int</span> root = <span class="built_in">build</span>(<span class="number">0</span>, n - <span class="number">1</span>, <span class="number">0</span>, n - <span class="number">1</span>);</span><br><span class="line">    <span class="built_in">bfs</span>(root);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="桶">桶</h2>
-<p>应用:</p>
+<h2 id="桶"><a href="#桶" class="headerlink" title="桶"></a>桶</h2><p>应用:</p>
 <ul>
 <li>桶排序</li>
 <li>计数器数组</li>
 </ul>
 <p>例如计算字符串中两个相同字符之间的距离, 可以这么写</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> cnt[N];</span><br><span class="line"><span class="built_in">memset</span>(cnt, <span class="number">-1</span>, <span class="keyword">sizeof</span> cnt);</span><br><span class="line"><span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt;= n; i++)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">if</span>(cnt[s[i]] != <span class="number">-1</span>)</span><br><span class="line">        cout &lt;&lt; s[i] - i &lt;&lt; endl;</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">        cnt[s[i]] = i;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="哈希表散列表">哈希表(散列表)</h2>
-<figure>
-<img src="/images/hashtable.svg" alt="哈希表" />
-<figcaption aria-hidden="true">哈希表</figcaption>
-</figure>
-<p>key-value 式的数据结构, 有 key 就能查询到 value, 实际上是一种映射.
-这个 key 可以是 <code>int</code>, <code>string</code>, 甚至结构体.
-可以把哈希表理解成一种高级的数组, 下标就是 key, key
-对应值在内存的位置.</p>
-<p>通过一个哈希函数 <code>h(x)</code> 假设我们用数组 <code>a</code>
-存放数据, 那么 <code>(key, value)</code> 就应该放在
-<code>a[h(key)]</code> 上.</p>
-<p>一个应用: 数据量 <code>N 0~1e9</code> 中的数字映射到
-<code>0~1e5</code> 哈希函数怎么取? <code>h(x) = x mod M</code>
-<code>M</code> 是一个大质数</p>
+<h2 id="哈希表-散列表"><a href="#哈希表-散列表" class="headerlink" title="哈希表(散列表)"></a>哈希表(散列表)</h2><p><img src="/images/hashtable.svg" alt="哈希表"></p>
+<p>key-value 式的数据结构, 有 key 就能查询到 value, 实际上是一种映射.<br>这个 key 可以是 <code>int</code>, <code>string</code>, 甚至结构体. 可以把哈希表理解成一种高级的数组, 下标就是 key, key 对应值在内存的位置.</p>
+<p>通过一个哈希函数 <code>h(x)</code><br>假设我们用数组 <code>a</code> 存放数据, 那么 <code>(key, value)</code> 就应该放在 <code>a[h(key)]</code> 上.</p>
+<p>一个应用: 数据量 <code>N 0~1e9</code> 中的数字映射到 <code>0~1e5</code><br>哈希函数怎么取? <code>h(x) = x mod M</code> <code>M</code> 是一个大质数</p>
 <p><em>Remark</em>: 离散化是一种及其特殊的哈希(离散化是保序的)</p>
 <ul>
-<li><span class="math inline">\(x \bmod 10^5\)</span></li>
+<li>$x \bmod 10^5$</li>
 <li>哈希冲突怎么办? (两个不同数据, 但哈希值相同)</li>
-<li>抽屉原理告诉我们这是不可避的.
-<ul>
-<li>拉链法/开散列表(open hashing): 储存当前槽上存储的数(类似邻接表)
-<ul>
+<li>抽屉原理告诉我们这是不可避的.<ul>
+<li>拉链法/开散列表(open hashing): 储存当前槽上存储的数(类似邻接表)<ul>
 <li>查询的时候扫描链表就行.</li>
-</ul></li>
-<li>开放寻址法/闭散列法: 如果插入数据的位置上已经有数据,
-就插入到下一个空余位置(比喻: 上厕所)
-<ul>
-<li>有线性探测, 二次探测, 双重散列(双哈希)等方法...</li>
+</ul>
+</li>
+<li>开放寻址法/闭散列法: 如果插入数据的位置上已经有数据, 就插入到下一个空余位置(比喻: 上厕所)<ul>
+<li>有线性探测, 二次探测, 双重散列(双哈希)等方法…</li>
 <li>OI 里一般用的是拉链法.</li>
-</ul></li>
-</ul></li>
+</ul>
+</li>
+</ul>
+</li>
 </ul>
 <p>实现操作: 比赛里(一般)只会有添加和查找两个操作</p>
 <p>MD5, SHA-1 背后原理都是 hash.</p>
-<h3 id="std-库的哈希表">std 库的哈希表</h3>
-<p><code>unordered_map</code> 或者 <code>unordered_set</code></p>
+<h3 id="std-库的哈希表"><a href="#std-库的哈希表" class="headerlink" title="std 库的哈希表"></a>std 库的哈希表</h3><p><code>unordered_map</code> 或者 <code>unordered_set</code></p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">unordered_map&lt;<span class="type">int</span>,<span class="type">int</span>&gt; mp;</span><br><span class="line"><span class="comment">// 添加操作</span></span><br><span class="line">mp[x]++;</span><br><span class="line"><span class="comment">// 查询操作</span></span><br><span class="line"><span class="keyword">if</span>(mp[t] &gt; <span class="number">0</span>)</span><br><span class="line">    <span class="comment">// code</span></span><br></pre></td></tr></table></figure>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">unordered_set&lt;<span class="type">int</span>&gt; hashmap;</span><br><span class="line"><span class="comment">// 插入操作</span></span><br><span class="line">hashmap.<span class="built_in">insert</span>(x);</span><br><span class="line"><span class="comment">// 查询操作</span></span><br><span class="line"><span class="keyword">if</span>(hashmap.<span class="built_in">count</span>(t))</span><br><span class="line">    <span class="comment">// code</span></span><br></pre></td></tr></table></figure>
-<h3 id="字符串哈希">字符串哈希</h3>
-<p>比较重要的哈希方式 一些字符串问题不一定需要KMP 字符串前缀哈希法
-<code>h[i]</code> 表示前缀字符串对应的哈希值</p>
+<h3 id="字符串哈希"><a href="#字符串哈希" class="headerlink" title="字符串哈希"></a>字符串哈希</h3><p>比较重要的哈希方式 一些字符串问题不一定需要KMP<br>字符串前缀哈希法 <code>h[i]</code> 表示前缀字符串对应的哈希值</p>
 <p>问题: 如何定义某一前缀字符串的哈希值?</p>
 <p>我们采用多项式 Hash 的方法.</p>
-<p>字符串P进制下的 "ABCD"-&gt; A B C D -&gt; 1 2 3 4 -&gt; 十进制数
-<span class="math inline">\(1\cdot p^3 + 2 \cdot p^2 + 3 \cdot p^1 + 4
-\cdot p^0\)</span> 最后对整个数取模 <span
-class="math inline">\(q\)</span> 字符串就映射到了 <code>0~q-1</code></p>
-<p>公式化: 对于一个长度 <span class="math inline">\(l\)</span> 的字符串
-<span class="math inline">\(s\)</span>, 那么它对应的哈希函数值为</p>
-<p><span class="math display">\[f(s) =
-\sum^{l}_{i=1}s[i]p^{l-i}\]</span></p>
-<p>不能映射成 0 (A 0 那么 AA 也是 0) 字符串的哈希方法不考虑冲突的情况
-经验值 <code>p = 131</code> 或 <code>p = 13331</code>
-<code>q = 2^64</code> 在一般情况假定不会出现冲突(冲突概率约为 <span
-class="math inline">\(|s|-1/q\)</span>)</p>
-<p>用 <code>unsigned long long</code> 可以省去
-<code>mod 2^64</code>(因为溢出就等同于取模, 见CSAPP Chapter 2)</p>
-<p>类似前缀和, 如果想求 <code>L</code> 到 <code>R</code> 这一段的hash,
-那么可以按照下面的方式</p>
-<p><span class="math display">\[h_R - h_{L-1} \cdot
-p^{R-L+1}\]</span></p>
-<p>你可以手动代入计算这个是否正确.</p>
+<p>字符串P进制下的 “ABCD”-&gt; A B C D -&gt; 1 2 3 4 -&gt; 十进制数 $1\cdot p^3 + 2 \cdot p^2 + 3 \cdot p^1 + 4 \cdot p^0$ 最后对整个数取模 $q$<br>字符串就映射到了 <code>0~q-1</code></p>
+<p>公式化: 对于一个长度 $l$ 的字符串 $s$, 那么它对应的哈希函数值为</p>
+<script type="math/tex; mode=display">f(s) = \sum^{l}_{i=1}s[i]p^{l-i}</script><p>不能映射成 0 (A 0 那么 AA 也是 0)<br>字符串的哈希方法不考虑冲突的情况 经验值 <code>p = 131</code> 或 <code>p = 13331</code> <code>q = 2^64</code> 在一般情况假定不会出现冲突(冲突概率约为 $|s|-1/q$)</p>
+<p>用 <code>unsigned long long</code> 可以省去 <code>mod 2^64</code>(因为溢出就等同于取模, 见CSAPP Chapter 2)</p>
+<p>类似前缀和, 如果想求 <code>L</code> 到 <code>R</code> 这一段的hash, 那么可以按照下面的方式</p>
+<script type="math/tex; mode=display">h_R - h_{L-1} \cdot p^{R-L+1}</script><p>你可以手动代入计算这个是否正确.</p>
 <p>应用: 字符串匹配.</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="keyword">typedef</span> <span class="type">unsigned</span> <span class="type">long</span> <span class="type">long</span> ULL;</span><br><span class="line"></span><br><span class="line"><span class="type">const</span> <span class="type">int</span> N = <span class="number">1e5</span> + <span class="number">5</span>, P = <span class="number">131</span>;</span><br><span class="line"><span class="type">int</span> n, m;</span><br><span class="line"><span class="type">char</span> str[N];</span><br><span class="line">ULL h[N], p[N];</span><br><span class="line"></span><br><span class="line"><span class="function">ULL <span class="title">get</span><span class="params">(<span class="type">int</span> l, <span class="type">int</span> r)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> h[r] - h[l - <span class="number">1</span>] * p[r - l + <span class="number">1</span>];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">signed</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    ios::<span class="built_in">sync_with_stdio</span>(<span class="literal">false</span>);</span><br><span class="line">    cin.<span class="built_in">tie</span>(<span class="number">0</span>);</span><br><span class="line">    cin &gt;&gt; n &gt;&gt; m &gt;&gt; (str + <span class="number">1</span>);</span><br><span class="line">    p[<span class="number">0</span>] = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">1</span>; i &lt;= n; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        p[i] = p[i - <span class="number">1</span>] * P;</span><br><span class="line">        h[i] = h[i - <span class="number">1</span>] * P + str[i];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">while</span> (m--)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="type">int</span> l1, r1, l2, r2;</span><br><span class="line">        cin &gt;&gt; l1 &gt;&gt; r1 &gt;&gt; l2 &gt;&gt; r2;</span><br><span class="line">        <span class="keyword">if</span> (<span class="built_in">get</span>(l1, r1) == <span class="built_in">get</span>(l2, r2))</span><br><span class="line">            cout &lt;&lt; <span class="string">&quot;Yes&quot;</span> &lt;&lt; endl;</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">            cout &lt;&lt; <span class="string">&quot;No&quot;</span> &lt;&lt; endl;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="堆">堆</h2>
-<h3 id="堆实现">堆实现</h3>
-<p>STL里的数据结构为 <code>priority_queue</code> 优先队列实现堆
-基本功能:</p>
+<h2 id="堆"><a href="#堆" class="headerlink" title="堆"></a>堆</h2><h3 id="堆实现"><a href="#堆实现" class="headerlink" title="堆实现"></a>堆实现</h3><p>STL里的数据结构为 <code>priority_queue</code> 优先队列实现堆<br>基本功能:</p>
 <ul>
 <li>插入一个数</li>
 <li>求集合中的最小值</li>
@@ -591,42 +476,21 @@ p^{R-L+1}\]</span></p>
 </ul>
 <p>堆是一棵完全二叉树.</p>
 <p>小根堆: 每个点都小于它的左右child, 那么根节点就是最小值</p>
-<p>堆的存储: 一维数组,
-下标从<code>1</code>开始.(因为<code>0</code>的左child也是<code>0</code>,
-不方便) 下标 <code>x</code> 的左child: 下标 <code>2x</code> 右child:
-<code>2x+1</code></p>
-<p><code>down(x)</code>: 让一个节点往下移动 <code>up(x)</code>:
-往上移动</p>
+<p>堆的存储: 一维数组, 下标从<code>1</code>开始.(因为<code>0</code>的左child也是<code>0</code>, 不方便)<br>下标 <code>x</code> 的左child: 下标 <code>2x</code> 右child: <code>2x+1</code></p>
+<p><code>down(x)</code>: 让一个节点往下移动<br><code>up(x)</code>: 往上移动</p>
 <p>所有操作可以用这两个基本操作实现:</p>
-<p>插入: 原堆大小为 <code>size</code> 那么
-<code>heap[++size] = x;</code> <code>up(size)</code> 即可. 最小值:
-<code>heap[1]</code> 删除第一个元素:
-用堆里最后一个元素覆盖掉第一个元素<code>heap[1] = heap[size]</code>,
-然后<code>size--</code>, 维护根节点 <code>down(1)</code> 删除任意元素:
-<code>heap[k] = heap[size]</code>, <code>size--</code>,
-<code>down(k)</code>,
-<code>up(k)</code>(只会执行一步<code>up/down</code>操作). 修改任意元素:
-<code>heap[k] = x</code>, <code>down[k]</code>, <code>up[k]</code></p>
+<p>插入: 原堆大小为 <code>size</code> 那么 <code>heap[++size] = x;</code> <code>up(size)</code> 即可.<br>最小值: <code>heap[1]</code><br>删除第一个元素: 用堆里最后一个元素覆盖掉第一个元素<code>heap[1] = heap[size]</code>, 然后<code>size--</code>, 维护根节点 <code>down(1)</code><br>删除任意元素: <code>heap[k] = heap[size]</code>, <code>size--</code>, <code>down(k)</code>, <code>up(k)</code>(只会执行一步<code>up/down</code>操作).<br>修改任意元素: <code>heap[k] = x</code>, <code>down[k]</code>, <code>up[k]</code></p>
 <p>利用二叉堆实现堆排序. 只用实现<code>down</code>:</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">down</span><span class="params">(<span class="type">int</span> k)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="type">int</span> t = k;</span><br><span class="line">    <span class="keyword">if</span> (k * <span class="number">2</span> &lt;= s &amp;&amp; heap[k * <span class="number">2</span>] &lt; heap[t])</span><br><span class="line">        t = k * <span class="number">2</span>;</span><br><span class="line">    <span class="keyword">if</span> (k * <span class="number">2</span> + <span class="number">1</span> &lt;= s &amp;&amp; heap[k * <span class="number">2</span> + <span class="number">1</span>] &lt; heap[t])</span><br><span class="line">        t = k * <span class="number">2</span> + <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">if</span> (k != t)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">swap</span>(heap[k], heap[t]);</span><br><span class="line">        <span class="built_in">down</span>(t);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>然后不断向堆插入元素即可.</p>
-<h3 id="std-库里的堆">std 库里的堆</h3>
-<p>用优先队列
-<code>priority_queue&lt;T, vector&lt;T&gt;, ...&gt;</code></p>
-<p>最后一个可以填 <code>greater&lt;T&gt;</code>, 表示小根堆;
-<code>less&lt;T&gt;</code> 表示大根堆.</p>
-<section id="footnotes" class="footnotes footnotes-end-of-document"
-role="doc-endnotes">
-<hr />
-<ol>
-<li id="fn1"><p>严格来说这不算是一个"结构", 而是简单的类型.
-只要你懂我意思就行 :)<a href="#fnref1" class="footnote-back"
-role="doc-backlink">↩︎</a></p></li>
-<li id="fn2"><p>关于时间复杂度的证明, 可以看这篇<a
-target="_blank" rel="noopener" href="https://oi-wiki.org/ds/dsu-complexity/">文章</a>.<a href="#fnref2"
-class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-</ol>
-</section>
+<h3 id="std-库里的堆"><a href="#std-库里的堆" class="headerlink" title="std 库里的堆"></a>std 库里的堆</h3><p>用优先队列 <code>priority_queue&lt;T, vector&lt;T&gt;, ...&gt;</code></p>
+<p>最后一个可以填 <code>greater&lt;T&gt;</code>, 表示小根堆; <code>less&lt;T&gt;</code> 表示大根堆.</p>
+<blockquote id="fn_1">
+<sup>1</sup>. 严格来说这不算是一个”结构”, 而是简单的类型. 只要你懂我意思就行 :)<a href="#reffn_1" title="Jump back to footnote [1] in the text."> &#8617;</a>
+</blockquote>
+<blockquote id="fn_2">
+<sup>2</sup>. 关于时间复杂度的证明, 可以看这篇<a target="_blank" rel="noopener" href="https://oi-wiki.org/ds/dsu-complexity/">文章</a>.<a href="#reffn_2" title="Jump back to footnote [2] in the text."> &#8617;</a>
+</blockquote>
 
     </div>
 
@@ -685,14 +549,14 @@ class="footnote-back" role="doc-backlink">↩︎</a></p></li>
       <i class="fa fa-chart-line"></i>
     </span>
       <span>站点总字数：</span>
-    <span title="站点总字数">64k</span>
+    <span title="站点总字数">67k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
       <span>站点阅读时长 &asymp;</span>
-    <span title="站点阅读时长">3:52</span>
+    <span title="站点阅读时长">4:02</span>
   </span>
 </div>
   <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/pisces/" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动

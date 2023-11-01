@@ -6,7 +6,7 @@
   <link href="http://example.com/atom.xml" rel="self"/>
   
   <link href="http://example.com/"/>
-  <updated>2023-10-23T08:57:01.449Z</updated>
+  <updated>2023-10-26T05:32:17.456Z</updated>
   <id>http://example.com/</id>
   
   <author>
@@ -17,18 +17,42 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>从零开始的数据分析</title>
+    <link href="http://example.com/2023/10/26/%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B%E7%9A%84%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/"/>
+    <id>http://example.com/2023/10/26/%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B%E7%9A%84%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/</id>
+    <published>2023-10-26T04:50:33.000Z</published>
+    <updated>2023-10-26T05:32:17.456Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;从零开始的数据分析!&lt;/p&gt;
+&lt;p&gt;为啥开这个坑? 第一, 这学期上了这门课, 但感觉教授的内容好浅.
+想要在这个领域多扩展些知识. 第二,
+后端发展路线上确实有对数据分析的一点要求, 就当是提升自己的硬实力.&lt;/p&gt;
+&lt;p&gt;最后一点, 我是算法竞赛败犬. Regional Cu, Fe 屁用没有, 思来索去,
+得出了一个观点: 卷不动 XCPC 那就赶紧跑路 (bushi&lt;a href=&quot;#fn1&quot;
+class=&quot;footnote-ref&quot; id=&quot;fnref1&quot; role=&quot;doc-noteref&quot;&gt;&lt;sup&gt;1&lt;/sup&gt;&lt;/a&gt;&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="数据分析" scheme="http://example.com/categories/%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/"/>
+    
+    
+    <category term="Python 数据分析" scheme="http://example.com/tags/Python-%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/"/>
+    
+  </entry>
+  
+  <entry>
     <title>我的刷题日记</title>
     <link href="http://example.com/2023/09/25/%E4%B9%9D%E6%9C%88%E4%BD%A0%E5%88%B7%E9%A2%98%E4%BA%86%E5%90%97/"/>
     <id>http://example.com/2023/09/25/%E4%B9%9D%E6%9C%88%E4%BD%A0%E5%88%B7%E9%A2%98%E4%BA%86%E5%90%97/</id>
     <published>2023-09-25T13:47:48.000Z</published>
-    <updated>2023-10-23T08:57:01.449Z</updated>
+    <updated>2023-11-01T13:27:43.852Z</updated>
     
     
     <summary type="html">&lt;p&gt;悲报: 要去CCPC桂林赛区坐牢了.&lt;/p&gt;
-&lt;p&gt;校赛被队友带飞了, 身不由己, 现在希望自己要打出点成绩不要太丢脸.
-从今天开始高强度刷题. Codeforces Div 1/2 一题不落, Atcoder ABC 狠狠开刷,
-区域赛的 vp 狠狠开打...&lt;/p&gt;
-&lt;p&gt;就看看我又没有恒心做到日更了, 不管怎的先开个究极大坑在这里.&lt;/p&gt;</summary>
+&lt;p&gt;校赛被队友带飞了, 身不由己, 现在希望自己要打出点成绩不要太丢脸. 从今天开始高强度刷题. Codeforces Div 1/2 一题不落, Atcoder ABC 狠狠开刷, 区域赛的 vp 狠狠开打…&lt;/p&gt;
+&lt;p&gt;就看看我又没有恒心做到日更了, 不管怎的先开个究极大坑在这里.&lt;/p&gt;
+&lt;p&gt;UPD: 是我想多了. 不过 11 月还有校赛, 狠狠练习&lt;/p&gt;</summary>
     
     
     
@@ -330,18 +354,12 @@ bash要怎么写. 有 os/sys 模块的存在完全可以把 Python
     <link href="http://example.com/2023/02/25/%E7%AE%80%E5%8D%95%E7%9A%84%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
     <id>http://example.com/2023/02/25/%E7%AE%80%E5%8D%95%E7%9A%84%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/</id>
     <published>2023-02-25T15:29:08.000Z</published>
-    <updated>2023-10-10T09:23:13.602Z</updated>
+    <updated>2023-10-31T05:55:35.425Z</updated>
     
     
-    <summary type="html">&lt;p&gt;做一个数据结构的小小总结. 其实数据结构和算法是不分家的, 例如
-&lt;code&gt;1+1=2&lt;/code&gt; 是一个加法算法, 用到了整型的数据结构 &lt;a href=&quot;#fn1&quot;
-class=&quot;footnote-ref&quot; id=&quot;fnref1&quot; role=&quot;doc-noteref&quot;&gt;&lt;sup&gt;1&lt;/sup&gt;&lt;/a&gt;.
-你就说是不是吧.&lt;/p&gt;
-&lt;p&gt;DSA课程/书本上更注重实现. 手搓一个泛型结构, 实现 &lt;code&gt;std&lt;/code&gt;
-里头的一堆方法, 这不劝退谁劝退. 实现是为了更好理解原理.
-不要被复杂的构造带偏了学习的方向! 我们实现的标准是: ANSI C 也能做到!&lt;/p&gt;
-&lt;p&gt;剩下的内容: 怎么用STL来解决使用到特定数据结构的题目, i.e. 会做题.
-但我们也懂原理!&lt;/p&gt;</summary>
+    <summary type="html">&lt;p&gt;做一个数据结构的小小总结. 其实数据结构和算法是不分家的, 例如 &lt;code&gt;1+1=2&lt;/code&gt; 是一个加法算法, 用到了整型的数据结构 &lt;sup&gt;&lt;a href=&quot;#fn_1&quot; id=&quot;reffn_1&quot;&gt;1&lt;/a&gt;&lt;/sup&gt;. 你就说是不是吧.&lt;/p&gt;
+&lt;p&gt;DSA课程/书本上更注重实现. 手搓一个泛型结构, 实现 &lt;code&gt;std&lt;/code&gt; 里头的一堆方法, 这不劝退谁劝退.&lt;br&gt;实现是为了更好理解原理. 不要被复杂的构造带偏了学习的方向! 我们实现的标准是: ANSI C 也能做到!&lt;/p&gt;
+&lt;p&gt;剩下的内容: 怎么用STL来解决使用到特定数据结构的题目, i.e. 会做题. 但我们也懂原理!&lt;/p&gt;</summary>
     
     
     
@@ -421,7 +439,7 @@ role=&quot;doc-noteref&quot;&gt;&lt;sup&gt;1&lt;/sup&gt;&lt;/a&gt;. 解决这个
     <link href="http://example.com/2023/01/28/%E9%9A%8F%E6%84%9F%E5%BD%95/"/>
     <id>http://example.com/2023/01/28/%E9%9A%8F%E6%84%9F%E5%BD%95/</id>
     <published>2023-01-28T14:41:17.000Z</published>
-    <updated>2023-10-22T13:15:54.846Z</updated>
+    <updated>2023-10-27T11:34:21.218Z</updated>
     
     
     <summary type="html">&lt;p&gt;记录不时的奇思妙想. 奇怪的梦, 无垠的呓语, 似非的感悟.
@@ -525,27 +543,6 @@ href=&quot;https://www.acwing.com/activity/content/introduction/2712/&quot;&gt;�
     <category term="分治" scheme="http://example.com/tags/%E5%88%86%E6%B2%BB/"/>
     
     <category term="多路归并" scheme="http://example.com/tags/%E5%A4%9A%E8%B7%AF%E5%BD%92%E5%B9%B6/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>2022年终总结</title>
-    <link href="http://example.com/2022/12/31/2022%E5%B9%B4%E7%BB%88%E6%80%BB%E7%BB%93/"/>
-    <id>http://example.com/2022/12/31/2022%E5%B9%B4%E7%BB%88%E6%80%BB%E7%BB%93/</id>
-    <published>2022-12-31T11:37:52.000Z</published>
-    <updated>2023-02-25T16:20:23.844Z</updated>
-    
-    
-    <summary type="html">&lt;p&gt;你会用什么关键字概括2022年呢...... 各种意义上的Twist. 人生的转折,
-政策的转折, 世界的转折. 年初的时候还祝福今年诸事皆顺,
-不过心意到了抽签抽到凶也没办法.&lt;/p&gt;</summary>
-    
-    
-    
-    <category term="杂谈" scheme="http://example.com/categories/%E6%9D%82%E8%B0%88/"/>
-    
-    
-    <category term="杂谈" scheme="http://example.com/tags/%E6%9D%82%E8%B0%88/"/>
     
   </entry>
   
