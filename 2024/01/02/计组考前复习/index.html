@@ -1,0 +1,944 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 6.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-pepe.ico">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-pepe.ico">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha256-Z1K5uhUaJXA7Ll0XrZ/0JhX4lAtZFpT6jkKrEDT0drU=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Pisces","darkmode":false,"version":"8.14.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":true,"style":null},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="其实应该叫 ICS, 计算机系统基础复习, 但这门课下次就改名了, 教材也选用的是计组(谭志虎, 是好书)的, 我不好说. 明明不做配套的实验, 让学生干瞪数字电路多少有些抽象. 而且大部分时间讲的还是前半部分...求求改考 CSAPP 吧, 我什么都会做的. upd: 没复习的三章考了 40 多分, 自己觉得重要的部分忘了差不多, 等死.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="计组考前复习">
+<meta property="og:url" content="http://example.com/2024/01/02/%E8%AE%A1%E7%BB%84%E8%80%83%E5%89%8D%E5%A4%8D%E4%B9%A0/index.html">
+<meta property="og:site_name" content="Besthope&#39;s Blog">
+<meta property="og:description" content="其实应该叫 ICS, 计算机系统基础复习, 但这门课下次就改名了, 教材也选用的是计组(谭志虎, 是好书)的, 我不好说. 明明不做配套的实验, 让学生干瞪数字电路多少有些抽象. 而且大部分时间讲的还是前半部分...求求改考 CSAPP 吧, 我什么都会做的. upd: 没复习的三章考了 40 多分, 自己觉得重要的部分忘了差不多, 等死.">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/images/%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84.png">
+<meta property="og:image" content="http://example.com/images/instruction-table.png">
+<meta property="og:image" content="http://example.com/images/ieee754.png">
+<meta property="og:image" content="http://example.com/images/ieee754-standard.png">
+<meta property="og:image" content="http://example.com/images/ieee754-range.png">
+<meta property="og:image" content="http://example.com/images/adder.png">
+<meta property="og:image" content="http://example.com/images/storage-arch.png">
+<meta property="og:image" content="http://example.com/images/SRAM.png">
+<meta property="og:image" content="http://example.com/images/DRAM.png">
+<meta property="og:image" content="http://example.com/images/byte-address.png">
+<meta property="article:published_time" content="2024-01-02T02:49:29.000Z">
+<meta property="article:modified_time" content="2024-01-05T04:09:04.605Z">
+<meta property="article:author" content="Besthope">
+<meta property="article:tag" content="计算机系统">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/images/%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84.png">
+
+
+<link rel="canonical" href="http://example.com/2024/01/02/%E8%AE%A1%E7%BB%84%E8%80%83%E5%89%8D%E5%A4%8D%E4%B9%A0/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://example.com/2024/01/02/%E8%AE%A1%E7%BB%84%E8%80%83%E5%89%8D%E5%A4%8D%E4%B9%A0/","path":"2024/01/02/计组考前复习/","title":"计组考前复习"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>计组考前复习 | Besthope's Blog</title>
+  
+
+
+
+
+
+
+  <script async defer data-website-id="" src=""></script>
+
+  <script defer data-domain="" src=""></script>
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+<link rel="alternate" href="/atom.xml" title="Besthope's Blog" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">Besthope's Blog</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">more than a tech blog :)</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li><li class="menu-item menu-item-links"><a href="/links/" rel="section"><i class="fa fa-link fa-fw"></i>友链</a></li><li class="menu-item menu-item-gallery"><a href="/gallery/" rel="section"><i class="fa fa-paint-brush fa-fw"></i>画廊</a></li><li class="menu-item menu-item-rss"><a href="/atom.xml" rel="section"><i class="fa fa-rss fa-fw"></i>RSS</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B3%BB%E7%BB%9F%E6%A6%82%E8%BF%B0"><span class="nav-number">1.</span> <span class="nav-text">计算机系统概述</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86"><span class="nav-number">1.1.</span> <span class="nav-text">基础知识</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BE%8B%E9%A2%98"><span class="nav-number">1.2.</span> <span class="nav-text">例题</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E4%BF%A1%E6%81%AF%E7%9A%84%E8%A1%A8%E7%A4%BA"><span class="nav-number">2.</span> <span class="nav-text">数据信息的表示</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BE%8B%E9%A2%98-1"><span class="nav-number">2.1.</span> <span class="nav-text">例题</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%BF%90%E7%AE%97%E6%96%B9%E6%B3%95%E4%B8%8E%E8%BF%90%E7%AE%97%E5%99%A8"><span class="nav-number">3.</span> <span class="nav-text">运算方法与运算器</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BE%8B%E9%A2%98-2"><span class="nav-number">3.1.</span> <span class="nav-text">例题</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AD%98%E5%82%A8%E7%B3%BB%E7%BB%9F"><span class="nav-number">4.</span> <span class="nav-text">存储系统</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BE%8B%E9%A2%98-3"><span class="nav-number">4.1.</span> <span class="nav-text">例题</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%8C%87%E4%BB%A4%E7%BB%93%E6%9E%84"><span class="nav-number">5.</span> <span class="nav-text">指令结构</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%AD%E5%A4%AE%E5%A4%84%E7%90%86%E5%99%A8"><span class="nav-number">6.</span> <span class="nav-text">中央处理器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%8C%87%E4%BB%A4%E6%B5%81%E6%B0%B4%E7%BA%BF"><span class="nav-number">7.</span> <span class="nav-text">指令流水线</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Besthope"
+      src="/images/bocchi.png">
+  <p class="site-author-name" itemprop="name">Besthope</p>
+  <div class="site-description" itemprop="description">baka desu</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">26</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+        <span class="site-state-item-count">11</span>
+        <span class="site-state-item-name">分类</span>
+      </div>
+      <div class="site-state-item site-state-tags">
+        <span class="site-state-item-count">34</span>
+        <span class="site-state-item-name">标签</span>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/Besthope-Official" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;Besthope-Official" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:874256269@qq.com" title="E-Mail → mailto:874256269@qq.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i></a>
+      </span>
+  </div>
+
+        </div>
+      </div>
+        <div class="back-to-top animated" role="button" aria-label="返回顶部">
+          <i class="fa fa-arrow-up"></i>
+          <span>0%</span>
+        </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2024/01/02/%E8%AE%A1%E7%BB%84%E8%80%83%E5%89%8D%E5%A4%8D%E4%B9%A0/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/bocchi.png">
+      <meta itemprop="name" content="Besthope">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Besthope's Blog">
+      <meta itemprop="description" content="baka desu">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="计组考前复习 | Besthope's Blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          计组考前复习
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2024-01-02 10:49:29" itemprop="dateCreated datePublished" datetime="2024-01-02T10:49:29+08:00">2024-01-02</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2024-01-05 12:09:04" itemprop="dateModified" datetime="2024-01-05T12:09:04+08:00">2024-01-05</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E5%A4%8D%E4%B9%A0/" itemprop="url" rel="index"><span itemprop="name">复习</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>4.1k</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>15 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <p>其实应该叫 ICS, 计算机系统基础复习, 但这门课下次就改名了,
+教材也选用的是计组(谭志虎, 是好书)的, 我不好说.</p>
+<p>明明不做配套的实验, 让学生干瞪数字电路多少有些抽象.
+而且大部分时间讲的还是前半部分...求求改考 CSAPP 吧, 我什么都会做的.</p>
+<p>upd: 没复习的三章考了 40 多分, 自己觉得重要的部分忘了差不多,
+等死.</p>
+<span id="more"></span>
+<h2 id="计算机系统概述">计算机系统概述</h2>
+<h3 id="基础知识">基础知识</h3>
+<p>摩尔定律: 当价格不变时, 集成电路上可容纳的晶体管数目, 约 18
+个月会增加一倍, 性能也将提升一倍.</p>
+<p>计算机系统的层次结构</p>
+<figure>
+<img src="/images/体系结构.png" alt="计算机系统的层次结构" />
+<figcaption aria-hidden="true">计算机系统的层次结构</figcaption>
+</figure>
+<p>汇编器: 将汇编语言程序翻译为机器语言程序</p>
+<p>编译器: 将高级语言程序翻译为汇编语言或机器语言程序</p>
+<p>性能指标: 字长, 主存容量单位, 时钟周期, CPI, IPC, CPU时间, MIPS,
+TFLOPS</p>
+<ul>
+<li>字长: CPU 一次处理的数据位数</li>
+<li>主存容量: 单位 KB, MB, GB, TB, PB</li>
+<li>时钟周期: CPU 完成一个最基本动作的时间. 例如主频 1Ghz 就是 1ns.</li>
+<li>CPI, Clock Cycles Per Instruction:
+执行每条指令所需的平均时钟周期数.</li>
+<li>CPU 时间: 程序在处理器上实际运行的时间</li>
+<li>IPC: 每个时钟周期 CPU 能执行的指令条数. CPI 的倒数. IPC 可以大于
+1.</li>
+<li>MIPS: 每秒百万条指令</li>
+<li>MFLOPS: 每秒执行百万次浮点运算</li>
+<li>TFLOPS: 单位变成 T, 是标志显卡运算能力的一个常用指标</li>
+</ul>
+<p>总指令条数记为 IC, 程序执行所需时钟周期数 <span
+class="math inline">\(m\)</span>, 时钟周期 <span
+class="math inline">\(T\)</span>, 频率为 <span
+class="math inline">\(f\)</span></p>
+<p><span
+class="math display">\[\mathrm{CPI}=\sum_{i=1}^{n}(\mathrm{~CPI}_{i}\times
+P_{i})=\sum_{i=1}^{n}(\mathrm{~CPI}_{i}\times\frac{\mathrm{IC}_{i}}{\mathrm{IC}})\]</span></p>
+<p><span class="math display">\[T_{\mathrm{cpu}}=m\times T=\frac
+mf\]</span></p>
+<p><span
+class="math display">\[\mathrm{MIPS}=\frac{f}{\mathrm{CPI}}=\mathrm{IPC}\times
+f\]</span></p>
+<p><span
+class="math display">\[\mathrm{MFLOPS}=\frac{\mathrm{IC}_{\mathrm{flops}}}{T_{\mathrm{cpu}}\times10^{6}}\]</span></p>
+<h3 id="例题">例题</h3>
+<p><strong>例题 1.1</strong> 计算指标</p>
+<figure>
+<img src="/images/instruction-table.png" alt="各类指令所占比例" />
+<figcaption aria-hidden="true">各类指令所占比例</figcaption>
+</figure>
+<ol type="1">
+<li>求程序的 CPI</li>
+<li>若 CPU 的主频为 400 MHz, 求机子的 MIPS.</li>
+</ol>
+<p><strong>解</strong></p>
+<p><span
+class="math display">\[\mathrm{CPI}=\sum_{i=1}^{n}(\mathrm{CPI}_{i}\times
+P_{i})=1\times0.6+2\times0.18+4\times0.12+8\times0.1=2.24\]</span></p>
+<p><span
+class="math display">\[\mathrm{MIPS}=\frac{f}{\mathrm{CPI}}=\frac{400}{2.24}=178.6\]</span></p>
+<p><strong>例题 1.2</strong> A 和 B
+基于相同指令集设计的两种类型的计算机, A 的时钟周期为 2ns, 某程序在 A
+上运行时的 CPI 为 3, B 的时钟周期为 4ns, 同一程序在 B 上的 CPI 为 2,
+对于这个程序而言, 哪个电脑跑的更快.</p>
+<p><span
+class="math display">\[T_{\mathrm{cpuA}}=\mathrm{CPI}_{\mathrm{A}}\times\mathrm{IC}\times
+T_{\mathrm{A}}\quad
+T_{\mathrm{cpuB}}=\mathrm{CPI}_{\mathrm{B}}\times\mathrm{IC}\times
+T_{\mathrm{B}}\]</span></p>
+<p><span
+class="math display">\[\frac{T_{\mathrm{cpuA}}}{T_{\mathrm{cpuB}}}=\frac{\mathrm{CPI}_{\mathrm{A}}\times\mathrm{IC}\times
+T_{\mathrm{A}}}{\mathrm{CPI}_{\mathrm{B}}\times\mathrm{IC}\times
+T_{\mathrm{B}}}=\frac{3\times\mathrm{IC}\times2}{2\times\mathrm{IC}\times4}=0.75\]</span></p>
+<p><strong>例题 1.3</strong> 三种指令在某一计算机上的 CPI</p>
+<table>
+<thead>
+<tr class="header">
+<th>指令</th>
+<th>A</th>
+<th>B</th>
+<th>C</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>CPI</td>
+<td>1</td>
+<td>2</td>
+<td>3</td>
+</tr>
+</tbody>
+</table>
+<p>两种不同的编译器将同一高级语言的语句编译为两种不同类型的代码序列,
+如下表所示</p>
+<table>
+<thead>
+<tr class="header">
+<th>代码序列</th>
+<th>A</th>
+<th>B</th>
+<th>C</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>1</td>
+<td>2</td>
+<td>1</td>
+<td>2</td>
+</tr>
+<tr class="even">
+<td>2</td>
+<td>4</td>
+<td>1</td>
+<td>1</td>
+</tr>
+</tbody>
+</table>
+<ol type="1">
+<li>两种代码序列的 CPI 分别是多少.</li>
+<li>哪种代码执行速度更快.</li>
+</ol>
+<p><strong>解</strong></p>
+<p><span
+class="math display">\[\begin{aligned}\mathrm{CPI}_1=&amp;1\times\frac{2}{5}+2\times\frac{1}{5}+3\times\frac{2}{5}=2\\\\\mathrm{CPI}_2=&amp;1\times\frac{4}{6}+2\times\frac{1}{6}+3\times\frac{1}{6}=1.5\end{aligned}\]</span></p>
+<p><span class="math display">\[T_{\mathrm{cpu1}}=2\times5\times
+T=10T\quad T_{\mathrm{cpu2}}=1.5\times6\times T=9T\]</span></p>
+<h2 id="数据信息的表示">数据信息的表示</h2>
+<p>原码, 反码, 补码(定点小数, 定点整数)</p>
+<p>反码法, 扫描法</p>
+<p>其实就是利用一个式子 <span class="math inline">\(-i=\sim i+1\)</span>
+去得到补码表示, 还要给他们起名字😓</p>
+<p>移码Offset binary, 补码到移码</p>
+<p>IEEE754浮点数表示法</p>
+<figure>
+<img src="/images/ieee754.png" alt="IEEE754浮点数表示法" />
+<figcaption aria-hidden="true">IEEE754浮点数表示法</figcaption>
+</figure>
+<ul>
+<li>S:E:M=1:8:23</li>
+<li>阶码是移码表示, 偏移量 127</li>
+<li>M 定点小数, 带一个 implied leading 1, 实际有效位是 24</li>
+</ul>
+<figure>
+<img src="/images/ieee754-standard.png" alt="单浮点数规范" />
+<figcaption aria-hidden="true">单浮点数规范</figcaption>
+</figure>
+<p>规格化数</p>
+<p><span
+class="math display">\[N=(-1)^s\times2^{E-127}\times1.M\]</span></p>
+<figure>
+<img src="/images/ieee754-range.png" alt="单浮点数表示范围" />
+<figcaption aria-hidden="true">单浮点数表示范围</figcaption>
+</figure>
+<p>IEEE754浮点数和真值之间的转换关系</p>
+<p>8421, 2421, 余三码, BID 码, DPD 码</p>
+<p>新考研大纲里不考了, 了解即可. 学校考试真考我就把他给冲了.</p>
+<p>基于 C 语言的数据表示转换</p>
+<ul>
+<li>C 语言里的数据表示, overflow, convertion</li>
+</ul>
+<p>码距: 海明距离</p>
+<p>例如 1010 到 0101 的码距就是 4</p>
+<p>奇偶校验码, 海明码的分组设计, 拓展海明码, CRC 编码</p>
+<h3 id="例题-1">例题</h3>
+<p>补码和其它码表示之间的相互转换</p>
+<p>通常转换的是负数和小数</p>
+<p>设 <span class="math inline">\(x=-1000\)</span>, 则 <span
+class="math inline">\(x_补=10111+0001=11000\)</span>
+<strong>(反码法)</strong></p>
+<p>扫描法: 对于 <span class="math inline">\(x&lt;0\)</span> 的,
+右起第一个 1 和右边的 0 不变, 其它位 flip</p>
+<p>例如 <span class="math inline">\(x=-1000\)</span>, 则 <span
+class="math inline">\(x_补=11000\)</span>, <span
+class="math inline">\(-0.0001\)</span> 补码 <span
+class="math inline">\(x_补=1.1111\)</span></p>
+<blockquote>
+<p><em>Remark</em>: 记这些花里胡哨的有屁用😓 用定义不好吗?</p>
+</blockquote>
+<p><strong>例题 2.7</strong> 写出 20.59375
+的单精度浮点数的十六进制机器码.</p>
+<p><span
+class="math inline">\((20.59375)_{10}=(10100.10011)_2=(1.010010011)\times
+2^{4}\)</span></p>
+<p>于是 <span class="math inline">\(S=0\)</span>, <span
+class="math inline">\(E=e+127=4+127=131=10000011\)</span>, <span
+class="math inline">\(M=010010011\)</span></p>
+<p>最终的机器码 <span class="math inline">\((0100 0001 1010 0100 1100
+0000 0000 0000)_2=(41A4C000)_{16}\)</span>.</p>
+<p><strong>例题 2.9</strong> <span
+class="math inline">\(f(n)=\sum_{0}^{n}2^i=11...1B\)</span>, 计算 <span
+class="math inline">\(f(n)\)</span> 的 C 程序如下</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> <span class="title function_">f1</span><span class="params">(<span class="type">unsigned</span> <span class="type">int</span> n)</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="type">int</span> sum = <span class="number">1</span>, power = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">unsigned</span> i = <span class="number">0</span>; i &lt;= n - <span class="number">1</span>; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        power *= <span class="number">2</span>;</span><br><span class="line">        sum += power;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> sum;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>将上面的 <code>int</code> 都改成 float, 可得到 f2.</p>
+<ol type="1">
+<li><span class="math inline">\(n = 0\)</span> 为什么会出现死循环. 改成
+<code>int</code> 又会怎样?</li>
+<li><code>f1(23)</code> 和 <code>f2(23)</code> 的返回值相同吗?
+机器数分别是什么?</li>
+<li><code>f1(24)</code> 和 <code>f2(24)</code> 的返回值分别为 33 554 431
+和 33554532.0, 为什么不等.</li>
+<li><span class="math inline">\(f1(31)=2^{32}-1\)</span>, 而 <span
+class="math inline">\(f1(31)\)</span> 的返回值是 -1, 为什么.
+或者你能给出 <span class="math inline">\(n\)</span> 的一个范围吗.</li>
+<li><code>f2(127)</code> 的机器数为 7F80 0000H, 对应的值是什么. 若要使得
+<code>f2(n)</code> 的值不溢出, 最大的 <code>n</code> 是多少.</li>
+</ol>
+<p><strong>解</strong> <code>n=0</code> 的情况, <code>n-1</code> 就是
+UMax, i 永远小于等于这个值. 改成 int 就没事了.</p>
+<p><code>f(23) = 1111 1111 1111 1111 1111B</code>, 就是 24 个 1, int
+塞得下, float 尾数也可以塞得下.</p>
+<ul>
+<li>f1(23) = 00FF FFFF</li>
+<li>f2(23) = 4B7F FFFF</li>
+</ul>
+<p><code>n = 24</code> 时, 对于 float 舍入后数值增大,
+此时浮点数的最小刻度是 2, 所以 <code>f2(24)</code> 要比
+<code>f1(24)</code> 大 1.</p>
+<p><span class="math inline">\(n\)</span> 最大 30. (如果改成了 int
+的话)</p>
+<p>阶码255, 尾数0, 表示 inf. 不溢出 <span
+class="math inline">\(n\)</span> 的最大值是 126.</p>
+<p><strong>例题 2.11</strong> <span class="math inline">\(D_7\dots
+D_2D_1=1101010\)</span>, 给出能纠正一位错的海明码方案. 有 3
+位错的前提下, 分析能否区分一位错和两位错.</p>
+<p><strong>解</strong> 分组</p>
+<p><span
+class="math display">\[\begin{matrix}\mathrm{Gl(P_1,~D_1,~D_2,~D_4,~D_5,~D_7)}&amp;\mathrm{G2(P_2,~D_1,~D_3,~D_4,~D_6,~D_7)}\\\mathrm{G3(P_3,~D_2,~D_3,~D_4)}&amp;\mathrm{G4(P_4,~D_5,~D_6,~D_7)}\end{matrix}\]</span></p>
+<p><span
+class="math display">\[\begin{aligned}\mathrm{P}_1&amp;=\mathrm{D}_1\oplus\mathrm{D}_2\oplus\mathrm{D}_4\oplus\mathrm{D}_5\oplus\mathrm{D}_7=0\oplus1\oplus1\oplus0\oplus1=1\\\mathrm{P}_2&amp;=\mathrm{D}_1\oplus\mathrm{D}_3\oplus\mathrm{D}_4\oplus\mathrm{D}_6\oplus\mathrm{D}_7=0\oplus0\oplus1\oplus1\oplus1=1\\\mathrm{P}_3&amp;=\mathrm{D}_2\oplus\mathrm{D}_3\oplus\mathrm{D}_4=1\oplus0\oplus1=0\\\mathrm{P}_4&amp;=\mathrm{D}_5\oplus\mathrm{D}_6\oplus\mathrm{D}_7=0\oplus1\oplus1=0\end{aligned}\]</span></p>
+<p><span class="math display">\[\mathrm H_{11}\cdots\mathrm H_2\mathrm
+H_1=\mathrm D_7\mathrm D_6\mathrm D_5\mathrm P_4\mathrm D_4\mathrm
+D_3\mathrm D_2\mathrm P_3\mathrm D_1\mathrm P_2\mathrm
+P_1=11001010011\]</span></p>
+<p>如果 <span class="math inline">\(D_6, D_7\)</span> 同时出错, <span
+class="math inline">\(G_4\)</span> 发生偶数位错, <span
+class="math inline">\(G_3\)</span> 无错误, <span
+class="math inline">\(G_2\)</span> 发生偶数位错误, <span
+class="math inline">\(G_1\)</span> 发生一位错误, 最终的错误码 <span
+class="math inline">\(0001\)</span>, 和 <span
+class="math inline">\(G_1\)</span> 中的校验位 <span
+class="math inline">\(P_1\)</span> 出错是相同的,
+所以不能区分一位错和两位错. 可以通过引入总偶校验位来解决.</p>
+<p><strong>例题 2.14</strong> 求有效信息 110 的 CRC 码, 生成多项式 <span
+class="math inline">\(G(x)=11101\)</span>.</p>
+<p><span class="math inline">\(M(x)\cdot 2^4 = x^6 + x^5 = 110
+0000\)</span>, 按模 2 除法 11101, 得到商 <span
+class="math inline">\(101\)</span> 和余数 <span
+class="math inline">\(1001\)</span>. 最后的 CRC 码 <span
+class="math inline">\(110 1001\)</span>.</p>
+<h2 id="运算方法与运算器">运算方法与运算器</h2>
+<p>补码的加减法规则; 基于补码的溢出判定</p>
+<p>单符号位的检测</p>
+<p><span
+class="math display">\[V=A_{\mathrm{s}}B_{\mathrm{s}}\overline{S_{\mathrm{s}}}+\overline{A_{\mathrm{s}}}\overline{B_{\mathrm{s}}}S_{\mathrm{s}}\]</span></p>
+<p>双符号位</p>
+<ul>
+<li><span class="math inline">\(S_{s1}S_{s2} = 00\)</span>: 无溢出</li>
+<li><span class="math inline">\(S_{s1}S_{s2} = 10\)</span>: 正溢出</li>
+<li><span class="math inline">\(S_{s1}S_{s2} = 10\)</span>: 负溢出</li>
+<li><span class="math inline">\(S_{s1}S_{s2} = 11\)</span>: 结果为负数,
+无溢出</li>
+</ul>
+<p>全加器的电路实现, 可控加减法电路</p>
+<p><span class="math display">\[C_{i+1}=X_iY_i+(X_i\oplus
+Y_i)C_i\]</span></p>
+<ul>
+<li>每一位的运算结果 <span class="math inline">\(X_i \oplus Y_i \oplus
+C_i\)</span></li>
+<li><span class="math inline">\(C_i\)</span> 是进位</li>
+<li><span class="math inline">\(C_{i + 1} = X_iY_i + (X_i \oplus
+Y_i)C_i\)</span></li>
+</ul>
+<p>串行进位加法</p>
+<p>先行进位加法</p>
+<ul>
+<li>把 <span class="math inline">\(G_i=X_iY_i\)</span> 和 <span
+class="math inline">\(P=X_i\oplus Y_i\)</span> 先行计算</li>
+<li>把 <span class="math inline">\(C_i\)</span> 先计算出来</li>
+<li>这样后面每一位计算都是并行的</li>
+</ul>
+<figure>
+<img src="/images/adder.png" alt="先行进位加法器的基本原理" />
+<figcaption aria-hidden="true">先行进位加法器的基本原理</figcaption>
+</figure>
+<p>先行计算电路级联</p>
+<ul>
+<li>组内并行, 组间并行加法器</li>
+<li>进一步并行</li>
+<li>传入 <span class="math inline">\(C_0\)</span>,
+用一个额外的电路快速计算 <span class="math inline">\(C_4, C_8, C_{12},
+C_{16}\)</span></li>
+</ul>
+<p>原码一位乘法的基本原理</p>
+<p><span
+class="math display">\[P_{i+1}=(P_i+y_{n-1}|x|)2^{-1}\]</span></p>
+<p>补码一位乘法的基本原理(Booth 算法的推导)</p>
+<p><span
+class="math display">\[P_{i+1}=(P_i+(y_{n-i+1}-y_{n-i})[x]_\text{补})2^{-1}\]</span></p>
+<p><span class="math display">\[[x\times
+y]_\text{补}=P_{n+1}=P_n+(y_1-y_0)[x]_\text{补}\]</span></p>
+<p>注意 Booth 算法去计算补码一位乘法, 第一步会人为给 <span
+class="math inline">\(y\)</span> 添加一个 <span
+class="math inline">\(y_{n+1}=0\)</span> 的一位.</p>
+<p>原码恢复, 不恢复余数法计算两个数的商和余数</p>
+<p>原码不恢复余数法, 加减交替法 <span
+class="math inline">\([x]_原/[y]_原\)</span></p>
+<ul>
+<li>先用被除数减去除数 <span
+class="math inline">\(|x|-|y|=|x|+(-|y|)=|x|+[|-y|]_补\)</span>
+<ul>
+<li>余数为正, 商加 1. 余数和商左移一位, 再减去除数.</li>
+<li>余数为负, 商上 0, 余数和商左移一位, 再加上除数.</li>
+</ul></li>
+<li>第 <span class="math inline">\(n+1\)</span> 步余数为负的时候, 加上
+<span class="math inline">\(|y|\)</span> 得到第 <span
+class="math inline">\(n+1\)</span> 正确的余数.</li>
+</ul>
+<p>补码的加减交替法</p>
+<ul>
+<li>每一步考虑中间余数是否和 <span class="math inline">\([y]_补\)</span>
+同号</li>
+<li>注意末尾恒置 1 (不考虑精度的情况)</li>
+</ul>
+<p>浮点数加减运算中的舍入规则</p>
+<ul>
+<li>对阶</li>
+<li>尾数运算</li>
+<li>结果规范化</li>
+<li>舍入
+<ul>
+<li>末尾恒置 1 法: 丢失的有一位是 1, 就把运算的最低结果置为 1</li>
+<li>0 舍 1 入法: 丢失位数的最高位是 1, 就将尾数的末位加 1</li>
+</ul></li>
+<li>溢出判断</li>
+</ul>
+<h3 id="例题-2">例题</h3>
+<p><strong>(2020 统考题)</strong> 有实现 <span
+class="math inline">\(x\times y\)</span> 的两个 C 语言函数如下:</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">unsigned</span> <span class="title function_">umul</span><span class="params">(<span class="type">unsigned</span> x, <span class="type">unsigned</span> y)</span> &#123; <span class="keyword">return</span> x * y; &#125;</span><br><span class="line"><span class="type">int</span> <span class="title function_">imul</span><span class="params">(<span class="type">int</span> x, <span class="type">int</span> y)</span> &#123; <span class="keyword">return</span> x * y; &#125;</span><br></pre></td></tr></table></figure>
+<p>假设某计算机 M 中的 ALU 只能进行加减运算和逻辑运算, 回答下面问题:</p>
+<ol type="1">
+<li>若 M 的指令系统没有乘法指令, 但有加法减法和位移等指令, 则在 M
+上也可以实现上述两个函数中的乘法运算, 为什么?</li>
+<li>若 M 的指令系统有乘法指令, 基于 ALU, 位移器,
+寄存器和相应逻辑实现乘法指令时, 控制逻辑的作用是什么?</li>
+<li>针对下面三种情况 a) 没有乘法指令 b) 有 ALU 和位移器实现的乘法指令 c)
+有阵列乘法器实现的乘法指令, <code>umul</code>
+在哪种情况下的执行时间最长?</li>
+<li><span class="math inline">\(n\)</span> 位乘法指令可保存 <span
+class="math inline">\(2n\)</span> 位乘积, 当仅取低 <span
+class="math inline">\(n\)</span> 位作为乘积时, 其结果可能会发生溢出.
+<span class="math inline">\(n=32, x=2^{32}-1,y=2\)</span> 时,
+<code>imul</code> 和 <code>umul</code> 得到的 <span
+class="math inline">\(x\times y\)</span> 的 <span
+class="math inline">\(2n\)</span> 位乘积分别是什么?
+此时两者的返回结果是否溢出? 对于无符号整数乘法运算, 当仅取乘积的低 <span
+class="math inline">\(n\)</span> 位作为乘法结果时, 如何用 <span
+class="math inline">\(2n\)</span> 位乘积进行溢出判断?</li>
+</ol>
+<p><strong>解</strong> 编译器可以将乘法转换成一个循环代码段, 通过比较,
+加法和移位实现乘法.</p>
+<p>控制逻辑是用来控制循环次数, 控制加法和移位操作.</p>
+<p>a 最长, c 最短. 对于 b, c 都只需要一个乘法指令完成, 但是 b
+无法在一个时钟周期内完成.</p>
+<p>两个的结果都应是 0000 0000 FFFF FFFE, 对于 <code>int</code>
+而言上溢了, 对于 <code>unsigned</code> 可以容纳. 我们考虑如果高 n 位都是
+0 那么就不溢出.</p>
+<h2 id="存储系统">存储系统</h2>
+<p>理解存储系统的层次结构</p>
+<figure>
+<img src="/images/storage-arch.png" alt="存储系统的层次结构" />
+<figcaption aria-hidden="true">存储系统的层次结构</figcaption>
+</figure>
+<p>SRAM 和 DRAM 基本存储单元的结构和存储读取原理</p>
+<figure>
+<img src="/images/SRAM.png" alt="SRAM" />
+<figcaption aria-hidden="true">SRAM</figcaption>
+</figure>
+<figure>
+<img src="/images/DRAM.png" alt="DRAM" />
+<figcaption aria-hidden="true">DRAM</figcaption>
+</figure>
+<p>存储单元的行列扩展方法 (位扩展、字扩展)</p>
+<ul>
+<li>位扩展, 字长扩展: 只加大字长,
+存储器的字数和存储器芯片的字数一致.</li>
+<li>字扩展: 字的扩充, 位数不变.</li>
+</ul>
+<p>也可以字位同时扩展</p>
+<p>缓存的基本结构 (理解全相联, 直接相联, 组级联映射)</p>
+<ul>
+<li>全相联: 各个主存块都可以映射到 cache 的任意数据块</li>
+<li>直接相连: 各主存块只能映射到 cache 中的固定块</li>
+<li>组相联: 各主存块只能映射到 cache 中固定组的任意块</li>
+</ul>
+<p>或者可以考虑各个组的大小分别为 n, 1, 1~n</p>
+<p>写回和写穿策略</p>
+<p>常见的缓存替换算法(FIFO, LFU, LRU, 随机替换)</p>
+<p>有关存储的 对应 CSAPP 第六章</p>
+<p>虚拟地址到物理地址的转换过程</p>
+<ul>
+<li>页表中的页表项数量和 VA 的 page number 字段长度相关, 例如 20bit
+那就是 <span class="math inline">\(2^{20}\)</span> 个, 不是比值</li>
+</ul>
+<p>基于 TLB 的加速虚拟地址转换</p>
+<p>就类似于给页表加一个 cache, 可以是组相联的</p>
+<p>这里 VPO=tag+index</p>
+<p>对应 CSAPP 第九章</p>
+<h3 id="例题-3">例题</h3>
+<p><strong>例题 4.3</strong> 某计算机字长为 32 位, 主存容量为 4 MB,
+按字节编址, cache 采用直接相连映射, cache 容量为 4 KB, cache 块长度为 8
+字.</p>
+<ol type="1">
+<li>画出直接相连映射下主存字节的划分情况, 并说明每个字段位数.</li>
+<li>设 cache 的初始状态为空, 若 CPU 依次访问主存, 从 0 到 99
+号单元并从中读出 100 个字(假设访问主存一次读出一个字)并重复此顺序 10 次,
+计算 cache 访问的命中率.</li>
+<li>如果 cache 的存取时间为 20 ns, 主存的存取时间为 200 ns, 根据 2)
+中计算出的命中率求平均存取时间.</li>
+<li>计算 cache/主存系统的访问效率.</li>
+</ol>
+<figure>
+<img src="/images/byte-address.png" alt="主存字节地址" />
+<figcaption aria-hidden="true">主存字节地址</figcaption>
+</figure>
+<ol type="1">
+<li><p>一个 cache 块(数据块副本的大小)包含 <span
+class="math inline">\(8\times 32 Bit = 32 B\)</span>, 因此 <span
+class="math inline">\(w=5\)</span>. cache 的存储体又被分为 <span
+class="math inline">\(4096B/32 B=128\)</span> 行, 于是 <span
+class="math inline">\(r=7\)</span>(需要 7 位去表示组索引). 访问 4 MB
+主存空间需要 22 位地址线, 区地址(tag)长度 <span
+class="math inline">\(22-5-7=10\)</span> 位.</p></li>
+<li><p>cache 有 128 行, 每行 8 个字, 初始为空, 那么主存从 0 开始到 99
+号单元的 100 个字会载入 cache 前 13 行中(最后一行只包含 96~99, 共 4
+个字)</p></li>
+</ol>
+<p>第一次访问, 每个数据块的第一次读访问都不命中,
+会将对应数据块载入(8个字全写入), 后续相邻的 7 次访问都会命中. 而后续的 9
+次循环, 所有数据访问都会命中. 命中率的计算 <span
+class="math inline">\(h=(100\times 10 -13)/(100\times
+10)=98.7\%\)</span>.</p>
+<ol start="3" type="1">
+<li><p><span
+class="math inline">\(T=0.987\times20\mathrm{ns+}(1-0.987)\times200\mathrm{ns}=22.34\mathrm{ns}\)</span></p></li>
+<li><p><span class="math inline">\(e=20/22.34=89.5\%\)</span></p></li>
+</ol>
+<p><strong>例 4.6</strong> 设主存容量为 16 MB, 按字节寻址;
+虚拟存储器容量为 4 GB, 采用页式虚拟存储器, 页面大小为 4 KB:</p>
+<ol type="1">
+<li>计算物理页号, 页内偏移, 虚拟页号字段各位多少位.</li>
+<li>计算页表中页表项的数量.</li>
+<li>若部分页表内容如下表所示, 求对应于虚拟地址(00015240)H 和 (03FFF180)H
+的物理地址.</li>
+</ol>
+<table>
+<thead>
+<tr class="header">
+<th>虚页表</th>
+<th>有效位</th>
+<th>买页号</th>
+<th>虚页号</th>
+<th>有效位</th>
+<th>实页号</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>00010H</td>
+<td>0</td>
+<td>002H</td>
+<td>03FFFH</td>
+<td>0</td>
+<td>1</td>
+</tr>
+<tr class="even">
+<td>00015H</td>
+<td>1</td>
+<td>035H</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+</tr>
+</tbody>
+</table>
+<p><strong>解</strong> (1) 页面大小为 4 KB, 因此页偏移字段的位数为 12
+位, 物理页号字段的位数位 24-12=12 位, 虚拟页号字段的位数为 32-12=20
+位.</p>
+<ol start="2" type="1">
+<li><p>页表项数量与虚拟页号字段的位数相关, 虚拟页号字段为 20 位,
+页表项数量为 <span class="math inline">\(2^{20}\)</span> 项.</p></li>
+<li><p>从虚拟地址(00015240)H 和 (03FFF180)H 中分离出的 20 位虚页表分别为
+00015H 和 03FFFH. 查页表可知虚页表 00015H 对应的物理页表为 035H, 而与
+03FFFH 对应的页不在主存中, 因为对应有效位为 0.</p></li>
+</ol>
+<h2 id="指令结构">指令结构</h2>
+<p>MIPS 指令的结构, 常用指令的功能</p>
+<h2 id="中央处理器">中央处理器</h2>
+<p>单总线结构处理器</p>
+<p>单周期结构处理器</p>
+<p>多周期结构处理器</p>
+<p>硬布线控制器</p>
+<h2 id="指令流水线">指令流水线</h2>
+<p>理解在流水线中的执行过程</p>
+<p>理解流水线中的冲突与对应处理方式</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B3%BB%E7%BB%9F/" rel="tag"># 计算机系统</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2023/12/30/2023%E5%B9%B4%E7%BB%88%E6%80%BB%E7%BB%93/" rel="prev" title="2023年终总结">
+                  <i class="fa fa-chevron-left"></i> 2023年终总结
+                </a>
+            </div>
+            <div class="post-nav-item">
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    <div class="comments gitalk-container"></div>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 2022 – 
+  <span itemprop="copyrightYear">2024</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Besthope</span>
+</div>
+<div class="wordcount">
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-line"></i>
+    </span>
+      <span>站点总字数：</span>
+    <span title="站点总字数">81k</span>
+  </span>
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+      <span>站点阅读时长 &asymp;</span>
+    <span title="站点阅读时长">4:56</span>
+  </span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/pisces/" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.1/search.js" integrity="sha256-1kfA5uHPf65M5cphT2dvymhkuyHPQp5A53EGZOnOLmc=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+
+
+
+  
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">true</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"none","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/gitalk/1.8.0/gitalk.css" integrity="sha256-AJnUHL7dBv6PGaeyPQJcgQPDjt/Hn/PvYZde1iqfp8U=" crossorigin="anonymous">
+
+<script class="next-config" data-name="gitalk" type="application/json">{"enable":true,"github_id":"Besthope-Official","repo":"Gittalk-repo","client_id":"a30bcd98c6f188a719e4","client_secret":"bd7e03497f2a00490144e9e0756d511768622b0e","admin_user":"Besthope-Official","distraction_free_mode":true,"proxy":"https://luminous-druid-90cc61.netlify.app/github_access_token","language":"zh-CN","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/gitalk/1.8.0/gitalk.min.js","integrity":"sha256-MVK9MGD/XJaGyIghSVrONSnoXoGh3IFxLw0zfvzpxR4="},"path_md5":"0691a16e3dfb8e689cf6bc1c1f8ed725"}</script>
+<script src="/js/third-party/comments/gitalk.js"></script>
+<script src="https://api.asilu.com/cdn/jquery.js,jquery.backstretch.min.js" type="text/javascript"></script>
+<body>
+<script type="text/javascript">
+function display()
+{
+    function shuffle(arr) {
+    let i = arr.length;
+    while (i) {
+      let j = Math.floor(Math.random() * i--);
+      [arr[j], arr[i]] = [arr[i], arr[j]];
+    }
+  }
+
+  const pic = 8;
+  var bgs = [];
+  
+  for (i = 1; i <= pic; i++) {
+    bgs.push("/images/bg" + i + ".jpg");
+  }
+
+  shuffle(bgs);
+
+  $.backstretch(bgs, {
+    fade: 2000, // 动画时长; 单位：毫秒
+    duration: 20000, // 切换延时
+    preload: 1,
+  });
+}
+
+display();
+
+window.onclick = function () {
+  display();
+};
+</script>
+</body>
+</body>
+<!-- click love -->
+<script type="text/javascript" src="/js/clicklove.js"></script>
+</html>
