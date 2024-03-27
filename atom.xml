@@ -6,7 +6,7 @@
   <link href="http://example.com/atom.xml" rel="self"/>
   
   <link href="http://example.com/"/>
-  <updated>2024-01-05T04:09:04.605Z</updated>
+  <updated>2024-03-27T15:53:45.816Z</updated>
   <id>http://example.com/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>配置你自己的 reveal.js 主题!</title>
+    <link href="http://example.com/2024/03/27/%E9%85%8D%E7%BD%AE%E4%BD%A0%E8%87%AA%E5%B7%B1%E7%9A%84revealjs%E4%B8%BB%E9%A2%98/"/>
+    <id>http://example.com/2024/03/27/%E9%85%8D%E7%BD%AE%E4%BD%A0%E8%87%AA%E5%B7%B1%E7%9A%84revealjs%E4%B8%BB%E9%A2%98/</id>
+    <published>2024-03-27T15:40:39.000Z</published>
+    <updated>2024-03-27T15:53:45.816Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;最近写了一个 Reveal.js 的主题, 来炫耀下! &lt;a
+href=&quot;https://github.com/Besthope-Official/revealjs-academic-theme&quot;&gt;项目地址&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;主要是受到 NJU OS 课的启发, 又基于 Marp 和 Latex-Beamer 的样式改了改,
+做了一个学术主题, 漂亮的很呐.&lt;/p&gt;
+&lt;p&gt;如果你乐意, 你可以试着用用看~&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="项目介绍" scheme="http://example.com/categories/%E9%A1%B9%E7%9B%AE%E4%BB%8B%E7%BB%8D/"/>
+    
+    
+    <category term="插件" scheme="http://example.com/tags/%E6%8F%92%E4%BB%B6/"/>
+    
+    <category term="Reveal.js" scheme="http://example.com/tags/Reveal-js/"/>
+    
+  </entry>
   
   <entry>
     <title>计组考前复习</title>
@@ -45,7 +70,7 @@
     <link href="http://example.com/2023/12/30/2023%E5%B9%B4%E7%BB%88%E6%80%BB%E7%BB%93/"/>
     <id>http://example.com/2023/12/30/2023%E5%B9%B4%E7%BB%88%E6%80%BB%E7%BB%93/</id>
     <published>2023-12-30T15:22:28.000Z</published>
-    <updated>2023-12-30T16:30:09.539Z</updated>
+    <updated>2024-02-24T16:31:40.044Z</updated>
     
     
     <summary type="html">&lt;p&gt;又到了一年一度的年终鱼鱼时间... 我给 2023 的关键字是「安」。安逸地吃,
@@ -68,7 +93,7 @@
     <link href="http://example.com/2023/10/26/%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B%E7%9A%84%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/"/>
     <id>http://example.com/2023/10/26/%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B%E7%9A%84%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/</id>
     <published>2023-10-26T04:50:33.000Z</published>
-    <updated>2023-12-30T15:21:35.668Z</updated>
+    <updated>2024-03-04T03:02:54.908Z</updated>
     
     
     <summary type="html">&lt;p&gt;从零开始的数据分析!&lt;/p&gt;
@@ -512,40 +537,6 @@ role=&quot;doc-noteref&quot;&gt;&lt;sup&gt;1&lt;/sup&gt;&lt;/a&gt;. 解决这个
     <category term="杂谈" scheme="http://example.com/tags/%E6%9D%82%E8%B0%88/"/>
     
     <category term="小说" scheme="http://example.com/tags/%E5%B0%8F%E8%AF%B4/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>2023寒假每日一题</title>
-    <link href="http://example.com/2023/01/14/%E5%AF%92%E5%81%87%E6%AF%8F%E6%97%A5%E4%B8%80%E9%A2%98/"/>
-    <id>http://example.com/2023/01/14/%E5%AF%92%E5%81%87%E6%AF%8F%E6%97%A5%E4%B8%80%E9%A2%98/</id>
-    <published>2023-01-14T12:45:49.000Z</published>
-    <updated>2023-01-31T15:04:35.166Z</updated>
-    
-    
-    <summary type="html">&lt;p&gt;收录一些寒假做的题目. 题目来源: &lt;a
-href=&quot;https://www.acwing.com/activity/content/introduction/2712/&quot;&gt;寒假每日一题2023&lt;/a&gt;
-我才不是水题大师呢, 因为蒟蒻所以只能做这些入门题,
-但实际上更水的题目已经被我筛掉了 (&lt;/p&gt;</summary>
-    
-    
-    
-    <category term="算法" scheme="http://example.com/categories/%E7%AE%97%E6%B3%95/"/>
-    
-    
-    <category term="算法" scheme="http://example.com/tags/%E7%AE%97%E6%B3%95/"/>
-    
-    <category term="刷题" scheme="http://example.com/tags/%E5%88%B7%E9%A2%98/"/>
-    
-    <category term="数论" scheme="http://example.com/tags/%E6%95%B0%E8%AE%BA/"/>
-    
-    <category term="枚举" scheme="http://example.com/tags/%E6%9E%9A%E4%B8%BE/"/>
-    
-    <category term="动态规划" scheme="http://example.com/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/"/>
-    
-    <category term="贪心" scheme="http://example.com/tags/%E8%B4%AA%E5%BF%83/"/>
-    
-    <category term="差分" scheme="http://example.com/tags/%E5%B7%AE%E5%88%86/"/>
     
   </entry>
   
