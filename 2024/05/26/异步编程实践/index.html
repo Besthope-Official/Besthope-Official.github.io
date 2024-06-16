@@ -1,0 +1,697 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 6.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-pepe.ico">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-pepe.ico">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha256-Z1K5uhUaJXA7Ll0XrZ/0JhX4lAtZFpT6jkKrEDT0drU=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Pisces","darkmode":false,"version":"8.14.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":true,"style":null},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="学一下 asyncio 的用法. 其实很早就想学学异步相关的接口, 但总是觉得那几个概念有点唬人, 什么 callback, event loop, coroutine... 看起来不太好惹的样子. 但其实没深入到底层实现, 不去看 CPython 源码, 例如 event loop 到底是怎么调度的, 指针是怎么戳来戳去的, 单纯从 API 上看, 感觉也不是那么难懂. 这就是高层次抽">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Python 异步编程实践">
+<meta property="og:url" content="http://example.com/2024/05/26/%E5%BC%82%E6%AD%A5%E7%BC%96%E7%A8%8B%E5%AE%9E%E8%B7%B5/index.html">
+<meta property="og:site_name" content="Besthope&#39;s Blog">
+<meta property="og:description" content="学一下 asyncio 的用法. 其实很早就想学学异步相关的接口, 但总是觉得那几个概念有点唬人, 什么 callback, event loop, coroutine... 看起来不太好惹的样子. 但其实没深入到底层实现, 不去看 CPython 源码, 例如 event loop 到底是怎么调度的, 指针是怎么戳来戳去的, 单纯从 API 上看, 感觉也不是那么难懂. 这就是高层次抽">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/images/subroutine.png">
+<meta property="og:image" content="http://example.com/images/subroutines-vs-coroutines.png">
+<meta property="og:image" content="http://example.com/images/time-sleep.svg">
+<meta property="og:image" content="http://example.com/images/task-concurrency.svg">
+<meta property="article:published_time" content="2024-05-26T08:30:06.000Z">
+<meta property="article:modified_time" content="2024-06-03T05:26:24.552Z">
+<meta property="article:author" content="Besthope">
+<meta property="article:tag" content="Python">
+<meta property="article:tag" content="异步">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/images/subroutine.png">
+
+
+<link rel="canonical" href="http://example.com/2024/05/26/%E5%BC%82%E6%AD%A5%E7%BC%96%E7%A8%8B%E5%AE%9E%E8%B7%B5/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://example.com/2024/05/26/%E5%BC%82%E6%AD%A5%E7%BC%96%E7%A8%8B%E5%AE%9E%E8%B7%B5/","path":"2024/05/26/异步编程实践/","title":"Python 异步编程实践"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>Python 异步编程实践 | Besthope's Blog</title>
+  
+
+
+
+
+
+
+  <script async defer data-website-id="" src=""></script>
+
+  <script defer data-domain="" src=""></script>
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+<link rel="alternate" href="/atom.xml" title="Besthope's Blog" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">Besthope's Blog</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">more than a tech blog :)</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li><li class="menu-item menu-item-links"><a href="/links/" rel="section"><i class="fa fa-link fa-fw"></i>友链</a></li><li class="menu-item menu-item-gallery"><a href="/gallery/" rel="section"><i class="fa fa-paint-brush fa-fw"></i>画廊</a></li><li class="menu-item menu-item-diary"><a href="/diary/" rel="section"><i class="fa fa-book fa-fw"></i>日志</a></li><li class="menu-item menu-item-rss"><a href="/atom.xml" rel="section"><i class="fa fa-rss fa-fw"></i>RSS</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%87%BD%E6%95%B0-v.s.-%E5%8D%8F%E7%A8%8B"><span class="nav-number">1.</span> <span class="nav-text">函数 v.s. 协程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%BA%94%E7%94%A8%E5%9C%BA%E6%99%AF"><span class="nav-number">2.</span> <span class="nav-text">应用场景</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B9%A0%E9%A2%98"><span class="nav-number">3.</span> <span class="nav-text">习题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99"><span class="nav-number">4.</span> <span class="nav-text">参考资料</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Besthope"
+      src="/images/bocchi.png">
+  <p class="site-author-name" itemprop="name">Besthope</p>
+  <div class="site-description" itemprop="description">baka desu</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">33</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+        <span class="site-state-item-count">14</span>
+        <span class="site-state-item-name">分类</span>
+      </div>
+      <div class="site-state-item site-state-tags">
+        <span class="site-state-item-count">43</span>
+        <span class="site-state-item-name">标签</span>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/Besthope-Official" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;Besthope-Official" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:874256269@qq.com" title="E-Mail → mailto:874256269@qq.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i></a>
+      </span>
+  </div>
+
+        </div>
+      </div>
+        <div class="back-to-top animated" role="button" aria-label="返回顶部">
+          <i class="fa fa-arrow-up"></i>
+          <span>0%</span>
+        </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2024/05/26/%E5%BC%82%E6%AD%A5%E7%BC%96%E7%A8%8B%E5%AE%9E%E8%B7%B5/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/bocchi.png">
+      <meta itemprop="name" content="Besthope">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Besthope's Blog">
+      <meta itemprop="description" content="baka desu">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="Python 异步编程实践 | Besthope's Blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Python 异步编程实践
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2024-05-26 16:30:06" itemprop="dateCreated datePublished" datetime="2024-05-26T16:30:06+08:00">2024-05-26</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2024-06-03 13:26:24" itemprop="dateModified" datetime="2024-06-03T13:26:24+08:00">2024-06-03</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Python/" itemprop="url" rel="index"><span itemprop="name">Python</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>2.1k</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>8 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <p>学一下 <code>asyncio</code> 的用法. 其实很早就想学学异步相关的接口,
+但总是觉得那几个概念有点唬人, 什么 callback, event loop, coroutine...
+看起来不太好惹的样子.</p>
+<p>但其实没深入到底层实现, 不去看 CPython 源码, 例如 event loop
+到底是怎么调度的, 指针是怎么戳来戳去的, 单纯从 API 上看,
+感觉也不是那么难懂. 这就是高层次抽象的好呀.</p>
+<span id="more"></span>
+<h2 id="函数-v.s.-协程">函数 v.s. 协程</h2>
+<ul>
+<li>Subroutine vs Coroutine
+<ul>
+<li>routine: 顺序执行的代码片段</li>
+<li>sub: 分出去</li>
+<li>co: 共同执行, "协作"</li>
+</ul></li>
+</ul>
+<p>对应两种编程方式</p>
+<ul>
+<li>Synchronous vs Asynchronous
+<ul>
+<li>同步编程和异步编程</li>
+</ul></li>
+</ul>
+<p>传统的同步编程:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">f</span>(<span class="params">a, b</span>) -&gt; <span class="built_in">int</span>:</span><br><span class="line">    <span class="keyword">return</span> a + b</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">main</span>():</span><br><span class="line">    <span class="built_in">print</span>(f(<span class="number">2</span>, <span class="number">3</span>))</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">main()</span><br></pre></td></tr></table></figure>
+<ul>
+<li>调用 <code>f(2, 3)</code> 时, <code>main</code> 进入阻塞态</li>
+<li>会创建属于 <code>f</code> 的栈帧(stack frame)
+<ul>
+<li>栈顶添加一个返回指针, 告诉解释器, 函数返回时,
+应该从哪里继续执行</li>
+<li>函数执行完毕, 解释器释放 <code>f</code> 的栈帧, 并返回到
+<code>main</code> 的栈帧</li>
+</ul></li>
+</ul>
+<figure>
+<img src="\images\subroutine.png" alt="子程序" />
+<figcaption aria-hidden="true">子程序</figcaption>
+</figure>
+<p>大部分编程语言的函数调用都采用这种方式, C 语言就是一个典型案例.</p>
+<div id="1.1-async">
+而协程采用的模型:
+</div>
+<ul>
+<li>coroutine
+<ul>
+<li>封装异步执行的<strong>代码段</strong></li>
+</ul></li>
+<li>task
+<ul>
+<li>封装协程, 可以包含多个协程</li>
+<li>异步代码以 Task 的形式去运行</li>
+</ul></li>
+<li>event loop
+<ul>
+<li>维护多个 tasks(任务)</li>
+<li>监听事件</li>
+<li>像一个调度器, 负责 task 的切换</li>
+</ul></li>
+</ul>
+<figure>
+<img src="\images\subroutines-vs-coroutines.png" alt="模式对比" />
+<figcaption aria-hidden="true">模式对比</figcaption>
+</figure>
+<ul>
+<li>注意 event loop 它只能在一个时间执行一个任务
+<ul>
+<li>不存在系统级别的上下文切换, 和线程不一样</li>
+<li>也就不存在 race condition 问题</li>
+</ul></li>
+<li>最后效果看起来像是<em>并发的</em>,
+但其实只是更好地利用了代码中间的等待时间.</li>
+</ul>
+<p>所以如果你要优化的代码里不存在<strong>等待</strong>这件事的话, 采用
+asyncio 就没有意义了.</p>
+<p>Python 里的 <code>asyncio</code> 模块提供了异步编程的支持:</p>
+<ul>
+<li><code>def</code> 定义函数, "子程序", <code>Callable</code> 对象</li>
+<li><code>async def</code> 定义的"协程", 也是一个 <code>Callable</code>
+对象
+<ul>
+<li>直接 call 一个协程函数?</li>
+<li>python 返回了一个 coroutine object</li>
+</ul></li>
+<li><strong>协程不会直接执行</strong>
+<ul>
+<li>需要被等待 <code>await</code></li>
+</ul></li>
+</ul>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> asyncio</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">async</span> <span class="keyword">def</span> <span class="title function_">add</span>(<span class="params">a, b</span>) -&gt; <span class="built_in">int</span>:</span><br><span class="line">    <span class="keyword">return</span> a + b</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">async</span> <span class="keyword">def</span> <span class="title function_">main</span>():</span><br><span class="line">    <span class="comment"># &lt;coroutine object add at 0x7f341e35f370&gt;</span></span><br><span class="line">    <span class="comment"># awaitable object</span></span><br><span class="line">    <span class="built_in">print</span>(add(<span class="number">2</span>, <span class="number">3</span>))</span><br><span class="line"></span><br><span class="line">    res = <span class="keyword">await</span> add(<span class="number">2</span>, <span class="number">3</span>)</span><br><span class="line">    <span class="comment"># 5</span></span><br><span class="line">    <span class="built_in">print</span>(res)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">asyncio.run(main())</span><br></pre></td></tr></table></figure>
+<ul>
+<li>注意异步代码必须在 <code>async def</code>
+定义的协程函数体内编写</li>
+<li>用 <code>asyncio.run</code> 作为整个异步函数的入口</li>
+<li>awaitable object 包含 coroutine 和 task
+<ul>
+<li>还有一个 <code>Future</code> 对象,
+但通常情况下<em>没有必要</em>在应用层级的代码中创建 Future 对象</li>
+</ul></li>
+</ul>
+<p>看到这里感觉两种编程方式没啥差别, 异步编程就多了一步要
+<code>await</code> ?</p>
+<ul>
+<li>但注意: coroutine
+对象中的异步代码是<strong>可以被暂停和恢复</strong>的</li>
+</ul>
+<p>对比下 <code>time.sleep()</code> 和 <code>asyncio.sleep()</code>:</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> asyncio</span><br><span class="line"><span class="keyword">import</span> time</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">async</span> <span class="keyword">def</span> <span class="title function_">call_api</span>():</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;Hello&#x27;</span>)</span><br><span class="line">    time.sleep(<span class="number">3</span>)</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;World&#x27;</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">async</span> <span class="keyword">def</span> <span class="title function_">main</span>():</span><br><span class="line">    start = time.perf_counter()</span><br><span class="line">    <span class="keyword">await</span> asyncio.gather(call_api(), call_api())</span><br><span class="line">    end = time.perf_counter()</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">f&#x27;It took <span class="subst">&#123;end - start&#125;</span> second(s) to complete.&#x27;</span>)</span><br><span class="line"></span><br><span class="line">asyncio.run(main())</span><br></pre></td></tr></table></figure>
+<ul>
+<li><code>asyncio.gather</code>: 聚合两个协程 -&gt; 单个协程
+<ul>
+<li>本例中, 即并发地执行两次 <code>call_api</code></li>
+</ul></li>
+</ul>
+<p>运行代码时, 你会发现在第一次打印 Hello 之后程序陷入了阻塞状态:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Hello</span><br></pre></td></tr></table></figure>
+<p>等待 3s 之后, 才会继续</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Hello</span><br><span class="line">World</span><br><span class="line">Hello</span><br><span class="line">World</span><br><span class="line">It took 6.006541083002958 second(s) to complete.</span><br></pre></td></tr></table></figure>
+<ul>
+<li>奇怪, 两次 <code>call_api</code> 都在同一时间开始执行,
+但实际上是串行执行的?</li>
+<li>原因: <code>time.sleep</code> 是一个<strong>阻塞调用</strong>,
+它会阻塞事件循环
+<ul>
+<li>在执行过程, 程序转到了一个子程序里, 硬控了 3s</li>
+</ul></li>
+</ul>
+<figure>
+<img src="\images\time-sleep.svg" alt="time.sleep()" />
+<figcaption aria-hidden="true">time.sleep()</figcaption>
+</figure>
+<p>修改下 <code>call_api</code> 里的内容:</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">async</span> <span class="keyword">def</span> <span class="title function_">call_api</span>():</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;Hello&#x27;</span>)</span><br><span class="line">    <span class="keyword">await</span> asyncio.sleep(<span class="number">3</span>)</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;World&#x27;</span>)</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Hello</span><br><span class="line">Hello</span><br><span class="line">World</span><br><span class="line">World</span><br><span class="line">It took 3.0044386359986675 second(s) to complete.</span><br></pre></td></tr></table></figure>
+<figure>
+<img src="\images\task-concurrency.svg" alt="asyncio.sleep()" />
+<figcaption aria-hidden="true">asyncio.sleep()</figcaption>
+</figure>
+<ul>
+<li>第一个 <code>call_api</code> 调用 <code>print</code></li>
+<li>第一个进入休眠状态, Event Loop 唤醒第二个 <code>call_api</code></li>
+</ul>
+<p>一个问题:</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">await</span> asyncio.gather(call_api(), call_api())</span><br></pre></td></tr></table></figure>
+<p>是否等同于</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">await</span> call_api()</span><br><span class="line"><span class="keyword">await</span> call_api()</span><br></pre></td></tr></table></figure>
+<ul>
+<li>事实显示, 下面这种写法和用到同步函数的效果是一样的.
+<ul>
+<li>为什么会出现这样的结果?</li>
+</ul></li>
+<li>原因: <strong>没有将协程放到 Event Loop 中</strong>
+<ul>
+<li>在第一个 <code>call_api()</code> 阻塞时, Event Loop
+的任务队列中并不包含第二个 <code>call_api()</code></li>
+<li>就自然不会切换到第二个 <code>call_api()</code> 中继续执行了.</li>
+</ul></li>
+<li>更好的理解: 这两个 <code>call_api</code> 协程放到了同一个 task 中,
+Event loop 调度不了</li>
+</ul>
+<p>解决方案:</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">task_1 = asyncio.create_task(</span><br><span class="line">    call_api()</span><br><span class="line">)</span><br><span class="line">task_2 = asyncio.create_task(</span><br><span class="line">    call_api()</span><br><span class="line">)</span><br><span class="line"><span class="keyword">await</span> task_1</span><br><span class="line"><span class="keyword">await</span> task_2</span><br></pre></td></tr></table></figure>
+<ul>
+<li>使用 <code>asyncio.create_task</code> 作为一种显式地创建 Task 的方式
+<ul>
+<li>之前提到, <a href="#1.1-async">异步模型</a>中 Event Loop 负责调度
+Task 的执行.</li>
+</ul></li>
+<li>上面 <code>asyncio.gather</code> 隐式地将 coroutine 转换成了 task,
+同时也注册到 Event Loop 中.</li>
+</ul>
+<p>再来看一个例子:</p>
+<p>我们去掉上面的 await task, 看看会发生什么</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">task_1 = asyncio.create_task(</span><br><span class="line">    call_api()</span><br><span class="line">)</span><br><span class="line">task_2 = asyncio.create_task(</span><br><span class="line">    call_api()</span><br><span class="line">)</span><br><span class="line"><span class="keyword">await</span> asyncio.sleep(<span class="number">1</span>)</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Hello</span><br><span class="line">Hello</span><br><span class="line">It took 1.0013072900001134 second(s) to complete.</span><br></pre></td></tr></table></figure>
+<p>关注几个点:</p>
+<ul>
+<li>创建了 task, 任务就会追加到 Event Loop 的任务队列中.
+<ul>
+<li>main -&gt; task_1 -&gt; task_2</li>
+<li><code>asyncio.run(main())</code> 调用结束后, Event Loop
+也就结束了.</li>
+<li>所以 task_1 和 task_2 并没有被执行完全.</li>
+</ul></li>
+<li>而 <code>await task</code> 是在让 Event Loop 等待 Task 执行结束.
+<ul>
+<li><code>task_1</code> 说: 等我执行完毕你再走, 但也别干等我,
+你看看是不是还有别人要忙.</li>
+<li>本质上是等待 Task 的 <code>done</code> 方法返回 True</li>
+</ul></li>
+</ul>
+<p><code>asyncio</code> 经过多个版本的迭代, 演变出了高层级的 API,
+在以前, 我们还需要手动管理 Event Loop 的运行与停止</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> asyncio</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">hello_world</span>(<span class="params">loop</span>):</span><br><span class="line">    <span class="string">&quot;&quot;&quot;A callback to print &#x27;Hello World&#x27; and stop the event loop&quot;&quot;&quot;</span></span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;Hello World&#x27;</span>)</span><br><span class="line">    loop.stop()</span><br><span class="line"></span><br><span class="line">loop = asyncio.new_event_loop()</span><br><span class="line"></span><br><span class="line"><span class="comment"># Schedule a call to hello_world()</span></span><br><span class="line">loop.call_soon(hello_world, loop)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Blocking call interrupted by loop.stop()</span></span><br><span class="line"><span class="keyword">try</span>:</span><br><span class="line">    loop.run_forever()</span><br><span class="line"><span class="keyword">finally</span>:</span><br><span class="line">    loop.close()</span><br></pre></td></tr></table></figure>
+<p>这个例子也能让我们观察到 Event Loop 的运行机制.</p>
+<h2 id="应用场景">应用场景</h2>
+<p>异步编程很适合解决一些网络通讯上的问题</p>
+<p>io bound tasks</p>
+<ul>
+<li>最常见的一个例子就是 js 里, 前端向后端发送请求 api 会用到的
+<code>fetch</code></li>
+<li>以及后端:
+<ul>
+<li>数据库发起查询请求</li>
+<li>部署模型: AI 模型在后台运行</li>
+<li>评测平台: 等待评测机运行结果</li>
+</ul></li>
+</ul>
+<p>后端会有所谓<strong>异步视图</strong>, 例如, 在 FastAPI
+框架中用的很多; 在 Django 4.1 版本之后, 也支持了异步查询 ORM
+的相关功能.</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">user = <span class="keyword">await</span> User.objects.<span class="built_in">filter</span>(username=my_input).afirst()</span><br></pre></td></tr></table></figure>
+<ul>
+<li>在一个协程函数里, 当然不能从异步代码中调用堵塞的同步代码,
+它会堵塞上面所述的 Event Loop.</li>
+<li>所以需要用到 Django 提供的 异步查询 API
+<ul>
+<li>这里没有用 <code>first</code>, 而是 <code>afirst</code>,
+返回的是一个 Coroutine 对象.</li>
+</ul></li>
+</ul>
+<p>再举个例子, OJ 的等待运行结果:</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># must wait for judge result</span></span><br><span class="line">data = client.judge(code)</span><br><span class="line"><span class="keyword">return</span> JudgeStatus.PENDING</span><br></pre></td></tr></table></figure>
+<p>假设多个用户发起了评测请求 r1, r2, r3, 那显然, 后端要等待评测机评测
+r1 之后才能处理 r2 的请求, 为了防止主线程阻塞, 我们就要有意识地让
+<code>judge</code> 的行为后台化, 就可以用一些异步框架去处理(例如:
+celery, dramatiq, etc.):</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@dramatiq.actor</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">judge</span>(<span class="params">code</span>):</span><br><span class="line">    <span class="comment"># ...</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># view function</span></span><br><span class="line"><span class="comment"># ...</span></span><br><span class="line">client.judge.send(code)</span><br><span class="line"><span class="keyword">return</span> JudgeStatus.PENDING</span><br></pre></td></tr></table></figure>
+<p>具体可以参考多评测机的任务队列实现.</p>
+<h2 id="习题">习题</h2>
+<ol type="1">
+<li>直接 await 一个 coroutine object 和 task object 有什么区别?</li>
+<li>观察下面的异步代码:</li>
+</ol>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> asyncio</span><br><span class="line"><span class="keyword">import</span> aiohttp</span><br><span class="line"><span class="keyword">from</span> typing <span class="keyword">import</span> <span class="type">Coroutine</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">URL = <span class="string">&quot;https://acm.hdu.edu.cn/showproblem.php&quot;</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">async</span> <span class="keyword">def</span> <span class="title function_">fetch</span>(<span class="params">session, url, params</span>) -&gt; <span class="type">Coroutine</span>:</span><br><span class="line">    <span class="keyword">async</span> <span class="keyword">with</span> session.get(url, params=params) <span class="keyword">as</span> response:</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">await</span> response.text()</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">async</span> <span class="keyword">def</span> <span class="title function_">main</span>():</span><br><span class="line">    <span class="keyword">async</span> <span class="keyword">with</span> aiohttp.ClientSession() <span class="keyword">as</span> session:</span><br><span class="line">        <span class="keyword">for</span> pid <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1000</span>, <span class="number">1030</span>):</span><br><span class="line">            <span class="keyword">await</span> fetch(session, URL, &#123;<span class="string">&#x27;pid&#x27;</span>: pid&#125;)</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    asyncio.run(main())</span><br></pre></td></tr></table></figure>
+<p>这里的异步是否起到作用?</p>
+<p>解答:</p>
+<ol type="1">
+<li>区别: 是否将这个 awaitable object 注册到 Event Loop 中. 只有 Task
+才会被 Event loop 调度. 注意到一个事情: await coroutine
+并不会使得这个对象变成 task.</li>
+<li>aiohttp 库的异步代码是没问题的, 问题是 main 里的 for 循环: 相当于
+await 了 30 个 fetch 协程, 但实际上并没有并发地让这些协程并发执行,
+还是上面提到的那个问题: 没注册到 Event Loop 中. 正确做法是下面这种:</li>
+</ol>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">async</span> <span class="keyword">def</span> <span class="title function_">main</span>():</span><br><span class="line">    <span class="keyword">async</span> <span class="keyword">with</span> aiohttp.ClientSession() <span class="keyword">as</span> session:</span><br><span class="line">        tasks = [fetch(session, URL, &#123;<span class="string">&#x27;pid&#x27;</span>: pid&#125;)</span><br><span class="line">                 <span class="keyword">for</span> pid <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1010</span>, <span class="number">1030</span>)]</span><br><span class="line">        <span class="keyword">await</span> asyncio.gather(*tasks)</span><br></pre></td></tr></table></figure>
+<p>可以前后对比一下, 正确的异步代码运行时间稳定在 1.25s 左右,
+而上面的代码要多上不少.</p>
+<p>同时还可以对比下使用 requests 库的代码:</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> pid <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1000</span>, <span class="number">1030</span>):</span><br><span class="line">    response = requests.get(URL, params=&#123;<span class="string">&#x27;pid&#x27;</span>: pid&#125;)</span><br></pre></td></tr></table></figure>
+<p>代码运行基本上需要 6s 左右的时间, 差距还是很明显的.</p>
+<h2 id="参考资料">参考资料</h2>
+<ol type="1">
+<li><a
+target="_blank" rel="noopener" href="https://docs.djangoproject.com/zh-hans/4.2/topics/async/">Django
+异步支持</a></li>
+<li><a
+target="_blank" rel="noopener" href="https://lulaoshi.info/python/asyncio/asyncio.html#await-%E4%B8%8E-awaitable">编写
+asyncio 代码</a></li>
+<li><a
+target="_blank" rel="noopener" href="https://docs.python.org/zh-cn/3/library/asyncio-task.html#coroutine">Python
+官方文档 asyncio 模块</a></li>
+</ol>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Python/" rel="tag"># Python</a>
+              <a href="/tags/%E5%BC%82%E6%AD%A5/" rel="tag"># 异步</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2024/05/24/%E9%85%8D%E7%8E%AF%E5%A2%83%E7%9A%84%E4%B8%80%E4%B8%87%E7%A7%8D%E5%9D%91%E6%B3%95/" rel="prev" title="配环境的一万种坑法">
+                  <i class="fa fa-chevron-left"></i> 配环境的一万种坑法
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2024/06/03/OS%E8%80%83%E5%89%8D%E5%A4%8D%E4%B9%A0/" rel="next" title="OS考前复习">
+                  OS考前复习 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    <div class="comments gitalk-container"></div>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 2022 – 
+  <span itemprop="copyrightYear">2024</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Besthope</span>
+</div>
+<div class="wordcount">
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-line"></i>
+    </span>
+      <span>站点总字数：</span>
+    <span title="站点总字数">90k</span>
+  </span>
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+      <span>站点阅读时长 &asymp;</span>
+    <span title="站点阅读时长">5:28</span>
+  </span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/pisces/" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.1/search.js" integrity="sha256-1kfA5uHPf65M5cphT2dvymhkuyHPQp5A53EGZOnOLmc=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+
+
+
+  
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">true</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"none","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/gitalk/1.8.0/gitalk.css" integrity="sha256-AJnUHL7dBv6PGaeyPQJcgQPDjt/Hn/PvYZde1iqfp8U=" crossorigin="anonymous">
+
+<script class="next-config" data-name="gitalk" type="application/json">{"enable":true,"github_id":"Besthope-Official","repo":"Gittalk-repo","client_id":"a30bcd98c6f188a719e4","client_secret":"bd7e03497f2a00490144e9e0756d511768622b0e","admin_user":"Besthope-Official","distraction_free_mode":true,"proxy":"https://luminous-druid-90cc61.netlify.app/github_access_token","language":"zh-CN","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/gitalk/1.8.0/gitalk.min.js","integrity":"sha256-MVK9MGD/XJaGyIghSVrONSnoXoGh3IFxLw0zfvzpxR4="},"path_md5":"f5a87bbf496461237b61bf9452e2ce35"}</script>
+<script src="/js/third-party/comments/gitalk.js"></script>
+<script src="https://api.asilu.com/cdn/jquery.js,jquery.backstretch.min.js" type="text/javascript"></script>
+<body>
+<script type="text/javascript">
+function display()
+{
+    function shuffle(arr) {
+    let i = arr.length;
+    while (i) {
+      let j = Math.floor(Math.random() * i--);
+      [arr[j], arr[i]] = [arr[i], arr[j]];
+    }
+  }
+
+  const pic = 8;
+  var bgs = [];
+  
+  for (i = 1; i <= pic; i++) {
+    bgs.push("/images/bg" + i + ".jpg");
+  }
+
+  shuffle(bgs);
+
+  $.backstretch(bgs, {
+    fade: 2000, // 动画时长; 单位：毫秒
+    duration: 20000, // 切换延时
+    preload: 1,
+  });
+}
+
+display();
+
+window.onclick = function () {
+  display();
+};
+</script>
+</body>
+</body>
+<!-- click love -->
+<script type="text/javascript" src="/js/clicklove.js"></script>
+</html>

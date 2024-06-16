@@ -6,7 +6,7 @@
   <link href="http://example.com/atom.xml" rel="self"/>
   
   <link href="http://example.com/"/>
-  <updated>2024-03-27T15:53:45.816Z</updated>
+  <updated>2024-06-10T15:46:31.028Z</updated>
   <id>http://example.com/</id>
   
   <author>
@@ -17,18 +17,178 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>动态规划入门专训</title>
+    <link href="http://example.com/2024/06/10/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%E4%B8%93%E8%AE%AD/"/>
+    <id>http://example.com/2024/06/10/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%E4%B8%93%E8%AE%AD/</id>
+    <published>2024-06-10T15:39:11.000Z</published>
+    <updated>2024-06-10T15:46:31.028Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;我要成为 DP 高手! 至少比赛的时候负责这部分的题目不会甩大锅.&lt;/p&gt;
+&lt;p&gt;算法练习两年半, 依然除了板子题啥也不会. 状态定义, 转移方程, 边界条件,
+实际做题的时候道道是障碍. 最后总结就是自己菜.&lt;/p&gt;
+&lt;p&gt;题目大致选取的是洛谷上的 DP 题单, 然后又找了一些 CF 上 rating 在
+1300-1700 的 DP 标签题目来做. 太综合的 DP 题目自己也不会做, 就 SKIP
+了.&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="算法" scheme="http://example.com/categories/%E7%AE%97%E6%B3%95/"/>
+    
+    
+    <category term="算法" scheme="http://example.com/tags/%E7%AE%97%E6%B3%95/"/>
+    
+    <category term="动态规划" scheme="http://example.com/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>OS考前复习</title>
+    <link href="http://example.com/2024/06/03/OS%E8%80%83%E5%89%8D%E5%A4%8D%E4%B9%A0/"/>
+    <id>http://example.com/2024/06/03/OS%E8%80%83%E5%89%8D%E5%A4%8D%E4%B9%A0/</id>
+    <published>2024-06-03T05:31:02.000Z</published>
+    <updated>2024-06-03T05:38:11.591Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;又到了一年一度的期末考试季, 又到了我最讨厌的408专业课考试.&lt;/p&gt;
+&lt;p&gt;这学期开始还想着好好学 OS, 但越发感觉没啥特别的动力,
+主要被各类比赛分散了精力(更败犬的是都没拿什么特别的奖项).
+拖延的公开课实验就留到假期做吧, 现在我就是应试高手 :(&lt;/p&gt;
+&lt;p&gt;参考教材选用的是 SJTU 的现代操作系统.&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="复习" scheme="http://example.com/categories/%E5%A4%8D%E4%B9%A0/"/>
+    
+    
+    <category term="OS" scheme="http://example.com/tags/OS/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Python 异步编程实践</title>
+    <link href="http://example.com/2024/05/26/%E5%BC%82%E6%AD%A5%E7%BC%96%E7%A8%8B%E5%AE%9E%E8%B7%B5/"/>
+    <id>http://example.com/2024/05/26/%E5%BC%82%E6%AD%A5%E7%BC%96%E7%A8%8B%E5%AE%9E%E8%B7%B5/</id>
+    <published>2024-05-26T08:30:06.000Z</published>
+    <updated>2024-06-03T05:26:24.552Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;学一下 &lt;code&gt;asyncio&lt;/code&gt; 的用法. 其实很早就想学学异步相关的接口,
+但总是觉得那几个概念有点唬人, 什么 callback, event loop, coroutine...
+看起来不太好惹的样子.&lt;/p&gt;
+&lt;p&gt;但其实没深入到底层实现, 不去看 CPython 源码, 例如 event loop
+到底是怎么调度的, 指针是怎么戳来戳去的, 单纯从 API 上看,
+感觉也不是那么难懂. 这就是高层次抽象的好呀.&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="Python" scheme="http://example.com/categories/Python/"/>
+    
+    
+    <category term="Python" scheme="http://example.com/tags/Python/"/>
+    
+    <category term="异步" scheme="http://example.com/tags/%E5%BC%82%E6%AD%A5/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>配环境的一万种坑法</title>
+    <link href="http://example.com/2024/05/24/%E9%85%8D%E7%8E%AF%E5%A2%83%E7%9A%84%E4%B8%80%E4%B8%87%E7%A7%8D%E5%9D%91%E6%B3%95/"/>
+    <id>http://example.com/2024/05/24/%E9%85%8D%E7%8E%AF%E5%A2%83%E7%9A%84%E4%B8%80%E4%B8%87%E7%A7%8D%E5%9D%91%E6%B3%95/</id>
+    <published>2024-05-24T06:01:57.000Z</published>
+    <updated>2024-05-27T03:54:02.521Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;记录下配环境中遇到的坑点.&lt;/p&gt;
+&lt;p&gt;每个 BUG 都有过人之处, 每个都有他们独门绝招, 斗志和耐性更是技惊四座,
+报错信息更是给你意外的惊喜呀!&lt;/p&gt;</summary>
+    
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title>投资理论与实践</title>
+    <link href="http://example.com/2024/04/08/%E7%82%92%E8%82%A1%E5%89%8D%E4%BD%A0%E8%A6%81%E6%87%82%E7%9A%84%E7%90%86%E8%AE%BA%E7%9F%A5%E8%AF%86/"/>
+    <id>http://example.com/2024/04/08/%E7%82%92%E8%82%A1%E5%89%8D%E4%BD%A0%E8%A6%81%E6%87%82%E7%9A%84%E7%90%86%E8%AE%BA%E7%9F%A5%E8%AF%86/</id>
+    <published>2024-04-08T11:56:52.000Z</published>
+    <updated>2024-06-03T05:25:11.474Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;实现财富自由是在校大学生梦想之一. 看到同龄人一买就是均价上千的东西,
+要么家里有矿, 要么指定你小子有什么副业奥. 炒股,
+或许是大多数人想到无中生钱的方式.&lt;/p&gt;
+&lt;p&gt;做事讲究一个方法. 总不能白白送钱被割韭菜吧? 正好这学期学习了投资学,
+就来总结一些相关的理论及其实践方法.&lt;/p&gt;
+&lt;p&gt;虽然还没有正向的显著业绩 (逃&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="投资学" scheme="http://example.com/categories/%E6%8A%95%E8%B5%84%E5%AD%A6/"/>
+    
+    
+    <category term="投资学" scheme="http://example.com/tags/%E6%8A%95%E8%B5%84%E5%AD%A6/"/>
+    
+    <category term="炒股" scheme="http://example.com/tags/%E7%82%92%E8%82%A1/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>今天不想机器学习...?</title>
+    <link href="http://example.com/2024/03/28/%E4%BB%8A%E5%A4%A9%E4%B8%8D%E6%83%B3%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
+    <id>http://example.com/2024/03/28/%E4%BB%8A%E5%A4%A9%E4%B8%8D%E6%83%B3%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/</id>
+    <published>2024-03-28T06:57:58.000Z</published>
+    <updated>2024-06-16T16:17:35.823Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;人工智能经常被人批评为一种&quot;务虚&quot;的技术,
+差点就没和隔壁的元宇宙一起成为&quot;概念股&quot;; 曾几何时,
+我也对这种统计方法的应用感到无聊, 对机器学习的评价就是调参&quot;炼丹&quot;,
+又没有工程代码的优雅: AI 给出的都是 fuzzy 的结果,
+一个概率分布...而我更喜欢用一个个 assert 证实正确性的程序,
+一个复杂但又内在协调的程序系统.&lt;/p&gt;
+&lt;p&gt;但是, 正巧我入学没多久, LLM 等一众横空出世的 generative AI,
+它们的表现实在是太靓眼了: Novel AI 的降维打击, 更别提后续 control net,
+LORA 等方法的优化; 而 GPT 则彻彻底底改变了我的学习习惯,
+方方面面(如果能帮我高中写读后续写就好了).&lt;/p&gt;
+&lt;p&gt;时值 22 年末, 这些新颖的 AI 就像打开我心门的黑船,
+让我重新思考无数可能世界线中的一条:
+人工智能会变得越来越主流——融入到我们的世界当中, sooner or later...&lt;/p&gt;
+&lt;p&gt;继续在传统的 CS 赛道上奔跑: 你已经看到结果了. 学 AI,
+不是说去抛弃那些浓缩人类工程师数十年技术的核心——说考古算是过头了——而是转去开拓新领域,
+探索, 交融.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;也许今天不想学机器学习...? Who knows what is next day gonna be.&lt;/p&gt;
+&lt;/blockquote&gt;</summary>
+    
+    
+    
+    <category term="机器学习" scheme="http://example.com/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
+    
+    
+    <category term="算法" scheme="http://example.com/tags/%E7%AE%97%E6%B3%95/"/>
+    
+    <category term="数学" scheme="http://example.com/tags/%E6%95%B0%E5%AD%A6/"/>
+    
+    <category term="机器学习" scheme="http://example.com/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
+    
+    <category term="数据分析" scheme="http://example.com/tags/%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/"/>
+    
+  </entry>
+  
+  <entry>
     <title>配置你自己的 reveal.js 主题!</title>
     <link href="http://example.com/2024/03/27/%E9%85%8D%E7%BD%AE%E4%BD%A0%E8%87%AA%E5%B7%B1%E7%9A%84revealjs%E4%B8%BB%E9%A2%98/"/>
     <id>http://example.com/2024/03/27/%E9%85%8D%E7%BD%AE%E4%BD%A0%E8%87%AA%E5%B7%B1%E7%9A%84revealjs%E4%B8%BB%E9%A2%98/</id>
     <published>2024-03-27T15:40:39.000Z</published>
-    <updated>2024-03-27T15:53:45.816Z</updated>
+    <updated>2024-03-28T13:57:02.712Z</updated>
     
     
     <summary type="html">&lt;p&gt;最近写了一个 Reveal.js 的主题, 来炫耀下! &lt;a
 href=&quot;https://github.com/Besthope-Official/revealjs-academic-theme&quot;&gt;项目地址&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;主要是受到 NJU OS 课的启发, 又基于 Marp 和 Latex-Beamer 的样式改了改,
-做了一个学术主题, 漂亮的很呐.&lt;/p&gt;
-&lt;p&gt;如果你乐意, 你可以试着用用看~&lt;/p&gt;</summary>
+做了一个学术主题, 漂亮的很呐.&lt;/p&gt;</summary>
     
     
     
@@ -119,7 +279,7 @@ class=&quot;footnote-ref&quot; id=&quot;fnref1&quot; role=&quot;doc-noteref&quot
     <link href="http://example.com/2023/09/25/%E4%B9%9D%E6%9C%88%E4%BD%A0%E5%88%B7%E9%A2%98%E4%BA%86%E5%90%97/"/>
     <id>http://example.com/2023/09/25/%E4%B9%9D%E6%9C%88%E4%BD%A0%E5%88%B7%E9%A2%98%E4%BA%86%E5%90%97/</id>
     <published>2023-09-25T13:47:48.000Z</published>
-    <updated>2023-12-06T07:30:34.121Z</updated>
+    <updated>2024-06-10T15:38:46.246Z</updated>
     
     
     <summary type="html">&lt;p&gt;悲报: 要去 CCPC 桂林赛区坐牢了.&lt;/p&gt;
@@ -374,169 +534,6 @@ Python 作为现代语言的优越性. 当然, 不吹不贬地说, 其实关键�
     <category term="离散数学" scheme="http://example.com/tags/%E7%A6%BB%E6%95%A3%E6%95%B0%E5%AD%A6/"/>
     
     <category term="数理逻辑" scheme="http://example.com/tags/%E6%95%B0%E7%90%86%E9%80%BB%E8%BE%91/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>综合算法题</title>
-    <link href="http://example.com/2023/03/04/%E7%BB%BC%E5%90%88%E7%AE%97%E6%B3%95%E9%A2%98/"/>
-    <id>http://example.com/2023/03/04/%E7%BB%BC%E5%90%88%E7%AE%97%E6%B3%95%E9%A2%98/</id>
-    <published>2023-03-04T06:36:20.000Z</published>
-    <updated>2023-04-23T11:12:49.413Z</updated>
-    
-    
-    <summary type="html">&lt;p&gt;收录一些平时做的比较综合的题目. 考察的知识点不止一点,
-各种优化方式简直使出毕生所学.&lt;/p&gt;
-&lt;p&gt;大概是蓝桥杯国赛, ACM银, 提高组以上难度, 是比赛你不会轻易去碰的题目,
-讲解起来也是额外麻烦. 虽然说比赛能保证签到题全对就已经很了不起了,
-但这种题目就像高考数学的压轴题, 还是要有所接触才能有所突破嘛.&lt;/p&gt;</summary>
-    
-    
-    
-    <category term="算法" scheme="http://example.com/categories/%E7%AE%97%E6%B3%95/"/>
-    
-    
-    <category term="算法" scheme="http://example.com/tags/%E7%AE%97%E6%B3%95/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>把Python写成shell脚本</title>
-    <link href="http://example.com/2023/02/26/%E6%8A%8APython%E5%86%99%E6%88%90%E8%84%9A%E6%9C%AC%E8%AF%AD%E8%A8%80/"/>
-    <id>http://example.com/2023/02/26/%E6%8A%8APython%E5%86%99%E6%88%90%E8%84%9A%E6%9C%AC%E8%AF%AD%E8%A8%80/</id>
-    <published>2023-02-26T15:34:35.000Z</published>
-    <updated>2023-06-12T09:22:29.996Z</updated>
-    
-    
-    <summary type="html">&lt;p&gt;为什么 Shell 脚本要用 Python 来写!? UNIX用户痛骂这是大逆不道.&lt;/p&gt;
-&lt;p&gt;比起 BAT/Bash 我更喜欢 Python 的语法, 高效又简洁, 想想看一个list
-bash要怎么写. 有 os/sys 模块的存在完全可以把 Python
-写成类shell脚本(本质即调用shell命令), 再加上 &lt;code&gt;pandas&lt;/code&gt;
-等包更是让 Python 实用到一个新的高度(Windows干活干的多).&lt;/p&gt;
-&lt;p&gt;当然, 工具就是顺手就好. 你喜欢用什么写就用什么写.&lt;/p&gt;
-&lt;p&gt;不考虑更底层的应用. 别扯什么嵌入式驱动, C语言顶着你的脑门问: 师傅,
-我是干什么的.&lt;/p&gt;</summary>
-    
-    
-    
-    <category term="Python" scheme="http://example.com/categories/Python/"/>
-    
-    
-    <category term="Python" scheme="http://example.com/tags/Python/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>简单的数据结构</title>
-    <link href="http://example.com/2023/02/25/%E7%AE%80%E5%8D%95%E7%9A%84%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
-    <id>http://example.com/2023/02/25/%E7%AE%80%E5%8D%95%E7%9A%84%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/</id>
-    <published>2023-02-25T15:29:08.000Z</published>
-    <updated>2023-12-08T03:04:20.451Z</updated>
-    
-    
-    <summary type="html">&lt;p&gt;做一个数据结构的小小总结. 其实数据结构和算法是不分家的, 例如
-&lt;code&gt;1+1=2&lt;/code&gt; 是一个加法算法, 用到了整型的数据结构 &lt;a href=&quot;#fn1&quot;
-class=&quot;footnote-ref&quot; id=&quot;fnref1&quot; role=&quot;doc-noteref&quot;&gt;&lt;sup&gt;1&lt;/sup&gt;&lt;/a&gt;.
-你就说是不是吧.&lt;/p&gt;
-&lt;p&gt;DSA课程/书本上更注重实现. 手搓一个泛型结构, 实现 &lt;code&gt;std&lt;/code&gt;
-里头的一堆方法, 这不劝退谁劝退. 实现是为了更好理解原理.
-不要被复杂的构造带偏了学习的方向! 我们实现的标准是: ANSI C 也能做到!&lt;/p&gt;
-&lt;p&gt;剩下的内容: 怎么用STL来解决使用到特定数据结构的题目, i.e. 会做题.
-但我们也懂原理!&lt;/p&gt;</summary>
-    
-    
-    
-    <category term="数据结构" scheme="http://example.com/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
-    
-    
-    <category term="算法" scheme="http://example.com/tags/%E7%AE%97%E6%B3%95/"/>
-    
-    <category term="数据结构" scheme="http://example.com/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>AI时代的学习指南</title>
-    <link href="http://example.com/2023/02/25/AI%E6%97%B6%E4%BB%A3%E7%9A%84%E5%AD%A6%E4%B9%A0%E6%8C%87%E5%8D%97/"/>
-    <id>http://example.com/2023/02/25/AI%E6%97%B6%E4%BB%A3%E7%9A%84%E5%AD%A6%E4%B9%A0%E6%8C%87%E5%8D%97/</id>
-    <published>2023-02-25T12:35:18.000Z</published>
-    <updated>2023-06-13T05:31:00.038Z</updated>
-    
-    
-    <summary type="html">&lt;p&gt;日常刷知乎, 然后看到了这样一个问题: &lt;a
-href=&quot;https://www.zhihu.com/question/585554274/&quot;&gt;沃顿商学院教授要求学生必须用
-ChatGPT 写作业，应该如何正确看待 AI 带来的利弊？&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;之前我也看到一些态度截然相反的高校. 说实在话, 反对历史必然的行为,
-无异于杯水车薪, 想想 Luddite movement 也不会真正让我们重回原始社会,
-闭关锁国的历史也不必再度经历; 至于使用工具是否会反噬自身,
-只要在不侵害他人的利益下, 我想这个自由最好让步于个人,
-想想你是怎么注册上了ChatGPT的账号. 最后,
-这句话送给AI时代下学习一切的你和我:&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;拥抱变化要比拒绝变化简单的多.&lt;/p&gt;
-&lt;/blockquote&gt;</summary>
-    
-    
-    
-    <category term="杂谈" scheme="http://example.com/categories/%E6%9D%82%E8%B0%88/"/>
-    
-    
-    <category term="杂谈" scheme="http://example.com/tags/%E6%9D%82%E8%B0%88/"/>
-    
-    <category term="算法" scheme="http://example.com/tags/%E7%AE%97%E6%B3%95/"/>
-    
-    <category term="学习经验" scheme="http://example.com/tags/%E5%AD%A6%E4%B9%A0%E7%BB%8F%E9%AA%8C/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>保研, 相亲, 找工作——背后的稳定匹配问题</title>
-    <link href="http://example.com/2023/02/06/%E7%A8%B3%E5%AE%9A%E5%8C%B9%E9%85%8D%E9%97%AE%E9%A2%98%E5%8F%8AGale-Shapley%E7%AE%97%E6%B3%95/"/>
-    <id>http://example.com/2023/02/06/%E7%A8%B3%E5%AE%9A%E5%8C%B9%E9%85%8D%E9%97%AE%E9%A2%98%E5%8F%8AGale-Shapley%E7%AE%97%E6%B3%95/</id>
-    <published>2023-02-06T08:28:11.000Z</published>
-    <updated>2023-02-25T16:12:42.761Z</updated>
-    
-    
-    <summary type="html">&lt;p&gt;&lt;strong&gt;稳定匹配问题&lt;/strong&gt;(Stable Matching Problem)最早出自 D.Gale
-和 L.S.Sharpley
-1962年发表在美国数学月刊上的一篇关于&lt;em&gt;大学录取和婚姻稳定&lt;/em&gt;的文章&lt;a
-href=&quot;#fn1&quot; class=&quot;footnote-ref&quot; id=&quot;fnref1&quot;
-role=&quot;doc-noteref&quot;&gt;&lt;sup&gt;1&lt;/sup&gt;&lt;/a&gt;. 解决这个问题的算法出奇地简单,
-甚至是&lt;strong&gt;自我执行&lt;/strong&gt;(self-forcing)的——换言之,
-不需要系统的调度, 就能获得令人满意的结果!&lt;/p&gt;
-&lt;p&gt;本文重点陈述算法的正确性——作为离散数学中&lt;em&gt;逻辑命题与证明&lt;/em&gt;的简单应用.&lt;/p&gt;</summary>
-    
-    
-    
-    <category term="算法" scheme="http://example.com/categories/%E7%AE%97%E6%B3%95/"/>
-    
-    
-    <category term="算法" scheme="http://example.com/tags/%E7%AE%97%E6%B3%95/"/>
-    
-    <category term="离散数学" scheme="http://example.com/tags/%E7%A6%BB%E6%95%A3%E6%95%B0%E5%AD%A6/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>随感录</title>
-    <link href="http://example.com/2023/01/28/%E9%9A%8F%E6%84%9F%E5%BD%95/"/>
-    <id>http://example.com/2023/01/28/%E9%9A%8F%E6%84%9F%E5%BD%95/</id>
-    <published>2023-01-28T14:41:17.000Z</published>
-    <updated>2023-12-30T15:19:39.410Z</updated>
-    
-    
-    <summary type="html">&lt;p&gt;记录不时的奇思妙想. 奇怪的梦, 无垠的呓语, 似非的感悟.
-忙碌后的凝思会带给人宁静, 或许人的创作欲此刻迸发. 胡诌数句,
-想想还是删去罢了.&lt;/p&gt;</summary>
-    
-    
-    
-    <category term="杂谈" scheme="http://example.com/categories/%E6%9D%82%E8%B0%88/"/>
-    
-    
-    <category term="杂谈" scheme="http://example.com/tags/%E6%9D%82%E8%B0%88/"/>
-    
-    <category term="小说" scheme="http://example.com/tags/%E5%B0%8F%E8%AF%B4/"/>
     
   </entry>
   

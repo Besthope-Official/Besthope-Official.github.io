@@ -4389,6 +4389,7 @@ release 版本 1.0, 然后上色完了版本更新, 画崩了就回滚版本,
 但是回答我只能保证一个真一个假. 动用你的脑子,
 看看今天是必然死一个人还是说, 会有大英雄拯救你们呢?</p>
 <h2 id="绮梦-二">绮梦 (二)</h2>
+<h2 id="绮梦-三">绮梦 (三)</h2>
 <!-- ## 恋爱, 相亲, 然后是坟墓
 
 小镇做题家不懂恋爱.
@@ -6031,7 +6032,61 @@ i 个字符和 b 前 j 个字符构成的 LCS 长度</p>
 但三个数的乘积未必最小, 考虑 n=1 特例 <code>2*3*4=24</code>. 可以特判,
 或者考虑 <code>c = min(c, a * a)</code>. 质数用线性筛一下.</p>
 <figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">solve</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="type">int</span> n;</span><br><span class="line">    cin &gt;&gt; n;</span><br><span class="line">    <span class="type">int</span> a = *<span class="built_in">lower_bound</span>(primes, primes + cnt, <span class="number">1</span> + n);</span><br><span class="line">    <span class="type">int</span> b = *<span class="built_in">lower_bound</span>(primes, primes + cnt, a + n);</span><br><span class="line">    <span class="type">int</span> c = *<span class="built_in">lower_bound</span>(primes, primes + cnt, b + n);</span><br><span class="line">    cout &lt;&lt; <span class="number">1LL</span> * <span class="function">a * b * <span class="title">min</span><span class="params">(<span class="number">1LL</span> * a * a, (LL)c)</span> &lt;&lt; &#x27;\n&#x27;</span>; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="a.-adjacent-swapping">A. Adjacent Swapping</h2>
+<h1 id="codeforces-round-946-div.-3">Codeforces Round 946 (Div. 3)</h1>
+<p>好久没做题了, 练练</p>
+<h2 id="a.-phone-desktop">A. Phone Desktop</h2>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">solve</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="type">int</span> x, y;</span><br><span class="line">    cin &gt;&gt; x &gt;&gt; y;</span><br><span class="line">    <span class="type">int</span> ans = (y + <span class="number">1</span>) / <span class="number">2</span>;</span><br><span class="line">    <span class="type">int</span> l = x + y * <span class="number">4</span> - ans * <span class="number">15</span>;</span><br><span class="line">    <span class="keyword">if</span> (l &gt; <span class="number">0</span>)</span><br><span class="line">        ans += (l + <span class="number">14</span>) / <span class="number">15</span>;</span><br><span class="line">    cout &lt;&lt; ans &lt;&lt; <span class="string">&#x27;\n&#x27;</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="b.-symmetric-encoding">B. Symmetric Encoding</h2>
+<p>题解: 模拟一下即可. 用到了容器去重的一个写法.</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">solve</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="type">int</span> n;</span><br><span class="line">    cin &gt;&gt; n;</span><br><span class="line">    string s;</span><br><span class="line">    cin &gt;&gt; s;</span><br><span class="line">    string p = s;</span><br><span class="line"> </span><br><span class="line">    <span class="built_in">sort</span>(s.<span class="built_in">begin</span>(), s.<span class="built_in">end</span>());</span><br><span class="line">    s.<span class="built_in">erase</span>(<span class="built_in">unique</span>(s.<span class="built_in">begin</span>(), s.<span class="built_in">end</span>()), s.<span class="built_in">end</span>());</span><br><span class="line"> </span><br><span class="line">    <span class="type">int</span> m = s.<span class="built_in">size</span>();</span><br><span class="line">    </span><br><span class="line">    string ans;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">auto</span> ch : p) &#123;</span><br><span class="line">        ans.<span class="built_in">push_back</span>(s[m - s.<span class="built_in">find</span>(ch) - <span class="number">1</span>]);</span><br><span class="line">    &#125;</span><br><span class="line">    cout &lt;&lt; ans &lt;&lt; <span class="string">&#x27;\n&#x27;</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="c.-beautiful-triple-pairs">C. Beautiful Triple Pairs</h2>
+<p>题解: 每一个三元组的贡献有三种情况: 第一个位置不同, 23 相同,
+第二个位置不同, 13 相同, 以此类推.</p>
+<ul>
+<li>不同的位置置 0, 例如 <code>3 2 2</code> 和 <code>1 2 2</code> 都是
+<code>0 2 2</code>, 用哈希表存储这个 tuple 的个数.</li>
+<li>然后处理所有位置都相同的情况, 由容斥原理, 这种情况被重复计算了三次,
+所以答案减去 <code>3*cnt</code>.</li>
+</ul>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">solve</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="type">int</span> n;</span><br><span class="line">    cin &gt;&gt; n;</span><br><span class="line">    <span class="function">vector&lt;<span class="type">int</span>&gt; <span class="title">a</span><span class="params">(n)</span></span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; n; i++)</span><br><span class="line">        cin &gt;&gt; a[i];</span><br><span class="line">    map&lt;TII, <span class="type">int</span>&gt; mp1, mp2, mp3, mp;</span><br><span class="line">    LL ans = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; n - <span class="number">2</span>; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        TII t = &#123;a[i], a[i + <span class="number">1</span>], a[i + <span class="number">2</span>]&#125;;</span><br><span class="line">        mp[t]++;</span><br><span class="line">        TII t1 = &#123;<span class="number">0</span>, a[i + <span class="number">1</span>], a[i + <span class="number">2</span>]&#125;;</span><br><span class="line">        mp1[t1]++;</span><br><span class="line">        TII t2 = &#123;a[i], <span class="number">0</span>, a[i + <span class="number">2</span>]&#125;;</span><br><span class="line">        mp2[t2]++;</span><br><span class="line">        TII t3 = &#123;a[i], a[i + <span class="number">1</span>], <span class="number">0</span>&#125;;</span><br><span class="line">        mp3[t3]++;</span><br><span class="line">        ans += mp1[t1] - <span class="number">1</span>;</span><br><span class="line">        ans += mp2[t2] - <span class="number">1</span>;</span><br><span class="line">        ans += mp3[t3] - <span class="number">1</span>;</span><br><span class="line">        ans -= <span class="number">3</span> * (mp[t] - <span class="number">1</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    cout &lt;&lt; ans &lt;&lt; <span class="string">&#x27;\n&#x27;</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="d.-ingenuity-2">D. Ingenuity-2</h2>
+<h1 id="codeforces-round-950-div.-3">Codeforces Round 950 (Div. 3)</h1>
+<h2 id="a.-problem-generator">A. Problem Generator</h2>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">solve</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="function">vector&lt;<span class="type">int</span>&gt; <span class="title">cnt</span><span class="params">(<span class="number">7</span>)</span></span>;</span><br><span class="line">    <span class="type">int</span> n, m;</span><br><span class="line">    cin &gt;&gt; n &gt;&gt; m;</span><br><span class="line">    string s;</span><br><span class="line">    cin &gt;&gt; s;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; n; i++) &#123;</span><br><span class="line">        cnt[s[i] - <span class="string">&#x27;A&#x27;</span>] ++;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="type">int</span> ans = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; <span class="number">7</span>; i++) &#123;</span><br><span class="line">        ans += <span class="built_in">max</span>(m - cnt[i], <span class="number">0</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    cout &lt;&lt; ans &lt;&lt; <span class="string">&#x27;\n&#x27;</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="b.-choosing-cubes">B. Choosing Cubes</h2>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">solve</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="type">int</span> n, f, k;</span><br><span class="line">    cin &gt;&gt; n &gt;&gt; f &gt;&gt; k;</span><br><span class="line">    <span class="function">vector&lt;<span class="type">int</span>&gt; <span class="title">a</span><span class="params">(n)</span></span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; n; i++) &#123;</span><br><span class="line">        cin &gt;&gt; a[i];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="type">int</span> m = a[f - <span class="number">1</span>];</span><br><span class="line">    <span class="built_in">sort</span>(a.<span class="built_in">begin</span>(), a.<span class="built_in">end</span>(), <span class="built_in">greater</span>&lt;<span class="type">int</span>&gt;());</span><br><span class="line">    <span class="keyword">auto</span> l = <span class="built_in">lower_bound</span>(a.<span class="built_in">begin</span>(), a.<span class="built_in">end</span>(), m, <span class="built_in">greater</span>&lt;<span class="type">int</span>&gt;()) - a.<span class="built_in">begin</span>();</span><br><span class="line">    <span class="keyword">auto</span> r = <span class="built_in">upper_bound</span>(a.<span class="built_in">begin</span>(), a.<span class="built_in">end</span>(), m, <span class="built_in">greater</span>&lt;<span class="type">int</span>&gt;()) - a.<span class="built_in">begin</span>();</span><br><span class="line">    <span class="keyword">if</span> (r &lt;= k)</span><br><span class="line">        cout &lt;&lt; <span class="string">&quot;YES\n&quot;</span>;</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span> (l &gt;= k)</span><br><span class="line">        cout &lt;&lt; <span class="string">&quot;NO\n&quot;</span>;</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">        cout &lt;&lt; <span class="string">&quot;MAYBE\n&quot;</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>注: 不排序也可以统计大于等于 <code>a[f-1]</code> 的个数, 然后和
+<code>k</code> 比较</p>
+<h2 id="c.-sofia-and-the-lost-operations">C. Sofia and the Lost
+Operations</h2>
+<p>题解: <code>d</code> 的最后一次操作可以覆盖掉之前的操作, 所以需要保证
+<code>d[m-1]</code> 在 <code>b</code> 中. 然后只需考虑 a 和 b
+序列之间的差异, 这些差异应当都包含在 <code>d</code> 中即可.</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">solve</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="type">int</span> n, m;</span><br><span class="line">    cin &gt;&gt; n;</span><br><span class="line">    <span class="function">vector&lt;<span class="type">int</span>&gt; <span class="title">a</span><span class="params">(n)</span>, <span class="title">b</span><span class="params">(n)</span></span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; n; i++)</span><br><span class="line">        cin &gt;&gt; a[i];</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; n; i++)</span><br><span class="line">        cin &gt;&gt; b[i];</span><br><span class="line">    cin &gt;&gt; m;</span><br><span class="line">    <span class="function">vector&lt;<span class="type">int</span>&gt; <span class="title">d</span><span class="params">(m)</span></span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; m; i++)</span><br><span class="line">        cin &gt;&gt; d[i];</span><br><span class="line">    <span class="type">bool</span> flag = <span class="literal">true</span>;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">if</span> (<span class="built_in">find</span>(b.<span class="built_in">begin</span>(), b.<span class="built_in">end</span>(), d[m - <span class="number">1</span>]) == b.<span class="built_in">end</span>()) &#123;</span><br><span class="line">        flag = <span class="literal">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function">multiset&lt;<span class="type">int</span>&gt; <span class="title">p</span><span class="params">(d.begin(), d.end())</span></span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; n; i++) &#123;</span><br><span class="line">        <span class="keyword">if</span> (a[i] != b[i]) &#123;</span><br><span class="line">            <span class="keyword">if</span> (p.<span class="built_in">find</span>(b[i]) == p.<span class="built_in">end</span>())</span><br><span class="line">                flag = <span class="literal">false</span>;</span><br><span class="line">            p.<span class="built_in">extract</span>(b[i]);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (flag) &#123;</span><br><span class="line">        cout &lt;&lt; <span class="string">&quot;YES\n&quot;</span>;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        cout &lt;&lt; <span class="string">&quot;NO\n&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="d.-gcd-sequence">D. GCD-sequence</h2>
+<p>题解: 删除 <span class="math inline">\(a_i\)</span> 等价于删除 <span
+class="math inline">\(b_{i-1}, b_{i}\)</span>, 添加一个新的数 <span
+class="math inline">\(g=\operatorname{gcd}(a_{i-1}, a_{i+1})\)</span>,
+保证删改前后 <span class="math inline">\(b\)</span> 非递减,
+只需要考虑左边/右边/中间满足非递减即可.
+左边和右边的单调性可以用前缀/后缀数组维护.</p>
+<p>注意下表和边界的处理.</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">solve</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="type">int</span> n;</span><br><span class="line">    cin &gt;&gt; n;</span><br><span class="line">    <span class="function">vector&lt;<span class="type">int</span>&gt; <span class="title">a</span><span class="params">(n + <span class="number">1</span>)</span>, <span class="title">b</span><span class="params">(n + <span class="number">1</span>)</span>, <span class="title">l</span><span class="params">(n + <span class="number">1</span>)</span>, <span class="title">r</span><span class="params">(n + <span class="number">1</span>)</span></span>;</span><br><span class="line">    b[n] = INF, l[<span class="number">0</span>] = <span class="number">1</span>, r[n] = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">1</span>; i &lt;= n; i++)</span><br><span class="line">        cin &gt;&gt; a[i];</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">1</span>; i &lt;= n - <span class="number">1</span>; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        b[i] = <span class="built_in">gcd</span>(a[i], a[i + <span class="number">1</span>]);</span><br><span class="line">        l[i] = (l[i - <span class="number">1</span>] &amp;&amp; (b[i] &gt;= b[i - <span class="number">1</span>]));</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = n - <span class="number">1</span>; i &gt;= <span class="number">1</span>; i--)</span><br><span class="line">        r[i] = (r[i + <span class="number">1</span>] &amp;&amp; (b[i] &lt;= b[i + <span class="number">1</span>]));</span><br><span class="line">    <span class="type">int</span> ans = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">if</span> (r[<span class="number">2</span>])</span><br><span class="line">        ans = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">if</span> (l[n - <span class="number">2</span>])</span><br><span class="line">        ans = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">2</span>; i &lt; n; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="type">int</span> g = <span class="built_in">gcd</span>(a[i - <span class="number">1</span>], a[i + <span class="number">1</span>]);</span><br><span class="line">        <span class="keyword">if</span> (l[i - <span class="number">2</span>] &amp;&amp; r[i + <span class="number">1</span>] &amp;&amp; b[i - <span class="number">2</span>] &lt;= g &amp;&amp; g &lt;= b[i + <span class="number">1</span>])</span><br><span class="line">            ans = <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    cout &lt;&lt; ((ans) ? <span class="string">&quot;YES&quot;</span> : <span class="string">&quot;NO&quot;</span>) &lt;&lt; <span class="string">&#x27;\n&#x27;</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="codeforces-global-round-26">Codeforces Global Round 26</h1>
+<h2 id="a.-strange-splitting">A. Strange Splitting</h2>
+<p>无解只可能是单一元素的情形. 然后可以构造 n-1/1 的分组, 保证一个分组的
+Range 为 0 而另一个不为 0, 只需要让单独分组的放到中间就可以了, 例如 1 1
+2 分成 R B R. 题目保证了 <span
+class="math inline">\(n&gt;2\)</span>.</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">solve</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="type">int</span> n;</span><br><span class="line">    cin &gt;&gt; n;</span><br><span class="line"> </span><br><span class="line">    set&lt;<span class="type">int</span>&gt; st;</span><br><span class="line"> </span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; n; i++) &#123;</span><br><span class="line">        <span class="type">int</span> x;</span><br><span class="line">        cin &gt;&gt; x;</span><br><span class="line">        st.<span class="built_in">insert</span>(x);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (st.<span class="built_in">size</span>() == <span class="number">1</span>) &#123;</span><br><span class="line">        cout &lt;&lt; <span class="string">&quot;NO\n&quot;</span>;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        cout &lt;&lt; <span class="string">&quot;YES\n&quot;</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; n; i++) &#123;</span><br><span class="line">            cout &lt;&lt; (i == <span class="number">1</span> ? <span class="string">&#x27;R&#x27;</span> : <span class="string">&#x27;B&#x27;</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        cout &lt;&lt; <span class="string">&#x27;\n&#x27;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="b.-large-addition">B. Large Addition</h2>
+<p>猜结论: 首位必须为 1, 最后一位不为 9, 中间位不为 0.</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">solve</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    string x;</span><br><span class="line">    cin &gt;&gt; x;</span><br><span class="line">    <span class="type">int</span> n = x.<span class="built_in">size</span>();</span><br><span class="line">    <span class="type">int</span> ans = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">if</span> (x[<span class="number">0</span>] != <span class="string">&#x27;1&#x27;</span>)</span><br><span class="line">        ans = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">1</span>; i &lt; n - <span class="number">1</span>; i++) &#123;</span><br><span class="line">        <span class="keyword">if</span> (x[i] == <span class="string">&#x27;0&#x27;</span>)</span><br><span class="line">            ans = <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (x[n - <span class="number">1</span>] == <span class="string">&#x27;9&#x27;</span>)</span><br><span class="line">        ans = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">if</span> (ans)</span><br><span class="line">        cout &lt;&lt; <span class="string">&quot;YES\n&quot;</span>;</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">        cout &lt;&lt; <span class="string">&quot;NO\n&quot;</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="c1.-magnitude-easy-version">C1. Magnitude (Easy Version)</h2>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">solve</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="type">int</span> n;</span><br><span class="line">    cin &gt;&gt; n;</span><br><span class="line">    LL mx = <span class="number">0</span>, mn = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; n; i++) &#123;</span><br><span class="line">        <span class="type">int</span> x;</span><br><span class="line">        cin &gt;&gt; x;</span><br><span class="line">        mn += x;</span><br><span class="line">        mx += x;</span><br><span class="line">        mx = <span class="built_in">max</span>(mx, <span class="built_in">abs</span>(mn));</span><br><span class="line">    &#125;</span><br><span class="line">    cout &lt;&lt; mx &lt;&lt; <span class="string">&#x27;\n&#x27;</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="c2.-magnitude-hard-version">C2. Magnitude (Hard Version)</h2>
+<p>求方案数.</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">solve</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="type">int</span> n;</span><br><span class="line">    cin &gt;&gt; n;</span><br><span class="line">    <span class="function">vector&lt;<span class="type">int</span>&gt; <span class="title">a</span><span class="params">(n)</span></span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; n; i++)</span><br><span class="line">        cin &gt;&gt; a[i];</span><br><span class="line">    </span><br><span class="line">    map&lt;LL, mint&gt; dp;</span><br><span class="line">    dp[<span class="number">0</span>] = <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; n; i++) &#123;</span><br><span class="line">        map&lt;LL, mint&gt; ndp;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">auto</span> &amp;[x, y] : dp) &#123;</span><br><span class="line">            ndp[x + a[i]] += y;</span><br><span class="line">            ndp[<span class="built_in">abs</span>(x + a[i])] += y;</span><br><span class="line">        &#125;</span><br><span class="line">        dp.<span class="built_in">clear</span>();</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">auto</span> [x, y] : ndp) &#123;</span><br><span class="line">            <span class="keyword">if</span> (x == ndp.<span class="built_in">begin</span>()-&gt;first || x == ndp.<span class="built_in">rbegin</span>()-&gt;first)</span><br><span class="line">                dp[x] = y;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    cout &lt;&lt; dp.<span class="built_in">rbegin</span>()-&gt;second &lt;&lt; <span class="string">&#x27;\n&#x27;</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 ]]></content>
       <categories>
         <category>算法</category>
@@ -7253,8 +7308,11 @@ class="math inline">\(T=0.987\times20\mathrm{ns+}(1-0.987)\times200\mathrm{ns}=2
 href="https://github.com/Besthope-Official/revealjs-academic-theme">项目地址</a></p>
 <p>主要是受到 NJU OS 课的启发, 又基于 Marp 和 Latex-Beamer 的样式改了改,
 做了一个学术主题, 漂亮的很呐.</p>
-<p>如果你乐意, 你可以试着用用看~</p>
 <span id="more"></span>
+<h2 id="在线演示">在线演示</h2>
+<p>直接<a
+href="https://besthope-official.github.io/slides-page/">访问</a></p>
+<p>或作为 iframe 插入页面</p>
 <iframe src="https://besthope-official.github.io/slides-page/" width="100%" height="500px">
 </iframe>
 ]]></content>
@@ -7264,6 +7322,937 @@ href="https://github.com/Besthope-Official/revealjs-academic-theme">项目地址
       <tags>
         <tag>插件</tag>
         <tag>Reveal.js</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>今天不想机器学习...?</title>
+    <url>/2024/03/28/%E4%BB%8A%E5%A4%A9%E4%B8%8D%E6%83%B3%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/</url>
+    <content><![CDATA[<p>人工智能经常被人批评为一种"务虚"的技术,
+差点就没和隔壁的元宇宙一起成为"概念股"; 曾几何时,
+我也对这种统计方法的应用感到无聊, 对机器学习的评价就是调参"炼丹",
+又没有工程代码的优雅: AI 给出的都是 fuzzy 的结果,
+一个概率分布...而我更喜欢用一个个 assert 证实正确性的程序,
+一个复杂但又内在协调的程序系统.</p>
+<p>但是, 正巧我入学没多久, LLM 等一众横空出世的 generative AI,
+它们的表现实在是太靓眼了: Novel AI 的降维打击, 更别提后续 control net,
+LORA 等方法的优化; 而 GPT 则彻彻底底改变了我的学习习惯,
+方方面面(如果能帮我高中写读后续写就好了).</p>
+<p>时值 22 年末, 这些新颖的 AI 就像打开我心门的黑船,
+让我重新思考无数可能世界线中的一条:
+人工智能会变得越来越主流——融入到我们的世界当中, sooner or later...</p>
+<p>继续在传统的 CS 赛道上奔跑: 你已经看到结果了. 学 AI,
+不是说去抛弃那些浓缩人类工程师数十年技术的核心——说考古算是过头了——而是转去开拓新领域,
+探索, 交融.</p>
+<blockquote>
+<p>也许今天不想学机器学习...? Who knows what is next day gonna be.</p>
+</blockquote>
+<span id="more"></span>
+<h2 id="机器学习基础">机器学习基础</h2>
+<p>了解相关术语</p>
+<p>模型评估指标: 分类任务会用哪些指标 metrics?
+回归任务又常用哪些指标?</p>
+<ul>
+<li>回归任务里: MSE, Rooted MSE, R-Squared
+<ul>
+<li>Mean Squared Error (MSE): <span
+class="math inline">\(\frac{1}{n}\sum_{i=1}^n(y_i-\hat{y}_i)^2\)</span></li>
+<li><span class="math inline">\(R^2=1-SSE/SST\)</span>, 1 -
+残差平方和/总平方和, 越靠近 1 越好</li>
+<li>R 方是一种相对指标, 相当于是做了归一化处理的指标,
+在不同任务下模型的说服力会更强</li>
+<li>其实是描述回归里不可解释项 残差 <span
+class="math inline">\(\varepsilon\)</span> 的两种不同方式</li>
+</ul></li>
+</ul>
+<figure>
+<img src="../images/ml/supervised-learning-metrics.png" alt="指标" />
+<figcaption aria-hidden="true">指标</figcaption>
+</figure>
+<p>区分 <code>Acc.</code> 和 <code>Prec.</code></p>
+<ul>
+<li>模型判断正确(可能蒙对了) VS 模型判断正确的可信度</li>
+</ul>
+<p>根据混淆矩阵来计算不同指标</p>
+<p>不同指标在不同任务上的意义:</p>
+<ul>
+<li>例如, 在癌症诊断问题上, <code>Acc</code>, <code>Prec</code>,
+<code>Recall</code> 该选择哪一个作为最主要的指标?
+<ul>
+<li>不希望漏诊, 因此最应该关注 Recall = 真患病/(误诊患病+真患病)</li>
+<li><code>Prec.</code> 在这里和 <code>Recall</code> 互补, 也很重要.</li>
+</ul></li>
+<li>class-imbalanced 类别不平衡问题的处理(hw2)
+<ul>
+<li>采样方法/给代价函数设定敏感系数/引入集成学习(如 boosting)</li>
+</ul></li>
+</ul>
+<p>P-R 曲线, 以及 ROC 曲线的意义?</p>
+<ul>
+<li>选择一个平衡精确度和召回率的最佳阈值
+<ul>
+<li>是工程上的一个 trick</li>
+</ul></li>
+<li>ROC: 真正率 (TPR, aka Recall) VS 假正率 (FPR) 的 trade-off</li>
+</ul>
+<p>Area Under Curve (AUC), 通常意义上指的是 ROC-AUC.</p>
+<p>一种简单计算方式(hw1):</p>
+<p>若随机抽取一个阳性样本和一个阴性样本,
+分类器<strong>正确判断</strong>阳性样本的值高于阴性样本之<strong>概率</strong>
+= <span class="math inline">\(AUC\)</span>.</p>
+<p>根据这种解释, 我们有如下的简易计算方式:</p>
+<ul>
+<li>假设<strong>真实</strong>正例 TP 有 <span
+class="math inline">\(n_1\)</span> 个, <strong>真实</strong>负例 TN 有
+<span class="math inline">\(n_0\)</span> 个</li>
+<li>将测试样例按预测值从高到低 sort</li>
+<li>设 <span class="math inline">\(r_i\)</span> 为第 <span
+class="math inline">\(i\)</span> 个真实负例的排序位置(秩)</li>
+<li>计算 <span class="math inline">\(S_0 = \sum r_i\)</span></li>
+<li>AUC 可以计算为</li>
+</ul>
+<p><span
+class="math display">\[\hat{A}=\frac{S_0-n_0(n_0+1)/2}{n_0n_1}\]</span></p>
+<h3 id="学习理论">学习理论</h3>
+<p>假设评估</p>
+<p>回答几个核心问题:</p>
+<ul>
+<li>为什么说样本量要足够大, 才能保证模型的有效性?
+<ul>
+<li>常用的统计学方法: t 检验, z 检验, 以及置信区间为什么是重要的</li>
+</ul></li>
+<li>解释泛化误差: 方差与偏差
+<ul>
+<li>Bias + Variance + Irreducible Error</li>
+<li>为什么我们强调模型的无偏估计?</li>
+</ul></li>
+<li><strong>解释过拟合和欠拟合</strong></li>
+<li>不同测试集上, 不同假设下的模型评估, 真的仅靠一个 acc
+就能体现出优劣性吗?</li>
+<li>交叉验证为什么是有效的? 平均值用作评估,
+比直接划分测试集好在哪里?</li>
+</ul>
+<p>VC 维</p>
+<h2 id="回归-regression">回归 Regression</h2>
+<p>最<em>老派</em>(old-schooled)的机器学习方法:
+描述数据存在某种<strong>线性关系</strong></p>
+<p>OLS 回归: 最小二乘法</p>
+<p>有解析解 <span class="math inline">\(\beta=(X^TX)^{-1}X^TY\)</span>
+(proof see hw1)</p>
+<p>基本功: 能从一维情形 trival 推广到矩阵形式, 然后写出对应
+<code>numpy</code> 代码</p>
+<p><strong>梯度下降法</strong>为什么能够找到最小值点?</p>
+<ul>
+<li>最大化拟合, 最小化残差, 定义<strong>损失函数</strong>为 MSE,
+目标使其最小化
+<ul>
+<li>这是一个很典的优化问题</li>
+<li>梯度指向函数增长最快的方向, 负方向指向了函数值减小最快的方向</li>
+<li>凸函数假设: 保证有解</li>
+<li>plausible region? 学习率?</li>
+</ul></li>
+<li>实际中梯度下降前要做好归一化工作: 防止某一特征主导,
+导致其它特征不显著</li>
+</ul>
+<p>为什么我们喜欢 SGD 随机梯度下降?
+因为<strong>快</strong>(随机选择一个样本或一小批样本来计算梯度).</p>
+<ul>
+<li>缺点: 容易陷入局部最小值/更新方向可能不定(方向嘈杂)</li>
+</ul>
+<p>衍生:</p>
+<ul>
+<li>多元回归: 最熟悉的例子, 房价预测</li>
+<li>多项式回归: 拟合诸如 <span
+class="math inline">\(a_nx^n+b_nx^{n-1}\dots+a_0\)</span> 的多项式
+<ul>
+<li>本质上是多元回归的一种特例: <span class="math inline">\(x_i\coloneqq
+x^i\)</span></li>
+</ul></li>
+<li>带正则项的回归方法: Ridge Regression, Lasso Regression</li>
+<li>L1 Norm 和 L2 Norm 的区别
+<ul>
+<li>L1 Norm 适用于<strong>特征选择</strong>(消除不显著的特征,
+产生稀疏的权重矩阵)</li>
+<li>L2正则化适用于<strong>控制模型复杂度</strong>(防止模型参数过大)</li>
+<li>以及弹性网络正则项</li>
+</ul></li>
+</ul>
+<p>一些进阶话题:</p>
+<ul>
+<li>分段回归: KNN 的方法
+<ul>
+<li>加权分段回归</li>
+</ul></li>
+<li>自回归 Autoregression, 以及 VAR 向量自回归</li>
+</ul>
+<p>引入非线性</p>
+<p>逻辑回归是回归问题吗?</p>
+<ul>
+<li>不是, 它是<strong>分类问题</strong></li>
+<li>用一个<strong>激活函数</strong>将线性回归的输出映射到概率空间</li>
+<li>损失函数不用 MSE, 改用交叉熵损失 or 对数损失</li>
+<li><span class="math inline">\(\sigma (\textbf{wx}+b)\)</span>
+通过一个阈值来输出二分结果</li>
+<li>会用 softmax 函数对输出结果放大
+<ul>
+<li>这里用的是 sigmoid 函数</li>
+</ul></li>
+</ul>
+<p><span class="math display">\[g(z)=\frac{1}{1+e^{-z}}\]</span></p>
+<ul>
+<li>缺点: 存在梯度消失问题, 即当输入值非常大或非常小时, 梯度接近 0</li>
+</ul>
+<p>常用的激活函数: ReLU 函数 <span
+class="math inline">\(\max(0,z)\)</span></p>
+<ul>
+<li>优点: 计算简单, 训练速度快, 缓解了梯度消失问题</li>
+<li>缺点: Dead Relu Problem</li>
+</ul>
+<p>多分类的思想: One vs Rest</p>
+<p>人工神经网络, 感知机和初窥深度学习 (<em>just a glimpse
+:&gt;</em>)</p>
+<h2 id="决策树-decision-tree">决策树 Decision Tree</h2>
+<p>决策树是一种经典的<strong>树状递归算法</strong></p>
+<p>决策树算法的基本流程</p>
+<p><strong>理解三种停止条件</strong>:</p>
+<ul>
+<li>当前节点包含的样本属于同一类别
+<ul>
+<li>已"完美分类"</li>
+</ul></li>
+<li>两种不能划分的情况
+<ul>
+<li>没有属性</li>
+<li>没有样本</li>
+</ul></li>
+</ul>
+<p>对算法流程的改进, 缓解过拟合的方式:</p>
+<ul>
+<li>预剪枝: <strong>提前终止</strong>(一定深度就 stop)
+<ul>
+<li>很重要的思想: beautiful free lunch</li>
+<li>深度学习里经常用(到了一个epoch预测准确率就很好了)</li>
+</ul></li>
+<li>后剪枝:
+<ul>
+<li>规则后剪枝</li>
+<li>错误降低剪枝</li>
+<li>从叶节点往上剪枝</li>
+</ul></li>
+</ul>
+<p><strong>划分特征的依据</strong>: 如何量化一个特征的纯度 purity?</p>
+<ul>
+<li>信息熵 <span class="math inline">\(H(D)=-\sum p_i\log p_i\)</span>
+<ul>
+<li>系统的混乱程度或不确定性</li>
+</ul></li>
+<li>信息增益 <span class="math inline">\(IG(D,a)=H(D)-\sum_{a\in A}
+|D_a| H(D_a)/|D|\)</span>
+<ul>
+<li>根据这次划分计算一个加权平均</li>
+<li>描述某个特征<strong>对信息熵的减少程度</strong></li>
+</ul></li>
+<li>基尼指数 <span class="math inline">\(1-\sum p_i^2\)</span>
+<ul>
+<li>衡量数据集的不纯度</li>
+</ul></li>
+</ul>
+<p>三种常用的决策树算法: CART, ID3, C4.5 划分依据</p>
+<ul>
+<li>ID3: 基于信息增益</li>
+<li>C4.5: 基于信息增益比</li>
+<li>CART: 基于基尼指数</li>
+</ul>
+<p>连续值的特征如何处理? 离散化是怎么做的?</p>
+<ul>
+<li>二分: 例如采用叶子的均值或中位数</li>
+<li>多分: 将连续特征值划分成多个区间, 例如等宽分箱 Binning</li>
+<li>这个过程涉及选择最优的分割点进行划分</li>
+</ul>
+<p>决策树可以应用到回归问题吗? Regression Tree 是怎么实现划分特征的?</p>
+<ul>
+<li>选择特征 X 和分割点 t</li>
+<li>计算分割后的左右子集的均方误差 MSE</li>
+<li>选择使 MSE 最小的分割点进行划分</li>
+</ul>
+<h2 id="贝叶斯方法">贝叶斯方法</h2>
+<p>贝叶斯决策论的基本思想?</p>
+<ul>
+<li>通过概率的计算和期望损失的最小化来进行决策</li>
+<li>选择<strong>期望损失最小</strong>的决策</li>
+<li>例如, 最小化分类错误率, 就引入误判损失, 让条件风险最小化</li>
+<li>最重要的是获取后验概率 <span class="math inline">\(P(c \mid
+x)\)</span></li>
+</ul>
+<p>怎么理解后验概率, 似然度, 先验概率以及边际似然度这些概念.(尤其是对
+<em>likelihood</em> 的理解)</p>
+<p>用医生诊病的例子来说明贝叶斯定理.</p>
+<p>了解贝叶斯方法和生成模型/判别模型之间的关系.</p>
+<ul>
+<li>如果我们无法从数据中得到显式的<em>规则</em></li>
+<li>那么就从数据中学习最符合的分布以及相匹配的参数</li>
+<li>生成模型: 学习联合分布 <span class="math inline">\(P(x,c)\)</span>
+然后获得 <span class="math inline">\(P(c \mid x)\)</span>
+<ul>
+<li>例: 朴素贝叶斯, HMM</li>
+</ul></li>
+<li>判别模型: 学习条件分布 <span class="math inline">\(P(c \mid
+x)\)</span> 预测 <span class="math inline">\(c\)</span>
+<ul>
+<li>例: 线性回归, 逻辑回归, 决策树, SVM...</li>
+</ul></li>
+</ul>
+<p>极大似然估计 MLE 为什么说是机器学习的基石?</p>
+<ul>
+<li>基于数据去学习一个分布</li>
+</ul>
+<p>寻找能最大化似然 <span class="math inline">\(P(D_c \mid
+\theta_c)\)</span> 的参数值 <span
+class="math inline">\(\hat{\theta_c}\)</span> <span
+class="math display">\[\hat{\theta_c}=\argmax_{\theta_c}
+LL(\theta_c)\]</span></p>
+<p>例子: HTHH 抛硬币序列</p>
+<ul>
+<li>MLE 就会估计出正面朝上的概率 <span
+class="math inline">\(p=1/4\)</span>. (写出似然函数, 取对数, 求导,
+取极小值)</li>
+</ul>
+<p>极大后验估计 MAP, 以及朴素贝叶斯的假设都是什么?</p>
+<ul>
+<li>极大后验估计 MAP <span class="math inline">\(\argmax_{\theta}P(x\mid
+\theta)P(\theta)\)</span></li>
+<li>极大似然估计 MLE <span class="math inline">\(\argmax_{\theta}P(x\mid
+\theta)\)</span>
+<ul>
+<li>也就是假设 <span class="math inline">\(\theta\)</span>
+服从均匀分布</li>
+</ul></li>
+<li>朴素贝叶斯: <strong>属性</strong>的独立性假设</li>
+</ul>
+<p>实现一个朴素贝叶斯分类器. 参考 <code>GaussianNB</code> 实现,
+并应用于垃圾邮件分类任务上. (课程实验)</p>
+<ul>
+<li>怎么学习文本数据的分布? NLP 相关基础.</li>
+<li>这里的高斯分布应用在哪里?</li>
+<li>Laplace 平滑技术是用于什么的?</li>
+</ul>
+<h2 id="基于实例的学习">基于实例的学习</h2>
+<p>相似度的度量</p>
+<p>除了欧氏距离, 有一种利用向量内积计算的余弦相似度</p>
+<ul>
+<li>1/-1 可以体现出比较显著的正/负相关性, 0 表示无相似性</li>
+<li>相当于做了一次归一化</li>
+</ul>
+<p>非数值特征的处理? 例如文本类型的数据, 布尔类型的数据?</p>
+<p>K-Nearest Neighbors 方法, 算法流程:</p>
+<ul>
+<li>选择 K 值: 选择一个正整数 K 作为最近邻居的数量.</li>
+<li>计算相似度：对于每个测试样本, 计算其与所有训练样本的相似度.</li>
+<li>找到最近邻居: 根据距离，从训练样本中选择距离最近的 K 个样本。</li>
+<li>投票或加权: 对于分类问题, 使用 K 个最近邻居的类别进行投票:
+对于回归问题, 计算 K 个最近邻居的平均值或加权平均值。</li>
+<li>预测: 将投票结果或平均值作为测试样本的预测结果.</li>
+</ul>
+<p>优缺点</p>
+<ul>
+<li>简单容易实现, 无需训练过程
+<ul>
+<li>同时也导致计算复杂度高</li>
+</ul></li>
+<li>可以拟合非线性过程</li>
+<li>自然处理多分类问题</li>
+<li>对噪声和不相关特征敏感(离群点敏感)</li>
+</ul>
+<p>核函数</p>
+<p>一个最常用的: 高斯核函数 RBF</p>
+<p><span class="math display">\[ K(\mathbf{x}, \mathbf{y}) =
+\exp\left(-\frac{\|\mathbf{x} -
+\mathbf{y}\|^2}{2\sigma^2}\right)\]</span></p>
+<p>将低维数据映射到高维空间,
+从而使得在低维空间中非线性不可分的数据在高维空间中变得线性可分</p>
+<p>在 SVM 用的多</p>
+<h2 id="无监督学习">无监督学习</h2>
+<p>K-Means 算法的流程</p>
+<ul>
+<li>初始化: 随机选质心作为 cluster 的中心</li>
+<li>分配簇: 将每个数据点分配到最近的质心所属的簇</li>
+<li>更新质心: 计算每个簇的质心</li>
+<li>迭代步骤 2, 3, 直到质心不再发生改变</li>
+</ul>
+<p>优点: 简单, 计算速度快，适用于大规模数据集</p>
+<p>缺点:</p>
+<ul>
+<li>对初始质心敏感, 不同的初始质心可能导致不同的聚类结果.
+(不一定是全局最优)</li>
+<li>适用于球形簇, 不适用于非凸簇或大小、密度差异较大的簇.</li>
+<li>对噪声和离群点敏感.</li>
+</ul>
+<p>层次聚类</p>
+<p>密度聚类: 例 DBSCAN</p>
+<h2 id="支持向量机">支持向量机</h2>
+<p><strong>例题</strong> 求解诸如下面的二次优化问题</p>
+<p><span
+class="math display">\[\begin{aligned}\arg\min_{\boldsymbol{w},b}&amp;\frac12\|\boldsymbol{w}\|^2\\\mathrm{s.t.}&amp;y_i(\boldsymbol{w}^\top\boldsymbol{x}_i+b)\geq1,
+i=1,2,\ldots,m.\end{aligned}\]</span></p>
+<p>例:</p>
+<p><span class="math display">\[\min_{w_1, w_2, b} \frac{1}{2}(w_1^2 +
+w_2^2)\]</span></p>
+<p>满足</p>
+<p><span class="math display">\[\begin{cases}
+  3w_1+3w_2+b\geqslant 1 \\
+  4w_1+3w_2+b\geqslant 1 \\
+  w_1+w_2+b\leqslant 1
+\end{cases}\]</span></p>
+<p><strong>解</strong> 一种简化过的方法: 先转换为对偶问题</p>
+<p><span
+class="math display">\[\min_{\alpha}\quad\frac{1}{2}\sum_{i=1}^{m}\sum_{j=1}^{m}\alpha_{i}\alpha_{j}y_{i}y_{j}\boldsymbol{x}_{i}^{\mathrm{T}}\boldsymbol{x}_{j}-\sum_{i=1}^{m}\alpha_{i}\]</span></p>
+<ul>
+<li>根据上面的约束条件(3个点)得出 <span
+class="math inline">\(x_i\)</span> 以及 <span
+class="math inline">\(y_i\)</span>.</li>
+<li>推荐列出 <span class="math inline">\(x_i^Tx_j\)</span> 的清单,
+小心计算错误.</li>
+</ul>
+<p>这里 <span class="math inline">\(\alpha_i\)</span>
+是引入的拉格朗日乘子, 满足</p>
+<p><span
+class="math display">\[\boldsymbol{w}=\sum_{i=1}^m\alpha_iy_i\boldsymbol{x}_i
+,\quad0=\sum_{i=1}^m\alpha_iy_i\]</span></p>
+<ul>
+<li>上面的第一个式子用来求出 <span class="math inline">\(\alpha\)</span>
+后反代求 <span class="math inline">\(w\)</span>.</li>
+<li>根据上面的第二个式子, 可以消去某一 <span
+class="math inline">\(\alpha_i\)</span>, 然后对 <span
+class="math inline">\(s(\alpha_i)\)</span> 求无条件极值.</li>
+</ul>
+<p>求解上面这个对偶问题, 关注 <strong>KTT 条件</strong></p>
+<p><span
+class="math display">\[\begin{cases}\alpha_i\geq0,\\y_if(\boldsymbol{x}_i)\geq1,\\\boxed{\alpha_i(y_if(\boldsymbol{x}_i)-1)=0}\end{cases}\]</span></p>
+<ul>
+<li>如果 <span class="math inline">\(\alpha_i &lt; 0\)</span>,
+则极值在边界取到.
+<ul>
+<li>即, 考虑某一 <span class="math inline">\(\alpha_i = 0\)</span>,
+然后继续求极值.</li>
+<li>求出这些边界情况下的最小值. 此时就确定了全部 <span
+class="math inline">\(\alpha\)</span>.</li>
+</ul></li>
+<li>利用 KTT 条件的 (3), 若 <span
+class="math inline">\(\alpha_i&gt;0\)</span>, 则代表 <span
+class="math inline">\(x_i\)</span> 是支持向量, 则 <span
+class="math inline">\(y_if(x_i)=1\)</span>.
+<ul>
+<li>此时可以代入 <span class="math inline">\(f(x_i)\)</span>, 反解出
+<span class="math inline">\(b\)</span>.</li>
+</ul></li>
+</ul>
+<p>上面这个例子的答案是 <span class="math inline">\(w_1=w_2=1/2,
+b=-2\)</span>.</p>
+<p>了解 Seqential Minimal Optimization (SMO) 算法.</p>
+<p>了解线性不可分问题: kernel trick 为什么有效?</p>
+<p>soft-margin 的思想</p>
+<p>支持向量机可以应用到分类问题吗? <code>sklearn.svm</code> 里
+<code>SVC</code> 又是怎么实现的?</p>
+<h2 id="集成学习">集成学习</h2>
+<ul>
+<li>集成学习的核心思想
+<ul>
+<li>为什么要"好而不同"</li>
+</ul></li>
+<li>Bagging 的采样方法(自助采样)</li>
+<li>区分 Bagging/Boosting</li>
+<li>算法流程</li>
+</ul>
+<h2 id="降维学习">降维学习</h2>
+<h3 id="svd-分解">SVD 分解</h3>
+<p><strong>例题</strong> 对二维矩阵</p>
+<p><span class="math display">\[A=\begin{pmatrix}
+  3 &amp;0 \\
+  4 &amp;5
+\end{pmatrix}\]</span></p>
+<p>求其 SVD 分解.</p>
+<p><strong>解</strong> 掌握计算流程:</p>
+<ul>
+<li>计算 <span class="math inline">\(A^TA\)</span> 以及 <span
+class="math inline">\(AA^T\)</span>.</li>
+<li>计算 <span class="math inline">\(A^TA\)</span> 和 <span
+class="math inline">\(AA^T\)</span> 的特征值和特征向量.
+<ul>
+<li>奇异值是 <span class="math inline">\(A^TA\)</span>
+特征值的<strong>平方根</strong>, 即 <span class="math inline">\(\sigma_i
+= \sqrt{\lambda_i}\)</span>, 下标根据特征值大小排过序.</li>
+<li>U 矩阵的列向量是 <span class="math inline">\(AA^T\)</span>
+的特征向量.</li>
+<li>V 矩阵的列向量是 <span class="math inline">\(A^TA\)</span>
+的特征向量.</li>
+<li>注意特征向量需要<strong>单位化</strong>.</li>
+</ul></li>
+</ul>
+<p>结果为</p>
+<p><span class="math display">\[A=U\Sigma
+V^T=\left(\begin{array}{cc}\frac{1}{\sqrt{2}}&amp;-\frac{1}{\sqrt{2}}\\\frac{1}{\sqrt{2}}&amp;\frac{1}{\sqrt{2}}\end{array}\right)\left(\begin{array}{cc}\sqrt{45}&amp;0\\0&amp;\sqrt{5}\end{array}\right)\left(\begin{array}{cc}\frac{1}{\sqrt{2}}&amp;\frac{1}{\sqrt{2}}\\-\frac{1}{\sqrt{2}}&amp;\frac{1}{\sqrt{2}}\end{array}\right)\]</span></p>
+<p>例:</p>
+<figure class="highlight matlab"><table><tr><td class="code"><pre><span class="line">[U, S, V] = svd(A, <span class="string">&#x27;econ&#x27;</span>);</span><br></pre></td></tr></table></figure>
+<p>用于对矩阵 <span class="math inline">\(A\)</span>
+进行经济规模的奇异值分解.</p>
+<h3 id="主成分分析-pca">主成分分析 PCA</h3>
+<p>PCA的思想: 减少数据集的特征数量, 同时尽可能地保留信息</p>
+<p>算法流程:</p>
+<ul>
+<li>对样本数据标准化, 例如 <span class="math inline">\(x&#39; =
+(x-\mu)/\sigma\)</span>.</li>
+<li>样本中心化 <span
+class="math inline">\(X&#39;=X-\overline{X}\)</span>.
+(减去均值向量)</li>
+<li>对 <span class="math inline">\(X&#39;\)</span> 进行 SVD 分解
+<ul>
+<li>等价于对<strong>协方差矩阵</strong> <span
+class="math inline">\(XX^T\)</span> 进行特征值分解.</li>
+</ul></li>
+<li>选择主成分, 通常为<strong>前 k 个奇异值</strong>以及对应的 V
+矩阵的列向量.
+<ul>
+<li>新的数据投影就是 <span class="math inline">\(Z = X&#39;
+V_k\)</span>, <span class="math inline">\(V_k\)</span> 是选择前 k
+个最大的奇异值对应的 V 矩阵的列向量.</li>
+<li>投影后的样本<strong>方差</strong>最大化: 拥有更高的可区分度,
+同时还保留着部分映射之前的空间信息</li>
+</ul></li>
+</ul>
+<p>应用: t-SNE 算法 高维数据的可视化</p>
+<h2 id="intro-to-llm">intro to LLM</h2>
+<p>从传统的 NLP 到嵌入向量 embedding</p>
+<p>BERT</p>
+<p>sota techniques:</p>
+<ul>
+<li>Transformer</li>
+<li>Attention</li>
+<li>Diffusion Model</li>
+<li>...</li>
+</ul>
+<h2 id="附录-appendix">附录 Appendix</h2>
+<h3 id="a.-相关问题与这学期的感悟-qa">A. 相关问题与这学期的感悟
+Q&amp;A</h3>
+<p>Q: 机器学习要学到怎样的地步?</p>
+<p>A: 参考张敏老师上课的课件</p>
+<ul>
+<li>关键概念</li>
+<li>基础学习理论</li>
+<li>经典/重要算法
+<ul>
+<li>问题定义</li>
+<li>基本思路</li>
+<li>算法设计与分析</li>
+<li>未来方向</li>
+</ul></li>
+<li>分析问题, 特征与结果</li>
+<li><strong>解决实际问题的能力</strong></li>
+</ul>
+<p>最后一条深有体会, 纯背书的学习方式非常局限:
+就像打算法比赛只会写板子题一样没用, 在设计实验的时候, 开始 coding
+的时候才会感到来自各方的阻力.</p>
+<p>来自周志华老师的建议:</p>
+<ul>
+<li>for beginners: 先速读, 花一个月把西瓜书读完(遇到不懂的细节 skip),
+先建立一个 scope</li>
+<li>然后再花上大笔的时间深入学习各个板块.</li>
+<li>一门课程可涵盖的部分实在有限,
+所以这就是为什么要在课程后加上概论/导论.</li>
+</ul>
+<p>这学期机器学习的路径:</p>
+<h2 id="参考资料">参考资料</h2>
+<ul>
+<li>周志华. (2016). 机器学习. 清华大学出版社.</li>
+<li>Mitchell, T. (1997). Machine Learning. McGraw-Hill Education.</li>
+<li>清华大学, 张敏老师的机器学习概论课程讲义</li>
+</ul>
+]]></content>
+      <categories>
+        <category>机器学习</category>
+      </categories>
+      <tags>
+        <tag>算法</tag>
+        <tag>数学</tag>
+        <tag>机器学习</tag>
+        <tag>数据分析</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Python 异步编程实践</title>
+    <url>/2024/05/26/%E5%BC%82%E6%AD%A5%E7%BC%96%E7%A8%8B%E5%AE%9E%E8%B7%B5/</url>
+    <content><![CDATA[<p>学一下 <code>asyncio</code> 的用法. 其实很早就想学学异步相关的接口,
+但总是觉得那几个概念有点唬人, 什么 callback, event loop, coroutine...
+看起来不太好惹的样子.</p>
+<p>但其实没深入到底层实现, 不去看 CPython 源码, 例如 event loop
+到底是怎么调度的, 指针是怎么戳来戳去的, 单纯从 API 上看,
+感觉也不是那么难懂. 这就是高层次抽象的好呀.</p>
+<span id="more"></span>
+<h2 id="函数-v.s.-协程">函数 v.s. 协程</h2>
+<ul>
+<li>Subroutine vs Coroutine
+<ul>
+<li>routine: 顺序执行的代码片段</li>
+<li>sub: 分出去</li>
+<li>co: 共同执行, "协作"</li>
+</ul></li>
+</ul>
+<p>对应两种编程方式</p>
+<ul>
+<li>Synchronous vs Asynchronous
+<ul>
+<li>同步编程和异步编程</li>
+</ul></li>
+</ul>
+<p>传统的同步编程:</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">f</span>(<span class="params">a, b</span>) -&gt; <span class="built_in">int</span>:</span><br><span class="line">    <span class="keyword">return</span> a + b</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">main</span>():</span><br><span class="line">    <span class="built_in">print</span>(f(<span class="number">2</span>, <span class="number">3</span>))</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">main()</span><br></pre></td></tr></table></figure>
+<ul>
+<li>调用 <code>f(2, 3)</code> 时, <code>main</code> 进入阻塞态</li>
+<li>会创建属于 <code>f</code> 的栈帧(stack frame)
+<ul>
+<li>栈顶添加一个返回指针, 告诉解释器, 函数返回时,
+应该从哪里继续执行</li>
+<li>函数执行完毕, 解释器释放 <code>f</code> 的栈帧, 并返回到
+<code>main</code> 的栈帧</li>
+</ul></li>
+</ul>
+<figure>
+<img src="\images\subroutine.png" alt="子程序" />
+<figcaption aria-hidden="true">子程序</figcaption>
+</figure>
+<p>大部分编程语言的函数调用都采用这种方式, C 语言就是一个典型案例.</p>
+<div id="1.1-async">
+而协程采用的模型:
+</div>
+<ul>
+<li>coroutine
+<ul>
+<li>封装异步执行的<strong>代码段</strong></li>
+</ul></li>
+<li>task
+<ul>
+<li>封装协程, 可以包含多个协程</li>
+<li>异步代码以 Task 的形式去运行</li>
+</ul></li>
+<li>event loop
+<ul>
+<li>维护多个 tasks(任务)</li>
+<li>监听事件</li>
+<li>像一个调度器, 负责 task 的切换</li>
+</ul></li>
+</ul>
+<figure>
+<img src="\images\subroutines-vs-coroutines.png" alt="模式对比" />
+<figcaption aria-hidden="true">模式对比</figcaption>
+</figure>
+<ul>
+<li>注意 event loop 它只能在一个时间执行一个任务
+<ul>
+<li>不存在系统级别的上下文切换, 和线程不一样</li>
+<li>也就不存在 race condition 问题</li>
+</ul></li>
+<li>最后效果看起来像是<em>并发的</em>,
+但其实只是更好地利用了代码中间的等待时间.</li>
+</ul>
+<p>所以如果你要优化的代码里不存在<strong>等待</strong>这件事的话, 采用
+asyncio 就没有意义了.</p>
+<p>Python 里的 <code>asyncio</code> 模块提供了异步编程的支持:</p>
+<ul>
+<li><code>def</code> 定义函数, "子程序", <code>Callable</code> 对象</li>
+<li><code>async def</code> 定义的"协程", 也是一个 <code>Callable</code>
+对象
+<ul>
+<li>直接 call 一个协程函数?</li>
+<li>python 返回了一个 coroutine object</li>
+</ul></li>
+<li><strong>协程不会直接执行</strong>
+<ul>
+<li>需要被等待 <code>await</code></li>
+</ul></li>
+</ul>
+<figure class="highlight py"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> asyncio</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">async</span> <span class="keyword">def</span> <span class="title function_">add</span>(<span class="params">a, b</span>) -&gt; <span class="built_in">int</span>:</span><br><span class="line">    <span class="keyword">return</span> a + b</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">async</span> <span class="keyword">def</span> <span class="title function_">main</span>():</span><br><span class="line">    <span class="comment"># &lt;coroutine object add at 0x7f341e35f370&gt;</span></span><br><span class="line">    <span class="comment"># awaitable object</span></span><br><span class="line">    <span class="built_in">print</span>(add(<span class="number">2</span>, <span class="number">3</span>))</span><br><span class="line"></span><br><span class="line">    res = <span class="keyword">await</span> add(<span class="number">2</span>, <span class="number">3</span>)</span><br><span class="line">    <span class="comment"># 5</span></span><br><span class="line">    <span class="built_in">print</span>(res)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">asyncio.run(main())</span><br></pre></td></tr></table></figure>
+<ul>
+<li>注意异步代码必须在 <code>async def</code>
+定义的协程函数体内编写</li>
+<li>用 <code>asyncio.run</code> 作为整个异步函数的入口</li>
+<li>awaitable object 包含 coroutine 和 task
+<ul>
+<li>还有一个 <code>Future</code> 对象,
+但通常情况下<em>没有必要</em>在应用层级的代码中创建 Future 对象</li>
+</ul></li>
+</ul>
+<p>看到这里感觉两种编程方式没啥差别, 异步编程就多了一步要
+<code>await</code> ?</p>
+<ul>
+<li>但注意: coroutine
+对象中的异步代码是<strong>可以被暂停和恢复</strong>的</li>
+</ul>
+<p>对比下 <code>time.sleep()</code> 和 <code>asyncio.sleep()</code>:</p>
+<figure class="highlight py"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> asyncio</span><br><span class="line"><span class="keyword">import</span> time</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">async</span> <span class="keyword">def</span> <span class="title function_">call_api</span>():</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;Hello&#x27;</span>)</span><br><span class="line">    time.sleep(<span class="number">3</span>)</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;World&#x27;</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">async</span> <span class="keyword">def</span> <span class="title function_">main</span>():</span><br><span class="line">    start = time.perf_counter()</span><br><span class="line">    <span class="keyword">await</span> asyncio.gather(call_api(), call_api())</span><br><span class="line">    end = time.perf_counter()</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">f&#x27;It took <span class="subst">&#123;end - start&#125;</span> second(s) to complete.&#x27;</span>)</span><br><span class="line"></span><br><span class="line">asyncio.run(main())</span><br></pre></td></tr></table></figure>
+<ul>
+<li><code>asyncio.gather</code>: 聚合两个协程 -&gt; 单个协程
+<ul>
+<li>本例中, 即并发地执行两次 <code>call_api</code></li>
+</ul></li>
+</ul>
+<p>运行代码时, 你会发现在第一次打印 Hello 之后程序陷入了阻塞状态:</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">Hello</span><br></pre></td></tr></table></figure>
+<p>等待 3s 之后, 才会继续</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">Hello</span><br><span class="line">World</span><br><span class="line">Hello</span><br><span class="line">World</span><br><span class="line">It took 6.006541083002958 second(s) to complete.</span><br></pre></td></tr></table></figure>
+<ul>
+<li>奇怪, 两次 <code>call_api</code> 都在同一时间开始执行,
+但实际上是串行执行的?</li>
+<li>原因: <code>time.sleep</code> 是一个<strong>阻塞调用</strong>,
+它会阻塞事件循环
+<ul>
+<li>在执行过程, 程序转到了一个子程序里, 硬控了 3s</li>
+</ul></li>
+</ul>
+<figure>
+<img src="\images\time-sleep.svg" alt="time.sleep()" />
+<figcaption aria-hidden="true">time.sleep()</figcaption>
+</figure>
+<p>修改下 <code>call_api</code> 里的内容:</p>
+<figure class="highlight py"><table><tr><td class="code"><pre><span class="line"><span class="keyword">async</span> <span class="keyword">def</span> <span class="title function_">call_api</span>():</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;Hello&#x27;</span>)</span><br><span class="line">    <span class="keyword">await</span> asyncio.sleep(<span class="number">3</span>)</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;World&#x27;</span>)</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">Hello</span><br><span class="line">Hello</span><br><span class="line">World</span><br><span class="line">World</span><br><span class="line">It took 3.0044386359986675 second(s) to complete.</span><br></pre></td></tr></table></figure>
+<figure>
+<img src="\images\task-concurrency.svg" alt="asyncio.sleep()" />
+<figcaption aria-hidden="true">asyncio.sleep()</figcaption>
+</figure>
+<ul>
+<li>第一个 <code>call_api</code> 调用 <code>print</code></li>
+<li>第一个进入休眠状态, Event Loop 唤醒第二个 <code>call_api</code></li>
+</ul>
+<p>一个问题:</p>
+<figure class="highlight py"><table><tr><td class="code"><pre><span class="line"><span class="keyword">await</span> asyncio.gather(call_api(), call_api())</span><br></pre></td></tr></table></figure>
+<p>是否等同于</p>
+<figure class="highlight py"><table><tr><td class="code"><pre><span class="line"><span class="keyword">await</span> call_api()</span><br><span class="line"><span class="keyword">await</span> call_api()</span><br></pre></td></tr></table></figure>
+<ul>
+<li>事实显示, 下面这种写法和用到同步函数的效果是一样的.
+<ul>
+<li>为什么会出现这样的结果?</li>
+</ul></li>
+<li>原因: <strong>没有将协程放到 Event Loop 中</strong>
+<ul>
+<li>在第一个 <code>call_api()</code> 阻塞时, Event Loop
+的任务队列中并不包含第二个 <code>call_api()</code></li>
+<li>就自然不会切换到第二个 <code>call_api()</code> 中继续执行了.</li>
+</ul></li>
+<li>更好的理解: 这两个 <code>call_api</code> 协程放到了同一个 task 中,
+Event loop 调度不了</li>
+</ul>
+<p>解决方案:</p>
+<figure class="highlight py"><table><tr><td class="code"><pre><span class="line">task_1 = asyncio.create_task(</span><br><span class="line">    call_api()</span><br><span class="line">)</span><br><span class="line">task_2 = asyncio.create_task(</span><br><span class="line">    call_api()</span><br><span class="line">)</span><br><span class="line"><span class="keyword">await</span> task_1</span><br><span class="line"><span class="keyword">await</span> task_2</span><br></pre></td></tr></table></figure>
+<ul>
+<li>使用 <code>asyncio.create_task</code> 作为一种显式地创建 Task 的方式
+<ul>
+<li>之前提到, <a href="#1.1-async">异步模型</a>中 Event Loop 负责调度
+Task 的执行.</li>
+</ul></li>
+<li>上面 <code>asyncio.gather</code> 隐式地将 coroutine 转换成了 task,
+同时也注册到 Event Loop 中.</li>
+</ul>
+<p>再来看一个例子:</p>
+<p>我们去掉上面的 await task, 看看会发生什么</p>
+<figure class="highlight py"><table><tr><td class="code"><pre><span class="line">task_1 = asyncio.create_task(</span><br><span class="line">    call_api()</span><br><span class="line">)</span><br><span class="line">task_2 = asyncio.create_task(</span><br><span class="line">    call_api()</span><br><span class="line">)</span><br><span class="line"><span class="keyword">await</span> asyncio.sleep(<span class="number">1</span>)</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">Hello</span><br><span class="line">Hello</span><br><span class="line">It took 1.0013072900001134 second(s) to complete.</span><br></pre></td></tr></table></figure>
+<p>关注几个点:</p>
+<ul>
+<li>创建了 task, 任务就会追加到 Event Loop 的任务队列中.
+<ul>
+<li>main -&gt; task_1 -&gt; task_2</li>
+<li><code>asyncio.run(main())</code> 调用结束后, Event Loop
+也就结束了.</li>
+<li>所以 task_1 和 task_2 并没有被执行完全.</li>
+</ul></li>
+<li>而 <code>await task</code> 是在让 Event Loop 等待 Task 执行结束.
+<ul>
+<li><code>task_1</code> 说: 等我执行完毕你再走, 但也别干等我,
+你看看是不是还有别人要忙.</li>
+<li>本质上是等待 Task 的 <code>done</code> 方法返回 True</li>
+</ul></li>
+</ul>
+<p><code>asyncio</code> 经过多个版本的迭代, 演变出了高层级的 API,
+在以前, 我们还需要手动管理 Event Loop 的运行与停止</p>
+<figure class="highlight py"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> asyncio</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">hello_world</span>(<span class="params">loop</span>):</span><br><span class="line">    <span class="string">&quot;&quot;&quot;A callback to print &#x27;Hello World&#x27; and stop the event loop&quot;&quot;&quot;</span></span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;Hello World&#x27;</span>)</span><br><span class="line">    loop.stop()</span><br><span class="line"></span><br><span class="line">loop = asyncio.new_event_loop()</span><br><span class="line"></span><br><span class="line"><span class="comment"># Schedule a call to hello_world()</span></span><br><span class="line">loop.call_soon(hello_world, loop)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Blocking call interrupted by loop.stop()</span></span><br><span class="line"><span class="keyword">try</span>:</span><br><span class="line">    loop.run_forever()</span><br><span class="line"><span class="keyword">finally</span>:</span><br><span class="line">    loop.close()</span><br></pre></td></tr></table></figure>
+<p>这个例子也能让我们观察到 Event Loop 的运行机制.</p>
+<h2 id="应用场景">应用场景</h2>
+<p>异步编程很适合解决一些网络通讯上的问题</p>
+<p>io bound tasks</p>
+<ul>
+<li>最常见的一个例子就是 js 里, 前端向后端发送请求 api 会用到的
+<code>fetch</code></li>
+<li>以及后端:
+<ul>
+<li>数据库发起查询请求</li>
+<li>部署模型: AI 模型在后台运行</li>
+<li>评测平台: 等待评测机运行结果</li>
+</ul></li>
+</ul>
+<p>后端会有所谓<strong>异步视图</strong>, 例如, 在 FastAPI
+框架中用的很多; 在 Django 4.1 版本之后, 也支持了异步查询 ORM
+的相关功能.</p>
+<figure class="highlight py"><table><tr><td class="code"><pre><span class="line">user = <span class="keyword">await</span> User.objects.<span class="built_in">filter</span>(username=my_input).afirst()</span><br></pre></td></tr></table></figure>
+<ul>
+<li>在一个协程函数里, 当然不能从异步代码中调用堵塞的同步代码,
+它会堵塞上面所述的 Event Loop.</li>
+<li>所以需要用到 Django 提供的 异步查询 API
+<ul>
+<li>这里没有用 <code>first</code>, 而是 <code>afirst</code>,
+返回的是一个 Coroutine 对象.</li>
+</ul></li>
+</ul>
+<p>再举个例子, OJ 的等待运行结果:</p>
+<figure class="highlight py"><table><tr><td class="code"><pre><span class="line"><span class="comment"># must wait for judge result</span></span><br><span class="line">data = client.judge(code)</span><br><span class="line"><span class="keyword">return</span> JudgeStatus.PENDING</span><br></pre></td></tr></table></figure>
+<p>假设多个用户发起了评测请求 r1, r2, r3, 那显然, 后端要等待评测机评测
+r1 之后才能处理 r2 的请求, 为了防止主线程阻塞, 我们就要有意识地让
+<code>judge</code> 的行为后台化, 就可以用一些异步框架去处理(例如:
+celery, dramatiq, etc.):</p>
+<figure class="highlight py"><table><tr><td class="code"><pre><span class="line"><span class="meta">@dramatiq.actor</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">judge</span>(<span class="params">code</span>):</span><br><span class="line">    <span class="comment"># ...</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># view function</span></span><br><span class="line"><span class="comment"># ...</span></span><br><span class="line">client.judge.send(code)</span><br><span class="line"><span class="keyword">return</span> JudgeStatus.PENDING</span><br></pre></td></tr></table></figure>
+<p>具体可以参考多评测机的任务队列实现.</p>
+<h2 id="习题">习题</h2>
+<ol type="1">
+<li>直接 await 一个 coroutine object 和 task object 有什么区别?</li>
+<li>观察下面的异步代码:</li>
+</ol>
+<figure class="highlight py"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> asyncio</span><br><span class="line"><span class="keyword">import</span> aiohttp</span><br><span class="line"><span class="keyword">from</span> typing <span class="keyword">import</span> <span class="type">Coroutine</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">URL = <span class="string">&quot;https://acm.hdu.edu.cn/showproblem.php&quot;</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">async</span> <span class="keyword">def</span> <span class="title function_">fetch</span>(<span class="params">session, url, params</span>) -&gt; <span class="type">Coroutine</span>:</span><br><span class="line">    <span class="keyword">async</span> <span class="keyword">with</span> session.get(url, params=params) <span class="keyword">as</span> response:</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">await</span> response.text()</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">async</span> <span class="keyword">def</span> <span class="title function_">main</span>():</span><br><span class="line">    <span class="keyword">async</span> <span class="keyword">with</span> aiohttp.ClientSession() <span class="keyword">as</span> session:</span><br><span class="line">        <span class="keyword">for</span> pid <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1000</span>, <span class="number">1030</span>):</span><br><span class="line">            <span class="keyword">await</span> fetch(session, URL, &#123;<span class="string">&#x27;pid&#x27;</span>: pid&#125;)</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    asyncio.run(main())</span><br></pre></td></tr></table></figure>
+<p>这里的异步是否起到作用?</p>
+<p>解答:</p>
+<ol type="1">
+<li>区别: 是否将这个 awaitable object 注册到 Event Loop 中. 只有 Task
+才会被 Event loop 调度. 注意到一个事情: await coroutine
+并不会使得这个对象变成 task.</li>
+<li>aiohttp 库的异步代码是没问题的, 问题是 main 里的 for 循环: 相当于
+await 了 30 个 fetch 协程, 但实际上并没有并发地让这些协程并发执行,
+还是上面提到的那个问题: 没注册到 Event Loop 中. 正确做法是下面这种:</li>
+</ol>
+<figure class="highlight py"><table><tr><td class="code"><pre><span class="line"><span class="keyword">async</span> <span class="keyword">def</span> <span class="title function_">main</span>():</span><br><span class="line">    <span class="keyword">async</span> <span class="keyword">with</span> aiohttp.ClientSession() <span class="keyword">as</span> session:</span><br><span class="line">        tasks = [fetch(session, URL, &#123;<span class="string">&#x27;pid&#x27;</span>: pid&#125;)</span><br><span class="line">                 <span class="keyword">for</span> pid <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1010</span>, <span class="number">1030</span>)]</span><br><span class="line">        <span class="keyword">await</span> asyncio.gather(*tasks)</span><br></pre></td></tr></table></figure>
+<p>可以前后对比一下, 正确的异步代码运行时间稳定在 1.25s 左右,
+而上面的代码要多上不少.</p>
+<p>同时还可以对比下使用 requests 库的代码:</p>
+<figure class="highlight py"><table><tr><td class="code"><pre><span class="line"><span class="keyword">for</span> pid <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1000</span>, <span class="number">1030</span>):</span><br><span class="line">    response = requests.get(URL, params=&#123;<span class="string">&#x27;pid&#x27;</span>: pid&#125;)</span><br></pre></td></tr></table></figure>
+<p>代码运行基本上需要 6s 左右的时间, 差距还是很明显的.</p>
+<h2 id="参考资料">参考资料</h2>
+<ol type="1">
+<li><a
+href="https://docs.djangoproject.com/zh-hans/4.2/topics/async/">Django
+异步支持</a></li>
+<li><a
+href="https://lulaoshi.info/python/asyncio/asyncio.html#await-%E4%B8%8E-awaitable">编写
+asyncio 代码</a></li>
+<li><a
+href="https://docs.python.org/zh-cn/3/library/asyncio-task.html#coroutine">Python
+官方文档 asyncio 模块</a></li>
+</ol>
+]]></content>
+      <categories>
+        <category>Python</category>
+      </categories>
+      <tags>
+        <tag>Python</tag>
+        <tag>异步</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>投资理论与实践</title>
+    <url>/2024/04/08/%E7%82%92%E8%82%A1%E5%89%8D%E4%BD%A0%E8%A6%81%E6%87%82%E7%9A%84%E7%90%86%E8%AE%BA%E7%9F%A5%E8%AF%86/</url>
+    <content><![CDATA[<p>实现财富自由是在校大学生梦想之一. 看到同龄人一买就是均价上千的东西,
+要么家里有矿, 要么指定你小子有什么副业奥. 炒股,
+或许是大多数人想到无中生钱的方式.</p>
+<p>做事讲究一个方法. 总不能白白送钱被割韭菜吧? 正好这学期学习了投资学,
+就来总结一些相关的理论及其实践方法.</p>
+<p>虽然还没有正向的显著业绩 (逃</p>
+<span id="more"></span>
+<h2 id="资产组合选择">资产组合选择</h2>
+<p>马科维茨资产组合最优化模型</p>
+]]></content>
+      <categories>
+        <category>投资学</category>
+      </categories>
+      <tags>
+        <tag>投资学</tag>
+        <tag>炒股</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>配环境的一万种坑法</title>
+    <url>/2024/05/24/%E9%85%8D%E7%8E%AF%E5%A2%83%E7%9A%84%E4%B8%80%E4%B8%87%E7%A7%8D%E5%9D%91%E6%B3%95/</url>
+    <content><![CDATA[<p>记录下配环境中遇到的坑点.</p>
+<p>每个 BUG 都有过人之处, 每个都有他们独门绝招, 斗志和耐性更是技惊四座,
+报错信息更是给你意外的惊喜呀!</p>
+<span id="more"></span>
+<h2 id="python-模块-mysqlclient">python 模块 mysqlclient</h2>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">pip install mysqlclient</span><br></pre></td></tr></table></figure>
+<p>通常会遇到 build wheel 的错误</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">  File <span class="string">&quot;&lt;string&gt;&quot;</span>, line 49, <span class="keyword">in</span> get_config_posix</span><br><span class="line">  File <span class="string">&quot;&lt;string&gt;&quot;</span>, line 28, <span class="keyword">in</span> find_package_name</span><br><span class="line">Exception: Can not find valid pkg-config name.</span><br><span class="line">Specify MYSQLCLIENT_CFLAGS and MYSQLCLIENT_LDFLAGS <span class="built_in">env</span> vars manually</span><br><span class="line">[end of output]</span><br></pre></td></tr></table></figure>
+<p>解决方案:</p>
+<p>见 mysqlclient 的 <a
+href="https://pypi.org/project/mysqlclient/">doc</a>: 系统需要装好
+Python 3 和 MySQL 开发的头文件</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># for Ubuntu/Debian</span></span><br><span class="line">sudo apt-get install python3-dev default-libmysqlclient-dev build-essential pkg-config</span><br></pre></td></tr></table></figure>
+<p>至于 CentOS 系统<a href="#fn1" class="footnote-ref" id="fnref1"
+role="doc-noteref"><sup>1</sup></a>, 正常装</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo yum install python3-devel mysql-devel pkgconfig</span><br></pre></td></tr></table></figure>
+<p>其中的 <code>mysql-devel</code> 会遇到问题, 如果系统上装好了 MySQL
+会出现 conflicts</p>
+<p>原因: CentOS 自带 mariaDB, 和 MySQL 不兼容</p>
+<p>而 yum 安装 mysql-devel 安装的是 mariaDB 的开发包</p>
+<p>解决方案: 去 mysql <a
+href="https://dev.mysql.com/downloads/mysql/">官方</a>手动下 rpm
+包安装</p>
+<section id="footnotes" class="footnotes footnotes-end-of-document"
+role="doc-endnotes">
+<hr />
+<ol>
+<li id="fn1"><p>这里用的CentOS 7. 如果你问我为什么要用这个发行版的
+Linux, 我只能说我也不知道.<a href="#fnref1" class="footnote-back"
+role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section>
+]]></content>
+  </entry>
+  <entry>
+    <title>OS考前复习</title>
+    <url>/2024/06/03/OS%E8%80%83%E5%89%8D%E5%A4%8D%E4%B9%A0/</url>
+    <content><![CDATA[<p>又到了一年一度的期末考试季, 又到了我最讨厌的408专业课考试.</p>
+<p>这学期开始还想着好好学 OS, 但越发感觉没啥特别的动力,
+主要被各类比赛分散了精力(更败犬的是都没拿什么特别的奖项).
+拖延的公开课实验就留到假期做吧, 现在我就是应试高手 :(</p>
+<p>参考教材选用的是 SJTU 的现代操作系统.</p>
+<span id="more"></span>
+<h2 id="操作系统概述">操作系统概述</h2>
+<p>不考</p>
+<h2 id="硬件结构">硬件结构</h2>
+<h2 id="操作系统结构">操作系统结构</h2>
+<h2 id="内存管理">内存管理</h2>
+<h2 id="进程与线程">进程与线程</h2>
+<h2 id="操作系统调度">操作系统调度</h2>
+<h2 id="进程间通信">进程间通信</h2>
+<h2 id="同步原语">同步原语</h2>
+<h2 id="文件系统">文件系统</h2>
+]]></content>
+      <categories>
+        <category>复习</category>
+      </categories>
+      <tags>
+        <tag>OS</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>动态规划入门专训</title>
+    <url>/2024/06/10/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%E4%B8%93%E8%AE%AD/</url>
+    <content><![CDATA[<p>我要成为 DP 高手! 至少比赛的时候负责这部分的题目不会甩大锅.</p>
+<p>算法练习两年半, 依然除了板子题啥也不会. 状态定义, 转移方程, 边界条件,
+实际做题的时候道道是障碍. 最后总结就是自己菜.</p>
+<p>题目大致选取的是洛谷上的 DP 题单, 然后又找了一些 CF 上 rating 在
+1300-1700 的 DP 标签题目来做. 太综合的 DP 题目自己也不会做, 就 SKIP
+了.</p>
+<span id="more"></span>
+]]></content>
+      <categories>
+        <category>算法</category>
+      </categories>
+      <tags>
+        <tag>算法</tag>
+        <tag>动态规划</tag>
       </tags>
   </entry>
 </search>

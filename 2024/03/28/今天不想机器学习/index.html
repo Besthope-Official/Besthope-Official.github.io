@@ -1,0 +1,974 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 6.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-pepe.ico">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-pepe.ico">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha256-Z1K5uhUaJXA7Ll0XrZ/0JhX4lAtZFpT6jkKrEDT0drU=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Pisces","darkmode":false,"version":"8.14.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":true,"style":null},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="人工智能经常被人批评为一种&quot;务虚&quot;的技术, 差点就没和隔壁的元宇宙一起成为&quot;概念股&quot;; 曾几何时, 我也对这种统计方法的应用感到无聊, 对机器学习的评价就是调参&quot;炼丹&quot;, 又没有工程代码的优雅: AI 给出的都是 fuzzy 的结果, 一个概率分布...而我更喜欢用一个个 assert 证实正确性的程序, 一个复杂但又内在协调的程序系统. 但是, 正巧我入学没多久, LLM 等一众横空">
+<meta property="og:type" content="article">
+<meta property="og:title" content="今天不想机器学习...?">
+<meta property="og:url" content="http://example.com/2024/03/28/%E4%BB%8A%E5%A4%A9%E4%B8%8D%E6%83%B3%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/index.html">
+<meta property="og:site_name" content="Besthope&#39;s Blog">
+<meta property="og:description" content="人工智能经常被人批评为一种&quot;务虚&quot;的技术, 差点就没和隔壁的元宇宙一起成为&quot;概念股&quot;; 曾几何时, 我也对这种统计方法的应用感到无聊, 对机器学习的评价就是调参&quot;炼丹&quot;, 又没有工程代码的优雅: AI 给出的都是 fuzzy 的结果, 一个概率分布...而我更喜欢用一个个 assert 证实正确性的程序, 一个复杂但又内在协调的程序系统. 但是, 正巧我入学没多久, LLM 等一众横空">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/2024/03/28/images/ml/supervised-learning-metrics.png">
+<meta property="article:published_time" content="2024-03-28T06:57:58.000Z">
+<meta property="article:modified_time" content="2024-06-16T16:17:35.823Z">
+<meta property="article:author" content="Besthope">
+<meta property="article:tag" content="算法">
+<meta property="article:tag" content="数学">
+<meta property="article:tag" content="机器学习">
+<meta property="article:tag" content="数据分析">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/2024/03/28/images/ml/supervised-learning-metrics.png">
+
+
+<link rel="canonical" href="http://example.com/2024/03/28/%E4%BB%8A%E5%A4%A9%E4%B8%8D%E6%83%B3%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://example.com/2024/03/28/%E4%BB%8A%E5%A4%A9%E4%B8%8D%E6%83%B3%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/","path":"2024/03/28/今天不想机器学习/","title":"今天不想机器学习...?"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>今天不想机器学习...? | Besthope's Blog</title>
+  
+
+
+
+
+
+
+  <script async defer data-website-id="" src=""></script>
+
+  <script defer data-domain="" src=""></script>
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+<link rel="alternate" href="/atom.xml" title="Besthope's Blog" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">Besthope's Blog</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">more than a tech blog :)</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li><li class="menu-item menu-item-links"><a href="/links/" rel="section"><i class="fa fa-link fa-fw"></i>友链</a></li><li class="menu-item menu-item-gallery"><a href="/gallery/" rel="section"><i class="fa fa-paint-brush fa-fw"></i>画廊</a></li><li class="menu-item menu-item-diary"><a href="/diary/" rel="section"><i class="fa fa-book fa-fw"></i>日志</a></li><li class="menu-item menu-item-rss"><a href="/atom.xml" rel="section"><i class="fa fa-rss fa-fw"></i>RSS</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%9F%BA%E7%A1%80"><span class="nav-number">1.</span> <span class="nav-text">机器学习基础</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AD%A6%E4%B9%A0%E7%90%86%E8%AE%BA"><span class="nav-number">1.1.</span> <span class="nav-text">学习理论</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9B%9E%E5%BD%92-regression"><span class="nav-number">2.</span> <span class="nav-text">回归 Regression</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%86%B3%E7%AD%96%E6%A0%91-decision-tree"><span class="nav-number">3.</span> <span class="nav-text">决策树 Decision Tree</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%B4%9D%E5%8F%B6%E6%96%AF%E6%96%B9%E6%B3%95"><span class="nav-number">4.</span> <span class="nav-text">贝叶斯方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9F%BA%E4%BA%8E%E5%AE%9E%E4%BE%8B%E7%9A%84%E5%AD%A6%E4%B9%A0"><span class="nav-number">5.</span> <span class="nav-text">基于实例的学习</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%97%A0%E7%9B%91%E7%9D%A3%E5%AD%A6%E4%B9%A0"><span class="nav-number">6.</span> <span class="nav-text">无监督学习</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%94%AF%E6%8C%81%E5%90%91%E9%87%8F%E6%9C%BA"><span class="nav-number">7.</span> <span class="nav-text">支持向量机</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%9B%86%E6%88%90%E5%AD%A6%E4%B9%A0"><span class="nav-number">8.</span> <span class="nav-text">集成学习</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%99%8D%E7%BB%B4%E5%AD%A6%E4%B9%A0"><span class="nav-number">9.</span> <span class="nav-text">降维学习</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#svd-%E5%88%86%E8%A7%A3"><span class="nav-number">9.1.</span> <span class="nav-text">SVD 分解</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%BB%E6%88%90%E5%88%86%E5%88%86%E6%9E%90-pca"><span class="nav-number">9.2.</span> <span class="nav-text">主成分分析 PCA</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#intro-to-llm"><span class="nav-number">10.</span> <span class="nav-text">intro to LLM</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%99%84%E5%BD%95-appendix"><span class="nav-number">11.</span> <span class="nav-text">附录 Appendix</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#a.-%E7%9B%B8%E5%85%B3%E9%97%AE%E9%A2%98%E4%B8%8E%E8%BF%99%E5%AD%A6%E6%9C%9F%E7%9A%84%E6%84%9F%E6%82%9F-qa"><span class="nav-number">11.1.</span> <span class="nav-text">A. 相关问题与这学期的感悟
+Q&amp;A</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99"><span class="nav-number">12.</span> <span class="nav-text">参考资料</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Besthope"
+      src="/images/bocchi.png">
+  <p class="site-author-name" itemprop="name">Besthope</p>
+  <div class="site-description" itemprop="description">baka desu</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">33</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+        <span class="site-state-item-count">14</span>
+        <span class="site-state-item-name">分类</span>
+      </div>
+      <div class="site-state-item site-state-tags">
+        <span class="site-state-item-count">43</span>
+        <span class="site-state-item-name">标签</span>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/Besthope-Official" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;Besthope-Official" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:874256269@qq.com" title="E-Mail → mailto:874256269@qq.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i></a>
+      </span>
+  </div>
+
+        </div>
+      </div>
+        <div class="back-to-top animated" role="button" aria-label="返回顶部">
+          <i class="fa fa-arrow-up"></i>
+          <span>0%</span>
+        </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2024/03/28/%E4%BB%8A%E5%A4%A9%E4%B8%8D%E6%83%B3%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/bocchi.png">
+      <meta itemprop="name" content="Besthope">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Besthope's Blog">
+      <meta itemprop="description" content="baka desu">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="今天不想机器学习...? | Besthope's Blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          今天不想机器学习...?
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2024-03-28 14:57:58" itemprop="dateCreated datePublished" datetime="2024-03-28T14:57:58+08:00">2024-03-28</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2024-06-17 00:17:35" itemprop="dateModified" datetime="2024-06-17T00:17:35+08:00">2024-06-17</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" itemprop="url" rel="index"><span itemprop="name">机器学习</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>4.4k</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>16 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <p>人工智能经常被人批评为一种"务虚"的技术,
+差点就没和隔壁的元宇宙一起成为"概念股"; 曾几何时,
+我也对这种统计方法的应用感到无聊, 对机器学习的评价就是调参"炼丹",
+又没有工程代码的优雅: AI 给出的都是 fuzzy 的结果,
+一个概率分布...而我更喜欢用一个个 assert 证实正确性的程序,
+一个复杂但又内在协调的程序系统.</p>
+<p>但是, 正巧我入学没多久, LLM 等一众横空出世的 generative AI,
+它们的表现实在是太靓眼了: Novel AI 的降维打击, 更别提后续 control net,
+LORA 等方法的优化; 而 GPT 则彻彻底底改变了我的学习习惯,
+方方面面(如果能帮我高中写读后续写就好了).</p>
+<p>时值 22 年末, 这些新颖的 AI 就像打开我心门的黑船,
+让我重新思考无数可能世界线中的一条:
+人工智能会变得越来越主流——融入到我们的世界当中, sooner or later...</p>
+<p>继续在传统的 CS 赛道上奔跑: 你已经看到结果了. 学 AI,
+不是说去抛弃那些浓缩人类工程师数十年技术的核心——说考古算是过头了——而是转去开拓新领域,
+探索, 交融.</p>
+<blockquote>
+<p>也许今天不想学机器学习...? Who knows what is next day gonna be.</p>
+</blockquote>
+<span id="more"></span>
+<h2 id="机器学习基础">机器学习基础</h2>
+<p>了解相关术语</p>
+<p>模型评估指标: 分类任务会用哪些指标 metrics?
+回归任务又常用哪些指标?</p>
+<ul>
+<li>回归任务里: MSE, Rooted MSE, R-Squared
+<ul>
+<li>Mean Squared Error (MSE): <span
+class="math inline">\(\frac{1}{n}\sum_{i=1}^n(y_i-\hat{y}_i)^2\)</span></li>
+<li><span class="math inline">\(R^2=1-SSE/SST\)</span>, 1 -
+残差平方和/总平方和, 越靠近 1 越好</li>
+<li>R 方是一种相对指标, 相当于是做了归一化处理的指标,
+在不同任务下模型的说服力会更强</li>
+<li>其实是描述回归里不可解释项 残差 <span
+class="math inline">\(\varepsilon\)</span> 的两种不同方式</li>
+</ul></li>
+</ul>
+<figure>
+<img src="../images/ml/supervised-learning-metrics.png" alt="指标" />
+<figcaption aria-hidden="true">指标</figcaption>
+</figure>
+<p>区分 <code>Acc.</code> 和 <code>Prec.</code></p>
+<ul>
+<li>模型判断正确(可能蒙对了) VS 模型判断正确的可信度</li>
+</ul>
+<p>根据混淆矩阵来计算不同指标</p>
+<p>不同指标在不同任务上的意义:</p>
+<ul>
+<li>例如, 在癌症诊断问题上, <code>Acc</code>, <code>Prec</code>,
+<code>Recall</code> 该选择哪一个作为最主要的指标?
+<ul>
+<li>不希望漏诊, 因此最应该关注 Recall = 真患病/(误诊患病+真患病)</li>
+<li><code>Prec.</code> 在这里和 <code>Recall</code> 互补, 也很重要.</li>
+</ul></li>
+<li>class-imbalanced 类别不平衡问题的处理(hw2)
+<ul>
+<li>采样方法/给代价函数设定敏感系数/引入集成学习(如 boosting)</li>
+</ul></li>
+</ul>
+<p>P-R 曲线, 以及 ROC 曲线的意义?</p>
+<ul>
+<li>选择一个平衡精确度和召回率的最佳阈值
+<ul>
+<li>是工程上的一个 trick</li>
+</ul></li>
+<li>ROC: 真正率 (TPR, aka Recall) VS 假正率 (FPR) 的 trade-off</li>
+</ul>
+<p>Area Under Curve (AUC), 通常意义上指的是 ROC-AUC.</p>
+<p>一种简单计算方式(hw1):</p>
+<p>若随机抽取一个阳性样本和一个阴性样本,
+分类器<strong>正确判断</strong>阳性样本的值高于阴性样本之<strong>概率</strong>
+= <span class="math inline">\(AUC\)</span>.</p>
+<p>根据这种解释, 我们有如下的简易计算方式:</p>
+<ul>
+<li>假设<strong>真实</strong>正例 TP 有 <span
+class="math inline">\(n_1\)</span> 个, <strong>真实</strong>负例 TN 有
+<span class="math inline">\(n_0\)</span> 个</li>
+<li>将测试样例按预测值从高到低 sort</li>
+<li>设 <span class="math inline">\(r_i\)</span> 为第 <span
+class="math inline">\(i\)</span> 个真实负例的排序位置(秩)</li>
+<li>计算 <span class="math inline">\(S_0 = \sum r_i\)</span></li>
+<li>AUC 可以计算为</li>
+</ul>
+<p><span
+class="math display">\[\hat{A}=\frac{S_0-n_0(n_0+1)/2}{n_0n_1}\]</span></p>
+<h3 id="学习理论">学习理论</h3>
+<p>假设评估</p>
+<p>回答几个核心问题:</p>
+<ul>
+<li>为什么说样本量要足够大, 才能保证模型的有效性?
+<ul>
+<li>常用的统计学方法: t 检验, z 检验, 以及置信区间为什么是重要的</li>
+</ul></li>
+<li>解释泛化误差: 方差与偏差
+<ul>
+<li>Bias + Variance + Irreducible Error</li>
+<li>为什么我们强调模型的无偏估计?</li>
+</ul></li>
+<li><strong>解释过拟合和欠拟合</strong></li>
+<li>不同测试集上, 不同假设下的模型评估, 真的仅靠一个 acc
+就能体现出优劣性吗?</li>
+<li>交叉验证为什么是有效的? 平均值用作评估,
+比直接划分测试集好在哪里?</li>
+</ul>
+<p>VC 维</p>
+<h2 id="回归-regression">回归 Regression</h2>
+<p>最<em>老派</em>(old-schooled)的机器学习方法:
+描述数据存在某种<strong>线性关系</strong></p>
+<p>OLS 回归: 最小二乘法</p>
+<p>有解析解 <span class="math inline">\(\beta=(X^TX)^{-1}X^TY\)</span>
+(proof see hw1)</p>
+<p>基本功: 能从一维情形 trival 推广到矩阵形式, 然后写出对应
+<code>numpy</code> 代码</p>
+<p><strong>梯度下降法</strong>为什么能够找到最小值点?</p>
+<ul>
+<li>最大化拟合, 最小化残差, 定义<strong>损失函数</strong>为 MSE,
+目标使其最小化
+<ul>
+<li>这是一个很典的优化问题</li>
+<li>梯度指向函数增长最快的方向, 负方向指向了函数值减小最快的方向</li>
+<li>凸函数假设: 保证有解</li>
+<li>plausible region? 学习率?</li>
+</ul></li>
+<li>实际中梯度下降前要做好归一化工作: 防止某一特征主导,
+导致其它特征不显著</li>
+</ul>
+<p>为什么我们喜欢 SGD 随机梯度下降?
+因为<strong>快</strong>(随机选择一个样本或一小批样本来计算梯度).</p>
+<ul>
+<li>缺点: 容易陷入局部最小值/更新方向可能不定(方向嘈杂)</li>
+</ul>
+<p>衍生:</p>
+<ul>
+<li>多元回归: 最熟悉的例子, 房价预测</li>
+<li>多项式回归: 拟合诸如 <span
+class="math inline">\(a_nx^n+b_nx^{n-1}\dots+a_0\)</span> 的多项式
+<ul>
+<li>本质上是多元回归的一种特例: <span class="math inline">\(x_i\coloneqq
+x^i\)</span></li>
+</ul></li>
+<li>带正则项的回归方法: Ridge Regression, Lasso Regression</li>
+<li>L1 Norm 和 L2 Norm 的区别
+<ul>
+<li>L1 Norm 适用于<strong>特征选择</strong>(消除不显著的特征,
+产生稀疏的权重矩阵)</li>
+<li>L2正则化适用于<strong>控制模型复杂度</strong>(防止模型参数过大)</li>
+<li>以及弹性网络正则项</li>
+</ul></li>
+</ul>
+<p>一些进阶话题:</p>
+<ul>
+<li>分段回归: KNN 的方法
+<ul>
+<li>加权分段回归</li>
+</ul></li>
+<li>自回归 Autoregression, 以及 VAR 向量自回归</li>
+</ul>
+<p>引入非线性</p>
+<p>逻辑回归是回归问题吗?</p>
+<ul>
+<li>不是, 它是<strong>分类问题</strong></li>
+<li>用一个<strong>激活函数</strong>将线性回归的输出映射到概率空间</li>
+<li>损失函数不用 MSE, 改用交叉熵损失 or 对数损失</li>
+<li><span class="math inline">\(\sigma (\textbf{wx}+b)\)</span>
+通过一个阈值来输出二分结果</li>
+<li>会用 softmax 函数对输出结果放大
+<ul>
+<li>这里用的是 sigmoid 函数</li>
+</ul></li>
+</ul>
+<p><span class="math display">\[g(z)=\frac{1}{1+e^{-z}}\]</span></p>
+<ul>
+<li>缺点: 存在梯度消失问题, 即当输入值非常大或非常小时, 梯度接近 0</li>
+</ul>
+<p>常用的激活函数: ReLU 函数 <span
+class="math inline">\(\max(0,z)\)</span></p>
+<ul>
+<li>优点: 计算简单, 训练速度快, 缓解了梯度消失问题</li>
+<li>缺点: Dead Relu Problem</li>
+</ul>
+<p>多分类的思想: One vs Rest</p>
+<p>人工神经网络, 感知机和初窥深度学习 (<em>just a glimpse
+:&gt;</em>)</p>
+<h2 id="决策树-decision-tree">决策树 Decision Tree</h2>
+<p>决策树是一种经典的<strong>树状递归算法</strong></p>
+<p>决策树算法的基本流程</p>
+<p><strong>理解三种停止条件</strong>:</p>
+<ul>
+<li>当前节点包含的样本属于同一类别
+<ul>
+<li>已"完美分类"</li>
+</ul></li>
+<li>两种不能划分的情况
+<ul>
+<li>没有属性</li>
+<li>没有样本</li>
+</ul></li>
+</ul>
+<p>对算法流程的改进, 缓解过拟合的方式:</p>
+<ul>
+<li>预剪枝: <strong>提前终止</strong>(一定深度就 stop)
+<ul>
+<li>很重要的思想: beautiful free lunch</li>
+<li>深度学习里经常用(到了一个epoch预测准确率就很好了)</li>
+</ul></li>
+<li>后剪枝:
+<ul>
+<li>规则后剪枝</li>
+<li>错误降低剪枝</li>
+<li>从叶节点往上剪枝</li>
+</ul></li>
+</ul>
+<p><strong>划分特征的依据</strong>: 如何量化一个特征的纯度 purity?</p>
+<ul>
+<li>信息熵 <span class="math inline">\(H(D)=-\sum p_i\log p_i\)</span>
+<ul>
+<li>系统的混乱程度或不确定性</li>
+</ul></li>
+<li>信息增益 <span class="math inline">\(IG(D,a)=H(D)-\sum_{a\in A}
+|D_a| H(D_a)/|D|\)</span>
+<ul>
+<li>根据这次划分计算一个加权平均</li>
+<li>描述某个特征<strong>对信息熵的减少程度</strong></li>
+</ul></li>
+<li>基尼指数 <span class="math inline">\(1-\sum p_i^2\)</span>
+<ul>
+<li>衡量数据集的不纯度</li>
+</ul></li>
+</ul>
+<p>三种常用的决策树算法: CART, ID3, C4.5 划分依据</p>
+<ul>
+<li>ID3: 基于信息增益</li>
+<li>C4.5: 基于信息增益比</li>
+<li>CART: 基于基尼指数</li>
+</ul>
+<p>连续值的特征如何处理? 离散化是怎么做的?</p>
+<ul>
+<li>二分: 例如采用叶子的均值或中位数</li>
+<li>多分: 将连续特征值划分成多个区间, 例如等宽分箱 Binning</li>
+<li>这个过程涉及选择最优的分割点进行划分</li>
+</ul>
+<p>决策树可以应用到回归问题吗? Regression Tree 是怎么实现划分特征的?</p>
+<ul>
+<li>选择特征 X 和分割点 t</li>
+<li>计算分割后的左右子集的均方误差 MSE</li>
+<li>选择使 MSE 最小的分割点进行划分</li>
+</ul>
+<h2 id="贝叶斯方法">贝叶斯方法</h2>
+<p>贝叶斯决策论的基本思想?</p>
+<ul>
+<li>通过概率的计算和期望损失的最小化来进行决策</li>
+<li>选择<strong>期望损失最小</strong>的决策</li>
+<li>例如, 最小化分类错误率, 就引入误判损失, 让条件风险最小化</li>
+<li>最重要的是获取后验概率 <span class="math inline">\(P(c \mid
+x)\)</span></li>
+</ul>
+<p>怎么理解后验概率, 似然度, 先验概率以及边际似然度这些概念.(尤其是对
+<em>likelihood</em> 的理解)</p>
+<p>用医生诊病的例子来说明贝叶斯定理.</p>
+<p>了解贝叶斯方法和生成模型/判别模型之间的关系.</p>
+<ul>
+<li>如果我们无法从数据中得到显式的<em>规则</em></li>
+<li>那么就从数据中学习最符合的分布以及相匹配的参数</li>
+<li>生成模型: 学习联合分布 <span class="math inline">\(P(x,c)\)</span>
+然后获得 <span class="math inline">\(P(c \mid x)\)</span>
+<ul>
+<li>例: 朴素贝叶斯, HMM</li>
+</ul></li>
+<li>判别模型: 学习条件分布 <span class="math inline">\(P(c \mid
+x)\)</span> 预测 <span class="math inline">\(c\)</span>
+<ul>
+<li>例: 线性回归, 逻辑回归, 决策树, SVM...</li>
+</ul></li>
+</ul>
+<p>极大似然估计 MLE 为什么说是机器学习的基石?</p>
+<ul>
+<li>基于数据去学习一个分布</li>
+</ul>
+<p>寻找能最大化似然 <span class="math inline">\(P(D_c \mid
+\theta_c)\)</span> 的参数值 <span
+class="math inline">\(\hat{\theta_c}\)</span> <span
+class="math display">\[\hat{\theta_c}=\argmax_{\theta_c}
+LL(\theta_c)\]</span></p>
+<p>例子: HTHH 抛硬币序列</p>
+<ul>
+<li>MLE 就会估计出正面朝上的概率 <span
+class="math inline">\(p=1/4\)</span>. (写出似然函数, 取对数, 求导,
+取极小值)</li>
+</ul>
+<p>极大后验估计 MAP, 以及朴素贝叶斯的假设都是什么?</p>
+<ul>
+<li>极大后验估计 MAP <span class="math inline">\(\argmax_{\theta}P(x\mid
+\theta)P(\theta)\)</span></li>
+<li>极大似然估计 MLE <span class="math inline">\(\argmax_{\theta}P(x\mid
+\theta)\)</span>
+<ul>
+<li>也就是假设 <span class="math inline">\(\theta\)</span>
+服从均匀分布</li>
+</ul></li>
+<li>朴素贝叶斯: <strong>属性</strong>的独立性假设</li>
+</ul>
+<p>实现一个朴素贝叶斯分类器. 参考 <code>GaussianNB</code> 实现,
+并应用于垃圾邮件分类任务上. (课程实验)</p>
+<ul>
+<li>怎么学习文本数据的分布? NLP 相关基础.</li>
+<li>这里的高斯分布应用在哪里?</li>
+<li>Laplace 平滑技术是用于什么的?</li>
+</ul>
+<h2 id="基于实例的学习">基于实例的学习</h2>
+<p>相似度的度量</p>
+<p>除了欧氏距离, 有一种利用向量内积计算的余弦相似度</p>
+<ul>
+<li>1/-1 可以体现出比较显著的正/负相关性, 0 表示无相似性</li>
+<li>相当于做了一次归一化</li>
+</ul>
+<p>非数值特征的处理? 例如文本类型的数据, 布尔类型的数据?</p>
+<p>K-Nearest Neighbors 方法, 算法流程:</p>
+<ul>
+<li>选择 K 值: 选择一个正整数 K 作为最近邻居的数量.</li>
+<li>计算相似度：对于每个测试样本, 计算其与所有训练样本的相似度.</li>
+<li>找到最近邻居: 根据距离，从训练样本中选择距离最近的 K 个样本。</li>
+<li>投票或加权: 对于分类问题, 使用 K 个最近邻居的类别进行投票:
+对于回归问题, 计算 K 个最近邻居的平均值或加权平均值。</li>
+<li>预测: 将投票结果或平均值作为测试样本的预测结果.</li>
+</ul>
+<p>优缺点</p>
+<ul>
+<li>简单容易实现, 无需训练过程
+<ul>
+<li>同时也导致计算复杂度高</li>
+</ul></li>
+<li>可以拟合非线性过程</li>
+<li>自然处理多分类问题</li>
+<li>对噪声和不相关特征敏感(离群点敏感)</li>
+</ul>
+<p>核函数</p>
+<p>一个最常用的: 高斯核函数 RBF</p>
+<p><span class="math display">\[ K(\mathbf{x}, \mathbf{y}) =
+\exp\left(-\frac{\|\mathbf{x} -
+\mathbf{y}\|^2}{2\sigma^2}\right)\]</span></p>
+<p>将低维数据映射到高维空间,
+从而使得在低维空间中非线性不可分的数据在高维空间中变得线性可分</p>
+<p>在 SVM 用的多</p>
+<h2 id="无监督学习">无监督学习</h2>
+<p>K-Means 算法的流程</p>
+<ul>
+<li>初始化: 随机选质心作为 cluster 的中心</li>
+<li>分配簇: 将每个数据点分配到最近的质心所属的簇</li>
+<li>更新质心: 计算每个簇的质心</li>
+<li>迭代步骤 2, 3, 直到质心不再发生改变</li>
+</ul>
+<p>优点: 简单, 计算速度快，适用于大规模数据集</p>
+<p>缺点:</p>
+<ul>
+<li>对初始质心敏感, 不同的初始质心可能导致不同的聚类结果.
+(不一定是全局最优)</li>
+<li>适用于球形簇, 不适用于非凸簇或大小、密度差异较大的簇.</li>
+<li>对噪声和离群点敏感.</li>
+</ul>
+<p>层次聚类</p>
+<p>密度聚类: 例 DBSCAN</p>
+<h2 id="支持向量机">支持向量机</h2>
+<p><strong>例题</strong> 求解诸如下面的二次优化问题</p>
+<p><span
+class="math display">\[\begin{aligned}\arg\min_{\boldsymbol{w},b}&amp;\frac12\|\boldsymbol{w}\|^2\\\mathrm{s.t.}&amp;y_i(\boldsymbol{w}^\top\boldsymbol{x}_i+b)\geq1,
+i=1,2,\ldots,m.\end{aligned}\]</span></p>
+<p>例:</p>
+<p><span class="math display">\[\min_{w_1, w_2, b} \frac{1}{2}(w_1^2 +
+w_2^2)\]</span></p>
+<p>满足</p>
+<p><span class="math display">\[\begin{cases}
+  3w_1+3w_2+b\geqslant 1 \\
+  4w_1+3w_2+b\geqslant 1 \\
+  w_1+w_2+b\leqslant 1
+\end{cases}\]</span></p>
+<p><strong>解</strong> 一种简化过的方法: 先转换为对偶问题</p>
+<p><span
+class="math display">\[\min_{\alpha}\quad\frac{1}{2}\sum_{i=1}^{m}\sum_{j=1}^{m}\alpha_{i}\alpha_{j}y_{i}y_{j}\boldsymbol{x}_{i}^{\mathrm{T}}\boldsymbol{x}_{j}-\sum_{i=1}^{m}\alpha_{i}\]</span></p>
+<ul>
+<li>根据上面的约束条件(3个点)得出 <span
+class="math inline">\(x_i\)</span> 以及 <span
+class="math inline">\(y_i\)</span>.</li>
+<li>推荐列出 <span class="math inline">\(x_i^Tx_j\)</span> 的清单,
+小心计算错误.</li>
+</ul>
+<p>这里 <span class="math inline">\(\alpha_i\)</span>
+是引入的拉格朗日乘子, 满足</p>
+<p><span
+class="math display">\[\boldsymbol{w}=\sum_{i=1}^m\alpha_iy_i\boldsymbol{x}_i
+,\quad0=\sum_{i=1}^m\alpha_iy_i\]</span></p>
+<ul>
+<li>上面的第一个式子用来求出 <span class="math inline">\(\alpha\)</span>
+后反代求 <span class="math inline">\(w\)</span>.</li>
+<li>根据上面的第二个式子, 可以消去某一 <span
+class="math inline">\(\alpha_i\)</span>, 然后对 <span
+class="math inline">\(s(\alpha_i)\)</span> 求无条件极值.</li>
+</ul>
+<p>求解上面这个对偶问题, 关注 <strong>KTT 条件</strong></p>
+<p><span
+class="math display">\[\begin{cases}\alpha_i\geq0,\\y_if(\boldsymbol{x}_i)\geq1,\\\boxed{\alpha_i(y_if(\boldsymbol{x}_i)-1)=0}\end{cases}\]</span></p>
+<ul>
+<li>如果 <span class="math inline">\(\alpha_i &lt; 0\)</span>,
+则极值在边界取到.
+<ul>
+<li>即, 考虑某一 <span class="math inline">\(\alpha_i = 0\)</span>,
+然后继续求极值.</li>
+<li>求出这些边界情况下的最小值. 此时就确定了全部 <span
+class="math inline">\(\alpha\)</span>.</li>
+</ul></li>
+<li>利用 KTT 条件的 (3), 若 <span
+class="math inline">\(\alpha_i&gt;0\)</span>, 则代表 <span
+class="math inline">\(x_i\)</span> 是支持向量, 则 <span
+class="math inline">\(y_if(x_i)=1\)</span>.
+<ul>
+<li>此时可以代入 <span class="math inline">\(f(x_i)\)</span>, 反解出
+<span class="math inline">\(b\)</span>.</li>
+</ul></li>
+</ul>
+<p>上面这个例子的答案是 <span class="math inline">\(w_1=w_2=1/2,
+b=-2\)</span>.</p>
+<p>了解 Seqential Minimal Optimization (SMO) 算法.</p>
+<p>了解线性不可分问题: kernel trick 为什么有效?</p>
+<p>soft-margin 的思想</p>
+<p>支持向量机可以应用到分类问题吗? <code>sklearn.svm</code> 里
+<code>SVC</code> 又是怎么实现的?</p>
+<h2 id="集成学习">集成学习</h2>
+<ul>
+<li>集成学习的核心思想
+<ul>
+<li>为什么要"好而不同"</li>
+</ul></li>
+<li>Bagging 的采样方法(自助采样)</li>
+<li>区分 Bagging/Boosting</li>
+<li>算法流程</li>
+</ul>
+<h2 id="降维学习">降维学习</h2>
+<h3 id="svd-分解">SVD 分解</h3>
+<p><strong>例题</strong> 对二维矩阵</p>
+<p><span class="math display">\[A=\begin{pmatrix}
+  3 &amp;0 \\
+  4 &amp;5
+\end{pmatrix}\]</span></p>
+<p>求其 SVD 分解.</p>
+<p><strong>解</strong> 掌握计算流程:</p>
+<ul>
+<li>计算 <span class="math inline">\(A^TA\)</span> 以及 <span
+class="math inline">\(AA^T\)</span>.</li>
+<li>计算 <span class="math inline">\(A^TA\)</span> 和 <span
+class="math inline">\(AA^T\)</span> 的特征值和特征向量.
+<ul>
+<li>奇异值是 <span class="math inline">\(A^TA\)</span>
+特征值的<strong>平方根</strong>, 即 <span class="math inline">\(\sigma_i
+= \sqrt{\lambda_i}\)</span>, 下标根据特征值大小排过序.</li>
+<li>U 矩阵的列向量是 <span class="math inline">\(AA^T\)</span>
+的特征向量.</li>
+<li>V 矩阵的列向量是 <span class="math inline">\(A^TA\)</span>
+的特征向量.</li>
+<li>注意特征向量需要<strong>单位化</strong>.</li>
+</ul></li>
+</ul>
+<p>结果为</p>
+<p><span class="math display">\[A=U\Sigma
+V^T=\left(\begin{array}{cc}\frac{1}{\sqrt{2}}&amp;-\frac{1}{\sqrt{2}}\\\frac{1}{\sqrt{2}}&amp;\frac{1}{\sqrt{2}}\end{array}\right)\left(\begin{array}{cc}\sqrt{45}&amp;0\\0&amp;\sqrt{5}\end{array}\right)\left(\begin{array}{cc}\frac{1}{\sqrt{2}}&amp;\frac{1}{\sqrt{2}}\\-\frac{1}{\sqrt{2}}&amp;\frac{1}{\sqrt{2}}\end{array}\right)\]</span></p>
+<p>例:</p>
+<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[U, S, V] = svd(A, <span class="string">&#x27;econ&#x27;</span>);</span><br></pre></td></tr></table></figure>
+<p>用于对矩阵 <span class="math inline">\(A\)</span>
+进行经济规模的奇异值分解.</p>
+<h3 id="主成分分析-pca">主成分分析 PCA</h3>
+<p>PCA的思想: 减少数据集的特征数量, 同时尽可能地保留信息</p>
+<p>算法流程:</p>
+<ul>
+<li>对样本数据标准化, 例如 <span class="math inline">\(x&#39; =
+(x-\mu)/\sigma\)</span>.</li>
+<li>样本中心化 <span
+class="math inline">\(X&#39;=X-\overline{X}\)</span>.
+(减去均值向量)</li>
+<li>对 <span class="math inline">\(X&#39;\)</span> 进行 SVD 分解
+<ul>
+<li>等价于对<strong>协方差矩阵</strong> <span
+class="math inline">\(XX^T\)</span> 进行特征值分解.</li>
+</ul></li>
+<li>选择主成分, 通常为<strong>前 k 个奇异值</strong>以及对应的 V
+矩阵的列向量.
+<ul>
+<li>新的数据投影就是 <span class="math inline">\(Z = X&#39;
+V_k\)</span>, <span class="math inline">\(V_k\)</span> 是选择前 k
+个最大的奇异值对应的 V 矩阵的列向量.</li>
+<li>投影后的样本<strong>方差</strong>最大化: 拥有更高的可区分度,
+同时还保留着部分映射之前的空间信息</li>
+</ul></li>
+</ul>
+<p>应用: t-SNE 算法 高维数据的可视化</p>
+<h2 id="intro-to-llm">intro to LLM</h2>
+<p>从传统的 NLP 到嵌入向量 embedding</p>
+<p>BERT</p>
+<p>sota techniques:</p>
+<ul>
+<li>Transformer</li>
+<li>Attention</li>
+<li>Diffusion Model</li>
+<li>...</li>
+</ul>
+<h2 id="附录-appendix">附录 Appendix</h2>
+<h3 id="a.-相关问题与这学期的感悟-qa">A. 相关问题与这学期的感悟
+Q&amp;A</h3>
+<p>Q: 机器学习要学到怎样的地步?</p>
+<p>A: 参考张敏老师上课的课件</p>
+<ul>
+<li>关键概念</li>
+<li>基础学习理论</li>
+<li>经典/重要算法
+<ul>
+<li>问题定义</li>
+<li>基本思路</li>
+<li>算法设计与分析</li>
+<li>未来方向</li>
+</ul></li>
+<li>分析问题, 特征与结果</li>
+<li><strong>解决实际问题的能力</strong></li>
+</ul>
+<p>最后一条深有体会, 纯背书的学习方式非常局限:
+就像打算法比赛只会写板子题一样没用, 在设计实验的时候, 开始 coding
+的时候才会感到来自各方的阻力.</p>
+<p>来自周志华老师的建议:</p>
+<ul>
+<li>for beginners: 先速读, 花一个月把西瓜书读完(遇到不懂的细节 skip),
+先建立一个 scope</li>
+<li>然后再花上大笔的时间深入学习各个板块.</li>
+<li>一门课程可涵盖的部分实在有限,
+所以这就是为什么要在课程后加上概论/导论.</li>
+</ul>
+<p>这学期机器学习的路径:</p>
+<h2 id="参考资料">参考资料</h2>
+<ul>
+<li>周志华. (2016). 机器学习. 清华大学出版社.</li>
+<li>Mitchell, T. (1997). Machine Learning. McGraw-Hill Education.</li>
+<li>清华大学, 张敏老师的机器学习概论课程讲义</li>
+</ul>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E7%AE%97%E6%B3%95/" rel="tag"># 算法</a>
+              <a href="/tags/%E6%95%B0%E5%AD%A6/" rel="tag"># 数学</a>
+              <a href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" rel="tag"># 机器学习</a>
+              <a href="/tags/%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/" rel="tag"># 数据分析</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2024/03/27/%E9%85%8D%E7%BD%AE%E4%BD%A0%E8%87%AA%E5%B7%B1%E7%9A%84revealjs%E4%B8%BB%E9%A2%98/" rel="prev" title="配置你自己的 reveal.js 主题!">
+                  <i class="fa fa-chevron-left"></i> 配置你自己的 reveal.js 主题!
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2024/04/08/%E7%82%92%E8%82%A1%E5%89%8D%E4%BD%A0%E8%A6%81%E6%87%82%E7%9A%84%E7%90%86%E8%AE%BA%E7%9F%A5%E8%AF%86/" rel="next" title="投资理论与实践">
+                  投资理论与实践 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    <div class="comments gitalk-container"></div>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 2022 – 
+  <span itemprop="copyrightYear">2024</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Besthope</span>
+</div>
+<div class="wordcount">
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-line"></i>
+    </span>
+      <span>站点总字数：</span>
+    <span title="站点总字数">90k</span>
+  </span>
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+      <span>站点阅读时长 &asymp;</span>
+    <span title="站点阅读时长">5:28</span>
+  </span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/pisces/" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.1/search.js" integrity="sha256-1kfA5uHPf65M5cphT2dvymhkuyHPQp5A53EGZOnOLmc=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+
+
+
+  
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">true</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"none","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/gitalk/1.8.0/gitalk.css" integrity="sha256-AJnUHL7dBv6PGaeyPQJcgQPDjt/Hn/PvYZde1iqfp8U=" crossorigin="anonymous">
+
+<script class="next-config" data-name="gitalk" type="application/json">{"enable":true,"github_id":"Besthope-Official","repo":"Gittalk-repo","client_id":"a30bcd98c6f188a719e4","client_secret":"bd7e03497f2a00490144e9e0756d511768622b0e","admin_user":"Besthope-Official","distraction_free_mode":true,"proxy":"https://luminous-druid-90cc61.netlify.app/github_access_token","language":"zh-CN","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/gitalk/1.8.0/gitalk.min.js","integrity":"sha256-MVK9MGD/XJaGyIghSVrONSnoXoGh3IFxLw0zfvzpxR4="},"path_md5":"554b799daa0e6207c4db45922c5a5f8b"}</script>
+<script src="/js/third-party/comments/gitalk.js"></script>
+<script src="https://api.asilu.com/cdn/jquery.js,jquery.backstretch.min.js" type="text/javascript"></script>
+<body>
+<script type="text/javascript">
+function display()
+{
+    function shuffle(arr) {
+    let i = arr.length;
+    while (i) {
+      let j = Math.floor(Math.random() * i--);
+      [arr[j], arr[i]] = [arr[i], arr[j]];
+    }
+  }
+
+  const pic = 8;
+  var bgs = [];
+  
+  for (i = 1; i <= pic; i++) {
+    bgs.push("/images/bg" + i + ".jpg");
+  }
+
+  shuffle(bgs);
+
+  $.backstretch(bgs, {
+    fade: 2000, // 动画时长; 单位：毫秒
+    duration: 20000, // 切换延时
+    preload: 1,
+  });
+}
+
+display();
+
+window.onclick = function () {
+  display();
+};
+</script>
+</body>
+</body>
+<!-- click love -->
+<script type="text/javascript" src="/js/clicklove.js"></script>
+</html>
